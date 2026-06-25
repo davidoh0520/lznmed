@@ -105,3 +105,72 @@ footer{justify-content:center;gap:28px;text-align:center;}
 footer span{font-size:14px;color:var(--muted);font-weight:800;letter-spacing:.02em;text-align:center;}
 footer img{height:30px;}
 @media(max-width:760px){footer{flex-direction:column;gap:14px;padding:24px 18px;}footer span{font-size:12px;}}
+
+
+.whatsapp-float{
+position:fixed;
+right:24px;
+bottom:24px;
+z-index:9999;
+display:flex;
+align-items:center;
+gap:10px;
+background:#25D366;
+color:#fff;
+text-decoration:none;
+padding:12px 16px;
+border-radius:999px;
+box-shadow:0 8px 24px rgba(0,0,0,.25);
+font-weight:600;
+font-family:Arial,sans-serif;
+transition:transform .2s ease;
+}
+.whatsapp-float:hover{transform:translateY(-2px);}
+.whatsapp-float img{width:28px;height:28px;}
+@media(max-width:768px){
+.whatsapp-float span{display:none;}
+
+/* v14 WhatsApp B2B sales support button */
+.whatsapp-float{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:255px;
+  max-width:320px;
+  padding:13px 18px 13px 14px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#1fb85d,#23d366);
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 18px 42px rgba(8,17,31,.24),0 0 0 1px rgba(255,255,255,.18) inset;
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.whatsapp-float:hover{
+  transform:translateY(-3px);
+  box-shadow:0 22px 50px rgba(8,17,31,.30),0 0 0 1px rgba(255,255,255,.22) inset;
+}
+.whatsapp-icon-wrap{
+  flex:0 0 46px;
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 8px 20px rgba(8,17,31,.16);
+}
+.whatsapp-icon-wrap img{width:29px;height:29px;display:block;}
+.whatsapp-copy{display:flex;flex-direction:column;line-height:1.15;min-width:0;}
+.whatsapp-copy strong{font-size:15px;font-weight:900;letter-spacing:.01em;color:#fff;}
+.whatsapp-copy em{margin-top:3px;font-size:12px;font-style:normal;font-weight:700;color:rgba(255,255,255,.90);white-space:nowrap;}
+@media(max-width:768px){
+  .whatsapp-float{right:18px;bottom:18px;min-width:0;padding:12px;border-radius:50%;}
+  .whatsapp-copy{display:none;}
+  .whatsapp-icon-wrap{width:48px;height:48px;flex-basis:48px;background:#fff;}
+}
