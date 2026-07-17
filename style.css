@@ -2,3 +2,17 @@
 
 /* Frames gateway uses a lifestyle portrait rather than a product cutout. */
 .category-card.frames img{width:100%;height:100%;right:0;bottom:0;object-fit:cover;object-position:70% center}
+
+/* Category gateways: isolated product visual on the left, clear copy on the right. */
+.category-card{height:360px;padding:0;display:grid;grid-template-columns:minmax(0,56%) minmax(220px,44%);align-items:stretch;isolation:isolate;border:1px solid rgba(16,37,32,.11)}
+.category-card:after{display:none}
+.category-card img,.category-card.frames img,.category-card.lenses img{position:relative;z-index:1;grid-column:1;grid-row:1;width:100%;height:100%;right:auto;bottom:auto;padding:28px;object-fit:contain;object-position:center;background:transparent;mix-blend-mode:multiply;filter:drop-shadow(0 18px 20px rgba(16,37,32,.13));transition:transform .45s ease}
+.category-card.frames img{padding:0;object-fit:cover;object-position:center;mix-blend-mode:normal;filter:none}
+.category-card:hover img{transform:scale(1.035)}
+.category-card .card-copy{z-index:2;grid-column:2;grid-row:1;align-self:stretch;display:flex;flex-direction:column;justify-content:center;min-width:0;padding:38px 34px;background:transparent;color:var(--ink);border-left:1px solid rgba(16,37,32,.11)}
+.category-card .card-copy p{margin:0 0 8px;color:#50635d;font-weight:700;line-height:1.45}
+.category-card .card-copy h3{margin:0 0 24px;color:var(--ink);font-size:clamp(34px,3.1vw,49px);line-height:1;overflow-wrap:anywhere}
+.category-card .card-copy span{align-self:flex-start;color:var(--ink);font-weight:800;line-height:1.35}
+.category-card .card-number{position:absolute;z-index:3;top:24px;right:28px;color:#4d625b;font-weight:800}
+.category-card.devices{background:#dbe9df}.category-card.tools{background:#d4e1dd}.category-card.frames{background:#e3d6c7}.category-card.lenses{background:#d7e9ed}
+@media(max-width:560px){.category-card{height:260px;grid-template-columns:minmax(0,52%) minmax(150px,48%)}.category-card img,.category-card.lenses img{padding:14px}.category-card.frames img{padding:0}.category-card .card-copy{padding:28px 18px}.category-card .card-copy h3{font-size:31px;margin-bottom:17px}.category-card .card-copy p{font-size:8px}.category-card .card-copy span{font-size:8px}.category-card .card-number{top:16px;right:17px}}
