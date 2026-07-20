@@ -6,18 +6,35 @@
 (() => {
   const key = 'lzn-cart';
   const allowed = origin => origin === location.origin || origin === 'https://www.lznmed.com' || /^https:\/\/(devices|frames|lens)\.lznmed\.com$/.test(origin);
-  const origins = { Frames: '/frames/', Lens: '/lenses/', Devices: '/devices/' };
+  const primaryHosts = new Set(['lznmed.com', 'www.lznmed.com']);
+  const unifiedPaths = { Frames: '/frames/', Lens: '/lenses/', Devices: '/devices/', Tools: '/tools/', Main: '/tools/' };
+  const legacyOrigins = { Frames: 'https://frames.lznmed.com/', Lens: 'https://lens.lznmed.com/', Devices: 'https://devices.lznmed.com/', Tools: 'https://tools.lznmed.com/', Main: 'https://tools.lznmed.com/' };
+  const imageBase = sourceStore => primaryHosts.has(location.hostname)
+    ? new URL(unifiedPaths[sourceStore] || '/', location.origin)
+    : new URL(legacyOrigins[sourceStore] || '/', location.origin);
+  const repairImage = item => {
+    if (!item.image) return false;
+    const original = String(item.image);
+    try {
+      let url = new URL(original, imageBase(item.sourceStore));
+      if (primaryHosts.has(url.hostname) && url.pathname.startsWith('/assets/') && unifiedPaths[item.sourceStore]) {
+        url = new URL(`${unifiedPaths[item.sourceStore].replace(/\/$/, '')}${url.pathname}${url.search}${url.hash}`, 'https://www.lznmed.com');
+      }
+      item.image = url.href;
+      return item.image !== original;
+    } catch (_) { return false; }
+  };
+  const repairImages = cart => cart.reduce((changed, item) => repairImage(item) || changed, false);
+  const persistRepairs = cart => {
+    if (!repairImages(cart)) return false;
+    localStorage.setItem(key, JSON.stringify(cart));
+    window.LZNCloudCart?.replace(cart);
+    return true;
+  };
   const read = () => {
     try {
       const cart = window.LZNCloudCart?.read() || JSON.parse(localStorage.getItem(key) || '[]');
-      let changed = false;
-      cart.forEach(item => {
-        if (item.image && !/^https?:\/\//i.test(item.image) && origins[item.sourceStore]) {
-          item.image = new URL(item.image, origins[item.sourceStore]).href;
-          changed = true;
-        }
-      });
-      if (changed) localStorage.setItem(key, JSON.stringify(cart));
+      persistRepairs(cart);
       return cart;
     } catch (_) { return []; }
   };
@@ -33,6 +50,7 @@
         const restored = await window.LZNCloudCart?.setSession(event.data.session);
         cart = restored || cart;
       } catch (_) { /* keep the last local cart */ }
+      persistRepairs(cart);
       reply(event, cart);
       return;
     }
@@ -43,11 +61,13 @@
     }
     if (event.data.type === 'GET_CART') {
       try { cart = await window.LZNCloudCart?.restore() || cart; } catch (_) { /* keep local cart */ }
+      persistRepairs(cart);
       reply(event, cart);
       return;
     }
     if (event.data.type === 'ADD_ITEMS') {
       for (const incoming of event.data.items || []) {
+        repairImage(incoming);
         const existing = cart.find(item => identity(item) === identity(incoming));
         if (existing) existing.quantity = Number(existing.quantity || 1) + Number(incoming.quantity || 1);
         else cart.push(incoming);

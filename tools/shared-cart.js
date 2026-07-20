@@ -5,7 +5,7 @@
   const store = section === 'frames' ? 'Frames' : section === 'lenses' ? 'Lens' : section === 'devices' ? 'Devices' : 'Main';
   const localKey = store === 'Lens' ? 'lznLensCart' : store === 'Frames' ? 'lzn-cart' : null;
   const iframe = document.createElement('iframe');
-  iframe.src = '/tools/cart-bridge.html?v=20260718-1';
+  iframe.src = '/tools/cart-bridge.html?v=20260720-2';
   iframe.title = 'LZN shared cart';
   iframe.hidden = true;
   document.body.appendChild(iframe);
@@ -40,14 +40,27 @@
   function lensDetails(item) {
     return [item.coating, item.sph && `SPH ${item.sph}`, item.cyl && `CYL ${item.cyl}`, item.add && `ADD ${item.add}`, item.base && `Base ${item.base}`].filter(Boolean).join(' / ');
   }
+  const primaryHosts = new Set(['lznmed.com', 'www.lznmed.com']);
+  const unifiedPaths = { Frames: '/frames/', Lens: '/lenses/', Devices: '/devices/', Main: '/tools/' };
+  function absoluteImage(image, sourceStore = store) {
+    if (!image) return '';
+    try {
+      const unified = primaryHosts.has(location.hostname);
+      const base = unified ? new URL(unifiedPaths[sourceStore] || '/', location.origin) : new URL('/', location.origin);
+      let url = new URL(String(image), base);
+      if (primaryHosts.has(url.hostname) && url.pathname.startsWith('/assets/') && unifiedPaths[sourceStore]) {
+        url = new URL(`${unifiedPaths[sourceStore].replace(/\/$/, '')}${url.pathname}${url.search}${url.hash}`, 'https://www.lznmed.com');
+      }
+      return url.href;
+    } catch (_) { return String(image); }
+  }
   function normalize(items) {
-    const absoluteImage = image => image ? new URL(image, location.origin + '/').href : '';
     if (store === 'Lens') return items.map(item => {
       const product = typeof products !== 'undefined' ? products.find(candidate => candidate.name === item.name) : null;
       const image = item.image || (product?.file ? `assets/thumbs/${product.file.replace(/\.png$/i, '.webp')}` : '');
-      return { model: item.name, nameEn: `[Lens] ${item.name}`, image: absoluteImage(image), priceUsd: Number(item.price || 0), quantity: Number(item.qty || 1), optionLabel: lensDetails(item), sourceStore: 'Lens' };
+      return { model: item.name, nameEn: `[Lens] ${item.name}`, image: absoluteImage(image, 'Lens'), priceUsd: Number(item.price || 0), quantity: Number(item.qty || 1), optionLabel: lensDetails(item), sourceStore: 'Lens' };
     });
-    if (store === 'Frames') return items.map(item => ({ ...item, image: absoluteImage(item.image), nameEn: String(item.nameEn || item.model || '').startsWith('[Frames]') ? item.nameEn : `[Frames] ${item.nameEn || item.model}`, quantity: Number(item.quantity || 1), sourceStore: 'Frames' }));
+    if (store === 'Frames') return items.map(item => ({ ...item, image: absoluteImage(item.image, 'Frames'), nameEn: String(item.nameEn || item.model || '').startsWith('[Frames]') ? item.nameEn : `[Frames] ${item.nameEn || item.model}`, quantity: Number(item.quantity || 1), sourceStore: 'Frames' }));
     return [];
   }
   function post(type, payload) { iframe.contentWindow?.postMessage({ channel: 'lzn-shared-cart', type, ...payload }, location.origin); }
