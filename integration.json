@@ -1,0 +1,7 @@
+{
+  "site": "LZN Medical",
+  "primaryDomain": "https://lznmed.com",
+  "adminPath": "/admin/",
+  "sections": ["/devices/", "/tools/", "/lenses/", "/frames/"],
+  "legacySubdomainsPreserved": true
+}

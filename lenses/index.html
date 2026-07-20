@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" class="lzn-booting">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LZN Optical Lens</title>
+  <meta name="description" content="LZN Optical Lens product catalogue: blue ray, photochromic, progressive and semi-finished optical lenses." />
+  <style>html{background:#fff}html.lzn-booting body{opacity:0;visibility:hidden;pointer-events:none}</style>
+  <noscript><style>html.lzn-booting body{opacity:1;visibility:visible;pointer-events:auto}</style></noscript>
+  <script>window.addEventListener('DOMContentLoaded',()=>document.documentElement.classList.remove('lzn-booting'),{once:true});</script>
+  <link rel="stylesheet" href="styles.css?v=20260719-11" />
+  <link rel="stylesheet" href="/tools/unified-theme.css?v=20260717-1">
+  <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260720-22">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#products" aria-label="LZN Optical Lens">
+      <img src="assets/contact/lzn-logo.png" alt="LZN" />
+    </a>
+    <nav>
+      <a href="#products">PRODUCTS</a>
+      <a href="#contact">CONTACT</a>
+      <button class="nav-account" id="accountButton">SIGN IN</button>
+      <button class="cart-button" id="cartButton">CART <span id="cartCount">0</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="products">
+      <div class="hero-copy">
+        <p class="eyebrow">LZN OPTICAL LENS</p>
+        <h1><span class="hero-title-word" id="heroLensName" aria-live="polite">Optical Lens</span></h1>
+        <p>Blue Ray, Photochromic, Progressive and Semi-Finished lenses for B2B optical supply.</p>
+        <a class="btn" href="#catalog">Explore Lenses</a>
+      </div>
+      <div class="hero-panel" id="heroPanel" role="button" tabindex="0" aria-label="View featured lens"></div>
+    </section>
+
+    <section class="catalog" id="catalog">
+      <div class="section-title">
+        <p class="eyebrow">PRODUCTS</p>
+        <h2>LZN Lens Products</h2>
+      </div>
+      <div class="filters" aria-label="Product category filters">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="single">Single Vision</button>
+        <button data-filter="progressive">Progressive</button>
+        <button data-filter="semi">Semi-Finished</button>
+      </div>
+      <div class="grid" id="productGrid"></div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-copy">
+        <p class="eyebrow">CONTACT</p>
+        <h2>Request Product Information</h2>
+        <h3>LZN MEDICAL CO., LTD.</h3>
+        <p>Tel: <a href="tel:+8613062619570">+86 130 6261 9570</a></p>
+        <p>Email: <a href="mailto:sales@lznmed.com">sales@lznmed.com</a></p>
+      </div>
+      <div class="qr-wrap">
+        <div class="qr-card"><img src="assets/contact/whatsapp-qr.png" alt="WhatsApp QR" loading="lazy" decoding="async"><b>WhatsApp</b></div>
+        <div class="qr-card"><img src="assets/contact/wechat-qr.png" alt="WeChat QR" loading="lazy" decoding="async"><b>WeChat</b></div>
+      </div>
+      <p class="copyright">© 2026 LZN MEDICAL CO., LTD. All Rights Reserved.</p>
+    </section>
+  </main>
+
+  <dialog id="productModal">
+    <button class="close" aria-label="Close">×</button>
+    <div class="modal-body">
+      <img id="modalImage" alt="" />
+      <div>
+        <p class="eyebrow" id="modalCategory"></p>
+        <h2 id="modalTitle"></h2>
+        <dl id="modalSpecs"></dl>
+        <section class="order-builder">
+          <h3 id="orderBuilderTitle">Add a power to your cart</h3>
+          <p class="order-note" id="orderBuilderNote">Prices are per individual lens. Choose a power and quantity.</p>
+          <div class="order-fields" id="orderFields"></div>
+          <div class="order-price" id="orderPrice"></div>
+          <button class="btn" type="button" id="addOrderLine">Add to Cart</button>
+          <div class="model-cart-summary" id="modelCartSummary" hidden></div>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="cartDialog" class="cart-dialog">
+    <button class="close" aria-label="Close">×</button>
+    <div class="cart-body" id="commerceBody"></div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=20260713-1"></script>
+  <script src="script.js?v=20260719-8"></script>
+<script src="/tools/shared-cart.js?v=20260718-1"></script>
+<script src="/tools/portfolio-shell.js?v=20260720-28" defer></script>
+</body>
+</html>
+
