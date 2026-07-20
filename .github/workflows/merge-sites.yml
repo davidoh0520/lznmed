@@ -46,7 +46,9 @@ jobs:
           set -euo pipefail
           cd hub
           branch="agent/unify-five-sites-20260720"
-          git checkout -B "$branch"
+          source_ref="$GITHUB_SHA"
+          git checkout -B "$branch" 3c8d5bc13f33139c3042e4b33feb7316bc9c2962
+          git checkout "$source_ref" -- index.html policies
 
           rm -rf devices tools lenses frames admin
           for section in devices tools lenses frames; do
