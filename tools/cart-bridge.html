@@ -1,0 +1,61 @@
+<!doctype html><html><head><meta charset="utf-8"><title>LZN Cart Bridge</title></head><body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js?v=20260713-10"></script>
+<script src="cloud-cart.js?v=20260718-1"></script>
+<script>
+(() => {
+  const key = 'lzn-cart';
+  const allowed = origin => origin === location.origin || origin === 'https://www.lznmed.com' || /^https:\/\/(devices|frames|lens)\.lznmed\.com$/.test(origin);
+  const origins = { Frames: '/frames/', Lens: '/lenses/', Devices: '/devices/' };
+  const read = () => {
+    try {
+      const cart = window.LZNCloudCart?.read() || JSON.parse(localStorage.getItem(key) || '[]');
+      let changed = false;
+      cart.forEach(item => {
+        if (item.image && !/^https?:\/\//i.test(item.image) && origins[item.sourceStore]) {
+          item.image = new URL(item.image, origins[item.sourceStore]).href;
+          changed = true;
+        }
+      });
+      if (changed) localStorage.setItem(key, JSON.stringify(cart));
+      return cart;
+    } catch (_) { return []; }
+  };
+  const count = cart => cart.reduce((sum, item) => sum + Number(item.quantity || 1), 0);
+  const identity = item => window.LZNCloudCart?.identity(item) || [item.sourceStore || 'Tools', item.model, item.optionLabel || '', item.pdLabel || '', item.pd || ''].join('|');
+  const reply = (event, cart) => event.source.postMessage({ channel: 'lzn-shared-cart', type: 'CART_STATE', count: count(cart) }, event.origin);
+
+  addEventListener('message', async event => {
+    if (!allowed(event.origin) || event.data?.channel !== 'lzn-shared-cart') return;
+    let cart = read();
+    if (event.data.type === 'AUTH_SESSION') {
+      try {
+        const restored = await window.LZNCloudCart?.setSession(event.data.session);
+        cart = restored || cart;
+      } catch (_) { /* keep the last local cart */ }
+      reply(event, cart);
+      return;
+    }
+    if (event.data.type === 'AUTH_CLEARED') {
+      try { await window.LZNCloudCart?.signOut(); } catch (_) { /* keep local cart */ }
+      reply(event, read());
+      return;
+    }
+    if (event.data.type === 'GET_CART') {
+      try { cart = await window.LZNCloudCart?.restore() || cart; } catch (_) { /* keep local cart */ }
+      reply(event, cart);
+      return;
+    }
+    if (event.data.type === 'ADD_ITEMS') {
+      for (const incoming of event.data.items || []) {
+        const existing = cart.find(item => identity(item) === identity(incoming));
+        if (existing) existing.quantity = Number(existing.quantity || 1) + Number(incoming.quantity || 1);
+        else cart.push(incoming);
+      }
+      localStorage.setItem(key, JSON.stringify(cart));
+      window.LZNCloudCart?.replace(cart);
+    }
+    reply(event, cart);
+  });
+})();
+</script></body></html>
