@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LZN Optical Tools & Equipment</title>
+  <meta name="description" content="LZN professional optical examination instruments and lens-processing equipment.">
+  <link rel="stylesheet" href="styles.css?v=20260719-39">
+  <link rel="stylesheet" href="portfolio-shell.css?v=20260720-22">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#/" aria-label="LZN Tools home">
+      <img src="assets/contact/lzn-logo.png" alt="LZN">
+      <span><strong>LZN Tools</strong><small>Optical Equipment &amp; Workshop Solutions</small></span>
+    </a>
+    <nav><a href="#/">Categories</a><a href="#contact">Contact</a><button class="nav-action" id="accountButton">Sign in</button><button class="nav-action cart-button" id="cartButton" aria-label="Open shopping cart" title="Shopping cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20 7H6M10 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg><b id="cartCount">0</b></button></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">Professional Optical Equipment</p><h1>Equipment built for<br>optical professionals.</h1><p>Explore examination instruments and lens-processing equipment by category.</p><a class="button" href="#categories">Browse Categories</a></div>
+      <div id="heroVisual" class="hero-visual"></div>
+    </section>
+    <section id="view" aria-live="polite"></section>
+    <section id="contact" class="contact">
+      <div><p class="eyebrow">Contact</p><h2>Request product information.</h2><p>Contact our team for specifications, availability and quotations.</p></div>
+      <div class="contact-grid"><a href="tel:+8613062619570"><span>Tel</span><strong>+86 130 6261 9570</strong></a><a href="mailto:sales@lznmed.com"><span>Email</span><strong>sales@lznmed.com</strong></a></div>
+    </section>
+  </main>
+  <footer>© 2026 LZN MEDICAL CO., LTD.</footer>
+  <div class="modal" id="modal" aria-hidden="true"><button class="modal-bg" data-close aria-label="Close"></button><article><button class="close" data-close aria-label="Close">×</button><div id="modalBody"></div></article></div>
+  <div class="commerce-panel" id="commercePanel" aria-hidden="true"><button class="panel-bg" data-panel-close aria-label="Close"></button><section><button class="close" data-panel-close aria-label="Close">×</button><div id="commerceBody"></div></section></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=20260713-10"></script>
+  <script src="cloud-cart.js?v=20260718-1"></script>
+  <script src="portfolio-shell.js?v=20260720-28" defer></script>
+  <script src="products.js?v=20260718-27"></script><script src="app.js?v=20260719-40"></script><script src="commerce.js?v=20260719-49"></script>
+</body>
+</html>

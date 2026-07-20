@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LZN Frames | Optical Frame Collections</title>
+  <meta name="description" content="LZN optical frame catalog: Classic Browline, Modern Browline, and Ultem-Ppsu Kids Series." />
+  <link rel="stylesheet" href="styles.css?v=20260719-12" />
+  <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260720-22">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="LZN Frames home">
+      <img class="brand-logo" src="assets/contact/lzn-logo.png" alt="LZN" />
+      <span><strong>LZN Frames</strong><small>Eyewear Collections for Adults, Teens &amp; Kids</small></span>
+    </a>
+    <nav class="header-actions" aria-label="Account and cart">
+      <a href="#contact">Contact</a>
+      <button class="nav-action" id="accountButton" type="button">Sign in</button>
+      <button class="nav-action cart-button" id="cartButton" type="button">Cart <b id="cartCount">0</b></button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">LZN Eyewear Catalog</p>
+        <h1>Optical Frame<br>Collection</h1>
+        <p>Shop-style product pages for the Classic Browline and Modern Browline Series, organized by model, size specification, and color option.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#series-86">Classic Browline</a>
+          <a class="btn" href="#series-87">Modern Browline</a>
+          <a class="btn" href="#series-ULTEM-TITANIUM">Super Engineered Ultem</a>
+          <a class="btn" href="#series-LIGHT-ULTEM">Lightweight Ultem Flex</a>
+          <a class="btn" href="#series-ULTEM-PPSU">Ultem-Ppsu Kids</a>
+          <a class="btn" href="#series-KIDS-CONTROL">Kids Myopia Control</a>
+          <a class="btn" href="#series-TEEN-PPSU">Teen Ppsu Flex</a>
+        </div>
+      </div>
+      <div class="hero-panel" id="heroPanel"></div>
+    </section>
+
+    <section class="toolbar" aria-label="Product controls">
+      <div>
+        <label for="searchInput">Search Model</label>
+        <input id="searchInput" type="search" placeholder="e.g. 8601, 8713" />
+      </div>
+      <div>
+        <label for="categoryFilter">Category</label>
+        <select id="categoryFilter">
+          <option value="all">All</option>
+          <option value="adult">Adult</option>
+          <option value="kids">Kids</option>
+        </select>
+      </div>
+      <div>
+        <label for="seriesFilter">Series</label>
+        <select id="seriesFilter">
+          <option value="all">All</option>
+          <option value="86">Classic Browline Series</option>
+          <option value="87">Modern Browline Series</option>
+          <option value="ULTEM-PPSU">ULTEM-PPSU Kids Series</option>
+          <option value="ULTEM-TITANIUM">SUPER ENGINEERED ULTEM Series</option>
+          <option value="LIGHT-ULTEM">LIGHTWEIGHT ULTEM FLEX Series</option>
+          <option value="KIDS-CONTROL">KIDS MYOPIA CONTROL Series</option>
+          <option value="TEEN-PPSU">TEEN PPSU FLEX Series</option>
+        </select>
+      </div>
+    </section>
+
+    <p class="catalog-color-guide">
+      <strong>Color options</strong>
+      <span class="desktop-color-help">Hover to preview · click to add</span>
+      <span class="mobile-color-help">Tap to preview · tap again to add</span>
+    </p>
+
+    <div id="catalog"></div>
+
+    <section id="contact" class="contact contact-footer">
+      <div class="footer-brand">
+        <img src="assets/contact/lzn-logo.png" alt="LZN" loading="lazy" decoding="async" />
+        <p>Professional Optical Frame Collection</p>
+      </div>
+      <div class="contact-info">
+        <div><span>Tel</span><strong>+86 130 6261 9570</strong></div>
+        <div><span>Email</span><strong>sales@lznmed.com</strong></div>
+      </div>
+      <div class="qr-row">
+        <div class="qr-card"><img src="assets/contact/whatsapp-qr.png" alt="WhatsApp QR" loading="lazy" decoding="async"><strong>WhatsApp</strong></div>
+        <div class="qr-card"><img src="assets/contact/wechat-qr.png" alt="WeChat QR" loading="lazy" decoding="async"><strong>WeChat</strong></div>
+      </div>
+      <p class="copyright">© 2026 LZN MEDICAL CO., LTD. All Rights Reserved.</p>
+    </section>
+    <a class="floating-top" href="#top" aria-label="Back to top">↑</a>
+  </main>
+
+  <div class="modal" id="productModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close></div>
+    <article class="modal-card">
+      <button class="close" type="button" data-close aria-label="Close">×</button>
+      <div id="modalContent"></div>
+    </article>
+  </div>
+
+  <div class="commerce-panel" id="commercePanel" aria-hidden="true">
+    <button class="panel-bg" type="button" data-panel-close aria-label="Close"></button>
+    <section><button class="close" type="button" data-panel-close aria-label="Close">×</button><div id="commerceBody"></div></section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="products.js?v=20260712-5"></script>
+  <script src="frame-commerce-adapter.js?v=20260713-1"></script>
+  <script src="app.js?v=20260719-8"></script>
+  <script src="commerce.js?v=20260719-4"></script>
+  <script src="/tools/shared-cart.js?v=20260718-1"></script>
+  <script src="/tools/portfolio-shell.js?v=20260720-28" defer></script>
+</body>
+</html>
+
