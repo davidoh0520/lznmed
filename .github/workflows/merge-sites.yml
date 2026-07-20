@@ -45,9 +45,10 @@ jobs:
         run: |
           set -euo pipefail
           cd hub
-          branch="agent/unify-five-sites-20260720-v2"
-          git fetch origin "$branch"
-          git checkout -B "$branch" "origin/$branch"
+          branch="agent/unify-five-sites-20260720"
+          base_commit="3c8d5bc13f33139c3042e4b33feb7316bc9c2962"
+          git checkout -B "$branch" "$base_commit"
+          git checkout origin/main -- index.html policies
 
           rm -rf devices tools lenses frames admin
           for section in devices tools lenses frames; do
