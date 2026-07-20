@@ -1,0 +1,157 @@
+name: Merge LZN storefronts
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out LZN hub
+        uses: actions/checkout@v4
+        with:
+          path: hub
+          fetch-depth: 0
+
+      - name: Check out Devices
+        uses: actions/checkout@v4
+        with:
+          repository: davidoh0520/devices
+          path: sources/devices
+
+      - name: Check out Tools
+        uses: actions/checkout@v4
+        with:
+          repository: davidoh0520/tools
+          path: sources/tools
+
+      - name: Check out Lenses
+        uses: actions/checkout@v4
+        with:
+          repository: davidoh0520/lens
+          path: sources/lenses
+
+      - name: Check out Frames
+        uses: actions/checkout@v4
+        with:
+          repository: davidoh0520/frames
+          path: sources/frames
+
+      - name: Build unified storefront
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd hub
+          branch="agent/unify-five-sites-20260720"
+          git checkout -B "$branch"
+
+          rm -rf devices tools lenses frames admin
+          for section in devices tools lenses frames; do
+            mkdir -p "$section"
+            rsync -a --delete --exclude='.git' "../sources/$section/" "$section/"
+            rm -f "$section/CNAME"
+          done
+
+          mkdir -p admin
+          cp tools/admin.html admin/index.html
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          root = Path('.')
+          replacements = [
+              ('https://devices.lznmed.com/', '/devices/'),
+              ('https://tools.lznmed.com/', '/tools/'),
+              ('https://frames.lznmed.com/', '/frames/'),
+              ('https://lens.lznmed.com/', '/lenses/'),
+              ('https://www.lznmed.com/', '/'),
+              ('https://lznmed.com/', '/'),
+          ]
+          text_extensions = {
+              '.html', '.js', '.css', '.json', '.md', '.txt', '.xml',
+              '.webmanifest', '.svg', '.yml', '.yaml', '.sql'
+          }
+
+          for path in root.rglob('*'):
+              if not path.is_file() or '.git' in path.parts:
+                  continue
+              if path.suffix.lower() not in text_extensions and path.name not in {'CNAME'}:
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+
+              if path.as_posix().endswith('tools/shared-cart.js'):
+                  text = text.replace(
+                      "const store = host.startsWith('frames.') ? 'Frames' : host.startsWith('lens.') ? 'Lens' : host.startsWith('devices.') ? 'Devices' : 'Main';",
+                      "const section = location.pathname.split('/').filter(Boolean)[0] || '';\n  const store = section === 'frames' ? 'Frames' : section === 'lenses' ? 'Lens' : section === 'devices' ? 'Devices' : 'Main';"
+                  )
+                  text = text.replace(
+                      "iframe.src = 'https://tools.lznmed.com/cart-bridge.html?v=20260718-1';",
+                      "iframe.src = '/tools/cart-bridge.html?v=20260718-1';"
+                  )
+                  text = text.replace(
+                      "}, 'https://tools.lznmed.com');",
+                      "}, location.origin);"
+                  )
+                  text = text.replace(
+                      "event.origin !== 'https://tools.lznmed.com'",
+                      "event.origin !== location.origin"
+                  )
+
+              if path.as_posix().endswith('tools/cart-bridge.html'):
+                  text = text.replace(
+                      "const allowed = origin => origin === 'https://www.lznmed.com' ||",
+                      "const allowed = origin => origin === location.origin || origin === 'https://www.lznmed.com' ||"
+                  )
+
+              if path.as_posix().endswith('tools/portfolio-shell.js'):
+                  text = text.replace(
+                      "const kind=host.includes('devices')?'devices':host.includes('tools')?'tools':host.includes('frames')?'frames':host.includes('lens.')?'lens':'www';",
+                      "const section=location.pathname.split('/').filter(Boolean)[0]||'';const kind=section==='devices'?'devices':section==='tools'?'tools':section==='frames'?'frames':section==='lenses'?'lens':'www';"
+                  )
+
+              for old, new in replacements:
+                  text = text.replace(old, new)
+              path.write_text(text, encoding='utf-8')
+
+          admin = Path('admin/index.html')
+          text = admin.read_text(encoding='utf-8')
+          text = text.replace('href="admin.html"', 'href="/admin/"')
+          text = text.replace('href="admin.css', 'href="/tools/admin.css')
+          text = text.replace('src="assets/contact/', 'src="/tools/assets/contact/')
+          text = text.replace('src="supabase-config.js', 'src="/tools/supabase-config.js')
+          text = text.replace('src="admin.js', 'src="/tools/admin.js')
+          text = text.replace('href="/"', 'href="/"')
+          admin.write_text(text, encoding='utf-8')
+
+          redirect = Path('admin.html')
+          redirect.write_text(
+              '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/admin/"><link rel="canonical" href="/admin/"><title>LZN Admin</title><a href="/admin/">Open LZN Admin</a>',
+              encoding='utf-8'
+          )
+          PY
+
+          cat > integration.json <<'JSON'
+          {
+            "site": "LZN Medical",
+            "primaryDomain": "https://lznmed.com",
+            "adminPath": "/admin/",
+            "sections": ["/devices/", "/tools/", "/lenses/", "/frames/"],
+            "legacySubdomainsPreserved": true
+          }
+          JSON
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No integration changes to commit."
+            exit 0
+          fi
+          git commit -m "Merge all LZN storefronts into one site"
+          git push --force origin "$branch"
