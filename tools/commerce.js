@@ -10,22 +10,37 @@ const products = (window.CATALOG_DATA || []).flatMap(category => category.items.
 const e = value => String(value || '').replace(/[&<>\"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
 let session = null;
 let cart = JSON.parse(localStorage.getItem('lzn-cart') || '[]');
-const cartImageOrigins = { Frames: '/frames/', Lens: '/lenses/', Devices: '/devices/' };
+const primaryCartHosts = new Set(['lznmed.com', 'www.lznmed.com']);
+const unifiedCartPaths = { Frames: '/frames/', Lens: '/lenses/', Devices: '/devices/', Tools: '/tools/', Main: '/tools/' };
+const legacyCartOrigins = { Frames: 'https://frames.lznmed.com/', Lens: 'https://lens.lznmed.com/', Devices: 'https://devices.lznmed.com/', Tools: 'https://tools.lznmed.com/', Main: 'https://tools.lznmed.com/' };
 const lensCartImages = {
   'CR39 LENS':'cr39-lens.webp','1.56 ASP BLUE RAY':'blueray-156.webp','1.56 UV450 PHOTO BLUE RAY':'uv450-photo-156.webp','1.60 ASP BLUE RAY':'mr160-blueray.webp','1.60 ASP PHOTO BLUE RAY':'mr160-photo.webp','1.67 ASP BLUE RAY':'mr167-blueray.webp','1.67 ASP PHOTO BLUE RAY':'mr167-photo.webp','1.70 ASP BLUE RAY':'mr170-blueray.webp','1.70 ASP PHOTO BLUE RAY':'mr170-photo.webp','1.74 ASP BLUE RAY':'mr174-blueray.webp','1.74 ASP PHOTO BLUE RAY':'mr174-photo.webp','1.56 PROGRESSIVE BLUE RAY':'progressive-blueray-156.webp','1.56 PROGRESSIVE BLUE RAY PHOTO':'progressive-blueray-photo-156.webp','1.59 POLY PROGRESSIVE BLUE RAY':'poly-progressive.webp','1.59 POLY PROGRESSIVE BLUE RAY PHOTO':'poly-progressive-photo.webp','1.60 ASP BLUE RAY SEMI':'semi-mr160.webp','1.60 ASP PHOTO BLUE RAY SEMI':'semi-mr160-photo.webp','1.67 ASP BLUE RAY SEMI':'semi-mr167.webp','1.67 ASP PHOTO BLUE RAY SEMI':'semi-mr167-photo.webp'
 };
-let repairedCartImages = false;
-cart.forEach(item => {
+function repairCartImage(item) {
+  let changed = false;
   if (!item.image && item.sourceStore === 'Lens' && lensCartImages[item.model]) {
     item.image = `/lenses/assets/thumbs/${lensCartImages[item.model]}`;
-    repairedCartImages = true;
+    changed = true;
   }
-  if (item.image && !/^https?:\/\//i.test(item.image) && cartImageOrigins[item.sourceStore]) {
-    item.image = new URL(item.image, cartImageOrigins[item.sourceStore]).href;
-    repairedCartImages = true;
-  }
-});
-if (repairedCartImages) localStorage.setItem('lzn-cart', JSON.stringify(cart));
+  if (!item.image) return changed;
+  const original = String(item.image);
+  const sourceStore = item.sourceStore || 'Tools';
+  try {
+    const base = primaryCartHosts.has(location.hostname)
+      ? new URL(unifiedCartPaths[sourceStore] || '/tools/', location.origin)
+      : new URL(legacyCartOrigins[sourceStore] || 'https://tools.lznmed.com/');
+    let url = new URL(original, base);
+    if (primaryCartHosts.has(url.hostname) && url.pathname.startsWith('/assets/') && unifiedCartPaths[sourceStore]) {
+      url = new URL(`${unifiedCartPaths[sourceStore].replace(/\/$/, '')}${url.pathname}${url.search}${url.hash}`, 'https://www.lznmed.com');
+    }
+    item.image = url.href;
+    return item.image !== original || changed;
+  } catch (_) { return changed; }
+}
+function repairCartImages(items) {
+  return items.reduce((changed, item) => repairCartImage(item) || changed, false);
+}
+if (repairCartImages(cart)) localStorage.setItem('lzn-cart', JSON.stringify(cart));
 
 function accountLabel() {
   if (!session) {
@@ -71,7 +86,7 @@ async function restoreCloudCart() {
   if (!session || !window.LZNCloudCart) return;
   try {
     cart = await window.LZNCloudCart.restore(session);
-    save(false);
+    save(repairCartImages(cart));
     if (panel.classList.contains('active') && panel.classList.contains('cart-mode')) cartView();
   } catch (error) {
     console.warn('Saved cart could not be restored:', error.message || error);
@@ -252,6 +267,7 @@ function money(value) {
 }
 
 function cartView() {
+  if (repairCartImages(cart)) save();
   const total = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
   const hasQuote = cart.some(item => !item.priceUsd);
   show(`<div class="panel-head cart-heading"><div><p class="eyebrow">Shopping Cart</p><h2>${cart.length ? 'Your cart' : 'Your cart is empty'}</h2></div><span>${cart.reduce((sum, item) => sum + item.quantity, 0)} items</span></div>
