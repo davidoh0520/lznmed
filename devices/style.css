@@ -154,8 +154,10 @@ footer img{height:30px;}
 .digital-set-image strong{font-size:28px;color:var(--blue)}
 .equipment-sales-card{align-self:start}
 .equipment-sales-card>.equipment-card{min-height:350px;padding-bottom:64px}
+.equipment-sales-card>.equipment-card>div{padding-bottom:42px}
 .equipment-sales-card .digital-offer{grid-template-columns:1fr;padding:20px 22px 24px}
 .equipment-sales-card .digital-price{font-size:27px}
+.equipment-sales-card .free-price{color:#08745c!important}
 .equipment-sales-card .device-cart-add{grid-column:1;grid-row:auto;align-self:auto;min-height:48px;margin-top:5px}
 @media(max-width:900px){.digital-sales-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.digital-sales-card>.equipment-card{min-height:0;padding:24px}.digital-offer{grid-template-columns:1fr;padding:22px}.device-cart-add{grid-column:1;grid-row:auto;min-height:48px;margin-top:8px}.digital-set-image img{height:130px}}
