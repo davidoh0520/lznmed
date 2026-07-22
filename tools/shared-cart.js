@@ -16,6 +16,8 @@
   document.head.appendChild(style);
   let centralCount = 0;
   let lastPayload = '';
+  let bridgeReady = false;
+  const pendingItems = [];
   const existingButton = document.querySelector('#cartButton');
   const cartButton = existingButton || document.createElement('button');
   if (!existingButton) {
@@ -64,6 +66,18 @@
     return [];
   }
   function post(type, payload) { iframe.contentWindow?.postMessage({ channel: 'lzn-shared-cart', type, ...payload }, location.origin); }
+  function addItems(items) {
+    const safeItems = (Array.isArray(items) ? items : []).filter(item => item?.model).map(item => ({
+      ...item,
+      image: absoluteImage(item.image, item.sourceStore || store),
+      priceUsd: Number(item.priceUsd || 0),
+      quantity: Math.max(1, Number(item.quantity || 1))
+    }));
+    if (!safeItems.length) return;
+    if (!bridgeReady) { pendingItems.push(...safeItems); return; }
+    post('ADD_ITEMS', { items: safeItems });
+  }
+  window.LZNSharedCart = { addItems };
   function flushLocalCart() {
     if (!localKey) return;
     const raw = localStorage.getItem(localKey) || '[]';
@@ -93,7 +107,11 @@
     else post('GET_CART', {});
     lastAccessToken = token;
   }
-  iframe.addEventListener('load', syncAuth);
+  iframe.addEventListener('load', () => {
+    bridgeReady = true;
+    syncAuth();
+    if (pendingItems.length) post('ADD_ITEMS', { items: pendingItems.splice(0) });
+  });
   window.addEventListener('message', event => {
     if (event.origin !== location.origin || event.data?.channel !== 'lzn-shared-cart') return;
     centralCount = Number(event.data.count || 0);

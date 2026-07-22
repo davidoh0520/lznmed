@@ -15,7 +15,7 @@
   <meta property="og:url" content="/devices/" />
   <meta property="og:image" content="/devices/assets/hero-eyewear.webp" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="style.css?v=20260719-1" />
+  <link rel="stylesheet" href="style.css?v=20260722-1" />
   <link rel="stylesheet" href="/tools/unified-theme.css?v=20260717-1">
   <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260720-22">
 </head>
@@ -118,12 +118,25 @@
   <div class="section-head">
     <p class="eyebrow">DIGITAL OPTICAL SOLUTIONS</p>
     <h2>Consulting, Fitting & Lens Demonstration</h2>
-    <p class="sub">Software and digital tools for optical stores and lens consulting.</p>
+    <p class="sub">Software and digital tools for optical stores and lens consulting. All prices below are per unit.</p>
   </div>
-  <div class="equipment-grid vision-grid">
-    <button class="equipment-card show-brochure" data-title="Any-I Consultant" data-brochures="assets/anyi_b1.webp,assets/anyi_b2.webp"><img loading="lazy" decoding="async" src="assets/anyi_product.webp" alt="Any-I Consultant lens consulting software"><div><h3>Any-I Consultant</h3><p>Lens Consulting Software</p><span>Interactive lens education and sales support</span></div></button>
-    <button class="equipment-card show-brochure" data-title="Cyclops Lite" data-brochures="assets/cyclops_b1.webp,assets/cyclops_b2.webp"><img loading="lazy" decoding="async" src="assets/cyclops_product.webp" alt="Cyclops Lite digital centering solution"><div><h3>Cyclops Lite</h3><p>Digital Centering Solution</p><span>PD, fitting height and frame parameter measurement</span></div></button>
-    <button class="equipment-card show-brochure" data-title="Bluespec HEV" data-brochures="assets/bluespec_b1.webp,assets/bluespec_b2.webp"><img loading="lazy" decoding="async" src="assets/bluespec_product.webp" alt="Bluespec HEV demonstration device"><div><h3>Bluespec HEV</h3><p>UV & HEV Demonstration Device</p><span>Blue light and UV transmission analysis</span></div></button>
+  <div class="digital-sales-grid">
+    <article class="digital-sales-card">
+      <button class="equipment-card show-brochure" data-title="Any-I Consultant" data-brochures="assets/anyi_b1.webp,assets/anyi_b2.webp"><img loading="lazy" decoding="async" src="assets/anyi_product.webp" alt="Any-I Consultant lens consulting software"><div><h3>Any-I Consultant</h3><p>Lens Consulting Software</p><span>Interactive lens education and sales support</span></div></button>
+      <div class="digital-offer"><p class="digital-price">USD 150 <small>/ year</small></p><p>Annual software licence</p><p>Minimum order: 1 licence</p><button class="device-cart-add" type="button" data-model="ANY-I-YEARLY" data-name="Any-I Consultant" data-price="150" data-image="/devices/assets/anyi_product.webp" data-option="1-year software licence">Add to cart</button></div>
+    </article>
+    <article class="digital-sales-card">
+      <button class="equipment-card show-brochure" data-title="Cyclops Lite" data-brochures="assets/cyclops_b1.webp,assets/cyclops_b2.webp"><img loading="lazy" decoding="async" src="assets/cyclops_product.webp" alt="Cyclops Lite digital centering solution"><div><h3>Cyclops Lite</h3><p>Digital Centering Solution</p><span>PD, fitting height and frame parameter measurement</span></div></button>
+      <div class="digital-offer"><p class="digital-price">USD 1,100 <small>/ device</small></p><p>Software included free of charge</p><p>Minimum order: 1 device</p><button class="device-cart-add" type="button" data-model="CYCLOPS-LITE" data-name="Cyclops Lite" data-price="1100" data-image="/devices/assets/cyclops_product.webp" data-option="1 device · Software included free of charge">Add to cart</button></div>
+    </article>
+    <article class="digital-sales-card">
+      <button class="equipment-card show-brochure" data-title="Bluespec HEV" data-brochures="assets/bluespec_b1.webp,assets/bluespec_b2.webp"><img loading="lazy" decoding="async" src="assets/bluespec_product.webp" alt="Bluespec HEV demonstration device"><div><h3>Bluespec HEV</h3><p>UV & HEV Demonstration Device</p><span>Blue light and UV transmission analysis</span></div></button>
+      <div class="digital-offer"><p class="digital-price">USD 220 <small>/ device</small></p><p>Software included free of charge</p><p>Minimum order: 1 device</p><button class="device-cart-add" type="button" data-model="BLUESPEC-HEV" data-name="Bluespec HEV" data-price="220" data-image="/devices/assets/bluespec_product.webp" data-option="1 device · Software included free of charge">Add to cart</button></div>
+    </article>
+    <article class="digital-sales-card digital-set-card">
+      <button class="equipment-card show-brochure" data-title="Cyclops Lite + Bluespec HEV Set" data-brochures="assets/cyclops_b1.webp,assets/cyclops_b2.webp,assets/bluespec_b1.webp,assets/bluespec_b2.webp"><div class="digital-set-image"><img loading="lazy" decoding="async" src="assets/cyclops_product.webp" alt="Cyclops Lite"><strong>+</strong><img loading="lazy" decoding="async" src="assets/bluespec_product.webp" alt="Bluespec HEV"></div><div><h3>Cyclops Lite + Bluespec HEV</h3><p>Digital Centering & Demonstration Set</p><span>One Cyclops Lite and one Bluespec HEV</span></div></button>
+      <div class="digital-offer"><p class="digital-price">USD 1,200 <small>/ set</small></p><p>Software included free of charge</p><p>Minimum order: 1 set</p><button class="device-cart-add" type="button" data-model="CYCLOPS-BLUESPEC-SET" data-name="Cyclops Lite + Bluespec HEV" data-price="1200" data-image="/devices/assets/cyclops_product.webp" data-option="1 set · Cyclops Lite + Bluespec HEV · Software included free of charge">Add to cart</button></div>
+    </article>
   </div>
 </section>
 
@@ -299,9 +312,26 @@
     nextPage.addEventListener('click', () => { currentIndex = (currentIndex + 1) % currentPages.length; updateViewer(); });
     closeButtons.forEach(button => button.addEventListener('click', closeDetails));
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && detailModal.classList.contains('active')) closeDetails(); });
+    document.querySelectorAll('.device-cart-add').forEach(button => {
+      button.addEventListener('click', () => {
+        window.LZNSharedCart?.addItems([{
+          model: button.dataset.model,
+          nameEn: `[Devices] ${button.dataset.name}`,
+          image: button.dataset.image,
+          priceUsd: Number(button.dataset.price),
+          quantity: 1,
+          optionLabel: button.dataset.option,
+          sourceStore: 'Devices'
+        }]);
+        const original = button.textContent;
+        button.textContent = 'Added';
+        button.classList.add('added');
+        setTimeout(() => { button.textContent = original; button.classList.remove('added'); }, 900);
+      });
+    });
   </script>
 
-<script src="/tools/shared-cart.js?v=20260722-3"></script>
+<script src="/tools/shared-cart.js?v=20260722-4"></script>
   <script src="/tools/portfolio-shell.js?v=20260720-28" defer></script>
 </body>
 </html>
