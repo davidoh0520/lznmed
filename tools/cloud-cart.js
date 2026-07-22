@@ -9,15 +9,52 @@
   let restorePromise = null;
 
   const number = (value, fallback = 0) => Number.isFinite(Number(value)) ? Number(value) : fallback;
+  const currentDevicePrices = Object.freeze({
+    'ANY-I-YEARLY': 150,
+    'LZN-5': 1600,
+    'TOOLTIP': 13000,
+    'IIOMA': 0,
+    'INT-200-IIOMA': 3000,
+    'HV-600': 700,
+    'AXL-800': 3000,
+    'RMK-800': 2500,
+    'CP-6': 500,
+    'CP-8': 2000,
+    'K215': 500,
+    'CV-700-CP-500': 3300,
+    'CV-700-K215': 3300,
+    'OT-1': 600,
+    'OT-3': 600,
+    'OT-5': 650,
+    'ET-1100': 1500,
+    'ET-660E': 800,
+    'ET-480A': 900,
+    'CYCLOPS-LITE': 1300,
+    'BLUESPEC-HEV': 250,
+    'CYCLOPS-BLUESPEC-SET': 1400,
+  });
+  const applyCurrentPrices = items => (items || []).reduce((changed, item) => {
+    if (item.sourceStore !== 'Devices' || !Object.prototype.hasOwnProperty.call(currentDevicePrices, item.model)) return changed;
+    const currentPrice = currentDevicePrices[item.model];
+    if (number(item.priceUsd, -1) === currentPrice) return changed;
+    item.priceUsd = currentPrice;
+    return true;
+  }, false);
   const read = () => {
     try {
       const value = JSON.parse(localStorage.getItem(storageKey) || '[]');
-      return Array.isArray(value) ? value : [];
+      if (!Array.isArray(value)) return [];
+      if (applyCurrentPrices(value)) localStorage.setItem(storageKey, JSON.stringify(value));
+      return value;
     } catch (_) {
       return [];
     }
   };
-  const write = items => localStorage.setItem(storageKey, JSON.stringify(items || []));
+  const write = items => {
+    const value = items || [];
+    applyCurrentPrices(value);
+    localStorage.setItem(storageKey, JSON.stringify(value));
+  };
   const identity = item => [
     item.sourceStore || 'Tools',
     item.model || item.name || '',
