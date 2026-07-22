@@ -6,6 +6,7 @@
   const client = window.supabase?.createClient(cfg.url, cfg.publishableKey);
   let activeSession = null;
   let saveQueue = Promise.resolve();
+  let restorePromise = null;
 
   const number = (value, fallback = 0) => Number.isFinite(Number(value)) ? Number(value) : fallback;
   const read = () => {
@@ -28,12 +29,23 @@
   function merge(remoteItems, localItems) {
     const merged = remoteItems.map(item => ({ ...item }));
     for (const incoming of localItems) {
-      const found = merged.find(item => identity(item) === identity(incoming));
-      if (found) found.quantity = number(found.quantity, 1) + number(incoming.quantity, 1);
+      const foundIndex = merged.findIndex(item => identity(item) === identity(incoming));
+      if (foundIndex >= 0) {
+        const found = merged[foundIndex];
+        merged[foundIndex] = {
+          ...found,
+          ...incoming,
+          quantity: Math.max(number(found.quantity, 1), number(incoming.quantity, 1)),
+        };
+      }
       else merged.push({ ...incoming, quantity: number(incoming.quantity, 1) });
     }
     return merged;
   }
+  const signature = items => (items || [])
+    .map(item => `${identity(item)}:${Math.max(1, Math.floor(number(item.quantity, 1)))}`)
+    .sort()
+    .join('\n');
 
   const fromRow = row => ({
     ...(row.item_data || {}),
@@ -64,7 +76,7 @@
     return activeSession;
   }
 
-  async function restore(session) {
+  async function performRestore(session) {
     session = session === undefined ? await currentSession() : session;
     activeSession = session || null;
     const localItems = read();
@@ -87,17 +99,39 @@
     const owner = localStorage.getItem(ownerKey);
     const dirty = localStorage.getItem(dirtyKey) === '1';
     let restored;
+    let shouldReplace = false;
 
-    if (!owner) restored = merge(remoteItems, localItems);
+    if (!owner) {
+      restored = merge(remoteItems, localItems);
+      shouldReplace = signature(restored) !== signature(remoteItems);
+    }
     else if (owner !== session.user.id) restored = remoteItems;
-    else if (dirty) restored = localItems;
-    else restored = remoteItems;
+    else if (dirty) {
+      restored = localItems;
+      shouldReplace = true;
+    }
+    else {
+      // A repeated SIGNED_IN/token-refresh event can race an earlier cloud save.
+      // Reconcile instead of letting an empty or stale cloud response erase the
+      // current browser cart. Quantities use the larger value, never a sum.
+      restored = merge(remoteItems, localItems);
+      shouldReplace = signature(restored) !== signature(remoteItems);
+    }
 
     write(restored);
     localStorage.setItem(ownerKey, session.user.id);
     localStorage.setItem(dirtyKey, '0');
-    if (!owner || dirty) await replace(restored, session);
+    if (shouldReplace) await replace(restored, session);
     return restored;
+  }
+
+  function restore(session) {
+    if (restorePromise) return restorePromise;
+    const pending = performRestore(session);
+    restorePromise = pending;
+    const clearPending = () => { if (restorePromise === pending) restorePromise = null; };
+    pending.then(clearPending, clearPending);
+    return pending;
   }
 
   function replace(items, session) {

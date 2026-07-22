@@ -10,6 +10,8 @@ const products = (window.CATALOG_DATA || []).flatMap(category => category.items.
 const e = value => String(value || '').replace(/[&<>\"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
 let session = null;
 let cart = JSON.parse(localStorage.getItem('lzn-cart') || '[]');
+let restoredCartUserId = null;
+let cartRestorePromise = null;
 const primaryCartHosts = new Set(['lznmed.com', 'www.lznmed.com']);
 const unifiedCartPaths = { Frames: '/frames/', Lens: '/lenses/', Devices: '/devices/', Tools: '/tools/', Main: '/tools/' };
 const legacyCartOrigins = { Frames: 'https://frames.lznmed.com/', Lens: 'https://lens.lznmed.com/', Devices: 'https://devices.lznmed.com/', Tools: 'https://tools.lznmed.com/', Main: 'https://tools.lznmed.com/' };
@@ -87,13 +89,29 @@ function save(syncCloud = true) {
 
 async function restoreCloudCart() {
   if (!session || !window.LZNCloudCart) return;
-  try {
-    cart = await window.LZNCloudCart.restore(session);
-    save(repairCartImages(cart));
-    if (panel.classList.contains('active') && panel.classList.contains('cart-mode')) cartView();
-  } catch (error) {
-    console.warn('Saved cart could not be restored:', error.message || error);
-  }
+  const requestedUserId = session.user?.id;
+  if (!requestedUserId || restoredCartUserId === requestedUserId) return cart;
+  if (cartRestorePromise) return cartRestorePromise;
+  const requestedSession = session;
+  cartRestorePromise = (async () => {
+    try {
+      const restored = await window.LZNCloudCart.restore(requestedSession);
+      if (session?.user?.id !== requestedUserId) return cart;
+      cart = restored;
+      const repaired = repairCartImages(cart);
+      save(false);
+      if (repaired) window.LZNCloudCart.replace(cart, session);
+      restoredCartUserId = requestedUserId;
+      if (panel.classList.contains('active') && panel.classList.contains('cart-mode')) cartView();
+      return cart;
+    } catch (error) {
+      console.warn('Saved cart could not be restored:', error.message || error);
+      return cart;
+    } finally {
+      cartRestorePromise = null;
+    }
+  })();
+  return cartRestorePromise;
 }
 
 function show(html, wide = false) {
@@ -119,6 +137,7 @@ function authView() {
     document.querySelector('#signOut').onclick = async () => {
       await client.auth.signOut();
       window.LZNCloudCart?.clearLocal();
+      restoredCartUserId = null;
       cart = [];
       save(false);
       hide();
@@ -414,14 +433,17 @@ if (client) {
     }
   });
   client.auth.onAuthStateChange((event, newSession) => {
-    const wasSignedIn = Boolean(session);
+    const previousUserId = session?.user?.id || null;
     session = newSession;
     accountLabel();
     if (event === 'SIGNED_IN') {
-      restoreCloudCart();
-      if (!wasSignedIn) toast(`Signed in as ${session.user.email}`);
+      if (previousUserId !== session?.user?.id || restoredCartUserId !== session?.user?.id) restoreCloudCart();
+      if (!previousUserId) toast(`Signed in as ${session.user.email}`);
     }
-    if (event === 'SIGNED_OUT') toast('You have signed out.');
+    if (event === 'SIGNED_OUT') {
+      restoredCartUserId = null;
+      toast('You have signed out.');
+    }
   });
 }
 
