@@ -2834,6 +2834,10 @@ window.CATALOG_DATA = [
       image: `assets/3tmall/${model}.jpg`,
       images: [`assets/3tmall/${model}.jpg`],
       source: 'https://y.3tmall.com/Product/644152.html',
+      basePriceRmb: 17,
+      priceSource: 'LZN MEDICAL supplier price list: RMB 17.00 × 1.3 ÷ 6.8',
+      priceUsd: 3.25,
+      priceDisplay: 'USD 3.25 each',
       features: ['Official 3T optical-laboratory job tray', 'Color-coded workflow organization', 'Reusable molded construction']
     }))
   };
@@ -2856,24 +2860,25 @@ window.CATALOG_DATA = [
     en: 'Nose Pads',
     desc: 'Official 3T lock-in and push-in silicone nose pads returned by the requested 3T store searches.',
     items: nosePadData.map(([model, nameEn, dimensions, basePriceRmb, goodsId]) => {
-      const priceUsd = basePriceRmb === 1.13 ? 0.23 : 0.11;
+      const itemPriceUsd = basePriceRmb === 1.13 ? 0.23 : 0.11;
+      const priceUsd = Number((itemPriceUsd * 100).toFixed(2));
       return {
         category: 'nose-pads',
         model,
         nameEn,
-        description: `${nameEn} model ${model}, supplied as a matched pair for professional eyewear fitting and repair.`,
+        description: `${nameEn} model ${model}, supplied in 100-piece packs for professional eyewear fitting and repair.`,
         image: `assets/3tmall/${model}.jpg`,
         images: [`assets/3tmall/${model}.jpg`],
         source: `https://www.3tmall.com/goods-${goodsId}.html`,
         basePriceRmb,
         priceSource: '3T official store listing',
         priceUsd,
-        priceDisplay: `USD ${priceUsd.toFixed(2)} / pair`,
-        orderUnitQty: 1,
-        orderUnitLabel: 'pair',
+        priceDisplay: `USD ${priceUsd.toFixed(2)} / 100 pcs`,
+        orderUnitQty: 100,
+        orderUnitLabel: '100 pcs',
         packageSize: dimensions,
-        packingQuantity: '1 matched pair',
-        features: [dimensions, nameEn.replace(' Nose Pads', ' mounting style'), 'Soft clear silicone construction']
+        packingQuantity: '100 pcs / pack',
+        features: [dimensions, nameEn.replace(' Nose Pads', ' mounting style'), 'Soft clear silicone construction', '100 pieces per order unit']
       };
     })
   };
@@ -2893,8 +2898,8 @@ window.CATALOG_DATA = [
         model: '3T-1456',
         nameEn: 'Solid-color Single-sided Lens Cloth',
         description: 'Single-sided solid-color lens cleaning cloths for optical shops, supplied in 100-piece packs.',
-        image: 'assets/3tmall/cloth-single-01.jpg',
-        images: Array.from({ length: 10 }, (_, index) => `assets/3tmall/cloth-single-${String(index + 1).padStart(2, '0')}.jpg`),
+        image: 'assets/3tmall/cloth-single-clean.png',
+        images: ['assets/3tmall/cloth-single-clean.png'],
         source: 'https://www.3tmall.com/goods-1456.html',
         basePriceRmb: 190.97,
         priceSource: '3T official store listing',
@@ -2904,6 +2909,7 @@ window.CATALOG_DATA = [
         orderUnitLabel: '100 pcs',
         packingQuantity: '100 pcs / pack',
         optionLabel: 'Color / size',
+        optionDisplay: 'buttons',
         options: clothOptions('3T-1456', 38.35, [
           ['CYAN-150', 'Cyan Blue · 150 × 150 mm'],
           ['GRAY-150', 'Gray · 150 × 150 mm'],
@@ -2923,8 +2929,8 @@ window.CATALOG_DATA = [
         model: '3T-1458',
         nameEn: 'Solid-color Double-sided Velvet Lens Cloth',
         description: 'Double-sided velvet solid-color lens cleaning cloths for optical shops, supplied in 100-piece packs.',
-        image: 'assets/3tmall/cloth-double-01.jpg',
-        images: Array.from({ length: 10 }, (_, index) => `assets/3tmall/cloth-double-${String(index + 1).padStart(2, '0')}.jpg`),
+        image: 'assets/3tmall/cloth-double-clean.png',
+        images: ['assets/3tmall/cloth-double-clean.png'],
         source: 'https://www.3tmall.com/goods-1458.html',
         basePriceRmb: 237.30,
         priceSource: '3T official store listing',
@@ -2934,6 +2940,7 @@ window.CATALOG_DATA = [
         orderUnitLabel: '100 pcs',
         packingQuantity: '100 pcs / pack',
         optionLabel: 'Color / size',
+        optionDisplay: 'buttons',
         options: clothOptions('3T-1458', 47.65, [
           ['CYAN-150', 'Cyan Blue · 150 × 150 mm'],
           ['GREEN-150', 'Green · 150 × 150 mm'],
