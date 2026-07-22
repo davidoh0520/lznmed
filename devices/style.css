@@ -137,6 +137,24 @@ footer img{height:30px;}
 }
 .account-form .reminder-consent{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #d8ddd9;border-radius:12px;background:#f7f8f5;color:#3e4945;font-weight:600;line-height:1.45}.account-form .reminder-consent input{flex:0 0 auto;width:18px;height:18px;margin:1px 0 0;padding:0}.account-form .reminder-consent span{display:block}
 
+/* Digital solution prices and ordering */
+.digital-sales-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.digital-sales-card{overflow:hidden;border:1px solid var(--line);border-radius:36px;background:#fff;box-shadow:0 16px 40px rgba(8,17,31,.05)}
+.digital-sales-card>.equipment-card{width:100%;min-height:390px;border:0;border-radius:0;border-bottom:1px solid var(--line);box-shadow:none}
+.digital-sales-card>.equipment-card:hover{transform:none;box-shadow:none;border-color:var(--line)}
+.digital-offer{display:grid;grid-template-columns:1fr auto;gap:8px 20px;align-items:center;padding:24px 30px 28px}
+.digital-offer p{margin:0;color:var(--muted);line-height:1.4}
+.digital-price{grid-column:1/-1;color:var(--ink)!important;font-size:30px;font-weight:900;letter-spacing:-.035em}
+.digital-price small{font-size:14px;letter-spacing:0;color:var(--muted)}
+.device-cart-add{grid-column:2;grid-row:2/4;align-self:stretch;min-width:142px;border:0;border-radius:999px;padding:13px 18px;background:var(--ink);color:#fff;font-size:13px;font-weight:900;cursor:pointer;transition:background .18s ease,transform .18s ease}
+.device-cart-add:hover{transform:translateY(-2px);background:var(--blue)}
+.device-cart-add.added{background:#08745c}
+.digital-set-image{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;min-width:0}
+.digital-set-image img{height:190px;min-width:0}
+.digital-set-image strong{font-size:28px;color:var(--blue)}
+@media(max-width:900px){.digital-sales-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.digital-sales-card>.equipment-card{min-height:0;padding:24px}.digital-offer{grid-template-columns:1fr;padding:22px}.device-cart-add{grid-column:1;grid-row:auto;min-height:48px;margin-top:8px}.digital-set-image img{height:130px}}
+
 
 /* Keep brochure controls legible when shared portfolio themes load after this stylesheet. */
 .detail-head .viewer-controls .page-btn{
