@@ -257,15 +257,23 @@ function addFrameToCart(p, index, trigger){
   animateColorToCart(trigger);
 }
 
-function setUrlState(model, color){
+function setUrlState(model, color, { push=false }={}){
   const url = new URL(window.location.href);
   if(model) url.searchParams.set('model', model);
+  else url.searchParams.delete('model');
   if(color) url.searchParams.set('color', color);
-  history.replaceState(null, '', url.pathname + url.search + url.hash);
+  else url.searchParams.delete('color');
+  const nextState = push ? { ...(history.state || {}), lznFrameProduct:true } : history.state;
+  history[push ? 'pushState' : 'replaceState'](nextState, '', url.pathname + url.search + url.hash);
 }
 function getUrlState(){
   const url = new URL(window.location.href);
   return { model: url.searchParams.get('model'), color: url.searchParams.get('color') };
+}
+function leaveProductUrl(){
+  if(!getUrlState().model) return;
+  if(history.state?.lznFrameProduct) history.back();
+  else setUrlState(null, null);
 }
 
 const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -290,7 +298,7 @@ function setPageInert(isInert){
   [document.querySelector('.site-header'), document.querySelector('main')].forEach(el => { if(el) el.inert = isInert; });
 }
 function activeImageViewer(){ return document.querySelector('.image-viewer.active'); }
-function closeImageViewer(restoreFocus=true){
+function closeImageViewer(restoreFocus=true, clearColor=true){
   const viewer = activeImageViewer();
   if(!viewer) return false;
   const trigger = viewer._trigger;
@@ -299,11 +307,12 @@ function closeImageViewer(restoreFocus=true){
   const productModalOpen = modal.classList.contains('active');
   setPageInert(productModalOpen);
   if(!productModalOpen) document.body.style.overflow = '';
+  if(clearColor && getUrlState().color) setUrlState(getUrlState().model, null);
   if(restoreFocus && trigger?.isConnected) trigger.focus();
   return true;
 }
 function openImageViewer({ title, content, className='', trigger=document.activeElement }){
-  closeImageViewer(false);
+  closeImageViewer(false, false);
   const viewer = document.createElement('div');
   const titleId = `imageViewerTitle-${Date.now()}`;
   viewer.className = `color-viewer image-viewer active ${className}`.trim();
@@ -549,11 +558,12 @@ function generalSpecTable(p){
 }
 
 
-function openProduct(model, trigger=document.activeElement){
+function openProduct(model, trigger=document.activeElement, { updateHistory=true }={}){
   const p = allProducts().find(x => x.model === model);
   if(!p) return;
   lastModalTrigger = trigger instanceof HTMLElement && trigger !== document.body ? trigger : null;
-  setUrlState(p.model);
+  if(updateHistory && getUrlState().model !== p.model) setUrlState(p.model, null, { push:true });
+  else if(getUrlState().model !== p.model || getUrlState().color) setUrlState(p.model, null);
   modalContent.innerHTML = `<div class="detail series-${esc(p.series)}">
     <section class="detail-head">
       <div class="detail-copy"><p class="eyebrow">${esc(p.seriesName)}</p><h2 id="productModalTitle">Model ${esc(p.model)}</h2><h3>${esc(p.productTitle)}</h3><div class="detail-price">${priceLabel(p)}</div><p class="order-note">Minimum shipment value: $100. Shipping, duties, and taxes are calculated separately.</p><p>${esc(p.short)}</p><p>${esc(p.description)}</p></div>
@@ -571,7 +581,6 @@ function openProduct(model, trigger=document.activeElement){
   modal.classList.add('active'); modal.setAttribute('aria-hidden','false'); modal.setAttribute('aria-labelledby','productModalTitle'); document.body.style.overflow='hidden'; setPageInert(true);
   const preloadColors = () => p.colors.forEach(color => { const image = new Image(); image.decoding = 'async'; image.src = color.src; });
   if ('requestIdleCallback' in window) requestIdleCallback(preloadColors, { timeout: 800 }); else setTimeout(preloadColors, 100);
-  modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
   renderDetailCartList(p.model);
   requestAnimationFrame(() => modal.querySelector('.close[data-close]')?.focus());
 }
@@ -592,11 +601,12 @@ function openDiagramViewer(model, frontSrc, sideSrc, trigger=document.activeElem
     content:`<div class="diagram-viewer-grid"><figure><img src="${esc(frontSrc)}" alt="Front shape of model ${esc(model)}"><figcaption>Front shape</figcaption></figure><figure><img src="${esc(sideSrc)}" alt="Side ornament detail of model ${esc(model)}"><figcaption>Side ornament</figcaption></figure></div>`
   });
 }
-function closeModal(){
-  closeImageViewer(false);
+function closeModal({ updateHistory=true }={}){
+  closeImageViewer(false, false);
   modal.classList.remove('active'); modal.setAttribute('aria-hidden','true'); modal.removeAttribute('aria-labelledby'); modal.inert=false; document.body.style.overflow=''; setPageInert(false);
   if(lastModalTrigger?.isConnected) lastModalTrigger.focus();
   lastModalTrigger = null;
+  if(updateHistory) leaveProductUrl();
 }
 modal.addEventListener('click', e => {
   if(e.target.dataset.close !== undefined){ closeModal(); return; }
@@ -645,6 +655,22 @@ window.addEventListener('hashchange', () => {
   const code = seriesCodeFromTarget(window.location.hash);
   if(code && code !== activeSeriesCode) selectSeries(code, { updateHash:false });
   else if(!code && activeSeriesCode) showAllSeries({ updateHash:false });
+});
+window.addEventListener('popstate', () => {
+  const { model, color } = getUrlState();
+  const openModel = modal.querySelector('#detailCartList')?.dataset.detailModel;
+  if(!model){
+    if(modal.classList.contains('active')) closeModal({ updateHistory:false });
+    return;
+  }
+  if(!modal.classList.contains('active') || openModel !== model) openProduct(model, document.activeElement, { updateHistory:false });
+  if(!color){
+    closeImageViewer(false, false);
+    return;
+  }
+  const product = allProducts().find(item => item.model === model);
+  const selectedColor = product?.colors.find(item => item.key === color);
+  if(selectedColor && !activeImageViewer()) openColorViewer(selectedColor.src, product.model, selectedColor.en, selectedColor.ko, selectedColor.key);
 });
 
 function startRandomHero(){
@@ -697,7 +723,7 @@ if(initialSeries){ activeSeriesCode = initialSeries; seriesFilter.value = initia
 render();
 const initial = getUrlState();
 if(initial.model){
-  openProduct(initial.model);
+  openProduct(initial.model, document.activeElement, { updateHistory:false });
   if(initial.color){
     const p = allProducts().find(x => x.model === initial.model);
     const c = p?.colors.find(x => x.key === initial.color);

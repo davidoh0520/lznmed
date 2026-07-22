@@ -197,6 +197,21 @@ async function ordersView() {
       const paymentWaiting = order.status === 'payment_submitted' ? `<div class="payment-waiting"><strong>Payment verification pending</strong><span>${method === 'company_bank_transfer' ? `We received your transfer notice${order.payment_submitted_at ? ` on ${orderDate(order.payment_submitted_at)}` : ''}. Your order will change to Paid after the funds are confirmed in our company bank account.` : 'We are verifying the Payoneer payment. Your order will change to Paid after the payment is confirmed.'}</span></div>` : '';
       return `<article class="customer-order"><div class="customer-order-head"><div><span>${e(order.invoice_no || `Order ${order.id.slice(0, 8)}`)}</span><strong>${orderDate(order.created_at)}</strong></div><div><b class="order-status ${e(order.status)}">${e(statusLabels[order.status] || order.status)}</b><strong>USD ${Number(total || 0).toFixed(2)}</strong></div></div><div class="order-progress"><span class="${['quote_requested','quoted','payment_pending','payment_submitted','paid','processing','shipped'].includes(order.status) ? 'done' : ''}">Received</span><span class="${['paid','processing','shipped'].includes(order.status) ? 'done' : ''}">Paid</span><span class="${['processing','shipped'].includes(order.status) ? 'done' : ''}">Preparing</span><span class="${order.status === 'shipped' ? 'done' : ''}">Shipped</span></div>${paymentAction}${paymentWaiting}${tracking}<details><summary>View order details</summary><div class="customer-order-items">${(order.order_items || []).map(item => `<div><span><strong>${e(item.model)}</strong><small>${e(item.product_name)}</small></span><span>Qty ${e(item.quantity)}</span><strong>USD ${Number(item.line_total_usd || 0).toFixed(2)}</strong></div>`).join('')}</div><div class="customer-order-totals"><span>Products <strong>USD ${Number(order.subtotal_usd || 0).toFixed(2)}</strong></span><span>Freight <strong>${order.freight_usd == null ? 'Pending quotation' : `USD ${Number(order.freight_usd).toFixed(2)}`}</strong></span><span>Total <strong>USD ${Number(total || 0).toFixed(2)}</strong></span></div><p><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}</p><p><strong>Shipping address:</strong> ${e(order.shipping_address || '-')} ${e(order.postal_code || '')}</p><p><strong>Freight arrangement:</strong> ${e(order.courier || '-')}</p></details></article>`;
     }).join('') : '<div class="empty-orders"><h3>No orders yet</h3><p>Your completed and current orders will appear here.</p></div>'}</div><div class="cart-actions"><button class="button secondary-button" id="backAccount">Back to account</button><button class="button" id="shopAgain">Continue shopping</button></div>`, true);
+  document.querySelectorAll('.customer-order').forEach((card, orderIndex) => {
+    const order = orders[orderIndex];
+    const requestItems = (order?.order_items || []).map((item, itemIndex) => ({ item, itemIndex })).filter(({ item }) => isOrderPriceOnRequest(item));
+    if (!requestItems.length) return;
+    requestItems.forEach(({ itemIndex }) => {
+      const row = card.querySelectorAll('.customer-order-items > div')[itemIndex];
+      if (row?.lastElementChild) row.lastElementChild.textContent = 'Price on request';
+    });
+    const quotePending = ['quote_requested', 'quoted'].includes(order.status);
+    const headerAmount = card.querySelector('.customer-order-head > div:last-child > strong');
+    if (quotePending && headerAmount) headerAmount.textContent = 'Quote pending';
+    const totals = card.querySelectorAll('.customer-order-totals strong');
+    if (totals[0]) totals[0].textContent = `Priced items USD ${Number(order.subtotal_usd || 0).toFixed(2)}`;
+    if (quotePending && totals[2]) totals[2].textContent = 'Pending quotation';
+  });
   document.querySelector('#backAccount').onclick = authView;
   document.querySelector('#shopAgain').onclick = hide;
   document.querySelectorAll('[data-payment-id]').forEach(button => button.addEventListener('click', () => paymentNoticeView(orders.find(order => order.id === button.dataset.paymentId))));
@@ -288,13 +303,33 @@ function money(value) {
   return Number(value).toFixed(Number(value) >= 100 ? 0 : 2);
 }
 
+function isPriceOnRequest(item) {
+  return item?.priceOnRequest === true || item?.priceUsd == null || !Number.isFinite(Number(item.priceUsd));
+}
+
+function isOrderPriceOnRequest(item) {
+  return /price on request/i.test(String(item?.product_name || ''));
+}
+
+function cartUnitPrice(item) {
+  if (isPriceOnRequest(item)) return 'Price on request';
+  if (Number(item.priceUsd) === 0) return 'Free of charge';
+  return `USD ${money(item.priceUsd)} ${item.orderUnitLabel ? `per ${e(item.orderUnitLabel)}` : 'each'}`;
+}
+
+function cartLinePrice(item) {
+  if (isPriceOnRequest(item)) return 'To be quoted';
+  if (Number(item.priceUsd) === 0) return 'Free';
+  return `USD ${money(Number(item.priceUsd) * item.quantity)}`;
+}
+
 function cartView() {
   if (repairCartImages(cart)) save();
   const total = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
-  const hasQuote = cart.some(item => !item.priceUsd);
+  const hasQuote = cart.some(isPriceOnRequest);
   show(`<div class="panel-head cart-heading"><div><p class="eyebrow">Shopping Cart</p><h2>${cart.length ? 'Your cart' : 'Your cart is empty'}</h2></div><span>${cart.reduce((sum, item) => sum + item.quantity, 0)} items</span></div>
-    <div class="cart-list">${cart.map((item, index) => `<div class="cart-row"><img src="${e(item.image)}" alt=""><div><strong>${e(item.model)}</strong><span>${e(item.nameEn)}</span>${item.optionLabel ? `<small class="chosen-option">${e(item.optionLabel)}</small>` : ''}${item.pd ? `<small class="chosen-option">Fixed PD: ${e(item.pd)} mm</small>` : ''}<small>${item.priceUsd ? `USD ${money(item.priceUsd)} ${item.orderUnitLabel ? `per ${e(item.orderUnitLabel)}` : 'each'}` : 'Price on quotation'}</small></div><label class="qty-label">Qty<input type="number" min="1" value="${item.quantity}" data-qty="${index}"></label><strong class="line-total">${item.priceUsd ? `USD ${money(item.priceUsd * item.quantity)}` : 'Quote'}</strong><button class="remove-item" data-remove="${index}" aria-label="Remove item">×</button></div>`).join('')}</div>
-    ${cart.length ? `<div class="cart-summary"><div><span>${hasQuote ? 'Priced items subtotal' : 'FOB China subtotal'}</span><strong>USD ${money(total)}</strong></div><p>Freight, destination duties and local taxes are not included. Availability and freight are confirmed before the Proforma Invoice is issued.</p></div><div class="cart-actions"><button class="button secondary-button" id="continueShopping">Continue shopping</button><button class="button" id="checkoutButton">Proceed to checkout</button></div><p class="form-status" id="quoteStatus"></p>` : `<button class="button" id="continueShopping">Continue shopping</button>`}`, true);
+    <div class="cart-list">${cart.map((item, index) => `<div class="cart-row"><img src="${e(item.image)}" alt=""><div><strong>${e(item.model)}</strong><span>${e(item.nameEn)}</span>${item.optionLabel ? `<small class="chosen-option">${e(item.optionLabel)}</small>` : ''}${item.pd ? `<small class="chosen-option">Fixed PD: ${e(item.pd)} mm</small>` : ''}<small>${cartUnitPrice(item)}</small></div><label class="qty-label">Qty<input type="number" min="1" value="${item.quantity}" data-qty="${index}"></label><strong class="line-total">${cartLinePrice(item)}</strong><button class="remove-item" data-remove="${index}" aria-label="Remove item">×</button></div>`).join('')}</div>
+    ${cart.length ? `<div class="cart-summary"><div><span>${hasQuote ? 'Priced items subtotal' : 'FOB China subtotal'}</span><strong>USD ${money(total)}</strong></div>${hasQuote ? '<p><strong>Price-on-request items will be quoted in your Proforma Invoice.</strong></p>' : ''}<p>Freight, destination duties and local taxes are not included. Availability and freight are confirmed before the Proforma Invoice is issued.</p></div><div class="cart-actions"><button class="button secondary-button" id="continueShopping">Continue shopping</button><button class="button" id="checkoutButton">Proceed to checkout</button></div><p class="form-status" id="quoteStatus"></p>` : `<button class="button" id="continueShopping">Continue shopping</button>`}`, true);
   body.querySelectorAll('.cart-row').forEach((row, index) => {
     if (!cart[index]?.pdLabel) return;
     const labels = row.querySelectorAll('.chosen-option');
@@ -309,7 +344,9 @@ function cartView() {
 
 function checkoutView() {
   const subtotal = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
+  const hasQuote = cart.some(isPriceOnRequest);
   show(`<div class="panel-head"><p class="eyebrow">Checkout</p><h2>Payment & freight</h2></div><div class="checkout-summary"><span>FOB China product subtotal</span><strong>USD ${money(subtotal)}</strong></div><form class="commerce-form checkout-form" id="checkoutForm"><fieldset><legend>Payment method</legend><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="company_bank_transfer" checked><span><strong>Company bank transfer <em>Recommended for orders over USD 1,000</em></strong><small>No processing fee charged by LZN MEDICAL. Sending and intermediary bank charges are borne by the buyer.</small><span class="bank-transfer-details" aria-label="USD bank transfer details"><b class="bank-details-title">USD bank transfer details</b><span class="bank-detail-row"><span>Beneficiary</span><b>LZN MEDICAL CO., LTD.</b></span><span class="bank-detail-row"><span>USD Account</span><b class="bank-copy-value">100103205899</b></span><span class="bank-detail-row"><span>SWIFT / BIC</span><b class="bank-copy-value">HVBKCNBJ</b></span><span class="bank-detail-row"><span>Bank</span><b>Woori Bank(China) Limited Shanghai JinXiuJiangNan Sub-Branch</b></span><span class="bank-detail-row"><span>Bank Address</span><b>No.101-1,101-2b,102 MT BLDG, 3999 Hongxin Road, Minhang District, Shanghai, China</b></span></span></span></label><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="payoneer_card_paypal"><span><strong>Card / PayPal <em>Processed securely by Payoneer</em></strong><small>Available payment methods and processing fees may vary by country, customer and payment request. A payment link will be emailed after freight and the final invoice are confirmed.</small><span class="payment-logo-panel"><span class="payment-logo-row"><img class="payment-logo-strip" src="assets/payment/payoneer-payment-options.png" alt="Possible payment options: Visa, Mastercard, American Express, Discover, Diners Club, JCB and Plaid"><span class="paypal-brand"><img src="assets/payment/paypal.png" alt=""><b>PayPal</b></span></span><small>Possible options include cards and PayPal. Availability varies by country and payment request.</small></span></span></label><div class="payment-fee-estimate" id="paymentFeeEstimate" aria-live="polite"></div></fieldset><fieldset><legend>Freight arrangement</legend><label class="choice-card"><input type="radio" name="freight_method" value="quote" checked><span><strong>Request freight quotation — SF International</strong><small>Quoted-freight orders are shipped by SF International. By selecting this option, you accept SF International as the carrier and the quoted SF International freight charge. We do not automatically substitute the cheapest courier service.</small></span></label><label class="choice-card"><input type="radio" name="freight_method" value="collect"><span><strong>Courier collect</strong><small>Freight will be charged directly to your courier account.</small></span></label><div class="collect-fields" id="collectFields"><label>Courier<select name="courier" id="checkoutCourier"><option>DHL</option><option>FedEx</option><option>UPS</option><option>EMS</option><option>SF Express</option><option>Other</option></select></label><label id="otherCourierLabel">Other courier name<input name="other_courier" placeholder="Enter courier name"></label><label>Courier account number<input name="courier_account_no" placeholder="Required for courier collect"></label></div></fieldset><div class="cart-actions"><button type="button" class="button secondary-button" id="backToCart">Back to cart</button><button class="button" id="placeOrderButton">Request Proforma Invoice</button></div><p class="form-status" id="quoteStatus"></p></form>`, true);
+  if (hasQuote) document.querySelector('.checkout-summary span').innerHTML = 'Priced items subtotal<small>Price-on-request items will be added after quotation.</small>';
   const form = document.querySelector('#checkoutForm');
   const collectFields = document.querySelector('#collectFields');
   const otherLabel = document.querySelector('#otherCourierLabel');
@@ -368,7 +405,7 @@ async function submitQuote(event) {
   const courierName = checkout.freight_method === 'quote' ? 'SF International freight quotation requested' : `Courier collect: ${checkout.courier === 'Other' ? checkout.other_courier : checkout.courier}`;
   const { data: order, error } = await client.from('orders').insert({ user_id: session.user.id, status: 'quote_requested', subtotal_usd: subtotal, payment_method: paymentCode(checkout.payment_method), destination_country: profile.country, buyer_type: 'company', company_name: profile.company_name, contact_name: profile.full_name, contact_email: session.user.email, contact_phone: profile.phone, shipping_address: shipping, postal_code: profile.postal_code, courier: courierName, courier_account_no: checkout.freight_method === 'collect' ? checkout.courier_account_no : null, customer_note: storeNote }).select('id').single();
   if (error) { status.textContent = error.message; button.disabled = false; return; }
-  const items = cart.map(item => ({ order_id: order.id, model: item.model, product_name: `${item.nameEn}${item.optionLabel ? ` (${item.optionLabel})` : ''}${item.pdLabel ? ` (${item.pdLabel})` : (item.pd ? ` (PD ${item.pd} mm)` : '')}${item.orderUnitLabel ? ` (${item.orderUnitLabel} per order unit)` : ''}`, unit_price_usd: item.priceUsd || 0, quantity: item.quantity }));
+  const items = cart.map(item => ({ order_id: order.id, model: item.model, product_name: `${item.nameEn}${item.optionLabel ? ` (${item.optionLabel})` : ''}${item.pdLabel ? ` (${item.pdLabel})` : (item.pd ? ` (PD ${item.pd} mm)` : '')}${item.orderUnitLabel ? ` (${item.orderUnitLabel} per order unit)` : ''}${isPriceOnRequest(item) ? ' (Price on request)' : ''}`, unit_price_usd: isPriceOnRequest(item) ? 0 : Number(item.priceUsd || 0), quantity: item.quantity }));
   const { error: itemError } = await client.from('order_items').insert(items);
   if (itemError) { status.textContent = itemError.message; button.disabled = false; return; }
   cart = [];
@@ -391,15 +428,17 @@ window.addEventListener('lzn:add-cart', event => {
   const pdLabel = event.detail.pdLabel || (pd ? `Fixed PD: ${pd} mm` : null);
   const model = option?.model || product.model;
   const priceUsd = event.detail.pdPriceUsd ?? option?.priceUsd ?? product.priceUsd ?? null;
+  const priceOnRequest = priceUsd == null || !Number.isFinite(Number(priceUsd));
   const optionLabel = option?.label || null;
   const quantity = Math.min(999, Math.max(1, Math.floor(Number(event.detail.quantity) || 1)));
   let found = cart.find(item => item.model === model && item.pd === pd && item.pdLabel === pdLabel && item.optionLabel === optionLabel);
   if (found) {
     found.quantity = event.detail.setQuantity ? quantity : Math.min(999, found.quantity + quantity);
     found.orderUnitLabel = product.orderUnitLabel || found.orderUnitLabel || null;
+    found.priceOnRequest = priceOnRequest;
   }
   else {
-    found = { model, nameEn: product.nameEn, image: product.image, priceUsd, pd, pdLabel, optionLabel, orderUnitLabel: product.orderUnitLabel || null, quantity };
+    found = { model, nameEn: product.nameEn, image: product.image, priceUsd, priceOnRequest, pd, pdLabel, optionLabel, orderUnitLabel: product.orderUnitLabel || null, quantity };
     cart.push(found);
   }
   event.detail.resultQuantity = found.quantity;

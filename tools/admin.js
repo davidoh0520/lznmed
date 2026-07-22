@@ -6,7 +6,10 @@ const dashboard = document.querySelector('#dashboard');
 const signOutButton = document.querySelector('#signOut');
 const drawer = document.querySelector('#orderDrawer');
 const detail = document.querySelector('#orderDetail');
+const sfFreight = window.LZN_SF_FREIGHT;
 const money = value => `USD ${Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+const itemPriceOnRequest = item => /price on request/i.test(String(item?.product_name || ''));
+const itemMoney = (item, field) => itemPriceOnRequest(item) ? 'Price required' : money(item?.[field]);
 const date = value => value ? new Date(value).toLocaleString('en-GB', { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : '-';
 const e = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const statusLabels = {
@@ -101,6 +104,7 @@ let orders = [];
 let members = [];
 let activeOrder = null;
 let activeItems = [];
+let activeSfCalculation = null;
 
 function showOnly(view) {
   [authView, accessView, dashboard].forEach(item => item.hidden = item !== view);
@@ -318,6 +322,142 @@ async function openOrder(id) {
   renderOrderDetail();
 }
 
+function sfFreightCalculatorHtml(order) {
+  if (!sfFreight) return '<section class="detail-section"><h3>SF International freight calculator</h3><p class="sf-message error">SF tariff data is unavailable. Refresh the page.</p></section>';
+  const matched = sfFreight.findDestination(order.destination_country);
+  const destinationOptions = sfFreight.destinations
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(item => `<option value="${e(item.code)}" ${matched?.code === item.code ? 'selected' : ''}>${e(item.name)} (${e(item.code)}) · Zone ${e(item.zone)}</option>`)
+    .join('');
+  let exchangeRate = 6.8;
+  try { exchangeRate = Number(localStorage.getItem('lzn_sf_rmb_per_usd')) || exchangeRate; } catch (_) {}
+  const today = new Date().toLocaleDateString('en-CA');
+  return `<section class="detail-section sf-freight-section">
+    <div class="sf-section-heading"><div><p class="eyebrow">China export public tariff</p><h3>SF International freight calculator</h3></div><div class="sf-source-links"><a href="${e(sfFreight.publicRateUrl)}" target="_blank" rel="noopener">2026 export tariff</a><a href="${e(sfFreight.fuelRateUrl)}" target="_blank" rel="noopener">Official fuel rate</a></div></div>
+    <form id="sfFreightForm" class="sf-freight-form">
+      <label class="wide">Destination country<select name="destination" required><option value="">Select destination</option>${destinationOptions}</select></label>
+      <label>SF service<select name="service" required></select></label>
+      <label>Planned shipment date<input name="ship_date" type="date" value="${e(today)}" required></label>
+      <label>Actual gross weight (kg)<input name="actual_kg" type="number" min="0" step="0.01" placeholder="e.g. 30"></label>
+      <label>Total volume (CBM)<input name="cbm" type="number" min="0" step="0.0001" placeholder="e.g. 0.20"></label>
+      <label>Fuel surcharge (%)<input name="fuel_rate" type="number" min="0" step="0.01" placeholder="Loading official rate"></label>
+      <label>Exchange rate (RMB per USD)<input name="rmb_per_usd" type="number" min="0.01" step="0.0001" value="${e(exchangeRate)}" required></label>
+      <label class="wide">Other SF surcharges (RMB)<input name="other_rmb" type="number" min="0" step="0.01" value="0"><small>Remote area, resource allocation, oversize, overweight or special handling charges, if applicable.</small></label>
+      <div class="sf-freight-actions wide"><button class="outline-button" type="button" id="sfRefreshFuel">Refresh fuel rate</button><button class="primary-button" type="submit">Calculate freight</button></div>
+    </form>
+    <p class="sf-message" id="sfFuelStatus"></p>
+    <div class="sf-result" id="sfFreightResult" hidden></div>
+    <p class="sf-disclaimer">Published shipper-pay rates from Mainland China. Duties, destination taxes and unlisted SF surcharges are not included.</p>
+  </section>`;
+}
+
+function syncSfServiceOptions() {
+  const form = document.querySelector('#sfFreightForm');
+  if (!form || !sfFreight) return;
+  const destination = sfFreight.findDestination(form.elements.destination.value);
+  const select = form.elements.service;
+  const previous = select.value;
+  const preferredOrder = ['EE', 'SE', 'GE+'];
+  const services = destination ? preferredOrder.filter(service => destination.services.includes(service)) : [];
+  select.innerHTML = services.length
+    ? services.map(service => `<option value="${e(service)}">${e(sfFreight.serviceLabels[service])}</option>`).join('')
+    : '<option value="">Select destination first</option>';
+  if (services.includes(previous)) select.value = previous;
+  else if (services.length) select.value = services[0];
+}
+
+async function refreshSfFuelRate(force = false) {
+  const form = document.querySelector('#sfFreightForm');
+  const status = document.querySelector('#sfFuelStatus');
+  if (!form || !status || !sfFreight) return;
+  const service = form.elements.service.value;
+  const shipDate = form.elements.ship_date.value;
+  if (!service || !shipDate) {
+    status.textContent = 'Select a destination, service and shipment date.';
+    return;
+  }
+  status.classList.remove('error');
+  status.textContent = 'Checking the applicable fuel surcharge...';
+  try {
+    const result = await sfFreight.loadFuelRate(shipDate, service, force);
+    form.elements.fuel_rate.value = Number(result.rate).toFixed(2);
+    form.elements.fuel_rate.dataset.rateSource = result.source;
+    const validity = result.end ? `${result.start} to ${result.end}` : `EIA reference ${result.eiaPeriod || result.start}`;
+    status.innerHTML = `<strong>${e(Number(result.rate).toFixed(2))}%</strong> · ${e(validity)} · ${e(result.source)}`;
+  } catch (error) {
+    form.elements.fuel_rate.dataset.rateSource = 'Manual rate';
+    status.classList.add('error');
+    status.innerHTML = `${e(error.message || String(error))} <a href="${e(sfFreight.fuelRateUrl)}" target="_blank" rel="noopener">Open SF official rate</a>`;
+  }
+}
+
+function calculateSfFreight(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const resultBox = document.querySelector('#sfFreightResult');
+  const fuelStatus = document.querySelector('#sfFuelStatus');
+  try {
+    const values = Object.fromEntries(new FormData(form));
+    const fuelRate = Number(values.fuel_rate);
+    const exchangeRate = Number(values.rmb_per_usd);
+    const otherRmb = Number(values.other_rmb || 0);
+    if (values.fuel_rate === '' || !(fuelRate >= 0)) throw new Error('Enter the applicable SF fuel surcharge percentage.');
+    if (!(exchangeRate > 0)) throw new Error('Enter the RMB per USD exchange rate.');
+    if (otherRmb < 0) throw new Error('Other surcharges cannot be negative.');
+    const weight = sfFreight.calculateChargeableWeight(values.actual_kg, values.cbm);
+    const base = sfFreight.calculateBaseFreight(values.destination, values.service, weight.chargeable);
+    const fuelRmb = Math.round(base.amount * fuelRate) / 100;
+    const totalRmb = Math.round((base.amount + fuelRmb + otherRmb) * 100) / 100;
+    const totalUsd = Math.round(totalRmb / exchangeRate * 100) / 100;
+    activeSfCalculation = { ...values, ...weight, ...base, fuelRate, fuelRmb, otherRmb, totalRmb, totalUsd, exchangeRate };
+    try { localStorage.setItem('lzn_sf_rmb_per_usd', String(exchangeRate)); } catch (_) {}
+    resultBox.hidden = false;
+    resultBox.innerHTML = `<div class="sf-result-title"><div><span>Calculated freight</span><strong>USD ${e(totalUsd.toFixed(2))}</strong></div><button class="primary-button" type="button" id="sfApplyFreight">Apply to order</button></div>
+      <div class="sf-breakdown">
+        <div><span>Destination / service</span><strong>${e(base.destination.name)} · ${e(sfFreight.serviceLabels[values.service])} · Zone ${e(base.zone)}</strong></div>
+        <div><span>Actual / volume weight</span><strong>${e(weight.actual.toFixed(2))} kg / ${e(weight.volume.toFixed(2))} kg</strong></div>
+        <div><span>Chargeable weight</span><strong>${e(weight.chargeable.toFixed(1))} kg</strong></div>
+        <div><span>Published base freight</span><strong>RMB ${e(base.amount.toFixed(2))}${base.rateType === 'per_kg' ? ` (${e(base.rate)} / kg)` : ''}</strong></div>
+        <div><span>Fuel surcharge</span><strong>RMB ${e(fuelRmb.toFixed(2))} (${e(fuelRate.toFixed(2))}%)</strong></div>
+        <div><span>Other surcharges</span><strong>RMB ${e(otherRmb.toFixed(2))}</strong></div>
+        <div class="sf-total-row"><span>Total</span><strong>RMB ${e(totalRmb.toFixed(2))} / USD ${e(totalUsd.toFixed(2))}</strong></div>
+      </div>`;
+    document.querySelector('#sfApplyFreight').addEventListener('click', applySfFreightToOrder);
+    fuelStatus.classList.remove('error');
+  } catch (error) {
+    activeSfCalculation = null;
+    resultBox.hidden = true;
+    fuelStatus.classList.add('error');
+    fuelStatus.textContent = error.message || String(error);
+  }
+}
+
+function applySfFreightToOrder() {
+  if (!activeSfCalculation) return;
+  const orderForm = document.querySelector('#orderForm');
+  const freightInput = orderForm?.elements.freight_usd;
+  if (!freightInput) return;
+  freightInput.value = activeSfCalculation.totalUsd.toFixed(2);
+  freightInput.dispatchEvent(new Event('input', { bubbles: true }));
+  const status = document.querySelector('#saveStatus');
+  if (status) status.textContent = `SF freight applied: USD ${activeSfCalculation.totalUsd.toFixed(2)}. Save changes to keep it on the order.`;
+}
+
+function initializeSfFreightCalculator() {
+  const form = document.querySelector('#sfFreightForm');
+  if (!form || !sfFreight) return;
+  activeSfCalculation = null;
+  syncSfServiceOptions();
+  form.addEventListener('submit', calculateSfFreight);
+  form.elements.destination.addEventListener('change', () => { syncSfServiceOptions(); refreshSfFuelRate(); });
+  form.elements.service.addEventListener('change', () => refreshSfFuelRate());
+  form.elements.ship_date.addEventListener('change', () => refreshSfFuelRate());
+  form.elements.fuel_rate.addEventListener('input', () => { form.elements.fuel_rate.dataset.rateSource = 'Manual rate'; });
+  document.querySelector('#sfRefreshFuel').addEventListener('click', () => refreshSfFuelRate());
+  refreshSfFuelRate();
+}
+
 function renderOrderDetail() {
   const order = activeOrder;
   const freight = Number(order.freight_usd || 0);
@@ -326,9 +466,10 @@ function renderOrderDetail() {
     <div class="detail-head"><p class="eyebrow">${e(storeName(order, true))}</p><h2>${e(order.invoice_no || 'Proforma Invoice not assigned')}</h2><p class="request-id">Order ${e(order.id)}</p></div>
     <div class="workflow-banner"><span>Current stage</span><strong>${e(statusLabels[order.status] || order.status)}</strong><small>Next: ${e(nextStepLabels[order.status] || 'Review the order')}</small></div>
     <section class="detail-section"><h3>Customer & shipping</h3><div class="customer-box"><strong>Recipient type:</strong> ${(order.buyer_type || 'company') === 'company' ? 'Company' : 'Individual'}<br>${(order.buyer_type || 'company') === 'company' && order.company_name ? `<strong>${e(order.company_name)}</strong><br>Attn: ` : ''}<strong>${e(order.contact_name || '-')}</strong>${order.contact_email ? `<br><a href="mailto:${e(order.contact_email)}">${e(order.contact_email)}</a>` : ''}<br>${e(order.contact_phone || '')}<br>${e(order.shipping_address || '')}<br>${e(order.postal_code || '')}<br><br><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}${paymentCode(order.payment_method) === 'company_bank_transfer' ? '' : '<br><strong>Processing fee:</strong> Confirmed on Payoneer and may vary.<br><small>Not included in the PI total; do not add it again if Payoneer charges the payer.</small>'}<br><br><strong>Freight request:</strong> ${e(order.courier || '-')}<br><strong>Collect account:</strong> ${e(order.courier_account_no || '-')}</div></section>
-    <section class="detail-section"><h3>Items</h3><table class="order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small></td><td>${e(item.quantity)}</td><td>${money(item.unit_price_usd)}</td><td>${money(item.line_total_usd)}</td></tr>`).join('')}</tbody></table></section>
+    <section class="detail-section"><h3>Items</h3>${activeItems.some(itemPriceOnRequest) ? '<p class="price-request-alert"><strong>Price quotation required.</strong> Confirm a selling price for the marked items before issuing the final Proforma Invoice.</p>' : ''}<table class="order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small></td><td>${e(item.quantity)}</td><td>${itemMoney(item, 'unit_price_usd')}</td><td>${itemMoney(item, 'line_total_usd')}</td></tr>`).join('')}</tbody></table></section>
     ${order.payment_submitted_at ? `<section class="detail-section"><h3>Customer payment notice</h3><div class="customer-box payment-review"><strong>Verification required</strong><br>Submitted: ${e(date(order.payment_submitted_at))}<br>Remitter / Reference: ${e(order.payment_reference || '-')}<br>Customer note: ${e(order.payment_note || '-')}<p>Confirm receipt through ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'the company bank account' : 'Payoneer'} before changing the status to Paid.</p></div></section>` : ''}
     ${invoiceActivity(order)}
+    ${sfFreightCalculatorHtml(order)}
     <section class="detail-section"><h3>Order & invoice</h3><form id="orderForm" class="form-grid">
       <label>PI number<input name="invoice_no" value="${e(order.invoice_no || '')}" placeholder="LZN-20260713-001"></label>
       <label>Status<select name="status">${['quote_requested','quoted','payment_pending','payment_submitted','paid','processing','shipped','cancelled'].map(status => `<option value="${status}" ${order.status === status ? 'selected' : ''}>${e(statusLabels[status])}</option>`).join('')}</select></label>
@@ -340,6 +481,7 @@ function renderOrderDetail() {
     </form><div class="order-actions"><button class="outline-button" id="generatePi">Generate PI number</button><button class="primary-button" id="saveOrder">Save changes</button><button class="outline-button" id="printInvoice">Create & Email Proforma Invoice PDF</button><button class="primary-button" id="confirmPayment">Confirm payment</button><button class="outline-button" id="printCi">Create & Email Commercial Invoice PDF</button><button class="primary-button" id="markShipped">Mark as shipped</button>${order.status === 'shipped' ? `<button class="outline-button" id="confirmDelivery">Confirm delivery & Email customer</button>` : ''}${order.tracking_no ? `<button class="outline-button" id="trackShipment">Track shipment</button>` : ''}</div><p class="save-status" id="saveStatus"></p></section>`;
   const form = document.querySelector('#orderForm');
   form.elements.freight_usd.addEventListener('input', () => form.elements.total_usd.value = (Number(order.subtotal_usd || 0) + Number(form.elements.freight_usd.value || 0)).toFixed(2));
+  initializeSfFreightCalculator();
   document.querySelector('#generatePi').addEventListener('click', generatePiNumber);
   document.querySelector('#saveOrder').addEventListener('click', () => saveOrder(true));
   document.querySelector('#printInvoice').addEventListener('click', createProformaInvoice);
@@ -552,7 +694,7 @@ function buildInvoicePdf(documentTitle) {
   doc.autoTable({
     startY: 79,
     head: [['Model', 'Description', 'Qty', 'Unit Price', 'Amount']],
-    body: activeItems.map(item => [item.model || '', item.product_name || '', String(item.quantity || 0), money(item.unit_price_usd), money(item.line_total_usd)]),
+    body: activeItems.map(item => [item.model || '', item.product_name || '', String(item.quantity || 0), itemMoney(item, 'unit_price_usd'), itemMoney(item, 'line_total_usd')]),
     theme: 'grid',
     styles: { font: 'helvetica', fontSize: 8, cellPadding: 2.5 },
     headStyles: { fillColor: [7, 95, 124] },

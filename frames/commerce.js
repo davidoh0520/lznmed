@@ -7,8 +7,9 @@ const cartButton = document.querySelector('#cartButton');
 const cartCount = document.querySelector('#cartCount');
 const products = (window.CATALOG_DATA || []).flatMap(category => category.items.map(product => ({ ...product, categoryEn: category.en })));
 const e = value => String(value || '').replace(/[&<>\"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
+const frameCartKey = 'lznFramesCart';
 let session = null;
-let cart = JSON.parse(localStorage.getItem('lzn-cart') || '[]');
+let cart = JSON.parse(localStorage.getItem(frameCartKey) || '[]');
 
 function accountLabel() {
   if (!session) {
@@ -45,7 +46,7 @@ function toast(message, action = false) {
 }
 
 function save() {
-  localStorage.setItem('lzn-cart', JSON.stringify(cart));
+  localStorage.setItem(frameCartKey, JSON.stringify(cart));
   cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
 }
 
