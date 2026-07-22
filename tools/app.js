@@ -94,7 +94,7 @@ function animateProductToCart(trigger) {
 }
 
 function productCard(product) {
-  const optionPicker = product.options ? `<label class="card-option-label">Configuration<select data-card-option>${product.options.map((option, index) => `<option value="${index}">${esc(option.model)} - ${esc(option.label)}</option>`).join('')}</select></label>` : '';
+  const optionPicker = product.options ? `<label class="card-option-label">${esc(product.optionLabel || 'Configuration')}<select data-card-option>${product.options.map((option, index) => `<option value="${index}">${esc(option.model)} - ${esc(option.label)}</option>`).join('')}</select></label>` : '';
   const pdPicker = product.pdMode === 'select' ? `<label class="card-option-label">PD option<select data-card-pd>${pdChoices(product).map((choice, index) => `<option value="${index}">${esc(choice.label)} - USD ${usd(choice.priceUsd)}</option>`).join('')}</select></label>` : '';
   return `<article class="product-card" data-model="${esc(product.model)}" tabindex="0" role="button" aria-label="View ${esc(product.model)} details">
     <div class="product-card-image">${isPopular(product) ? '<span class="popular-badge" aria-label="Recommended model"><b>★</b><em>TOP<br>CHOICE</em></span>' : ''}<img src="${esc(product.image)}" alt="${esc(product.model)} ${esc(product.nameEn)}"></div>
@@ -154,6 +154,10 @@ function bindCards() {
       window.dispatchEvent(new CustomEvent('lzn:add-cart', { detail }));
       if (quantityInput) quantityInput.value = detail.resultQuantity || quantity;
     };
+    card.querySelector('[data-card-option]')?.addEventListener('change', () => {
+      quantityWrap?.setAttribute('hidden', '');
+      if (quantityInput) quantityInput.value = 1;
+    });
     card.querySelector('[data-card-add]')?.addEventListener('click', () => {
       const alreadyAdded = !quantityWrap?.hasAttribute('hidden');
       const current = Math.min(999, Math.max(1, Math.floor(Number(quantityInput?.value) || 1)));
@@ -184,7 +188,7 @@ function openProduct(model) {
   const product = all.find(item => item.model === model);
   if (!product) return;
   const images = product.images?.length ? product.images : [product.image];
-  const optionSelect = product.options ? `<label class="product-option">Configuration<select id="productConfiguration">${product.options.map((option, index) => `<option value="${index}">${esc(option.model)} — ${esc(option.label)} — USD ${Number(option.priceUsd).toFixed(option.priceUsd >= 100 ? 0 : 2)}</option>`).join('')}</select></label>` : '';
+  const optionSelect = product.options ? `<label class="product-option">${esc(product.optionLabel || 'Configuration')}<select id="productConfiguration">${product.options.map((option, index) => `<option value="${index}">${esc(option.model)} — ${esc(option.label)} — USD ${Number(option.priceUsd).toFixed(option.priceUsd >= 100 ? 0 : 2)}</option>`).join('')}</select></label>` : '';
   const pdSelect = product.pdMode === 'select' ? `<label class="product-option">PD option<select id="pdOption">${pdChoices(product).map((choice, index) => `<option value="${index}">${esc(choice.label)} - USD ${usd(choice.priceUsd)}</option>`).join('')}</select></label>` : '';
   const features = product.features?.length ? `<div class="feature-list"><h4>Product Features</h4><ul>${product.features.map(item => `<li>${esc(item)}</li>`).join('')}</ul></div>` : '';
   modalBody.innerHTML = `<div class="detail-media"><div class="detail-image"><img id="detailMainImage" src="${esc(images[0])}" alt="${esc(product.model)}"></div>${images.length > 1 ? `<div class="detail-thumbs">${images.map((src, index) => `<button class="${index === 0 ? 'active' : ''}" data-gallery-src="${esc(src)}"><img src="${esc(src)}" alt="${esc(product.model)} view ${index + 1}"></button>`).join('')}</div>` : ''}</div>
@@ -198,7 +202,9 @@ function openProduct(model) {
   document.querySelector('#productConfiguration')?.addEventListener('change', event => {
     const option = product.options[Number(event.target.value)];
     document.querySelector('#detailModel').textContent = option.model;
-    document.querySelector('#detailPrice').textContent = `USD ${Number(option.priceUsd).toFixed(option.priceUsd >= 100 ? 0 : 2)}`;
+    document.querySelector('#detailPrice').textContent = `USD ${Number(option.priceUsd).toFixed(option.priceUsd >= 100 ? 0 : 2)}${product.orderUnitLabel ? ` / ${product.orderUnitLabel}` : ''}`;
+    detailQuantityWrap?.setAttribute('hidden', '');
+    if (detailQuantityInput) detailQuantityInput.value = 1;
   });
   const pdElement = document.querySelector('#pdOption');
   const updatePdPrice = () => {

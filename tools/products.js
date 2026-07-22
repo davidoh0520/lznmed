@@ -2772,3 +2772,184 @@ window.CATALOG_DATA = [
     ]
   }
 ];
+
+(() => {
+  const catalog = window.CATALOG_DATA || [];
+  const toolSetIndex = catalog.findIndex(category => category.id === 'tools');
+  if (toolSetIndex < 0) return;
+
+  const jobTrayData = [
+    ['31131010', '244mm PP Job Tray - Sky Blue'],
+    ['31131020', '244mm PP Job Tray - Yellow'],
+    ['31131030', '244mm PP Job Tray - Rose'],
+    ['31131040', '244mm PP Job Tray - White'],
+    ['31131050', '244mm PP Job Tray - Orange'],
+    ['31131060', '244mm PP Job Tray - Green'],
+    ['31131070', '244mm PP Job Tray - Purple'],
+    ['31131110', '244mm PP Job Tray LH - Sky Blue'],
+    ['31131120', '244mm PP Job Tray LH - Yellow'],
+    ['31131130', '244mm PP Job Tray LH - Rose'],
+    ['31131140', '244mm PP Job Tray LH - White'],
+    ['31131150', '244mm PP Job Tray LH - Orange'],
+    ['31131160', '244mm PP Job Tray LH - Green'],
+    ['31131170', '244mm PP Job Tray LH - Purple'],
+    ['31131210', '270mm PP Job Tray - Sky Blue'],
+    ['31131220', '270mm PP Job Tray - Yellow'],
+    ['31131230', '270mm PP Job Tray - Rose'],
+    ['31131240', '270mm PP Job Tray - White'],
+    ['31131250', '270mm PP Job Tray - Orange'],
+    ['31131260', '270mm PP Job Tray - Green'],
+    ['31131270', '270mm PP Job Tray - Purple'],
+    ['31131310', '270mm PP Job Tray LH - Sky Blue'],
+    ['31131320', '270mm PP Job Tray LH - Yellow'],
+    ['31131330', '270mm PP Job Tray LH - Rose'],
+    ['31131340', '270mm PP Job Tray LH - White'],
+    ['31131350', '270mm PP Job Tray LH - Orange'],
+    ['31131360', '270mm PP Job Tray LH - Green'],
+    ['31131370', '270mm PP Job Tray LH - Purple'],
+    ['31131410', '245mm Job Tray L - Orange'],
+    ['31131420', '245mm Job Tray L - White'],
+    ['31131430', '245mm Job Tray L - Sky Blue'],
+    ['31131440', '245mm Job Tray L - Yellow'],
+    ['31131450', '245mm Job Tray L - Green'],
+    ['31131510', '270mm Job Tray L - Orange'],
+    ['31131520', '270mm Job Tray L - White'],
+    ['31131530', '270mm Job Tray L - Sky Blue'],
+    ['31131540', '270mm Job Tray L - Yellow'],
+    ['31131550', '270mm Job Tray L - Green'],
+    ['31131610', 'Job Tray S - Dark Green'],
+    ['31131620', 'Job Tray S - Black'],
+    ['31131710', 'Job Tray SH - Dark Green'],
+    ['31131720', 'Job Tray SH - Black']
+  ];
+  const jobTrays = {
+    id: 'job-trays',
+    en: 'Job Trays',
+    desc: 'Official 3T color-coded trays for organizing frames, lenses and work orders throughout the optical laboratory workflow.',
+    items: jobTrayData.map(([model, nameEn]) => ({
+      category: 'job-trays',
+      model,
+      nameEn,
+      description: `${nameEn} keeps each customer frame, lenses and work-order materials together during workshop processing.`,
+      image: `assets/3tmall/${model}.jpg`,
+      images: [`assets/3tmall/${model}.jpg`],
+      source: 'https://y.3tmall.com/Product/644152.html',
+      features: ['Official 3T optical-laboratory job tray', 'Color-coded workflow organization', 'Reusable molded construction']
+    }))
+  };
+
+  const nosePadData = [
+    ['23131020', 'Lock-in Silicone Nose Pads', '13 × 7.2 × 2.0 mm', 0.57, '1205'],
+    ['23131040', 'Lock-in Silicone Nose Pads', '17 × 9.5 × 2.0 mm', 0.57, '1206'],
+    ['23131050', 'Lock-in Silicone Nose Pads', '19 × 9.5 × 2.0 mm', 0.57, '1207'],
+    ['23131060', 'Lock-in Silicone Nose Pads', '13 × 7.2 × 2.0 mm', 0.57, '1208'],
+    ['23131070', 'Lock-in Silicone Nose Pads', '15 × 8.3 × 2.0 mm', 0.57, '1209'],
+    ['23131110', 'Lock-in Silicone Nose Pads', 'Ø11 × 2.0 mm', 0.57, '1210'],
+    ['23131120', 'Lock-in Silicone Nose Pads', '13 × 6.95 × 2.0 mm', 0.57, '1211'],
+    ['23132290', 'Lock-in Silicone Nose Pads', '15 × 7.5 × 3.5 mm', 1.13, '1220'],
+    ['23132020', 'Push-in Silicone Nose Pads', '13 × 7.2 × 2.0 mm', 0.57, '1212'],
+    ['23132030', 'Push-in Silicone Nose Pads', '15 × 8.4 × 2.0 mm', 0.57, '1213'],
+    ['23132120', 'Push-in Silicone Nose Pads', '13 × 6.95 × 2.0 mm', 0.57, '1214']
+  ];
+  const nosePads = {
+    id: 'nose-pads',
+    en: 'Nose Pads',
+    desc: 'Official 3T lock-in and push-in silicone nose pads returned by the requested 3T store searches.',
+    items: nosePadData.map(([model, nameEn, dimensions, basePriceRmb, goodsId]) => {
+      const priceUsd = basePriceRmb === 1.13 ? 0.23 : 0.11;
+      return {
+        category: 'nose-pads',
+        model,
+        nameEn,
+        description: `${nameEn} model ${model}, supplied as a matched pair for professional eyewear fitting and repair.`,
+        image: `assets/3tmall/${model}.jpg`,
+        images: [`assets/3tmall/${model}.jpg`],
+        source: `https://www.3tmall.com/goods-${goodsId}.html`,
+        basePriceRmb,
+        priceSource: '3T official store listing',
+        priceUsd,
+        priceDisplay: `USD ${priceUsd.toFixed(2)} / pair`,
+        orderUnitQty: 1,
+        orderUnitLabel: 'pair',
+        packageSize: dimensions,
+        packingQuantity: '1 matched pair',
+        features: [dimensions, nameEn.replace(' Nose Pads', ' mounting style'), 'Soft clear silicone construction']
+      };
+    })
+  };
+
+  const clothOptions = (prefix, priceUsd, options) => options.map(([code, label]) => ({
+    model: `${prefix}-${code}`,
+    label: `${label} · 100 pcs / pack`,
+    priceUsd
+  }));
+  const lensCloths = {
+    id: 'lens-cloths',
+    en: 'Lens Cleaning Cloths',
+    desc: 'Official 3T solid-color lens cloths in every color and size currently listed on the product pages.',
+    items: [
+      {
+        category: 'lens-cloths',
+        model: '3T-1456',
+        nameEn: 'Solid-color Single-sided Lens Cloth',
+        description: 'Single-sided solid-color lens cleaning cloths for optical shops, supplied in 100-piece packs.',
+        image: 'assets/3tmall/cloth-single-01.jpg',
+        images: Array.from({ length: 10 }, (_, index) => `assets/3tmall/cloth-single-${String(index + 1).padStart(2, '0')}.jpg`),
+        source: 'https://www.3tmall.com/goods-1456.html',
+        basePriceRmb: 190.97,
+        priceSource: '3T official store listing',
+        priceUsd: 38.35,
+        priceDisplay: 'USD 38.35 / 100 pcs',
+        orderUnitQty: 100,
+        orderUnitLabel: '100 pcs',
+        packingQuantity: '100 pcs / pack',
+        optionLabel: 'Color / size',
+        options: clothOptions('3T-1456', 38.35, [
+          ['CYAN-150', 'Cyan Blue · 150 × 150 mm'],
+          ['GRAY-150', 'Gray · 150 × 150 mm'],
+          ['BLUE-150', 'Blue · 150 × 150 mm'],
+          ['PINK-150', 'Pink · 150 × 150 mm'],
+          ['PURPLE-150', 'Purple · 150 × 150 mm'],
+          ['CYAN-180', 'Cyan Blue · 180 × 150 mm'],
+          ['BEIGE-180', 'Beige · 180 × 150 mm'],
+          ['BLUE-180', 'Blue · 180 × 150 mm'],
+          ['BLACK-180', 'Black · 180 × 150 mm'],
+          ['PINK-180', 'Pink · 180 × 150 mm']
+        ]),
+        features: ['Single-sided lens cloth', 'All officially listed colors and sizes selectable', '100 pieces per order unit']
+      },
+      {
+        category: 'lens-cloths',
+        model: '3T-1458',
+        nameEn: 'Solid-color Double-sided Velvet Lens Cloth',
+        description: 'Double-sided velvet solid-color lens cleaning cloths for optical shops, supplied in 100-piece packs.',
+        image: 'assets/3tmall/cloth-double-01.jpg',
+        images: Array.from({ length: 10 }, (_, index) => `assets/3tmall/cloth-double-${String(index + 1).padStart(2, '0')}.jpg`),
+        source: 'https://www.3tmall.com/goods-1458.html',
+        basePriceRmb: 237.30,
+        priceSource: '3T official store listing',
+        priceUsd: 47.65,
+        priceDisplay: 'USD 47.65 / 100 pcs',
+        orderUnitQty: 100,
+        orderUnitLabel: '100 pcs',
+        packingQuantity: '100 pcs / pack',
+        optionLabel: 'Color / size',
+        options: clothOptions('3T-1458', 47.65, [
+          ['CYAN-150', 'Cyan Blue · 150 × 150 mm'],
+          ['GREEN-150', 'Green · 150 × 150 mm'],
+          ['BEIGE-150', 'Beige · 150 × 150 mm'],
+          ['YELLOW-150', 'Yellow · 150 × 150 mm'],
+          ['PINK-150', 'Pink · 150 × 150 mm'],
+          ['CYAN-180', 'Cyan Blue · 180 × 150 mm'],
+          ['GREEN-180', 'Green · 180 × 150 mm'],
+          ['BEIGE-180', 'Beige · 180 × 150 mm'],
+          ['LIGHT-BROWN-180', 'Light Brown · 180 × 150 mm'],
+          ['PINK-180', 'Pink · 180 × 150 mm']
+        ]),
+        features: ['Double-sided velvet lens cloth', 'All officially listed colors and sizes selectable', '100 pieces per order unit']
+      }
+    ]
+  };
+
+  catalog.splice(toolSetIndex, 0, jobTrays, nosePads, lensCloths);
+})();
