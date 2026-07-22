@@ -38,6 +38,23 @@ function usd(value) {
   return Number(value).toFixed(Number(value) >= 100 ? 0 : 2);
 }
 
+function optionColor(option) {
+  const name = String(option?.label || '').split('·')[0].trim().toLowerCase();
+  return ({
+    'cyan blue': '#63cadb', gray: '#939aa2', blue: '#245493', pink: '#e979a0',
+    purple: '#a94daf', beige: '#e5cf98', black: '#151515', green: '#79c8b8',
+    yellow: '#e5d854', 'light brown': '#c59247'
+  })[name] || '#d7d7d2';
+}
+
+function optionButtonLabel(option) {
+  return String(option?.label || '').replace(/\s*·\s*100 pcs\s*\/\s*pack\s*$/i, '').trim();
+}
+
+function optionButtons(product, dataAttribute) {
+  return `<div class="option-cart-buttons">${product.options.map((option, index) => `<button class="option-cart-button" type="button" ${dataAttribute}="${index}" style="--option-color:${optionColor(option)}" aria-label="Add ${esc(product.model)}, ${esc(optionButtonLabel(option))} to cart"><i aria-hidden="true"></i><span><b>C${String(index + 1).padStart(2, '0')}</b>${esc(optionButtonLabel(option))}</span><em data-option-quantity hidden></em></button>`).join('')}</div>`;
+}
+
 function animateProductToCart(trigger) {
   const sourceImage = trigger?.closest('.product-card')?.querySelector('.product-card-image img') || modal.querySelector('#detailMainImage');
   if (!sourceImage) return;
@@ -94,7 +111,10 @@ function animateProductToCart(trigger) {
 }
 
 function productCard(product) {
-  const optionPicker = product.options ? `<label class="card-option-label">${esc(product.optionLabel || 'Configuration')}<select data-card-option>${product.options.map((option, index) => `<option value="${index}">${esc(option.model)} - ${esc(option.label)}</option>`).join('')}</select></label>` : '';
+  const directOptionButtons = product.options && product.optionDisplay === 'buttons';
+  const optionPicker = product.options ? (directOptionButtons
+    ? `<p class="option-click-note">Click a color / size to add it to your cart.</p>${optionButtons(product, 'data-card-option-add')}`
+    : `<label class="card-option-label">${esc(product.optionLabel || 'Configuration')}<select data-card-option>${product.options.map((option, index) => `<option value="${index}">${esc(option.model)} - ${esc(option.label)}</option>`).join('')}</select></label>`) : '';
   const pdPicker = product.pdMode === 'select' ? `<label class="card-option-label">PD option<select data-card-pd>${pdChoices(product).map((choice, index) => `<option value="${index}">${esc(choice.label)} - USD ${usd(choice.priceUsd)}</option>`).join('')}</select></label>` : '';
   return `<article class="product-card" data-model="${esc(product.model)}" tabindex="0" role="button" aria-label="View ${esc(product.model)} details">
     <div class="product-card-image">${isPopular(product) ? '<span class="popular-badge" aria-label="Recommended model"><b>★</b><em>TOP<br>CHOICE</em></span>' : ''}<img src="${esc(product.image)}" alt="${esc(product.model)} ${esc(product.nameEn)}"></div>
@@ -102,7 +122,7 @@ function productCard(product) {
     ${product.pdRange ? `<span class="option-badge">PD ${esc(product.pdRange)} · Select when ordering</span>` : ''}
     ${product.options ? `<span class="option-badge">${product.options.length} configurations available</span>` : ''}
     ${product.priceDisplay ? `<span class="card-price">${esc(product.priceDisplay)} <small>FOB China</small></span>` : '<span class="quote-price">Price on quotation</span>'}
-    <div class="card-buy">${optionPicker}${pdPicker}<div class="card-add-row"><button type="button" class="card-add-button" data-card-add>Add to cart</button><label class="quantity-stepper" data-card-quantity-wrap hidden><input type="number" min="1" max="999" step="1" value="1" inputmode="numeric" data-card-quantity aria-label="Quantity"></label></div></div>
+    <div class="card-buy">${optionPicker}${pdPicker}${directOptionButtons ? '' : '<div class="card-add-row"><button type="button" class="card-add-button" data-card-add>Add to cart</button><label class="quantity-stepper" data-card-quantity-wrap hidden><input type="number" min="1" max="999" step="1" value="1" inputmode="numeric" data-card-quantity aria-label="Quantity"></label></div>'}</div>
   </article>`;
 }
 
@@ -154,6 +174,17 @@ function bindCards() {
       window.dispatchEvent(new CustomEvent('lzn:add-cart', { detail }));
       if (quantityInput) quantityInput.value = detail.resultQuantity || quantity;
     };
+    card.querySelectorAll('[data-card-option-add]').forEach(button => button.addEventListener('click', () => {
+      const product = all.find(item => item.model === card.dataset.model);
+      const option = product?.options?.[Number(button.dataset.cardOptionAdd)];
+      if (!product || !option) return;
+      const detail = { model: product.model, option, quantity: 1, setQuantity: false };
+      animateProductToCart(button);
+      window.dispatchEvent(new CustomEvent('lzn:add-cart', { detail }));
+      const badge = button.querySelector('[data-option-quantity]');
+      if (badge) { badge.textContent = detail.resultQuantity || 1; badge.hidden = false; }
+      button.classList.add('selected');
+    }));
     card.querySelector('[data-card-option]')?.addEventListener('change', () => {
       quantityWrap?.setAttribute('hidden', '');
       if (quantityInput) quantityInput.value = 1;
@@ -188,16 +219,31 @@ function openProduct(model) {
   const product = all.find(item => item.model === model);
   if (!product) return;
   const images = product.images?.length ? product.images : [product.image];
-  const optionSelect = product.options ? `<label class="product-option">${esc(product.optionLabel || 'Configuration')}<select id="productConfiguration">${product.options.map((option, index) => `<option value="${index}">${esc(option.model)} — ${esc(option.label)} — USD ${Number(option.priceUsd).toFixed(option.priceUsd >= 100 ? 0 : 2)}</option>`).join('')}</select></label>` : '';
+  const directOptionButtons = product.options && product.optionDisplay === 'buttons';
+  const optionSelect = product.options ? (directOptionButtons
+    ? `<div class="product-option direct-option-picker"><strong>${esc(product.optionLabel || 'Configuration')}</strong><p class="option-click-note">Click a color / size to add it to your cart.</p>${optionButtons(product, 'data-detail-option-add')}</div>`
+    : `<label class="product-option">${esc(product.optionLabel || 'Configuration')}<select id="productConfiguration">${product.options.map((option, index) => `<option value="${index}">${esc(option.model)} — ${esc(option.label)} — USD ${Number(option.priceUsd).toFixed(option.priceUsd >= 100 ? 0 : 2)}</option>`).join('')}</select></label>`) : '';
   const pdSelect = product.pdMode === 'select' ? `<label class="product-option">PD option<select id="pdOption">${pdChoices(product).map((choice, index) => `<option value="${index}">${esc(choice.label)} - USD ${usd(choice.priceUsd)}</option>`).join('')}</select></label>` : '';
   const features = product.features?.length ? `<div class="feature-list"><h4>Product Features</h4><ul>${product.features.map(item => `<li>${esc(item)}</li>`).join('')}</ul></div>` : '';
   modalBody.innerHTML = `<div class="detail-media"><div class="detail-image"><img id="detailMainImage" src="${esc(images[0])}" alt="${esc(product.model)}"></div>${images.length > 1 ? `<div class="detail-thumbs">${images.map((src, index) => `<button class="${index === 0 ? 'active' : ''}" data-gallery-src="${esc(src)}"><img src="${esc(src)}" alt="${esc(product.model)} view ${index + 1}"></button>`).join('')}</div>` : ''}</div>
     <div class="detail-copy"><p class="eyebrow">${esc(product.categoryEn)}</p><h2 id="detailModel">${esc(product.model)}</h2><h3>${esc(product.nameEn)}</h3>${product.priceDisplay ? `<div class="detail-price"><strong id="detailPrice">${esc(product.priceDisplay)}</strong><span>FOB China</span></div>` : ''}<p class="description">${esc(productDescription(product))}</p>${features}
     <div class="detail-facts">${fact('Category', product.categoryEn)}${fact('Model / Code', product.model)}${fact('PD Range', product.pdRange ? `${product.pdRange} · Fixed selection` : '')}${fact('Package size', product.packageSize)}${fact('Gross weight', product.grossWeight)}${fact('Packing quantity', product.packingQuantity)}${fact('Carton size', product.cartonSize)}${fact('Carton gross weight', product.cartonGrossWeight)}${fact('Trade terms', 'FOB China')}</div>
-    ${optionSelect}${pdSelect}<p class="price-note">Freight, destination duties and local taxes are not included.</p><div class="detail-add-row"><button class="button add-cart" data-add-cart="${esc(product.model)}">Add to cart</button><label class="quantity-stepper" data-detail-quantity-wrap hidden><input type="number" min="1" max="999" step="1" value="1" inputmode="numeric" data-detail-quantity aria-label="Quantity"></label></div></div>`;
+    ${optionSelect}${pdSelect}<p class="price-note">Freight, destination duties and local taxes are not included.</p>${directOptionButtons ? '' : `<div class="detail-add-row"><button class="button add-cart" data-add-cart="${esc(product.model)}">Add to cart</button><label class="quantity-stepper" data-detail-quantity-wrap hidden><input type="number" min="1" max="999" step="1" value="1" inputmode="numeric" data-detail-quantity aria-label="Quantity"></label></div>`}</div>`;
   modal.querySelectorAll('[data-gallery-src]').forEach(button => button.addEventListener('click', () => {
     document.querySelector('#detailMainImage').src = button.dataset.gallerySrc;
     modal.querySelectorAll('[data-gallery-src]').forEach(item => item.classList.toggle('active', item === button));
+  }));
+  modal.querySelectorAll('[data-detail-option-add]').forEach(button => button.addEventListener('click', () => {
+    const option = product.options?.[Number(button.dataset.detailOptionAdd)];
+    if (!option) return;
+    const detail = { model: product.model, option, quantity: 1, setQuantity: false };
+    document.querySelector('#detailModel').textContent = option.model;
+    document.querySelector('#detailPrice').textContent = `USD ${Number(option.priceUsd).toFixed(option.priceUsd >= 100 ? 0 : 2)}${product.orderUnitLabel ? ` / ${product.orderUnitLabel}` : ''}`;
+    animateProductToCart(button);
+    window.dispatchEvent(new CustomEvent('lzn:add-cart', { detail }));
+    const badge = button.querySelector('[data-option-quantity]');
+    if (badge) { badge.textContent = detail.resultQuantity || 1; badge.hidden = false; }
+    button.classList.add('selected');
   }));
   document.querySelector('#productConfiguration')?.addEventListener('change', event => {
     const option = product.options[Number(event.target.value)];
