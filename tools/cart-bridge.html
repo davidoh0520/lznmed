@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset="utf-8"><title>LZN Cart Bridge</title></head><body>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js?v=20260713-10"></script>
-<script src="cloud-cart.js?v=20260722-2"></script>
+<script src="cloud-cart.js?v=20260722-3"></script>
 <script>
 (() => {
   const key = 'lzn-cart';
@@ -69,7 +69,10 @@
       for (const incoming of event.data.items || []) {
         repairImage(incoming);
         const existing = cart.find(item => identity(item) === identity(incoming));
-        if (existing) existing.quantity = Number(existing.quantity || 1) + Number(incoming.quantity || 1);
+        if (existing) {
+          const quantity = Number(existing.quantity || 1) + Number(incoming.quantity || 1);
+          Object.assign(existing, incoming, { quantity });
+        }
         else cart.push(incoming);
       }
       localStorage.setItem(key, JSON.stringify(cart));

@@ -159,6 +159,12 @@ footer img{height:30px;}
 .equipment-sales-card .digital-price{font-size:27px}
 .equipment-sales-card .free-price{color:#08745c!important}
 .equipment-sales-card .device-cart-add{grid-column:1;grid-row:auto;align-self:auto;min-height:48px;margin-top:5px}
+.catalog-sales-card{align-self:start;border-radius:28px}
+.catalog-sales-card>.product-card{width:100%;min-height:350px;padding-bottom:64px;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none}
+.product-row.catalog .catalog-sales-card>.product-card:hover{transform:none;box-shadow:none;border-color:var(--line)}
+.catalog-sales-card .digital-offer{grid-template-columns:1fr;padding:18px 20px 22px}
+.catalog-sales-card .digital-price{font-size:24px}
+.catalog-sales-card .device-cart-add{grid-column:1;grid-row:auto;align-self:auto;min-height:46px;margin-top:4px}
 @media(max-width:900px){.digital-sales-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.digital-sales-card>.equipment-card{min-height:0;padding:24px}.digital-offer{grid-template-columns:1fr;padding:22px}.device-cart-add{grid-column:1;grid-row:auto;min-height:48px;margin-top:8px}.digital-set-image img{height:130px}}
 

@@ -5,7 +5,7 @@
   const store = section === 'frames' ? 'Frames' : section === 'lenses' ? 'Lens' : section === 'devices' ? 'Devices' : 'Main';
   const localKey = store === 'Lens' ? 'lznLensCart' : store === 'Frames' ? 'lzn-cart' : null;
   const iframe = document.createElement('iframe');
-  iframe.src = '/tools/cart-bridge.html?v=20260722-3';
+  iframe.src = '/tools/cart-bridge.html?v=20260722-4';
   iframe.title = 'LZN shared cart';
   iframe.hidden = true;
   document.body.appendChild(iframe);
