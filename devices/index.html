@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="assets/lzn-logo.png" />
   <style>html{background:#f6f6f3}html.lzn-booting body{opacity:0;visibility:hidden;pointer-events:none}</style>
   <noscript><style>html.lzn-booting body{opacity:1;visibility:visible;pointer-events:auto}</style></noscript>
   <script>window.addEventListener('DOMContentLoaded',()=>requestAnimationFrame(()=>document.documentElement.classList.remove('lzn-booting')),{once:true});</script>
@@ -303,7 +304,7 @@
       detailCopy.hidden = !button.dataset.summary;
     }
 
-    document.querySelectorAll('[data-sale-price]').forEach(card => {
+    function addSalesOffer(card, priceOnRequest = false) {
       const wrapper = document.createElement('article');
       const isCatalogCard = card.classList.contains('product-card');
       wrapper.className = `digital-sales-card ${isCatalogCard ? 'catalog-sales-card' : 'equipment-sales-card'}`;
@@ -316,16 +317,27 @@
       const productType = card.querySelector('p')?.textContent || 'Professional optical equipment';
       const offer = document.createElement('div');
       offer.className = 'digital-offer';
-      offer.innerHTML = `<p class="digital-price">USD ${Number(card.dataset.salePrice).toLocaleString('en-US')} <small>/ ${accountEscape(unit)}</small></p><p>${accountEscape(productType)}</p><p>Minimum order: 1 ${accountEscape(unit)}</p><button class="device-cart-add" type="button">Add to cart</button>`;
+      const priceLabel = priceOnRequest
+        ? '<p class="digital-price">Price on request</p>'
+        : `<p class="digital-price">USD ${Number(card.dataset.salePrice).toLocaleString('en-US')} <small>/ ${accountEscape(unit)}</small></p>`;
+      offer.innerHTML = `${priceLabel}<p>${accountEscape(productType)}</p><p>Minimum order: 1 ${accountEscape(unit)}</p><button class="device-cart-add" type="button">Add to cart</button>`;
       const cartButton = offer.querySelector('.device-cart-add');
       Object.assign(cartButton.dataset, {
         model,
         name,
-        price: card.dataset.salePrice,
+        price: priceOnRequest ? '' : card.dataset.salePrice,
+        priceOnRequest: String(priceOnRequest),
         image,
-        option: `1 ${unit}`
+        option: priceOnRequest ? `1 ${unit} · Price on request` : `1 ${unit}`
       });
       wrapper.appendChild(offer);
+    }
+
+    document.querySelectorAll('[data-sale-price]').forEach(card => addSalesOffer(card));
+    document.querySelectorAll('.product-row.catalog > .product-card:not([data-sale-price])').forEach(card => {
+      card.dataset.saleModel = card.dataset.title || card.querySelector('h3')?.textContent || 'Product';
+      card.dataset.saleUnit = 'unit';
+      addSalesOffer(card, true);
     });
 
     document.querySelectorAll('.show-brochure, .show-details').forEach(button => {
@@ -361,7 +373,8 @@
           model: button.dataset.model,
           nameEn: `[Devices] ${button.dataset.name}`,
           image: button.dataset.image,
-          priceUsd: Number(button.dataset.price),
+          priceUsd: button.dataset.priceOnRequest === 'true' ? null : Number(button.dataset.price),
+          priceOnRequest: button.dataset.priceOnRequest === 'true',
           quantity: 1,
           optionLabel: button.dataset.option,
           sourceStore: 'Devices'
@@ -374,8 +387,8 @@
     });
   </script>
 
-<script src="/tools/shared-cart.js?v=20260722-5"></script>
-  <script src="/tools/portfolio-shell.js?v=20260720-28" defer></script>
+<script src="/tools/shared-cart.js?v=20260723-7"></script>
+  <script src="/tools/portfolio-shell.js?v=20260723-29" defer></script>
 </body>
 </html>
 

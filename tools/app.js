@@ -9,7 +9,8 @@ const popularModels = new Set([
   'MC-S', 'LY-3AD', 'LY-3B-2', 'LY-T-27AT', 'LY-T-27C', 'LY-12AT',
   'LY-1800ADT', 'LY-400A', 'LY-988AT', 'LY-2GH', 'LY-918S', 'LY-6AST',
   'LY-6BT', 'LT828', 'PR888', 'LY-15B', 'DSA-50', 'GB-120T', 'JS-266',
-  'TF-PS4', 'TF-P', 'LY-8N'
+  'TF-PS4', 'TF-P', 'LY-8N',
+  'ST-B07-A', 'ST-005A', 'ST-A19C', 'ST-A21F'
 ]);
 
 function isPopular(product) {

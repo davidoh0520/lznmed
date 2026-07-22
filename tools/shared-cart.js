@@ -3,9 +3,9 @@
   const host = location.hostname.toLowerCase();
   const section = location.pathname.split('/').filter(Boolean)[0] || '';
   const store = section === 'frames' ? 'Frames' : section === 'lenses' ? 'Lens' : section === 'devices' ? 'Devices' : 'Main';
-  const localKey = store === 'Lens' ? 'lznLensCart' : store === 'Frames' ? 'lzn-cart' : null;
+  const localKey = store === 'Lens' ? 'lznLensCart' : store === 'Frames' ? 'lznFramesCart' : null;
   const iframe = document.createElement('iframe');
-  iframe.src = '/tools/cart-bridge.html?v=20260722-4';
+  iframe.src = '/tools/cart-bridge.html?v=20260723-5';
   iframe.title = 'LZN shared cart';
   iframe.hidden = true;
   document.body.appendChild(iframe);
@@ -60,19 +60,24 @@
     if (store === 'Lens') return items.map(item => {
       const product = typeof products !== 'undefined' ? products.find(candidate => candidate.name === item.name) : null;
       const image = item.image || (product?.file ? `assets/thumbs/${product.file.replace(/\.png$/i, '.webp')}` : '');
-      return { model: item.name, nameEn: `[Lens] ${item.name}`, image: absoluteImage(image, 'Lens'), priceUsd: Number(item.price || 0), quantity: Number(item.qty || 1), optionLabel: lensDetails(item), sourceStore: 'Lens' };
+      const priceOnRequest = item.price == null || item.price === '' || !Number.isFinite(Number(item.price));
+      return { model: item.name, nameEn: `[Lens] ${item.name}`, image: absoluteImage(image, 'Lens'), priceUsd: priceOnRequest ? null : Number(item.price), priceOnRequest, quantity: Number(item.qty || 1), optionLabel: lensDetails(item), sourceStore: 'Lens' };
     });
-    if (store === 'Frames') return items.map(item => ({ ...item, image: absoluteImage(item.image, 'Frames'), nameEn: String(item.nameEn || item.model || '').startsWith('[Frames]') ? item.nameEn : `[Frames] ${item.nameEn || item.model}`, quantity: Number(item.quantity || 1), sourceStore: 'Frames' }));
+    if (store === 'Frames') return items.map(item => ({ ...item, image: absoluteImage(item.image, 'Frames'), nameEn: String(item.nameEn || item.model || '').startsWith('[Frames]') ? item.nameEn : `[Frames] ${item.nameEn || item.model}`, priceOnRequest: item.priceOnRequest === true || item.priceUsd == null, quantity: Number(item.quantity || 1), sourceStore: 'Frames' }));
     return [];
   }
   function post(type, payload) { iframe.contentWindow?.postMessage({ channel: 'lzn-shared-cart', type, ...payload }, location.origin); }
   function addItems(items) {
-    const safeItems = (Array.isArray(items) ? items : []).filter(item => item?.model).map(item => ({
-      ...item,
-      image: absoluteImage(item.image, item.sourceStore || store),
-      priceUsd: Number(item.priceUsd || 0),
-      quantity: Math.max(1, Number(item.quantity || 1))
-    }));
+    const safeItems = (Array.isArray(items) ? items : []).filter(item => item?.model).map(item => {
+      const priceOnRequest = item.priceOnRequest === true || item.priceUsd == null || !Number.isFinite(Number(item.priceUsd));
+      return {
+        ...item,
+        image: absoluteImage(item.image, item.sourceStore || store),
+        priceUsd: priceOnRequest ? null : Number(item.priceUsd),
+        priceOnRequest,
+        quantity: Math.max(1, Number(item.quantity || 1))
+      };
+    });
     if (!safeItems.length) return;
     if (!bridgeReady) { pendingItems.push(...safeItems); return; }
     post('ADD_ITEMS', { items: safeItems });
