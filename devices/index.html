@@ -15,7 +15,7 @@
   <meta property="og:url" content="/devices/" />
   <meta property="og:image" content="/devices/assets/hero-eyewear.webp" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="style.css?v=20260722-2" />
+  <link rel="stylesheet" href="style.css?v=20260722-3" />
   <link rel="stylesheet" href="/tools/unified-theme.css?v=20260717-1">
   <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260720-22">
 </head>
@@ -80,6 +80,14 @@
         <article class="digital-sales-card equipment-sales-card">
           <button class="equipment-card show-brochure" data-title="TOOLTIP Patternless Edger" data-brochures="assets/tooltip_page_1.webp,assets/tooltip_page_2.webp,assets/tooltip_page_3.webp,assets/tooltip_page_4.webp,assets/tooltip_page_5.webp,assets/tooltip_page_6.webp"><img loading="lazy" decoding="async" src="assets/tooltip.webp" alt="TOOLTIP Patternless Edger"><div><h3>TOOLTIP</h3><p>Patternless Edger</p><span>Edger &middot; Tracer &middot; Blocker system</span></div></button>
           <div class="digital-offer"><p class="digital-price">USD 13,000 <small>/ device</small></p><p>Complete patternless edging system</p><p>Minimum order: 1 device</p><button class="device-cart-add" type="button" data-model="TOOLTIP" data-name="TOOLTIP Patternless Edger" data-price="13000" data-image="/devices/assets/tooltip.webp" data-option="1 device · Edger + tracer + blocker system">Add to cart</button></div>
+        </article>
+        <article class="digital-sales-card equipment-sales-card">
+          <button class="equipment-card show-brochure" data-title="iiOMA" data-brochure="assets/iioma-cover.webp" data-download="assets/iioma-v02.00.03-user-manual-en.pdf"><img loading="lazy" decoding="async" src="assets/iioma-cover.webp" alt="iiOMA OMA job editor and communication software"><div><h3>iiOMA</h3><p>OMA Job Editor &amp; Communication Software</p><span>Connects tracer, edger and server workflows</span></div></button>
+          <div class="digital-offer"><p class="digital-price free-price">Free of charge</p><p>Web-based iiOMA software licence</p><p>Minimum order: 1 licence</p><button class="device-cart-add" type="button" data-model="IIOMA" data-name="iiOMA Software" data-price="0" data-image="/devices/assets/iioma-cover.webp" data-option="Software licence · Free of charge">Add to cart</button></div>
+        </article>
+        <article class="digital-sales-card equipment-sales-card">
+          <button class="equipment-card show-brochure" data-title="INT-200 Tracer + iiOMA" data-brochures="assets/int200-iioma-main.webp,assets/int200-tracer.webp,assets/iioma-cover.webp" data-download="assets/iioma-v02.00.03-user-manual-en.pdf"><img loading="lazy" decoding="async" src="assets/int200-iioma-main.webp" alt="INT-200 standalone tracer with iiOMA software"><div><h3>INT-200 + iiOMA</h3><p>Standalone Tracer &amp; Software</p><span>Frame tracing, job editing and data transfer</span></div></button>
+          <div class="digital-offer"><p class="digital-price">USD 3,000 <small>/ set</small></p><p>INT-200 Tracer with iiOMA free of charge</p><p>Minimum order: 1 set</p><button class="device-cart-add" type="button" data-model="INT-200-IIOMA" data-name="INT-200 Tracer + iiOMA" data-price="3000" data-image="/devices/assets/int200-iioma-main.webp" data-option="1 set · INT-200 Tracer + iiOMA software">Add to cart</button></div>
         </article>
         <button class="equipment-card show-brochure" data-title="HV-600" data-brochure="assets/hv600_brochure.webp"><img loading="lazy" decoding="async" src="assets/hv600_photo.webp" alt="HV-600"><div><h3>HV-600</h3><p>Auto Lensmeter</p><span>Touchscreen &middot; Printer &middot; UV / PD / PH</span></div></button>
         <article class="equipment-card static-card"><img loading="lazy" decoding="async" src="assets/axl800.webp" alt="AXL-800"><div><h3>AXL-800</h3><p>Axial Length</p><span>Biometry measurement equipment</span></div></article>
@@ -254,14 +262,20 @@
     let currentPages = [];
     let currentIndex = 0;
     let currentTitle = 'AST-1000';
+    let currentDownload = '';
 
     function updateViewer() {
       const src = currentPages[currentIndex];
+      const downloadSrc = currentDownload || src;
       viewerTitle.textContent = currentTitle + ' Brochure';
       viewerImage.src = src;
-      viewerDownload.href = src;
-      const extension = src.split('.').pop().split('?')[0] || 'webp';
-      viewerDownload.setAttribute('download', currentTitle.replaceAll(' ', '-').replaceAll('/', '-') + '-page-' + (currentIndex + 1) + '.' + extension);
+      viewerDownload.href = downloadSrc;
+      viewerDownload.textContent = currentDownload ? 'User manual' : 'Download';
+      const extension = downloadSrc.split('.').pop().split('?')[0] || 'webp';
+      const downloadName = currentDownload
+        ? currentTitle.replaceAll(' ', '-').replaceAll('/', '-') + '-user-manual.' + extension
+        : currentTitle.replaceAll(' ', '-').replaceAll('/', '-') + '-page-' + (currentIndex + 1) + '.' + extension;
+      viewerDownload.setAttribute('download', downloadName);
       viewerPage.textContent = currentPages.length > 1 ? 'Page ' + (currentIndex + 1) + ' of ' + currentPages.length : '';
       prevPage.style.display = currentPages.length > 1 ? 'inline-block' : 'none';
       nextPage.style.display = currentPages.length > 1 ? 'inline-block' : 'none';
@@ -293,6 +307,7 @@
       button.addEventListener('click', () => {
         currentTitle = button.dataset.title || 'Product';
         currentPages = button.dataset.brochures ? button.dataset.brochures.split(',') : [button.dataset.brochure];
+        currentDownload = button.dataset.download || '';
         currentIndex = 0;
         if (currentPages[0]) {
           populateTextDetails(button);
