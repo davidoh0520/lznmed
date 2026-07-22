@@ -13,6 +13,8 @@ let cart = JSON.parse(localStorage.getItem('lzn-cart') || '[]');
 const primaryCartHosts = new Set(['lznmed.com', 'www.lznmed.com']);
 const unifiedCartPaths = { Frames: '/frames/', Lens: '/lenses/', Devices: '/devices/', Tools: '/tools/', Main: '/tools/' };
 const legacyCartOrigins = { Frames: 'https://frames.lznmed.com/', Lens: 'https://lens.lznmed.com/', Devices: 'https://devices.lznmed.com/', Tools: 'https://tools.lznmed.com/', Main: 'https://tools.lznmed.com/' };
+const legacyCartHostPaths = { 'frames.lznmed.com': '/frames/', 'lens.lznmed.com': '/lenses/', 'devices.lznmed.com': '/devices/', 'tools.lznmed.com': '/tools/' };
+const unifiedCartContext = primaryCartHosts.has(location.hostname) || Object.values(unifiedCartPaths).some(path => location.pathname.startsWith(path));
 const lensCartImages = {
   'CR39 LENS':'cr39-lens.webp','1.56 ASP BLUE RAY':'blueray-156.webp','1.56 UV450 PHOTO BLUE RAY':'uv450-photo-156.webp','1.60 ASP BLUE RAY':'mr160-blueray.webp','1.60 ASP PHOTO BLUE RAY':'mr160-photo.webp','1.67 ASP BLUE RAY':'mr167-blueray.webp','1.67 ASP PHOTO BLUE RAY':'mr167-photo.webp','1.70 ASP BLUE RAY':'mr170-blueray.webp','1.70 ASP PHOTO BLUE RAY':'mr170-photo.webp','1.74 ASP BLUE RAY':'mr174-blueray.webp','1.74 ASP PHOTO BLUE RAY':'mr174-photo.webp','1.56 PROGRESSIVE BLUE RAY':'progressive-blueray-156.webp','1.56 PROGRESSIVE BLUE RAY PHOTO':'progressive-blueray-photo-156.webp','1.59 POLY PROGRESSIVE BLUE RAY':'poly-progressive.webp','1.59 POLY PROGRESSIVE BLUE RAY PHOTO':'poly-progressive-photo.webp','1.60 ASP BLUE RAY SEMI':'semi-mr160.webp','1.60 ASP PHOTO BLUE RAY SEMI':'semi-mr160-photo.webp','1.67 ASP BLUE RAY SEMI':'semi-mr167.webp','1.67 ASP PHOTO BLUE RAY SEMI':'semi-mr167-photo.webp'
 };
@@ -26,12 +28,13 @@ function repairCartImage(item) {
   const original = String(item.image);
   const sourceStore = item.sourceStore || 'Tools';
   try {
-    const base = primaryCartHosts.has(location.hostname)
+    const base = unifiedCartContext
       ? new URL(unifiedCartPaths[sourceStore] || '/tools/', location.origin)
       : new URL(legacyCartOrigins[sourceStore] || 'https://tools.lznmed.com/');
     let url = new URL(original, base);
-    if (primaryCartHosts.has(url.hostname) && url.pathname.startsWith('/assets/') && unifiedCartPaths[sourceStore]) {
-      url = new URL(`${unifiedCartPaths[sourceStore].replace(/\/$/, '')}${url.pathname}${url.search}${url.hash}`, 'https://www.lznmed.com');
+    if (unifiedCartContext && url.pathname.startsWith('/assets/')) {
+      const prefix = legacyCartHostPaths[url.hostname] || (url.hostname === location.hostname ? unifiedCartPaths[sourceStore] : null);
+      if (prefix) url = new URL(`${prefix.replace(/\/$/, '')}${url.pathname}${url.search}${url.hash}`, location.origin);
     }
     item.image = url.href;
     return item.image !== original || changed;
@@ -271,7 +274,7 @@ function cartView() {
   const total = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
   const hasQuote = cart.some(item => !item.priceUsd);
   show(`<div class="panel-head cart-heading"><div><p class="eyebrow">Shopping Cart</p><h2>${cart.length ? 'Your cart' : 'Your cart is empty'}</h2></div><span>${cart.reduce((sum, item) => sum + item.quantity, 0)} items</span></div>
-    <div class="cart-list">${cart.map((item, index) => `<div class="cart-row"><img src="${e(item.image)}" alt=""><div><strong>${e(item.model)}</strong><span>${e(item.nameEn)}</span>${item.optionLabel ? `<small class="chosen-option">${e(item.optionLabel)}</small>` : ''}${item.pd ? `<small class="chosen-option">Fixed PD: ${e(item.pd)} mm</small>` : ''}<small>${item.priceUsd ? `USD ${money(item.priceUsd)} each` : 'Price on quotation'}</small></div><label class="qty-label">Qty<input type="number" min="1" value="${item.quantity}" data-qty="${index}"></label><strong class="line-total">${item.priceUsd ? `USD ${money(item.priceUsd * item.quantity)}` : 'Quote'}</strong><button class="remove-item" data-remove="${index}" aria-label="Remove item">×</button></div>`).join('')}</div>
+    <div class="cart-list">${cart.map((item, index) => `<div class="cart-row"><img src="${e(item.image)}" alt=""><div><strong>${e(item.model)}</strong><span>${e(item.nameEn)}</span>${item.optionLabel ? `<small class="chosen-option">${e(item.optionLabel)}</small>` : ''}${item.pd ? `<small class="chosen-option">Fixed PD: ${e(item.pd)} mm</small>` : ''}<small>${item.priceUsd ? `USD ${money(item.priceUsd)} ${item.orderUnitLabel ? `per ${e(item.orderUnitLabel)}` : 'each'}` : 'Price on quotation'}</small></div><label class="qty-label">Qty<input type="number" min="1" value="${item.quantity}" data-qty="${index}"></label><strong class="line-total">${item.priceUsd ? `USD ${money(item.priceUsd * item.quantity)}` : 'Quote'}</strong><button class="remove-item" data-remove="${index}" aria-label="Remove item">×</button></div>`).join('')}</div>
     ${cart.length ? `<div class="cart-summary"><div><span>${hasQuote ? 'Priced items subtotal' : 'FOB China subtotal'}</span><strong>USD ${money(total)}</strong></div><p>Freight, destination duties and local taxes are not included. Availability and freight are confirmed before the Proforma Invoice is issued.</p></div><div class="cart-actions"><button class="button secondary-button" id="continueShopping">Continue shopping</button><button class="button" id="checkoutButton">Proceed to checkout</button></div><p class="form-status" id="quoteStatus"></p>` : `<button class="button" id="continueShopping">Continue shopping</button>`}`, true);
   body.querySelectorAll('.cart-row').forEach((row, index) => {
     if (!cart[index]?.pdLabel) return;
@@ -346,7 +349,7 @@ async function submitQuote(event) {
   const courierName = checkout.freight_method === 'quote' ? 'SF International freight quotation requested' : `Courier collect: ${checkout.courier === 'Other' ? checkout.other_courier : checkout.courier}`;
   const { data: order, error } = await client.from('orders').insert({ user_id: session.user.id, status: 'quote_requested', subtotal_usd: subtotal, payment_method: paymentCode(checkout.payment_method), destination_country: profile.country, buyer_type: 'company', company_name: profile.company_name, contact_name: profile.full_name, contact_email: session.user.email, contact_phone: profile.phone, shipping_address: shipping, postal_code: profile.postal_code, courier: courierName, courier_account_no: checkout.freight_method === 'collect' ? checkout.courier_account_no : null, customer_note: storeNote }).select('id').single();
   if (error) { status.textContent = error.message; button.disabled = false; return; }
-  const items = cart.map(item => ({ order_id: order.id, model: item.model, product_name: `${item.nameEn}${item.optionLabel ? ` (${item.optionLabel})` : ''}${item.pdLabel ? ` (${item.pdLabel})` : (item.pd ? ` (PD ${item.pd} mm)` : '')}`, unit_price_usd: item.priceUsd || 0, quantity: item.quantity }));
+  const items = cart.map(item => ({ order_id: order.id, model: item.model, product_name: `${item.nameEn}${item.optionLabel ? ` (${item.optionLabel})` : ''}${item.pdLabel ? ` (${item.pdLabel})` : (item.pd ? ` (PD ${item.pd} mm)` : '')}${item.orderUnitLabel ? ` (${item.orderUnitLabel} per order unit)` : ''}`, unit_price_usd: item.priceUsd || 0, quantity: item.quantity }));
   const { error: itemError } = await client.from('order_items').insert(items);
   if (itemError) { status.textContent = itemError.message; button.disabled = false; return; }
   cart = [];
@@ -372,9 +375,12 @@ window.addEventListener('lzn:add-cart', event => {
   const optionLabel = option?.label || null;
   const quantity = Math.min(999, Math.max(1, Math.floor(Number(event.detail.quantity) || 1)));
   let found = cart.find(item => item.model === model && item.pd === pd && item.pdLabel === pdLabel && item.optionLabel === optionLabel);
-  if (found) found.quantity = event.detail.setQuantity ? quantity : Math.min(999, found.quantity + quantity);
+  if (found) {
+    found.quantity = event.detail.setQuantity ? quantity : Math.min(999, found.quantity + quantity);
+    found.orderUnitLabel = product.orderUnitLabel || found.orderUnitLabel || null;
+  }
   else {
-    found = { model, nameEn: product.nameEn, image: product.image, priceUsd, pd, pdLabel, optionLabel, quantity };
+    found = { model, nameEn: product.nameEn, image: product.image, priceUsd, pd, pdLabel, optionLabel, orderUnitLabel: product.orderUnitLabel || null, quantity };
     cart.push(found);
   }
   event.detail.resultQuantity = found.quantity;
