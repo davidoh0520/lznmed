@@ -206,7 +206,7 @@
                                          "priceUsd":  10.71
                                      }
                                  ],
-                      "productTitle":  "登山护目镜防紫外线男女户外徒步防风墨镜爬山运动太阳镜骑行眼镜-tmall.com天猫",
+                      "productTitle":  "登山护目镜防紫外线男女户外徒步防风墨镜爬山运动太阳镜骑行眼镜",
                       "short":  "Essential optical frame with option-level images.",
                       "description":  "LZN prices include a 30% margin; availability and freight require confirmation.",
                       "material":  "To be confirmed",
