@@ -1,12 +1,18 @@
 (function () {
   const importedSeries = {
-    "code":  "TAOBAO-SOURCE",
-    "name":  "Taobao Supplier Selection",
-    "subtitle":  "Imported options with local product images and CNY catalog pricing",
+    "code":  "ESSENTIALS",
+    "name":  "Essentials",
+    "subtitle":  "Essential optical frames with option-level images and USD catalog pricing",
+    "mergeKeys":  [
+                      "essentials",
+                      "essential",
+                      "core",
+                      "classic"
+                  ],
     "items":  [
                   {
                       "model":  "TB-862311725634",
-                      "series":  "TAOBAO-SOURCE",
+                      "series":  "ESSENTIALS",
                       "title":  "assets/taobao/862311725634/001.webp",
                       "colors":  [
                                      {
@@ -65,8 +71,8 @@
                                      }
                                  ],
                       "productTitle":  "黑框大脸近视眼镜男款可配散光度数加宽大框防蓝光磨砂眼镜框镜片",
-                      "short":  "Taobao supplier catalog frame with option-level images.",
-                      "description":  "Imported supplier listing. LZN prices include a 30% margin; availability and freight require confirmation.",
+                      "short":  "Essential optical frame with option-level images.",
+                      "description":  "LZN prices include a 30% margin; availability and freight require confirmation.",
                       "material":  "To be confirmed",
                       "frameType":  "Supplier catalog",
                       "gender":  "Unisex",
@@ -81,14 +87,14 @@
                                 },
                       "sizeCode":  "",
                       "sourceUrl":  "https://detail.tmall.com/item.htm?id=862311725634",
-                      "supplier":  "Taobao",
+                      "supplier":  "China supplier",
                       "store":  "天天特卖工厂 4.8 88VIP好评率96% 平均15小时发货 平均6小时退款",
                       "priceUsd":  2.56,
                       "priceDisplay":  "USD 2.56"
                   },
                   {
                       "model":  "TB-932211252850",
-                      "series":  "TAOBAO-SOURCE",
+                      "series":  "ESSENTIALS",
                       "title":  "assets/taobao/932211252850/001.webp",
                       "colors":  [
                                      {
@@ -201,8 +207,8 @@
                                      }
                                  ],
                       "productTitle":  "登山护目镜防紫外线男女户外徒步防风墨镜爬山运动太阳镜骑行眼镜-tmall.com天猫",
-                      "short":  "Taobao supplier catalog frame with option-level images.",
-                      "description":  "Imported supplier listing. LZN prices include a 30% margin; availability and freight require confirmation.",
+                      "short":  "Essential optical frame with option-level images.",
+                      "description":  "LZN prices include a 30% margin; availability and freight require confirmation.",
                       "material":  "To be confirmed",
                       "frameType":  "Supplier catalog",
                       "gender":  "Unisex",
@@ -217,14 +223,14 @@
                                 },
                       "sizeCode":  "",
                       "sourceUrl":  "https://detail.tmall.com/item.htm?id=932211252850",
-                      "supplier":  "Taobao",
+                      "supplier":  "China supplier",
                       "store":  "playpanda旗舰店 4.9 88VIP好评率96% 平均10小时发货 客服满意度95%",
                       "priceUsd":  10.71,
                       "priceDisplay":  "USD 10.71 - 14.53"
                   },
                   {
                       "model":  "TB-38215450306",
-                      "series":  "TAOBAO-SOURCE",
+                      "series":  "ESSENTIALS",
                       "title":  "assets/taobao/38215450306/001.webp",
                       "colors":  [
                                      {
@@ -283,8 +289,8 @@
                                      }
                                  ],
                       "productTitle":  "宝岛目戏墨镜夹片偏光近视眼镜太阳镜开车钓鱼专用防紫外线可上翻",
-                      "short":  "Taobao supplier catalog frame with option-level images.",
-                      "description":  "Imported supplier listing. LZN prices include a 30% margin; availability and freight require confirmation.",
+                      "short":  "Essential optical frame with option-level images.",
+                      "description":  "LZN prices include a 30% margin; availability and freight require confirmation.",
                       "material":  "To be confirmed",
                       "frameType":  "Supplier catalog",
                       "gender":  "Unisex",
@@ -299,12 +305,31 @@
                                 },
                       "sizeCode":  "",
                       "sourceUrl":  "https://detail.tmall.com/item.htm?id=38215450306",
-                      "supplier":  "Taobao",
+                      "supplier":  "China supplier",
                       "store":  "宝岛眼镜官方旗舰店 4.9 88VIP好评率98% 平均9小时发货 客服满意度94%",
                       "priceUsd":  0.76,
                       "priceDisplay":  "USD 0.76"
                   }
               ]
 };
-  PRODUCT_SERIES.push(importedSeries);
+  const normalize = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+  const mergeKeys = [
+    importedSeries.code,
+    importedSeries.name,
+    ...(importedSeries.mergeKeys || [])
+  ].map(normalize);
+  const existingSeries = PRODUCT_SERIES.find(series =>
+    mergeKeys.includes(normalize(series.code)) ||
+    mergeKeys.includes(normalize(series.name))
+  );
+
+  delete importedSeries.mergeKeys;
+  if (existingSeries) {
+    importedSeries.items.forEach(item => {
+      item.series = existingSeries.code;
+    });
+    existingSeries.items.push(...importedSeries.items);
+  } else {
+    PRODUCT_SERIES.push(importedSeries);
+  }
 })();
