@@ -2822,24 +2822,54 @@ window.CATALOG_DATA = [
     ['31131710', 'Job Tray SH - Dark Green'],
     ['31131720', 'Job Tray SH - Black']
   ];
+  const jobTrayOption = ([model, nameEn]) => ({
+    model,
+    label: nameEn,
+    image: `assets/3tmall/${model}.jpg`,
+    priceUsd: 3.25
+  });
+  const jobTrayProduct = ([model, nameEn]) => ({
+    category: 'job-trays',
+    model,
+    nameEn,
+    description: `${nameEn} keeps each customer frame, lenses and work-order materials together during workshop processing.`,
+    image: `assets/3tmall/${model}.jpg`,
+    images: [`assets/3tmall/${model}.jpg`],
+    source: 'https://y.3tmall.com/Product/644152.html',
+    basePriceRmb: 17,
+    priceSource: 'LZN MEDICAL supplier price list: RMB 17.00 × 1.3 ÷ 6.8',
+    priceUsd: 3.25,
+    priceDisplay: 'USD 3.25 each',
+    features: ['Official 3T optical-laboratory job tray', 'Color-coded workflow organization', 'Reusable molded construction']
+  });
+  const groupedJobTrayProduct = (model, nameEn, rows) => ({
+    category: 'job-trays',
+    model,
+    nameEn,
+    description: 'Color-coded job trays keep each customer frame, lenses, and work-order materials together during workshop processing.',
+    image: `assets/3tmall/${rows[0][0]}.jpg`,
+    images: rows.map(([optionModel]) => `assets/3tmall/${optionModel}.jpg`),
+    source: 'https://y.3tmall.com/Product/644152.html',
+    basePriceRmb: 17,
+    priceSource: 'LZN MEDICAL supplier price list: RMB 17.00 × 1.3 ÷ 6.8',
+    priceUsd: 3.25,
+    priceDisplay: 'USD 3.25 each',
+    optionLabel: 'Choose a tray',
+    options: rows.map(jobTrayOption),
+    features: ['Multiple tray sizes and colors', 'Color-coded optical-laboratory workflow', 'Reusable molded construction']
+  });
+  const standardJobTrayRows = jobTrayData.filter(([model]) => Number(model) >= 31131010 && Number(model) <= 31131530);
+  const compactJobTrayRows = jobTrayData.filter(([model]) => Number(model) >= 31131610 && Number(model) <= 31131720);
+  const groupedJobTrayModels = new Set([...standardJobTrayRows, ...compactJobTrayRows].map(([model]) => model));
   const jobTrays = {
     id: 'job-trays',
     en: 'Job Trays',
     desc: 'Official 3T color-coded trays for organizing frames, lenses and work orders throughout the optical laboratory workflow.',
-    items: jobTrayData.map(([model, nameEn]) => ({
-      category: 'job-trays',
-      model,
-      nameEn,
-      description: `${nameEn} keeps each customer frame, lenses and work-order materials together during workshop processing.`,
-      image: `assets/3tmall/${model}.jpg`,
-      images: [`assets/3tmall/${model}.jpg`],
-      source: 'https://y.3tmall.com/Product/644152.html',
-      basePriceRmb: 17,
-      priceSource: 'LZN MEDICAL supplier price list: RMB 17.00 × 1.3 ÷ 6.8',
-      priceUsd: 3.25,
-      priceDisplay: 'USD 3.25 each',
-      features: ['Official 3T optical-laboratory job tray', 'Color-coded workflow organization', 'Reusable molded construction']
-    }))
+    items: [
+      groupedJobTrayProduct('31131010', '3T Optical Lab Job Tray Collection', standardJobTrayRows),
+      groupedJobTrayProduct('31131610', '3T Compact Job Tray S / SH Collection', compactJobTrayRows),
+      ...jobTrayData.filter(([model]) => !groupedJobTrayModels.has(model)).map(jobTrayProduct)
+    ]
   };
 
   const nosePadData = [
