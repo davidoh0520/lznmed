@@ -59,9 +59,8 @@
         padding: 0 32px 64px;
       }
       .lzn-commerce-page-header {
-        position: sticky;
-        top: 0;
-        z-index: 3;
+        position: relative;
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -323,6 +322,12 @@
       .lzn-commerce-bridge {
         display: none !important;
       }
+      .cart-flight-target {
+        z-index: 10020 !important;
+      }
+      .cart-flyer {
+        z-index: 10021 !important;
+      }
       .product-card select,
       .product-card .lzn-option-card-grid {
         display: none !important;
@@ -397,8 +402,9 @@
 
   function simplifyProductCards() {
     document.querySelectorAll('.product-card').forEach(card => {
-      const model = (card.textContent || '').match(/LZN-\d+/)?.[0];
-      if (!model) return;
+      const model = card.dataset.model;
+      const product = model ? findProduct(model) : null;
+      if (!product?.options?.length) return;
       card.querySelectorAll('select').forEach(select => {
         select.style.display = 'none';
       });
@@ -436,7 +442,7 @@
     detail.innerHTML = `
       <section class="lzn-commerce-gallery">
         <div class="lzn-commerce-main-media">
-          <img id="detailImage" alt="">
+          <img id="detailMainImage" alt="">
         </div>
         <div class="lzn-commerce-thumbnails"></div>
       </section>
@@ -469,7 +475,7 @@
       </section>
     `;
 
-    const mainImage = detail.querySelector('#detailImage');
+    const mainImage = detail.querySelector('#detailMainImage');
     const price = detail.querySelector('#detailPrice');
     const model = detail.querySelector('#detailModel');
     const selectedLabel = detail.querySelector('.lzn-commerce-selected-label');
@@ -599,12 +605,16 @@
     page.append(pageHeader, detail);
     body.replaceChildren(page, bridge);
     document.body.classList.add('lzn-product-detail-open');
+    if (modal) {
+      modal.scrollTop = 0;
+      window.requestAnimationFrame(() => modal.scrollTo({ top: 0, left: 0, behavior: 'auto' }));
+    }
   }
 
   function enhanceDetail() {
     const body = document.getElementById('modalBody');
     if (!body) return;
-    const model = (body.textContent || '').match(/LZN-\d+/)?.[0];
+    const model = body.querySelector('#detailModel')?.textContent?.trim();
     if (!model) return;
     const product = findProduct(model);
     if (product) buildDetail(body, product);
