@@ -160,12 +160,12 @@ function esc(s){ return String(s||'').replace(/[&<>\"]/g, m => ({'&':'&amp;','<'
 function colorOption(p, index){
   const color = p.colors[index];
   const code = `C${String(index + 1).padStart(2, '0')}`;
-  return { model:`${p.model}-${code}`, label:`${code} · ${color.en}`, priceUsd:unitPrice(p), image:color.src };
+  return { model:`${p.model}-${code}`, label:`${code} · ${color.en}`, priceUsd:unitPrice(p, index), image:color.src };
 }
 const detailCartSelections = new Map();
 let lastAddedSelectionKey = '';
 
-function rememberFrameSelection(p, option){
+function rememberFrameSelection(p, option, quantity=1){
   const key = option.model;
   const entry = detailCartSelections.get(key) || {
     key,
@@ -175,7 +175,7 @@ function rememberFrameSelection(p, option){
     image:option.image,
     quantity:0
   };
-  entry.quantity += 1;
+  entry.quantity += quantity;
   detailCartSelections.delete(key);
   detailCartSelections.set(key, entry);
   lastAddedSelectionKey = key;
@@ -250,10 +250,10 @@ function animateColorToCart(trigger){
   animation.onfinish = complete;
   animation.oncancel = complete;
 }
-function addFrameToCart(p, index, trigger){
+function addFrameToCart(p, index, trigger, quantity=1){
   const option = colorOption(p, index);
-  window.dispatchEvent(new CustomEvent('lzn:add-cart', { detail:{ model:p.model, option } }));
-  rememberFrameSelection(p, option);
+  window.dispatchEvent(new CustomEvent('lzn:add-cart', { detail:{ model:p.model, option, quantity, setQuantity:false } }));
+  rememberFrameSelection(p, option, quantity);
   animateColorToCart(trigger);
 }
 
@@ -503,8 +503,25 @@ function seriesCodeFromTarget(target){
   return PRODUCT_SERIES.some(series => series.code === code) ? code : '';
 }
 
-function unitPrice(p){ return ['86','87'].includes(p.series) ? 10 : 7; }
-function priceLabel(p){ return `$${unitPrice(p).toFixed(2)} / frame`; }
+function validPrice(value){
+  const price = Number(value);
+  return Number.isFinite(price) && price > 0 ? price : null;
+}
+function unitPrice(p, colorIndex=0){
+  return validPrice(p.colors?.[colorIndex]?.priceUsd) ??
+    validPrice(p.priceUsd) ??
+    (['86','87'].includes(p.series) ? 10 : 7);
+}
+function priceLabel(p, colorIndex=null){
+  if(Number.isInteger(colorIndex)) return `USD ${unitPrice(p, colorIndex).toFixed(2)} / frame`;
+  const prices = (p.colors || []).map(color => validPrice(color.priceUsd)).filter(price => price !== null);
+  if(!prices.length) prices.push(unitPrice(p));
+  const minimum = Math.min(...prices);
+  const maximum = Math.max(...prices);
+  return minimum === maximum
+    ? `USD ${minimum.toFixed(2)} / frame`
+    : `USD ${minimum.toFixed(2)} - ${maximum.toFixed(2)} / frame`;
+}
 
 function frameModelCard(p, seriesName, index){
   const cardChoices = p.colors || [];
@@ -561,13 +578,21 @@ function generalSpecTable(p){
 function openProduct(model, trigger=document.activeElement, { updateHistory=true }={}){
   const p = allProducts().find(x => x.model === model);
   if(!p) return;
+  const initialColorIndex = 0;
+  const initialColor = p.colors?.[initialColorIndex];
+  const initialImage = initialColor?.src || p.title;
   lastModalTrigger = trigger instanceof HTMLElement && trigger !== document.body ? trigger : null;
   if(updateHistory && getUrlState().model !== p.model) setUrlState(p.model, null, { push:true });
   else if(getUrlState().model !== p.model || getUrlState().color) setUrlState(p.model, null);
   modalContent.innerHTML = `<div class="detail series-${esc(p.series)}">
+    <header class="frame-detail-header"><button type="button" data-close>← Back to frames</button><strong>LZN MEDICAL</strong></header>
     <section class="detail-head">
-      <div class="detail-copy"><p class="eyebrow">${esc(p.seriesName)}</p><h2 id="productModalTitle">Model ${esc(p.model)}</h2><h3>${esc(p.productTitle)}</h3><div class="detail-price">${priceLabel(p)}</div><p class="order-note">Minimum shipment value: $100. Shipping, duties, and taxes are calculated separately.</p><p>${esc(p.short)}</p><p>${esc(p.description)}</p></div>
-      <div class="detail-img"><img src="${esc(p.title)}" alt="Model ${esc(p.model)} main image"></div>
+      <div class="detail-img"><img id="frameDetailMainImage" src="${esc(initialImage)}" alt="Model ${esc(p.model)} main image"></div>
+      <div class="detail-copy"><p class="eyebrow">${esc(p.seriesName)}</p><h2 id="productModalTitle">Model ${esc(p.model)}</h2><h3>${esc(p.productTitle)}</h3><div class="detail-price" id="frameDetailPrice">${priceLabel(p, initialColorIndex)}</div><p>${esc(p.short)}</p><p>${esc(p.description)}</p>
+        <section class="colors frame-detail-options"><div class="frame-option-heading"><h4>Choose a color</h4><strong id="frameSelectedColor">${initialColor ? `C01 · ${esc(initialColor.en)}` : ''}</strong></div><div class="color-grid">${p.colors.map((c,index) => { const colorCode=`C${String(index+1).padStart(2,'0')}`; return `<button class="color-card${index === initialColorIndex ? ' is-selected' : ''}" type="button" data-frame-option-index="${index}" aria-label="Select model ${esc(p.model)}, ${colorCode} ${esc(c.en)}"><img src="${esc(c.src)}" alt="${esc(p.model)} ${colorCode} ${esc(c.en)}" loading="lazy" decoding="async"><span><strong>${colorCode} · ${esc(c.en)}</strong><small>${esc(c.ko)}</small></span><em>${priceLabel(p, index)}</em></button>`; }).join('')}</div></section>
+        <div class="frame-detail-buy-row"><div class="frame-detail-quantity" aria-label="Quantity"><button type="button" data-frame-quantity="minus" aria-label="Decrease quantity">−</button><output>1</output><button type="button" data-frame-quantity="plus" aria-label="Increase quantity">+</button></div><button type="button" class="frame-detail-add" data-frame-add>Add to cart</button></div>
+        <p class="frame-detail-status" aria-live="polite"></p><p class="order-note">Minimum shipment value: $100. Shipping, duties, and taxes are calculated separately.</p>
+      </div>
     </section>
     <section class="feature-grid hinge-grid">
       ${p.sub1 ? `<div class="feature"><h4>Outer Hinge Detail</h4><p>Exterior hinge construction engineered for durability and stable fitting.</p><img src="${esc(p.sub1)}" alt="Model ${esc(p.model)} outer hinge detail" loading="lazy" decoding="async"></div>` : ''}
@@ -575,10 +600,10 @@ function openProduct(model, trigger=document.activeElement, { updateHistory=true
     </section>
     <section class="spec size-section${p.frontImage || p.sub3 ? '' : ' no-image'}">${p.frontImage || p.sub3 ? `<div class="size-image"><img src="${esc(p.frontImage || p.sub3)}" alt="Model ${esc(p.model)} front view" loading="lazy" decoding="async"></div>` : ''}<div class="size-data"><h4>Size Specification</h4>${sizeSpecTable(p)}<p class="note">Measurements may vary slightly depending on the measuring method.</p></div></section>
     <section class="spec general-section"><h4>Product Information</h4>${generalSpecTable(p)}</section>
-    <section class="colors"><h4>Available Colors</h4><p class="note">Click a color to add it to your cart.</p><div class="color-grid">${p.colors.map((c,index) => { const colorCode=`C${String(index+1).padStart(2,'0')}`; return `<button class="color-card" type="button" data-color-index="${index}" aria-label="Add model ${esc(p.model)}, ${colorCode} ${esc(c.en)} to cart"><img src="${esc(c.src)}" alt="${esc(p.model)} ${colorCode} ${esc(c.en)}" loading="lazy" decoding="async"><strong>${colorCode} · ${esc(c.en)}</strong><span>${esc(c.ko)}</span></button>`; }).join('')}</div></section>
     <section class="detail-cart-summary" id="detailCartList" data-detail-model="${esc(p.model)}" hidden aria-live="polite"></section>
   </div>`;
   modal.classList.add('active'); modal.setAttribute('aria-hidden','false'); modal.setAttribute('aria-labelledby','productModalTitle'); document.body.style.overflow='hidden'; setPageInert(true);
+  modal.querySelector('.modal-card').scrollTop = 0;
   const preloadColors = () => p.colors.forEach(color => { const image = new Image(); image.decoding = 'async'; image.src = color.src; });
   if ('requestIdleCallback' in window) requestIdleCallback(preloadColors, { timeout: 800 }); else setTimeout(preloadColors, 100);
   renderDetailCartList(p.model);
@@ -610,11 +635,41 @@ function closeModal({ updateHistory=true }={}){
 }
 modal.addEventListener('click', e => {
   if(e.target.dataset.close !== undefined){ closeModal(); return; }
-  const colorButton = e.target.closest('[data-color-index]');
-  if(!colorButton || !modal.contains(colorButton)) return;
   const model = modal.querySelector('#detailCartList')?.dataset.detailModel;
   const product = allProducts().find(item => item.model === model);
-  if(product) addFrameToCart(product, Number(colorButton.dataset.colorIndex), colorButton);
+  if(!product) return;
+  const optionButton = e.target.closest('[data-frame-option-index]');
+  if(optionButton){
+    const index = Number(optionButton.dataset.frameOptionIndex);
+    const color = product.colors?.[index];
+    if(!color) return;
+    modal.querySelectorAll('[data-frame-option-index]').forEach(button => button.classList.toggle('is-selected', button === optionButton));
+    const image = modal.querySelector('#frameDetailMainImage');
+    if(image) image.src = color.src;
+    const price = modal.querySelector('#frameDetailPrice');
+    if(price) price.textContent = priceLabel(product, index);
+    const label = modal.querySelector('#frameSelectedColor');
+    if(label) label.textContent = `C${String(index + 1).padStart(2,'0')} · ${color.en}`;
+    setUrlState(product.model, color.key || String(index + 1));
+    return;
+  }
+  const quantityButton = e.target.closest('[data-frame-quantity]');
+  if(quantityButton){
+    const output = modal.querySelector('.frame-detail-quantity output');
+    const current = Math.max(1, Number(output?.textContent || 1));
+    const next = quantityButton.dataset.frameQuantity === 'plus' ? Math.min(999, current + 1) : Math.max(1, current - 1);
+    if(output) output.textContent = String(next);
+    return;
+  }
+  const addButton = e.target.closest('[data-frame-add]');
+  if(addButton){
+    const selected = modal.querySelector('[data-frame-option-index].is-selected');
+    const index = Number(selected?.dataset.frameOptionIndex || 0);
+    const quantity = Math.max(1, Number(modal.querySelector('.frame-detail-quantity output')?.textContent || 1));
+    addFrameToCart(product, index, selected || addButton, quantity);
+    const status = modal.querySelector('.frame-detail-status');
+    if(status) status.textContent = `${quantity} added to cart.`;
+  }
 });
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape'){
