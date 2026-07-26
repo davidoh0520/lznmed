@@ -1,4 +1,5 @@
-window.CATALOG_DATA = [
+(function () {
+  const importedCategories = [
   {
     "id": "accessories",
     "en": "Accessories",
@@ -329,15 +330,15 @@ window.CATALOG_DATA = [
       {
         "category": "accessories",
         "model": "LZN-840574461963",
-        "nameEn": "LZN Optical Product 840574461963",
-        "chineseName": "LZN Optical Product 840574461963",
-        "image": "assets/catalog/840574461963/001.webp",
+        "nameEn": "Flip-Up Multifocal Reading Glasses",
+        "chineseName": "Flip-Up Multifocal Reading Glasses",
+        "image": "assets/catalog/840574461963/english-card.png",
         "images": [
-          "assets/catalog/840574461963/001.webp",
+          "assets/catalog/840574461963/english-card.png",
           "assets/catalog/840574461963/002.webp",
           "assets/catalog/840574461963/003.webp"
         ],
-        "description": "LZN Optical Product 840574461963 is designed for professional optical retail and vision-care applications.",
+        "description": "Flip-up multifocal reading glasses support near, intermediate, and distance viewing with a convenient lifting front.",
         "priceUsd": null,
         "priceOnRequest": false,
         "priceDisplay": "Price on request",
@@ -345,45 +346,45 @@ window.CATALOG_DATA = [
         "options": [
           {
             "model": "LZN-840574461963-01",
-            "label": "LZN Optical Product 840574461963 - Option 01 - Upgraded",
+            "label": "Flip-Up Multifocal Reading Glasses - Option 01 - Upgraded",
             "priceUsd": null,
-            "image": "assets/catalog/840574461963/001.webp"
+            "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-02",
-            "label": "LZN Optical Product 840574461963 - Option 02 - 45-49 100",
+            "label": "Flip-Up Multifocal Reading Glasses - Option 02 - 45-49 100",
             "priceUsd": null,
-            "image": "assets/catalog/840574461963/001.webp"
+            "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-03",
-            "label": "LZN Optical Product 840574461963 - Option 03 - 50-54 150",
+            "label": "Flip-Up Multifocal Reading Glasses - Option 03 - 50-54 150",
             "priceUsd": null,
-            "image": "assets/catalog/840574461963/001.webp"
+            "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-04",
-            "label": "LZN Optical Product 840574461963 - Option 04 - 60-65 250",
+            "label": "Flip-Up Multifocal Reading Glasses - Option 04 - 60-65 250",
             "priceUsd": null,
-            "image": "assets/catalog/840574461963/001.webp"
+            "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-05",
-            "label": "LZN Optical Product 840574461963 - Option 05 - 65-69 300",
+            "label": "Flip-Up Multifocal Reading Glasses - Option 05 - 65-69 300",
             "priceUsd": null,
-            "image": "assets/catalog/840574461963/001.webp"
+            "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-06",
-            "label": "LZN Optical Product 840574461963 - Option 06 - 70-74 350",
+            "label": "Flip-Up Multifocal Reading Glasses - Option 06 - 70-74 350",
             "priceUsd": null,
-            "image": "assets/catalog/840574461963/001.webp"
+            "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-07",
-            "label": "LZN Optical Product 840574461963 - Option 07 - 75 400",
+            "label": "Flip-Up Multifocal Reading Glasses - Option 07 - 75 400",
             "priceUsd": null,
-            "image": "assets/catalog/840574461963/001.webp"
+            "image": "assets/catalog/840574461963/english-card.png"
           }
         ],
         "features": [
@@ -560,14 +561,14 @@ window.CATALOG_DATA = [
       {
         "category": "accessories",
         "model": "LZN-624508088377",
-        "nameEn": "LZN Optical Product 624508088377",
-        "chineseName": "LZN Optical Product 624508088377",
-        "image": "assets/catalog/624508088377/001.webp",
+        "nameEn": "Optical Lens Layout Marking Gauge",
+        "chineseName": "Optical Lens Layout Marking Gauge",
+        "image": "assets/catalog/624508088377/english-card.png",
         "images": [
-          "assets/catalog/624508088377/001.webp",
+          "assets/catalog/624508088377/english-card.png",
           "assets/catalog/624508088377/002.webp"
         ],
-        "description": "LZN Optical Product 624508088377 is designed for professional optical retail and vision-care applications.",
+        "description": "A precision optical gauge for marking parallel reference lines and checking lens layout during workshop preparation.",
         "priceUsd": null,
         "priceOnRequest": false,
         "priceDisplay": "Price on request",
@@ -575,39 +576,39 @@ window.CATALOG_DATA = [
         "options": [
           {
             "model": "LZN-624508088377-01",
-            "label": "LZN Optical Product 624508088377 - Option 01 - 3",
+            "label": "Optical Lens Layout Marking Gauge - Option 01 - 3",
             "priceUsd": null,
-            "image": "assets/catalog/624508088377/001.webp"
+            "image": "assets/catalog/624508088377/english-card.png"
           },
           {
             "model": "LZN-624508088377-02",
-            "label": "LZN Optical Product 624508088377 - Option 02 - 1",
+            "label": "Optical Lens Layout Marking Gauge - Option 02 - 1",
             "priceUsd": null,
-            "image": "assets/catalog/624508088377/001.webp"
+            "image": "assets/catalog/624508088377/english-card.png"
           },
           {
             "model": "LZN-624508088377-03",
-            "label": "LZN Optical Product 624508088377 - Option 03 - 5",
+            "label": "Optical Lens Layout Marking Gauge - Option 03 - 5",
             "priceUsd": null,
-            "image": "assets/catalog/624508088377/001.webp"
+            "image": "assets/catalog/624508088377/english-card.png"
           },
           {
             "model": "LZN-624508088377-04",
-            "label": "LZN Optical Product 624508088377 - Option 04 - 1",
+            "label": "Optical Lens Layout Marking Gauge - Option 04 - 1",
             "priceUsd": null,
-            "image": "assets/catalog/624508088377/001.webp"
+            "image": "assets/catalog/624508088377/english-card.png"
           },
           {
             "model": "LZN-624508088377-05",
-            "label": "LZN Optical Product 624508088377 - Option 05 - 2",
+            "label": "Optical Lens Layout Marking Gauge - Option 05 - 2",
             "priceUsd": null,
-            "image": "assets/catalog/624508088377/001.webp"
+            "image": "assets/catalog/624508088377/english-card.png"
           },
           {
             "model": "LZN-624508088377-06",
-            "label": "LZN Optical Product 624508088377 - Option 06 - 5",
+            "label": "Optical Lens Layout Marking Gauge - Option 06 - 5",
             "priceUsd": null,
-            "image": "assets/catalog/624508088377/001.webp"
+            "image": "assets/catalog/624508088377/english-card.png"
           }
         ],
         "features": [
@@ -628,9 +629,9 @@ window.CATALOG_DATA = [
         "model": "LZN-983202892410",
         "nameEn": "Portable Vintage Protective Eyeglass Case",
         "chineseName": "Portable Vintage Protective Eyeglass Case",
-        "image": "assets/catalog/983202892410/001.webp",
+        "image": "assets/catalog/983202892410/english-card.png",
         "images": [
-          "assets/catalog/983202892410/001.webp",
+          "assets/catalog/983202892410/english-card.png",
           "assets/catalog/983202892410/002.webp",
           "assets/catalog/983202892410/003.webp",
           "assets/catalog/983202892410/004.webp",
@@ -655,7 +656,7 @@ window.CATALOG_DATA = [
             "model": "LZN-983202892410-01",
             "label": "Portable Vintage Protective Eyeglass Case - Option 01 - Light Blue 1",
             "priceUsd": 2.78,
-            "image": "assets/catalog/983202892410/001.webp"
+            "image": "assets/catalog/983202892410/english-card.png"
           },
           {
             "model": "LZN-983202892410-02",
@@ -756,15 +757,15 @@ window.CATALOG_DATA = [
       {
         "category": "cases",
         "model": "LZN-1011125552269",
-        "nameEn": "LZN Optical Product 1011125552269",
-        "chineseName": "LZN Optical Product 1011125552269",
-        "image": "assets/catalog/1011125552269/001.webp",
+        "nameEn": "Portable Ultrasonic Contact Lens Cleaner",
+        "chineseName": "Portable Ultrasonic Contact Lens Cleaner",
+        "image": "assets/catalog/1011125552269/english-card.png",
         "images": [
-          "assets/catalog/1011125552269/001.webp",
+          "assets/catalog/1011125552269/english-card.png",
           "assets/catalog/1011125552269/002.webp",
           "assets/catalog/1011125552269/003.webp"
         ],
-        "description": "LZN Optical Product 1011125552269 protects and organizes eyewear for storage, travel, and daily use.",
+        "description": "A compact ultrasonic cleaning unit for deep cleaning contact lenses with dedicated left and right lens chambers.",
         "priceUsd": null,
         "priceOnRequest": false,
         "priceDisplay": "Price on request",
@@ -772,9 +773,9 @@ window.CATALOG_DATA = [
         "options": [
           {
             "model": "LZN-1011125552269-01",
-            "label": "LZN Optical Product 1011125552269 - Option 01",
+            "label": "Portable Ultrasonic Contact Lens Cleaner - Option 01",
             "priceUsd": null,
-            "image": "assets/catalog/1011125552269/001.webp"
+            "image": "assets/catalog/1011125552269/english-card.png"
           }
         ],
         "features": [
@@ -788,9 +789,9 @@ window.CATALOG_DATA = [
         "model": "LZN-1034702556904",
         "nameEn": "Minimalist Hard-Shell Eyeglass Case",
         "chineseName": "Minimalist Hard-Shell Eyeglass Case",
-        "image": "assets/catalog/1034702556904/001.webp",
+        "image": "assets/catalog/1034702556904/english-card.png",
         "images": [
-          "assets/catalog/1034702556904/001.webp",
+          "assets/catalog/1034702556904/english-card.png",
           "assets/catalog/1034702556904/002.webp",
           "assets/catalog/1034702556904/003.webp",
           "assets/catalog/1034702556904/004.webp",
@@ -811,7 +812,7 @@ window.CATALOG_DATA = [
             "model": "LZN-1034702556904-01",
             "label": "Minimalist Hard-Shell Eyeglass Case - Option 01 - Porcelain White",
             "priceUsd": 6.06,
-            "image": "assets/catalog/1034702556904/001.webp"
+            "image": "assets/catalog/1034702556904/english-card.png"
           },
           {
             "model": "LZN-1034702556904-02",
@@ -861,9 +862,9 @@ window.CATALOG_DATA = [
         "model": "LZN-808569964690",
         "nameEn": "Self-Closing Eyewear Pouch",
         "chineseName": "Self-Closing Eyewear Pouch",
-        "image": "assets/catalog/808569964690/001.webp",
+        "image": "assets/catalog/808569964690/english-card.png",
         "images": [
-          "assets/catalog/808569964690/001.webp",
+          "assets/catalog/808569964690/english-card.png",
           "assets/catalog/808569964690/002.webp",
           "assets/catalog/808569964690/003.webp",
           "assets/catalog/808569964690/004.webp",
@@ -887,7 +888,7 @@ window.CATALOG_DATA = [
             "model": "LZN-808569964690-01",
             "label": "Upgraded Haze Blue+Millennial Pink",
             "priceUsd": 0.19,
-            "image": "assets/catalog/808569964690/001.webp"
+            "image": "assets/catalog/808569964690/english-card.png"
           },
           {
             "model": "LZN-808569964690-02",
@@ -989,9 +990,9 @@ window.CATALOG_DATA = [
         "model": "LZN-594853758645",
         "nameEn": "Microfiber Lens Cleaning Cloth Bulk Pack",
         "chineseName": "Microfiber Lens Cleaning Cloth Bulk Pack",
-        "image": "assets/catalog/594853758645/001.webp",
+        "image": "assets/catalog/594853758645/english-card.png",
         "images": [
-          "assets/catalog/594853758645/001.webp",
+          "assets/catalog/594853758645/english-card.png",
           "assets/catalog/594853758645/002.webp",
           "assets/catalog/594853758645/003.webp",
           "assets/catalog/594853758645/004.webp",
@@ -1009,7 +1010,7 @@ window.CATALOG_DATA = [
             "model": "LZN-594853758645-01",
             "label": "Microfiber Lens Cleaning Cloth Bulk Pack - Option 01 - Lens Cloth100",
             "priceUsd": 5.35,
-            "image": "assets/catalog/594853758645/001.webp"
+            "image": "assets/catalog/594853758645/english-card.png"
           },
           {
             "model": "LZN-594853758645-02",
@@ -1029,9 +1030,9 @@ window.CATALOG_DATA = [
         "model": "LZN-1014803725583",
         "nameEn": "Mizuno Anti-Fog Lens Treatment",
         "chineseName": "Mizuno Anti-Fog Lens Treatment",
-        "image": "assets/catalog/1014803725583/001.webp",
+        "image": "assets/catalog/1014803725583/english-card.png",
         "images": [
-          "assets/catalog/1014803725583/001.webp",
+          "assets/catalog/1014803725583/english-card.png",
           "assets/catalog/1014803725583/002.webp",
           "assets/catalog/1014803725583/003.webp",
           "assets/catalog/1014803725583/004.webp",
@@ -1058,7 +1059,7 @@ window.CATALOG_DATA = [
             "model": "LZN-1014803725583-01",
             "label": "Mizuno Anti-Fog Lens Treatment - Option 01 - C001-31 Applicator15ml Single",
             "priceUsd": 7.46,
-            "image": "assets/catalog/1014803725583/001.webp"
+            "image": "assets/catalog/1014803725583/english-card.png"
           },
           {
             "model": "LZN-1014803725583-02",
@@ -1138,9 +1139,9 @@ window.CATALOG_DATA = [
         "model": "LZN-738268296093",
         "nameEn": "Anti-Fog Treatment for Goggles and Lenses",
         "chineseName": "Anti-Fog Treatment for Goggles and Lenses",
-        "image": "assets/catalog/738268296093/001.webp",
+        "image": "assets/catalog/738268296093/english-card.png",
         "images": [
-          "assets/catalog/738268296093/001.webp",
+          "assets/catalog/738268296093/english-card.png",
           "assets/catalog/738268296093/002.webp",
           "assets/catalog/738268296093/003.webp",
           "assets/catalog/738268296093/004.webp",
@@ -1167,7 +1168,7 @@ window.CATALOG_DATA = [
             "model": "LZN-738268296093-01",
             "label": "Anti-Fog Treatment for Goggles and Lenses - Option 01 - 10MLApplicator",
             "priceUsd": 2.54,
-            "image": "assets/catalog/738268296093/001.webp"
+            "image": "assets/catalog/738268296093/english-card.png"
           },
           {
             "model": "LZN-738268296093-02",
@@ -1239,15 +1240,15 @@ window.CATALOG_DATA = [
       {
         "category": "cleaning",
         "model": "LZN-589448610321",
-        "nameEn": "LZN Optical Product 589448610321",
-        "chineseName": "LZN Optical Product 589448610321",
+        "nameEn": "Microfiber Lens Cleaning Cloth",
+        "chineseName": "Microfiber Lens Cleaning Cloth",
         "image": "assets/catalog/589448610321/001.webp",
         "images": [
           "assets/catalog/589448610321/001.webp",
           "assets/catalog/589448610321/002.webp",
           "assets/catalog/589448610321/003.webp"
         ],
-        "description": "LZN Optical Product 589448610321 supports clear lens care and routine optical product maintenance.",
+        "description": "A soft microfiber cleaning cloth for removing fingerprints, dust, and light residue from optical lenses.",
         "priceUsd": null,
         "priceOnRequest": false,
         "priceDisplay": "Price on request",
@@ -1255,55 +1256,55 @@ window.CATALOG_DATA = [
         "options": [
           {
             "model": "LZN-589448610321-01",
-            "label": "LZN Optical Product 589448610321 - Option 01 - 20 6X8cm",
+            "label": "Microfiber Lens Cleaning Cloth - Option 01 - 20 6X8cm",
             "priceUsd": null,
             "image": "assets/catalog/589448610321/001.webp"
           },
           {
             "model": "LZN-589448610321-02",
-            "label": "LZN Optical Product 589448610321 - Option 02 - 100 6X8cm",
+            "label": "Microfiber Lens Cleaning Cloth - Option 02 - 100 6X8cm",
             "priceUsd": null,
             "image": "assets/catalog/589448610321/001.webp"
           },
           {
             "model": "LZN-589448610321-03",
-            "label": "LZN Optical Product 589448610321 - Option 03 - 200 6X8cm",
+            "label": "Microfiber Lens Cleaning Cloth - Option 03 - 200 6X8cm",
             "priceUsd": null,
             "image": "assets/catalog/589448610321/001.webp"
           },
           {
             "model": "LZN-589448610321-04",
-            "label": "LZN Optical Product 589448610321 - Option 04 - 500 6X8cm",
+            "label": "Microfiber Lens Cleaning Cloth - Option 04 - 500 6X8cm",
             "priceUsd": null,
             "image": "assets/catalog/589448610321/001.webp"
           },
           {
             "model": "LZN-589448610321-05",
-            "label": "LZN Optical Product 589448610321 - Option 05 - 1000 6X8cm",
+            "label": "Microfiber Lens Cleaning Cloth - Option 05 - 1000 6X8cm",
             "priceUsd": null,
             "image": "assets/catalog/589448610321/001.webp"
           },
           {
             "model": "LZN-589448610321-06",
-            "label": "LZN Optical Product 589448610321 - Option 06 - 20 12X12cm",
+            "label": "Microfiber Lens Cleaning Cloth - Option 06 - 20 12X12cm",
             "priceUsd": null,
             "image": "assets/catalog/589448610321/003.webp"
           },
           {
             "model": "LZN-589448610321-07",
-            "label": "LZN Optical Product 589448610321 - Option 07 - 100 12X12cm",
+            "label": "Microfiber Lens Cleaning Cloth - Option 07 - 100 12X12cm",
             "priceUsd": null,
             "image": "assets/catalog/589448610321/003.webp"
           },
           {
             "model": "LZN-589448610321-08",
-            "label": "LZN Optical Product 589448610321 - Option 08 - 200 12X12cm",
+            "label": "Microfiber Lens Cleaning Cloth - Option 08 - 200 12X12cm",
             "priceUsd": null,
             "image": "assets/catalog/589448610321/003.webp"
           },
           {
             "model": "LZN-589448610321-09",
-            "label": "LZN Optical Product 589448610321 - Option 09 - 500 12X12cm",
+            "label": "Microfiber Lens Cleaning Cloth - Option 09 - 500 12X12cm",
             "priceUsd": null,
             "image": "assets/catalog/589448610321/003.webp"
           }
@@ -1326,9 +1327,9 @@ window.CATALOG_DATA = [
         "model": "LZN-959733497199",
         "nameEn": "Multi-Tier Acrylic Eyewear Display Stand",
         "chineseName": "Multi-Tier Acrylic Eyewear Display Stand",
-        "image": "assets/catalog/959733497199/001.webp",
+        "image": "assets/catalog/959733497199/english-card.png",
         "images": [
-          "assets/catalog/959733497199/001.webp",
+          "assets/catalog/959733497199/english-card.png",
           "assets/catalog/959733497199/002.webp",
           "assets/catalog/959733497199/003.webp",
           "assets/catalog/959733497199/004.webp",
@@ -1346,7 +1347,7 @@ window.CATALOG_DATA = [
             "model": "LZN-959733497199-01",
             "label": "Multi-Tier Acrylic Eyewear Display Stand - Option 01 - 3-Tier Organizer Stand",
             "priceUsd": 3.36,
-            "image": "assets/catalog/959733497199/001.webp"
+            "image": "assets/catalog/959733497199/english-card.png"
           },
           {
             "model": "LZN-959733497199-02",
@@ -1370,8 +1371,8 @@ window.CATALOG_DATA = [
       {
         "category": "display",
         "model": "LZN-670890306251",
-        "nameEn": "LZN Optical Product 670890306251",
-        "chineseName": "LZN Optical Product 670890306251",
+        "nameEn": "Wooden Eyewear Display Stand",
+        "chineseName": "Wooden Eyewear Display Stand",
         "image": "assets/catalog/670890306251/001.webp",
         "images": [
           "assets/catalog/670890306251/001.webp",
@@ -1385,7 +1386,7 @@ window.CATALOG_DATA = [
           "assets/catalog/670890306251/009.webp",
           "assets/catalog/670890306251/010.webp"
         ],
-        "description": "LZN Optical Product 670890306251 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+        "description": "A compact wooden display stand for presenting multiple eyewear styles on counters, shelves, and showcases.",
         "priceUsd": null,
         "priceOnRequest": false,
         "priceDisplay": "Price on request",
@@ -1393,55 +1394,55 @@ window.CATALOG_DATA = [
         "options": [
           {
             "model": "LZN-670890306251-01",
-            "label": "LZN Optical Product 670890306251 - Option 01 - 2",
+            "label": "Wooden Eyewear Display Stand - Option 01 - 2",
             "priceUsd": null,
             "image": "assets/catalog/670890306251/001.webp"
           },
           {
             "model": "LZN-670890306251-02",
-            "label": "LZN Optical Product 670890306251 - Option 02 - 3",
+            "label": "Wooden Eyewear Display Stand - Option 02 - 3",
             "priceUsd": null,
             "image": "assets/catalog/670890306251/003.webp"
           },
           {
             "model": "LZN-670890306251-03",
-            "label": "LZN Optical Product 670890306251 - Option 03 - 4",
+            "label": "Wooden Eyewear Display Stand - Option 03 - 4",
             "priceUsd": null,
             "image": "assets/catalog/670890306251/004.webp"
           },
           {
             "model": "LZN-670890306251-04",
-            "label": "LZN Optical Product 670890306251 - Option 04 - 5",
+            "label": "Wooden Eyewear Display Stand - Option 04 - 5",
             "priceUsd": null,
             "image": "assets/catalog/670890306251/005.webp"
           },
           {
             "model": "LZN-670890306251-05",
-            "label": "LZN Optical Product 670890306251 - Option 05 - 2",
+            "label": "Wooden Eyewear Display Stand - Option 05 - 2",
             "priceUsd": null,
             "image": "assets/catalog/670890306251/006.webp"
           },
           {
             "model": "LZN-670890306251-06",
-            "label": "LZN Optical Product 670890306251 - Option 06 - 3",
+            "label": "Wooden Eyewear Display Stand - Option 06 - 3",
             "priceUsd": null,
             "image": "assets/catalog/670890306251/007.webp"
           },
           {
             "model": "LZN-670890306251-07",
-            "label": "LZN Optical Product 670890306251 - Option 07 - 4",
+            "label": "Wooden Eyewear Display Stand - Option 07 - 4",
             "priceUsd": null,
             "image": "assets/catalog/670890306251/008.webp"
           },
           {
             "model": "LZN-670890306251-08",
-            "label": "LZN Optical Product 670890306251 - Option 08 - 5",
+            "label": "Wooden Eyewear Display Stand - Option 08 - 5",
             "priceUsd": null,
             "image": "assets/catalog/670890306251/009.webp"
           },
           {
             "model": "LZN-670890306251-09",
-            "label": "LZN Optical Product 670890306251 - Option 09 - 6",
+            "label": "Wooden Eyewear Display Stand - Option 09 - 6",
             "priceUsd": null,
             "image": "assets/catalog/670890306251/010.webp"
           }
@@ -1457,9 +1458,9 @@ window.CATALOG_DATA = [
         "model": "LZN-898461568746",
         "nameEn": "Multi-Slot Eyewear Display Case",
         "chineseName": "Multi-Slot Eyewear Display Case",
-        "image": "assets/catalog/898461568746/001.webp",
+        "image": "assets/catalog/898461568746/english-card.png",
         "images": [
-          "assets/catalog/898461568746/001.webp",
+          "assets/catalog/898461568746/english-card.png",
           "assets/catalog/898461568746/002.webp",
           "assets/catalog/898461568746/003.webp",
           "assets/catalog/898461568746/004.webp",
@@ -1486,7 +1487,7 @@ window.CATALOG_DATA = [
             "model": "LZN-898461568746-01",
             "label": "18-Slot Large-Capacity Case",
             "priceUsd": 47.41,
-            "image": "assets/catalog/898461568746/001.webp"
+            "image": "assets/catalog/898461568746/english-card.png"
           },
           {
             "model": "LZN-898461568746-02",
@@ -1659,8 +1660,8 @@ window.CATALOG_DATA = [
       {
         "category": "display",
         "model": "LZN-1030400367140",
-        "nameEn": "LZN Optical Product 1030400367140",
-        "chineseName": "LZN Optical Product 1030400367140",
+        "nameEn": "Multi-Level Metal Eyewear Display Rack",
+        "chineseName": "Multi-Level Metal Eyewear Display Rack",
         "image": "assets/catalog/1030400367140/001.webp",
         "images": [
           "assets/catalog/1030400367140/001.webp",
@@ -1668,7 +1669,7 @@ window.CATALOG_DATA = [
           "assets/catalog/1030400367140/003.webp",
           "assets/catalog/1030400367140/004.webp"
         ],
-        "description": "LZN Optical Product 1030400367140 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+        "description": "A multi-level metal rack that organizes and presents eyewear clearly in optical stores and display areas.",
         "priceUsd": null,
         "priceOnRequest": false,
         "priceDisplay": "Price on request",
@@ -1676,13 +1677,13 @@ window.CATALOG_DATA = [
         "options": [
           {
             "model": "LZN-1030400367140-01",
-            "label": "LZN Optical Product 1030400367140 - Option 01 - 9 28*28cm 7.5cm",
+            "label": "Multi-Level Metal Eyewear Display Rack - Option 01 - 9 28*28cm 7.5cm",
             "priceUsd": null,
             "image": "assets/catalog/1030400367140/001.webp"
           },
           {
             "model": "LZN-1030400367140-02",
-            "label": "LZN Optical Product 1030400367140 - Option 02 - 16 35*35cm 7.5",
+            "label": "Multi-Level Metal Eyewear Display Rack - Option 02 - 16 35*35cm 7.5",
             "priceUsd": null,
             "image": "assets/catalog/1030400367140/004.webp"
           }
@@ -1740,9 +1741,9 @@ window.CATALOG_DATA = [
         "model": "LZN-632477033344",
         "nameEn": "Solar-Powered Rotating Display Platform",
         "chineseName": "Solar-Powered Rotating Display Platform",
-        "image": "assets/catalog/632477033344/001.webp",
+        "image": "assets/catalog/632477033344/english-card.png",
         "images": [
-          "assets/catalog/632477033344/001.webp",
+          "assets/catalog/632477033344/english-card.png",
           "assets/catalog/632477033344/002.webp",
           "assets/catalog/632477033344/003.webp",
           "assets/catalog/632477033344/004.webp",
@@ -1758,25 +1759,25 @@ window.CATALOG_DATA = [
             "model": "LZN-632477033344-01",
             "label": "Solar-Powered Rotating Display Platform - Option 01 - 9cm White 300g",
             "priceUsd": 2.68,
-            "image": "assets/catalog/632477033344/001.webp"
+            "image": "assets/catalog/632477033344/english-card.png"
           },
           {
             "model": "LZN-632477033344-02",
             "label": "Solar-Powered Rotating Display Platform - Option 02 - 9cm Black 300g",
             "priceUsd": 2.68,
-            "image": "assets/catalog/632477033344/001.webp"
+            "image": "assets/catalog/632477033344/english-card.png"
           },
           {
             "model": "LZN-632477033344-03",
             "label": "Solar-Powered Rotating Display Platform - Option 03 - 9cm Gold 300g",
             "priceUsd": 2.68,
-            "image": "assets/catalog/632477033344/001.webp"
+            "image": "assets/catalog/632477033344/english-card.png"
           },
           {
             "model": "LZN-632477033344-04",
             "label": "Solar-Powered Rotating Display Platform - Option 04 - 9cm Silver 300g",
             "priceUsd": 2.68,
-            "image": "assets/catalog/632477033344/001.webp"
+            "image": "assets/catalog/632477033344/english-card.png"
           },
           {
             "model": "LZN-632477033344-05",
@@ -1802,9 +1803,9 @@ window.CATALOG_DATA = [
         "model": "LZN-15333423615",
         "nameEn": "Rotating Countertop Eyewear Display Rack",
         "chineseName": "Rotating Countertop Eyewear Display Rack",
-        "image": "assets/catalog/15333423615/001.webp",
+        "image": "assets/catalog/15333423615/english-card.png",
         "images": [
-          "assets/catalog/15333423615/001.webp",
+          "assets/catalog/15333423615/english-card.png",
           "assets/catalog/15333423615/002.webp",
           "assets/catalog/15333423615/003.webp",
           "assets/catalog/15333423615/004.webp",
@@ -1825,7 +1826,7 @@ window.CATALOG_DATA = [
             "model": "LZN-15333423615-01",
             "label": "Rotating Countertop Eyewear Display Rack - Option 01 - Round44",
             "priceUsd": 13.19,
-            "image": "assets/catalog/15333423615/001.webp"
+            "image": "assets/catalog/15333423615/english-card.png"
           },
           {
             "model": "LZN-15333423615-02",
@@ -1861,8 +1862,8 @@ window.CATALOG_DATA = [
       {
         "category": "display",
         "model": "LZN-628352782969",
-        "nameEn": "LZN Optical Product 628352782969",
-        "chineseName": "LZN Optical Product 628352782969",
+        "nameEn": "Eyewear Display Head Stand",
+        "chineseName": "Eyewear Display Head Stand",
         "image": "assets/catalog/628352782969/001.webp",
         "images": [
           "assets/catalog/628352782969/001.webp",
@@ -1870,7 +1871,7 @@ window.CATALOG_DATA = [
           "assets/catalog/628352782969/003.webp",
           "assets/catalog/628352782969/004.webp"
         ],
-        "description": "LZN Optical Product 628352782969 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+        "description": "A compact display head stand for presenting eyeglasses and sunglasses in a natural wearing position.",
         "priceUsd": 0.19,
         "priceOnRequest": false,
         "priceDisplay": "USD 0.19",
@@ -1878,13 +1879,13 @@ window.CATALOG_DATA = [
         "options": [
           {
             "model": "LZN-628352782969-01",
-            "label": "LZN Optical Product 628352782969 - Option 01 - Black",
+            "label": "Eyewear Display Head Stand - Option 01 - Black",
             "priceUsd": null,
             "image": "assets/catalog/628352782969/001.webp"
           },
           {
             "model": "LZN-628352782969-02",
-            "label": "LZN Optical Product 628352782969 - Option 02 - White",
+            "label": "Eyewear Display Head Stand - Option 02 - White",
             "priceUsd": 0.19,
             "image": "assets/catalog/628352782969/004.webp"
           }
@@ -1898,8 +1899,8 @@ window.CATALOG_DATA = [
       {
         "category": "display",
         "model": "LZN-1000973896135",
-        "nameEn": "LZN Optical Product 1000973896135",
-        "chineseName": "LZN Optical Product 1000973896135",
+        "nameEn": "Magnetic Metal Eyewear Display Plates",
+        "chineseName": "Magnetic Metal Eyewear Display Plates",
         "image": "assets/catalog/1000973896135/001.webp",
         "images": [
           "assets/catalog/1000973896135/001.webp",
@@ -1911,7 +1912,7 @@ window.CATALOG_DATA = [
           "assets/catalog/1000973896135/007.webp",
           "assets/catalog/1000973896135/008.webp"
         ],
-        "description": "LZN Optical Product 1000973896135 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+        "description": "Durable metal display plates for creating clean, stable eyewear presentation fixtures and retail displays.",
         "priceUsd": null,
         "priceOnRequest": false,
         "priceDisplay": "Price on request",
@@ -1919,43 +1920,43 @@ window.CATALOG_DATA = [
         "options": [
           {
             "model": "LZN-1000973896135-01",
-            "label": "LZN Optical Product 1000973896135 - Option 01",
+            "label": "Magnetic Metal Eyewear Display Plates - Option 01",
             "priceUsd": null,
             "image": "assets/catalog/1000973896135/001.webp"
           },
           {
             "model": "LZN-1000973896135-02",
-            "label": "LZN Optical Product 1000973896135 - Option 02 - Green",
+            "label": "Magnetic Metal Eyewear Display Plates - Option 02 - Green",
             "priceUsd": null,
             "image": "assets/catalog/1000973896135/003.webp"
           },
           {
             "model": "LZN-1000973896135-03",
-            "label": "LZN Optical Product 1000973896135 - Option 03 - Gray",
+            "label": "Magnetic Metal Eyewear Display Plates - Option 03 - Gray",
             "priceUsd": null,
             "image": "assets/catalog/1000973896135/004.webp"
           },
           {
             "model": "LZN-1000973896135-04",
-            "label": "LZN Optical Product 1000973896135 - Option 04",
+            "label": "Magnetic Metal Eyewear Display Plates - Option 04",
             "priceUsd": null,
             "image": "assets/catalog/1000973896135/005.webp"
           },
           {
             "model": "LZN-1000973896135-05",
-            "label": "LZN Optical Product 1000973896135 - Option 05",
+            "label": "Magnetic Metal Eyewear Display Plates - Option 05",
             "priceUsd": null,
             "image": "assets/catalog/1000973896135/006.webp"
           },
           {
             "model": "LZN-1000973896135-06",
-            "label": "LZN Optical Product 1000973896135 - Option 06",
+            "label": "Magnetic Metal Eyewear Display Plates - Option 06",
             "priceUsd": null,
             "image": "assets/catalog/1000973896135/007.webp"
           },
           {
             "model": "LZN-1000973896135-07",
-            "label": "LZN Optical Product 1000973896135 - Option 07",
+            "label": "Magnetic Metal Eyewear Display Plates - Option 07",
             "priceUsd": null,
             "image": "assets/catalog/1000973896135/008.webp"
           }
@@ -1971,9 +1972,9 @@ window.CATALOG_DATA = [
         "model": "LZN-976152256120",
         "nameEn": "Wall-Mounted Felt Eyewear Display Board",
         "chineseName": "Wall-Mounted Felt Eyewear Display Board",
-        "image": "assets/catalog/976152256120/001.webp",
+        "image": "assets/catalog/976152256120/english-card.png",
         "images": [
-          "assets/catalog/976152256120/001.webp",
+          "assets/catalog/976152256120/english-card.png",
           "assets/catalog/976152256120/002.webp",
           "assets/catalog/976152256120/003.webp",
           "assets/catalog/976152256120/004.webp"
@@ -1988,7 +1989,7 @@ window.CATALOG_DATA = [
             "model": "LZN-976152256120-01",
             "label": "Wall-Mounted Felt Eyewear Display Board - Option 01 - Large White",
             "priceUsd": 2.98,
-            "image": "assets/catalog/976152256120/001.webp"
+            "image": "assets/catalog/976152256120/english-card.png"
           },
           {
             "model": "LZN-976152256120-02",
@@ -2000,7 +2001,7 @@ window.CATALOG_DATA = [
             "model": "LZN-976152256120-03",
             "label": "Small Speckled Black",
             "priceUsd": 2.41,
-            "image": "assets/catalog/976152256120/001.webp"
+            "image": "assets/catalog/976152256120/english-card.png"
           },
           {
             "model": "LZN-976152256120-04",
@@ -2024,11 +2025,11 @@ window.CATALOG_DATA = [
       {
         "category": "display",
         "model": "LZN-816789510780",
-        "nameEn": "LZN Optical Product 816789510780",
-        "chineseName": "LZN Optical Product 816789510780",
-        "image": "assets/catalog/816789510780/001.webp",
+        "nameEn": "Multi-Tier Eyewear Storage Rack",
+        "chineseName": "Multi-Tier Eyewear Storage Rack",
+        "image": "assets/catalog/816789510780/english-card.png",
         "images": [
-          "assets/catalog/816789510780/001.webp",
+          "assets/catalog/816789510780/english-card.png",
           "assets/catalog/816789510780/002.webp",
           "assets/catalog/816789510780/003.webp",
           "assets/catalog/816789510780/004.webp",
@@ -2037,7 +2038,7 @@ window.CATALOG_DATA = [
           "assets/catalog/816789510780/007.webp",
           "assets/catalog/816789510780/008.webp"
         ],
-        "description": "LZN Optical Product 816789510780 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+        "description": "A space-saving multi-tier rack for organizing multiple pairs of eyewear on counters, shelves, or inside cabinets.",
         "priceUsd": null,
         "priceOnRequest": false,
         "priceDisplay": "Price on request",
@@ -2045,37 +2046,37 @@ window.CATALOG_DATA = [
         "options": [
           {
             "model": "LZN-816789510780-01",
-            "label": "LZN Optical Product 816789510780 - Option 01 - 2 Display Stand",
+            "label": "Multi-Tier Eyewear Storage Rack - Option 01 - 2 Display Stand",
             "priceUsd": null,
-            "image": "assets/catalog/816789510780/001.webp"
+            "image": "assets/catalog/816789510780/english-card.png"
           },
           {
             "model": "LZN-816789510780-02",
-            "label": "LZN Optical Product 816789510780 - Option 02 - 3 Display Stand",
+            "label": "Multi-Tier Eyewear Storage Rack - Option 02 - 3 Display Stand",
             "priceUsd": null,
             "image": "assets/catalog/816789510780/004.webp"
           },
           {
             "model": "LZN-816789510780-03",
-            "label": "LZN Optical Product 816789510780 - Option 03 - 5 Display Stand",
+            "label": "Multi-Tier Eyewear Storage Rack - Option 03 - 5 Display Stand",
             "priceUsd": null,
             "image": "assets/catalog/816789510780/005.webp"
           },
           {
             "model": "LZN-816789510780-04",
-            "label": "LZN Optical Product 816789510780 - Option 04 - 6 Display Stand",
+            "label": "Multi-Tier Eyewear Storage Rack - Option 04 - 6 Display Stand",
             "priceUsd": null,
             "image": "assets/catalog/816789510780/006.webp"
           },
           {
             "model": "LZN-816789510780-05",
-            "label": "LZN Optical Product 816789510780 - Option 05 - 7 Display Stand",
+            "label": "Multi-Tier Eyewear Storage Rack - Option 05 - 7 Display Stand",
             "priceUsd": null,
             "image": "assets/catalog/816789510780/007.webp"
           },
           {
             "model": "LZN-816789510780-06",
-            "label": "LZN Optical Product 816789510780 - Option 06 - 1 Display Stand",
+            "label": "Multi-Tier Eyewear Storage Rack - Option 06 - 1 Display Stand",
             "priceUsd": null,
             "image": "assets/catalog/816789510780/008.webp"
           }
@@ -2159,9 +2160,9 @@ window.CATALOG_DATA = [
         "model": "LZN-779201236504",
         "nameEn": "Titanium Nose Pad Set",
         "chineseName": "Titanium Nose Pad Set",
-        "image": "assets/catalog/779201236504/001.webp",
+        "image": "assets/catalog/779201236504/english-card.png",
         "images": [
-          "assets/catalog/779201236504/001.webp",
+          "assets/catalog/779201236504/english-card.png",
           "assets/catalog/779201236504/002.webp",
           "assets/catalog/779201236504/003.webp",
           "assets/catalog/779201236504/004.webp",
@@ -2180,7 +2181,7 @@ window.CATALOG_DATA = [
             "model": "LZN-779201236504-01",
             "label": "Titanium Silver - 2 Pairs",
             "priceUsd": 0.19,
-            "image": "assets/catalog/779201236504/001.webp"
+            "image": "assets/catalog/779201236504/english-card.png"
           },
           {
             "model": "LZN-779201236504-02",
@@ -2206,9 +2207,9 @@ window.CATALOG_DATA = [
         "model": "LZN-1009238894295",
         "nameEn": "Titanium and Silicone Nose Pad Set",
         "chineseName": "Titanium and Silicone Nose Pad Set",
-        "image": "assets/catalog/1009238894295/001.webp",
+        "image": "assets/catalog/1009238894295/english-card.png",
         "images": [
-          "assets/catalog/1009238894295/001.webp",
+          "assets/catalog/1009238894295/english-card.png",
           "assets/catalog/1009238894295/002.webp",
           "assets/catalog/1009238894295/003.webp",
           "assets/catalog/1009238894295/004.webp",
@@ -2228,7 +2229,7 @@ window.CATALOG_DATA = [
             "model": "LZN-1009238894295-01",
             "label": "Titanium Gunmetal - 1 Pair",
             "priceUsd": 2.39,
-            "image": "assets/catalog/1009238894295/001.webp"
+            "image": "assets/catalog/1009238894295/english-card.png"
           },
           {
             "model": "LZN-1009238894295-02",
@@ -2266,9 +2267,9 @@ window.CATALOG_DATA = [
         "model": "LZN-948519747052",
         "nameEn": "One-Piece Silicone Saddle Nose Pad",
         "chineseName": "One-Piece Silicone Saddle Nose Pad",
-        "image": "assets/catalog/948519747052/001.webp",
+        "image": "assets/catalog/948519747052/english-card.png",
         "images": [
-          "assets/catalog/948519747052/001.webp",
+          "assets/catalog/948519747052/english-card.png",
           "assets/catalog/948519747052/002.webp",
           "assets/catalog/948519747052/003.webp",
           "assets/catalog/948519747052/004.webp",
@@ -2288,7 +2289,7 @@ window.CATALOG_DATA = [
             "model": "LZN-948519747052-01",
             "label": "Matte White",
             "priceUsd": 0.19,
-            "image": "assets/catalog/948519747052/001.webp"
+            "image": "assets/catalog/948519747052/english-card.png"
           },
           {
             "model": "LZN-948519747052-02",
@@ -2400,15 +2401,15 @@ window.CATALOG_DATA = [
       {
         "category": "repair-parts",
         "model": "LZN-951327613005",
-        "nameEn": "LZN Optical Product 951327613005",
-        "chineseName": "LZN Optical Product 951327613005",
-        "image": "assets/catalog/951327613005/001.webp",
+        "nameEn": "Eyeglass Frame Repair Adhesive Set",
+        "chineseName": "Eyeglass Frame Repair Adhesive Set",
+        "image": "assets/catalog/951327613005/english-card.png",
         "images": [
-          "assets/catalog/951327613005/001.webp",
+          "assets/catalog/951327613005/english-card.png",
           "assets/catalog/951327613005/002.webp",
           "assets/catalog/951327613005/003.webp"
         ],
-        "description": "LZN Optical Product 951327613005 supports routine eyeglass maintenance and replacement of worn frame components.",
+        "description": "A precision adhesive set for securing and repairing compatible metal, plastic, and resin eyewear components.",
         "priceUsd": null,
         "priceOnRequest": false,
         "priceDisplay": "Price on request",
@@ -2416,19 +2417,19 @@ window.CATALOG_DATA = [
         "options": [
           {
             "model": "LZN-951327613005-01",
-            "label": "LZN Optical Product 951327613005 - Option 01 - 2",
+            "label": "Eyeglass Frame Repair Adhesive Set - Option 01 - 2",
             "priceUsd": null,
-            "image": "assets/catalog/951327613005/001.webp"
+            "image": "assets/catalog/951327613005/english-card.png"
           },
           {
             "model": "LZN-951327613005-02",
-            "label": "LZN Optical Product 951327613005 - Option 02 - 3",
+            "label": "Eyeglass Frame Repair Adhesive Set - Option 02 - 3",
             "priceUsd": null,
             "image": "assets/catalog/951327613005/002.webp"
           },
           {
             "model": "LZN-951327613005-03",
-            "label": "LZN Optical Product 951327613005 - Option 03 - 1",
+            "label": "Eyeglass Frame Repair Adhesive Set - Option 03 - 1",
             "priceUsd": null,
             "image": "assets/catalog/951327613005/003.webp"
           }
@@ -2570,9 +2571,9 @@ window.CATALOG_DATA = [
         "model": "LZN-972711305522",
         "nameEn": "Eyeglass Repair Screw Assortment",
         "chineseName": "Eyeglass Repair Screw Assortment",
-        "image": "assets/catalog/972711305522/001.webp",
+        "image": "assets/catalog/972711305522/english-card.png",
         "images": [
-          "assets/catalog/972711305522/001.webp",
+          "assets/catalog/972711305522/english-card.png",
           "assets/catalog/972711305522/002.webp",
           "assets/catalog/972711305522/003.webp",
           "assets/catalog/972711305522/004.webp",
@@ -2606,7 +2607,7 @@ window.CATALOG_DATA = [
             "model": "LZN-972711305522-01",
             "label": "Eyeglass Repair Screw Assortment - Option 01 - Nose PadScrew1.2*3.6",
             "priceUsd": 0.47,
-            "image": "assets/catalog/972711305522/001.webp"
+            "image": "assets/catalog/972711305522/english-card.png"
           },
           {
             "model": "LZN-972711305522-02",
@@ -2728,9 +2729,9 @@ window.CATALOG_DATA = [
         "model": "LZN-1028215754918",
         "nameEn": "Eyeglass Frame Adjustment Tool Set",
         "chineseName": "Eyeglass Frame Adjustment Tool Set",
-        "image": "assets/catalog/1028215754918/001.webp",
+        "image": "assets/catalog/1028215754918/english-card.png",
         "images": [
-          "assets/catalog/1028215754918/001.webp",
+          "assets/catalog/1028215754918/english-card.png",
           "assets/catalog/1028215754918/002.webp",
           "assets/catalog/1028215754918/003.webp",
           "assets/catalog/1028215754918/004.webp"
@@ -2745,7 +2746,7 @@ window.CATALOG_DATA = [
             "model": "LZN-1028215754918-01",
             "label": "Eyeglass Frame Adjustment Tool Set - Option 01",
             "priceUsd": null,
-            "image": "assets/catalog/1028215754918/001.webp"
+            "image": "assets/catalog/1028215754918/english-card.png"
           },
           {
             "model": "LZN-1028215754918-02",
@@ -2765,9 +2766,9 @@ window.CATALOG_DATA = [
         "model": "LZN-989792061106",
         "nameEn": "Optical Frame Adjustment Pliers",
         "chineseName": "Optical Frame Adjustment Pliers",
-        "image": "assets/catalog/989792061106/001.webp",
+        "image": "assets/catalog/989792061106/english-card.png",
         "images": [
-          "assets/catalog/989792061106/001.webp",
+          "assets/catalog/989792061106/english-card.png",
           "assets/catalog/989792061106/002.webp",
           "assets/catalog/989792061106/003.webp",
           "assets/catalog/989792061106/004.webp",
@@ -2789,7 +2790,7 @@ window.CATALOG_DATA = [
             "model": "LZN-989792061106-01",
             "label": "Square Nose Pliers",
             "priceUsd": 4.21,
-            "image": "assets/catalog/989792061106/001.webp"
+            "image": "assets/catalog/989792061106/english-card.png"
           },
           {
             "model": "LZN-989792061106-02",
@@ -2923,9 +2924,9 @@ window.CATALOG_DATA = [
         "model": "LZN-807888035006",
         "nameEn": "Professional Optical Adjustment Pliers",
         "chineseName": "Professional Optical Adjustment Pliers",
-        "image": "assets/catalog/807888035006/001.webp",
+        "image": "assets/catalog/807888035006/english-card.png",
         "images": [
-          "assets/catalog/807888035006/001.webp",
+          "assets/catalog/807888035006/english-card.png",
           "assets/catalog/807888035006/002.webp",
           "assets/catalog/807888035006/003.webp",
           "assets/catalog/807888035006/004.webp",
@@ -2962,7 +2963,7 @@ window.CATALOG_DATA = [
             "model": "LZN-807888035006-01",
             "label": "Nose Pad Pliers",
             "priceUsd": 4.4,
-            "image": "assets/catalog/807888035006/001.webp"
+            "image": "assets/catalog/807888035006/english-card.png"
           },
           {
             "model": "LZN-807888035006-02",
@@ -3102,9 +3103,9 @@ window.CATALOG_DATA = [
         "model": "LZN-673765851712",
         "nameEn": "Semi-Rimless Eyewire Threading Tool Set",
         "chineseName": "Semi-Rimless Eyewire Threading Tool Set",
-        "image": "assets/catalog/673765851712/001.webp",
+        "image": "assets/catalog/673765851712/english-card.png",
         "images": [
-          "assets/catalog/673765851712/001.webp",
+          "assets/catalog/673765851712/english-card.png",
           "assets/catalog/673765851712/002.webp",
           "assets/catalog/673765851712/003.webp",
           "assets/catalog/673765851712/004.webp",
@@ -3134,7 +3135,7 @@ window.CATALOG_DATA = [
             "model": "LZN-673765851712-01",
             "label": "Semi-Rimless Eyewire Threading Tool Set - Option 01 - B 1",
             "priceUsd": 1.49,
-            "image": "assets/catalog/673765851712/001.webp"
+            "image": "assets/catalog/673765851712/english-card.png"
           },
           {
             "model": "LZN-673765851712-02",
@@ -3226,9 +3227,9 @@ window.CATALOG_DATA = [
         "model": "LZN-582020332203",
         "nameEn": "Replacement Eyeglass Temple Arms",
         "chineseName": "Replacement Eyeglass Temple Arms",
-        "image": "assets/catalog/582020332203/001.webp",
+        "image": "assets/catalog/582020332203/english-card.png",
         "images": [
-          "assets/catalog/582020332203/001.webp",
+          "assets/catalog/582020332203/english-card.png",
           "assets/catalog/582020332203/002.webp",
           "assets/catalog/582020332203/003.webp",
           "assets/catalog/582020332203/004.webp",
@@ -3255,7 +3256,7 @@ window.CATALOG_DATA = [
             "model": "LZN-582020332203-01",
             "label": "Replacement Eyeglass Temple Arms - Option 01 - 3.5 3.5mm Screw",
             "priceUsd": 0.08,
-            "image": "assets/catalog/582020332203/001.webp"
+            "image": "assets/catalog/582020332203/english-card.png"
           },
           {
             "model": "LZN-582020332203-02",
@@ -3377,9 +3378,9 @@ window.CATALOG_DATA = [
         "model": "LZN-608800446878",
         "nameEn": "Eyeglass Repair Screw and Parts Kit",
         "chineseName": "Eyeglass Repair Screw and Parts Kit",
-        "image": "assets/catalog/608800446878/001.webp",
+        "image": "assets/catalog/608800446878/english-card.png",
         "images": [
-          "assets/catalog/608800446878/001.webp",
+          "assets/catalog/608800446878/english-card.png",
           "assets/catalog/608800446878/002.webp",
           "assets/catalog/608800446878/003.webp",
           "assets/catalog/608800446878/004.webp",
@@ -3410,7 +3411,7 @@ window.CATALOG_DATA = [
             "model": "LZN-608800446878-01",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 01 - 500 Screw W8",
             "priceUsd": 0.19,
-            "image": "assets/catalog/608800446878/001.webp"
+            "image": "assets/catalog/608800446878/english-card.png"
           },
           {
             "model": "LZN-608800446878-02",
@@ -3508,9 +3509,9 @@ window.CATALOG_DATA = [
         "model": "LZN-886101652276",
         "nameEn": "LED Desktop Reading Magnifier",
         "chineseName": "LED Desktop Reading Magnifier",
-        "image": "assets/catalog/886101652276/001.webp",
+        "image": "assets/catalog/886101652276/english-card.png",
         "images": [
-          "assets/catalog/886101652276/001.webp",
+          "assets/catalog/886101652276/english-card.png",
           "assets/catalog/886101652276/002.webp",
           "assets/catalog/886101652276/003.webp",
           "assets/catalog/886101652276/004.webp",
@@ -3526,7 +3527,7 @@ window.CATALOG_DATA = [
             "model": "LZN-886101652276-01",
             "label": "LED Desktop Reading Magnifier - Option 01 - Black Magnifier",
             "priceUsd": 6.5,
-            "image": "assets/catalog/886101652276/001.webp"
+            "image": "assets/catalog/886101652276/english-card.png"
           }
         ],
         "features": [
@@ -3547,9 +3548,9 @@ window.CATALOG_DATA = [
         "model": "LZN-20052613980",
         "nameEn": "266-Piece Trial Lens Set",
         "chineseName": "266-Piece Trial Lens Set",
-        "image": "assets/catalog/20052613980/001.webp",
+        "image": "assets/catalog/20052613980/english-card.png",
         "images": [
-          "assets/catalog/20052613980/001.webp",
+          "assets/catalog/20052613980/english-card.png",
           "assets/catalog/20052613980/002.webp",
           "assets/catalog/20052613980/003.webp",
           "assets/catalog/20052613980/004.webp"
@@ -3564,7 +3565,7 @@ window.CATALOG_DATA = [
             "model": "LZN-20052613980-01",
             "label": "266-Piece Trial Lens Set - Option 01 - SP-266A",
             "priceUsd": null,
-            "image": "assets/catalog/20052613980/001.webp"
+            "image": "assets/catalog/20052613980/english-card.png"
           },
           {
             "model": "LZN-20052613980-02",
@@ -3597,9 +3598,9 @@ window.CATALOG_DATA = [
         "model": "LZN-1007095936432",
         "nameEn": "Binocular Vision Training Vector Chart Set",
         "chineseName": "Binocular Vision Training Vector Chart Set",
-        "image": "assets/catalog/1007095936432/001.webp",
+        "image": "assets/catalog/1007095936432/english-card.png",
         "images": [
-          "assets/catalog/1007095936432/001.webp",
+          "assets/catalog/1007095936432/english-card.png",
           "assets/catalog/1007095936432/002.webp",
           "assets/catalog/1007095936432/003.webp",
           "assets/catalog/1007095936432/004.webp",
@@ -3619,7 +3620,7 @@ window.CATALOG_DATA = [
             "model": "LZN-1007095936432-01",
             "label": "Binocular Vision Training Vector Chart Set - Option 01",
             "priceUsd": 17.4,
-            "image": "assets/catalog/1007095936432/001.webp"
+            "image": "assets/catalog/1007095936432/english-card.png"
           },
           {
             "model": "LZN-1007095936432-02",
@@ -3696,3 +3697,5 @@ window.CATALOG_DATA = [
     ]
   }
 ];
+  window.CATALOG_DATA = importedCategories;
+})();
