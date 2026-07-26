@@ -2343,7 +2343,7 @@
     .replace(colorPattern, '')
     .replace(/[^a-z0-9]+/g, '');
   const jobTrayColor = product => {
-    const text = ${product.nameEn || ''} ;
+    const text = String(product.nameEn || '') + ' ' + String(product.model || '');
     const match = text.match(colorPattern);
     return match ? match[0].replace(/\b\w/g, letter => letter.toUpperCase()) : product.model;
   };
@@ -2351,7 +2351,11 @@
   window.CATALOG_DATA.forEach(category => {
     const trayGroups = new Map();
     category.items
-      .filter(product => /job\s*tray/i.test(${product.nameEn || ''}  ))
+      .filter(product => /job\s*tray/i.test([
+        product.nameEn || '',
+        product.name || '',
+        product.description || ''
+      ].join(' ')))
       .forEach(product => {
         const key = jobTrayKey(product);
         if (!trayGroups.has(key)) trayGroups.set(key, []);
