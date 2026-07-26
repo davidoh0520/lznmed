@@ -11,6 +11,10 @@
         gap: 7px;
         margin-top: 8px;
       }
+      .lzn-option-card-grid--detail {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 14px 0;
+      }
       .lzn-option-card {
         width: 100%;
         display: grid;
@@ -50,6 +54,11 @@
       .lzn-original-option-select {
         display: none !important;
       }
+      @media (max-width: 720px) {
+        .lzn-option-card-grid--detail {
+          grid-template-columns: 1fr;
+        }
+      }
     `;
     document.head.appendChild(style);
   }
@@ -67,22 +76,14 @@
     return { name, price };
   }
 
-  function enhanceCard(card) {
-    if (card.dataset.lznOptionCards === 'ready') return;
-    if (!/\bLZN-\d+/.test(card.textContent || '') && !/job\s*tray/i.test(card.textContent || '')) return;
-
-    const select = card.querySelector('select');
-    if (!select) return;
+  function buildOptionGrid(select, addButton, extraClass) {
     const options = Array.from(select.options).filter(option =>
       !option.disabled && option.value !== ''
     );
-    if (!options.length) return;
+    if (!options.length) return null;
 
-    const addButton = Array.from(card.querySelectorAll('button')).find(button =>
-      /add to cart/i.test(button.textContent || '')
-    );
     const grid = document.createElement('div');
-    grid.className = 'lzn-option-card-grid';
+    grid.className = `lzn-option-card-grid ${extraClass || ''}`.trim();
     grid.setAttribute('aria-label', 'Available options');
 
     options.forEach((option, index) => {
@@ -110,13 +111,46 @@
       grid.appendChild(button);
     });
 
+    return grid;
+  }
+
+  function findAddButton(scope) {
+    return Array.from(scope.querySelectorAll('button')).find(button =>
+      /add to cart/i.test(button.textContent || '')
+    );
+  }
+
+  function enhanceCard(card) {
+    if (card.dataset.lznOptionCards === 'ready') return;
+    if (!/\bLZN-\d+/.test(card.textContent || '') && !/job\s*tray/i.test(card.textContent || '')) return;
+
+    const select = card.querySelector('select');
+    if (!select) return;
+    const grid = buildOptionGrid(select, findAddButton(card), '');
+    if (!grid) return;
+
     select.classList.add('lzn-original-option-select');
     select.insertAdjacentElement('afterend', grid);
     card.dataset.lznOptionCards = 'ready';
   }
 
+  function enhanceDetailSelect(select) {
+    if (select.classList.contains('lzn-original-option-select')) return;
+    if (!Array.from(select.options).some(option => /\bLZN-\d+-\d+/.test(option.textContent || ''))) return;
+
+    const scope = select.closest(
+      'dialog, [role="dialog"], .product-detail, .detail-panel, .modal, .modal-content, main'
+    ) || document.body;
+    const grid = buildOptionGrid(select, findAddButton(scope), 'lzn-option-card-grid--detail');
+    if (!grid) return;
+
+    select.classList.add('lzn-original-option-select');
+    select.insertAdjacentElement('afterend', grid);
+  }
+
   function enhanceAll() {
     document.querySelectorAll('.product-card, [data-product-card], article').forEach(enhanceCard);
+    document.querySelectorAll('select').forEach(enhanceDetailSelect);
   }
 
   installStyles();
