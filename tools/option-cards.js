@@ -8,21 +8,24 @@
     style.textContent = `
       .lzn-option-card-grid {
         display: grid;
-        gap: 7px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
         margin-top: 8px;
       }
       .lzn-option-card-grid--detail {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         margin: 14px 0;
       }
       .lzn-option-card {
         width: 100%;
         display: flex;
-        align-items: center;
-        gap: 12px;
-        border: 1px solid #d8e1e5;
-        border-radius: 12px;
-        padding: 8px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        overflow: hidden;
+        border: 1px solid #dedbd5;
+        border-radius: 16px;
+        padding: 0;
         background: #fff;
         color: #12242b;
         cursor: pointer;
@@ -35,25 +38,27 @@
       }
       .lzn-option-card.is-selected {
         border-color: #087d8b;
-        background: #eef9fa;
+        box-shadow: 0 0 0 2px #087d8b;
       }
       .lzn-option-card__image {
-        width: 76px;
-        height: 76px;
-        flex: 0 0 76px;
-        border-radius: 9px;
+        width: 100%;
+        height: 132px;
+        flex: 0 0 132px;
+        border-radius: 0;
         object-fit: contain;
-        background: #f5f7f7;
+        background: #f0eeeb;
       }
       .lzn-option-card__body {
         min-width: 0;
-        flex: 1;
         display: grid;
-        justify-items: end;
-        gap: 9px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+        background: #fff;
       }
       .lzn-option-card__price {
-        color: #087d8b;
+        color: #111;
         font-size: 14px;
         font-weight: 800;
         white-space: nowrap;
@@ -92,7 +97,15 @@
       }
       @media (max-width: 720px) {
         .lzn-option-card-grid--detail {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .lzn-option-card__image {
+          height: 112px;
+          flex-basis: 112px;
+        }
+        .lzn-option-card__body {
           grid-template-columns: 1fr;
+          justify-items: center;
         }
       }
     `;
