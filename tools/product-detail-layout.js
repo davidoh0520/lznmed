@@ -6,19 +6,101 @@
     const style = document.createElement('style');
     style.id = STYLE_ID;
     style.textContent = `
+      body.lzn-product-detail-open {
+        overflow: hidden;
+      }
       #modal:has(.lzn-commerce-detail) {
-        padding: 22px;
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 10000 !important;
+        width: 100vw !important;
+        height: 100dvh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        background: #f5f4f1 !important;
+      }
+      #modal:has(.lzn-commerce-detail) > .modal-bg {
+        display: none !important;
+      }
+      #modal:has(.lzn-commerce-detail) > article {
+        position: relative !important;
+        inset: auto !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 100dvh !important;
+        max-height: none !important;
+        margin: 0 !important;
+        overflow: visible !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: #f5f4f1 !important;
+        box-shadow: none !important;
+      }
+      #modal:has(.lzn-commerce-detail) > article > .close {
+        position: fixed !important;
+        top: 17px !important;
+        right: 22px !important;
+        z-index: 4 !important;
       }
       #modal:has(.lzn-commerce-detail) #modalBody {
-        width: min(1180px, calc(100vw - 44px));
-        max-width: 1180px;
+        width: 100% !important;
+        max-width: none !important;
+        overflow: visible !important;
+      }
+      .lzn-commerce-page-shell {
+        box-sizing: border-box;
+        width: min(1440px, 100%);
+        min-height: 100dvh;
+        margin: 0 auto;
+        padding: 0 32px 64px;
+      }
+      .lzn-commerce-page-header {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid #dce1df;
+        background: rgba(245, 244, 241, .96);
+        backdrop-filter: blur(12px);
+      }
+      .lzn-commerce-back {
+        border: 0;
+        border-radius: 999px;
+        padding: 11px 17px;
+        background: #14262b;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 850;
+        cursor: pointer;
+      }
+      .lzn-commerce-back:hover {
+        background: #087d8b;
+      }
+      .lzn-commerce-page-brand {
+        margin-right: 52px;
+        color: #14262b;
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: .14em;
       }
       .lzn-commerce-detail {
         display: grid;
         grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr);
         gap: 38px;
+        box-sizing: border-box;
         width: 100%;
-        padding: 12px;
+        border: 1px solid #e1e5e3;
+        border-radius: 28px;
+        padding: 30px;
+        background: #fff;
         color: #14262b;
       }
       .lzn-commerce-gallery {
@@ -246,16 +328,25 @@
         display: none !important;
       }
       @media (max-width: 820px) {
-        #modal:has(.lzn-commerce-detail) {
-          padding: 8px;
+        #modal:has(.lzn-commerce-detail) > article > .close {
+          top: 15px !important;
+          right: 14px !important;
         }
-        #modal:has(.lzn-commerce-detail) #modalBody {
-          width: calc(100vw - 16px);
+        .lzn-commerce-page-shell {
+          padding: 0 12px 32px;
+        }
+        .lzn-commerce-page-header {
+          min-height: 64px;
+          margin-bottom: 12px;
+        }
+        .lzn-commerce-page-brand {
+          display: none;
         }
         .lzn-commerce-detail {
           grid-template-columns: 1fr;
           gap: 22px;
-          padding: 5px;
+          border-radius: 18px;
+          padding: 12px;
         }
         .lzn-commerce-main-media {
           aspect-ratio: 4 / 3;
@@ -320,6 +411,9 @@
   function buildDetail(body, product) {
     if (body.querySelector('.lzn-commerce-detail')?.dataset.model === product.model) return;
 
+    const modal = body.closest('#modal');
+    const originalCloseButton = modal?.querySelector(':scope > article > [data-close]') ||
+      modal?.querySelector('[data-close]');
     const originalSelect = body.querySelector('select');
     const originalAddButton = findOriginalAddButton(body);
     const bridge = document.createElement('div');
@@ -486,7 +580,25 @@
       status.textContent = `${quantity} added to cart.`;
     });
 
-    body.replaceChildren(detail, bridge);
+    const page = document.createElement('main');
+    page.className = 'lzn-commerce-page-shell';
+    const pageHeader = document.createElement('header');
+    pageHeader.className = 'lzn-commerce-page-header';
+    pageHeader.innerHTML = `
+      <button type="button" class="lzn-commerce-back">&larr; Back to products</button>
+      <span class="lzn-commerce-page-brand">LZN MEDICAL</span>
+    `;
+    pageHeader.querySelector('.lzn-commerce-back').addEventListener('click', () => {
+      document.body.classList.remove('lzn-product-detail-open');
+      if (originalCloseButton) {
+        originalCloseButton.click();
+      } else if (modal) {
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
+    page.append(pageHeader, detail);
+    body.replaceChildren(page, bridge);
+    document.body.classList.add('lzn-product-detail-open');
   }
 
   function enhanceDetail() {
@@ -503,11 +615,30 @@
     enhanceDetail();
   }
 
+  function syncDetailState() {
+    const modal = document.getElementById('modal');
+    const isOpen = Boolean(
+      modal?.querySelector('.lzn-commerce-detail') &&
+      modal.getAttribute('aria-hidden') !== 'true'
+    );
+    document.body.classList.toggle('lzn-product-detail-open', isOpen);
+  }
+
   installStyles();
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', enhanceAll, { once: true });
   } else {
     enhanceAll();
   }
-  new MutationObserver(enhanceAll).observe(document.body, { childList: true, subtree: true });
+  new MutationObserver(() => {
+    enhanceAll();
+    syncDetailState();
+  }).observe(document.body, { childList: true, subtree: true });
+  const modal = document.getElementById('modal');
+  if (modal) {
+    new MutationObserver(syncDetailState).observe(modal, {
+      attributes: true,
+      attributeFilter: ['aria-hidden', 'class']
+    });
+  }
 })();
