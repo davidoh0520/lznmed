@@ -1,12 +1,96 @@
 (function () {
   const importedCategories = [
     {
-        "id":  "taobao-cases",
-        "en":  "Cases - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
+        "id":  "accessories",
+        "en":  "Accessories",
+        "desc":  "Optical shop products with option-level images and USD catalog pricing.",
+        "mergeKeys":  [
+                          "accessories",
+                          "other accessories",
+                          "optical accessories"
+                      ],
         "items":  [
                       {
-                          "category":  "taobao-cases",
+                          "category":  "accessories",
+                          "model":  "TB-1007095936432",
+                          "nameEn":  "红绿可变矢量图视功能训练双眼协同锻炼集合散开斜视弱视强化融像",
+                          "chineseName":  "红绿可变矢量图视功能训练双眼协同锻炼集合散开斜视弱视强化融像",
+                          "image":  "assets/taobao/1007095936432/001.webp",
+                          "images":  [
+                                         "assets/taobao/1007095936432/001.webp",
+                                         "assets/taobao/1007095936432/002.webp",
+                                         "assets/taobao/1007095936432/003.webp",
+                                         "assets/taobao/1007095936432/004.webp",
+                                         "assets/taobao/1007095936432/005.webp",
+                                         "assets/taobao/1007095936432/006.webp",
+                                         "assets/taobao/1007095936432/007.webp",
+                                         "assets/taobao/1007095936432/008.webp",
+                                         "assets/taobao/1007095936432/009.webp"
+                                     ],
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  91,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  17.40,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 17.4 - 47.6",
+                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=1007095936432",
+                          "supplier":  "China supplier",
+                          "store":  "中量普斯莱专卖店 5.0 88VIP好评率97% 平均10小时发货 客服满意度93%",
+                          "optionLabel":  "Supplier option",
+                          "options":  [
+                                          {
+                                              "model":  "TB-1007095936432-01",
+                                              "label":  "可变矢量图+亚克力支架+夹片镜",
+                                              "priceUsd":  17.40,
+                                              "priceCny":  118.3,
+                                              "costCny":  91,
+                                              "image":  "assets/taobao/1007095936432/001.webp"
+                                          },
+                                          {
+                                              "model":  "TB-1007095936432-02",
+                                              "label":  "可变矢量图+亚克力支架+框架镜 百人购买",
+                                              "priceUsd":  17.40,
+                                              "priceCny":  118.3,
+                                              "costCny":  91,
+                                              "image":  "assets/taobao/1007095936432/007.webp"
+                                          },
+                                          {
+                                              "model":  "TB-1007095936432-03",
+                                              "label":  "可变矢量图+带灯支架+框架镜",
+                                              "priceUsd":  47.60,
+                                              "priceCny":  323.7,
+                                              "costCny":  249,
+                                              "image":  "assets/taobao/1007095936432/008.webp"
+                                          },
+                                          {
+                                              "model":  "TB-1007095936432-04",
+                                              "label":  "可变矢量图+带灯支架+夹片镜",
+                                              "priceUsd":  47.60,
+                                              "priceCny":  323.7,
+                                              "costCny":  249,
+                                              "image":  "assets/taobao/1007095936432/009.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "LZN catalog price includes a 30% margin",
+                                           "USD price calculated at CNY 6.8 per USD",
+                                           "Availability and international freight to be confirmed"
+                                       ]
+                      }
+                  ]
+    },
+    {
+        "id":  "cases",
+        "en":  "Cases",
+        "desc":  "Optical shop products with option-level images and USD catalog pricing.",
+        "mergeKeys":  [
+                          "case",
+                          "cases",
+                          "eyewear cases"
+                      ],
+        "items":  [
+                      {
+                          "category":  "cases",
                           "model":  "TB-983202892410",
                           "nameEn":  "眼镜盒便携女高级感复古日系抗压大容量近视眼睛盒子墨镜收纳包男-tmall.com天猫",
                           "chineseName":  "眼镜盒便携女高级感复古日系抗压大容量近视眼睛盒子墨镜收纳包男-tmall.com天猫",
@@ -27,14 +111,14 @@
                                          "assets/taobao/983202892410/013.webp",
                                          "assets/taobao/983202892410/014.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  9.87,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  1.89,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 1.89 - 2.78",
                           "sourceUrl":  "https://detail.tmall.com/item.htm?id=983202892410",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "朋意旗舰店 4.7 88VIP好评率94% 平均16小时发货 客服平均27秒回复",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -104,14 +188,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-cases",
+                          "category":  "cases",
                           "model":  "TB-898461568746",
                           "nameEn":  "眼镜收纳盒多格木质大容量多层多功能高档精致墨镜太阳镜展示盒-淘宝网",
                           "chineseName":  "眼镜收纳盒多格木质大容量多层多功能高档精致墨镜太阳镜展示盒-淘宝网",
@@ -134,14 +217,14 @@
                                          "assets/taobao/898461568746/015.webp",
                                          "assets/taobao/898461568746/016.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  158,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  30.21,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 30.21 - 64.62",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=898461568746",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "昕艺原创工坊 5.0 90天新增11条好评 平均16小时发货",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -235,14 +318,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-cases",
+                          "category":  "cases",
                           "model":  "TB-935577042679",
                           "nameEn":  "眼镜收纳盒便携墨镜太阳镜包多格旅行大容量高档男女款整理存放-淘宝网",
                           "chineseName":  "眼镜收纳盒便携墨镜太阳镜包多格旅行大容量高档男女款整理存放-淘宝网",
@@ -257,14 +339,14 @@
                                          "assets/taobao/935577042679/007.webp",
                                          "assets/taobao/935577042679/008.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  25,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  4.78,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 4.78 - 9.16",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=935577042679",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "盒适 HOSHI 4.8 88VIP好评率99% 平均15小时发货 平均14小时退款",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -294,14 +376,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-cases",
+                          "category":  "cases",
                           "model":  "TB-1034702556904",
                           "nameEn":  "2025年日系简约太阳眼睛墨镜防压收纳盒子眼镜盒男便携抗压高级感-tmall.com天猫",
                           "chineseName":  "2025年日系简约太阳眼睛墨镜防压收纳盒子眼镜盒男便携抗压高级感-tmall.com天猫",
@@ -318,14 +399,14 @@
                                          "assets/taobao/1034702556904/009.webp",
                                          "assets/taobao/1034702556904/010.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  31.7,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  6.06,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 6.06 - 6.87",
                           "sourceUrl":  "https://detail.tmall.com/item.htm?id=1034702556904",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "标青春管棋专卖店 4.3 好评率84% 平均20小时发货 平均5小时退款",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -387,14 +468,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-cases",
+                          "category":  "cases",
                           "model":  "TB-798739953640",
                           "nameEn":  "新款简约近视太阳眼睛墨镜女收纳眼镜盒高级感男便携防压抗压日系-tmall.com天猫",
                           "chineseName":  "新款简约近视太阳眼睛墨镜女收纳眼镜盒高级感男便携防压抗压日系-tmall.com天猫",
@@ -407,14 +487,14 @@
                                          "assets/taobao/798739953640/005.webp",
                                          "assets/taobao/798739953640/006.png"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  8.84,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  1.69,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 1.69",
                           "sourceUrl":  "https://detail.tmall.com/item.htm?id=798739953640",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "香薇兰黛旗舰店 4.8 88VIP好评率98% 平均15小时发货 客服满意度93%",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -428,14 +508,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-cases",
+                          "category":  "cases",
                           "model":  "TB-808569964690",
                           "nameEn":  "弹片眼镜袋墨镜收纳包抗压便携式女太阳镜收纳盒自动闭合眼睛女士-淘宝网",
                           "chineseName":  "弹片眼镜袋墨镜收纳包抗压便携式女太阳镜收纳盒自动闭合眼睛女士-淘宝网",
@@ -455,14 +534,14 @@
                                          "assets/taobao/808569964690/012.webp",
                                          "assets/taobao/808569964690/013.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  1,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  0.19,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 0.19",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=808569964690",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "集美日用家居商城 4.9 88VIP好评率95% 次日达超94%同行 客服满意度95%",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -540,7 +619,6 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
@@ -549,12 +627,18 @@
                   ]
     },
     {
-        "id":  "taobao-cleaning-cloths",
-        "en":  "Cleaning Cloths - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
+        "id":  "cleaning",
+        "en":  "Cleaning",
+        "desc":  "Optical shop products with option-level images and USD catalog pricing.",
+        "mergeKeys":  [
+                          "cleaning",
+                          "cleaning products",
+                          "care",
+                          "lens care"
+                      ],
         "items":  [
                       {
-                          "category":  "taobao-cleaning-cloths",
+                          "category":  "cleaning",
                           "model":  "TB-594853758645",
                           "nameEn":  "眼镜布批 发手机屏幕清洁布擦眼睛布纯棉超细高档鹿皮绒专业定制-淘宝网",
                           "chineseName":  "眼镜布批 发手机屏幕清洁布擦眼睛布纯棉超细高档鹿皮绒专业定制-淘宝网",
@@ -568,14 +652,14 @@
                                          "assets/taobao/594853758645/006.webp",
                                          "assets/taobao/594853758645/007.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  28,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  5.35,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 5.35",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=594853758645",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "杜桥妹妹眼镜店 4.9 好评率97% 平均16小时发货 平均3小时退款",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -597,21 +681,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
-                      }
-                  ]
-    },
-    {
-        "id":  "taobao-cleaning-products",
-        "en":  "Cleaning Products - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
-        "items":  [
+                      },
                       {
-                          "category":  "taobao-cleaning-products",
+                          "category":  "cleaning",
                           "model":  "TB-1014803725583",
                           "nameEn":  "美津浓泳镜防雾剂眼镜喷剂喷雾除雾头盔防雾液神器雪镜游泳防雾笔-tmall.com天猫",
                           "chineseName":  "美津浓泳镜防雾剂眼镜喷剂喷雾除雾头盔防雾液神器雪镜游泳防雾笔-tmall.com天猫",
@@ -634,14 +710,14 @@
                                          "assets/taobao/1014803725583/015.webp",
                                          "assets/taobao/1014803725583/016.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  39,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  7.46,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 7.46 - 30.4",
                           "sourceUrl":  "https://detail.tmall.com/item.htm?id=1014803725583",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "美津浓宇臣专卖店 5.0 88VIP好评率98% 平均9小时发货 客服满意度93%",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -743,14 +819,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-cleaning-products",
+                          "category":  "cleaning",
                           "model":  "TB-738268296093",
                           "nameEn":  "泳镜防雾剂喷剂除雾剂游泳眼镜近视眼镜镜片防雾贴防水头盔涂抹剂-淘宝网",
                           "chineseName":  "泳镜防雾剂喷剂除雾剂游泳眼镜近视眼镜镜片防雾贴防水头盔涂抹剂-淘宝网",
@@ -773,14 +848,14 @@
                                          "assets/taobao/738268296093/015.webp",
                                          "assets/taobao/738268296093/016.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  13.3,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  2.54,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 2.54 - 9.98",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=738268296093",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "speedo速比涛体验商城 4.8 88VIP好评率97% 平均13小时发货 客服平均29秒回复",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -874,7 +949,6 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
@@ -883,12 +957,17 @@
                   ]
     },
     {
-        "id":  "taobao-displays",
-        "en":  "Displays - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
+        "id":  "display",
+        "en":  "Display",
+        "desc":  "Optical shop products with option-level images and USD catalog pricing.",
+        "mergeKeys":  [
+                          "display",
+                          "displays",
+                          "display supplies"
+                      ],
         "items":  [
                       {
-                          "category":  "taobao-displays",
+                          "category":  "display",
                           "model":  "TB-959733497199",
                           "nameEn":  "眼镜收纳展示架透明亚克力近视镜陈列架立式多层太阳镜墨镜放置架-tmall.com天猫",
                           "chineseName":  "眼镜收纳展示架透明亚克力近视镜陈列架立式多层太阳镜墨镜放置架-tmall.com天猫",
@@ -902,14 +981,14 @@
                                          "assets/taobao/959733497199/006.webp",
                                          "assets/taobao/959733497199/007.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  17.6,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  3.36,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 3.36 - 4.51",
                           "sourceUrl":  "https://detail.tmall.com/item.htm?id=959733497199",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "巧柔旗舰店 4.9 88VIP好评率98% 平均15小时发货 客服满意度95%",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -939,14 +1018,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-displays",
+                          "category":  "display",
                           "model":  "TB-527041433337",
                           "nameEn":  "金属金色黑白色眼镜展示架立式单支简约墨镜陈列道具太阳镜收纳架",
                           "chineseName":  "金属金色黑白色眼镜展示架立式单支简约墨镜陈列道具太阳镜收纳架",
@@ -967,14 +1045,14 @@
                                          "assets/taobao/527041433337/013.webp",
                                          "assets/taobao/527041433337/014.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  12.9,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  2.47,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 2.47 - 21.56",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=527041433337",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "飞雪展示架 4.8 90天新增34条好评 平均11小时发货 平均2天退款",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -1068,14 +1146,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-displays",
+                          "category":  "display",
                           "model":  "TB-976152256120",
                           "nameEn":  "眼镜展示架毛毡板玄关太阳镜首饰放置架壁挂上墙面装饰墨镜收纳板-tmall.com天猫",
                           "chineseName":  "眼镜展示架毛毡板玄关太阳镜首饰放置架壁挂上墙面装饰墨镜收纳板-tmall.com天猫",
@@ -1086,14 +1163,14 @@
                                          "assets/taobao/976152256120/003.webp",
                                          "assets/taobao/976152256120/004.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  12.6,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  2.41,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 2.41 - 4.32",
                           "sourceUrl":  "https://detail.tmall.com/item.htm?id=976152256120",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "奥奇拉旗舰店 4.9 88VIP好评率98% 平均15小时发货 客服满意度97%",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -1139,14 +1216,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-displays",
+                          "category":  "display",
                           "model":  "TB-15333423615",
                           "nameEn":  "义乌柜台道具式近视眼镜展示架可旋转圆台式架精品太阳镜眼镜货架-淘宝网",
                           "chineseName":  "义乌柜台道具式近视眼镜展示架可旋转圆台式架精品太阳镜眼镜货架-淘宝网",
@@ -1163,14 +1239,14 @@
                                          "assets/taobao/15333423615/009.webp",
                                          "assets/taobao/15333423615/010.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  55,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  10.51,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 10.51 - 18.35",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=15333423615",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "德天货架 4.9 好评率98% 平均13小时发货 客服满意度91%",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -1216,14 +1292,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-displays",
+                          "category":  "display",
                           "model":  "TB-632477033344",
                           "nameEn":  "太阳能旋转展示台眼镜手机珠宝首饰饰品旋柜台转支架转盘1KG载重-淘宝网",
                           "chineseName":  "太阳能旋转展示台眼镜手机珠宝首饰饰品旋柜台转支架转盘1KG载重-淘宝网",
@@ -1235,14 +1310,14 @@
                                          "assets/taobao/632477033344/004.webp",
                                          "assets/taobao/632477033344/005.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  14,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  2.68,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 2.68 - 4.97",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=632477033344",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "晴美科技 4.7 平均14小时发货 平均2天退款",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -1296,14 +1371,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-displays",
+                          "category":  "display",
                           "model":  "TB-532952085023",
                           "nameEn":  "实木眼镜展示架眼镜店收纳架陈列装饰道具太阳镜墨镜支架眼镜架子",
                           "chineseName":  "实木眼镜展示架眼镜店收纳架陈列装饰道具太阳镜墨镜支架眼镜架子",
@@ -1320,14 +1394,14 @@
                                          "assets/taobao/532952085023/009.webp",
                                          "assets/taobao/532952085023/010.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  10,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  1.91,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 1.91 - 3.44",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=532952085023",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "眼镜展示道具 4.4 90天新增38条好评 平均3天内发货 平均2天退款",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -1373,7 +1447,6 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
@@ -1382,177 +1455,18 @@
                   ]
     },
     {
-        "id":  "taobao-lens-tools",
-        "en":  "Lens Tools - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
+        "id":  "repair-parts",
+        "en":  "Repair Parts",
+        "desc":  "Optical shop products with option-level images and USD catalog pricing.",
+        "mergeKeys":  [
+                          "repair parts",
+                          "parts",
+                          "spare parts",
+                          "accessories parts"
+                      ],
         "items":  [
                       {
-                          "category":  "taobao-lens-tools",
-                          "model":  "TB-673765851712",
-                          "nameEn":  "半框眼镜拉丝勾无框镜架鱼线下垫丝勾丝刀不锈钢鱼丝线勾针拉丝钩",
-                          "chineseName":  "半框眼镜拉丝勾无框镜架鱼线下垫丝勾丝刀不锈钢鱼丝线勾针拉丝钩",
-                          "image":  "assets/taobao/673765851712/001.webp",
-                          "images":  [
-                                         "assets/taobao/673765851712/001.webp",
-                                         "assets/taobao/673765851712/002.webp",
-                                         "assets/taobao/673765851712/003.webp",
-                                         "assets/taobao/673765851712/004.webp",
-                                         "assets/taobao/673765851712/005.webp",
-                                         "assets/taobao/673765851712/006.webp",
-                                         "assets/taobao/673765851712/007.webp",
-                                         "assets/taobao/673765851712/008.webp",
-                                         "assets/taobao/673765851712/009.webp",
-                                         "assets/taobao/673765851712/010.webp",
-                                         "assets/taobao/673765851712/011.webp",
-                                         "assets/taobao/673765851712/012.webp",
-                                         "assets/taobao/673765851712/013.webp",
-                                         "assets/taobao/673765851712/014.webp",
-                                         "assets/taobao/673765851712/015.webp",
-                                         "assets/taobao/673765851712/016.webp",
-                                         "assets/taobao/673765851712/017.webp",
-                                         "assets/taobao/673765851712/018.webp",
-                                         "assets/taobao/673765851712/019.webp"
-                                     ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
-                          "basePriceRmb":  6.48,
-                          "priceSource":  "Taobao supplier listing",
-                          "priceUsd":  1.24,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 1.24 - 3.75",
-                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=673765851712",
-                          "supplier":  "Taobao",
-                          "store":  "悦己容眼镜旗舰店 4.9 88VIP好评率97% 平均13小时发货 客服平均24秒回复",
-                          "optionLabel":  "Supplier option",
-                          "options":  [
-                                          {
-                                              "model":  "TB-673765851712-01",
-                                              "label":  "B款眼镜鱼线拉丝勾（不锈钢柄）1把装 推荐",
-                                              "priceUsd":  1.49,
-                                              "priceCny":  10.13,
-                                              "costCny":  7.79,
-                                              "image":  "assets/taobao/673765851712/001.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-02",
-                                              "label":  "B款半框眼镜拉丝勾（不锈钢柄）2把装",
-                                              "priceUsd":  3.02,
-                                              "priceCny":  20.54,
-                                              "costCny":  15.8,
-                                              "image":  "assets/taobao/673765851712/007.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-03",
-                                              "label":  "C款眼镜鱼线拉丝勾（塑料柄）1把装",
-                                              "priceUsd":  1.43,
-                                              "priceCny":  9.75,
-                                              "costCny":  7.5,
-                                              "image":  "assets/taobao/673765851712/008.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-04",
-                                              "label":  "C款半框眼镜拉丝勾（塑料柄）2把装",
-                                              "priceUsd":  2.96,
-                                              "priceCny":  20.15,
-                                              "costCny":  15.5,
-                                              "image":  "assets/taobao/673765851712/009.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-05",
-                                              "label":  "A款半框眼镜拉丝勾（纯铜柄）2把装",
-                                              "priceUsd":  3.59,
-                                              "priceCny":  24.44,
-                                              "costCny":  18.8,
-                                              "image":  "assets/taobao/673765851712/010.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-06",
-                                              "label":  "【眼镜鱼线】常规款0.6mm一卷",
-                                              "priceUsd":  1.24,
-                                              "priceCny":  8.42,
-                                              "costCny":  6.48,
-                                              "image":  "assets/taobao/673765851712/011.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-07",
-                                              "label":  "【眼镜鱼线】细款0.5mm一卷",
-                                              "priceUsd":  1.24,
-                                              "priceCny":  8.42,
-                                              "costCny":  6.48,
-                                              "image":  "assets/taobao/673765851712/012.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-08",
-                                              "label":  "【眼镜鱼线】粗款0.7mm一卷",
-                                              "priceUsd":  1.24,
-                                              "priceCny":  8.42,
-                                              "costCny":  6.48,
-                                              "image":  "assets/taobao/673765851712/013.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-09",
-                                              "label":  "C款拉丝勾1把+【眼镜鱼线】常规款0.6mm一卷",
-                                              "priceUsd":  2.6,
-                                              "priceCny":  17.68,
-                                              "costCny":  13.6,
-                                              "image":  "assets/taobao/673765851712/014.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-10",
-                                              "label":  "C款拉丝勾1把+【眼镜鱼线】细款0.5mm一卷",
-                                              "priceUsd":  2.6,
-                                              "priceCny":  17.68,
-                                              "costCny":  13.6,
-                                              "image":  "assets/taobao/673765851712/015.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-11",
-                                              "label":  "C款拉丝勾1把+【眼镜鱼线】粗款0.7mm一卷",
-                                              "priceUsd":  2.6,
-                                              "priceCny":  17.68,
-                                              "costCny":  13.6,
-                                              "image":  "assets/taobao/673765851712/016.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-12",
-                                              "label":  "C款拉丝勾1把+【眼镜鱼线】0.5/0.6/0.7各一卷",
-                                              "priceUsd":  3.75,
-                                              "priceCny":  25.48,
-                                              "costCny":  19.6,
-                                              "image":  "assets/taobao/673765851712/017.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-13",
-                                              "label":  "全框眼镜垫丝【常规款】【小号】（厚度约0.3mm）",
-                                              "priceUsd":  1.49,
-                                              "priceCny":  10.14,
-                                              "costCny":  7.8,
-                                              "image":  "assets/taobao/673765851712/018.webp"
-                                          },
-                                          {
-                                              "model":  "TB-673765851712-14",
-                                              "label":  "全框眼镜垫丝【大号】（厚度约0.5mm）",
-                                              "priceUsd":  1.87,
-                                              "priceCny":  12.74,
-                                              "costCny":  9.8,
-                                              "image":  "assets/taobao/673765851712/019.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Supplier source: Taobao",
-                                           "LZN catalog price includes a 30% margin",
-                                           "USD price calculated at CNY 6.8 per USD",
-                                           "Availability and international freight to be confirmed"
-                                       ]
-                      }
-                  ]
-    },
-    {
-        "id":  "taobao-nose-pads",
-        "en":  "Nose Pads - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
-        "items":  [
-                      {
-                          "category":  "taobao-nose-pads",
+                          "category":  "repair-parts",
                           "model":  "TB-1028215754918",
                           "nameEn":  "眼镜架调整神器镜腿折弯鼻托调节多功能专业修复眼镜专用工具套装",
                           "chineseName":  "眼镜架调整神器镜腿折弯鼻托调节多功能专业修复眼镜专用工具套装",
@@ -1563,14 +1477,14 @@
                                          "assets/taobao/1028215754918/003.webp",
                                          "assets/taobao/1028215754918/004.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  null,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  null,
                           "priceOnRequest":  false,
                           "priceDisplay":  "Price on request",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=1028215754918",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "康司眼镜 4.7 90天新增59条好评 平均17小时发货 客服平均24秒回复",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -1592,14 +1506,13 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-nose-pads",
+                          "category":  "repair-parts",
                           "model":  "TB-1009238894295",
                           "nameEn":  "超轻纯钛眼镜鼻托金属防压痕耐用防滑贴眼睛框支架配件防脱落鼻垫-tmall.com天猫",
                           "chineseName":  "超轻纯钛眼镜鼻托金属防压痕耐用防滑贴眼睛框支架配件防脱落鼻垫-tmall.com天猫",
@@ -1615,14 +1528,14 @@
                                          "assets/taobao/1009238894295/008.webp",
                                          "assets/taobao/1009238894295/009.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  8.5,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  1.62,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 1.62 - 2.39",
                           "sourceUrl":  "https://detail.tmall.com/item.htm?id=1009238894295",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "纽威图卓镜专卖店 4.6 88VIP好评率97% 平均14小时发货 平均20小时退款",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -1668,14 +1581,214 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-nose-pads",
+                          "category":  "repair-parts",
+                          "model":  "TB-972711305522",
+                          "nameEn":  "眼镜配件眼镜螺丝眼镜螺钉桩头螺丝平头尖头镜框螺丝规格齐全-淘宝网",
+                          "chineseName":  "眼镜配件眼镜螺丝眼镜螺钉桩头螺丝平头尖头镜框螺丝规格齐全-淘宝网",
+                          "image":  "assets/taobao/972711305522/001.webp",
+                          "images":  [
+                                         "assets/taobao/972711305522/001.webp",
+                                         "assets/taobao/972711305522/002.webp",
+                                         "assets/taobao/972711305522/003.webp",
+                                         "assets/taobao/972711305522/004.webp",
+                                         "assets/taobao/972711305522/005.webp",
+                                         "assets/taobao/972711305522/006.webp",
+                                         "assets/taobao/972711305522/007.webp",
+                                         "assets/taobao/972711305522/008.webp",
+                                         "assets/taobao/972711305522/009.webp",
+                                         "assets/taobao/972711305522/010.webp",
+                                         "assets/taobao/972711305522/011.webp",
+                                         "assets/taobao/972711305522/012.webp",
+                                         "assets/taobao/972711305522/013.webp",
+                                         "assets/taobao/972711305522/014.webp",
+                                         "assets/taobao/972711305522/015.webp",
+                                         "assets/taobao/972711305522/016.webp",
+                                         "assets/taobao/972711305522/017.webp",
+                                         "assets/taobao/972711305522/018.webp",
+                                         "assets/taobao/972711305522/019.webp",
+                                         "assets/taobao/972711305522/020.webp",
+                                         "assets/taobao/972711305522/021.webp",
+                                         "assets/taobao/972711305522/022.webp",
+                                         "assets/taobao/972711305522/023.webp"
+                                     ],
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  2.48,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  0.47,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 0.47 - 0.7",
+                          "sourceUrl":  "https://item.taobao.com/item.htm?id=972711305522",
+                          "supplier":  "China supplier",
+                          "store":  "远舰光电眼镜设备 4.6 90天新增35条好评 平均14小时发货 平均2天退款",
+                          "optionLabel":  "Supplier option",
+                          "options":  [
+                                          {
+                                              "model":  "TB-972711305522-01",
+                                              "label":  "鼻托螺丝1.2*3.6（平头）",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/001.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-02",
+                                              "label":  "桩头螺丝2.0*1.4*2.4 推荐",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/006.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-03",
+                                              "label":  "桩头螺丝2.0*1.4*2.6",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/007.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-04",
+                                              "label":  "桩头螺丝2.0*1.4*2.8",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/008.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-05",
+                                              "label":  "桩头螺丝2.0*1.4*3.0",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/009.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-06",
+                                              "label":  "桩头螺丝2.0*1.4*3.2",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/010.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-07",
+                                              "label":  "桩头螺丝2.0*1.4*3.4",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/011.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-08",
+                                              "label":  "桩头螺丝2.0*1.4*3.6",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/012.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-09",
+                                              "label":  "桩头螺丝2.0*1.4*3.8",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/013.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-10",
+                                              "label":  "桩头螺丝2.0*1.4*4.0",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/014.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-11",
+                                              "label":  "板材螺丝2.5*1.4*4.0",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/015.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-12",
+                                              "label":  "板材螺丝2.5*1.4*4.5",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/016.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-13",
+                                              "label":  "板材架螺丝2.5*1.4*5.0",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/017.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-14",
+                                              "label":  "太阳镜螺丝2.5*1.6*4.0",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/018.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-15",
+                                              "label":  "太阳镜螺丝2.5*1.6*4.5",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/019.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-16",
+                                              "label":  "太阳镜螺丝2.5*1.6*5.0",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/020.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-17",
+                                              "label":  "无框钻石头2.5*1.4*6.0",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/021.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-18",
+                                              "label":  "无框钻石头2.5*1.4*8.0",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/022.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-19",
+                                              "label":  "螺母1.4",
+                                              "priceUsd":  0.70,
+                                              "priceCny":  4.78,
+                                              "costCny":  3.68,
+                                              "image":  "assets/taobao/972711305522/023.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "LZN catalog price includes a 30% margin",
+                                           "USD price calculated at CNY 6.8 per USD",
+                                           "Availability and international freight to be confirmed"
+                                       ]
+                      },
+                      {
+                          "category":  "repair-parts",
                           "model":  "TB-779201236504",
                           "nameEn":  "眼镜鼻托纯钛金属无压痕鼻垫眼睛鼻子防滑鼻梁防脱落镜架配件神器",
                           "chineseName":  "眼镜鼻托纯钛金属无压痕鼻垫眼睛鼻子防滑鼻梁防脱落镜架配件神器",
@@ -1690,14 +1803,14 @@
                                          "assets/taobao/779201236504/007.webp",
                                          "assets/taobao/779201236504/008.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  1,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  0.19,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 0.19",
                           "sourceUrl":  "https://detail.tmall.com/item.htm?id=779201236504",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "syrea眼镜旗舰店 4.8 88VIP好评率96% 平均11小时发货 客服满意度90%",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -1727,168 +1840,219 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
-                                           "LZN catalog price includes a 30% margin",
-                                           "USD price calculated at CNY 6.8 per USD",
-                                           "Availability and international freight to be confirmed"
-                                       ]
-                      }
-                  ]
-    },
-    {
-        "id":  "taobao-optical-equipment",
-        "en":  "Optical Equipment - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
-        "items":  [
-                      {
-                          "category":  "taobao-optical-equipment",
-                          "model":  "TB-20052613980",
-                          "nameEn":  "眼镜验光设备仪器眼科验光镜片箱验光箱插片箱验光盘华辉266合格-淘宝网",
-                          "chineseName":  "眼镜验光设备仪器眼科验光镜片箱验光箱插片箱验光盘华辉266合格-淘宝网",
-                          "image":  "assets/taobao/20052613980/001.webp",
-                          "images":  [
-                                         "assets/taobao/20052613980/001.webp",
-                                         "assets/taobao/20052613980/002.webp",
-                                         "assets/taobao/20052613980/003.webp",
-                                         "assets/taobao/20052613980/004.webp"
-                                     ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
-                          "basePriceRmb":  null,
-                          "priceSource":  "Taobao supplier listing",
-                          "priceUsd":  null,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "Price on request",
-                          "sourceUrl":  "https://item.taobao.com/item.htm?id=20052613980",
-                          "supplier":  "Taobao",
-                          "store":  "好帮手眼镜设备仪器 5.0 88VIP好评率100% 平均7小时发货 客服平均23秒回复",
-                          "optionLabel":  "Supplier option",
-                          "options":  [
-                                          {
-                                              "model":  "TB-20052613980-01",
-                                              "label":  "华辉SP-266A",
-                                              "priceUsd":  null,
-                                              "priceCny":  null,
-                                              "costCny":  null,
-                                              "image":  "assets/taobao/20052613980/001.webp"
-                                          },
-                                          {
-                                              "model":  "TB-20052613980-02",
-                                              "label":  "华辉JP-266A",
-                                              "priceUsd":  null,
-                                              "priceCny":  null,
-                                              "costCny":  null,
-                                              "image":  "assets/taobao/20052613980/003.webp"
-                                          },
-                                          {
-                                              "model":  "TB-20052613980-03",
-                                              "label":  "华辉SP-266B",
-                                              "priceUsd":  null,
-                                              "priceCny":  null,
-                                              "costCny":  null,
-                                              "image":  "assets/taobao/20052613980/004.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-optical-equipment",
-                          "model":  "TB-1000751668646",
-                          "nameEn":  "e字视力训练器拉卡视力户外飞行员训练卡PVC塑料近视训练缓解疲劳-淘宝网",
-                          "chineseName":  "e字视力训练器拉卡视力户外飞行员训练卡PVC塑料近视训练缓解疲劳-淘宝网",
-                          "image":  "assets/taobao/1000751668646/001.webp",
+                          "category":  "repair-parts",
+                          "model":  "TB-948519747052",
+                          "nameEn":  "一体硅胶鼻托儿童镜架马鞍鼻托柔软防滑硅胶连体上螺丝鼻托多色-tmall.com天猫",
+                          "chineseName":  "一体硅胶鼻托儿童镜架马鞍鼻托柔软防滑硅胶连体上螺丝鼻托多色-tmall.com天猫",
+                          "image":  "assets/taobao/948519747052/001.webp",
                           "images":  [
-                                         "assets/taobao/1000751668646/001.webp",
-                                         "assets/taobao/1000751668646/002.webp",
-                                         "assets/taobao/1000751668646/003.webp",
-                                         "assets/taobao/1000751668646/004.webp",
-                                         "assets/taobao/1000751668646/005.webp",
-                                         "assets/taobao/1000751668646/006.png",
-                                         "assets/taobao/1000751668646/007.webp",
-                                         "assets/taobao/1000751668646/008.webp"
+                                         "assets/taobao/948519747052/001.webp",
+                                         "assets/taobao/948519747052/002.webp",
+                                         "assets/taobao/948519747052/003.webp",
+                                         "assets/taobao/948519747052/004.webp",
+                                         "assets/taobao/948519747052/005.webp",
+                                         "assets/taobao/948519747052/006.webp",
+                                         "assets/taobao/948519747052/007.webp",
+                                         "assets/taobao/948519747052/008.webp",
+                                         "assets/taobao/948519747052/009.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
-                          "basePriceRmb":  12.8,
-                          "priceSource":  "Taobao supplier listing",
-                          "priceUsd":  2.45,
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  1,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  0.19,
                           "priceOnRequest":  false,
-                          "priceDisplay":  "USD 2.45 - 5.51",
-                          "sourceUrl":  "https://item.taobao.com/item.htm?id=1000751668646",
-                          "supplier":  "Taobao",
-                          "store":  "倍乐视力个人护理店 4.7 90天新增40条好评 平均16小时发货 平均2天退款",
+                          "priceDisplay":  "USD 0.19",
+                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=948519747052",
+                          "supplier":  "China supplier",
+                          "store":  "OECANA频绒专卖店 4.8 88VIP好评率96% 平均15小时发货 客服平均23秒回复",
                           "optionLabel":  "Supplier option",
                           "options":  [
                                           {
-                                              "model":  "TB-1000751668646-01",
-                                              "label":  "纸质款 视标卡【白底黑字】4张 缓解视疲劳",
-                                              "priceUsd":  2.45,
-                                              "priceCny":  16.64,
-                                              "costCny":  12.8,
-                                              "image":  "assets/taobao/1000751668646/001.webp"
+                                              "model":  "TB-948519747052-01",
+                                              "label":  "磨砂白色 近期热销",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/948519747052/001.webp"
                                           },
                                           {
-                                              "model":  "TB-1000751668646-02",
-                                              "label":  "亮面款聚散球+e字视力卡4张 斜视+缓解视疲劳",
-                                              "priceUsd":  5.51,
-                                              "priceCny":  37.44,
-                                              "costCny":  28.8,
-                                              "image":  "assets/taobao/1000751668646/007.webp"
+                                              "model":  "TB-948519747052-02",
+                                              "label":  "磨砂黑色 推荐",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/948519747052/006.webp"
                                           },
                                           {
-                                              "model":  "TB-1000751668646-03",
-                                              "label":  "哑光款聚散球+e字视力卡4张 斜视+缓解视疲劳",
-                                              "priceUsd":  5.51,
-                                              "priceCny":  37.44,
-                                              "costCny":  28.8,
-                                              "image":  "assets/taobao/1000751668646/008.webp"
+                                              "model":  "TB-948519747052-03",
+                                              "label":  "深蓝色",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/948519747052/007.webp"
+                                          },
+                                          {
+                                              "model":  "TB-948519747052-04",
+                                              "label":  "浅粉色",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/948519747052/008.webp"
+                                          },
+                                          {
+                                              "model":  "TB-948519747052-05",
+                                              "label":  "浅蓝色",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/948519747052/009.webp"
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-optical-equipment",
-                          "model":  "TB-886101652276",
-                          "nameEn":  "方形台式放大镜桌面阅读刺绣助视器本老人低视力带LED灯放大器 已售 9 可开发票",
-                          "chineseName":  "方形台式放大镜桌面阅读刺绣助视器本老人低视力带LED灯放大器 已售 9 可开发票",
-                          "image":  "assets/taobao/886101652276/001.webp",
+                          "category":  "repair-parts",
+                          "model":  "TB-582020332203",
+                          "nameEn":  "TR眼镜腿配件大全眼镜支架一对凸牙外牙眼镜脚腿框架单牙替换维修-tmall.com天猫",
+                          "chineseName":  "TR眼镜腿配件大全眼镜支架一对凸牙外牙眼镜脚腿框架单牙替换维修-tmall.com天猫",
+                          "image":  "assets/taobao/582020332203/001.webp",
                           "images":  [
-                                         "assets/taobao/886101652276/001.webp",
-                                         "assets/taobao/886101652276/002.webp",
-                                         "assets/taobao/886101652276/003.webp",
-                                         "assets/taobao/886101652276/004.webp",
-                                         "assets/taobao/886101652276/005.png"
+                                         "assets/taobao/582020332203/001.webp",
+                                         "assets/taobao/582020332203/002.webp",
+                                         "assets/taobao/582020332203/003.webp",
+                                         "assets/taobao/582020332203/004.webp",
+                                         "assets/taobao/582020332203/005.webp",
+                                         "assets/taobao/582020332203/006.webp",
+                                         "assets/taobao/582020332203/007.webp",
+                                         "assets/taobao/582020332203/008.webp",
+                                         "assets/taobao/582020332203/009.webp",
+                                         "assets/taobao/582020332203/010.webp",
+                                         "assets/taobao/582020332203/011.webp",
+                                         "assets/taobao/582020332203/012.webp",
+                                         "assets/taobao/582020332203/013.webp",
+                                         "assets/taobao/582020332203/014.webp",
+                                         "assets/taobao/582020332203/015.webp",
+                                         "assets/taobao/582020332203/016.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
-                          "basePriceRmb":  34,
-                          "priceSource":  "Taobao supplier listing",
-                          "priceUsd":  6.5,
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  0.4,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  0.08,
                           "priceOnRequest":  false,
-                          "priceDisplay":  "USD 6.5",
-                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=886101652276",
-                          "supplier":  "Taobao",
-                          "store":  "似画中人旗舰店 4.8 好评率95% 平均11小时发货 客服平均22秒回复",
+                          "priceDisplay":  "USD 0.08 - 0.19",
+                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=582020332203",
+                          "supplier":  "China supplier",
+                          "store":  "法基旗舰店 4.9 88VIP好评率96% 平均10小时发货 平均1小时退款",
                           "optionLabel":  "Supplier option",
                           "options":  [
                                           {
-                                              "model":  "TB-886101652276-01",
-                                              "label":  "黑色/台式阅读放大镜",
-                                              "priceUsd":  6.5,
-                                              "priceCny":  44.2,
-                                              "costCny":  34,
-                                              "image":  "assets/taobao/886101652276/001.webp"
+                                              "model":  "TB-582020332203-01",
+                                              "label":  "3.5号连体版腿宽3.5mm标准凸牙（送螺丝刀",
+                                              "priceUsd":  0.08,
+                                              "priceCny":  0.52,
+                                              "costCny":  0.4,
+                                              "image":  "assets/taobao/582020332203/001.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-02",
+                                              "label":  "4号连体版腿宽4mm标准凸牙（送螺丝刀）",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/006.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-03",
+                                              "label":  "4号脚套版腿宽4mm标准凸牙（送螺丝刀）",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/007.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-04",
+                                              "label":  "5号连体版腿宽5mm标准凸牙（送螺丝刀） 推荐",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/008.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-05",
+                                              "label":  "5号脚套版腿宽5mm标准凸牙（送螺丝刀）",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/009.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-06",
+                                              "label":  "6号连体版腿宽6mm标准凸牙（送螺丝刀）",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/010.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-07",
+                                              "label":  "6号脚套版腿宽6mm标准凸牙（送螺丝刀）",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/011.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-08",
+                                              "label":  "6.5号脚套版腿宽6.5mm标准凸牙（送螺丝刀",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/012.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-09",
+                                              "label":  "7号连体版腿宽7mm标准凸牙（送螺丝刀）",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/013.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-10",
+                                              "label":  "7.5号连体版腿宽7.5mm标准凸牙（送螺丝刀",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/014.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-11",
+                                              "label":  "8号脚套版腿宽8mm标准凸牙（送螺丝刀）",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/015.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-12",
+                                              "label":  "9号连体版腿宽9mm标准凸牙（送螺丝刀）",
+                                              "priceUsd":  0.08,
+                                              "priceCny":  0.52,
+                                              "costCny":  0.4,
+                                              "image":  "assets/taobao/582020332203/016.webp"
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
@@ -1897,87 +2061,20 @@
                   ]
     },
     {
-        "id":  "taobao-other-optical-accessories",
-        "en":  "Other Optical Accessories - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
+        "id":  "tool-set",
+        "en":  "Tool Set",
+        "desc":  "Optical shop products with option-level images and USD catalog pricing.",
+        "mergeKeys":  [
+                          "tool set",
+                          "tool sets",
+                          "tools",
+                          "tool kit",
+                          "tool kits",
+                          "repair tools"
+                      ],
         "items":  [
                       {
-                          "category":  "taobao-other-optical-accessories",
-                          "model":  "TB-1007095936432",
-                          "nameEn":  "红绿可变矢量图视功能训练双眼协同锻炼集合散开斜视弱视强化融像",
-                          "chineseName":  "红绿可变矢量图视功能训练双眼协同锻炼集合散开斜视弱视强化融像",
-                          "image":  "assets/taobao/1007095936432/001.webp",
-                          "images":  [
-                                         "assets/taobao/1007095936432/001.webp",
-                                         "assets/taobao/1007095936432/002.webp",
-                                         "assets/taobao/1007095936432/003.webp",
-                                         "assets/taobao/1007095936432/004.webp",
-                                         "assets/taobao/1007095936432/005.webp",
-                                         "assets/taobao/1007095936432/006.webp",
-                                         "assets/taobao/1007095936432/007.webp",
-                                         "assets/taobao/1007095936432/008.webp",
-                                         "assets/taobao/1007095936432/009.webp"
-                                     ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
-                          "basePriceRmb":  91,
-                          "priceSource":  "Taobao supplier listing",
-                          "priceUsd":  17.40,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 17.4 - 47.6",
-                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=1007095936432",
-                          "supplier":  "Taobao",
-                          "store":  "中量普斯莱专卖店 5.0 88VIP好评率97% 平均10小时发货 客服满意度93%",
-                          "optionLabel":  "Supplier option",
-                          "options":  [
-                                          {
-                                              "model":  "TB-1007095936432-01",
-                                              "label":  "可变矢量图+亚克力支架+夹片镜",
-                                              "priceUsd":  17.40,
-                                              "priceCny":  118.3,
-                                              "costCny":  91,
-                                              "image":  "assets/taobao/1007095936432/001.webp"
-                                          },
-                                          {
-                                              "model":  "TB-1007095936432-02",
-                                              "label":  "可变矢量图+亚克力支架+框架镜 百人购买",
-                                              "priceUsd":  17.40,
-                                              "priceCny":  118.3,
-                                              "costCny":  91,
-                                              "image":  "assets/taobao/1007095936432/007.webp"
-                                          },
-                                          {
-                                              "model":  "TB-1007095936432-03",
-                                              "label":  "可变矢量图+带灯支架+框架镜",
-                                              "priceUsd":  47.60,
-                                              "priceCny":  323.7,
-                                              "costCny":  249,
-                                              "image":  "assets/taobao/1007095936432/008.webp"
-                                          },
-                                          {
-                                              "model":  "TB-1007095936432-04",
-                                              "label":  "可变矢量图+带灯支架+夹片镜",
-                                              "priceUsd":  47.60,
-                                              "priceCny":  323.7,
-                                              "costCny":  249,
-                                              "image":  "assets/taobao/1007095936432/009.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Supplier source: Taobao",
-                                           "LZN catalog price includes a 30% margin",
-                                           "USD price calculated at CNY 6.8 per USD",
-                                           "Availability and international freight to be confirmed"
-                                       ]
-                      }
-                  ]
-    },
-    {
-        "id":  "taobao-pliers",
-        "en":  "Pliers - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
-        "items":  [
-                      {
-                          "category":  "taobao-pliers",
+                          "category":  "tool-set",
                           "model":  "TB-989792061106",
                           "nameEn":  "眼镜整形修理工具钳维修镜架调整钳调节鼻托调镜腿松紧不锈钢钳子-tmall.com天猫",
                           "chineseName":  "眼镜整形修理工具钳维修镜架调整钳调节鼻托调镜腿松紧不锈钢钳子-tmall.com天猫",
@@ -1995,14 +2092,14 @@
                                          "assets/taobao/989792061106/010.webp",
                                          "assets/taobao/989792061106/011.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  22,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  4.21,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 4.21 - 5.16",
                           "sourceUrl":  "https://detail.tmall.com/item.htm?id=989792061106",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "趣先旗舰店 4.9 90天新增96条好评 平均10小时发货 平均12小时退款",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -2064,14 +2161,67 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
                       },
                       {
-                          "category":  "taobao-pliers",
+                          "category":  "tool-set",
+                          "model":  "TB-20052613980",
+                          "nameEn":  "眼镜验光设备仪器眼科验光镜片箱验光箱插片箱验光盘华辉266合格-淘宝网",
+                          "chineseName":  "眼镜验光设备仪器眼科验光镜片箱验光箱插片箱验光盘华辉266合格-淘宝网",
+                          "image":  "assets/taobao/20052613980/001.webp",
+                          "images":  [
+                                         "assets/taobao/20052613980/001.webp",
+                                         "assets/taobao/20052613980/002.webp",
+                                         "assets/taobao/20052613980/003.webp",
+                                         "assets/taobao/20052613980/004.webp"
+                                     ],
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  null,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "sourceUrl":  "https://item.taobao.com/item.htm?id=20052613980",
+                          "supplier":  "China supplier",
+                          "store":  "好帮手眼镜设备仪器 5.0 88VIP好评率100% 平均7小时发货 客服平均23秒回复",
+                          "optionLabel":  "Supplier option",
+                          "options":  [
+                                          {
+                                              "model":  "TB-20052613980-01",
+                                              "label":  "华辉SP-266A",
+                                              "priceUsd":  null,
+                                              "priceCny":  null,
+                                              "costCny":  null,
+                                              "image":  "assets/taobao/20052613980/001.webp"
+                                          },
+                                          {
+                                              "model":  "TB-20052613980-02",
+                                              "label":  "华辉JP-266A",
+                                              "priceUsd":  null,
+                                              "priceCny":  null,
+                                              "costCny":  null,
+                                              "image":  "assets/taobao/20052613980/003.webp"
+                                          },
+                                          {
+                                              "model":  "TB-20052613980-03",
+                                              "label":  "华辉SP-266B",
+                                              "priceUsd":  null,
+                                              "priceCny":  null,
+                                              "costCny":  null,
+                                              "image":  "assets/taobao/20052613980/004.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "LZN catalog price includes a 30% margin",
+                                           "USD price calculated at CNY 6.8 per USD",
+                                           "Availability and international freight to be confirmed"
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
                           "model":  "TB-807888035006",
                           "nameEn":  "修眼镜工具钳子调整工具钳调节镜腿工具鼻托钳鼻托桩头调整整形钳-淘宝网",
                           "chineseName":  "修眼镜工具钳子调整工具钳调节镜腿工具鼻托钳鼻托桩头调整整形钳-淘宝网",
@@ -2104,14 +2254,14 @@
                                          "assets/taobao/807888035006/025.webp",
                                          "assets/taobao/807888035006/026.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  13,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  2.49,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 2.49 - 5.35",
                           "sourceUrl":  "https://item.taobao.com/item.htm?id=807888035006",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "莱特眼镜配件设备商行 4.7 90天新增33条好评 平均17小时发货 平均2天退款",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -2293,21 +2443,267 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
                                        ]
-                      }
-                  ]
-    },
-    {
-        "id":  "taobao-screwdrivers",
-        "en":  "Screwdrivers - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
-        "items":  [
+                      },
                       {
-                          "category":  "taobao-screwdrivers",
+                          "category":  "tool-set",
+                          "model":  "TB-673765851712",
+                          "nameEn":  "半框眼镜拉丝勾无框镜架鱼线下垫丝勾丝刀不锈钢鱼丝线勾针拉丝钩",
+                          "chineseName":  "半框眼镜拉丝勾无框镜架鱼线下垫丝勾丝刀不锈钢鱼丝线勾针拉丝钩",
+                          "image":  "assets/taobao/673765851712/001.webp",
+                          "images":  [
+                                         "assets/taobao/673765851712/001.webp",
+                                         "assets/taobao/673765851712/002.webp",
+                                         "assets/taobao/673765851712/003.webp",
+                                         "assets/taobao/673765851712/004.webp",
+                                         "assets/taobao/673765851712/005.webp",
+                                         "assets/taobao/673765851712/006.webp",
+                                         "assets/taobao/673765851712/007.webp",
+                                         "assets/taobao/673765851712/008.webp",
+                                         "assets/taobao/673765851712/009.webp",
+                                         "assets/taobao/673765851712/010.webp",
+                                         "assets/taobao/673765851712/011.webp",
+                                         "assets/taobao/673765851712/012.webp",
+                                         "assets/taobao/673765851712/013.webp",
+                                         "assets/taobao/673765851712/014.webp",
+                                         "assets/taobao/673765851712/015.webp",
+                                         "assets/taobao/673765851712/016.webp",
+                                         "assets/taobao/673765851712/017.webp",
+                                         "assets/taobao/673765851712/018.webp",
+                                         "assets/taobao/673765851712/019.webp"
+                                     ],
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  6.48,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  1.24,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 1.24 - 3.75",
+                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=673765851712",
+                          "supplier":  "China supplier",
+                          "store":  "悦己容眼镜旗舰店 4.9 88VIP好评率97% 平均13小时发货 客服平均24秒回复",
+                          "optionLabel":  "Supplier option",
+                          "options":  [
+                                          {
+                                              "model":  "TB-673765851712-01",
+                                              "label":  "B款眼镜鱼线拉丝勾（不锈钢柄）1把装 推荐",
+                                              "priceUsd":  1.49,
+                                              "priceCny":  10.13,
+                                              "costCny":  7.79,
+                                              "image":  "assets/taobao/673765851712/001.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-02",
+                                              "label":  "B款半框眼镜拉丝勾（不锈钢柄）2把装",
+                                              "priceUsd":  3.02,
+                                              "priceCny":  20.54,
+                                              "costCny":  15.8,
+                                              "image":  "assets/taobao/673765851712/007.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-03",
+                                              "label":  "C款眼镜鱼线拉丝勾（塑料柄）1把装",
+                                              "priceUsd":  1.43,
+                                              "priceCny":  9.75,
+                                              "costCny":  7.5,
+                                              "image":  "assets/taobao/673765851712/008.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-04",
+                                              "label":  "C款半框眼镜拉丝勾（塑料柄）2把装",
+                                              "priceUsd":  2.96,
+                                              "priceCny":  20.15,
+                                              "costCny":  15.5,
+                                              "image":  "assets/taobao/673765851712/009.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-05",
+                                              "label":  "A款半框眼镜拉丝勾（纯铜柄）2把装",
+                                              "priceUsd":  3.59,
+                                              "priceCny":  24.44,
+                                              "costCny":  18.8,
+                                              "image":  "assets/taobao/673765851712/010.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-06",
+                                              "label":  "【眼镜鱼线】常规款0.6mm一卷",
+                                              "priceUsd":  1.24,
+                                              "priceCny":  8.42,
+                                              "costCny":  6.48,
+                                              "image":  "assets/taobao/673765851712/011.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-07",
+                                              "label":  "【眼镜鱼线】细款0.5mm一卷",
+                                              "priceUsd":  1.24,
+                                              "priceCny":  8.42,
+                                              "costCny":  6.48,
+                                              "image":  "assets/taobao/673765851712/012.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-08",
+                                              "label":  "【眼镜鱼线】粗款0.7mm一卷",
+                                              "priceUsd":  1.24,
+                                              "priceCny":  8.42,
+                                              "costCny":  6.48,
+                                              "image":  "assets/taobao/673765851712/013.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-09",
+                                              "label":  "C款拉丝勾1把+【眼镜鱼线】常规款0.6mm一卷",
+                                              "priceUsd":  2.6,
+                                              "priceCny":  17.68,
+                                              "costCny":  13.6,
+                                              "image":  "assets/taobao/673765851712/014.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-10",
+                                              "label":  "C款拉丝勾1把+【眼镜鱼线】细款0.5mm一卷",
+                                              "priceUsd":  2.6,
+                                              "priceCny":  17.68,
+                                              "costCny":  13.6,
+                                              "image":  "assets/taobao/673765851712/015.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-11",
+                                              "label":  "C款拉丝勾1把+【眼镜鱼线】粗款0.7mm一卷",
+                                              "priceUsd":  2.6,
+                                              "priceCny":  17.68,
+                                              "costCny":  13.6,
+                                              "image":  "assets/taobao/673765851712/016.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-12",
+                                              "label":  "C款拉丝勾1把+【眼镜鱼线】0.5/0.6/0.7各一卷",
+                                              "priceUsd":  3.75,
+                                              "priceCny":  25.48,
+                                              "costCny":  19.6,
+                                              "image":  "assets/taobao/673765851712/017.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-13",
+                                              "label":  "全框眼镜垫丝【常规款】【小号】（厚度约0.3mm）",
+                                              "priceUsd":  1.49,
+                                              "priceCny":  10.14,
+                                              "costCny":  7.8,
+                                              "image":  "assets/taobao/673765851712/018.webp"
+                                          },
+                                          {
+                                              "model":  "TB-673765851712-14",
+                                              "label":  "全框眼镜垫丝【大号】（厚度约0.5mm）",
+                                              "priceUsd":  1.87,
+                                              "priceCny":  12.74,
+                                              "costCny":  9.8,
+                                              "image":  "assets/taobao/673765851712/019.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "LZN catalog price includes a 30% margin",
+                                           "USD price calculated at CNY 6.8 per USD",
+                                           "Availability and international freight to be confirmed"
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
+                          "model":  "TB-1000751668646",
+                          "nameEn":  "e字视力训练器拉卡视力户外飞行员训练卡PVC塑料近视训练缓解疲劳-淘宝网",
+                          "chineseName":  "e字视力训练器拉卡视力户外飞行员训练卡PVC塑料近视训练缓解疲劳-淘宝网",
+                          "image":  "assets/taobao/1000751668646/001.webp",
+                          "images":  [
+                                         "assets/taobao/1000751668646/001.webp",
+                                         "assets/taobao/1000751668646/002.webp",
+                                         "assets/taobao/1000751668646/003.webp",
+                                         "assets/taobao/1000751668646/004.webp",
+                                         "assets/taobao/1000751668646/005.webp",
+                                         "assets/taobao/1000751668646/006.png",
+                                         "assets/taobao/1000751668646/007.webp",
+                                         "assets/taobao/1000751668646/008.webp"
+                                     ],
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  12.8,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  2.45,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 2.45 - 5.51",
+                          "sourceUrl":  "https://item.taobao.com/item.htm?id=1000751668646",
+                          "supplier":  "China supplier",
+                          "store":  "倍乐视力个人护理店 4.7 90天新增40条好评 平均16小时发货 平均2天退款",
+                          "optionLabel":  "Supplier option",
+                          "options":  [
+                                          {
+                                              "model":  "TB-1000751668646-01",
+                                              "label":  "纸质款 视标卡【白底黑字】4张 缓解视疲劳",
+                                              "priceUsd":  2.45,
+                                              "priceCny":  16.64,
+                                              "costCny":  12.8,
+                                              "image":  "assets/taobao/1000751668646/001.webp"
+                                          },
+                                          {
+                                              "model":  "TB-1000751668646-02",
+                                              "label":  "亮面款聚散球+e字视力卡4张 斜视+缓解视疲劳",
+                                              "priceUsd":  5.51,
+                                              "priceCny":  37.44,
+                                              "costCny":  28.8,
+                                              "image":  "assets/taobao/1000751668646/007.webp"
+                                          },
+                                          {
+                                              "model":  "TB-1000751668646-03",
+                                              "label":  "哑光款聚散球+e字视力卡4张 斜视+缓解视疲劳",
+                                              "priceUsd":  5.51,
+                                              "priceCny":  37.44,
+                                              "costCny":  28.8,
+                                              "image":  "assets/taobao/1000751668646/008.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "LZN catalog price includes a 30% margin",
+                                           "USD price calculated at CNY 6.8 per USD",
+                                           "Availability and international freight to be confirmed"
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
+                          "model":  "TB-886101652276",
+                          "nameEn":  "方形台式放大镜桌面阅读刺绣助视器本老人低视力带LED灯放大器 已售 9 可开发票",
+                          "chineseName":  "方形台式放大镜桌面阅读刺绣助视器本老人低视力带LED灯放大器 已售 9 可开发票",
+                          "image":  "assets/taobao/886101652276/001.webp",
+                          "images":  [
+                                         "assets/taobao/886101652276/001.webp",
+                                         "assets/taobao/886101652276/002.webp",
+                                         "assets/taobao/886101652276/003.webp",
+                                         "assets/taobao/886101652276/004.webp",
+                                         "assets/taobao/886101652276/005.png"
+                                     ],
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  34,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  6.5,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 6.5",
+                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=886101652276",
+                          "supplier":  "China supplier",
+                          "store":  "似画中人旗舰店 4.8 好评率95% 平均11小时发货 客服平均22秒回复",
+                          "optionLabel":  "Supplier option",
+                          "options":  [
+                                          {
+                                              "model":  "TB-886101652276-01",
+                                              "label":  "黑色/台式阅读放大镜",
+                                              "priceUsd":  6.5,
+                                              "priceCny":  44.2,
+                                              "costCny":  34,
+                                              "image":  "assets/taobao/886101652276/001.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "LZN catalog price includes a 30% margin",
+                                           "USD price calculated at CNY 6.8 per USD",
+                                           "Availability and international freight to be confirmed"
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
                           "model":  "TB-608800446878",
                           "nameEn":  "眼镜专用维修小螺丝眼镜框上的硅胶鼻托垫螺丝刀配件大全修理工具",
                           "chineseName":  "眼镜专用维修小螺丝眼镜框上的硅胶鼻托垫螺丝刀配件大全修理工具",
@@ -2334,14 +2730,14 @@
                                          "assets/taobao/608800446878/019.webp",
                                          "assets/taobao/608800446878/020.webp"
                                      ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
                           "basePriceRmb":  1,
-                          "priceSource":  "Taobao supplier listing",
+                          "priceSource":  "Supplier listing",
                           "priceUsd":  0.19,
                           "priceOnRequest":  false,
                           "priceDisplay":  "USD 0.19",
                           "sourceUrl":  "https://detail.tmall.com/item.htm?id=608800446878",
-                          "supplier":  "Taobao",
+                          "supplier":  "China supplier",
                           "store":  "灵视眼镜旗舰店 4.9 88VIP好评率97% 平均13小时发货 客服平均19秒回复",
                           "optionLabel":  "Supplier option",
                           "options":  [
@@ -2467,438 +2863,6 @@
                                           }
                                       ],
                           "features":  [
-                                           "Supplier source: Taobao",
-                                           "LZN catalog price includes a 30% margin",
-                                           "USD price calculated at CNY 6.8 per USD",
-                                           "Availability and international freight to be confirmed"
-                                       ]
-                      }
-                  ]
-    },
-    {
-        "id":  "taobao-screws",
-        "en":  "Screws - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
-        "items":  [
-                      {
-                          "category":  "taobao-screws",
-                          "model":  "TB-972711305522",
-                          "nameEn":  "眼镜配件眼镜螺丝眼镜螺钉桩头螺丝平头尖头镜框螺丝规格齐全-淘宝网",
-                          "chineseName":  "眼镜配件眼镜螺丝眼镜螺钉桩头螺丝平头尖头镜框螺丝规格齐全-淘宝网",
-                          "image":  "assets/taobao/972711305522/001.webp",
-                          "images":  [
-                                         "assets/taobao/972711305522/001.webp",
-                                         "assets/taobao/972711305522/002.webp",
-                                         "assets/taobao/972711305522/003.webp",
-                                         "assets/taobao/972711305522/004.webp",
-                                         "assets/taobao/972711305522/005.webp",
-                                         "assets/taobao/972711305522/006.webp",
-                                         "assets/taobao/972711305522/007.webp",
-                                         "assets/taobao/972711305522/008.webp",
-                                         "assets/taobao/972711305522/009.webp",
-                                         "assets/taobao/972711305522/010.webp",
-                                         "assets/taobao/972711305522/011.webp",
-                                         "assets/taobao/972711305522/012.webp",
-                                         "assets/taobao/972711305522/013.webp",
-                                         "assets/taobao/972711305522/014.webp",
-                                         "assets/taobao/972711305522/015.webp",
-                                         "assets/taobao/972711305522/016.webp",
-                                         "assets/taobao/972711305522/017.webp",
-                                         "assets/taobao/972711305522/018.webp",
-                                         "assets/taobao/972711305522/019.webp",
-                                         "assets/taobao/972711305522/020.webp",
-                                         "assets/taobao/972711305522/021.webp",
-                                         "assets/taobao/972711305522/022.webp",
-                                         "assets/taobao/972711305522/023.webp"
-                                     ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
-                          "basePriceRmb":  2.48,
-                          "priceSource":  "Taobao supplier listing",
-                          "priceUsd":  0.47,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 0.47 - 0.7",
-                          "sourceUrl":  "https://item.taobao.com/item.htm?id=972711305522",
-                          "supplier":  "Taobao",
-                          "store":  "远舰光电眼镜设备 4.6 90天新增35条好评 平均14小时发货 平均2天退款",
-                          "optionLabel":  "Supplier option",
-                          "options":  [
-                                          {
-                                              "model":  "TB-972711305522-01",
-                                              "label":  "鼻托螺丝1.2*3.6（平头）",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/001.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-02",
-                                              "label":  "桩头螺丝2.0*1.4*2.4 推荐",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/006.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-03",
-                                              "label":  "桩头螺丝2.0*1.4*2.6",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/007.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-04",
-                                              "label":  "桩头螺丝2.0*1.4*2.8",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/008.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-05",
-                                              "label":  "桩头螺丝2.0*1.4*3.0",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/009.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-06",
-                                              "label":  "桩头螺丝2.0*1.4*3.2",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/010.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-07",
-                                              "label":  "桩头螺丝2.0*1.4*3.4",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/011.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-08",
-                                              "label":  "桩头螺丝2.0*1.4*3.6",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/012.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-09",
-                                              "label":  "桩头螺丝2.0*1.4*3.8",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/013.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-10",
-                                              "label":  "桩头螺丝2.0*1.4*4.0",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/014.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-11",
-                                              "label":  "板材螺丝2.5*1.4*4.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/015.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-12",
-                                              "label":  "板材螺丝2.5*1.4*4.5",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/016.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-13",
-                                              "label":  "板材架螺丝2.5*1.4*5.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/017.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-14",
-                                              "label":  "太阳镜螺丝2.5*1.6*4.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/018.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-15",
-                                              "label":  "太阳镜螺丝2.5*1.6*4.5",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/019.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-16",
-                                              "label":  "太阳镜螺丝2.5*1.6*5.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/020.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-17",
-                                              "label":  "无框钻石头2.5*1.4*6.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/021.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-18",
-                                              "label":  "无框钻石头2.5*1.4*8.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/022.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-19",
-                                              "label":  "螺母1.4",
-                                              "priceUsd":  0.70,
-                                              "priceCny":  4.78,
-                                              "costCny":  3.68,
-                                              "image":  "assets/taobao/972711305522/023.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Supplier source: Taobao",
-                                           "LZN catalog price includes a 30% margin",
-                                           "USD price calculated at CNY 6.8 per USD",
-                                           "Availability and international freight to be confirmed"
-                                       ]
-                      },
-                      {
-                          "category":  "taobao-screws",
-                          "model":  "TB-948519747052",
-                          "nameEn":  "一体硅胶鼻托儿童镜架马鞍鼻托柔软防滑硅胶连体上螺丝鼻托多色-tmall.com天猫",
-                          "chineseName":  "一体硅胶鼻托儿童镜架马鞍鼻托柔软防滑硅胶连体上螺丝鼻托多色-tmall.com天猫",
-                          "image":  "assets/taobao/948519747052/001.webp",
-                          "images":  [
-                                         "assets/taobao/948519747052/001.webp",
-                                         "assets/taobao/948519747052/002.webp",
-                                         "assets/taobao/948519747052/003.webp",
-                                         "assets/taobao/948519747052/004.webp",
-                                         "assets/taobao/948519747052/005.webp",
-                                         "assets/taobao/948519747052/006.webp",
-                                         "assets/taobao/948519747052/007.webp",
-                                         "assets/taobao/948519747052/008.webp",
-                                         "assets/taobao/948519747052/009.webp"
-                                     ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
-                          "basePriceRmb":  1,
-                          "priceSource":  "Taobao supplier listing",
-                          "priceUsd":  0.19,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 0.19",
-                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=948519747052",
-                          "supplier":  "Taobao",
-                          "store":  "OECANA频绒专卖店 4.8 88VIP好评率96% 平均15小时发货 客服平均23秒回复",
-                          "optionLabel":  "Supplier option",
-                          "options":  [
-                                          {
-                                              "model":  "TB-948519747052-01",
-                                              "label":  "磨砂白色 近期热销",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/948519747052/001.webp"
-                                          },
-                                          {
-                                              "model":  "TB-948519747052-02",
-                                              "label":  "磨砂黑色 推荐",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/948519747052/006.webp"
-                                          },
-                                          {
-                                              "model":  "TB-948519747052-03",
-                                              "label":  "深蓝色",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/948519747052/007.webp"
-                                          },
-                                          {
-                                              "model":  "TB-948519747052-04",
-                                              "label":  "浅粉色",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/948519747052/008.webp"
-                                          },
-                                          {
-                                              "model":  "TB-948519747052-05",
-                                              "label":  "浅蓝色",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/948519747052/009.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Supplier source: Taobao",
-                                           "LZN catalog price includes a 30% margin",
-                                           "USD price calculated at CNY 6.8 per USD",
-                                           "Availability and international freight to be confirmed"
-                                       ]
-                      }
-                  ]
-    },
-    {
-        "id":  "taobao-temple-parts",
-        "en":  "Temple Parts - Taobao",
-        "desc":  "Imported Taobao supplier products with option-level images and CNY pricing.",
-        "items":  [
-                      {
-                          "category":  "taobao-temple-parts",
-                          "model":  "TB-582020332203",
-                          "nameEn":  "TR眼镜腿配件大全眼镜支架一对凸牙外牙眼镜脚腿框架单牙替换维修-tmall.com天猫",
-                          "chineseName":  "TR眼镜腿配件大全眼镜支架一对凸牙外牙眼镜脚腿框架单牙替换维修-tmall.com天猫",
-                          "image":  "assets/taobao/582020332203/001.webp",
-                          "images":  [
-                                         "assets/taobao/582020332203/001.webp",
-                                         "assets/taobao/582020332203/002.webp",
-                                         "assets/taobao/582020332203/003.webp",
-                                         "assets/taobao/582020332203/004.webp",
-                                         "assets/taobao/582020332203/005.webp",
-                                         "assets/taobao/582020332203/006.webp",
-                                         "assets/taobao/582020332203/007.webp",
-                                         "assets/taobao/582020332203/008.webp",
-                                         "assets/taobao/582020332203/009.webp",
-                                         "assets/taobao/582020332203/010.webp",
-                                         "assets/taobao/582020332203/011.webp",
-                                         "assets/taobao/582020332203/012.webp",
-                                         "assets/taobao/582020332203/013.webp",
-                                         "assets/taobao/582020332203/014.webp",
-                                         "assets/taobao/582020332203/015.webp",
-                                         "assets/taobao/582020332203/016.webp"
-                                     ],
-                          "description":  "Taobao supplier catalog item. Select an option to view its LZN catalog price and product image.",
-                          "basePriceRmb":  0.4,
-                          "priceSource":  "Taobao supplier listing",
-                          "priceUsd":  0.08,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 0.08 - 0.19",
-                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=582020332203",
-                          "supplier":  "Taobao",
-                          "store":  "法基旗舰店 4.9 88VIP好评率96% 平均10小时发货 平均1小时退款",
-                          "optionLabel":  "Supplier option",
-                          "options":  [
-                                          {
-                                              "model":  "TB-582020332203-01",
-                                              "label":  "3.5号连体版腿宽3.5mm标准凸牙（送螺丝刀",
-                                              "priceUsd":  0.08,
-                                              "priceCny":  0.52,
-                                              "costCny":  0.4,
-                                              "image":  "assets/taobao/582020332203/001.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-02",
-                                              "label":  "4号连体版腿宽4mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/006.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-03",
-                                              "label":  "4号脚套版腿宽4mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/007.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-04",
-                                              "label":  "5号连体版腿宽5mm标准凸牙（送螺丝刀） 推荐",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/008.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-05",
-                                              "label":  "5号脚套版腿宽5mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/009.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-06",
-                                              "label":  "6号连体版腿宽6mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/010.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-07",
-                                              "label":  "6号脚套版腿宽6mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/011.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-08",
-                                              "label":  "6.5号脚套版腿宽6.5mm标准凸牙（送螺丝刀",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/012.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-09",
-                                              "label":  "7号连体版腿宽7mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/013.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-10",
-                                              "label":  "7.5号连体版腿宽7.5mm标准凸牙（送螺丝刀",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/014.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-11",
-                                              "label":  "8号脚套版腿宽8mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/015.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-12",
-                                              "label":  "9号连体版腿宽9mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.08,
-                                              "priceCny":  0.52,
-                                              "costCny":  0.4,
-                                              "image":  "assets/taobao/582020332203/016.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Supplier source: Taobao",
                                            "LZN catalog price includes a 30% margin",
                                            "USD price calculated at CNY 6.8 per USD",
                                            "Availability and international freight to be confirmed"
@@ -2908,5 +2872,27 @@
     }
 ];
   window.CATALOG_DATA = window.CATALOG_DATA || [];
-  window.CATALOG_DATA.push(...importedCategories);
+  const normalize = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+
+  importedCategories.forEach(importedCategory => {
+    const mergeKeys = [
+      importedCategory.id,
+      importedCategory.en,
+      ...(importedCategory.mergeKeys || [])
+    ].map(normalize);
+    const existingCategory = window.CATALOG_DATA.find(category =>
+      mergeKeys.includes(normalize(category.id)) ||
+      mergeKeys.includes(normalize(category.en))
+    );
+
+    delete importedCategory.mergeKeys;
+    if (existingCategory) {
+      importedCategory.items.forEach(item => {
+        item.category = existingCategory.id;
+      });
+      existingCategory.items.push(...importedCategory.items);
+    } else {
+      window.CATALOG_DATA.push(importedCategory);
+    }
+  });
 })();
