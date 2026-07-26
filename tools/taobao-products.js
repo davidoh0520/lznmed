@@ -37,10 +37,11 @@
                           "supplier":  "China supplier",
                           "store":  "中量普斯莱专卖店 5.0 88VIP好评率97% 平均10小时发货 客服满意度93%",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-1007095936432-01",
-                                              "label":  "可变矢量图+亚克力支架+夹片镜",
+                                              "label":  "可变矢量图+亚克力支架+夹片镜 - USD 17.40",
                                               "priceUsd":  17.40,
                                               "priceCny":  118.3,
                                               "costCny":  91,
@@ -48,7 +49,7 @@
                                           },
                                           {
                                               "model":  "TB-1007095936432-02",
-                                              "label":  "可变矢量图+亚克力支架+框架镜 百人购买",
+                                              "label":  "可变矢量图+亚克力支架+框架镜 百人购买 - USD 17.40",
                                               "priceUsd":  17.40,
                                               "priceCny":  118.3,
                                               "costCny":  91,
@@ -56,7 +57,7 @@
                                           },
                                           {
                                               "model":  "TB-1007095936432-03",
-                                              "label":  "可变矢量图+带灯支架+框架镜",
+                                              "label":  "可变矢量图+带灯支架+框架镜 - USD 47.60",
                                               "priceUsd":  47.60,
                                               "priceCny":  323.7,
                                               "costCny":  249,
@@ -64,7 +65,7 @@
                                           },
                                           {
                                               "model":  "TB-1007095936432-04",
-                                              "label":  "可变矢量图+带灯支架+夹片镜",
+                                              "label":  "可变矢量图+带灯支架+夹片镜 - USD 47.60",
                                               "priceUsd":  47.60,
                                               "priceCny":  323.7,
                                               "costCny":  249,
@@ -121,10 +122,11 @@
                           "supplier":  "China supplier",
                           "store":  "朋意旗舰店 4.7 88VIP好评率94% 平均16小时发货 客服平均27秒回复",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-983202892410-01",
-                                              "label":  "浅蓝小熊（送❤️镜布1张+清洗液1瓶）",
+                                              "label":  "浅蓝小熊（送❤️镜布1张+清洗液1瓶） - USD 2.78",
                                               "priceUsd":  2.78,
                                               "priceCny":  18.93,
                                               "costCny":  14.56,
@@ -132,7 +134,7 @@
                                           },
                                           {
                                               "model":  "TB-983202892410-02",
-                                              "label":  "白色小熊（送❤️镜布1张+清洗液1瓶）",
+                                              "label":  "白色小熊（送❤️镜布1张+清洗液1瓶） - USD 2.78",
                                               "priceUsd":  2.78,
                                               "priceCny":  18.93,
                                               "costCny":  14.56,
@@ -140,7 +142,7 @@
                                           },
                                           {
                                               "model":  "TB-983202892410-03",
-                                              "label":  "黑色小熊（送❤️镜布1张+清洁液1瓶）",
+                                              "label":  "黑色小熊（送❤️镜布1张+清洁液1瓶） - USD 2.78",
                                               "priceUsd":  2.78,
                                               "priceCny":  18.93,
                                               "costCny":  14.56,
@@ -148,7 +150,7 @@
                                           },
                                           {
                                               "model":  "TB-983202892410-04",
-                                              "label":  "【梦幻水墨绿】绿色（送镜布）",
+                                              "label":  "【梦幻水墨绿】绿色（送镜布） - USD 1.89",
                                               "priceUsd":  1.89,
                                               "priceCny":  12.83,
                                               "costCny":  9.87,
@@ -156,7 +158,7 @@
                                           },
                                           {
                                               "model":  "TB-983202892410-05",
-                                              "label":  "【梦幻天空蓝】蓝色（送镜布）",
+                                              "label":  "【梦幻天空蓝】蓝色（送镜布） - USD 1.89",
                                               "priceUsd":  1.89,
                                               "priceCny":  12.83,
                                               "costCny":  9.87,
@@ -164,7 +166,7 @@
                                           },
                                           {
                                               "model":  "TB-983202892410-06",
-                                              "label":  "【梦幻水墨黑】黑色（送镜布） 推荐",
+                                              "label":  "【梦幻水墨黑】黑色（送镜布） 推荐 - USD 1.89",
                                               "priceUsd":  1.89,
                                               "priceCny":  12.83,
                                               "costCny":  9.87,
@@ -172,7 +174,7 @@
                                           },
                                           {
                                               "model":  "TB-983202892410-07",
-                                              "label":  "【简约眼镜盒】白色小熊（送镜布）",
+                                              "label":  "【简约眼镜盒】白色小熊（送镜布） - USD 2.46",
                                               "priceUsd":  2.46,
                                               "priceCny":  16.74,
                                               "costCny":  12.88,
@@ -180,7 +182,7 @@
                                           },
                                           {
                                               "model":  "TB-983202892410-08",
-                                              "label":  "【简约眼镜盒】黑色小熊（送镜布）",
+                                              "label":  "【简约眼镜盒】黑色小熊（送镜布） - USD 2.46",
                                               "priceUsd":  2.46,
                                               "priceCny":  16.74,
                                               "costCny":  12.88,
@@ -219,10 +221,11 @@
                           "supplier":  "China supplier",
                           "store":  "盒适 HOSHI 4.8 88VIP好评率99% 平均15小时发货 平均14小时退款",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-935577042679-01",
-                                              "label":  "黑色（可放2副）",
+                                              "label":  "黑色（可放2副） - USD 4.78",
                                               "priceUsd":  4.78,
                                               "priceCny":  32.5,
                                               "costCny":  25,
@@ -230,7 +233,7 @@
                                           },
                                           {
                                               "model":  "TB-935577042679-02",
-                                              "label":  "黑色（可放4副）",
+                                              "label":  "黑色（可放4副） - USD 6.29",
                                               "priceUsd":  6.29,
                                               "priceCny":  42.77,
                                               "costCny":  32.9,
@@ -238,7 +241,7 @@
                                           },
                                           {
                                               "model":  "TB-935577042679-03",
-                                              "label":  "黑色（可放7副） 推荐",
+                                              "label":  "黑色（可放7副） 推荐 - USD 9.16",
                                               "priceUsd":  9.16,
                                               "priceCny":  62.27,
                                               "costCny":  47.9,
@@ -279,10 +282,11 @@
                           "supplier":  "China supplier",
                           "store":  "标青春管棋专卖店 4.3 好评率84% 平均20小时发货 平均5小时退款",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-1034702556904-01",
-                                              "label":  "烤瓷白+清洁液",
+                                              "label":  "烤瓷白+清洁液 - USD 6.06",
                                               "priceUsd":  6.06,
                                               "priceCny":  41.21,
                                               "costCny":  31.7,
@@ -290,7 +294,7 @@
                                           },
                                           {
                                               "model":  "TB-1034702556904-02",
-                                              "label":  "烤瓷白+眼镜布+清洁液",
+                                              "label":  "烤瓷白+眼镜布+清洁液 - USD 6.87",
                                               "priceUsd":  6.87,
                                               "priceCny":  46.7,
                                               "costCny":  35.92,
@@ -298,7 +302,7 @@
                                           },
                                           {
                                               "model":  "TB-1034702556904-03",
-                                              "label":  "深邃黑+清洁液",
+                                              "label":  "深邃黑+清洁液 - USD 6.06",
                                               "priceUsd":  6.06,
                                               "priceCny":  41.21,
                                               "costCny":  31.7,
@@ -306,7 +310,7 @@
                                           },
                                           {
                                               "model":  "TB-1034702556904-04",
-                                              "label":  "天空蓝+清洁液",
+                                              "label":  "天空蓝+清洁液 - USD 6.06",
                                               "priceUsd":  6.06,
                                               "priceCny":  41.21,
                                               "costCny":  31.7,
@@ -314,7 +318,7 @@
                                           },
                                           {
                                               "model":  "TB-1034702556904-05",
-                                              "label":  "天空蓝+眼镜布 推荐",
+                                              "label":  "天空蓝+眼镜布 推荐 - USD 6.06",
                                               "priceUsd":  6.06,
                                               "priceCny":  41.21,
                                               "costCny":  31.7,
@@ -322,7 +326,7 @@
                                           },
                                           {
                                               "model":  "TB-1034702556904-06",
-                                              "label":  "深邃黑+眼镜布",
+                                              "label":  "深邃黑+眼镜布 - USD 6.06",
                                               "priceUsd":  6.06,
                                               "priceCny":  41.21,
                                               "costCny":  31.7,
@@ -330,7 +334,7 @@
                                           },
                                           {
                                               "model":  "TB-1034702556904-07",
-                                              "label":  "烤瓷白+眼镜布",
+                                              "label":  "烤瓷白+眼镜布 - USD 6.06",
                                               "priceUsd":  6.06,
                                               "priceCny":  41.21,
                                               "costCny":  31.7,
@@ -367,10 +371,11 @@
                           "supplier":  "China supplier",
                           "store":  "香薇兰黛旗舰店 4.8 88VIP好评率98% 平均15小时发货 客服满意度93%",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-798739953640-01",
-                                              "label":  "浅绿色",
+                                              "label":  "浅绿色 - USD 1.69",
                                               "priceUsd":  1.69,
                                               "priceCny":  11.49,
                                               "costCny":  8.84,
@@ -414,10 +419,11 @@
                           "supplier":  "China supplier",
                           "store":  "集美日用家居商城 4.9 88VIP好评率95% 次日达超94%同行 客服满意度95%",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-808569964690-01",
-                                              "label":  "升级款⭐雾霾蓝+千禧粉",
+                                              "label":  "升级款⭐雾霾蓝+千禧粉 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -425,7 +431,7 @@
                                           },
                                           {
                                               "model":  "TB-808569964690-02",
-                                              "label":  "升级款⭐橄榄绿+千禧粉",
+                                              "label":  "升级款⭐橄榄绿+千禧粉 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -433,7 +439,7 @@
                                           },
                                           {
                                               "model":  "TB-808569964690-03",
-                                              "label":  "升级款⭐琥珀橙【2只装】",
+                                              "label":  "升级款⭐琥珀橙【2只装】 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -441,7 +447,7 @@
                                           },
                                           {
                                               "model":  "TB-808569964690-04",
-                                              "label":  "升级款⭐雾霾蓝【2只装】",
+                                              "label":  "升级款⭐雾霾蓝【2只装】 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -449,7 +455,7 @@
                                           },
                                           {
                                               "model":  "TB-808569964690-05",
-                                              "label":  "升级款⭐橄榄绿【2只装】",
+                                              "label":  "升级款⭐橄榄绿【2只装】 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -457,7 +463,7 @@
                                           },
                                           {
                                               "model":  "TB-808569964690-06",
-                                              "label":  "升级款⭐千禧粉【2只装】",
+                                              "label":  "升级款⭐千禧粉【2只装】 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -465,7 +471,7 @@
                                           },
                                           {
                                               "model":  "TB-808569964690-07",
-                                              "label":  "升级款⭐雾霾蓝【3只装】",
+                                              "label":  "升级款⭐雾霾蓝【3只装】 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -473,7 +479,7 @@
                                           },
                                           {
                                               "model":  "TB-808569964690-08",
-                                              "label":  "升级款⭐千禧粉【3只装】",
+                                              "label":  "升级款⭐千禧粉【3只装】 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -481,7 +487,7 @@
                                           },
                                           {
                                               "model":  "TB-808569964690-09",
-                                              "label":  "升级款⭐全家桶【4只装】 推荐",
+                                              "label":  "升级款⭐全家桶【4只装】 推荐 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -532,10 +538,11 @@
                           "supplier":  "China supplier",
                           "store":  "杜桥妹妹眼镜店 4.9 好评率97% 平均16小时发货 平均3小时退款",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-594853758645-01",
-                                              "label":  "眼镜布100张混色 推荐",
+                                              "label":  "眼镜布100张混色 推荐 - USD 5.35",
                                               "priceUsd":  5.35,
                                               "priceCny":  36.4,
                                               "costCny":  28,
@@ -543,7 +550,7 @@
                                           },
                                           {
                                               "model":  "TB-594853758645-02",
-                                              "label":  "眼镜布100张灰色",
+                                              "label":  "眼镜布100张灰色 - USD 5.35",
                                               "priceUsd":  5.35,
                                               "priceCny":  36.4,
                                               "costCny":  28,
@@ -590,10 +597,11 @@
                           "supplier":  "China supplier",
                           "store":  "美津浓宇臣专卖店 5.0 88VIP好评率98% 平均9小时发货 客服满意度93%",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-1014803725583-01",
-                                              "label":  "C001-31绿瓶 【涂抹式15ml -单支装】 推荐",
+                                              "label":  "C001-31绿瓶 【涂抹式15ml -单支装】 推荐 - USD 7.46",
                                               "priceUsd":  7.46,
                                               "priceCny":  50.7,
                                               "costCny":  39,
@@ -601,7 +609,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-02",
-                                              "label":  "2003-26蓝瓶 【喷雾式15ml -单支装】",
+                                              "label":  "2003-26蓝瓶 【喷雾式15ml -单支装】 - USD 7.46",
                                               "priceUsd":  7.46,
                                               "priceCny":  50.7,
                                               "costCny":  39,
@@ -609,7 +617,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-03",
-                                              "label":  "绿瓶15ml【两支】 【立省9元】",
+                                              "label":  "绿瓶15ml【两支】 【立省9元】 - USD 13.19",
                                               "priceUsd":  13.19,
                                               "priceCny":  89.7,
                                               "costCny":  69,
@@ -617,7 +625,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-04",
-                                              "label":  "绿瓶15ml【三支】 【立省18元】",
+                                              "label":  "绿瓶15ml【三支】 【立省18元】 - USD 18.93",
                                               "priceUsd":  18.93,
                                               "priceCny":  128.7,
                                               "costCny":  99,
@@ -625,7 +633,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-05",
-                                              "label":  "蓝瓶15ml【两支】 【立省9元】",
+                                              "label":  "蓝瓶15ml【两支】 【立省9元】 - USD 13.19",
                                               "priceUsd":  13.19,
                                               "priceCny":  89.7,
                                               "costCny":  69,
@@ -633,7 +641,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-06",
-                                              "label":  "蓝瓶15ml【三支】 【立省18元】",
+                                              "label":  "蓝瓶15ml【三支】 【立省18元】 - USD 18.93",
                                               "priceUsd":  18.93,
                                               "priceCny":  128.7,
                                               "costCny":  99,
@@ -641,7 +649,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-07",
-                                              "label":  "防雾剂丨泳帽组合 【长发适用】",
+                                              "label":  "防雾剂丨泳帽组合 【长发适用】 - USD 17.01",
                                               "priceUsd":  17.01,
                                               "priceCny":  115.7,
                                               "costCny":  89,
@@ -649,7 +657,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-08",
-                                              "label":  "防雾剂丨泳镜组合 【持久护航】",
+                                              "label":  "防雾剂丨泳镜组合 【持久护航】 - USD 22.75",
                                               "priceUsd":  22.75,
                                               "priceCny":  154.7,
                                               "costCny":  119,
@@ -657,7 +665,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-09",
-                                              "label":  "防雾剂丨泳镜泳帽组合 【掌柜推荐】",
+                                              "label":  "防雾剂丨泳镜泳帽组合 【掌柜推荐】 - USD 30.40",
                                               "priceUsd":  30.40,
                                               "priceCny":  206.7,
                                               "costCny":  159,
@@ -665,7 +673,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-10",
-                                              "label":  "防雾剂丨冷感毛巾组合 【游泳搭配】",
+                                              "label":  "防雾剂丨冷感毛巾组合 【游泳搭配】 - USD 15.10",
                                               "priceUsd":  15.10,
                                               "priceCny":  102.7,
                                               "costCny":  79,
@@ -673,7 +681,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-11",
-                                              "label":  "防雾剂丨健身包组合 【轻量出行】",
+                                              "label":  "防雾剂丨健身包组合 【轻量出行】 - USD 26.57",
                                               "priceUsd":  26.57,
                                               "priceCny":  180.7,
                                               "costCny":  139,
@@ -681,7 +689,7 @@
                                           },
                                           {
                                               "model":  "TB-1014803725583-12",
-                                              "label":  "防雾剂丨健身包进阶组合 【加大容量】",
+                                              "label":  "防雾剂丨健身包进阶组合 【加大容量】 - USD 28.49",
                                               "priceUsd":  28.49,
                                               "priceCny":  193.7,
                                               "costCny":  149,
@@ -728,10 +736,11 @@
                           "supplier":  "China supplier",
                           "store":  "speedo速比涛体验商城 4.8 88VIP好评率97% 平均13小时发货 客服平均29秒回复",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-738268296093-01",
-                                              "label":  "10ML涂抹式【泳镜专用】 推荐",
+                                              "label":  "10ML涂抹式【泳镜专用】 推荐 - USD 2.54",
                                               "priceUsd":  2.54,
                                               "priceCny":  17.29,
                                               "costCny":  13.3,
@@ -739,7 +748,7 @@
                                           },
                                           {
                                               "model":  "TB-738268296093-02",
-                                              "label":  "20ML涂抹式【泳镜专用】",
+                                              "label":  "20ML涂抹式【泳镜专用】 - USD 4.01",
                                               "priceUsd":  4.01,
                                               "priceCny":  27.3,
                                               "costCny":  21,
@@ -747,7 +756,7 @@
                                           },
                                           {
                                               "model":  "TB-738268296093-03",
-                                              "label":  "20ML喷雾式【泳镜专用】",
+                                              "label":  "20ML喷雾式【泳镜专用】 - USD 4.01",
                                               "priceUsd":  4.01,
                                               "priceCny":  27.3,
                                               "costCny":  21,
@@ -755,7 +764,7 @@
                                           },
                                           {
                                               "model":  "TB-738268296093-04",
-                                              "label":  "10ML涂抹式*2瓶【泳镜专用】",
+                                              "label":  "10ML涂抹式*2瓶【泳镜专用】 - USD 4.24",
                                               "priceUsd":  4.24,
                                               "priceCny":  28.86,
                                               "costCny":  22.2,
@@ -763,7 +772,7 @@
                                           },
                                           {
                                               "model":  "TB-738268296093-05",
-                                              "label":  "20ML喷雾式*2瓶【泳镜专用】",
+                                              "label":  "20ML喷雾式*2瓶【泳镜专用】 - USD 7.42",
                                               "priceUsd":  7.42,
                                               "priceCny":  50.44,
                                               "costCny":  38.8,
@@ -771,7 +780,7 @@
                                           },
                                           {
                                               "model":  "TB-738268296093-06",
-                                              "label":  "20ML涂抹式*3瓶【泳镜专用】",
+                                              "label":  "20ML涂抹式*3瓶【泳镜专用】 - USD 9.98",
                                               "priceUsd":  9.98,
                                               "priceCny":  67.86,
                                               "costCny":  52.2,
@@ -779,7 +788,7 @@
                                           },
                                           {
                                               "model":  "TB-738268296093-07",
-                                              "label":  "20ML喷雾式*3瓶【泳镜专用】",
+                                              "label":  "20ML喷雾式*3瓶【泳镜专用】 - USD 9.98",
                                               "priceUsd":  9.98,
                                               "priceCny":  67.86,
                                               "costCny":  52.2,
@@ -787,7 +796,7 @@
                                           },
                                           {
                                               "model":  "TB-738268296093-08",
-                                              "label":  "涂抹式15ML【镜片通用】",
+                                              "label":  "涂抹式15ML【镜片通用】 - USD 3.38",
                                               "priceUsd":  3.38,
                                               "priceCny":  23.01,
                                               "costCny":  17.7,
@@ -795,7 +804,7 @@
                                           },
                                           {
                                               "model":  "TB-738268296093-09",
-                                              "label":  "涂抹式20ML【镜片通用】",
+                                              "label":  "涂抹式20ML【镜片通用】 - USD 4.24",
                                               "priceUsd":  4.24,
                                               "priceCny":  28.86,
                                               "costCny":  22.2,
@@ -803,7 +812,7 @@
                                           },
                                           {
                                               "model":  "TB-738268296093-10",
-                                              "label":  "喷雾式20ML【镜片通用】",
+                                              "label":  "喷雾式20ML【镜片通用】 - USD 4.24",
                                               "priceUsd":  4.24,
                                               "priceCny":  28.86,
                                               "costCny":  22.2,
@@ -811,7 +820,7 @@
                                           },
                                           {
                                               "model":  "TB-738268296093-11",
-                                              "label":  "喷雾式30ML【镜片通用】",
+                                              "label":  "喷雾式30ML【镜片通用】 - USD 5.52",
                                               "priceUsd":  5.52,
                                               "priceCny":  37.57,
                                               "costCny":  28.9,
@@ -870,10 +879,11 @@
                           "supplier":  "China supplier",
                           "store":  "昕艺原创工坊 5.0 90天新增11条好评 平均16小时发货",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-898461568746-01",
-                                              "label":  "18位眼镜盒【大容量】",
+                                              "label":  "18位眼镜盒【大容量】 - USD 47.41",
                                               "priceUsd":  47.41,
                                               "priceCny":  322.4,
                                               "costCny":  248,
@@ -881,7 +891,7 @@
                                           },
                                           {
                                               "model":  "TB-898461568746-02",
-                                              "label":  "18位眼镜盒【红花梨木色】",
+                                              "label":  "18位眼镜盒【红花梨木色】 - USD 47.41",
                                               "priceUsd":  47.41,
                                               "priceCny":  322.4,
                                               "costCny":  248,
@@ -889,7 +899,7 @@
                                           },
                                           {
                                               "model":  "TB-898461568746-03",
-                                              "label":  "18位眼镜盒【水曲柳木色】",
+                                              "label":  "18位眼镜盒【水曲柳木色】 - USD 47.41",
                                               "priceUsd":  47.41,
                                               "priceCny":  322.4,
                                               "costCny":  248,
@@ -897,7 +907,7 @@
                                           },
                                           {
                                               "model":  "TB-898461568746-04",
-                                              "label":  "12位眼镜盒【胡桃木色】 推荐",
+                                              "label":  "12位眼镜盒【胡桃木色】 推荐 - USD 39.76",
                                               "priceUsd":  39.76,
                                               "priceCny":  270.4,
                                               "costCny":  208,
@@ -905,7 +915,7 @@
                                           },
                                           {
                                               "model":  "TB-898461568746-05",
-                                              "label":  "12位眼镜盒【红花梨木色】",
+                                              "label":  "12位眼镜盒【红花梨木色】 - USD 39.76",
                                               "priceUsd":  39.76,
                                               "priceCny":  270.4,
                                               "costCny":  208,
@@ -913,7 +923,7 @@
                                           },
                                           {
                                               "model":  "TB-898461568746-06",
-                                              "label":  "12位眼镜盒【水曲柳木色】",
+                                              "label":  "12位眼镜盒【水曲柳木色】 - USD 39.76",
                                               "priceUsd":  39.76,
                                               "priceCny":  270.4,
                                               "costCny":  208,
@@ -921,7 +931,7 @@
                                           },
                                           {
                                               "model":  "TB-898461568746-07",
-                                              "label":  "18位眼镜盒【绿色皮革】",
+                                              "label":  "18位眼镜盒【绿色皮革】 - USD 30.21",
                                               "priceUsd":  30.21,
                                               "priceCny":  205.4,
                                               "costCny":  158,
@@ -929,7 +939,7 @@
                                           },
                                           {
                                               "model":  "TB-898461568746-08",
-                                              "label":  "18位眼镜盒【黑色皮革】",
+                                              "label":  "18位眼镜盒【黑色皮革】 - USD 30.21",
                                               "priceUsd":  30.21,
                                               "priceCny":  205.4,
                                               "costCny":  158,
@@ -937,7 +947,7 @@
                                           },
                                           {
                                               "model":  "TB-898461568746-09",
-                                              "label":  "18位眼镜盒【碳纤维纹皮革】",
+                                              "label":  "18位眼镜盒【碳纤维纹皮革】 - USD 30.21",
                                               "priceUsd":  30.21,
                                               "priceCny":  205.4,
                                               "costCny":  158,
@@ -945,7 +955,7 @@
                                           },
                                           {
                                               "model":  "TB-898461568746-10",
-                                              "label":  "18位眼镜盒【木纹皮革】",
+                                              "label":  "18位眼镜盒【木纹皮革】 - USD 30.21",
                                               "priceUsd":  30.21,
                                               "priceCny":  205.4,
                                               "costCny":  158,
@@ -953,7 +963,7 @@
                                           },
                                           {
                                               "model":  "TB-898461568746-11",
-                                              "label":  "24位眼镜盒【胡桃木色】",
+                                              "label":  "24位眼镜盒【胡桃木色】 - USD 64.62",
                                               "priceUsd":  64.62,
                                               "priceCny":  439.4,
                                               "costCny":  338,
@@ -991,10 +1001,11 @@
                           "supplier":  "China supplier",
                           "store":  "巧柔旗舰店 4.9 88VIP好评率98% 平均15小时发货 客服满意度95%",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-959733497199-01",
-                                              "label":  "【三层】眼镜收纳架",
+                                              "label":  "【三层】眼镜收纳架 - USD 3.36",
                                               "priceUsd":  3.36,
                                               "priceCny":  22.88,
                                               "costCny":  17.6,
@@ -1002,7 +1013,7 @@
                                           },
                                           {
                                               "model":  "TB-959733497199-02",
-                                              "label":  "【四层】眼镜收纳架",
+                                              "label":  "【四层】眼镜收纳架 - USD 3.94",
                                               "priceUsd":  3.94,
                                               "priceCny":  26.78,
                                               "costCny":  20.6,
@@ -1010,7 +1021,7 @@
                                           },
                                           {
                                               "model":  "TB-959733497199-03",
-                                              "label":  "【五层】眼镜收纳架 推荐",
+                                              "label":  "【五层】眼镜收纳架 推荐 - USD 4.51",
                                               "priceUsd":  4.51,
                                               "priceCny":  30.68,
                                               "costCny":  23.6,
@@ -1055,10 +1066,11 @@
                           "supplier":  "China supplier",
                           "store":  "飞雪展示架 4.8 90天新增34条好评 平均11小时发货 平均2天退款",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-527041433337-01",
-                                              "label":  "银色T06（一个尝鲜价） 推荐",
+                                              "label":  "银色T06（一个尝鲜价） 推荐 - USD 2.47",
                                               "priceUsd":  2.47,
                                               "priceCny":  16.77,
                                               "costCny":  12.9,
@@ -1066,7 +1078,7 @@
                                           },
                                           {
                                               "model":  "TB-527041433337-02",
-                                              "label":  "金色T06（一个尝鲜价）",
+                                              "label":  "金色T06（一个尝鲜价） - USD 3.04",
                                               "priceUsd":  3.04,
                                               "priceCny":  20.67,
                                               "costCny":  15.9,
@@ -1074,7 +1086,7 @@
                                           },
                                           {
                                               "model":  "TB-527041433337-03",
-                                              "label":  "5个金色T06",
+                                              "label":  "5个金色T06 - USD 13.29",
                                               "priceUsd":  13.29,
                                               "priceCny":  90.35,
                                               "costCny":  69.5,
@@ -1082,7 +1094,7 @@
                                           },
                                           {
                                               "model":  "TB-527041433337-04",
-                                              "label":  "金色T03（一个尝鲜价）",
+                                              "label":  "金色T03（一个尝鲜价） - USD 4.17",
                                               "priceUsd":  4.17,
                                               "priceCny":  28.34,
                                               "costCny":  21.8,
@@ -1090,7 +1102,7 @@
                                           },
                                           {
                                               "model":  "TB-527041433337-05",
-                                              "label":  "5个T03金色",
+                                              "label":  "5个T03金色 - USD 18.16",
                                               "priceUsd":  18.16,
                                               "priceCny":  123.5,
                                               "costCny":  95,
@@ -1098,7 +1110,7 @@
                                           },
                                           {
                                               "model":  "TB-527041433337-06",
-                                              "label":  "黑色T03（一个尝鲜价）",
+                                              "label":  "黑色T03（一个尝鲜价） - USD 3.40",
                                               "priceUsd":  3.40,
                                               "priceCny":  23.14,
                                               "costCny":  17.8,
@@ -1106,7 +1118,7 @@
                                           },
                                           {
                                               "model":  "TB-527041433337-07",
-                                              "label":  "5个T03黑色",
+                                              "label":  "5个T03黑色 - USD 14.91",
                                               "priceUsd":  14.91,
                                               "priceCny":  101.4,
                                               "costCny":  78,
@@ -1114,7 +1126,7 @@
                                           },
                                           {
                                               "model":  "TB-527041433337-08",
-                                              "label":  "白色T03（一个尝鲜价）",
+                                              "label":  "白色T03（一个尝鲜价） - USD 3.40",
                                               "priceUsd":  3.40,
                                               "priceCny":  23.14,
                                               "costCny":  17.8,
@@ -1122,7 +1134,7 @@
                                           },
                                           {
                                               "model":  "TB-527041433337-09",
-                                              "label":  "5个T03白色",
+                                              "label":  "5个T03白色 - USD 14.91",
                                               "priceUsd":  14.91,
                                               "priceCny":  101.4,
                                               "costCny":  78,
@@ -1130,7 +1142,7 @@
                                           },
                                           {
                                               "model":  "TB-527041433337-10",
-                                              "label":  "金色T09（一个尝鲜价）",
+                                              "label":  "金色T09（一个尝鲜价） - USD 4.93",
                                               "priceUsd":  4.93,
                                               "priceCny":  33.54,
                                               "costCny":  25.8,
@@ -1138,7 +1150,7 @@
                                           },
                                           {
                                               "model":  "TB-527041433337-11",
-                                              "label":  "5个T09金色",
+                                              "label":  "5个T09金色 - USD 21.56",
                                               "priceUsd":  21.56,
                                               "priceCny":  146.64,
                                               "costCny":  112.8,
@@ -1173,10 +1185,11 @@
                           "supplier":  "China supplier",
                           "store":  "奥奇拉旗舰店 4.9 88VIP好评率98% 平均15小时发货 客服满意度97%",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-976152256120-01",
-                                              "label":  "【大号】奶白色（赠魔术贴/美纹纸/透明钉子） 推荐",
+                                              "label":  "【大号】奶白色（赠魔术贴/美纹纸/透明钉子） 推荐 - USD 2.98",
                                               "priceUsd":  2.98,
                                               "priceCny":  20.28,
                                               "costCny":  15.6,
@@ -1184,7 +1197,7 @@
                                           },
                                           {
                                               "model":  "TB-976152256120-02",
-                                              "label":  "【大号】芝麻黑（赠魔术贴/美纹纸/透明钉子）",
+                                              "label":  "【大号】芝麻黑（赠魔术贴/美纹纸/透明钉子） - USD 2.98",
                                               "priceUsd":  2.98,
                                               "priceCny":  20.28,
                                               "costCny":  15.6,
@@ -1192,7 +1205,7 @@
                                           },
                                           {
                                               "model":  "TB-976152256120-03",
-                                              "label":  "【小号】芝麻黑",
+                                              "label":  "【小号】芝麻黑 - USD 2.41",
                                               "priceUsd":  2.41,
                                               "priceCny":  16.38,
                                               "costCny":  12.6,
@@ -1200,7 +1213,7 @@
                                           },
                                           {
                                               "model":  "TB-976152256120-04",
-                                              "label":  "【奶白色】大号＋小号",
+                                              "label":  "【奶白色】大号＋小号 - USD 4.32",
                                               "priceUsd":  4.32,
                                               "priceCny":  29.38,
                                               "costCny":  22.6,
@@ -1208,7 +1221,7 @@
                                           },
                                           {
                                               "model":  "TB-976152256120-05",
-                                              "label":  "【芝麻黑】大号＋小号",
+                                              "label":  "【芝麻黑】大号＋小号 - USD 4.32",
                                               "priceUsd":  4.32,
                                               "priceCny":  29.38,
                                               "costCny":  22.6,
@@ -1249,10 +1262,11 @@
                           "supplier":  "China supplier",
                           "store":  "德天货架 4.9 好评率98% 平均13小时发货 客服满意度91%",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-15333423615-01",
-                                              "label":  "圆型44付",
+                                              "label":  "圆型44付 - USD 13.19",
                                               "priceUsd":  13.19,
                                               "priceCny":  89.7,
                                               "costCny":  69,
@@ -1260,7 +1274,7 @@
                                           },
                                           {
                                               "model":  "TB-15333423615-02",
-                                              "label":  "圆型52付",
+                                              "label":  "圆型52付 - USD 15.10",
                                               "priceUsd":  15.10,
                                               "priceCny":  102.7,
                                               "costCny":  79,
@@ -1268,7 +1282,7 @@
                                           },
                                           {
                                               "model":  "TB-15333423615-03",
-                                              "label":  "方型44付带镜边",
+                                              "label":  "方型44付带镜边 - USD 16.44",
                                               "priceUsd":  16.44,
                                               "priceCny":  111.8,
                                               "costCny":  86,
@@ -1276,7 +1290,7 @@
                                           },
                                           {
                                               "model":  "TB-15333423615-04",
-                                              "label":  "方型52付带镜边",
+                                              "label":  "方型52付带镜边 - USD 18.35",
                                               "priceUsd":  18.35,
                                               "priceCny":  124.8,
                                               "costCny":  96,
@@ -1284,7 +1298,7 @@
                                           },
                                           {
                                               "model":  "TB-15333423615-05",
-                                              "label":  "圆型32付",
+                                              "label":  "圆型32付 - USD 10.51",
                                               "priceUsd":  10.51,
                                               "priceCny":  71.5,
                                               "costCny":  55,
@@ -1320,10 +1334,11 @@
                           "supplier":  "China supplier",
                           "store":  "晴美科技 4.7 平均14小时发货 平均2天退款",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-632477033344-01",
-                                              "label":  "9cm双用白色 载重300g",
+                                              "label":  "9cm双用白色 载重300g - USD 2.68",
                                               "priceUsd":  2.68,
                                               "priceCny":  18.2,
                                               "costCny":  14,
@@ -1331,7 +1346,7 @@
                                           },
                                           {
                                               "model":  "TB-632477033344-02",
-                                              "label":  "9cm双用黑色 载重300g",
+                                              "label":  "9cm双用黑色 载重300g - USD 2.68",
                                               "priceUsd":  2.68,
                                               "priceCny":  18.2,
                                               "costCny":  14,
@@ -1339,7 +1354,7 @@
                                           },
                                           {
                                               "model":  "TB-632477033344-03",
-                                              "label":  "9cm双用金色 载重300g",
+                                              "label":  "9cm双用金色 载重300g - USD 2.68",
                                               "priceUsd":  2.68,
                                               "priceCny":  18.2,
                                               "costCny":  14,
@@ -1347,7 +1362,7 @@
                                           },
                                           {
                                               "model":  "TB-632477033344-04",
-                                              "label":  "9cm双用银色 载重300g",
+                                              "label":  "9cm双用银色 载重300g - USD 2.68",
                                               "priceUsd":  2.68,
                                               "priceCny":  18.2,
                                               "costCny":  14,
@@ -1355,7 +1370,7 @@
                                           },
                                           {
                                               "model":  "TB-632477033344-05",
-                                              "label":  "120双用白色【升级款带开关】 载重500克",
+                                              "label":  "120双用白色【升级款带开关】 载重500克 - USD 4.97",
                                               "priceUsd":  4.97,
                                               "priceCny":  33.8,
                                               "costCny":  26,
@@ -1363,7 +1378,7 @@
                                           },
                                           {
                                               "model":  "TB-632477033344-06",
-                                              "label":  "120双用黑色【升级款带开关】 载重500克",
+                                              "label":  "120双用黑色【升级款带开关】 载重500克 - USD 4.97",
                                               "priceUsd":  4.97,
                                               "priceCny":  33.8,
                                               "costCny":  26,
@@ -1404,10 +1419,11 @@
                           "supplier":  "China supplier",
                           "store":  "眼镜展示道具 4.4 90天新增38条好评 平均3天内发货 平均2天退款",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-532952085023-01",
-                                              "label":  "单排六层6副(圆角升级改进版)",
+                                              "label":  "单排六层6副(圆角升级改进版) - USD 1.91",
                                               "priceUsd":  1.91,
                                               "priceCny":  13,
                                               "costCny":  10,
@@ -1415,7 +1431,7 @@
                                           },
                                           {
                                               "model":  "TB-532952085023-02",
-                                              "label":  "双排二层4副(圆角升级改进版)",
+                                              "label":  "双排二层4副(圆角升级改进版) - USD 2.68",
                                               "priceUsd":  2.68,
                                               "priceCny":  18.2,
                                               "costCny":  14,
@@ -1423,7 +1439,7 @@
                                           },
                                           {
                                               "model":  "TB-532952085023-03",
-                                              "label":  "双排三层6副(圆角升级改进版) 推荐",
+                                              "label":  "双排三层6副(圆角升级改进版) 推荐 - USD 2.87",
                                               "priceUsd":  2.87,
                                               "priceCny":  19.5,
                                               "costCny":  15,
@@ -1431,7 +1447,7 @@
                                           },
                                           {
                                               "model":  "TB-532952085023-04",
-                                              "label":  "双排五层10副(圆角升级改进版)",
+                                              "label":  "双排五层10副(圆角升级改进版) - USD 3.06",
                                               "priceUsd":  3.06,
                                               "priceCny":  20.8,
                                               "costCny":  16,
@@ -1439,7 +1455,7 @@
                                           },
                                           {
                                               "model":  "TB-532952085023-05",
-                                              "label":  "双排六层12副(圆角升级改进版)",
+                                              "label":  "双排六层12副(圆角升级改进版) - USD 3.44",
                                               "priceUsd":  3.44,
                                               "priceCny":  23.4,
                                               "costCny":  18,
@@ -1455,64 +1471,18 @@
                   ]
     },
     {
-        "id":  "repair-parts",
-        "en":  "Repair Parts",
+        "id":  "nose-pads",
+        "en":  "Nose Pads",
         "desc":  "Optical shop products with option-level images and USD catalog pricing.",
         "mergeKeys":  [
-                          "repair parts",
-                          "parts",
-                          "spare parts",
-                          "accessories parts"
+                          "nose pads",
+                          "nose pad",
+                          "pads",
+                          "optical nose pads"
                       ],
         "items":  [
                       {
-                          "category":  "repair-parts",
-                          "model":  "TB-1028215754918",
-                          "nameEn":  "眼镜架调整神器镜腿折弯鼻托调节多功能专业修复眼镜专用工具套装",
-                          "chineseName":  "眼镜架调整神器镜腿折弯鼻托调节多功能专业修复眼镜专用工具套装",
-                          "image":  "assets/taobao/1028215754918/001.webp",
-                          "images":  [
-                                         "assets/taobao/1028215754918/001.webp",
-                                         "assets/taobao/1028215754918/002.webp",
-                                         "assets/taobao/1028215754918/003.webp",
-                                         "assets/taobao/1028215754918/004.webp"
-                                     ],
-                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
-                          "basePriceRmb":  null,
-                          "priceSource":  "Supplier listing",
-                          "priceUsd":  null,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "Price on request",
-                          "sourceUrl":  "https://item.taobao.com/item.htm?id=1028215754918",
-                          "supplier":  "China supplier",
-                          "store":  "康司眼镜 4.7 90天新增59条好评 平均17小时发货 客服平均24秒回复",
-                          "optionLabel":  "Supplier option",
-                          "options":  [
-                                          {
-                                              "model":  "TB-1028215754918-01",
-                                              "label":  "眼镜党专用修镜工具 店长主推",
-                                              "priceUsd":  null,
-                                              "priceCny":  null,
-                                              "costCny":  null,
-                                              "image":  "assets/taobao/1028215754918/001.webp"
-                                          },
-                                          {
-                                              "model":  "TB-1028215754918-02",
-                                              "label":  "【工具*2个】送眼镜布一块",
-                                              "priceUsd":  null,
-                                              "priceCny":  null,
-                                              "costCny":  null,
-                                              "image":  "assets/taobao/1028215754918/004.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "LZN catalog price includes a 30% margin",
-                                           "USD price calculated at CNY 6.8 per USD",
-                                           "Availability and international freight to be confirmed"
-                                       ]
-                      },
-                      {
-                          "category":  "repair-parts",
+                          "category":  "nose-pads",
                           "model":  "TB-1009238894295",
                           "nameEn":  "超轻纯钛眼镜鼻托金属防压痕耐用防滑贴眼睛框支架配件防脱落鼻垫",
                           "chineseName":  "超轻纯钛眼镜鼻托金属防压痕耐用防滑贴眼睛框支架配件防脱落鼻垫",
@@ -1538,10 +1508,11 @@
                           "supplier":  "China supplier",
                           "store":  "纽威图卓镜专卖店 4.6 88VIP好评率97% 平均14小时发货 平均20小时退款",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-1009238894295-01",
-                                              "label":  "【纯钛】枪色1对 送(气囊鼻托1对）",
+                                              "label":  "【纯钛】枪色1对 送(气囊鼻托1对） - USD 2.39",
                                               "priceUsd":  2.39,
                                               "priceCny":  16.25,
                                               "costCny":  12.5,
@@ -1549,7 +1520,7 @@
                                           },
                                           {
                                               "model":  "TB-1009238894295-02",
-                                              "label":  "【纯钛】黑色1对 送(气囊鼻托1对）",
+                                              "label":  "【纯钛】黑色1对 送(气囊鼻托1对） - USD 2.39",
                                               "priceUsd":  2.39,
                                               "priceCny":  16.25,
                                               "costCny":  12.5,
@@ -1557,7 +1528,7 @@
                                           },
                                           {
                                               "model":  "TB-1009238894295-03",
-                                              "label":  "【陶瓷】玫瑰金1对 送(气囊鼻托1对）",
+                                              "label":  "【陶瓷】玫瑰金1对 送(气囊鼻托1对） - USD 2.39",
                                               "priceUsd":  2.39,
                                               "priceCny":  16.25,
                                               "costCny":  12.5,
@@ -1565,7 +1536,7 @@
                                           },
                                           {
                                               "model":  "TB-1009238894295-04",
-                                              "label":  "【陶瓷】金色1对 送(气囊鼻托1对）",
+                                              "label":  "【陶瓷】金色1对 送(气囊鼻托1对） - USD 2.39",
                                               "priceUsd":  2.39,
                                               "priceCny":  16.25,
                                               "costCny":  12.5,
@@ -1573,7 +1544,7 @@
                                           },
                                           {
                                               "model":  "TB-1009238894295-05",
-                                              "label":  "【软硅胶】气囊鼻托2对",
+                                              "label":  "【软硅胶】气囊鼻托2对 - USD 1.62",
                                               "priceUsd":  1.62,
                                               "priceCny":  11.05,
                                               "costCny":  8.5,
@@ -1587,208 +1558,7 @@
                                        ]
                       },
                       {
-                          "category":  "repair-parts",
-                          "model":  "TB-972711305522",
-                          "nameEn":  "眼镜配件眼镜螺丝眼镜螺钉桩头螺丝平头尖头镜框螺丝规格齐全",
-                          "chineseName":  "眼镜配件眼镜螺丝眼镜螺钉桩头螺丝平头尖头镜框螺丝规格齐全",
-                          "image":  "assets/taobao/972711305522/001.webp",
-                          "images":  [
-                                         "assets/taobao/972711305522/001.webp",
-                                         "assets/taobao/972711305522/002.webp",
-                                         "assets/taobao/972711305522/003.webp",
-                                         "assets/taobao/972711305522/004.webp",
-                                         "assets/taobao/972711305522/005.webp",
-                                         "assets/taobao/972711305522/006.webp",
-                                         "assets/taobao/972711305522/007.webp",
-                                         "assets/taobao/972711305522/008.webp",
-                                         "assets/taobao/972711305522/009.webp",
-                                         "assets/taobao/972711305522/010.webp",
-                                         "assets/taobao/972711305522/011.webp",
-                                         "assets/taobao/972711305522/012.webp",
-                                         "assets/taobao/972711305522/013.webp",
-                                         "assets/taobao/972711305522/014.webp",
-                                         "assets/taobao/972711305522/015.webp",
-                                         "assets/taobao/972711305522/016.webp",
-                                         "assets/taobao/972711305522/017.webp",
-                                         "assets/taobao/972711305522/018.webp",
-                                         "assets/taobao/972711305522/019.webp",
-                                         "assets/taobao/972711305522/020.webp",
-                                         "assets/taobao/972711305522/021.webp",
-                                         "assets/taobao/972711305522/022.webp",
-                                         "assets/taobao/972711305522/023.webp"
-                                     ],
-                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
-                          "basePriceRmb":  2.48,
-                          "priceSource":  "Supplier listing",
-                          "priceUsd":  0.47,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 0.47 - 0.7",
-                          "sourceUrl":  "https://item.taobao.com/item.htm?id=972711305522",
-                          "supplier":  "China supplier",
-                          "store":  "远舰光电眼镜设备 4.6 90天新增35条好评 平均14小时发货 平均2天退款",
-                          "optionLabel":  "Supplier option",
-                          "options":  [
-                                          {
-                                              "model":  "TB-972711305522-01",
-                                              "label":  "鼻托螺丝1.2*3.6（平头）",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/001.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-02",
-                                              "label":  "桩头螺丝2.0*1.4*2.4 推荐",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/006.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-03",
-                                              "label":  "桩头螺丝2.0*1.4*2.6",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/007.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-04",
-                                              "label":  "桩头螺丝2.0*1.4*2.8",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/008.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-05",
-                                              "label":  "桩头螺丝2.0*1.4*3.0",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/009.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-06",
-                                              "label":  "桩头螺丝2.0*1.4*3.2",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/010.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-07",
-                                              "label":  "桩头螺丝2.0*1.4*3.4",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/011.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-08",
-                                              "label":  "桩头螺丝2.0*1.4*3.6",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/012.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-09",
-                                              "label":  "桩头螺丝2.0*1.4*3.8",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/013.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-10",
-                                              "label":  "桩头螺丝2.0*1.4*4.0",
-                                              "priceUsd":  0.47,
-                                              "priceCny":  3.22,
-                                              "costCny":  2.48,
-                                              "image":  "assets/taobao/972711305522/014.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-11",
-                                              "label":  "板材螺丝2.5*1.4*4.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/015.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-12",
-                                              "label":  "板材螺丝2.5*1.4*4.5",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/016.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-13",
-                                              "label":  "板材架螺丝2.5*1.4*5.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/017.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-14",
-                                              "label":  "太阳镜螺丝2.5*1.6*4.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/018.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-15",
-                                              "label":  "太阳镜螺丝2.5*1.6*4.5",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/019.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-16",
-                                              "label":  "太阳镜螺丝2.5*1.6*5.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/020.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-17",
-                                              "label":  "无框钻石头2.5*1.4*6.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/021.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-18",
-                                              "label":  "无框钻石头2.5*1.4*8.0",
-                                              "priceUsd":  0.51,
-                                              "priceCny":  3.48,
-                                              "costCny":  2.68,
-                                              "image":  "assets/taobao/972711305522/022.webp"
-                                          },
-                                          {
-                                              "model":  "TB-972711305522-19",
-                                              "label":  "螺母1.4",
-                                              "priceUsd":  0.70,
-                                              "priceCny":  4.78,
-                                              "costCny":  3.68,
-                                              "image":  "assets/taobao/972711305522/023.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "LZN catalog price includes a 30% margin",
-                                           "USD price calculated at CNY 6.8 per USD",
-                                           "Availability and international freight to be confirmed"
-                                       ]
-                      },
-                      {
-                          "category":  "repair-parts",
+                          "category":  "nose-pads",
                           "model":  "TB-779201236504",
                           "nameEn":  "眼镜鼻托纯钛金属无压痕鼻垫眼睛鼻子防滑鼻梁防脱落镜架配件神器",
                           "chineseName":  "眼镜鼻托纯钛金属无压痕鼻垫眼睛鼻子防滑鼻梁防脱落镜架配件神器",
@@ -1813,10 +1583,11 @@
                           "supplier":  "China supplier",
                           "store":  "syrea眼镜旗舰店 4.8 88VIP好评率96% 平均11小时发货 客服满意度90%",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-779201236504-01",
-                                              "label":  "纯钛款【银色】鼻托2对 送3重礼 推荐",
+                                              "label":  "纯钛款【银色】鼻托2对 送3重礼 推荐 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -1824,7 +1595,7 @@
                                           },
                                           {
                                               "model":  "TB-779201236504-02",
-                                              "label":  "纯钛款【枪色】鼻托2对 送3重礼",
+                                              "label":  "纯钛款【枪色】鼻托2对 送3重礼 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -1832,7 +1603,7 @@
                                           },
                                           {
                                               "model":  "TB-779201236504-03",
-                                              "label":  "纯钛款【金色】鼻托2对 送3重礼",
+                                              "label":  "纯钛款【金色】鼻托2对 送3重礼 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -1846,7 +1617,7 @@
                                        ]
                       },
                       {
-                          "category":  "repair-parts",
+                          "category":  "nose-pads",
                           "model":  "TB-948519747052",
                           "nameEn":  "一体硅胶鼻托儿童镜架马鞍鼻托柔软防滑硅胶连体上螺丝鼻托多色",
                           "chineseName":  "一体硅胶鼻托儿童镜架马鞍鼻托柔软防滑硅胶连体上螺丝鼻托多色",
@@ -1872,10 +1643,11 @@
                           "supplier":  "China supplier",
                           "store":  "OECANA频绒专卖店 4.8 88VIP好评率96% 平均15小时发货 客服平均23秒回复",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-948519747052-01",
-                                              "label":  "磨砂白色 近期热销",
+                                              "label":  "磨砂白色 近期热销 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -1883,7 +1655,7 @@
                                           },
                                           {
                                               "model":  "TB-948519747052-02",
-                                              "label":  "磨砂黑色 推荐",
+                                              "label":  "磨砂黑色 推荐 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -1891,7 +1663,7 @@
                                           },
                                           {
                                               "model":  "TB-948519747052-03",
-                                              "label":  "深蓝色",
+                                              "label":  "深蓝色 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -1899,7 +1671,7 @@
                                           },
                                           {
                                               "model":  "TB-948519747052-04",
-                                              "label":  "浅粉色",
+                                              "label":  "浅粉色 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -1907,149 +1679,11 @@
                                           },
                                           {
                                               "model":  "TB-948519747052-05",
-                                              "label":  "浅蓝色",
+                                              "label":  "浅蓝色 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
                                               "image":  "assets/taobao/948519747052/009.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "LZN catalog price includes a 30% margin",
-                                           "USD price calculated at CNY 6.8 per USD",
-                                           "Availability and international freight to be confirmed"
-                                       ]
-                      },
-                      {
-                          "category":  "repair-parts",
-                          "model":  "TB-582020332203",
-                          "nameEn":  "TR眼镜腿配件大全眼镜支架一对凸牙外牙眼镜脚腿框架单牙替换维修",
-                          "chineseName":  "TR眼镜腿配件大全眼镜支架一对凸牙外牙眼镜脚腿框架单牙替换维修",
-                          "image":  "assets/taobao/582020332203/001.webp",
-                          "images":  [
-                                         "assets/taobao/582020332203/001.webp",
-                                         "assets/taobao/582020332203/002.webp",
-                                         "assets/taobao/582020332203/003.webp",
-                                         "assets/taobao/582020332203/004.webp",
-                                         "assets/taobao/582020332203/005.webp",
-                                         "assets/taobao/582020332203/006.webp",
-                                         "assets/taobao/582020332203/007.webp",
-                                         "assets/taobao/582020332203/008.webp",
-                                         "assets/taobao/582020332203/009.webp",
-                                         "assets/taobao/582020332203/010.webp",
-                                         "assets/taobao/582020332203/011.webp",
-                                         "assets/taobao/582020332203/012.webp",
-                                         "assets/taobao/582020332203/013.webp",
-                                         "assets/taobao/582020332203/014.webp",
-                                         "assets/taobao/582020332203/015.webp",
-                                         "assets/taobao/582020332203/016.webp"
-                                     ],
-                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
-                          "basePriceRmb":  0.4,
-                          "priceSource":  "Supplier listing",
-                          "priceUsd":  0.08,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 0.08 - 0.19",
-                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=582020332203",
-                          "supplier":  "China supplier",
-                          "store":  "法基旗舰店 4.9 88VIP好评率96% 平均10小时发货 平均1小时退款",
-                          "optionLabel":  "Supplier option",
-                          "options":  [
-                                          {
-                                              "model":  "TB-582020332203-01",
-                                              "label":  "3.5号连体版腿宽3.5mm标准凸牙（送螺丝刀",
-                                              "priceUsd":  0.08,
-                                              "priceCny":  0.52,
-                                              "costCny":  0.4,
-                                              "image":  "assets/taobao/582020332203/001.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-02",
-                                              "label":  "4号连体版腿宽4mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/006.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-03",
-                                              "label":  "4号脚套版腿宽4mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/007.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-04",
-                                              "label":  "5号连体版腿宽5mm标准凸牙（送螺丝刀） 推荐",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/008.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-05",
-                                              "label":  "5号脚套版腿宽5mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/009.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-06",
-                                              "label":  "6号连体版腿宽6mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/010.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-07",
-                                              "label":  "6号脚套版腿宽6mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/011.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-08",
-                                              "label":  "6.5号脚套版腿宽6.5mm标准凸牙（送螺丝刀",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/012.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-09",
-                                              "label":  "7号连体版腿宽7mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/013.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-10",
-                                              "label":  "7.5号连体版腿宽7.5mm标准凸牙（送螺丝刀",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/014.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-11",
-                                              "label":  "8号脚套版腿宽8mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.19,
-                                              "priceCny":  1.3,
-                                              "costCny":  1,
-                                              "image":  "assets/taobao/582020332203/015.webp"
-                                          },
-                                          {
-                                              "model":  "TB-582020332203-12",
-                                              "label":  "9号连体版腿宽9mm标准凸牙（送螺丝刀）",
-                                              "priceUsd":  0.08,
-                                              "priceCny":  0.52,
-                                              "costCny":  0.4,
-                                              "image":  "assets/taobao/582020332203/016.webp"
                                           }
                                       ],
                           "features":  [
@@ -2102,10 +1736,11 @@
                           "supplier":  "China supplier",
                           "store":  "趣先旗舰店 4.9 90天新增96条好评 平均10小时发货 平均12小时退款",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-989792061106-01",
-                                              "label":  "方头钳",
+                                              "label":  "方头钳 - USD 4.21",
                                               "priceUsd":  4.21,
                                               "priceCny":  28.6,
                                               "costCny":  22,
@@ -2113,7 +1748,7 @@
                                           },
                                           {
                                               "model":  "TB-989792061106-02",
-                                              "label":  "弯嘴钳",
+                                              "label":  "弯嘴钳 - USD 4.21",
                                               "priceUsd":  4.21,
                                               "priceCny":  28.6,
                                               "costCny":  22,
@@ -2121,7 +1756,7 @@
                                           },
                                           {
                                               "model":  "TB-989792061106-03",
-                                              "label":  "尖嘴钳",
+                                              "label":  "尖嘴钳 - USD 4.21",
                                               "priceUsd":  4.21,
                                               "priceCny":  28.6,
                                               "costCny":  22,
@@ -2129,7 +1764,7 @@
                                           },
                                           {
                                               "model":  "TB-989792061106-04",
-                                              "label":  "双孔鼻托钳",
+                                              "label":  "双孔鼻托钳 - USD 4.59",
                                               "priceUsd":  4.59,
                                               "priceCny":  31.2,
                                               "costCny":  24,
@@ -2137,7 +1772,7 @@
                                           },
                                           {
                                               "model":  "TB-989792061106-05",
-                                              "label":  "镜圈弧度钳",
+                                              "label":  "镜圈弧度钳 - USD 4.59",
                                               "priceUsd":  4.59,
                                               "priceCny":  31.2,
                                               "costCny":  24,
@@ -2145,7 +1780,7 @@
                                           },
                                           {
                                               "model":  "TB-989792061106-06",
-                                              "label":  "三叉钳",
+                                              "label":  "三叉钳 - USD 5.16",
                                               "priceUsd":  5.16,
                                               "priceCny":  35.1,
                                               "costCny":  27,
@@ -2153,11 +1788,260 @@
                                           },
                                           {
                                               "model":  "TB-989792061106-07",
-                                              "label":  "鼻托钳 推荐",
+                                              "label":  "鼻托钳 推荐 - USD 4.21",
                                               "priceUsd":  4.21,
                                               "priceCny":  28.6,
                                               "costCny":  22,
                                               "image":  "assets/taobao/989792061106/011.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "LZN catalog price includes a 30% margin",
+                                           "USD price calculated at CNY 6.8 per USD",
+                                           "Availability and international freight to be confirmed"
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
+                          "model":  "TB-1028215754918",
+                          "nameEn":  "眼镜架调整神器镜腿折弯鼻托调节多功能专业修复眼镜专用工具套装",
+                          "chineseName":  "眼镜架调整神器镜腿折弯鼻托调节多功能专业修复眼镜专用工具套装",
+                          "image":  "assets/taobao/1028215754918/001.webp",
+                          "images":  [
+                                         "assets/taobao/1028215754918/001.webp",
+                                         "assets/taobao/1028215754918/002.webp",
+                                         "assets/taobao/1028215754918/003.webp",
+                                         "assets/taobao/1028215754918/004.webp"
+                                     ],
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  null,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "sourceUrl":  "https://item.taobao.com/item.htm?id=1028215754918",
+                          "supplier":  "China supplier",
+                          "store":  "康司眼镜 4.7 90天新增59条好评 平均17小时发货 客服平均24秒回复",
+                          "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
+                          "options":  [
+                                          {
+                                              "model":  "TB-1028215754918-01",
+                                              "label":  "眼镜党专用修镜工具 店长主推",
+                                              "priceUsd":  null,
+                                              "priceCny":  null,
+                                              "costCny":  null,
+                                              "image":  "assets/taobao/1028215754918/001.webp"
+                                          },
+                                          {
+                                              "model":  "TB-1028215754918-02",
+                                              "label":  "【工具*2个】送眼镜布一块",
+                                              "priceUsd":  null,
+                                              "priceCny":  null,
+                                              "costCny":  null,
+                                              "image":  "assets/taobao/1028215754918/004.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "LZN catalog price includes a 30% margin",
+                                           "USD price calculated at CNY 6.8 per USD",
+                                           "Availability and international freight to be confirmed"
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
+                          "model":  "TB-972711305522",
+                          "nameEn":  "眼镜配件眼镜螺丝眼镜螺钉桩头螺丝平头尖头镜框螺丝规格齐全",
+                          "chineseName":  "眼镜配件眼镜螺丝眼镜螺钉桩头螺丝平头尖头镜框螺丝规格齐全",
+                          "image":  "assets/taobao/972711305522/001.webp",
+                          "images":  [
+                                         "assets/taobao/972711305522/001.webp",
+                                         "assets/taobao/972711305522/002.webp",
+                                         "assets/taobao/972711305522/003.webp",
+                                         "assets/taobao/972711305522/004.webp",
+                                         "assets/taobao/972711305522/005.webp",
+                                         "assets/taobao/972711305522/006.webp",
+                                         "assets/taobao/972711305522/007.webp",
+                                         "assets/taobao/972711305522/008.webp",
+                                         "assets/taobao/972711305522/009.webp",
+                                         "assets/taobao/972711305522/010.webp",
+                                         "assets/taobao/972711305522/011.webp",
+                                         "assets/taobao/972711305522/012.webp",
+                                         "assets/taobao/972711305522/013.webp",
+                                         "assets/taobao/972711305522/014.webp",
+                                         "assets/taobao/972711305522/015.webp",
+                                         "assets/taobao/972711305522/016.webp",
+                                         "assets/taobao/972711305522/017.webp",
+                                         "assets/taobao/972711305522/018.webp",
+                                         "assets/taobao/972711305522/019.webp",
+                                         "assets/taobao/972711305522/020.webp",
+                                         "assets/taobao/972711305522/021.webp",
+                                         "assets/taobao/972711305522/022.webp",
+                                         "assets/taobao/972711305522/023.webp"
+                                     ],
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  2.48,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  0.47,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 0.47 - 0.7",
+                          "sourceUrl":  "https://item.taobao.com/item.htm?id=972711305522",
+                          "supplier":  "China supplier",
+                          "store":  "远舰光电眼镜设备 4.6 90天新增35条好评 平均14小时发货 平均2天退款",
+                          "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
+                          "options":  [
+                                          {
+                                              "model":  "TB-972711305522-01",
+                                              "label":  "鼻托螺丝1.2*3.6（平头） - USD 0.47",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/001.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-02",
+                                              "label":  "桩头螺丝2.0*1.4*2.4 推荐 - USD 0.47",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/006.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-03",
+                                              "label":  "桩头螺丝2.0*1.4*2.6 - USD 0.47",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/007.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-04",
+                                              "label":  "桩头螺丝2.0*1.4*2.8 - USD 0.47",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/008.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-05",
+                                              "label":  "桩头螺丝2.0*1.4*3.0 - USD 0.47",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/009.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-06",
+                                              "label":  "桩头螺丝2.0*1.4*3.2 - USD 0.47",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/010.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-07",
+                                              "label":  "桩头螺丝2.0*1.4*3.4 - USD 0.47",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/011.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-08",
+                                              "label":  "桩头螺丝2.0*1.4*3.6 - USD 0.47",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/012.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-09",
+                                              "label":  "桩头螺丝2.0*1.4*3.8 - USD 0.47",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/013.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-10",
+                                              "label":  "桩头螺丝2.0*1.4*4.0 - USD 0.47",
+                                              "priceUsd":  0.47,
+                                              "priceCny":  3.22,
+                                              "costCny":  2.48,
+                                              "image":  "assets/taobao/972711305522/014.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-11",
+                                              "label":  "板材螺丝2.5*1.4*4.0 - USD 0.51",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/015.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-12",
+                                              "label":  "板材螺丝2.5*1.4*4.5 - USD 0.51",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/016.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-13",
+                                              "label":  "板材架螺丝2.5*1.4*5.0 - USD 0.51",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/017.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-14",
+                                              "label":  "太阳镜螺丝2.5*1.6*4.0 - USD 0.51",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/018.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-15",
+                                              "label":  "太阳镜螺丝2.5*1.6*4.5 - USD 0.51",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/019.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-16",
+                                              "label":  "太阳镜螺丝2.5*1.6*5.0 - USD 0.51",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/020.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-17",
+                                              "label":  "无框钻石头2.5*1.4*6.0 - USD 0.51",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/021.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-18",
+                                              "label":  "无框钻石头2.5*1.4*8.0 - USD 0.51",
+                                              "priceUsd":  0.51,
+                                              "priceCny":  3.48,
+                                              "costCny":  2.68,
+                                              "image":  "assets/taobao/972711305522/022.webp"
+                                          },
+                                          {
+                                              "model":  "TB-972711305522-19",
+                                              "label":  "螺母1.4 - USD 0.70",
+                                              "priceUsd":  0.70,
+                                              "priceCny":  4.78,
+                                              "costCny":  3.68,
+                                              "image":  "assets/taobao/972711305522/023.webp"
                                           }
                                       ],
                           "features":  [
@@ -2188,6 +2072,7 @@
                           "supplier":  "China supplier",
                           "store":  "好帮手眼镜设备仪器 5.0 88VIP好评率100% 平均7小时发货 客服平均23秒回复",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-20052613980-01",
@@ -2264,10 +2149,11 @@
                           "supplier":  "China supplier",
                           "store":  "莱特眼镜配件设备商行 4.7 90天新增33条好评 平均17小时发货 平均2天退款",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-807888035006-01",
-                                              "label":  "鼻托钳 推荐",
+                                              "label":  "鼻托钳 推荐 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2275,7 +2161,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-02",
-                                              "label":  "桩头钳",
+                                              "label":  "桩头钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2283,7 +2169,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-03",
-                                              "label":  "小方头双胶钳",
+                                              "label":  "小方头双胶钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2291,7 +2177,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-04",
-                                              "label":  "尖嘴钳",
+                                              "label":  "尖嘴钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2299,7 +2185,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-05",
-                                              "label":  "弯嘴鼻托钳",
+                                              "label":  "弯嘴鼻托钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2307,7 +2193,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-06",
-                                              "label":  "胶塞安装钳",
+                                              "label":  "胶塞安装钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2315,7 +2201,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-07",
-                                              "label":  "胶塞拆卸钳",
+                                              "label":  "胶塞拆卸钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2323,7 +2209,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-08",
-                                              "label":  "镜圈钳",
+                                              "label":  "镜圈钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2331,7 +2217,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-09",
-                                              "label":  "双尖钳",
+                                              "label":  "双尖钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2339,7 +2225,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-10",
-                                              "label":  "镜腿调整钳",
+                                              "label":  "镜腿调整钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2347,7 +2233,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-11",
-                                              "label":  "鼻梁调整钳",
+                                              "label":  "鼻梁调整钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2355,7 +2241,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-12",
-                                              "label":  "带洞扁嘴钳",
+                                              "label":  "带洞扁嘴钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2363,7 +2249,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-13",
-                                              "label":  "弯托叶钳",
+                                              "label":  "弯托叶钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2371,7 +2257,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-14",
-                                              "label":  "双内圆尖嘴钳",
+                                              "label":  "双内圆尖嘴钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2379,7 +2265,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-15",
-                                              "label":  "扁嘴钳",
+                                              "label":  "扁嘴钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2387,7 +2273,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-16",
-                                              "label":  "侧半圆尖嘴钳",
+                                              "label":  "侧半圆尖嘴钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2395,7 +2281,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-17",
-                                              "label":  "大方头镜腿钳",
+                                              "label":  "大方头镜腿钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2403,7 +2289,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-18",
-                                              "label":  "无框眼镜镜腿调整钳",
+                                              "label":  "无框眼镜镜腿调整钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2411,7 +2297,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-19",
-                                              "label":  "胶塞剪钳",
+                                              "label":  "胶塞剪钳 - USD 4.40",
                                               "priceUsd":  4.40,
                                               "priceCny":  29.9,
                                               "costCny":  23,
@@ -2419,7 +2305,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-20",
-                                              "label":  "螺丝剪钳",
+                                              "label":  "螺丝剪钳 - USD 2.49",
                                               "priceUsd":  2.49,
                                               "priceCny":  16.9,
                                               "costCny":  13,
@@ -2427,7 +2313,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-21",
-                                              "label":  "小胶塞剪钳",
+                                              "label":  "小胶塞剪钳 - USD 3.44",
                                               "priceUsd":  3.44,
                                               "priceCny":  23.4,
                                               "costCny":  18,
@@ -2435,7 +2321,7 @@
                                           },
                                           {
                                               "model":  "TB-807888035006-22",
-                                              "label":  "吸盘钳",
+                                              "label":  "吸盘钳 - USD 5.35",
                                               "priceUsd":  5.35,
                                               "priceCny":  36.4,
                                               "costCny":  28,
@@ -2485,10 +2371,11 @@
                           "supplier":  "China supplier",
                           "store":  "悦己容眼镜旗舰店 4.9 88VIP好评率97% 平均13小时发货 客服平均24秒回复",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-673765851712-01",
-                                              "label":  "B款眼镜鱼线拉丝勾（不锈钢柄）1把装 推荐",
+                                              "label":  "B款眼镜鱼线拉丝勾（不锈钢柄）1把装 推荐 - USD 1.49",
                                               "priceUsd":  1.49,
                                               "priceCny":  10.13,
                                               "costCny":  7.79,
@@ -2496,7 +2383,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-02",
-                                              "label":  "B款半框眼镜拉丝勾（不锈钢柄）2把装",
+                                              "label":  "B款半框眼镜拉丝勾（不锈钢柄）2把装 - USD 3.02",
                                               "priceUsd":  3.02,
                                               "priceCny":  20.54,
                                               "costCny":  15.8,
@@ -2504,7 +2391,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-03",
-                                              "label":  "C款眼镜鱼线拉丝勾（塑料柄）1把装",
+                                              "label":  "C款眼镜鱼线拉丝勾（塑料柄）1把装 - USD 1.43",
                                               "priceUsd":  1.43,
                                               "priceCny":  9.75,
                                               "costCny":  7.5,
@@ -2512,7 +2399,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-04",
-                                              "label":  "C款半框眼镜拉丝勾（塑料柄）2把装",
+                                              "label":  "C款半框眼镜拉丝勾（塑料柄）2把装 - USD 2.96",
                                               "priceUsd":  2.96,
                                               "priceCny":  20.15,
                                               "costCny":  15.5,
@@ -2520,7 +2407,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-05",
-                                              "label":  "A款半框眼镜拉丝勾（纯铜柄）2把装",
+                                              "label":  "A款半框眼镜拉丝勾（纯铜柄）2把装 - USD 3.59",
                                               "priceUsd":  3.59,
                                               "priceCny":  24.44,
                                               "costCny":  18.8,
@@ -2528,7 +2415,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-06",
-                                              "label":  "【眼镜鱼线】常规款0.6mm一卷",
+                                              "label":  "【眼镜鱼线】常规款0.6mm一卷 - USD 1.24",
                                               "priceUsd":  1.24,
                                               "priceCny":  8.42,
                                               "costCny":  6.48,
@@ -2536,7 +2423,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-07",
-                                              "label":  "【眼镜鱼线】细款0.5mm一卷",
+                                              "label":  "【眼镜鱼线】细款0.5mm一卷 - USD 1.24",
                                               "priceUsd":  1.24,
                                               "priceCny":  8.42,
                                               "costCny":  6.48,
@@ -2544,7 +2431,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-08",
-                                              "label":  "【眼镜鱼线】粗款0.7mm一卷",
+                                              "label":  "【眼镜鱼线】粗款0.7mm一卷 - USD 1.24",
                                               "priceUsd":  1.24,
                                               "priceCny":  8.42,
                                               "costCny":  6.48,
@@ -2552,7 +2439,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-09",
-                                              "label":  "C款拉丝勾1把+【眼镜鱼线】常规款0.6mm一卷",
+                                              "label":  "C款拉丝勾1把+【眼镜鱼线】常规款0.6mm一卷 - USD 2.6",
                                               "priceUsd":  2.6,
                                               "priceCny":  17.68,
                                               "costCny":  13.6,
@@ -2560,7 +2447,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-10",
-                                              "label":  "C款拉丝勾1把+【眼镜鱼线】细款0.5mm一卷",
+                                              "label":  "C款拉丝勾1把+【眼镜鱼线】细款0.5mm一卷 - USD 2.6",
                                               "priceUsd":  2.6,
                                               "priceCny":  17.68,
                                               "costCny":  13.6,
@@ -2568,7 +2455,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-11",
-                                              "label":  "C款拉丝勾1把+【眼镜鱼线】粗款0.7mm一卷",
+                                              "label":  "C款拉丝勾1把+【眼镜鱼线】粗款0.7mm一卷 - USD 2.6",
                                               "priceUsd":  2.6,
                                               "priceCny":  17.68,
                                               "costCny":  13.6,
@@ -2576,7 +2463,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-12",
-                                              "label":  "C款拉丝勾1把+【眼镜鱼线】0.5/0.6/0.7各一卷",
+                                              "label":  "C款拉丝勾1把+【眼镜鱼线】0.5/0.6/0.7各一卷 - USD 3.75",
                                               "priceUsd":  3.75,
                                               "priceCny":  25.48,
                                               "costCny":  19.6,
@@ -2584,7 +2471,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-13",
-                                              "label":  "全框眼镜垫丝【常规款】【小号】（厚度约0.3mm）",
+                                              "label":  "全框眼镜垫丝【常规款】【小号】（厚度约0.3mm） - USD 1.49",
                                               "priceUsd":  1.49,
                                               "priceCny":  10.14,
                                               "costCny":  7.8,
@@ -2592,7 +2479,7 @@
                                           },
                                           {
                                               "model":  "TB-673765851712-14",
-                                              "label":  "全框眼镜垫丝【大号】（厚度约0.5mm）",
+                                              "label":  "全框眼镜垫丝【大号】（厚度约0.5mm） - USD 1.87",
                                               "priceUsd":  1.87,
                                               "priceCny":  12.74,
                                               "costCny":  9.8,
@@ -2631,10 +2518,11 @@
                           "supplier":  "China supplier",
                           "store":  "倍乐视力个人护理店 4.7 90天新增40条好评 平均16小时发货 平均2天退款",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-1000751668646-01",
-                                              "label":  "纸质款 视标卡【白底黑字】4张 缓解视疲劳",
+                                              "label":  "纸质款 视标卡【白底黑字】4张 缓解视疲劳 - USD 2.45",
                                               "priceUsd":  2.45,
                                               "priceCny":  16.64,
                                               "costCny":  12.8,
@@ -2642,7 +2530,7 @@
                                           },
                                           {
                                               "model":  "TB-1000751668646-02",
-                                              "label":  "亮面款聚散球+e字视力卡4张 斜视+缓解视疲劳",
+                                              "label":  "亮面款聚散球+e字视力卡4张 斜视+缓解视疲劳 - USD 5.51",
                                               "priceUsd":  5.51,
                                               "priceCny":  37.44,
                                               "costCny":  28.8,
@@ -2650,11 +2538,150 @@
                                           },
                                           {
                                               "model":  "TB-1000751668646-03",
-                                              "label":  "哑光款聚散球+e字视力卡4张 斜视+缓解视疲劳",
+                                              "label":  "哑光款聚散球+e字视力卡4张 斜视+缓解视疲劳 - USD 5.51",
                                               "priceUsd":  5.51,
                                               "priceCny":  37.44,
                                               "costCny":  28.8,
                                               "image":  "assets/taobao/1000751668646/008.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "LZN catalog price includes a 30% margin",
+                                           "USD price calculated at CNY 6.8 per USD",
+                                           "Availability and international freight to be confirmed"
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
+                          "model":  "TB-582020332203",
+                          "nameEn":  "TR眼镜腿配件大全眼镜支架一对凸牙外牙眼镜脚腿框架单牙替换维修",
+                          "chineseName":  "TR眼镜腿配件大全眼镜支架一对凸牙外牙眼镜脚腿框架单牙替换维修",
+                          "image":  "assets/taobao/582020332203/001.webp",
+                          "images":  [
+                                         "assets/taobao/582020332203/001.webp",
+                                         "assets/taobao/582020332203/002.webp",
+                                         "assets/taobao/582020332203/003.webp",
+                                         "assets/taobao/582020332203/004.webp",
+                                         "assets/taobao/582020332203/005.webp",
+                                         "assets/taobao/582020332203/006.webp",
+                                         "assets/taobao/582020332203/007.webp",
+                                         "assets/taobao/582020332203/008.webp",
+                                         "assets/taobao/582020332203/009.webp",
+                                         "assets/taobao/582020332203/010.webp",
+                                         "assets/taobao/582020332203/011.webp",
+                                         "assets/taobao/582020332203/012.webp",
+                                         "assets/taobao/582020332203/013.webp",
+                                         "assets/taobao/582020332203/014.webp",
+                                         "assets/taobao/582020332203/015.webp",
+                                         "assets/taobao/582020332203/016.webp"
+                                     ],
+                          "description":  "Supplier catalog item. Select an option to view its LZN price and product image.",
+                          "basePriceRmb":  0.4,
+                          "priceSource":  "Supplier listing",
+                          "priceUsd":  0.08,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 0.08 - 0.19",
+                          "sourceUrl":  "https://detail.tmall.com/item.htm?id=582020332203",
+                          "supplier":  "China supplier",
+                          "store":  "法基旗舰店 4.9 88VIP好评率96% 平均10小时发货 平均1小时退款",
+                          "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
+                          "options":  [
+                                          {
+                                              "model":  "TB-582020332203-01",
+                                              "label":  "3.5号连体版腿宽3.5mm标准凸牙（送螺丝刀 - USD 0.08",
+                                              "priceUsd":  0.08,
+                                              "priceCny":  0.52,
+                                              "costCny":  0.4,
+                                              "image":  "assets/taobao/582020332203/001.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-02",
+                                              "label":  "4号连体版腿宽4mm标准凸牙（送螺丝刀） - USD 0.19",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/006.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-03",
+                                              "label":  "4号脚套版腿宽4mm标准凸牙（送螺丝刀） - USD 0.19",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/007.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-04",
+                                              "label":  "5号连体版腿宽5mm标准凸牙（送螺丝刀） 推荐 - USD 0.19",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/008.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-05",
+                                              "label":  "5号脚套版腿宽5mm标准凸牙（送螺丝刀） - USD 0.19",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/009.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-06",
+                                              "label":  "6号连体版腿宽6mm标准凸牙（送螺丝刀） - USD 0.19",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/010.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-07",
+                                              "label":  "6号脚套版腿宽6mm标准凸牙（送螺丝刀） - USD 0.19",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/011.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-08",
+                                              "label":  "6.5号脚套版腿宽6.5mm标准凸牙（送螺丝刀 - USD 0.19",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/012.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-09",
+                                              "label":  "7号连体版腿宽7mm标准凸牙（送螺丝刀） - USD 0.19",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/013.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-10",
+                                              "label":  "7.5号连体版腿宽7.5mm标准凸牙（送螺丝刀 - USD 0.19",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/014.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-11",
+                                              "label":  "8号脚套版腿宽8mm标准凸牙（送螺丝刀） - USD 0.19",
+                                              "priceUsd":  0.19,
+                                              "priceCny":  1.3,
+                                              "costCny":  1,
+                                              "image":  "assets/taobao/582020332203/015.webp"
+                                          },
+                                          {
+                                              "model":  "TB-582020332203-12",
+                                              "label":  "9号连体版腿宽9mm标准凸牙（送螺丝刀） - USD 0.08",
+                                              "priceUsd":  0.08,
+                                              "priceCny":  0.52,
+                                              "costCny":  0.4,
+                                              "image":  "assets/taobao/582020332203/016.webp"
                                           }
                                       ],
                           "features":  [
@@ -2686,10 +2713,11 @@
                           "supplier":  "China supplier",
                           "store":  "似画中人旗舰店 4.8 好评率95% 平均11小时发货 客服平均22秒回复",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-886101652276-01",
-                                              "label":  "黑色/台式阅读放大镜",
+                                              "label":  "黑色/台式阅读放大镜 - USD 6.5",
                                               "priceUsd":  6.5,
                                               "priceCny":  44.2,
                                               "costCny":  34,
@@ -2740,10 +2768,11 @@
                           "supplier":  "China supplier",
                           "store":  "灵视眼镜旗舰店 4.9 88VIP好评率97% 平均13小时发货 客服平均19秒回复",
                           "optionLabel":  "Supplier option",
+                          "optionDisplay":  "buttons",
                           "options":  [
                                           {
                                               "model":  "TB-608800446878-01",
-                                              "label":  "500颗眼镜螺丝及配件W8【掌柜力荐】 店长主推",
+                                              "label":  "500颗眼镜螺丝及配件W8【掌柜力荐】 店长主推 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2751,7 +2780,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-02",
-                                              "label":  "500颗左右眼镜螺丝及维修配件盒装外贸版W8",
+                                              "label":  "500颗左右眼镜螺丝及维修配件盒装外贸版W8 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2759,7 +2788,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-03",
-                                              "label":  "【升级款】500颗常规螺丝及配件S8",
+                                              "label":  "【升级款】500颗常规螺丝及配件S8 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2767,7 +2796,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-04",
-                                              "label":  "YZ【全是一字】眼镜螺丝",
+                                              "label":  "YZ【全是一字】眼镜螺丝 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2775,7 +2804,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-05",
-                                              "label":  "约150颗眼镜螺丝套装JS1-金色",
+                                              "label":  "约150颗眼镜螺丝套装JS1-金色 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2783,7 +2812,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-06",
-                                              "label":  "【升级含切边螺丝】金色Gold-200颗套盒",
+                                              "label":  "【升级含切边螺丝】金色Gold-200颗套盒 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2791,7 +2820,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-07",
-                                              "label":  "【切边眼镜专用】金色G18螺丝盒",
+                                              "label":  "【切边眼镜专用】金色G18螺丝盒 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2799,7 +2828,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-08",
-                                              "label":  "约150颗眼镜螺丝套装JS1-黑枪色",
+                                              "label":  "约150颗眼镜螺丝套装JS1-黑枪色 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2807,7 +2836,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-09",
-                                              "label":  "约150颗眼镜螺丝套装JS1-银色",
+                                              "label":  "约150颗眼镜螺丝套装JS1-银色 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2815,7 +2844,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-10",
-                                              "label":  "【升级含切边螺丝】银色Silver-200颗套盒",
+                                              "label":  "【升级含切边螺丝】银色Silver-200颗套盒 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2823,7 +2852,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-11",
-                                              "label":  "【切边无框】全套多种螺丝B1",
+                                              "label":  "【切边无框】全套多种螺丝B1 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2831,7 +2860,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-12",
-                                              "label":  "【点蓝胶十字1.4铰链螺丝】眼镜维修螺丝套装",
+                                              "label":  "【点蓝胶十字1.4铰链螺丝】眼镜维修螺丝套装 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2839,7 +2868,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-13",
-                                              "label":  "【母子螺丝】大六角丝通【3对装】【送挂圈螺丝刀】",
+                                              "label":  "【母子螺丝】大六角丝通【3对装】【送挂圈螺丝刀】 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2847,7 +2876,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-14",
-                                              "label":  "【母子螺丝】大三角丝通【3对装】【送挂圈螺丝刀】",
+                                              "label":  "【母子螺丝】大三角丝通【3对装】【送挂圈螺丝刀】 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
@@ -2855,7 +2884,7 @@
                                           },
                                           {
                                               "model":  "TB-608800446878-15",
-                                              "label":  "【母子螺丝】梅花形型丝通【3对装】【送挂圈螺丝刀】",
+                                              "label":  "【母子螺丝】梅花形型丝通【3对装】【送挂圈螺丝刀】 - USD 0.19",
                                               "priceUsd":  0.19,
                                               "priceCny":  1.3,
                                               "costCny":  1,
