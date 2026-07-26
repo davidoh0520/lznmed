@@ -1,6 +1,587 @@
 (function () {
   const importedCategories = [
     {
+        "id":  "accessories",
+        "en":  "Accessories",
+        "desc":  "Optical shop products with option-level images and USD catalog pricing.",
+        "mergeKeys":  [
+                          "accessories",
+                          "other accessories",
+                          "optical accessories"
+                      ],
+        "items":  [
+                      {
+                          "category":  "accessories",
+                          "model":  "LZN-821168484924",
+                          "nameEn":  "LZN Optical Product 821168484924",
+                          "chineseName":  "LZN Optical Product 821168484924",
+                          "image":  "assets/catalog/821168484924/english-main.webp",
+                          "images":  [
+                                         "assets/catalog/821168484924/english-main.webp"
+                                     ],
+                          "description":  "LZN Optical Product 821168484924 is designed for professional optical retail and vision-care applications.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-821168484924-01",
+                                              "label":  "LZN Optical Product 821168484924 - Option 01",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/821168484924/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-821168484924-02",
+                                              "label":  "LZN Optical Product 821168484924 - Option 02",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/821168484924/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-821168484924-03",
+                                              "label":  "LZN Optical Product 821168484924 - Option 03",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/821168484924/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-821168484924-04",
+                                              "label":  "LZN Optical Product 821168484924 - Option 04",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/821168484924/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-821168484924-05",
+                                              "label":  "LZN Optical Product 821168484924 - Option 05",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/821168484924/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-821168484924-06",
+                                              "label":  "LZN Optical Product 821168484924 - Option 06",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/821168484924/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-821168484924-07",
+                                              "label":  "LZN Optical Product 821168484924 - Option 07",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/821168484924/english-main.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for professional optical and vision-care use.",
+                                           "Suitable for retail, service, or customer-care settings.",
+                                           "Multiple configurations are available for different applications."
+                                       ]
+                      },
+                      {
+                          "category":  "accessories",
+                          "model":  "LZN-599830820788",
+                          "nameEn":  "LZN Optical Product 599830820788",
+                          "chineseName":  "LZN Optical Product 599830820788",
+                          "image":  "assets/catalog/599830820788/english-main.png",
+                          "images":  [
+                                         "assets/catalog/599830820788/english-main.png"
+                                     ],
+                          "description":  "LZN Optical Product 599830820788 is designed for professional optical retail and vision-care applications.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-599830820788-01",
+                                              "label":  "LZN Optical Product 599830820788 - Option 01 - 4CWhite",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-02",
+                                              "label":  "LZN Optical Product 599830820788 - Option 02 - 4C",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-03",
+                                              "label":  "LZN Optical Product 599830820788 - Option 03 - 4CBlue",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-04",
+                                              "label":  "LZN Optical Product 599830820788 - Option 04 - 6CWhite",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-05",
+                                              "label":  "LZN Optical Product 599830820788 - Option 05 - 6CBlue",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-06",
+                                              "label":  "LZN Optical Product 599830820788 - Option 06 - 8C",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-07",
+                                              "label":  "LZN Optical Product 599830820788 - Option 07 - 8CBlue",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-08",
+                                              "label":  "LZN Optical Product 599830820788 - Option 08 - 9CWhite",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-09",
+                                              "label":  "LZN Optical Product 599830820788 - Option 09",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-10",
+                                              "label":  "LZN Optical Product 599830820788 - Option 10 - 4AWhite",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-11",
+                                              "label":  "LZN Optical Product 599830820788 - Option 11 - 4A",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-12",
+                                              "label":  "LZN Optical Product 599830820788 - Option 12 - 4ABlue",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-13",
+                                              "label":  "LZN Optical Product 599830820788 - Option 13 - 6AWhite",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-14",
+                                              "label":  "LZN Optical Product 599830820788 - Option 14 - 6A",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-15",
+                                              "label":  "LZN Optical Product 599830820788 - Option 15 - 6ABlue",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-16",
+                                              "label":  "LZN Optical Product 599830820788 - Option 16 - 8A",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-17",
+                                              "label":  "LZN Optical Product 599830820788 - Option 17 - 8ABlue",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-18",
+                                              "label":  "LZN Optical Product 599830820788 - Option 18 - 9AWhite",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-19",
+                                              "label":  "LZN Optical Product 599830820788 - Option 19",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-20",
+                                              "label":  "LZN Optical Product 599830820788 - Option 20 - 200ml 10",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-21",
+                                              "label":  "LZN Optical Product 599830820788 - Option 21 - 250ml 10",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-599830820788-22",
+                                              "label":  "LZN Optical Product 599830820788 - Option 22 - 500ml 10",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/599830820788/english-main.png"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for professional optical and vision-care use.",
+                                           "Suitable for retail, service, or customer-care settings.",
+                                           "Multiple configurations are available for different applications."
+                                       ]
+                      },
+                      {
+                          "category":  "accessories",
+                          "model":  "LZN-950197809027",
+                          "nameEn":  "LZN Optical Product 950197809027",
+                          "chineseName":  "LZN Optical Product 950197809027",
+                          "image":  "assets/catalog/950197809027/english-main.png",
+                          "images":  [
+                                         "assets/catalog/950197809027/english-main.png"
+                                     ],
+                          "description":  "LZN Optical Product 950197809027 is designed for professional optical retail and vision-care applications.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-950197809027-01",
+                                              "label":  "LZN Optical Product 950197809027 - Option 01 - Blue",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/950197809027/english-main.png"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for professional optical and vision-care use.",
+                                           "Suitable for retail, service, or customer-care settings.",
+                                           "Multiple configurations are available for different applications."
+                                       ]
+                      },
+                      {
+                          "category":  "accessories",
+                          "model":  "LZN-969193151157",
+                          "nameEn":  "LZN Optical Product 969193151157",
+                          "chineseName":  "LZN Optical Product 969193151157",
+                          "image":  "assets/catalog/969193151157/english-main.webp",
+                          "images":  [
+                                         "assets/catalog/969193151157/english-main.webp"
+                                     ],
+                          "description":  "LZN Optical Product 969193151157 is designed for professional optical retail and vision-care applications.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-969193151157-01",
+                                              "label":  "LZN Optical Product 969193151157 - Option 01 - Black2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/969193151157/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-969193151157-02",
+                                              "label":  "LZN Optical Product 969193151157 - Option 02 - 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/969193151157/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-969193151157-03",
+                                              "label":  "LZN Optical Product 969193151157 - Option 03 - 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/969193151157/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-969193151157-04",
+                                              "label":  "LZN Optical Product 969193151157 - Option 04 - Blue2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/969193151157/english-main.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for professional optical and vision-care use.",
+                                           "Suitable for retail, service, or customer-care settings.",
+                                           "Multiple configurations are available for different applications."
+                                       ]
+                      },
+                      {
+                          "category":  "accessories",
+                          "model":  "LZN-840574461963",
+                          "nameEn":  "LZN Optical Product 840574461963",
+                          "chineseName":  "LZN Optical Product 840574461963",
+                          "image":  "assets/catalog/840574461963/001.webp",
+                          "images":  [
+                                         "assets/catalog/840574461963/001.webp",
+                                         "assets/catalog/840574461963/002.webp",
+                                         "assets/catalog/840574461963/003.webp"
+                                     ],
+                          "description":  "LZN Optical Product 840574461963 is designed for professional optical retail and vision-care applications.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-840574461963-01",
+                                              "label":  "LZN Optical Product 840574461963 - Option 01 - Upgraded",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/840574461963/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-840574461963-02",
+                                              "label":  "LZN Optical Product 840574461963 - Option 02 - 45-49 100",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/840574461963/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-840574461963-03",
+                                              "label":  "LZN Optical Product 840574461963 - Option 03 - 50-54 150",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/840574461963/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-840574461963-04",
+                                              "label":  "LZN Optical Product 840574461963 - Option 04 - 60-65 250",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/840574461963/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-840574461963-05",
+                                              "label":  "LZN Optical Product 840574461963 - Option 05 - 65-69 300",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/840574461963/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-840574461963-06",
+                                              "label":  "LZN Optical Product 840574461963 - Option 06 - 70-74 350",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/840574461963/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-840574461963-07",
+                                              "label":  "LZN Optical Product 840574461963 - Option 07 - 75 400",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/840574461963/001.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for professional optical and vision-care use.",
+                                           "Suitable for retail, service, or customer-care settings.",
+                                           "Multiple configurations are available for different applications."
+                                       ]
+                      },
+                      {
+                          "category":  "accessories",
+                          "model":  "LZN-815613043837",
+                          "nameEn":  "LZN Optical Product 815613043837",
+                          "chineseName":  "LZN Optical Product 815613043837",
+                          "image":  "assets/catalog/815613043837/english-main.png",
+                          "images":  [
+                                         "assets/catalog/815613043837/english-main.png"
+                                     ],
+                          "description":  "LZN Optical Product 815613043837 is designed for professional optical retail and vision-care applications.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-815613043837-01",
+                                              "label":  "LZN Optical Product 815613043837 - Option 01 - 3D 1",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/815613043837/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-815613043837-02",
+                                              "label":  "LZN Optical Product 815613043837 - Option 02 - 3D 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/815613043837/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-815613043837-03",
+                                              "label":  "LZN Optical Product 815613043837 - Option 03 - 3D 3",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/815613043837/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-815613043837-04",
+                                              "label":  "LZN Optical Product 815613043837 - Option 04 - 3D 1",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/815613043837/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-815613043837-05",
+                                              "label":  "LZN Optical Product 815613043837 - Option 05 - 3D 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/815613043837/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-815613043837-06",
+                                              "label":  "LZN Optical Product 815613043837 - Option 06 - 3D 3",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/815613043837/english-main.png"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for professional optical and vision-care use.",
+                                           "Suitable for retail, service, or customer-care settings.",
+                                           "Multiple configurations are available for different applications."
+                                       ]
+                      },
+                      {
+                          "category":  "accessories",
+                          "model":  "LZN-729967954702",
+                          "nameEn":  "LZN Optical Product 729967954702",
+                          "chineseName":  "LZN Optical Product 729967954702",
+                          "image":  "assets/catalog/729967954702/english-main.png",
+                          "images":  [
+                                         "assets/catalog/729967954702/english-main.png"
+                                     ],
+                          "description":  "LZN Optical Product 729967954702 is designed for professional optical retail and vision-care applications.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-729967954702-01",
+                                              "label":  "LZN Optical Product 729967954702 - Option 01 - 2 12",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-02",
+                                              "label":  "LZN Optical Product 729967954702 - Option 02 - 2 12",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-03",
+                                              "label":  "LZN Optical Product 729967954702 - Option 03 - 2 12",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-04",
+                                              "label":  "LZN Optical Product 729967954702 - Option 04 - Large 1 6",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-05",
+                                              "label":  "LZN Optical Product 729967954702 - Option 05 - Large 1 6",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-06",
+                                              "label":  "LZN Optical Product 729967954702 - Option 06 - Large 1 6",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-07",
+                                              "label":  "LZN Optical Product 729967954702 - Option 07 - 1 6",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-08",
+                                              "label":  "LZN Optical Product 729967954702 - Option 08 - 1 6",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-09",
+                                              "label":  "LZN Optical Product 729967954702 - Option 09 - 1 6",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-10",
+                                              "label":  "LZN Optical Product 729967954702 - Option 10 - 1 6",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-11",
+                                              "label":  "LZN Optical Product 729967954702 - Option 11 - 1 6",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-729967954702-12",
+                                              "label":  "LZN Optical Product 729967954702 - Option 12 - 1 6",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/729967954702/english-main.png"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for professional optical and vision-care use.",
+                                           "Suitable for retail, service, or customer-care settings.",
+                                           "Multiple configurations are available for different applications."
+                                       ]
+                      },
+                      {
+                          "category":  "accessories",
+                          "model":  "LZN-624508088377",
+                          "nameEn":  "LZN Optical Product 624508088377",
+                          "chineseName":  "LZN Optical Product 624508088377",
+                          "image":  "assets/catalog/624508088377/001.webp",
+                          "images":  [
+                                         "assets/catalog/624508088377/001.webp",
+                                         "assets/catalog/624508088377/002.webp"
+                                     ],
+                          "description":  "LZN Optical Product 624508088377 is designed for professional optical retail and vision-care applications.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-624508088377-01",
+                                              "label":  "LZN Optical Product 624508088377 - Option 01 - 3",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/624508088377/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-624508088377-02",
+                                              "label":  "LZN Optical Product 624508088377 - Option 02 - 1",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/624508088377/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-624508088377-03",
+                                              "label":  "LZN Optical Product 624508088377 - Option 03 - 5",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/624508088377/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-624508088377-04",
+                                              "label":  "LZN Optical Product 624508088377 - Option 04 - 1",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/624508088377/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-624508088377-05",
+                                              "label":  "LZN Optical Product 624508088377 - Option 05 - 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/624508088377/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-624508088377-06",
+                                              "label":  "LZN Optical Product 624508088377 - Option 06 - 5",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/624508088377/001.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for professional optical and vision-care use.",
+                                           "Suitable for retail, service, or customer-care settings.",
+                                           "Multiple configurations are available for different applications."
+                                       ]
+                      }
+                  ]
+    },
+    {
         "id":  "cases",
         "en":  "Cases",
         "desc":  "Optical shop products with option-level images and USD catalog pricing.",
@@ -142,6 +723,36 @@
                       },
                       {
                           "category":  "cases",
+                          "model":  "LZN-1011125552269",
+                          "nameEn":  "LZN Optical Product 1011125552269",
+                          "chineseName":  "LZN Optical Product 1011125552269",
+                          "image":  "assets/catalog/1011125552269/001.webp",
+                          "images":  [
+                                         "assets/catalog/1011125552269/001.webp",
+                                         "assets/catalog/1011125552269/002.webp",
+                                         "assets/catalog/1011125552269/003.webp"
+                                     ],
+                          "description":  "LZN Optical Product 1011125552269 protects and organizes eyewear for storage, travel, and daily use.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-1011125552269-01",
+                                              "label":  "LZN Optical Product 1011125552269 - Option 01",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1011125552269/001.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Protects eyewear from scratches and everyday impact.",
+                                           "Designed for organized storage and convenient transport.",
+                                           "Available in multiple capacities, finishes, or colors."
+                                       ]
+                      },
+                      {
+                          "category":  "cases",
                           "model":  "LZN-1034702556904",
                           "nameEn":  "Minimalist Hard-Shell Eyeglass Case",
                           "chineseName":  "Minimalist Hard-Shell Eyeglass Case",
@@ -205,39 +816,6 @@
                                               "label":  "Porcelain White+Lens Cloth",
                                               "priceUsd":  6.06,
                                               "image":  "assets/catalog/1034702556904/010.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Protects eyewear from scratches and everyday impact.",
-                                           "Designed for organized storage and convenient transport.",
-                                           "Available in multiple capacities, finishes, or colors."
-                                       ]
-                      },
-                      {
-                          "category":  "cases",
-                          "model":  "LZN-798739953640",
-                          "nameEn":  "Portable Protective Eyeglass Case",
-                          "chineseName":  "Portable Protective Eyeglass Case",
-                          "image":  "assets/catalog/798739953640/001.webp",
-                          "images":  [
-                                         "assets/catalog/798739953640/001.webp",
-                                         "assets/catalog/798739953640/002.webp",
-                                         "assets/catalog/798739953640/003.webp",
-                                         "assets/catalog/798739953640/004.webp",
-                                         "assets/catalog/798739953640/005.webp",
-                                         "assets/catalog/798739953640/006.png"
-                                     ],
-                          "description":  "Portable Protective Eyeglass Case protects and organizes eyewear for storage, travel, and daily use.",
-                          "priceUsd":  1.69,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 1.69",
-                          "optionLabel":  "Available options",
-                          "options":  [
-                                          {
-                                              "model":  "LZN-798739953640-01",
-                                              "label":  "Light Green",
-                                              "priceUsd":  1.69,
-                                              "image":  "assets/catalog/798739953640/001.webp"
                                           }
                                       ],
                           "features":  [
@@ -326,6 +904,39 @@
                                               "label":  "Self-Closing Eyewear Pouch - Option 09 - Upgraded 4",
                                               "priceUsd":  0.19,
                                               "image":  "assets/catalog/808569964690/013.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Protects eyewear from scratches and everyday impact.",
+                                           "Designed for organized storage and convenient transport.",
+                                           "Available in multiple capacities, finishes, or colors."
+                                       ]
+                      },
+                      {
+                          "category":  "cases",
+                          "model":  "LZN-798739953640",
+                          "nameEn":  "Portable Protective Eyeglass Case",
+                          "chineseName":  "Portable Protective Eyeglass Case",
+                          "image":  "assets/catalog/798739953640/001.webp",
+                          "images":  [
+                                         "assets/catalog/798739953640/001.webp",
+                                         "assets/catalog/798739953640/002.webp",
+                                         "assets/catalog/798739953640/003.webp",
+                                         "assets/catalog/798739953640/004.webp",
+                                         "assets/catalog/798739953640/005.webp",
+                                         "assets/catalog/798739953640/006.png"
+                                     ],
+                          "description":  "Portable Protective Eyeglass Case protects and organizes eyewear for storage, travel, and daily use.",
+                          "priceUsd":  1.69,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 1.69",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-798739953640-01",
+                                              "label":  "Light Green",
+                                              "priceUsd":  1.69,
+                                              "image":  "assets/catalog/798739953640/001.webp"
                                           }
                                       ],
                           "features":  [
@@ -598,6 +1209,84 @@
                                            "Suitable for optical stores, workshops, and personal use.",
                                            "Available in multiple sizes or application formats."
                                        ]
+                      },
+                      {
+                          "category":  "cleaning",
+                          "model":  "LZN-589448610321",
+                          "nameEn":  "LZN Optical Product 589448610321",
+                          "chineseName":  "LZN Optical Product 589448610321",
+                          "image":  "assets/catalog/589448610321/001.webp",
+                          "images":  [
+                                         "assets/catalog/589448610321/001.webp",
+                                         "assets/catalog/589448610321/002.webp",
+                                         "assets/catalog/589448610321/003.webp"
+                                     ],
+                          "description":  "LZN Optical Product 589448610321 supports clear lens care and routine optical product maintenance.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-589448610321-01",
+                                              "label":  "LZN Optical Product 589448610321 - Option 01 - 20 6X8cm",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/589448610321/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-589448610321-02",
+                                              "label":  "LZN Optical Product 589448610321 - Option 02 - 100 6X8cm",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/589448610321/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-589448610321-03",
+                                              "label":  "LZN Optical Product 589448610321 - Option 03 - 200 6X8cm",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/589448610321/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-589448610321-04",
+                                              "label":  "LZN Optical Product 589448610321 - Option 04 - 500 6X8cm",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/589448610321/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-589448610321-05",
+                                              "label":  "LZN Optical Product 589448610321 - Option 05 - 1000 6X8cm",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/589448610321/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-589448610321-06",
+                                              "label":  "LZN Optical Product 589448610321 - Option 06 - 20 12X12cm",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/589448610321/003.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-589448610321-07",
+                                              "label":  "LZN Optical Product 589448610321 - Option 07 - 100 12X12cm",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/589448610321/003.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-589448610321-08",
+                                              "label":  "LZN Optical Product 589448610321 - Option 08 - 200 12X12cm",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/589448610321/003.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-589448610321-09",
+                                              "label":  "LZN Optical Product 589448610321 - Option 09 - 500 12X12cm",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/589448610321/003.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for routine lens and optical surface care.",
+                                           "Suitable for optical stores, workshops, and personal use.",
+                                           "Available in multiple sizes or application formats."
+                                       ]
                       }
                   ]
     },
@@ -611,6 +1300,137 @@
                           "display supplies"
                       ],
         "items":  [
+                      {
+                          "category":  "display",
+                          "model":  "LZN-959733497199",
+                          "nameEn":  "Multi-Tier Acrylic Eyewear Display Stand",
+                          "chineseName":  "Multi-Tier Acrylic Eyewear Display Stand",
+                          "image":  "assets/catalog/959733497199/001.webp",
+                          "images":  [
+                                         "assets/catalog/959733497199/001.webp",
+                                         "assets/catalog/959733497199/002.webp",
+                                         "assets/catalog/959733497199/003.webp",
+                                         "assets/catalog/959733497199/004.webp",
+                                         "assets/catalog/959733497199/005.png",
+                                         "assets/catalog/959733497199/006.webp",
+                                         "assets/catalog/959733497199/007.webp"
+                                     ],
+                          "description":  "Multi-Tier Acrylic Eyewear Display Stand is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+                          "priceUsd":  3.36,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 3.36 - 4.51",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-959733497199-01",
+                                              "label":  "Multi-Tier Acrylic Eyewear Display Stand - Option 01 - 3-Tier Organizer Stand",
+                                              "priceUsd":  3.36,
+                                              "image":  "assets/catalog/959733497199/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-959733497199-02",
+                                              "label":  "Multi-Tier Acrylic Eyewear Display Stand - Option 02 - 4-Tier Organizer Stand",
+                                              "priceUsd":  3.94,
+                                              "image":  "assets/catalog/959733497199/006.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-959733497199-03",
+                                              "label":  "Multi-Tier Acrylic Eyewear Display Stand - Option 03 - 5-Tier Organizer Stand",
+                                              "priceUsd":  4.51,
+                                              "image":  "assets/catalog/959733497199/007.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for clean and organized eyewear presentation.",
+                                           "Suitable for counters, showcases, walls, and retail displays.",
+                                           "Available in multiple capacities, finishes, or layouts."
+                                       ]
+                      },
+                      {
+                          "category":  "display",
+                          "model":  "LZN-670890306251",
+                          "nameEn":  "LZN Optical Product 670890306251",
+                          "chineseName":  "LZN Optical Product 670890306251",
+                          "image":  "assets/catalog/670890306251/001.webp",
+                          "images":  [
+                                         "assets/catalog/670890306251/001.webp",
+                                         "assets/catalog/670890306251/002.webp",
+                                         "assets/catalog/670890306251/003.webp",
+                                         "assets/catalog/670890306251/004.webp",
+                                         "assets/catalog/670890306251/005.webp",
+                                         "assets/catalog/670890306251/006.webp",
+                                         "assets/catalog/670890306251/007.webp",
+                                         "assets/catalog/670890306251/008.webp",
+                                         "assets/catalog/670890306251/009.webp",
+                                         "assets/catalog/670890306251/010.webp"
+                                     ],
+                          "description":  "LZN Optical Product 670890306251 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-670890306251-01",
+                                              "label":  "LZN Optical Product 670890306251 - Option 01 - 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/670890306251/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-670890306251-02",
+                                              "label":  "LZN Optical Product 670890306251 - Option 02 - 3",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/670890306251/003.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-670890306251-03",
+                                              "label":  "LZN Optical Product 670890306251 - Option 03 - 4",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/670890306251/004.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-670890306251-04",
+                                              "label":  "LZN Optical Product 670890306251 - Option 04 - 5",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/670890306251/005.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-670890306251-05",
+                                              "label":  "LZN Optical Product 670890306251 - Option 05 - 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/670890306251/006.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-670890306251-06",
+                                              "label":  "LZN Optical Product 670890306251 - Option 06 - 3",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/670890306251/007.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-670890306251-07",
+                                              "label":  "LZN Optical Product 670890306251 - Option 07 - 4",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/670890306251/008.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-670890306251-08",
+                                              "label":  "LZN Optical Product 670890306251 - Option 08 - 5",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/670890306251/009.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-670890306251-09",
+                                              "label":  "LZN Optical Product 670890306251 - Option 09 - 6",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/670890306251/010.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for clean and organized eyewear presentation.",
+                                           "Suitable for counters, showcases, walls, and retail displays.",
+                                           "Available in multiple capacities, finishes, or layouts."
+                                       ]
+                      },
                       {
                           "category":  "display",
                           "model":  "LZN-898461568746",
@@ -706,52 +1526,6 @@
                                               "label":  "24-Slot Walnut Finish",
                                               "priceUsd":  64.62,
                                               "image":  "assets/catalog/898461568746/016.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Designed for clean and organized eyewear presentation.",
-                                           "Suitable for counters, showcases, walls, and retail displays.",
-                                           "Available in multiple capacities, finishes, or layouts."
-                                       ]
-                      },
-                      {
-                          "category":  "display",
-                          "model":  "LZN-959733497199",
-                          "nameEn":  "Multi-Tier Acrylic Eyewear Display Stand",
-                          "chineseName":  "Multi-Tier Acrylic Eyewear Display Stand",
-                          "image":  "assets/catalog/959733497199/001.webp",
-                          "images":  [
-                                         "assets/catalog/959733497199/001.webp",
-                                         "assets/catalog/959733497199/002.webp",
-                                         "assets/catalog/959733497199/003.webp",
-                                         "assets/catalog/959733497199/004.webp",
-                                         "assets/catalog/959733497199/005.png",
-                                         "assets/catalog/959733497199/006.webp",
-                                         "assets/catalog/959733497199/007.webp"
-                                     ],
-                          "description":  "Multi-Tier Acrylic Eyewear Display Stand is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
-                          "priceUsd":  3.36,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 3.36 - 4.51",
-                          "optionLabel":  "Available options",
-                          "options":  [
-                                          {
-                                              "model":  "LZN-959733497199-01",
-                                              "label":  "Multi-Tier Acrylic Eyewear Display Stand - Option 01 - 3-Tier Organizer Stand",
-                                              "priceUsd":  3.36,
-                                              "image":  "assets/catalog/959733497199/001.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-959733497199-02",
-                                              "label":  "Multi-Tier Acrylic Eyewear Display Stand - Option 02 - 4-Tier Organizer Stand",
-                                              "priceUsd":  3.94,
-                                              "image":  "assets/catalog/959733497199/006.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-959733497199-03",
-                                              "label":  "Multi-Tier Acrylic Eyewear Display Stand - Option 03 - 5-Tier Organizer Stand",
-                                              "priceUsd":  4.51,
-                                              "image":  "assets/catalog/959733497199/007.webp"
                                           }
                                       ],
                           "features":  [
@@ -863,51 +1637,135 @@
                       },
                       {
                           "category":  "display",
-                          "model":  "LZN-976152256120",
-                          "nameEn":  "Wall-Mounted Felt Eyewear Display Board",
-                          "chineseName":  "Wall-Mounted Felt Eyewear Display Board",
-                          "image":  "assets/catalog/976152256120/001.webp",
+                          "model":  "LZN-1030400367140",
+                          "nameEn":  "LZN Optical Product 1030400367140",
+                          "chineseName":  "LZN Optical Product 1030400367140",
+                          "image":  "assets/catalog/1030400367140/001.webp",
                           "images":  [
-                                         "assets/catalog/976152256120/001.webp",
-                                         "assets/catalog/976152256120/002.webp",
-                                         "assets/catalog/976152256120/003.webp",
-                                         "assets/catalog/976152256120/004.webp"
+                                         "assets/catalog/1030400367140/001.webp",
+                                         "assets/catalog/1030400367140/002.webp",
+                                         "assets/catalog/1030400367140/003.webp",
+                                         "assets/catalog/1030400367140/004.webp"
                                      ],
-                          "description":  "Wall-Mounted Felt Eyewear Display Board is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
-                          "priceUsd":  2.41,
+                          "description":  "LZN Optical Product 1030400367140 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+                          "priceUsd":  null,
                           "priceOnRequest":  false,
-                          "priceDisplay":  "USD 2.41 - 4.32",
+                          "priceDisplay":  "Price on request",
                           "optionLabel":  "Available options",
                           "options":  [
                                           {
-                                              "model":  "LZN-976152256120-01",
-                                              "label":  "Wall-Mounted Felt Eyewear Display Board - Option 01 - Large White",
-                                              "priceUsd":  2.98,
-                                              "image":  "assets/catalog/976152256120/001.webp"
+                                              "model":  "LZN-1030400367140-01",
+                                              "label":  "LZN Optical Product 1030400367140 - Option 01 - 9 28*28cm 7.5cm",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1030400367140/001.webp"
                                           },
                                           {
-                                              "model":  "LZN-976152256120-02",
-                                              "label":  "Wall-Mounted Felt Eyewear Display Board - Option 02 - Large Speckled Black",
-                                              "priceUsd":  2.98,
-                                              "image":  "assets/catalog/976152256120/002.webp"
+                                              "model":  "LZN-1030400367140-02",
+                                              "label":  "LZN Optical Product 1030400367140 - Option 02 - 16 35*35cm 7.5",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1030400367140/004.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for clean and organized eyewear presentation.",
+                                           "Suitable for counters, showcases, walls, and retail displays.",
+                                           "Available in multiple capacities, finishes, or layouts."
+                                       ]
+                      },
+                      {
+                          "category":  "display",
+                          "model":  "LZN-739204891463",
+                          "nameEn":  "LZN Optical Product 739204891463",
+                          "chineseName":  "LZN Optical Product 739204891463",
+                          "image":  "assets/catalog/739204891463/english-main.png",
+                          "images":  [
+                                         "assets/catalog/739204891463/english-main.png"
+                                     ],
+                          "description":  "LZN Optical Product 739204891463 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-739204891463-01",
+                                              "label":  "LZN Optical Product 739204891463 - Option 01 - 3 7",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/739204891463/english-main.png"
                                           },
                                           {
-                                              "model":  "LZN-976152256120-03",
-                                              "label":  "Small Speckled Black",
-                                              "priceUsd":  2.41,
-                                              "image":  "assets/catalog/976152256120/001.webp"
+                                              "model":  "LZN-739204891463-02",
+                                              "label":  "LZN Optical Product 739204891463 - Option 02 - 6 8",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/739204891463/english-main.png"
                                           },
                                           {
-                                              "model":  "LZN-976152256120-04",
-                                              "label":  "Wall-Mounted Felt Eyewear Display Board - Option 04 - White Large Small",
-                                              "priceUsd":  4.32,
-                                              "image":  "assets/catalog/976152256120/003.webp"
+                                              "model":  "LZN-739204891463-03",
+                                              "label":  "LZN Optical Product 739204891463 - Option 03 - 3 10",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/739204891463/english-main.png"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for clean and organized eyewear presentation.",
+                                           "Suitable for counters, showcases, walls, and retail displays.",
+                                           "Available in multiple capacities, finishes, or layouts."
+                                       ]
+                      },
+                      {
+                          "category":  "display",
+                          "model":  "LZN-632477033344",
+                          "nameEn":  "Solar-Powered Rotating Display Platform",
+                          "chineseName":  "Solar-Powered Rotating Display Platform",
+                          "image":  "assets/catalog/632477033344/001.webp",
+                          "images":  [
+                                         "assets/catalog/632477033344/001.webp",
+                                         "assets/catalog/632477033344/002.webp",
+                                         "assets/catalog/632477033344/003.webp",
+                                         "assets/catalog/632477033344/004.webp",
+                                         "assets/catalog/632477033344/005.webp"
+                                     ],
+                          "description":  "Solar-Powered Rotating Display Platform is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+                          "priceUsd":  2.68,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 2.68 - 4.97",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-632477033344-01",
+                                              "label":  "Solar-Powered Rotating Display Platform - Option 01 - 9cm White 300g",
+                                              "priceUsd":  2.68,
+                                              "image":  "assets/catalog/632477033344/001.webp"
                                           },
                                           {
-                                              "model":  "LZN-976152256120-05",
-                                              "label":  "Speckled Black Large＋Small",
-                                              "priceUsd":  4.32,
-                                              "image":  "assets/catalog/976152256120/004.webp"
+                                              "model":  "LZN-632477033344-02",
+                                              "label":  "Solar-Powered Rotating Display Platform - Option 02 - 9cm Black 300g",
+                                              "priceUsd":  2.68,
+                                              "image":  "assets/catalog/632477033344/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-632477033344-03",
+                                              "label":  "Solar-Powered Rotating Display Platform - Option 03 - 9cm Gold 300g",
+                                              "priceUsd":  2.68,
+                                              "image":  "assets/catalog/632477033344/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-632477033344-04",
+                                              "label":  "Solar-Powered Rotating Display Platform - Option 04 - 9cm Silver 300g",
+                                              "priceUsd":  2.68,
+                                              "image":  "assets/catalog/632477033344/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-632477033344-05",
+                                              "label":  "Solar-Powered Rotating Display Platform - Option 05 - 120 White Upgraded 500",
+                                              "priceUsd":  4.97,
+                                              "image":  "assets/catalog/632477033344/004.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-632477033344-06",
+                                              "label":  "Solar-Powered Rotating Display Platform - Option 06 - 120 Black Upgraded 500",
+                                              "priceUsd":  4.97,
+                                              "image":  "assets/catalog/632477033344/005.webp"
                                           }
                                       ],
                           "features":  [
@@ -979,58 +1837,224 @@
                       },
                       {
                           "category":  "display",
-                          "model":  "LZN-632477033344",
-                          "nameEn":  "Solar-Powered Rotating Display Platform",
-                          "chineseName":  "Solar-Powered Rotating Display Platform",
-                          "image":  "assets/catalog/632477033344/001.webp",
+                          "model":  "LZN-628352782969",
+                          "nameEn":  "LZN Optical Product 628352782969",
+                          "chineseName":  "LZN Optical Product 628352782969",
+                          "image":  "assets/catalog/628352782969/001.webp",
                           "images":  [
-                                         "assets/catalog/632477033344/001.webp",
-                                         "assets/catalog/632477033344/002.webp",
-                                         "assets/catalog/632477033344/003.webp",
-                                         "assets/catalog/632477033344/004.webp",
-                                         "assets/catalog/632477033344/005.webp"
+                                         "assets/catalog/628352782969/001.webp",
+                                         "assets/catalog/628352782969/002.webp",
+                                         "assets/catalog/628352782969/003.webp",
+                                         "assets/catalog/628352782969/004.webp"
                                      ],
-                          "description":  "Solar-Powered Rotating Display Platform is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
-                          "priceUsd":  2.68,
+                          "description":  "LZN Optical Product 628352782969 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+                          "priceUsd":  0.19,
                           "priceOnRequest":  false,
-                          "priceDisplay":  "USD 2.68 - 4.97",
+                          "priceDisplay":  "USD 0.19",
                           "optionLabel":  "Available options",
                           "options":  [
                                           {
-                                              "model":  "LZN-632477033344-01",
-                                              "label":  "Solar-Powered Rotating Display Platform - Option 01 - 9cm White 300g",
-                                              "priceUsd":  2.68,
-                                              "image":  "assets/catalog/632477033344/001.webp"
+                                              "model":  "LZN-628352782969-01",
+                                              "label":  "LZN Optical Product 628352782969 - Option 01 - Black",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/628352782969/001.webp"
                                           },
                                           {
-                                              "model":  "LZN-632477033344-02",
-                                              "label":  "Solar-Powered Rotating Display Platform - Option 02 - 9cm Black 300g",
-                                              "priceUsd":  2.68,
-                                              "image":  "assets/catalog/632477033344/001.webp"
+                                              "model":  "LZN-628352782969-02",
+                                              "label":  "LZN Optical Product 628352782969 - Option 02 - White",
+                                              "priceUsd":  0.19,
+                                              "image":  "assets/catalog/628352782969/004.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for clean and organized eyewear presentation.",
+                                           "Suitable for counters, showcases, walls, and retail displays.",
+                                           "Available in multiple capacities, finishes, or layouts."
+                                       ]
+                      },
+                      {
+                          "category":  "display",
+                          "model":  "LZN-1000973896135",
+                          "nameEn":  "LZN Optical Product 1000973896135",
+                          "chineseName":  "LZN Optical Product 1000973896135",
+                          "image":  "assets/catalog/1000973896135/001.webp",
+                          "images":  [
+                                         "assets/catalog/1000973896135/001.webp",
+                                         "assets/catalog/1000973896135/002.webp",
+                                         "assets/catalog/1000973896135/003.webp",
+                                         "assets/catalog/1000973896135/004.webp",
+                                         "assets/catalog/1000973896135/005.webp",
+                                         "assets/catalog/1000973896135/006.webp",
+                                         "assets/catalog/1000973896135/007.webp",
+                                         "assets/catalog/1000973896135/008.webp"
+                                     ],
+                          "description":  "LZN Optical Product 1000973896135 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-1000973896135-01",
+                                              "label":  "LZN Optical Product 1000973896135 - Option 01",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1000973896135/001.webp"
                                           },
                                           {
-                                              "model":  "LZN-632477033344-03",
-                                              "label":  "Solar-Powered Rotating Display Platform - Option 03 - 9cm Gold 300g",
-                                              "priceUsd":  2.68,
-                                              "image":  "assets/catalog/632477033344/001.webp"
+                                              "model":  "LZN-1000973896135-02",
+                                              "label":  "LZN Optical Product 1000973896135 - Option 02 - Green",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1000973896135/003.webp"
                                           },
                                           {
-                                              "model":  "LZN-632477033344-04",
-                                              "label":  "Solar-Powered Rotating Display Platform - Option 04 - 9cm Silver 300g",
-                                              "priceUsd":  2.68,
-                                              "image":  "assets/catalog/632477033344/001.webp"
+                                              "model":  "LZN-1000973896135-03",
+                                              "label":  "LZN Optical Product 1000973896135 - Option 03 - Gray",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1000973896135/004.webp"
                                           },
                                           {
-                                              "model":  "LZN-632477033344-05",
-                                              "label":  "Solar-Powered Rotating Display Platform - Option 05 - 120 White Upgraded 500",
-                                              "priceUsd":  4.97,
-                                              "image":  "assets/catalog/632477033344/004.webp"
+                                              "model":  "LZN-1000973896135-04",
+                                              "label":  "LZN Optical Product 1000973896135 - Option 04",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1000973896135/005.webp"
                                           },
                                           {
-                                              "model":  "LZN-632477033344-06",
-                                              "label":  "Solar-Powered Rotating Display Platform - Option 06 - 120 Black Upgraded 500",
-                                              "priceUsd":  4.97,
-                                              "image":  "assets/catalog/632477033344/005.webp"
+                                              "model":  "LZN-1000973896135-05",
+                                              "label":  "LZN Optical Product 1000973896135 - Option 05",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1000973896135/006.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-1000973896135-06",
+                                              "label":  "LZN Optical Product 1000973896135 - Option 06",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1000973896135/007.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-1000973896135-07",
+                                              "label":  "LZN Optical Product 1000973896135 - Option 07",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1000973896135/008.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for clean and organized eyewear presentation.",
+                                           "Suitable for counters, showcases, walls, and retail displays.",
+                                           "Available in multiple capacities, finishes, or layouts."
+                                       ]
+                      },
+                      {
+                          "category":  "display",
+                          "model":  "LZN-976152256120",
+                          "nameEn":  "Wall-Mounted Felt Eyewear Display Board",
+                          "chineseName":  "Wall-Mounted Felt Eyewear Display Board",
+                          "image":  "assets/catalog/976152256120/001.webp",
+                          "images":  [
+                                         "assets/catalog/976152256120/001.webp",
+                                         "assets/catalog/976152256120/002.webp",
+                                         "assets/catalog/976152256120/003.webp",
+                                         "assets/catalog/976152256120/004.webp"
+                                     ],
+                          "description":  "Wall-Mounted Felt Eyewear Display Board is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+                          "priceUsd":  2.41,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 2.41 - 4.32",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-976152256120-01",
+                                              "label":  "Wall-Mounted Felt Eyewear Display Board - Option 01 - Large White",
+                                              "priceUsd":  2.98,
+                                              "image":  "assets/catalog/976152256120/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-976152256120-02",
+                                              "label":  "Wall-Mounted Felt Eyewear Display Board - Option 02 - Large Speckled Black",
+                                              "priceUsd":  2.98,
+                                              "image":  "assets/catalog/976152256120/002.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-976152256120-03",
+                                              "label":  "Small Speckled Black",
+                                              "priceUsd":  2.41,
+                                              "image":  "assets/catalog/976152256120/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-976152256120-04",
+                                              "label":  "Wall-Mounted Felt Eyewear Display Board - Option 04 - White Large Small",
+                                              "priceUsd":  4.32,
+                                              "image":  "assets/catalog/976152256120/003.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-976152256120-05",
+                                              "label":  "Speckled Black Large＋Small",
+                                              "priceUsd":  4.32,
+                                              "image":  "assets/catalog/976152256120/004.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for clean and organized eyewear presentation.",
+                                           "Suitable for counters, showcases, walls, and retail displays.",
+                                           "Available in multiple capacities, finishes, or layouts."
+                                       ]
+                      },
+                      {
+                          "category":  "display",
+                          "model":  "LZN-816789510780",
+                          "nameEn":  "LZN Optical Product 816789510780",
+                          "chineseName":  "LZN Optical Product 816789510780",
+                          "image":  "assets/catalog/816789510780/001.webp",
+                          "images":  [
+                                         "assets/catalog/816789510780/001.webp",
+                                         "assets/catalog/816789510780/002.webp",
+                                         "assets/catalog/816789510780/003.webp",
+                                         "assets/catalog/816789510780/004.webp",
+                                         "assets/catalog/816789510780/005.webp",
+                                         "assets/catalog/816789510780/006.webp",
+                                         "assets/catalog/816789510780/007.webp",
+                                         "assets/catalog/816789510780/008.webp"
+                                     ],
+                          "description":  "LZN Optical Product 816789510780 is designed for organized eyewear presentation in optical stores, showcases, and service areas.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-816789510780-01",
+                                              "label":  "LZN Optical Product 816789510780 - Option 01 - 2 Display Stand",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/816789510780/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-816789510780-02",
+                                              "label":  "LZN Optical Product 816789510780 - Option 02 - 3 Display Stand",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/816789510780/004.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-816789510780-03",
+                                              "label":  "LZN Optical Product 816789510780 - Option 03 - 5 Display Stand",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/816789510780/005.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-816789510780-04",
+                                              "label":  "LZN Optical Product 816789510780 - Option 04 - 6 Display Stand",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/816789510780/006.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-816789510780-05",
+                                              "label":  "LZN Optical Product 816789510780 - Option 05 - 7 Display Stand",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/816789510780/007.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-816789510780-06",
+                                              "label":  "LZN Optical Product 816789510780 - Option 06 - 1 Display Stand",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/816789510780/008.webp"
                                           }
                                       ],
                           "features":  [
@@ -1115,6 +2139,53 @@
         "items":  [
                       {
                           "category":  "nose-pads",
+                          "model":  "LZN-779201236504",
+                          "nameEn":  "Titanium Nose Pad Set",
+                          "chineseName":  "Titanium Nose Pad Set",
+                          "image":  "assets/catalog/779201236504/001.webp",
+                          "images":  [
+                                         "assets/catalog/779201236504/001.webp",
+                                         "assets/catalog/779201236504/002.webp",
+                                         "assets/catalog/779201236504/003.webp",
+                                         "assets/catalog/779201236504/004.webp",
+                                         "assets/catalog/779201236504/005.webp",
+                                         "assets/catalog/779201236504/006.webp",
+                                         "assets/catalog/779201236504/007.webp",
+                                         "assets/catalog/779201236504/008.webp"
+                                     ],
+                          "description":  "Titanium Nose Pad Set provides a practical replacement solution for frame fit, comfort, and nose bridge support.",
+                          "priceUsd":  0.19,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 0.19",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-779201236504-01",
+                                              "label":  "Titanium Silver - 2 Pairs",
+                                              "priceUsd":  0.19,
+                                              "image":  "assets/catalog/779201236504/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-779201236504-02",
+                                              "label":  "Titanium Gunmetal - 2 Pairs",
+                                              "priceUsd":  0.19,
+                                              "image":  "assets/catalog/779201236504/007.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-779201236504-03",
+                                              "label":  "Titanium Gold - 2 Pairs",
+                                              "priceUsd":  0.19,
+                                              "image":  "assets/catalog/779201236504/008.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Replacement component for eyeglass fitting and repair.",
+                                           "Designed to improve frame stability and wearer comfort.",
+                                           "Available in multiple materials, colors, or sizes."
+                                       ]
+                      },
+                      {
+                          "category":  "nose-pads",
                           "model":  "LZN-1009238894295",
                           "nameEn":  "Titanium and Silicone Nose Pad Set",
                           "chineseName":  "Titanium and Silicone Nose Pad Set",
@@ -1165,53 +2236,6 @@
                                               "label":  "Soft Silicone Air-Cushion Pads - 2 Pairs",
                                               "priceUsd":  1.62,
                                               "image":  "assets/catalog/1009238894295/009.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Replacement component for eyeglass fitting and repair.",
-                                           "Designed to improve frame stability and wearer comfort.",
-                                           "Available in multiple materials, colors, or sizes."
-                                       ]
-                      },
-                      {
-                          "category":  "nose-pads",
-                          "model":  "LZN-779201236504",
-                          "nameEn":  "Titanium Nose Pad Set",
-                          "chineseName":  "Titanium Nose Pad Set",
-                          "image":  "assets/catalog/779201236504/001.webp",
-                          "images":  [
-                                         "assets/catalog/779201236504/001.webp",
-                                         "assets/catalog/779201236504/002.webp",
-                                         "assets/catalog/779201236504/003.webp",
-                                         "assets/catalog/779201236504/004.webp",
-                                         "assets/catalog/779201236504/005.webp",
-                                         "assets/catalog/779201236504/006.webp",
-                                         "assets/catalog/779201236504/007.webp",
-                                         "assets/catalog/779201236504/008.webp"
-                                     ],
-                          "description":  "Titanium Nose Pad Set provides a practical replacement solution for frame fit, comfort, and nose bridge support.",
-                          "priceUsd":  0.19,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 0.19",
-                          "optionLabel":  "Available options",
-                          "options":  [
-                                          {
-                                              "model":  "LZN-779201236504-01",
-                                              "label":  "Titanium Silver - 2 Pairs",
-                                              "priceUsd":  0.19,
-                                              "image":  "assets/catalog/779201236504/001.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-779201236504-02",
-                                              "label":  "Titanium Gunmetal - 2 Pairs",
-                                              "priceUsd":  0.19,
-                                              "image":  "assets/catalog/779201236504/007.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-779201236504-03",
-                                              "label":  "Titanium Gold - 2 Pairs",
-                                              "priceUsd":  0.19,
-                                              "image":  "assets/catalog/779201236504/008.webp"
                                           }
                                       ],
                           "features":  [
@@ -1283,6 +2307,239 @@
                   ]
     },
     {
+        "id":  "repair-parts",
+        "en":  "Repair Parts",
+        "desc":  "Optical shop products with option-level images and USD catalog pricing.",
+        "mergeKeys":  [
+                          "repair parts",
+                          "parts",
+                          "spare parts",
+                          "accessories parts"
+                      ],
+        "items":  [
+                      {
+                          "category":  "repair-parts",
+                          "model":  "LZN-1046054732193",
+                          "nameEn":  "LZN Optical Product 1046054732193",
+                          "chineseName":  "LZN Optical Product 1046054732193",
+                          "image":  "assets/catalog/1046054732193/english-main.png",
+                          "images":  [
+                                         "assets/catalog/1046054732193/english-main.png"
+                                     ],
+                          "description":  "LZN Optical Product 1046054732193 supports routine eyeglass maintenance and replacement of worn frame components.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-1046054732193-01",
+                                              "label":  "LZN Optical Product 1046054732193 - Option 01 - Soft SiliconeNose Pad 5",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1046054732193/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-1046054732193-02",
+                                              "label":  "LZN Optical Product 1046054732193 - Option 02 - Soft SiliconeNose Pad 3",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1046054732193/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-1046054732193-03",
+                                              "label":  "LZN Optical Product 1046054732193 - Option 03 - Soft SiliconeNose Pad 1",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1046054732193/english-main.png"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Supports routine frame maintenance and component replacement.",
+                                           "Suitable for optical repair benches and service kits.",
+                                           "Choose the configuration required for the frame design."
+                                       ]
+                      },
+                      {
+                          "category":  "repair-parts",
+                          "model":  "LZN-964903108732",
+                          "nameEn":  "LZN Optical Product 964903108732",
+                          "chineseName":  "LZN Optical Product 964903108732",
+                          "image":  "assets/catalog/964903108732/english-main.png",
+                          "images":  [
+                                         "assets/catalog/964903108732/english-main.png"
+                                     ],
+                          "description":  "LZN Optical Product 964903108732 supports routine eyeglass maintenance and replacement of worn frame components.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-964903108732-01",
+                                              "label":  "LZN Optical Product 964903108732 - Option 01 - Option 1 2cm 2 3",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/964903108732/english-main.png"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Supports routine frame maintenance and component replacement.",
+                                           "Suitable for optical repair benches and service kits.",
+                                           "Choose the configuration required for the frame design."
+                                       ]
+                      },
+                      {
+                          "category":  "repair-parts",
+                          "model":  "LZN-951327613005",
+                          "nameEn":  "LZN Optical Product 951327613005",
+                          "chineseName":  "LZN Optical Product 951327613005",
+                          "image":  "assets/catalog/951327613005/001.webp",
+                          "images":  [
+                                         "assets/catalog/951327613005/001.webp",
+                                         "assets/catalog/951327613005/002.webp",
+                                         "assets/catalog/951327613005/003.webp"
+                                     ],
+                          "description":  "LZN Optical Product 951327613005 supports routine eyeglass maintenance and replacement of worn frame components.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-951327613005-01",
+                                              "label":  "LZN Optical Product 951327613005 - Option 01 - 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/951327613005/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-951327613005-02",
+                                              "label":  "LZN Optical Product 951327613005 - Option 02 - 3",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/951327613005/002.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-951327613005-03",
+                                              "label":  "LZN Optical Product 951327613005 - Option 03 - 1",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/951327613005/003.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Supports routine frame maintenance and component replacement.",
+                                           "Suitable for optical repair benches and service kits.",
+                                           "Choose the configuration required for the frame design."
+                                       ]
+                      },
+                      {
+                          "category":  "repair-parts",
+                          "model":  "LZN-760918224534",
+                          "nameEn":  "LZN Optical Product 760918224534",
+                          "chineseName":  "LZN Optical Product 760918224534",
+                          "image":  "assets/catalog/760918224534/english-main.png",
+                          "images":  [
+                                         "assets/catalog/760918224534/english-main.png"
+                                     ],
+                          "description":  "LZN Optical Product 760918224534 supports routine eyeglass maintenance and replacement of worn frame components.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-760918224534-01",
+                                              "label":  "LZN Optical Product 760918224534 - Option 01 - BlackLarge 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/760918224534/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-760918224534-02",
+                                              "label":  "LZN Optical Product 760918224534 - Option 02 - Large 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/760918224534/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-760918224534-03",
+                                              "label":  "LZN Optical Product 760918224534 - Option 03 - BlackSmall 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/760918224534/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-760918224534-04",
+                                              "label":  "LZN Optical Product 760918224534 - Option 04 - Small 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/760918224534/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-760918224534-05",
+                                              "label":  "LZN Optical Product 760918224534 - Option 05 - BlackLarge 4",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/760918224534/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-760918224534-06",
+                                              "label":  "LZN Optical Product 760918224534 - Option 06 - Large 4",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/760918224534/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-760918224534-07",
+                                              "label":  "LZN Optical Product 760918224534 - Option 07 - BlackSmall 4",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/760918224534/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-760918224534-08",
+                                              "label":  "LZN Optical Product 760918224534 - Option 08 - Small 4",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/760918224534/english-main.png"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Supports routine frame maintenance and component replacement.",
+                                           "Suitable for optical repair benches and service kits.",
+                                           "Choose the configuration required for the frame design."
+                                       ]
+                      },
+                      {
+                          "category":  "repair-parts",
+                          "model":  "LZN-628686984636",
+                          "nameEn":  "LZN Optical Product 628686984636",
+                          "chineseName":  "LZN Optical Product 628686984636",
+                          "image":  "assets/catalog/628686984636/english-main.webp",
+                          "images":  [
+                                         "assets/catalog/628686984636/english-main.webp"
+                                     ],
+                          "description":  "LZN Optical Product 628686984636 supports routine eyeglass maintenance and replacement of worn frame components.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-628686984636-01",
+                                              "label":  "LZN Optical Product 628686984636 - Option 01 - Screw DS-901",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/628686984636/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-628686984636-02",
+                                              "label":  "LZN Optical Product 628686984636 - Option 02 - Screw DS-901",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/628686984636/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-628686984636-03",
+                                              "label":  "LZN Optical Product 628686984636 - Option 03 - Screw DS-901",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/628686984636/english-main.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Supports routine frame maintenance and component replacement.",
+                                           "Suitable for optical repair benches and service kits.",
+                                           "Choose the configuration required for the frame design."
+                                       ]
+                      }
+                  ]
+    },
+    {
         "id":  "tool-set",
         "en":  "Tool Set",
         "desc":  "Optical shop products with option-level images and USD catalog pricing.",
@@ -1295,117 +2552,6 @@
                           "repair tools"
                       ],
         "items":  [
-                      {
-                          "category":  "tool-set",
-                          "model":  "LZN-989792061106",
-                          "nameEn":  "Optical Frame Adjustment Pliers",
-                          "chineseName":  "Optical Frame Adjustment Pliers",
-                          "image":  "assets/catalog/989792061106/001.webp",
-                          "images":  [
-                                         "assets/catalog/989792061106/001.webp",
-                                         "assets/catalog/989792061106/002.webp",
-                                         "assets/catalog/989792061106/003.webp",
-                                         "assets/catalog/989792061106/004.webp",
-                                         "assets/catalog/989792061106/005.webp",
-                                         "assets/catalog/989792061106/006.webp",
-                                         "assets/catalog/989792061106/007.webp",
-                                         "assets/catalog/989792061106/008.webp",
-                                         "assets/catalog/989792061106/009.webp",
-                                         "assets/catalog/989792061106/010.webp",
-                                         "assets/catalog/989792061106/011.webp"
-                                     ],
-                          "description":  "Optical Frame Adjustment Pliers is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
-                          "priceUsd":  4.21,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "USD 4.21 - 5.16",
-                          "optionLabel":  "Available options",
-                          "options":  [
-                                          {
-                                              "model":  "LZN-989792061106-01",
-                                              "label":  "Square Nose Pliers",
-                                              "priceUsd":  4.21,
-                                              "image":  "assets/catalog/989792061106/001.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-989792061106-02",
-                                              "label":  "Bent Nose Pliers",
-                                              "priceUsd":  4.21,
-                                              "image":  "assets/catalog/989792061106/006.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-989792061106-03",
-                                              "label":  "Needle Nose Pliers",
-                                              "priceUsd":  4.21,
-                                              "image":  "assets/catalog/989792061106/007.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-989792061106-04",
-                                              "label":  "Double-Hole Nose Pad Pliers",
-                                              "priceUsd":  4.59,
-                                              "image":  "assets/catalog/989792061106/008.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-989792061106-05",
-                                              "label":  "Frame Curvature Pliers",
-                                              "priceUsd":  4.59,
-                                              "image":  "assets/catalog/989792061106/009.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-989792061106-06",
-                                              "label":  "Three-Prong Pliers",
-                                              "priceUsd":  5.16,
-                                              "image":  "assets/catalog/989792061106/010.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-989792061106-07",
-                                              "label":  "Nose Pad Pliers",
-                                              "priceUsd":  4.21,
-                                              "image":  "assets/catalog/989792061106/011.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Designed for precise eyewear adjustment and repair.",
-                                           "Suitable for optical workshops and service counters.",
-                                           "Multiple configurations support different frame maintenance tasks."
-                                       ]
-                      },
-                      {
-                          "category":  "tool-set",
-                          "model":  "LZN-1028215754918",
-                          "nameEn":  "Eyeglass Frame Adjustment Tool Set",
-                          "chineseName":  "Eyeglass Frame Adjustment Tool Set",
-                          "image":  "assets/catalog/1028215754918/001.webp",
-                          "images":  [
-                                         "assets/catalog/1028215754918/001.webp",
-                                         "assets/catalog/1028215754918/002.webp",
-                                         "assets/catalog/1028215754918/003.webp",
-                                         "assets/catalog/1028215754918/004.webp"
-                                     ],
-                          "description":  "Eyeglass Frame Adjustment Tool Set is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
-                          "priceUsd":  null,
-                          "priceOnRequest":  false,
-                          "priceDisplay":  "Price on request",
-                          "optionLabel":  "Available options",
-                          "options":  [
-                                          {
-                                              "model":  "LZN-1028215754918-01",
-                                              "label":  "Eyeglass Frame Adjustment Tool Set - Option 01",
-                                              "priceUsd":  null,
-                                              "image":  "assets/catalog/1028215754918/001.webp"
-                                          },
-                                          {
-                                              "model":  "LZN-1028215754918-02",
-                                              "label":  "Eyeglass Frame Adjustment Tool Set - Option 02 - 2 Lens Cloth",
-                                              "priceUsd":  null,
-                                              "image":  "assets/catalog/1028215754918/004.webp"
-                                          }
-                                      ],
-                          "features":  [
-                                           "Designed for precise eyewear adjustment and repair.",
-                                           "Suitable for optical workshops and service counters.",
-                                           "Multiple configurations support different frame maintenance tasks."
-                                       ]
-                      },
                       {
                           "category":  "tool-set",
                           "model":  "LZN-972711305522",
@@ -1556,6 +2702,193 @@
                                               "label":  "Eyeglass Repair Screw Assortment - Option 19 - 1.4",
                                               "priceUsd":  0.70,
                                               "image":  "assets/catalog/972711305522/023.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for precise eyewear adjustment and repair.",
+                                           "Suitable for optical workshops and service counters.",
+                                           "Multiple configurations support different frame maintenance tasks."
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
+                          "model":  "LZN-1028215754918",
+                          "nameEn":  "Eyeglass Frame Adjustment Tool Set",
+                          "chineseName":  "Eyeglass Frame Adjustment Tool Set",
+                          "image":  "assets/catalog/1028215754918/001.webp",
+                          "images":  [
+                                         "assets/catalog/1028215754918/001.webp",
+                                         "assets/catalog/1028215754918/002.webp",
+                                         "assets/catalog/1028215754918/003.webp",
+                                         "assets/catalog/1028215754918/004.webp"
+                                     ],
+                          "description":  "Eyeglass Frame Adjustment Tool Set is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-1028215754918-01",
+                                              "label":  "Eyeglass Frame Adjustment Tool Set - Option 01",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1028215754918/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-1028215754918-02",
+                                              "label":  "Eyeglass Frame Adjustment Tool Set - Option 02 - 2 Lens Cloth",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/1028215754918/004.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for precise eyewear adjustment and repair.",
+                                           "Suitable for optical workshops and service counters.",
+                                           "Multiple configurations support different frame maintenance tasks."
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
+                          "model":  "LZN-989792061106",
+                          "nameEn":  "Optical Frame Adjustment Pliers",
+                          "chineseName":  "Optical Frame Adjustment Pliers",
+                          "image":  "assets/catalog/989792061106/001.webp",
+                          "images":  [
+                                         "assets/catalog/989792061106/001.webp",
+                                         "assets/catalog/989792061106/002.webp",
+                                         "assets/catalog/989792061106/003.webp",
+                                         "assets/catalog/989792061106/004.webp",
+                                         "assets/catalog/989792061106/005.webp",
+                                         "assets/catalog/989792061106/006.webp",
+                                         "assets/catalog/989792061106/007.webp",
+                                         "assets/catalog/989792061106/008.webp",
+                                         "assets/catalog/989792061106/009.webp",
+                                         "assets/catalog/989792061106/010.webp",
+                                         "assets/catalog/989792061106/011.webp"
+                                     ],
+                          "description":  "Optical Frame Adjustment Pliers is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
+                          "priceUsd":  4.21,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 4.21 - 5.16",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-989792061106-01",
+                                              "label":  "Square Nose Pliers",
+                                              "priceUsd":  4.21,
+                                              "image":  "assets/catalog/989792061106/001.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-989792061106-02",
+                                              "label":  "Bent Nose Pliers",
+                                              "priceUsd":  4.21,
+                                              "image":  "assets/catalog/989792061106/006.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-989792061106-03",
+                                              "label":  "Needle Nose Pliers",
+                                              "priceUsd":  4.21,
+                                              "image":  "assets/catalog/989792061106/007.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-989792061106-04",
+                                              "label":  "Double-Hole Nose Pad Pliers",
+                                              "priceUsd":  4.59,
+                                              "image":  "assets/catalog/989792061106/008.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-989792061106-05",
+                                              "label":  "Frame Curvature Pliers",
+                                              "priceUsd":  4.59,
+                                              "image":  "assets/catalog/989792061106/009.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-989792061106-06",
+                                              "label":  "Three-Prong Pliers",
+                                              "priceUsd":  5.16,
+                                              "image":  "assets/catalog/989792061106/010.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-989792061106-07",
+                                              "label":  "Nose Pad Pliers",
+                                              "priceUsd":  4.21,
+                                              "image":  "assets/catalog/989792061106/011.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for precise eyewear adjustment and repair.",
+                                           "Suitable for optical workshops and service counters.",
+                                           "Multiple configurations support different frame maintenance tasks."
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
+                          "model":  "LZN-837845339246",
+                          "nameEn":  "LZN Optical Product 837845339246",
+                          "chineseName":  "LZN Optical Product 837845339246",
+                          "image":  "assets/catalog/837845339246/english-main.png",
+                          "images":  [
+                                         "assets/catalog/837845339246/english-main.png"
+                                     ],
+                          "description":  "LZN Optical Product 837845339246 is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
+                          "priceUsd":  null,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "Price on request",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-837845339246-01",
+                                              "label":  "LZN Optical Product 837845339246 - Option 01 - Nose Pad",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/837845339246/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-837845339246-02",
+                                              "label":  "LZN Optical Product 837845339246 - Option 02",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/837845339246/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-837845339246-03",
+                                              "label":  "LZN Optical Product 837845339246 - Option 03",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/837845339246/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-837845339246-04",
+                                              "label":  "LZN Optical Product 837845339246 - Option 04",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/837845339246/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-837845339246-05",
+                                              "label":  "LZN Optical Product 837845339246 - Option 05",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/837845339246/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-837845339246-06",
+                                              "label":  "LZN Optical Product 837845339246 - Option 06",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/837845339246/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-837845339246-07",
+                                              "label":  "LZN Optical Product 837845339246 - Option 07",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/837845339246/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-837845339246-08",
+                                              "label":  "LZN Optical Product 837845339246 - Option 08",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/837845339246/english-main.png"
+                                          },
+                                          {
+                                              "model":  "LZN-837845339246-09",
+                                              "label":  "LZN Optical Product 837845339246 - Option 09",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/837845339246/english-main.png"
                                           }
                                       ],
                           "features":  [
@@ -1978,28 +3311,36 @@
                       },
                       {
                           "category":  "tool-set",
-                          "model":  "LZN-886101652276",
-                          "nameEn":  "LED Desktop Reading Magnifier",
-                          "chineseName":  "LED Desktop Reading Magnifier",
-                          "image":  "assets/catalog/886101652276/001.webp",
+                          "model":  "LZN-983486693358",
+                          "nameEn":  "LZN Optical Product 983486693358",
+                          "chineseName":  "LZN Optical Product 983486693358",
+                          "image":  "assets/catalog/983486693358/english-main.webp",
                           "images":  [
-                                         "assets/catalog/886101652276/001.webp",
-                                         "assets/catalog/886101652276/002.webp",
-                                         "assets/catalog/886101652276/003.webp",
-                                         "assets/catalog/886101652276/004.webp",
-                                         "assets/catalog/886101652276/005.png"
+                                         "assets/catalog/983486693358/english-main.webp"
                                      ],
-                          "description":  "LED Desktop Reading Magnifier is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
-                          "priceUsd":  6.5,
+                          "description":  "LZN Optical Product 983486693358 is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
+                          "priceUsd":  null,
                           "priceOnRequest":  false,
-                          "priceDisplay":  "USD 6.5",
+                          "priceDisplay":  "Price on request",
                           "optionLabel":  "Available options",
                           "options":  [
                                           {
-                                              "model":  "LZN-886101652276-01",
-                                              "label":  "LED Desktop Reading Magnifier - Option 01 - Black Magnifier",
-                                              "priceUsd":  6.5,
-                                              "image":  "assets/catalog/886101652276/001.webp"
+                                              "model":  "LZN-983486693358-01",
+                                              "label":  "LZN Optical Product 983486693358 - Option 01 - Black 1",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/983486693358/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-983486693358-02",
+                                              "label":  "LZN Optical Product 983486693358 - Option 02 - Black 3",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/983486693358/english-main.webp"
+                                          },
+                                          {
+                                              "model":  "LZN-983486693358-03",
+                                              "label":  "LZN Optical Product 983486693358 - Option 03 - Black 2",
+                                              "priceUsd":  null,
+                                              "image":  "assets/catalog/983486693358/english-main.webp"
                                           }
                                       ],
                           "features":  [
@@ -2131,6 +3472,38 @@
                                               "label":  "Eyeglass Repair Screw and Parts Kit - Option 15 - Screw 3",
                                               "priceUsd":  0.19,
                                               "image":  "assets/catalog/608800446878/020.webp"
+                                          }
+                                      ],
+                          "features":  [
+                                           "Designed for precise eyewear adjustment and repair.",
+                                           "Suitable for optical workshops and service counters.",
+                                           "Multiple configurations support different frame maintenance tasks."
+                                       ]
+                      },
+                      {
+                          "category":  "tool-set",
+                          "model":  "LZN-886101652276",
+                          "nameEn":  "LED Desktop Reading Magnifier",
+                          "chineseName":  "LED Desktop Reading Magnifier",
+                          "image":  "assets/catalog/886101652276/001.webp",
+                          "images":  [
+                                         "assets/catalog/886101652276/001.webp",
+                                         "assets/catalog/886101652276/002.webp",
+                                         "assets/catalog/886101652276/003.webp",
+                                         "assets/catalog/886101652276/004.webp",
+                                         "assets/catalog/886101652276/005.png"
+                                     ],
+                          "description":  "LED Desktop Reading Magnifier is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
+                          "priceUsd":  6.5,
+                          "priceOnRequest":  false,
+                          "priceDisplay":  "USD 6.5",
+                          "optionLabel":  "Available options",
+                          "options":  [
+                                          {
+                                              "model":  "LZN-886101652276-01",
+                                              "label":  "LED Desktop Reading Magnifier - Option 01 - Black Magnifier",
+                                              "priceUsd":  6.5,
+                                              "image":  "assets/catalog/886101652276/001.webp"
                                           }
                                       ],
                           "features":  [
