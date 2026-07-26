@@ -394,6 +394,30 @@
     return Number.isFinite(number) ? `USD ${number.toFixed(2)}` : 'Price on request';
   }
 
+  function pdPurchaseOptions(product) {
+    if (product.model === 'RF-T' || product.pdMode !== 'select' || !product.pdOptions?.length) return [];
+    const values = product.pdOptions.map(value => Number(value)).filter(Number.isFinite);
+    if (!values.length) return [];
+    const unitPrice = Number(product.priceUsd || 0);
+    const range = String(product.pdRange || `${values[0]}-${values.at(-1)} mm`).replace(/\s*mm$/i, '');
+    return [
+      {
+        model: product.model,
+        label: `Full PD Set: ${range} mm (${values.length} pcs)`,
+        image: product.image,
+        priceUsd: Number((unitPrice * values.length).toFixed(2)),
+        pdValue: 'FULL_SET'
+      },
+      ...values.map(value => ({
+        model: product.model,
+        label: `Fixed PD: ${value} mm`,
+        image: product.image,
+        priceUsd: unitPrice,
+        pdValue: String(value)
+      }))
+    ];
+  }
+
   function findOriginalAddButton(body) {
     return Array.from(body.querySelectorAll('button')).find(button =>
       /add to cart/i.test(button.textContent || '')
@@ -404,7 +428,9 @@
     document.querySelectorAll('.product-card').forEach(card => {
       const model = card.dataset.model;
       const product = model ? findProduct(model) : null;
-      if (!product?.options?.length) return;
+      const hasVisualChoices = product?.options?.length ||
+        (product?.model !== 'RF-T' && product?.pdMode === 'select' && product?.pdOptions?.length);
+      if (!hasVisualChoices) return;
       card.querySelectorAll('select').forEach(select => {
         select.style.display = 'none';
       });
@@ -427,7 +453,10 @@
     if (originalSelect) bridge.appendChild(originalSelect);
     if (originalAddButton) bridge.appendChild(originalAddButton);
 
-    const options = Array.isArray(product.options) ? product.options : [];
+    const productOptions = Array.isArray(product.options) ? product.options : [];
+    const pdOptions = productOptions.length ? [] : pdPurchaseOptions(product);
+    const options = productOptions.length ? productOptions : pdOptions;
+    const usesPdOptions = pdOptions.length > 0;
     const galleryImages = [...new Set([
       product.image,
       ...(product.images || []),
@@ -487,6 +516,7 @@
     detail.querySelector('.lzn-commerce-category').textContent = product.categoryEn || product.category || 'LZN Optical';
     detail.querySelector('.lzn-commerce-title').textContent = product.nameEn || product.productTitle || product.model;
     detail.querySelector('.lzn-commerce-description').textContent = product.description || '';
+    detail.querySelector('.lzn-commerce-option-heading span').textContent = usesPdOptions ? 'Choose PD' : 'Choose an option';
     model.textContent = product.model;
     mainImage.src = product.image || galleryImages[0] || '';
     mainImage.alt = product.nameEn || product.model;
@@ -497,15 +527,17 @@
       if (!option) return;
       mainImage.src = option.image || product.image || '';
       price.textContent = formatPrice(option.priceUsd);
-      model.textContent = option.model || product.model;
+      model.textContent = usesPdOptions ? product.model : (option.model || product.model);
       selectedLabel.textContent = option.label || '';
       optionList.querySelectorAll('.lzn-commerce-option').forEach((button, buttonIndex) => {
         button.classList.toggle('is-selected', buttonIndex === index);
       });
       if (originalSelect) {
-        const matching = Array.from(originalSelect.options).find(item =>
-          (item.textContent || '').includes(option.model)
-        ) || originalSelect.options[index];
+        const matching = usesPdOptions
+          ? originalSelect.options[index]
+          : Array.from(originalSelect.options).find(item =>
+            (item.textContent || '').includes(option.model)
+          ) || originalSelect.options[index];
         if (matching) {
           originalSelect.value = matching.value;
           originalSelect.dispatchEvent(new Event('input', { bubbles: true }));
