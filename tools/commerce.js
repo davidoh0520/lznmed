@@ -8,6 +8,8 @@ const cartCount = document.querySelector('#cartCount');
 const explicitCartOpen = new URLSearchParams(location.search).get('open-cart') === '1';
 const products = (window.CATALOG_DATA || []).flatMap(category => category.items.map(product => ({ ...product, categoryEn: category.en })));
 const e = value => String(value || '').replace(/[&<>\"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
+const MINIMUM_ORDER_USD = 100;
+const COUPON_VALUE_USD = 10;
 let session = null;
 let cart = JSON.parse(localStorage.getItem('lzn-cart') || '[]');
 let restoredCartUserId = null;
@@ -177,14 +179,23 @@ function orderDate(value) {
 
 async function ordersView() {
   show('<div class="panel-head"><p class="eyebrow">Customer Account</p><h2>My orders</h2></div><p>Loading your orders...</p>', true);
-  const { data, error } = await client.from('orders').select('*, order_items(*)').eq('user_id', session.user.id).order('created_at', { ascending: false });
-  if (error) {
-    show(`<div class="panel-head"><p class="eyebrow">Customer Account</p><h2>My orders</h2></div><p class="form-status">${e(error.message)}</p><button class="button secondary-button" id="backAccount">Back to account</button>`, true);
+  const [orderResult, couponResult] = await Promise.all([
+    client.from('orders').select('*, order_items(*)').eq('user_id', session.user.id).order('created_at', { ascending: false }),
+    client.from('coupons').select('code,amount_usd,status,issued_at,expires_at,redeemed_at').eq('user_id', session.user.id).order('issued_at', { ascending: false })
+  ]);
+  if (orderResult.error) {
+    show(`<div class="panel-head"><p class="eyebrow">Customer Account</p><h2>My orders</h2></div><p class="form-status">${e(orderResult.error.message)}</p><button class="button secondary-button" id="backAccount">Back to account</button>`, true);
     document.querySelector('#backAccount').onclick = authView;
     return;
   }
-  const orders = data || [];
+  const orders = orderResult.data || [];
+  const coupons = (couponResult.data || []).map(coupon => ({
+    ...coupon,
+    displayStatus: coupon.status === 'active' && new Date(coupon.expires_at).getTime() <= Date.now() ? 'expired' : coupon.status
+  }));
+  const couponWallet = couponResult.error ? '' : `<section class="coupon-wallet"><div><p class="eyebrow">My coupons</p><h3>USD 10 repeat-order coupons</h3><p>Use one coupon on an order whose product subtotal is at least USD 100 before coupon and freight.</p></div><div class="coupon-wallet-list">${coupons.length ? coupons.map(coupon => `<article class="coupon-ticket ${e(coupon.displayStatus)}"><span>${e(coupon.displayStatus)}</span><strong>${e(coupon.code)}</strong><b>USD ${Number(coupon.amount_usd || 0).toFixed(2)} OFF</b><small>${coupon.displayStatus === 'active' ? `Valid until ${e(orderDate(coupon.expires_at))}` : coupon.displayStatus === 'reserved' ? 'Reserved for an open order' : coupon.displayStatus === 'redeemed' ? `Used ${e(orderDate(coupon.redeemed_at))}` : `Expired ${e(orderDate(coupon.expires_at))}`}</small></article>`).join('') : '<p class="empty-coupons">Your coupon will appear here after payment is confirmed on a qualifying order.</p>'}</div></section>`;
   show(`<div class="panel-head cart-heading"><div><p class="eyebrow">Customer Account</p><h2>My orders</h2></div><span>${orders.length} orders</span></div>
+    ${couponWallet}
     <div class="customer-orders">${orders.length ? orders.map(order => {
       const total = order.total_usd ?? order.subtotal_usd;
       const tracking = order.status === 'shipped' && order.tracking_no ? `<div class="tracking-box"><span>Tracking number</span><strong>${e(order.tracking_no)}</strong><small>${e(order.courier || '')}</small><a class="text-button" href="https://www.17track.net/en/track#nums=${encodeURIComponent(order.tracking_no)}" target="_blank" rel="noopener">Track shipment</a></div>` : '';
@@ -195,7 +206,7 @@ async function ordersView() {
       const payoneerAction = readyForPayment && method !== 'company_bank_transfer' ? '<div class="payment-waiting payoneer-link-notice"><strong>Secure Payoneer payment link</strong><span>We will email your Card / PayPal payment request after freight and the final invoice are confirmed. Available methods, any payer fee and the final amount will be shown on Payoneer before payment.</span></div>' : '';
       const paymentAction = `${confirmAction}${bankTransferAction}${payoneerAction}`;
       const paymentWaiting = order.status === 'payment_submitted' ? `<div class="payment-waiting"><strong>Payment verification pending</strong><span>${method === 'company_bank_transfer' ? `We received your transfer notice${order.payment_submitted_at ? ` on ${orderDate(order.payment_submitted_at)}` : ''}. Your order will change to Paid after the funds are confirmed in our company bank account.` : 'We are verifying the Payoneer payment. Your order will change to Paid after the payment is confirmed.'}</span></div>` : '';
-      return `<article class="customer-order"><div class="customer-order-head"><div><span>${e(order.invoice_no || `Order ${order.id.slice(0, 8)}`)}</span><strong>${orderDate(order.created_at)}</strong></div><div><b class="order-status ${e(order.status)}">${e(statusLabels[order.status] || order.status)}</b><strong>USD ${Number(total || 0).toFixed(2)}</strong></div></div><div class="order-progress"><span class="${['quote_requested','quoted','payment_pending','payment_submitted','paid','processing','shipped'].includes(order.status) ? 'done' : ''}">Received</span><span class="${['paid','processing','shipped'].includes(order.status) ? 'done' : ''}">Paid</span><span class="${['processing','shipped'].includes(order.status) ? 'done' : ''}">Preparing</span><span class="${order.status === 'shipped' ? 'done' : ''}">Shipped</span></div>${paymentAction}${paymentWaiting}${tracking}<details><summary>View order details</summary><div class="customer-order-items">${(order.order_items || []).map(item => `<div><span><strong>${e(item.model)}</strong><small>${e(item.product_name)}</small></span><span>Qty ${e(item.quantity)}</span><strong>USD ${Number(item.line_total_usd || 0).toFixed(2)}</strong></div>`).join('')}</div><div class="customer-order-totals"><span>Products <strong>USD ${Number(order.subtotal_usd || 0).toFixed(2)}</strong></span><span>Freight <strong>${order.freight_usd == null ? 'Pending quotation' : `USD ${Number(order.freight_usd).toFixed(2)}`}</strong></span><span>Total <strong>USD ${Number(total || 0).toFixed(2)}</strong></span></div><p><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}</p><p><strong>Shipping address:</strong> ${e(order.shipping_address || '-')} ${e(order.postal_code || '')}</p><p><strong>Freight arrangement:</strong> ${e(order.courier || '-')}</p></details></article>`;
+      return `<article class="customer-order"><div class="customer-order-head"><div><span>${e(order.invoice_no || `Order ${order.id.slice(0, 8)}`)}</span><strong>${orderDate(order.created_at)}</strong></div><div><b class="order-status ${e(order.status)}">${e(statusLabels[order.status] || order.status)}</b><strong>USD ${Number(total || 0).toFixed(2)}</strong></div></div><div class="order-progress"><span class="${['quote_requested','quoted','payment_pending','payment_submitted','paid','processing','shipped'].includes(order.status) ? 'done' : ''}">Received</span><span class="${['paid','processing','shipped'].includes(order.status) ? 'done' : ''}">Paid</span><span class="${['processing','shipped'].includes(order.status) ? 'done' : ''}">Preparing</span><span class="${order.status === 'shipped' ? 'done' : ''}">Shipped</span></div>${paymentAction}${paymentWaiting}${tracking}<details><summary>View order details</summary><div class="customer-order-items">${(order.order_items || []).map(item => `<div><span><strong>${e(item.model)}</strong><small>${e(item.product_name)}</small></span><span>Qty ${e(item.quantity)}</span><strong>USD ${Number(item.line_total_usd || 0).toFixed(2)}</strong></div>`).join('')}</div><div class="customer-order-totals"><span>Products before coupon <strong>USD ${Number(order.subtotal_usd || 0).toFixed(2)}</strong></span>${Number(order.discount_usd || 0) > 0 ? `<span>Coupon ${e(order.coupon_code || '')} <strong>-USD ${Number(order.discount_usd).toFixed(2)}</strong></span>` : ''}<span>Freight <strong>${order.freight_usd == null ? 'Pending quotation' : `USD ${Number(order.freight_usd).toFixed(2)}`}</strong></span><span>Total <strong>USD ${Number(total || 0).toFixed(2)}</strong></span></div><p><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}</p><p><strong>Shipping address:</strong> ${e(order.shipping_address || '-')} ${e(order.postal_code || '')}</p><p><strong>Freight arrangement:</strong> ${e(order.courier || '-')}</p></details></article>`;
     }).join('') : '<div class="empty-orders"><h3>No orders yet</h3><p>Your completed and current orders will appear here.</p></div>'}</div><div class="cart-actions"><button class="button secondary-button" id="backAccount">Back to account</button><button class="button" id="shopAgain">Continue shopping</button></div>`, true);
   document.querySelectorAll('.customer-order').forEach((card, orderIndex) => {
     const order = orders[orderIndex];
@@ -210,7 +221,7 @@ async function ordersView() {
     if (quotePending && headerAmount) headerAmount.textContent = 'Quote pending';
     const totals = card.querySelectorAll('.customer-order-totals strong');
     if (totals[0]) totals[0].textContent = `Priced items USD ${Number(order.subtotal_usd || 0).toFixed(2)}`;
-    if (quotePending && totals[2]) totals[2].textContent = 'Pending quotation';
+    if (quotePending && totals.length) totals[totals.length - 1].textContent = 'Pending quotation';
   });
   document.querySelector('#backAccount').onclick = authView;
   document.querySelector('#shopAgain').onclick = hide;
@@ -327,9 +338,13 @@ function cartView() {
   if (repairCartImages(cart)) save();
   const total = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
   const hasQuote = cart.some(isPriceOnRequest);
+  const belowMinimum = total < MINIMUM_ORDER_USD && !hasQuote;
+  const minimumMessage = belowMinimum
+    ? `<p class="minimum-order-notice"><strong>Add USD ${money(MINIMUM_ORDER_USD - total)} more.</strong> The minimum product subtotal is USD ${money(MINIMUM_ORDER_USD)} before coupon and freight.</p>`
+    : `<p class="minimum-order-qualified"><strong>Minimum order reached.</strong> A qualifying paid order earns a USD ${money(COUPON_VALUE_USD)} coupon for the next order.</p>`;
   show(`<div class="panel-head cart-heading"><div><p class="eyebrow">Shopping Cart</p><h2>${cart.length ? 'Your cart' : 'Your cart is empty'}</h2></div><span>${cart.reduce((sum, item) => sum + item.quantity, 0)} items</span></div>
     <div class="cart-list">${cart.map((item, index) => `<div class="cart-row"><img src="${e(item.image)}" alt=""><div><strong>${e(item.model)}</strong><span>${e(item.nameEn)}</span>${item.optionLabel ? `<small class="chosen-option">${e(item.optionLabel)}</small>` : ''}${item.pd ? `<small class="chosen-option">Fixed PD: ${e(item.pd)} mm</small>` : ''}<small>${cartUnitPrice(item)}</small></div><label class="qty-label">Qty<input type="number" min="1" value="${item.quantity}" data-qty="${index}"></label><strong class="line-total">${cartLinePrice(item)}</strong><button class="remove-item" data-remove="${index}" aria-label="Remove item">×</button></div>`).join('')}</div>
-    ${cart.length ? `<div class="cart-summary"><div><span>${hasQuote ? 'Priced items subtotal' : 'FOB China subtotal'}</span><strong>USD ${money(total)}</strong></div>${hasQuote ? '<p><strong>Price-on-request items will be quoted in your Proforma Invoice.</strong></p>' : ''}<p>Freight, destination duties and local taxes are not included. Availability and freight are confirmed before the Proforma Invoice is issued.</p></div><div class="cart-actions"><button class="button secondary-button" id="continueShopping">Continue shopping</button><button class="button" id="checkoutButton">Proceed to checkout</button></div><p class="form-status" id="quoteStatus"></p>` : `<button class="button" id="continueShopping">Continue shopping</button>`}`, true);
+    ${cart.length ? `<div class="cart-summary"><div><span>${hasQuote ? 'Priced items subtotal' : 'FOB China product subtotal'}</span><strong>USD ${money(total)}</strong></div>${hasQuote ? '<p><strong>Price-on-request items will be quoted in your Proforma Invoice. The final product subtotal must be at least USD 100.</strong></p>' : ''}${minimumMessage}<p>Freight, destination duties and local taxes are not included. Availability and freight are confirmed before the Proforma Invoice is issued.</p></div><div class="cart-actions"><button class="button secondary-button" id="continueShopping">Continue shopping</button><button class="button" id="checkoutButton" ${belowMinimum ? 'disabled aria-disabled="true"' : ''}>Proceed to checkout</button></div><p class="form-status" id="quoteStatus"></p>` : `<button class="button" id="continueShopping">Continue shopping</button>`}`, true);
   body.querySelectorAll('.cart-row').forEach((row, index) => {
     if (!cart[index]?.pdLabel) return;
     const labels = row.querySelectorAll('.chosen-option');
@@ -342,10 +357,25 @@ function cartView() {
   document.querySelector('#checkoutButton')?.addEventListener('click', () => session ? checkoutView() : authView());
 }
 
-function checkoutView() {
+async function checkoutView() {
   const subtotal = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
   const hasQuote = cart.some(isPriceOnRequest);
-  show(`<div class="panel-head"><p class="eyebrow">Checkout</p><h2>Payment & freight</h2></div><div class="checkout-summary"><span>FOB China product subtotal</span><strong>USD ${money(subtotal)}</strong></div><form class="commerce-form checkout-form" id="checkoutForm"><fieldset><legend>Payment method</legend><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="company_bank_transfer" checked><span><strong>Company bank transfer <em>Recommended for orders over USD 1,000</em></strong><small>No processing fee charged by LZN MEDICAL. Sending and intermediary bank charges are borne by the buyer.</small><span class="bank-transfer-details" aria-label="USD bank transfer details"><b class="bank-details-title">USD bank transfer details</b><span class="bank-detail-row"><span>Beneficiary</span><b>LZN MEDICAL CO., LTD.</b></span><span class="bank-detail-row"><span>USD Account</span><b class="bank-copy-value">100103205899</b></span><span class="bank-detail-row"><span>SWIFT / BIC</span><b class="bank-copy-value">HVBKCNBJ</b></span><span class="bank-detail-row"><span>Bank</span><b>Woori Bank(China) Limited Shanghai JinXiuJiangNan Sub-Branch</b></span><span class="bank-detail-row"><span>Bank Address</span><b>No.101-1,101-2b,102 MT BLDG, 3999 Hongxin Road, Minhang District, Shanghai, China</b></span></span></span></label><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="payoneer_card_paypal"><span><strong>Card / PayPal <em>Processed securely by Payoneer</em></strong><small>Available payment methods and processing fees may vary by country, customer and payment request. A payment link will be emailed after freight and the final invoice are confirmed.</small><span class="payment-logo-panel"><span class="payment-logo-row"><img class="payment-logo-strip" src="assets/payment/payoneer-payment-options.png" alt="Possible payment options: Visa, Mastercard, American Express, Discover, Diners Club, JCB and Plaid"><span class="paypal-brand"><img src="assets/payment/paypal.png" alt=""><b>PayPal</b></span></span><small>Possible options include cards and PayPal. Availability varies by country and payment request.</small></span></span></label><div class="payment-fee-estimate" id="paymentFeeEstimate" aria-live="polite"></div></fieldset><fieldset><legend>Freight arrangement</legend><label class="choice-card"><input type="radio" name="freight_method" value="quote" checked><span><strong>Request freight quotation — SF International</strong><small>Quoted-freight orders are shipped by SF International. By selecting this option, you accept SF International as the carrier and the quoted SF International freight charge. We do not automatically substitute the cheapest courier service.</small></span></label><label class="choice-card"><input type="radio" name="freight_method" value="collect"><span><strong>Courier collect</strong><small>Freight will be charged directly to your courier account.</small></span></label><div class="collect-fields" id="collectFields"><label>Courier<select name="courier" id="checkoutCourier"><option>DHL</option><option>FedEx</option><option>UPS</option><option>EMS</option><option>SF Express</option><option>Other</option></select></label><label id="otherCourierLabel">Other courier name<input name="other_courier" placeholder="Enter courier name"></label><label>Courier account number<input name="courier_account_no" placeholder="Required for courier collect"></label></div></fieldset><div class="cart-actions"><button type="button" class="button secondary-button" id="backToCart">Back to cart</button><button class="button" id="placeOrderButton">Request Proforma Invoice</button></div><p class="form-status" id="quoteStatus"></p></form>`, true);
+  if (subtotal < MINIMUM_ORDER_USD && !hasQuote) {
+    cartView();
+    const status = document.querySelector('#quoteStatus');
+    if (status) status.textContent = `Minimum order is USD ${money(MINIMUM_ORDER_USD)} before coupons, excluding freight.`;
+    return;
+  }
+  const couponEligible = subtotal >= MINIMUM_ORDER_USD;
+  const { data: couponData } = couponEligible
+    ? await client.from('coupons').select('code,amount_usd,expires_at').eq('user_id', session.user.id).eq('status', 'active').gt('expires_at', new Date().toISOString()).order('expires_at')
+    : { data: [] };
+  const availableCoupons = couponData || [];
+  const couponOptions = availableCoupons.map(coupon => `<option value="${e(coupon.code)}">${e(coupon.code)} — USD ${Number(coupon.amount_usd || COUPON_VALUE_USD).toFixed(2)} off — valid until ${e(orderDate(coupon.expires_at))}</option>`).join('');
+  const couponField = couponEligible
+    ? `<fieldset class="coupon-checkout"><legend>Coupon</legend><label>Available coupon<select name="coupon_code"><option value="">Do not use a coupon</option>${couponOptions}</select><small>One coupon per order. Eligibility uses the product subtotal before coupon, so a USD 100 order remains eligible even when the coupon reduces payment to USD 90.</small></label>${availableCoupons.length ? '' : '<p>Your next USD 10 coupon will appear here after payment is confirmed on a qualifying order.</p>'}</fieldset>`
+    : '<fieldset class="coupon-checkout"><legend>Coupon</legend><p>A coupon can be used after the quoted product subtotal reaches USD 100.</p></fieldset>';
+  show(`<div class="panel-head"><p class="eyebrow">Checkout</p><h2>Payment & freight</h2></div><div class="checkout-summary coupon-summary"><span>Product subtotal before coupon</span><strong>USD ${money(subtotal)}</strong><span id="checkoutCouponLabel" hidden>Coupon</span><strong id="checkoutCouponValue" hidden>-USD ${money(COUPON_VALUE_USD)}</strong><span>Before freight</span><strong id="checkoutBeforeFreight">USD ${money(subtotal)}</strong></div><div class="repeat-coupon-promo"><strong>Spend USD 100, get a USD 10 coupon</strong><span>Issued after payment confirmation and valid for 60 days.</span></div><form class="commerce-form checkout-form" id="checkoutForm">${couponField}<fieldset><legend>Payment method</legend><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="company_bank_transfer" checked><span><strong>Company bank transfer <em>Recommended for orders over USD 1,000</em></strong><small>No processing fee charged by LZN MEDICAL. Sending and intermediary bank charges are borne by the buyer.</small><span class="bank-transfer-details" aria-label="USD bank transfer details"><b class="bank-details-title">USD bank transfer details</b><span class="bank-detail-row"><span>Beneficiary</span><b>LZN MEDICAL CO., LTD.</b></span><span class="bank-detail-row"><span>USD Account</span><b class="bank-copy-value">100103205899</b></span><span class="bank-detail-row"><span>SWIFT / BIC</span><b class="bank-copy-value">HVBKCNBJ</b></span><span class="bank-detail-row"><span>Bank</span><b>Woori Bank(China) Limited Shanghai JinXiuJiangNan Sub-Branch</b></span><span class="bank-detail-row"><span>Bank Address</span><b>No.101-1,101-2b,102 MT BLDG, 3999 Hongxin Road, Minhang District, Shanghai, China</b></span></span></span></label><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="payoneer_card_paypal"><span><strong>Card / PayPal <em>Processed securely by Payoneer</em></strong><small>Available payment methods and processing fees may vary by country, customer and payment request. A payment link will be emailed after freight and the final invoice are confirmed.</small><span class="payment-logo-panel"><span class="payment-logo-row"><img class="payment-logo-strip" src="assets/payment/payoneer-payment-options.png" alt="Possible payment options: Visa, Mastercard, American Express, Discover, Diners Club, JCB and Plaid"><span class="paypal-brand"><img src="assets/payment/paypal.png" alt=""><b>PayPal</b></span></span><small>Possible options include cards and PayPal. Availability varies by country and payment request.</small></span></span></label><div class="payment-fee-estimate" id="paymentFeeEstimate" aria-live="polite"></div></fieldset><fieldset><legend>Freight arrangement</legend><label class="choice-card"><input type="radio" name="freight_method" value="quote" checked><span><strong>Request freight quotation — SF International</strong><small>Quoted-freight orders are shipped by SF International. By selecting this option, you accept SF International as the carrier and the quoted SF International freight charge. We do not automatically substitute the cheapest courier service.</small></span></label><label class="choice-card"><input type="radio" name="freight_method" value="collect"><span><strong>Courier collect</strong><small>Freight will be charged directly to your courier account.</small></span></label><div class="collect-fields" id="collectFields"><label>Courier<select name="courier" id="checkoutCourier"><option>DHL</option><option>FedEx</option><option>UPS</option><option>EMS</option><option>SF Express</option><option>Other</option></select></label><label id="otherCourierLabel">Other courier name<input name="other_courier" placeholder="Enter courier name"></label><label>Courier account number<input name="courier_account_no" placeholder="Required for courier collect"></label></div></fieldset><div class="cart-actions"><button type="button" class="button secondary-button" id="backToCart">Back to cart</button><button class="button" id="placeOrderButton">Request Proforma Invoice</button></div><p class="form-status" id="quoteStatus"></p></form>`, true);
   if (hasQuote) document.querySelector('.checkout-summary span').innerHTML = 'Priced items subtotal<small>Price-on-request items will be added after quotation.</small>';
   const form = document.querySelector('#checkoutForm');
   const collectFields = document.querySelector('#collectFields');
@@ -366,13 +396,28 @@ function checkoutView() {
     }
     estimate.innerHTML = '<strong>Processing fee confirmed by Payoneer</strong><span>Rates and available payment methods may change. The final fee and total are shown on the Payoneer payment page before payment. Any payer fee is not included in the PI total.</span>';
   }
+  function updateCouponEstimate() {
+    const code = form.elements.coupon_code?.value || '';
+    const coupon = availableCoupons.find(item => item.code === code);
+    const discount = coupon ? Number(coupon.amount_usd || COUPON_VALUE_USD) : 0;
+    const label = document.querySelector('#checkoutCouponLabel');
+    const value = document.querySelector('#checkoutCouponValue');
+    if (label) label.hidden = !discount;
+    if (value) {
+      value.hidden = !discount;
+      value.textContent = `-USD ${money(discount)}`;
+    }
+    document.querySelector('#checkoutBeforeFreight').textContent = `USD ${money(subtotal - discount)}`;
+  }
   form.querySelectorAll('[name="freight_method"]').forEach(input => input.addEventListener('change', updateFreightFields));
   form.querySelectorAll('[name="payment_method"]').forEach(input => input.addEventListener('change', updatePaymentEstimate));
+  form.elements.coupon_code?.addEventListener('change', updateCouponEstimate);
   form.elements.courier.addEventListener('change', updateFreightFields);
   document.querySelector('#backToCart').onclick = cartView;
   form.onsubmit = submitQuote;
   updateFreightFields();
   updatePaymentEstimate();
+  updateCouponEstimate();
 }
 
 async function submitQuote(event) {
@@ -399,15 +444,45 @@ async function submitQuote(event) {
     return;
   }
   const subtotal = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
+  const hasQuote = cart.some(isPriceOnRequest);
+  if (subtotal < MINIMUM_ORDER_USD && !hasQuote) {
+    status.textContent = `Minimum order is USD ${money(MINIMUM_ORDER_USD)} before coupons, excluding freight.`;
+    button.disabled = false;
+    return;
+  }
+  if (checkout.coupon_code && subtotal < MINIMUM_ORDER_USD) {
+    status.textContent = 'A coupon can only be used when the product subtotal before coupon is at least USD 100.';
+    button.disabled = false;
+    return;
+  }
   const stores = [...new Set(cart.map(item => item.sourceStore || 'Tools'))];
   const storeNote = stores.length > 1 ? `[MIXED STORE] ${stores.join(', ')}` : `[${stores[0].toUpperCase()} STORE]`;
   const shipping = [profile.address_line_1, profile.address_line_2, profile.city, profile.state_province, profile.country].filter(Boolean).join(', ');
   const courierName = checkout.freight_method === 'quote' ? 'SF International freight quotation requested' : `Courier collect: ${checkout.courier === 'Other' ? checkout.other_courier : checkout.courier}`;
-  const { data: order, error } = await client.from('orders').insert({ user_id: session.user.id, status: 'quote_requested', subtotal_usd: subtotal, payment_method: paymentCode(checkout.payment_method), destination_country: profile.country, buyer_type: 'company', company_name: profile.company_name, contact_name: profile.full_name, contact_email: session.user.email, contact_phone: profile.phone, shipping_address: shipping, postal_code: profile.postal_code, courier: courierName, courier_account_no: checkout.freight_method === 'collect' ? checkout.courier_account_no : null, customer_note: storeNote }).select('id').single();
+  const items = cart.map(item => ({
+    model: item.model,
+    productName: `${item.nameEn}${item.optionLabel ? ` (${item.optionLabel})` : ''}${item.pdLabel ? ` (${item.pdLabel})` : (item.pd ? ` (PD ${item.pd} mm)` : '')}${item.orderUnitLabel ? ` (${item.orderUnitLabel} per order unit)` : ''}${isPriceOnRequest(item) ? ' (Price on request)' : ''}`,
+    unitPriceUsd: isPriceOnRequest(item) ? 0 : Number(item.priceUsd || 0),
+    quantity: item.quantity,
+    priceOnRequest: isPriceOnRequest(item)
+  }));
+  const { data: orderId, error } = await client.rpc('place_order', {
+    p_payment_method: paymentCode(checkout.payment_method),
+    p_destination_country: profile.country,
+    p_company_name: profile.company_name,
+    p_contact_name: profile.full_name,
+    p_contact_email: session.user.email,
+    p_contact_phone: profile.phone,
+    p_shipping_address: shipping,
+    p_postal_code: profile.postal_code,
+    p_courier: courierName,
+    p_courier_account_no: checkout.freight_method === 'collect' ? checkout.courier_account_no : null,
+    p_customer_note: storeNote,
+    p_coupon_code: checkout.coupon_code || null,
+    p_items: items
+  });
   if (error) { status.textContent = error.message; button.disabled = false; return; }
-  const items = cart.map(item => ({ order_id: order.id, model: item.model, product_name: `${item.nameEn}${item.optionLabel ? ` (${item.optionLabel})` : ''}${item.pdLabel ? ` (${item.pdLabel})` : (item.pd ? ` (PD ${item.pd} mm)` : '')}${item.orderUnitLabel ? ` (${item.orderUnitLabel} per order unit)` : ''}${isPriceOnRequest(item) ? ' (Price on request)' : ''}`, unit_price_usd: isPriceOnRequest(item) ? 0 : Number(item.priceUsd || 0), quantity: item.quantity }));
-  const { error: itemError } = await client.from('order_items').insert(items);
-  if (itemError) { status.textContent = itemError.message; button.disabled = false; return; }
+  const order = { id: orderId };
   cart = [];
   save();
   const freightMessage = checkout.freight_method === 'quote' ? 'Your SF International freight quotation will be emailed within 1 business day. The order will be shipped by SF International after confirmation.' : `Freight will be charged to your ${e(checkout.courier === 'Other' ? checkout.other_courier : checkout.courier)} collect account.`;
@@ -415,7 +490,7 @@ async function submitQuote(event) {
   const paymentMessage = method === 'company_bank_transfer'
     ? `The Proforma Invoice with LZN MEDICAL CO., LTD. company bank details will be sent to <strong>${e(session.user.email)}</strong>.`
     : `The Proforma Invoice will be sent to <strong>${e(session.user.email)}</strong>. After freight and the final invoice are confirmed, a secure Card / PayPal payment request will be emailed through Payoneer. Available methods, any payer fee and the final amount will be shown on Payoneer before payment.`;
-  show(`<div class="panel-head"><p class="eyebrow">Checkout Complete</p><h2>Proforma Invoice requested</h2></div><p>Your request number is:</p><p class="request-id">${e(order.id)}</p><p><strong>Payment method:</strong> ${e(paymentLabel(method))}</p><p>${freightMessage}</p><p>${paymentMessage}</p><div class="cart-actions"><button class="button secondary-button" data-panel-close-final>Continue shopping</button><button class="button" id="viewOrdersAfterCheckout">View my orders</button></div>`);
+  show(`<div class="panel-head"><p class="eyebrow">Checkout Complete</p><h2>Proforma Invoice requested</h2></div><p>Your request number is:</p><p class="request-id">${e(order.id)}</p>${checkout.coupon_code ? `<p class="coupon-applied"><strong>Coupon applied:</strong> ${e(checkout.coupon_code)} — USD ${money(COUPON_VALUE_USD)} off</p>` : ''}<p><strong>Payment method:</strong> ${e(paymentLabel(method))}</p><p>${freightMessage}</p><p>${paymentMessage}</p><p>After payment confirmation, this order will earn a new USD ${money(COUPON_VALUE_USD)} coupon because eligibility uses the USD ${money(subtotal)} product subtotal before coupon.</p><div class="cart-actions"><button class="button secondary-button" data-panel-close-final>Continue shopping</button><button class="button" id="viewOrdersAfterCheckout">View my orders</button></div>`);
   document.querySelector('[data-panel-close-final]').onclick = hide;
   document.querySelector('#viewOrdersAfterCheckout').onclick = ordersView;
 }

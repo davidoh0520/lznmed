@@ -104,6 +104,7 @@ let orders = [];
 let members = [];
 let activeOrder = null;
 let activeItems = [];
+let activeIssuedCoupon = null;
 let activeSfCalculation = null;
 
 function showOnly(view) {
@@ -313,12 +314,16 @@ async function openOrder(id) {
   detail.innerHTML = '<p>Loading order...</p>';
   drawer.classList.add('open');
   drawer.setAttribute('aria-hidden', 'false');
-  const { data, error } = await client.from('order_items').select('*').eq('order_id', id).order('id');
-  if (error) {
-    detail.innerHTML = `<p>${e(error.message)}</p>`;
+  const [itemResult, couponResult] = await Promise.all([
+    client.from('order_items').select('*').eq('order_id', id).order('id'),
+    client.from('coupons').select('code,amount_usd,status,issued_at,expires_at,redeemed_at').eq('issued_for_order_id', id).maybeSingle()
+  ]);
+  if (itemResult.error || couponResult.error) {
+    detail.innerHTML = `<p>${e(itemResult.error?.message || couponResult.error?.message)}</p>`;
     return;
   }
-  activeItems = data || [];
+  activeItems = itemResult.data || [];
+  activeIssuedCoupon = couponResult.data || null;
   renderOrderDetail();
 }
 
@@ -461,26 +466,30 @@ function initializeSfFreightCalculator() {
 function renderOrderDetail() {
   const order = activeOrder;
   const freight = Number(order.freight_usd || 0);
-  const total = Number(order.total_usd ?? Number(order.subtotal_usd || 0) + freight);
+  const discount = Number(order.discount_usd || 0);
+  const total = Number(order.total_usd ?? Number(order.subtotal_usd || 0) - discount + freight);
   detail.innerHTML = `
     <div class="detail-head"><p class="eyebrow">${e(storeName(order, true))}</p><h2>${e(order.invoice_no || 'Proforma Invoice not assigned')}</h2><p class="request-id">Order ${e(order.id)}</p></div>
     <div class="workflow-banner"><span>Current stage</span><strong>${e(statusLabels[order.status] || order.status)}</strong><small>Next: ${e(nextStepLabels[order.status] || 'Review the order')}</small></div>
     <section class="detail-section"><h3>Customer & shipping</h3><div class="customer-box"><strong>Recipient type:</strong> ${(order.buyer_type || 'company') === 'company' ? 'Company' : 'Individual'}<br>${(order.buyer_type || 'company') === 'company' && order.company_name ? `<strong>${e(order.company_name)}</strong><br>Attn: ` : ''}<strong>${e(order.contact_name || '-')}</strong>${order.contact_email ? `<br><a href="mailto:${e(order.contact_email)}">${e(order.contact_email)}</a>` : ''}<br>${e(order.contact_phone || '')}<br>${e(order.shipping_address || '')}<br>${e(order.postal_code || '')}<br><br><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}${paymentCode(order.payment_method) === 'company_bank_transfer' ? '' : '<br><strong>Processing fee:</strong> Confirmed on Payoneer and may vary.<br><small>Not included in the PI total; do not add it again if Payoneer charges the payer.</small>'}<br><br><strong>Freight request:</strong> ${e(order.courier || '-')}<br><strong>Collect account:</strong> ${e(order.courier_account_no || '-')}</div></section>
     <section class="detail-section"><h3>Items</h3>${activeItems.some(itemPriceOnRequest) ? '<p class="price-request-alert"><strong>Price quotation required.</strong> Confirm a selling price for the marked items before issuing the final Proforma Invoice.</p>' : ''}<table class="order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small></td><td>${e(item.quantity)}</td><td>${itemMoney(item, 'unit_price_usd')}</td><td>${itemMoney(item, 'line_total_usd')}</td></tr>`).join('')}</tbody></table></section>
     ${order.payment_submitted_at ? `<section class="detail-section"><h3>Customer payment notice</h3><div class="customer-box payment-review"><strong>Verification required</strong><br>Submitted: ${e(date(order.payment_submitted_at))}<br>Remitter / Reference: ${e(order.payment_reference || '-')}<br>Customer note: ${e(order.payment_note || '-')}<p>Confirm receipt through ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'the company bank account' : 'Payoneer'} before changing the status to Paid.</p></div></section>` : ''}
+    ${activeIssuedCoupon ? `<section class="detail-section"><h3>Issued repeat-order coupon</h3><div class="customer-box"><strong>${e(activeIssuedCoupon.code)}</strong><br>Value: ${money(activeIssuedCoupon.amount_usd)}<br>Status: ${e(activeIssuedCoupon.status)}<br>Issued: ${e(date(activeIssuedCoupon.issued_at))}<br>Expires: ${e(date(activeIssuedCoupon.expires_at))}</div></section>` : ''}
     ${invoiceActivity(order)}
     ${sfFreightCalculatorHtml(order)}
     <section class="detail-section"><h3>Order & invoice</h3><form id="orderForm" class="form-grid">
       <label>PI number<input name="invoice_no" value="${e(order.invoice_no || '')}" placeholder="LZN-20260713-001"></label>
       <label>Status<select name="status">${['quote_requested','quoted','payment_pending','payment_submitted','paid','processing','shipped','cancelled'].map(status => `<option value="${status}" ${order.status === status ? 'selected' : ''}>${e(statusLabels[status])}</option>`).join('')}</select></label>
       <label>Subtotal (USD)<input name="subtotal_usd" type="number" step="0.01" value="${Number(order.subtotal_usd || 0).toFixed(2)}" readonly></label>
+      <label>Coupon code<input name="coupon_code" value="${e(order.coupon_code || 'Not used')}" readonly></label>
+      <label>Coupon discount (USD)<input name="discount_usd" type="number" step="0.01" value="${discount.toFixed(2)}" readonly></label>
       <label>Freight (USD)<input name="freight_usd" type="number" min="0" step="0.01" value="${freight.toFixed(2)}"></label>
       <label>Total (USD)<input name="total_usd" type="number" step="0.01" value="${total.toFixed(2)}" readonly></label>
       <label>Tracking number<input name="tracking_no" value="${e(order.tracking_no || '')}" placeholder="Visible to customer after status is Shipped"><small>Shown to the customer only when status is Shipped.</small></label>
       <label class="wide">Internal note<textarea name="admin_note" rows="3">${e(visibleAdminNote(order))}</textarea></label>
     </form><div class="order-actions"><button class="outline-button" id="generatePi">Generate PI number</button><button class="primary-button" id="saveOrder">Save changes</button><button class="outline-button" id="printInvoice">Create & Email Proforma Invoice PDF</button><button class="primary-button" id="confirmPayment">Confirm payment</button><button class="outline-button" id="printCi">Create & Email Commercial Invoice PDF</button><button class="primary-button" id="markShipped">Mark as shipped</button>${order.status === 'shipped' ? `<button class="outline-button" id="confirmDelivery">Confirm delivery & Email customer</button>` : ''}${order.tracking_no ? `<button class="outline-button" id="trackShipment">Track shipment</button>` : ''}</div><p class="save-status" id="saveStatus"></p></section>`;
   const form = document.querySelector('#orderForm');
-  form.elements.freight_usd.addEventListener('input', () => form.elements.total_usd.value = (Number(order.subtotal_usd || 0) + Number(form.elements.freight_usd.value || 0)).toFixed(2));
+  form.elements.freight_usd.addEventListener('input', () => form.elements.total_usd.value = (Number(order.subtotal_usd || 0) - discount + Number(form.elements.freight_usd.value || 0)).toFixed(2));
   initializeSfFreightCalculator();
   document.querySelector('#generatePi').addEventListener('click', generatePiNumber);
   document.querySelector('#saveOrder').addEventListener('click', () => saveOrder(true));
@@ -510,6 +519,7 @@ async function setOrderStatus(nextStatus, requireTracking = false) {
   if (!saved) return;
   const eventType = { paid: 'payment_confirmed', processing: 'processing', shipped: 'shipped' }[nextStatus];
   if (eventType) await sendOrderEmail(eventType);
+  if (nextStatus === 'paid') await refreshActiveOrder();
 }
 
 async function sendOrderEmail(eventType) {
@@ -561,10 +571,14 @@ async function confirmDelivery() {
 }
 
 async function refreshActiveOrder() {
-  const { data, error } = await client.from('orders').select('*').eq('id', activeOrder.id).single();
-  if (error) return;
-  activeOrder = data;
-  orders = orders.map(order => order.id === data.id ? data : order);
+  const [orderResult, couponResult] = await Promise.all([
+    client.from('orders').select('*').eq('id', activeOrder.id).single(),
+    client.from('coupons').select('code,amount_usd,status,issued_at,expires_at,redeemed_at').eq('issued_for_order_id', activeOrder.id).maybeSingle()
+  ]);
+  if (orderResult.error || couponResult.error) return;
+  activeOrder = orderResult.data;
+  activeIssuedCoupon = couponResult.data || null;
+  orders = orders.map(order => order.id === activeOrder.id ? activeOrder : order);
   renderOrders();
   renderSummary();
   renderOrderDetail();
@@ -594,6 +608,10 @@ async function saveOrder(notifyStatusChange = false) {
   const status = document.querySelector('#saveStatus');
   const previousStatus = activeOrder.status;
   const values = Object.fromEntries(new FormData(form));
+  if (!['quote_requested', 'quoted', 'cancelled'].includes(values.status) && Number(activeOrder.subtotal_usd || 0) < 100) {
+    status.textContent = 'The product subtotal before coupon must be at least USD 100 before issuing the final PI or confirming payment.';
+    return false;
+  }
   if (values.status === 'shipped' && !values.tracking_no.trim()) {
     status.textContent = 'A tracking number is required before saving the Shipped status.';
     form.elements.tracking_no.focus();
@@ -639,7 +657,7 @@ async function printInvoice(documentTitle = 'PROFORMA INVOICE') {
     document.querySelector('#saveStatus').textContent = 'Please allow pop-ups to print the invoice.';
     return;
   }
-  popup.document.write(`<!doctype html><html><head><title>${e(order.invoice_no || 'Proforma Invoice')}</title><style>body{font:13px Arial;color:#111;margin:42px}header{display:flex;justify-content:space-between;border-bottom:3px solid #075f7c;padding-bottom:18px}.logo{font-size:26px;font-weight:800;color:#075f7c}h1{font-size:24px;text-align:right;margin:0}.meta{text-align:right;line-height:1.7}.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0}.box{border:1px solid #bbb;padding:15px;line-height:1.65}h3{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#666;margin:0 0 8px}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid #ccc;padding:10px 7px;text-align:left}th{background:#f2f2f2}.right{text-align:right}.totals{width:330px;margin:20px 0 25px auto}.totals div{display:flex;justify-content:space-between;padding:6px}.totals .grand{font-size:16px;font-weight:bold;border-top:2px solid #111}.terms{margin-top:25px;font-size:12px}footer{border-top:1px solid #bbb;margin-top:35px;padding-top:12px;color:#555}@media print{body{margin:15mm}button{display:none}}</style></head><body><header><div><div class="logo">LZN MEDICAL</div><strong>LZN MEDICAL CO., LTD.</strong></div><div><h1>PROFORMA INVOICE</h1><div class="meta">PI No: <strong>${e(order.invoice_no || '-')}</strong><br>Date: ${e(new Date().toLocaleDateString('en-CA'))}<br>Currency: USD</div></div></header><section class="two"><div class="box"><h3>Seller</h3><strong>LZN MEDICAL CO., LTD.</strong><br>Shanghai, China<br>Email: sales@lznmed.com</div><div class="box"><h3>Bill to / Ship to</h3><strong>${e(order.contact_name || '')}</strong><br>${e(order.contact_email || '')}<br>${e(order.contact_phone || '')}<br>${e(order.shipping_address || '')}<br>${e(order.postal_code || '')}</div></section><table><thead><tr><th>Model</th><th>Description</th><th class="right">Qty</th><th class="right">Unit price</th><th class="right">Amount</th></tr></thead><tbody>${activeItems.map(item => `<tr><td>${e(item.model)}</td><td>${e(item.product_name)}</td><td class="right">${e(item.quantity)}</td><td class="right">${money(item.unit_price_usd)}</td><td class="right">${money(item.line_total_usd)}</td></tr>`).join('')}</tbody></table><div class="totals"><div><span>Subtotal</span><strong>${money(order.subtotal_usd)}</strong></div><div><span>Freight</span><strong>${money(order.freight_usd)}</strong></div><div class="grand"><span>Total</span><strong>${money(order.total_usd)}</strong></div></div><section class="two"><div class="box"><h3>Payment terms</h3>Bank transfer<br>Bank charges: OUR<br>Goods will be prepared after payment confirmation.</div><div class="box"><h3>Bank account</h3><strong>Woori Bank (China) Limited</strong><br>Shanghai JinXiuJiangNan Sub-Branch<br>USD Account: 100103205899<br>SWIFT: HVBKCNBJ<br>Beneficiary: LZN MEDICAL CO., LTD.</div></section><div class="terms"><strong>Trade term:</strong> FOB China. Freight, destination duties and local taxes are not included unless separately stated.<br><strong>Freight instruction:</strong> ${e(order.courier || '-')} ${order.courier_account_no ? ` / Account: ${e(order.courier_account_no)}` : ''}</div><footer>Bank address: No.101-1, 101-2b, 102 MT BLDG, 3999 Hongxin Road, Minhang District, Shanghai, China</footer><script>window.onload=()=>window.print()<\/script></body></html>`);
+  popup.document.write(`<!doctype html><html><head><title>${e(order.invoice_no || 'Proforma Invoice')}</title><style>body{font:13px Arial;color:#111;margin:42px}header{display:flex;justify-content:space-between;border-bottom:3px solid #075f7c;padding-bottom:18px}.logo{font-size:26px;font-weight:800;color:#075f7c}h1{font-size:24px;text-align:right;margin:0}.meta{text-align:right;line-height:1.7}.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0}.box{border:1px solid #bbb;padding:15px;line-height:1.65}h3{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#666;margin:0 0 8px}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid #ccc;padding:10px 7px;text-align:left}th{background:#f2f2f2}.right{text-align:right}.totals{width:330px;margin:20px 0 25px auto}.totals div{display:flex;justify-content:space-between;padding:6px}.totals .discount{color:#b42318}.totals .grand{font-size:16px;font-weight:bold;border-top:2px solid #111}.terms{margin-top:25px;font-size:12px}footer{border-top:1px solid #bbb;margin-top:35px;padding-top:12px;color:#555}@media print{body{margin:15mm}button{display:none}}</style></head><body><header><div><div class="logo">LZN MEDICAL</div><strong>LZN MEDICAL CO., LTD.</strong></div><div><h1>PROFORMA INVOICE</h1><div class="meta">PI No: <strong>${e(order.invoice_no || '-')}</strong><br>Date: ${e(new Date().toLocaleDateString('en-CA'))}<br>Currency: USD</div></div></header><section class="two"><div class="box"><h3>Seller</h3><strong>LZN MEDICAL CO., LTD.</strong><br>Shanghai, China<br>Email: sales@lznmed.com</div><div class="box"><h3>Bill to / Ship to</h3><strong>${e(order.contact_name || '')}</strong><br>${e(order.contact_email || '')}<br>${e(order.contact_phone || '')}<br>${e(order.shipping_address || '')}<br>${e(order.postal_code || '')}</div></section><table><thead><tr><th>Model</th><th>Description</th><th class="right">Qty</th><th class="right">Unit price</th><th class="right">Amount</th></tr></thead><tbody>${activeItems.map(item => `<tr><td>${e(item.model)}</td><td>${e(item.product_name)}</td><td class="right">${e(item.quantity)}</td><td class="right">${money(item.unit_price_usd)}</td><td class="right">${money(item.line_total_usd)}</td></tr>`).join('')}</tbody></table><div class="totals"><div><span>Product subtotal before coupon</span><strong>${money(order.subtotal_usd)}</strong></div>${Number(order.discount_usd || 0) > 0 ? `<div class="discount"><span>Coupon ${e(order.coupon_code || '')}</span><strong>-${money(order.discount_usd)}</strong></div>` : ''}<div><span>Freight</span><strong>${money(order.freight_usd)}</strong></div><div class="grand"><span>Total</span><strong>${money(order.total_usd)}</strong></div></div><section class="two"><div class="box"><h3>Payment terms</h3>Bank transfer<br>Bank charges: OUR<br>Goods will be prepared after payment confirmation.</div><div class="box"><h3>Bank account</h3><strong>Woori Bank (China) Limited</strong><br>Shanghai JinXiuJiangNan Sub-Branch<br>USD Account: 100103205899<br>SWIFT: HVBKCNBJ<br>Beneficiary: LZN MEDICAL CO., LTD.</div></section><div class="terms"><strong>Trade term:</strong> FOB China. Freight, destination duties and local taxes are not included unless separately stated.<br><strong>Freight instruction:</strong> ${e(order.courier || '-')} ${order.courier_account_no ? ` / Account: ${e(order.courier_account_no)}` : ''}</div><footer>Bank address: No.101-1, 101-2b, 102 MT BLDG, 3999 Hongxin Road, Minhang District, Shanghai, China</footer><script>window.onload=()=>window.print()<\/script></body></html>`);
   popup.document.title = `${order.invoice_no || ''} ${documentTitle}`.trim();
   const invoiceHeading = popup.document.querySelector('h1');
   if (invoiceHeading) invoiceHeading.textContent = documentTitle;
@@ -666,7 +684,8 @@ function buildInvoicePdf(documentTitle) {
   if (!jsPDF) throw new Error('PDF generator is unavailable. Please refresh the page and try again.');
   const order = activeOrder;
   const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-  const total = Number(order.total_usd ?? Number(order.subtotal_usd || 0) + Number(order.freight_usd || 0));
+  const discount = Number(order.discount_usd || 0);
+  const total = Number(order.total_usd ?? Number(order.subtotal_usd || 0) - discount + Number(order.freight_usd || 0));
   const recipient = (order.buyer_type || 'company') === 'company' && order.company_name
     ? `${order.company_name}\nAttn: ${order.contact_name || ''}`
     : `${order.contact_name || ''}\nIndividual`;
@@ -703,14 +722,16 @@ function buildInvoicePdf(documentTitle) {
   let y = doc.lastAutoTable.finalY + 8;
   if (y > 235) { doc.addPage(); y = 20; }
   doc.setFontSize(9);
-  doc.text(`Subtotal: ${money(order.subtotal_usd)}`, 196, y, { align: 'right' });
-  doc.text(`Freight: ${money(order.freight_usd)}`, 196, y + 6, { align: 'right' });
+  doc.text(`Product subtotal before coupon: ${money(order.subtotal_usd)}`, 196, y, { align: 'right' });
+  const discountOffset = discount > 0 ? 6 : 0;
+  if (discount > 0) doc.text(`Coupon ${order.coupon_code || ''}: -${money(discount)}`, 196, y + 6, { align: 'right' });
+  doc.text(`Freight: ${money(order.freight_usd)}`, 196, y + 6 + discountOffset, { align: 'right' });
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(11);
-  doc.text(`TOTAL: ${money(total)}`, 196, y + 13, { align: 'right' });
+  doc.text(`TOTAL: ${money(total)}`, 196, y + 13 + discountOffset, { align: 'right' });
   doc.setFont('helvetica', 'normal');
   doc.autoTable({
-    startY: y + 20,
+    startY: y + 20 + discountOffset,
     body: invoiceTermsRows(order, documentTitle),
     theme: 'grid',
     margin: { left: 14, right: 14, bottom: 18 },
