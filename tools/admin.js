@@ -7,7 +7,10 @@ const signOutButton = document.querySelector('#signOut');
 const drawer = document.querySelector('#orderDrawer');
 const detail = document.querySelector('#orderDetail');
 const sfFreight = window.LZN_SF_FREIGHT;
+const purchaseSourceData = window.LZN_ADMIN_PURCHASE_SOURCES || {};
+const catalogProducts = (window.CATALOG_DATA || []).flatMap(category => category.items || []);
 const money = value => `USD ${Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+const cny = value => `CNY ${Number(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const itemPriceOnRequest = item => /price on request/i.test(String(item?.product_name || ''));
 const itemMoney = (item, field) => itemPriceOnRequest(item) ? 'Price required' : money(item?.[field]);
 const date = value => value ? new Date(value).toLocaleString('en-GB', { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : '-';
@@ -23,6 +26,68 @@ const nextStepLabels = {
   paid: 'Create the Commercial Invoice and prepare shipment', processing: 'Enter tracking and mark as shipped',
   shipped: 'Monitor delivery', cancelled: 'No further action'
 };
+
+function taobaoProductId(model) {
+  return String(model || '').match(/^LZN-(\d{9,})(?:-\d+)?$/)?.[1] || null;
+}
+
+function catalogProductForModel(model) {
+  return catalogProducts.find(product => product.model === model || (product.options || []).some(option => option.model === model)) || null;
+}
+
+function purchaseInfoForModel(model) {
+  const productId = taobaoProductId(model);
+  const source = productId ? purchaseSourceData[productId] : null;
+  if (!source) return null;
+  const product = catalogProductForModel(model);
+  const optionIndex = (product?.options || []).findIndex(option => option.model === model);
+  const selected = optionIndex >= 0 ? product.options[optionIndex] : product;
+  const capturedPrice = optionIndex >= 0 ? source.optionPricesCny?.[optionIndex] : null;
+  const originalPriceCny = Number(capturedPrice) > 0
+    ? Number(capturedPrice)
+    : Number(selected?.basePriceRmb) > 0
+      ? Number(selected.basePriceRmb)
+      : null;
+  return { productId, source, product, optionIndex, originalPriceCny };
+}
+
+function purchasePriceRange(product, source) {
+  const captured = (source.optionPricesCny || []).map(Number).filter(value => value > 0);
+  const catalogPrices = [product.basePriceRmb, ...(product.options || []).map(option => option.basePriceRmb)]
+    .map(Number)
+    .filter(value => value > 0);
+  const prices = captured.length ? captured : catalogPrices;
+  if (!prices.length) return 'Not captured';
+  const low = Math.min(...prices);
+  const high = Math.max(...prices);
+  return low === high ? cny(low) : `${cny(low)} – ${cny(high)}`;
+}
+
+function purchaseSourceHtml(model) {
+  const info = purchaseInfoForModel(model);
+  if (!info) return '';
+  return `<div class="purchase-source-inline">
+    <span>Taobao source</span>
+    <strong>${info.originalPriceCny ? e(cny(info.originalPriceCny)) : 'Original price not captured'}</strong>
+    <small>${e(info.source.store || 'Taobao supplier')}</small>
+    <a href="${e(info.source.url)}" target="_blank" rel="noopener noreferrer">Open purchase page ↗</a>
+  </div>`;
+}
+
+function couponTableUnavailable(error) {
+  const message = String(error?.message || '');
+  return error?.code === 'PGRST205' ||
+    /could not find the table ['"]?public\.coupons/i.test(message) ||
+    /relation .*(?:public\.)?coupons.* does not exist/i.test(message);
+}
+
+async function loadIssuedCoupon(orderId) {
+  const result = await client.from('coupons')
+    .select('code,amount_usd,status,issued_at,expires_at,redeemed_at')
+    .eq('issued_for_order_id', orderId)
+    .maybeSingle();
+  return result.error && couponTableUnavailable(result.error) ? { data: null, error: null } : result;
+}
 
 function paymentCode(value) {
   const normalized = String(value || '').toLowerCase();
@@ -190,6 +255,7 @@ async function loadData(retried = false) {
   renderSummary();
   renderOrders();
   renderMembers();
+  renderPurchases();
 }
 
 function renderSummary() {
@@ -239,9 +305,33 @@ function renderMembers() {
     </tr>`).join('') : '<tr><td class="empty" colspan="7">No matching members.</td></tr>';
 }
 
+function renderPurchases() {
+  const body = document.querySelector('#purchasesBody');
+  const search = document.querySelector('#purchaseSearch');
+  if (!body || !search) return;
+  const query = search.value.trim().toLowerCase();
+  const rows = catalogProducts
+    .map(product => {
+      const productId = taobaoProductId(product.model);
+      const source = productId ? purchaseSourceData[productId] : null;
+      return source ? { product, productId, source } : null;
+    })
+    .filter(Boolean)
+    .filter(({ product, productId, source }) => !query || `${product.model} ${productId} ${product.nameEn || ''} ${source.store || ''}`.toLowerCase().includes(query))
+    .sort((a, b) => String(a.product.nameEn || a.product.model).localeCompare(String(b.product.nameEn || b.product.model)));
+  body.innerHTML = rows.length ? rows.map(({ product, source }) => `
+    <tr>
+      <td><strong>${e(product.model)}</strong><br><small>${e(product.nameEn || product.chineseName || 'Imported catalog product')}</small></td>
+      <td><strong>${e(purchasePriceRange(product, source))}</strong>${purchasePriceRange(product, source) === 'Not captured' ? '<br><small>Blank in original export</small>' : ''}</td>
+      <td>${e(source.store || 'Taobao supplier')}</td>
+      <td><a class="purchase-link" href="${e(source.url)}" target="_blank" rel="noopener noreferrer">Open Taobao ↗</a></td>
+    </tr>`).join('') : '<tr><td class="empty" colspan="4">No matching Taobao products.</td></tr>';
+}
+
 document.querySelector('#orderSearch').addEventListener('input', renderOrders);
 document.querySelector('#statusFilter').addEventListener('change', renderOrders);
 document.querySelector('#memberSearch').addEventListener('input', renderMembers);
+document.querySelector('#purchaseSearch')?.addEventListener('input', renderPurchases);
 document.querySelector('#refreshData').addEventListener('click', loadData);
 
 document.querySelector('.tabs').addEventListener('click', event => {
@@ -250,6 +340,7 @@ document.querySelector('.tabs').addEventListener('click', event => {
   document.querySelectorAll('.tabs button').forEach(item => item.classList.toggle('active', item === button));
   document.querySelector('#ordersPanel').hidden = button.dataset.tab !== 'orders';
   document.querySelector('#membersPanel').hidden = button.dataset.tab !== 'members';
+  document.querySelector('#purchasesPanel').hidden = button.dataset.tab !== 'purchases';
 });
 
 document.querySelector('#ordersBody').addEventListener('click', event => {
@@ -316,7 +407,7 @@ async function openOrder(id) {
   drawer.setAttribute('aria-hidden', 'false');
   const [itemResult, couponResult] = await Promise.all([
     client.from('order_items').select('*').eq('order_id', id).order('id'),
-    client.from('coupons').select('code,amount_usd,status,issued_at,expires_at,redeemed_at').eq('issued_for_order_id', id).maybeSingle()
+    loadIssuedCoupon(id)
   ]);
   if (itemResult.error || couponResult.error) {
     detail.innerHTML = `<p>${e(itemResult.error?.message || couponResult.error?.message)}</p>`;
@@ -472,7 +563,7 @@ function renderOrderDetail() {
     <div class="detail-head"><p class="eyebrow">${e(storeName(order, true))}</p><h2>${e(order.invoice_no || 'Proforma Invoice not assigned')}</h2><p class="request-id">Order ${e(order.id)}</p></div>
     <div class="workflow-banner"><span>Current stage</span><strong>${e(statusLabels[order.status] || order.status)}</strong><small>Next: ${e(nextStepLabels[order.status] || 'Review the order')}</small></div>
     <section class="detail-section"><h3>Customer & shipping</h3><div class="customer-box"><strong>Recipient type:</strong> ${(order.buyer_type || 'company') === 'company' ? 'Company' : 'Individual'}<br>${(order.buyer_type || 'company') === 'company' && order.company_name ? `<strong>${e(order.company_name)}</strong><br>Attn: ` : ''}<strong>${e(order.contact_name || '-')}</strong>${order.contact_email ? `<br><a href="mailto:${e(order.contact_email)}">${e(order.contact_email)}</a>` : ''}<br>${e(order.contact_phone || '')}<br>${e(order.shipping_address || '')}<br>${e(order.postal_code || '')}<br><br><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}${paymentCode(order.payment_method) === 'company_bank_transfer' ? '' : '<br><strong>Processing fee:</strong> Confirmed on Payoneer and may vary.<br><small>Not included in the PI total; do not add it again if Payoneer charges the payer.</small>'}<br><br><strong>Freight request:</strong> ${e(order.courier || '-')}<br><strong>Collect account:</strong> ${e(order.courier_account_no || '-')}</div></section>
-    <section class="detail-section"><h3>Items</h3>${activeItems.some(itemPriceOnRequest) ? '<p class="price-request-alert"><strong>Price quotation required.</strong> Confirm a selling price for the marked items before issuing the final Proforma Invoice.</p>' : ''}<table class="order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small></td><td>${e(item.quantity)}</td><td>${itemMoney(item, 'unit_price_usd')}</td><td>${itemMoney(item, 'line_total_usd')}</td></tr>`).join('')}</tbody></table></section>
+    <section class="detail-section"><h3>Items</h3>${activeItems.some(itemPriceOnRequest) ? '<p class="price-request-alert"><strong>Price quotation required.</strong> Confirm a selling price for the marked items before issuing the final Proforma Invoice.</p>' : ''}<table class="order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small>${purchaseSourceHtml(item.model)}</td><td>${e(item.quantity)}</td><td>${itemMoney(item, 'unit_price_usd')}</td><td>${itemMoney(item, 'line_total_usd')}</td></tr>`).join('')}</tbody></table></section>
     ${order.payment_submitted_at ? `<section class="detail-section"><h3>Customer payment notice</h3><div class="customer-box payment-review"><strong>Verification required</strong><br>Submitted: ${e(date(order.payment_submitted_at))}<br>Remitter / Reference: ${e(order.payment_reference || '-')}<br>Customer note: ${e(order.payment_note || '-')}<p>Confirm receipt through ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'the company bank account' : 'Payoneer'} before changing the status to Paid.</p></div></section>` : ''}
     ${activeIssuedCoupon ? `<section class="detail-section"><h3>Issued repeat-order coupon</h3><div class="customer-box"><strong>${e(activeIssuedCoupon.code)}</strong><br>Value: ${money(activeIssuedCoupon.amount_usd)}<br>Status: ${e(activeIssuedCoupon.status)}<br>Issued: ${e(date(activeIssuedCoupon.issued_at))}<br>Expires: ${e(date(activeIssuedCoupon.expires_at))}</div></section>` : ''}
     ${invoiceActivity(order)}
@@ -573,7 +664,7 @@ async function confirmDelivery() {
 async function refreshActiveOrder() {
   const [orderResult, couponResult] = await Promise.all([
     client.from('orders').select('*').eq('id', activeOrder.id).single(),
-    client.from('coupons').select('code,amount_usd,status,issued_at,expires_at,redeemed_at').eq('issued_for_order_id', activeOrder.id).maybeSingle()
+    loadIssuedCoupon(activeOrder.id)
   ]);
   if (orderResult.error || couponResult.error) return;
   activeOrder = orderResult.data;
@@ -812,4 +903,3 @@ drawer.querySelectorAll('[data-close-drawer]').forEach(button => button.addEvent
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeDrawer(); });
 
 boot();
-
