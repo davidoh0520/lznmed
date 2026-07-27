@@ -21,27 +21,27 @@
           "assets/catalog/821168484924/english-option-07.webp"
         ],
         "description": "Decorative holder loops that attach securely to eyewear for use with chains, cords, and personalized accessories.",
-        "priceUsd": null,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.00 - 2.00",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-821168484924-01",
             "label": "White Plain Eyeglass Holder Loops",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/821168484924/english-option-01.webp"
           },
           {
             "model": "LZN-821168484924-02",
             "label": "White Red-Blue Enamel Holder Loops",
-            "priceUsd": null,
+            "priceUsd": 2,
             "image": "assets/catalog/821168484924/english-option-02.webp"
           },
           {
             "model": "LZN-821168484924-03",
             "label": "Black Blue Enamel Holder Loops",
-            "priceUsd": null,
+            "priceUsd": 1.5,
             "image": "assets/catalog/821168484924/english-option-03.webp"
           },
           {
