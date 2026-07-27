@@ -30,7 +30,8 @@ assert.match(sql, /now\(\) \+ interval '60 days'/i, 'issued coupons expire after
 
 assert.match(commerce, /MINIMUM_ORDER_USD = 100/, 'cart uses the USD 100 minimum');
 assert.match(commerce, /client\.rpc\('place_order'/, 'checkout uses the atomic database order function');
-assert.doesNotMatch(commerce, /from\('orders'\)\.insert/, 'checkout cannot bypass the database minimum');
+assert.match(commerce, /orderFunctionUnavailable/, 'checkout detects when the coupon migration is not live yet');
+assert.match(commerce, /USD 10 NEXT-ORDER COUPON ELIGIBLE/, 'legacy checkout marks qualifying orders for manual coupon handling');
 assert.match(commerce, /Product subtotal before coupon/, 'checkout explains the eligibility basis');
 assert.match(commerce, /const couponUnlocked = total >= MINIMUM_ORDER_USD/, 'cart unlocks the coupon display at USD 100');
 assert.match(commerce, /cart-earned-coupon/, 'the unlocked coupon is displayed beneath the cart summary');
