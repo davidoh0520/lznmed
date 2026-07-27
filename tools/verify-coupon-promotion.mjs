@@ -5,6 +5,7 @@ const sql = fs.readFileSync(new URL('./coupon-promotion-setup.sql', import.meta.
 const commerce = fs.readFileSync(new URL('./commerce.js', import.meta.url), 'utf8');
 const admin = fs.readFileSync(new URL('./admin.js', import.meta.url), 'utf8');
 const email = fs.readFileSync(new URL('./supabase/functions/send-order-email/index.ts', import.meta.url), 'utf8');
+const popup = fs.readFileSync(new URL('./promotion-popup.js', import.meta.url), 'utf8');
 
 const orderResult = ({ subtotal, coupon = 0, freight = 0 }) => ({
   minimumReached: subtotal >= 100,
@@ -31,8 +32,12 @@ assert.match(commerce, /MINIMUM_ORDER_USD = 100/, 'cart uses the USD 100 minimum
 assert.match(commerce, /client\.rpc\('place_order'/, 'checkout uses the atomic database order function');
 assert.doesNotMatch(commerce, /from\('orders'\)\.insert/, 'checkout cannot bypass the database minimum');
 assert.match(commerce, /Product subtotal before coupon/, 'checkout explains the eligibility basis');
+assert.match(commerce, /const couponUnlocked = total >= MINIMUM_ORDER_USD/, 'cart unlocks the coupon display at USD 100');
+assert.match(commerce, /cart-earned-coupon/, 'the unlocked coupon is displayed beneath the cart summary');
 assert.match(admin, /Coupon discount \(USD\)/, 'admin order detail shows the coupon discount');
 assert.match(admin, /Number\(order\.subtotal_usd \|\| 0\) - discount \+ freight/, 'admin total subtracts coupon before freight');
 assert.match(email, /issued_for_order_id/, 'payment confirmation email loads the newly issued coupon');
+assert.match(popup, /24 \* 60 \* 60 \* 1000/, 'promotion dismissal lasts one day');
+assert.match(popup, /data-promo-hide-day/, 'promotion provides a one-day dismissal control');
 
 console.log('Coupon promotion verification passed.');
