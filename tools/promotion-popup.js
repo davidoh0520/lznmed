@@ -1,6 +1,6 @@
 (() => {
   const HIDDEN_UNTIL_KEY = 'lzn-wholesale-promotion-hidden-until';
-  const SESSION_SEEN_KEY = 'lzn-wholesale-promotion-seen-v2';
+  const SESSION_SEEN_KEY = 'lzn-wholesale-promotion-seen-v3';
   const ONE_DAY_MS = 24 * 60 * 60 * 1000;
   const params = new URLSearchParams(location.search);
   const forceShow = params.get('show-coupon') === '1';
