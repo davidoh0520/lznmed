@@ -48,7 +48,7 @@
     <section class="lzn-promo-card">
       <button class="lzn-promo-close" type="button" aria-label="Close promotion">×</button>
       <a class="lzn-promo-image-link" href="/tools/" aria-label="Shop the optical tools promotion">
-        <img src="/tools/assets/promotion/optical-wholesale-coupon-flyer.png" alt="Optical tools wholesale market. Spend USD 100 on tools and get a USD 10 coupon for your next order.">
+        <img src="/tools/assets/promotion/optical-wholesale-coupon-flyer.webp" alt="Optical tools wholesale market. Spend USD 100 on tools and get a USD 10 coupon for your next order.">
       </a>
       <div class="lzn-promo-actions">
         <a href="/tools/">Shop optical tools</a>
