@@ -15,7 +15,6 @@
   try {
     if (!forceShow && Number(localStorage.getItem(HIDDEN_UNTIL_KEY) || 0) > Date.now()) return;
     if (!forceShow && sessionStorage.getItem(SESSION_SEEN_KEY) === '1') return;
-    sessionStorage.setItem(SESSION_SEEN_KEY, '1');
   } catch (_) {
     // The promotion can still be shown when storage is unavailable.
   }
@@ -49,7 +48,7 @@
     <section class="lzn-promo-card">
       <button class="lzn-promo-close" type="button" aria-label="Close promotion">×</button>
       <a class="lzn-promo-image-link" href="/tools/" aria-label="Shop the optical tools promotion">
-        <img src="/tools/assets/promotion/optical-wholesale-coupon-flyer.webp" alt="Optical tools wholesale market. Spend USD 100 on tools and get a USD 10 coupon for your next order.">
+        <img src="/tools/assets/promotion/optical-wholesale-coupon-flyer.webp?v=20260727-2" alt="Optical tools wholesale market. Spend USD 100 on tools and get a USD 10 coupon for your next order.">
       </a>
       <div class="lzn-promo-actions">
         <a href="/tools/">Shop optical tools</a>
@@ -79,8 +78,23 @@
     if (event.key === 'Escape' && popup.isConnected) close();
   });
 
-  window.setTimeout(() => {
+  const open = () => window.setTimeout(() => {
+    if (!popup.isConnected) return;
+    try {
+      sessionStorage.setItem(SESSION_SEEN_KEY, '1');
+    } catch (_) {
+      // The promotion can still be shown when storage is unavailable.
+    }
     popup.classList.add('is-open');
     popup.querySelector('.lzn-promo-close').focus();
   }, 550);
+
+  const image = popup.querySelector('img');
+  if (image.complete) {
+    if (image.naturalWidth > 0) open();
+    else popup.remove();
+  } else {
+    image.addEventListener('load', open, { once: true });
+    image.addEventListener('error', () => popup.remove(), { once: true });
+  }
 })();

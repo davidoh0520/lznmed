@@ -171,6 +171,7 @@ let activeOrder = null;
 let activeItems = [];
 let activeIssuedCoupon = null;
 let activeSfCalculation = null;
+let loadingData = false;
 
 function showOnly(view) {
   [authView, accessView, dashboard].forEach(item => item.hidden = item !== view);
@@ -232,6 +233,8 @@ signOutButton.addEventListener('click', async () => {
 });
 
 async function loadData(retried = false) {
+  if (loadingData) return;
+  loadingData = true;
   document.querySelector('#refreshData').disabled = true;
   const [orderResult, memberResult] = await Promise.all([
     client.from('orders').select('*').order('created_at', { ascending: false }),
@@ -244,10 +247,12 @@ async function loadData(retried = false) {
       const refreshed = await client.auth.refreshSession();
       if (refreshed.data?.session) {
         session = refreshed.data.session;
+        loadingData = false;
         return loadData(true);
       }
     }
     document.querySelector('#adminIdentity').textContent = `Data could not be refreshed: ${message}`;
+    loadingData = false;
     return;
   }
   orders = orderResult.data || [];
@@ -256,7 +261,16 @@ async function loadData(retried = false) {
   renderOrders();
   renderMembers();
   renderPurchases();
+  loadingData = false;
 }
+
+function refreshVisibleDashboard() {
+  if (session && !dashboard.hidden && document.visibilityState === 'visible') loadData();
+}
+
+window.addEventListener('focus', refreshVisibleDashboard);
+document.addEventListener('visibilitychange', refreshVisibleDashboard);
+window.setInterval(refreshVisibleDashboard, 30000);
 
 function renderSummary() {
   const open = orders.filter(order => !['shipped', 'cancelled'].includes(order.status)).length;
@@ -332,7 +346,7 @@ document.querySelector('#orderSearch').addEventListener('input', renderOrders);
 document.querySelector('#statusFilter').addEventListener('change', renderOrders);
 document.querySelector('#memberSearch').addEventListener('input', renderMembers);
 document.querySelector('#purchaseSearch')?.addEventListener('input', renderPurchases);
-document.querySelector('#refreshData').addEventListener('click', loadData);
+document.querySelector('#refreshData').addEventListener('click', () => loadData());
 
 document.querySelector('.tabs').addEventListener('click', event => {
   const button = event.target.closest('[data-tab]');
