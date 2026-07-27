@@ -27,8 +27,24 @@ const nextStepLabels = {
   shipped: 'Monitor delivery', cancelled: 'No further action'
 };
 
-function taobaoProductId(model) {
-  return String(model || '').match(/^LZN-(\d{9,})(?:-\d+)?$/)?.[1] || null;
+function publicRootModel(model) {
+  return String(model || '').match(/^(LZN-(?:TL|FR)-\d{4})(?:-[A-Z0-9]+)?$/i)?.[1]?.toUpperCase() || null;
+}
+
+function legacyTaobaoProductId(model) {
+  return String(model || '').match(/^LZN-(\d{9,})(?:-[A-Z0-9]+)?$/i)?.[1] || null;
+}
+
+function purchaseSourceEntryForModel(model) {
+  const publicModel = publicRootModel(model);
+  if (publicModel && purchaseSourceData[publicModel]) {
+    return { publicModel, source: purchaseSourceData[publicModel] };
+  }
+  const productId = legacyTaobaoProductId(model);
+  if (!productId) return null;
+  const match = Object.entries(purchaseSourceData)
+    .find(([, source]) => String(source.sourceProductId) === productId);
+  return match ? { publicModel: match[0], source: match[1] } : null;
 }
 
 function catalogProductForModel(model) {
@@ -36,30 +52,29 @@ function catalogProductForModel(model) {
 }
 
 function purchaseInfoForModel(model) {
-  const productId = taobaoProductId(model);
-  const source = productId ? purchaseSourceData[productId] : null;
-  if (!source) return null;
-  const product = catalogProductForModel(model);
-  const optionIndex = (product?.options || []).findIndex(option => option.model === model);
-  const selected = optionIndex >= 0 ? product.options[optionIndex] : product;
+  const entry = purchaseSourceEntryForModel(model);
+  if (!entry) return null;
+  const { publicModel, source } = entry;
+  const product = catalogProductForModel(model) || catalogProductForModel(publicModel);
+  let optionIndex = (source.publicOptionModels || []).indexOf(model);
+  if (optionIndex < 0) optionIndex = (source.legacyOptionModels || []).indexOf(model);
   const capturedPrice = optionIndex >= 0 ? source.optionPricesCny?.[optionIndex] : null;
-  const originalPriceCny = Number(capturedPrice) > 0
-    ? Number(capturedPrice)
-    : Number(selected?.basePriceRmb) > 0
-      ? Number(selected.basePriceRmb)
-      : null;
-  return { productId, source, product, optionIndex, originalPriceCny };
+  const originalPriceCny = Number(capturedPrice) > 0 ? Number(capturedPrice) : null;
+  return {
+    publicModel,
+    productId: source.sourceProductId,
+    source,
+    product,
+    optionIndex,
+    originalPriceCny
+  };
 }
 
 function purchasePriceRange(product, source) {
   const captured = (source.optionPricesCny || []).map(Number).filter(value => value > 0);
-  const catalogPrices = [product.basePriceRmb, ...(product.options || []).map(option => option.basePriceRmb)]
-    .map(Number)
-    .filter(value => value > 0);
-  const prices = captured.length ? captured : catalogPrices;
-  if (!prices.length) return 'Not captured';
-  const low = Math.min(...prices);
-  const high = Math.max(...prices);
+  if (!captured.length) return 'Not captured';
+  const low = Math.min(...captured);
+  const high = Math.max(...captured);
   return low === high ? cny(low) : `${cny(low)} – ${cny(high)}`;
 }
 
@@ -69,8 +84,9 @@ function purchaseSourceHtml(model) {
   return `<div class="purchase-source-inline">
     <span>Taobao source</span>
     <strong>${info.originalPriceCny ? e(cny(info.originalPriceCny)) : 'Original price not captured'}</strong>
-    <small>${e(info.source.store || 'Taobao supplier')}</small>
+    <small>${e(info.source.store || 'Taobao supplier')} · Supplier item ${e(info.source.sourceProductId || '-')}</small>
     <a href="${e(info.source.url)}" target="_blank" rel="noopener noreferrer">Open purchase page ↗</a>
+    <small>${e(info.source.verification || '')}</small>
   </div>`;
 }
 
@@ -324,22 +340,24 @@ function renderPurchases() {
   const search = document.querySelector('#purchaseSearch');
   if (!body || !search) return;
   const query = search.value.trim().toLowerCase();
-  const rows = catalogProducts
-    .map(product => {
-      const productId = taobaoProductId(product.model);
-      const source = productId ? purchaseSourceData[productId] : null;
-      return source ? { product, productId, source } : null;
-    })
-    .filter(Boolean)
-    .filter(({ product, productId, source }) => !query || `${product.model} ${productId} ${product.nameEn || ''} ${source.store || ''}`.toLowerCase().includes(query))
-    .sort((a, b) => String(a.product.nameEn || a.product.model).localeCompare(String(b.product.nameEn || b.product.model)));
-  body.innerHTML = rows.length ? rows.map(({ product, source }) => `
+  const rows = Object.entries(purchaseSourceData)
+    .map(([publicModel, source]) => ({
+      publicModel,
+      source,
+      product: catalogProductForModel(publicModel)
+    }))
+    .filter(({ publicModel, source, product }) => !query || `${publicModel} ${source.sourceProductId || ''} ${product?.nameEn || source.productName || ''} ${source.store || ''}`.toLowerCase().includes(query))
+    .sort((a, b) => String(a.product?.nameEn || a.source.productName || a.publicModel).localeCompare(String(b.product?.nameEn || b.source.productName || b.publicModel)));
+  body.innerHTML = rows.length ? rows.map(({ publicModel, product, source }) => {
+    const priceRange = purchasePriceRange(product, source);
+    return `
     <tr>
-      <td><strong>${e(product.model)}</strong><br><small>${e(product.nameEn || product.chineseName || 'Imported catalog product')}</small></td>
-      <td><strong>${e(purchasePriceRange(product, source))}</strong>${purchasePriceRange(product, source) === 'Not captured' ? '<br><small>Blank in original export</small>' : ''}</td>
-      <td>${e(source.store || 'Taobao supplier')}</td>
+      <td><strong>${e(publicModel)}</strong><br><small>${e(product?.nameEn || source.productName || 'Imported catalog product')}</small><br><small>Supplier item: ${e(source.sourceProductId || '-')}</small></td>
+      <td><strong>${e(priceRange)}</strong>${priceRange === 'Not captured' ? '<br><small>Original supplier price not captured</small>' : ''}</td>
+      <td>${e(source.store || 'Taobao supplier')}<br><small>${e(source.verification || '')}</small></td>
       <td><a class="purchase-link" href="${e(source.url)}" target="_blank" rel="noopener noreferrer">Open Taobao ↗</a></td>
-    </tr>`).join('') : '<tr><td class="empty" colspan="4">No matching Taobao products.</td></tr>';
+    </tr>`;
+  }).join('') : '<tr><td class="empty" colspan="4">No matching Taobao products.</td></tr>';
 }
 
 document.querySelector('#orderSearch').addEventListener('input', renderOrders);
