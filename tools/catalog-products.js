@@ -3698,7 +3698,16 @@
   }
 ];
   const catalog = Array.isArray(window.CATALOG_DATA) ? window.CATALOG_DATA : [];
+  const categoryAliases = {
+    'tool-set': 'tools',
+    'trial-lens-set': 'trial-lens-sets'
+  };
   importedCategories.forEach(incomingCategory => {
+    const canonicalId = categoryAliases[incomingCategory.id] || incomingCategory.id;
+    incomingCategory.id = canonicalId;
+    incomingCategory.items.forEach(product => {
+      product.category = canonicalId;
+    });
     const existingCategory = catalog.find(category => category.id === incomingCategory.id);
     if (!existingCategory) {
       catalog.push(incomingCategory);
