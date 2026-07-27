@@ -47,25 +47,25 @@
           {
             "model": "LZN-821168484924-04",
             "label": "Black Silver-Pattern Holder Loops",
-            "priceUsd": null,
+            "priceUsd": 1.5,
             "image": "assets/catalog/821168484924/english-option-04.webp"
           },
           {
             "model": "LZN-821168484924-05",
             "label": "White Multicolor Enamel Holder Loops",
-            "priceUsd": null,
+            "priceUsd": 1.5,
             "image": "assets/catalog/821168484924/english-option-05.webp"
           },
           {
             "model": "LZN-821168484924-06",
             "label": "White Silver-Floral Holder Loops",
-            "priceUsd": null,
+            "priceUsd": 1.5,
             "image": "assets/catalog/821168484924/english-option-06.webp"
           },
           {
             "model": "LZN-821168484924-07",
             "label": "White Gold Lucky-Charm Holder Loops",
-            "priceUsd": null,
+            "priceUsd": 2,
             "image": "assets/catalog/821168484924/english-option-07.webp"
           }
         ],
@@ -106,141 +106,141 @@
           "assets/catalog/599830820788/english-option-22.png"
         ],
         "description": "Press-type dispenser bottles and replacement parts for controlled dispensing of workshop cleaning liquids.",
-        "priceUsd": null,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.00 - 9.60",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-599830820788-01",
             "label": "4C Straight-Nozzle Press Bottle - White",
-            "priceUsd": null,
+            "priceUsd": 1.15,
             "image": "assets/catalog/599830820788/english-option-01.png"
           },
           {
             "model": "LZN-599830820788-02",
             "label": "4C Straight-Nozzle Press Bottle - Pink",
-            "priceUsd": null,
+            "priceUsd": 1.15,
             "image": "assets/catalog/599830820788/english-option-02.png"
           },
           {
             "model": "LZN-599830820788-03",
             "label": "4C Straight-Nozzle Press Bottle - Blue",
-            "priceUsd": null,
+            "priceUsd": 1.15,
             "image": "assets/catalog/599830820788/english-option-03.png"
           },
           {
             "model": "LZN-599830820788-04",
             "label": "6C Straight-Nozzle Press Bottle - White",
-            "priceUsd": null,
+            "priceUsd": 1.34,
             "image": "assets/catalog/599830820788/english-option-04.png"
           },
           {
             "model": "LZN-599830820788-05",
             "label": "6C Straight-Nozzle Press Bottle - Blue",
-            "priceUsd": null,
+            "priceUsd": 1.34,
             "image": "assets/catalog/599830820788/english-option-05.png"
           },
           {
             "model": "LZN-599830820788-06",
             "label": "8C Straight-Nozzle Press Bottle - Pink",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/599830820788/english-option-06.png"
           },
           {
             "model": "LZN-599830820788-07",
             "label": "8C Straight-Nozzle Press Bottle - Blue",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/599830820788/english-option-07.png"
           },
           {
             "model": "LZN-599830820788-08",
             "label": "9C Straight-Nozzle Press Bottle - White",
-            "priceUsd": null,
+            "priceUsd": 1.72,
             "image": "assets/catalog/599830820788/english-option-08.png"
           },
           {
             "model": "LZN-599830820788-09",
-            "label": "72 mm Straight Brass-Core Nozzle",
-            "priceUsd": null,
+            "label": "72 mm Straight Brass-Core Nozzle - 10-Pack",
+            "priceUsd": 7.6,
             "image": "assets/catalog/599830820788/english-option-09.png"
           },
           {
             "model": "LZN-599830820788-10",
             "label": "4A Anti-Spray Press Bottle - White",
-            "priceUsd": null,
+            "priceUsd": 1.34,
             "image": "assets/catalog/599830820788/english-option-10.png"
           },
           {
             "model": "LZN-599830820788-11",
             "label": "4A Anti-Spray Press Bottle - Pink",
-            "priceUsd": null,
+            "priceUsd": 1.34,
             "image": "assets/catalog/599830820788/english-option-11.png"
           },
           {
             "model": "LZN-599830820788-12",
             "label": "4A Anti-Spray Press Bottle - Blue",
-            "priceUsd": null,
+            "priceUsd": 1.34,
             "image": "assets/catalog/599830820788/english-option-12.png"
           },
           {
             "model": "LZN-599830820788-13",
             "label": "6A Anti-Spray Press Bottle - White",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/599830820788/english-option-13.png"
           },
           {
             "model": "LZN-599830820788-14",
             "label": "6A Anti-Spray Press Bottle - Pink",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/599830820788/english-option-14.png"
           },
           {
             "model": "LZN-599830820788-15",
             "label": "6A Anti-Spray Press Bottle - Blue",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/599830820788/english-option-15.png"
           },
           {
             "model": "LZN-599830820788-16",
             "label": "8A Anti-Spray Press Bottle - Pink",
-            "priceUsd": null,
+            "priceUsd": 1.72,
             "image": "assets/catalog/599830820788/english-option-16.png"
           },
           {
             "model": "LZN-599830820788-17",
             "label": "8A Anti-Spray Press Bottle - Blue",
-            "priceUsd": null,
+            "priceUsd": 1.72,
             "image": "assets/catalog/599830820788/english-option-17.png"
           },
           {
             "model": "LZN-599830820788-18",
             "label": "9A Anti-Spray Press Bottle - White",
-            "priceUsd": null,
+            "priceUsd": 1.91,
             "image": "assets/catalog/599830820788/english-option-18.png"
           },
           {
             "model": "LZN-599830820788-19",
-            "label": "72 mm Anti-Spray Brass-Core Nozzle",
-            "priceUsd": null,
+            "label": "72 mm Anti-Spray Brass-Core Nozzle - 10-Pack",
+            "priceUsd": 9.6,
             "image": "assets/catalog/599830820788/english-option-19.png"
           },
           {
             "model": "LZN-599830820788-20",
             "label": "200 ml Suction Tubes - 10 Pieces",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/599830820788/english-option-20.png"
           },
           {
             "model": "LZN-599830820788-21",
             "label": "250 ml Suction Tubes - 10 Pieces",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/599830820788/english-option-21.png"
           },
           {
             "model": "LZN-599830820788-22",
             "label": "500 ml Suction Tubes - 10 Pieces",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/599830820788/english-option-22.png"
           }
         ],
@@ -260,15 +260,15 @@
           "assets/catalog/950197809027/english-option-01.png"
         ],
         "description": "An adjustable retention cord that helps keep eyewear secure during sports, work, and everyday activity.",
-        "priceUsd": null,
+        "priceUsd": 2.9,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 2.90",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-950197809027-01",
-            "label": "Blue Adjustable Eyeglass Retention Cord",
-            "priceUsd": null,
+            "label": "Blue Adjustable Eyeglass Retention Cord - 10-Pack",
+            "priceUsd": 2.9,
             "image": "assets/catalog/950197809027/english-option-01.png"
           }
         ],
@@ -291,33 +291,33 @@
           "assets/catalog/969193151157/english-option-04.webp"
         ],
         "description": "A lightweight adjustable strap that keeps eyeglasses secure and comfortable during active use.",
-        "priceUsd": null,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.00",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-969193151157-01",
             "label": "Black Eyeglass Strap - 2 Pieces",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/969193151157/english-option-01.webp"
           },
           {
             "model": "LZN-969193151157-02",
             "label": "Red Eyeglass Strap - 2 Pieces",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/969193151157/english-option-02.webp"
           },
           {
             "model": "LZN-969193151157-03",
             "label": "Brown Eyeglass Strap - 2 Pieces",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/969193151157/english-option-03.webp"
           },
           {
             "model": "LZN-969193151157-04",
             "label": "Blue Eyeglass Strap - 2 Pieces",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/969193151157/english-option-04.webp"
           }
         ],
@@ -339,51 +339,51 @@
           "assets/catalog/840574461963/003.webp"
         ],
         "description": "Flip-up multifocal reading glasses support near, intermediate, and distance viewing with a convenient lifting front.",
-        "priceUsd": null,
+        "priceUsd": 2.87,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 2.87 - 3.80",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-840574461963-01",
             "label": "Flip-Up Multifocal Reading Glasses - Option 01 - Upgraded",
-            "priceUsd": null,
+            "priceUsd": 3.8,
             "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-02",
             "label": "Flip-Up Multifocal Reading Glasses - Option 02 - 45-49 100",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-03",
             "label": "Flip-Up Multifocal Reading Glasses - Option 03 - 50-54 150",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-04",
             "label": "Flip-Up Multifocal Reading Glasses - Option 04 - 60-65 250",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-05",
             "label": "Flip-Up Multifocal Reading Glasses - Option 05 - 65-69 300",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-06",
             "label": "Flip-Up Multifocal Reading Glasses - Option 06 - 70-74 350",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/840574461963/english-card.png"
           },
           {
             "model": "LZN-840574461963-07",
             "label": "Flip-Up Multifocal Reading Glasses - Option 07 - 75 400",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/840574461963/english-card.png"
           }
         ],
@@ -405,45 +405,45 @@
           "assets/catalog/815613043837/english-option-04.png"
         ],
         "description": "A contoured light-blocking eye patch for adult and pediatric amblyopia training with a comfortable three-dimensional fit.",
-        "priceUsd": null,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.00 - 2.29",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-815613043837-01",
             "label": "Adult 3D Amblyopia Eye Patch - 1 Piece",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/815613043837/english-option-01.png"
           },
           {
             "model": "LZN-815613043837-02",
             "label": "Adult 3D Amblyopia Eye Patches - 2 Pieces",
-            "priceUsd": null,
+            "priceUsd": 1.72,
             "image": "assets/catalog/815613043837/english-option-02.png"
           },
           {
             "model": "LZN-815613043837-03",
             "label": "Adult 3D Amblyopia Eye Patches - 3 Pieces",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/815613043837/english-option-02.png"
           },
           {
             "model": "LZN-815613043837-04",
             "label": "Child 3D Amblyopia Eye Patch - 1 Piece",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/815613043837/english-option-04.png"
           },
           {
             "model": "LZN-815613043837-05",
             "label": "Child 3D Amblyopia Eye Patches - 2 Pieces",
-            "priceUsd": null,
+            "priceUsd": 1.72,
             "image": "assets/catalog/815613043837/english-option-04.png"
           },
           {
             "model": "LZN-815613043837-06",
             "label": "Child 3D Amblyopia Eye Patches - 3 Pieces",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/815613043837/english-option-04.png"
           }
         ],
@@ -474,81 +474,81 @@
           "assets/catalog/729967954702/english-option-12.png"
         ],
         "description": "Comfortable fabric eye patches for pediatric vision training, available in multiple sizes, colors, and patterns.",
-        "priceUsd": null,
+        "priceUsd": 1.91,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.91 - 2.87",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-729967954702-01",
             "label": "Blue Fabric Eye Patch",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/729967954702/english-option-01.png"
           },
           {
             "model": "LZN-729967954702-02",
             "label": "Pink Fabric Eye Patch",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/729967954702/english-option-02.png"
           },
           {
             "model": "LZN-729967954702-03",
             "label": "Black Fabric Eye Patch",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/729967954702/english-option-03.png"
           },
           {
             "model": "LZN-729967954702-04",
             "label": "Blue Large Fabric Eye Patch",
-            "priceUsd": null,
+            "priceUsd": 1.91,
             "image": "assets/catalog/729967954702/english-option-04.png"
           },
           {
             "model": "LZN-729967954702-05",
             "label": "Black Large Fabric Eye Patch",
-            "priceUsd": null,
+            "priceUsd": 1.91,
             "image": "assets/catalog/729967954702/english-option-05.png"
           },
           {
             "model": "LZN-729967954702-06",
             "label": "Pink Fabric Eye Patches - 6 Pieces",
-            "priceUsd": null,
+            "priceUsd": 1.91,
             "image": "assets/catalog/729967954702/english-option-06.png"
           },
           {
             "model": "LZN-729967954702-07",
             "label": "Pink Cartoon Eye Patch Set A - 6 Pieces",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/729967954702/english-option-07.png"
           },
           {
             "model": "LZN-729967954702-08",
             "label": "Pink Cartoon Eye Patch Set B - 6 Pieces",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/729967954702/english-option-08.png"
           },
           {
             "model": "LZN-729967954702-09",
             "label": "Blue Cartoon Eye Patch Set A - 6 Pieces",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/729967954702/english-option-09.png"
           },
           {
             "model": "LZN-729967954702-10",
             "label": "Blue Cartoon Eye Patch Set B - 6 Pieces",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/729967954702/english-option-10.png"
           },
           {
             "model": "LZN-729967954702-11",
             "label": "Pink Pattern Eye Patch Set",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/729967954702/english-option-11.png"
           },
           {
             "model": "LZN-729967954702-12",
             "label": "Blue Pattern Eye Patch Set",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/729967954702/english-option-12.png"
           }
         ],
@@ -569,45 +569,45 @@
           "assets/catalog/624508088377/002.webp"
         ],
         "description": "A precision optical gauge for marking parallel reference lines and checking lens layout during workshop preparation.",
-        "priceUsd": null,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.00 - 4.21",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-624508088377-01",
             "label": "Optical Lens Layout Marking Gauge - Option 01 - 3",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/624508088377/english-card.png"
           },
           {
             "model": "LZN-624508088377-02",
             "label": "Optical Lens Layout Marking Gauge - Option 02 - 1",
-            "priceUsd": null,
+            "priceUsd": 3.44,
             "image": "assets/catalog/624508088377/english-card.png"
           },
           {
             "model": "LZN-624508088377-03",
             "label": "Optical Lens Layout Marking Gauge - Option 03 - 5",
-            "priceUsd": null,
+            "priceUsd": 4.21,
             "image": "assets/catalog/624508088377/english-card.png"
           },
           {
             "model": "LZN-624508088377-04",
             "label": "Optical Lens Layout Marking Gauge - Option 04 - 1",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/624508088377/english-card.png"
           },
           {
             "model": "LZN-624508088377-05",
             "label": "Optical Lens Layout Marking Gauge - Option 05 - 2",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/624508088377/english-card.png"
           },
           {
             "model": "LZN-624508088377-06",
             "label": "Optical Lens Layout Marking Gauge - Option 06 - 5",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/624508088377/english-card.png"
           }
         ],
@@ -615,6 +615,212 @@
           "Designed for professional optical and vision-care use.",
           "Suitable for retail, service, or customer-care settings.",
           "Multiple configurations are available for different applications."
+        ]
+      },
+      {
+        "category": "accessories",
+        "model": "LZN-725474774038",
+        "nameEn": "Professional Optician Work Coat",
+        "chineseName": "Professional Optician Work Coat",
+        "image": "assets/catalog/725474774038/english-card.png",
+        "images": [
+          "assets/catalog/725474774038/english-card.png"
+        ],
+        "description": "Professional work coats provide a clean, practical uniform for refraction rooms, laboratories, and optical retail service.",
+        "priceUsd": 18.5,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 18.50 - 20.50",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-725474774038-01",
+            "label": "Women's Blue Short-Sleeve Coat with White Collar",
+            "priceUsd": 18.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-02",
+            "label": "Women's Green Short-Sleeve Coat with White Collar",
+            "priceUsd": 18.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-03",
+            "label": "Women's White Long-Sleeve Coat with Blue Collar",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-04",
+            "label": "Women's White Long-Sleeve Coat with Green Collar",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-05",
+            "label": "Women's Pink Long-Sleeve Coat with White Collar",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-06",
+            "label": "Women's Blue Long-Sleeve Coat with White Collar",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-07",
+            "label": "Women's Green Long-Sleeve Coat with White Collar",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-08",
+            "label": "Men's White Short-Sleeve Coat with Green Collar",
+            "priceUsd": 18.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-09",
+            "label": "Men's White Long-Sleeve Coat with Green Collar",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-10",
+            "label": "Men's White Short-Sleeve Coat with Blue Collar",
+            "priceUsd": 18.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-11",
+            "label": "Men's White Long-Sleeve Coat with Blue Collar",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-12",
+            "label": "Women's White Short-Sleeve Coat",
+            "priceUsd": 18.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-13",
+            "label": "Women's White Long-Sleeve Coat",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-14",
+            "label": "Women's Pink Short-Sleeve Coat",
+            "priceUsd": 18.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-15",
+            "label": "Women's Pink Long-Sleeve Coat",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-16",
+            "label": "Women's Blue Short-Sleeve Coat",
+            "priceUsd": 18.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-17",
+            "label": "Women's Blue Long-Sleeve Coat",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-18",
+            "label": "Men's White Short-Sleeve Coat",
+            "priceUsd": 18.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-19",
+            "label": "Men's White Long-Sleeve Coat",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-20",
+            "label": "Men's Blue Short-Sleeve Coat",
+            "priceUsd": 18.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          },
+          {
+            "model": "LZN-725474774038-21",
+            "label": "Men's Blue Long-Sleeve Coat",
+            "priceUsd": 20.5,
+            "image": "assets/catalog/725474774038/english-card.png"
+          }
+        ],
+        "features": [
+          "Practical pockets support daily optical workflow.",
+          "Short- and long-sleeve versions are available.",
+          "Professional color options suit customer-facing teams."
+        ]
+      },
+      {
+        "category": "accessories",
+        "model": "LZN-774606082869",
+        "nameEn": "Lensmeter and Autorefractor Thermal Paper",
+        "chineseName": "Lensmeter and Autorefractor Thermal Paper",
+        "image": "assets/catalog/774606082869/english-card.webp",
+        "images": [
+          "assets/catalog/774606082869/english-card.webp"
+        ],
+        "description": "High-clarity thermal paper rolls support printed results from compatible lensmeters and autorefractors.",
+        "priceUsd": 7.5,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 7.50 - 22.00",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-774606082869-01",
+            "label": "56 x 28 mm / 7 m Thermal Paper - 10 Rolls",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/774606082869/english-card.webp"
+          },
+          {
+            "model": "LZN-774606082869-02",
+            "label": "56 x 38 mm / 12 m Thermal Paper - 10 Rolls",
+            "priceUsd": 9.5,
+            "image": "assets/catalog/774606082869/english-card.webp"
+          },
+          {
+            "model": "LZN-774606082869-03",
+            "label": "56 x 48 mm / 22 m Thermal Paper - 10 Rolls",
+            "priceUsd": 12,
+            "image": "assets/catalog/774606082869/english-card.webp"
+          },
+          {
+            "model": "LZN-774606082869-04",
+            "label": "56 x 28 mm / 7 m Thermal Paper - 20 Rolls",
+            "priceUsd": 13.5,
+            "image": "assets/catalog/774606082869/english-card.webp"
+          },
+          {
+            "model": "LZN-774606082869-05",
+            "label": "56 x 38 mm / 12 m Thermal Paper - 20 Rolls",
+            "priceUsd": 17,
+            "image": "assets/catalog/774606082869/english-card.webp"
+          },
+          {
+            "model": "LZN-774606082869-06",
+            "label": "56 x 48 mm / 22 m Thermal Paper - 20 Rolls",
+            "priceUsd": 22,
+            "image": "assets/catalog/774606082869/english-card.webp"
+          }
+        ],
+        "features": [
+          "Three roll diameters fit common optical printers.",
+          "High-clarity thermal coating supports legible results.",
+          "Available in economical 10- and 20-roll packs."
         ]
       }
     ]
@@ -766,15 +972,15 @@
           "assets/catalog/1011125552269/003.webp"
         ],
         "description": "A compact ultrasonic cleaning unit for deep cleaning contact lenses with dedicated left and right lens chambers.",
-        "priceUsd": null,
+        "priceUsd": 7.63,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 7.63",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-1011125552269-01",
             "label": "Portable Ultrasonic Contact Lens Cleaner - Option 01",
-            "priceUsd": null,
+            "priceUsd": 7.63,
             "image": "assets/catalog/1011125552269/english-card.png"
           }
         ],
@@ -879,63 +1085,63 @@
           "assets/catalog/808569964690/013.webp"
         ],
         "description": "Self-Closing Eyewear Pouch protects and organizes eyewear for storage, travel, and daily use.",
-        "priceUsd": 0.19,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "USD 0.19",
+        "priceDisplay": "USD 1.00",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-808569964690-01",
             "label": "Upgraded Haze Blue+Millennial Pink",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/808569964690/english-card.png"
           },
           {
             "model": "LZN-808569964690-02",
             "label": "Upgraded Olive Green+Millennial Pink",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/808569964690/006.webp"
           },
           {
             "model": "LZN-808569964690-03",
             "label": "Self-Closing Eyewear Pouch - Option 03 - Upgraded Amber Orange 2",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/808569964690/007.webp"
           },
           {
             "model": "LZN-808569964690-04",
             "label": "Self-Closing Eyewear Pouch - Option 04 - Upgraded Haze Blue 2",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/808569964690/008.webp"
           },
           {
             "model": "LZN-808569964690-05",
             "label": "Self-Closing Eyewear Pouch - Option 05 - Upgraded Olive Green 2",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/808569964690/009.webp"
           },
           {
             "model": "LZN-808569964690-06",
             "label": "Self-Closing Eyewear Pouch - Option 06 - Upgraded Millennial Pink 2",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/808569964690/010.webp"
           },
           {
             "model": "LZN-808569964690-07",
             "label": "Self-Closing Eyewear Pouch - Option 07 - Upgraded Haze Blue 3",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/808569964690/011.webp"
           },
           {
             "model": "LZN-808569964690-08",
             "label": "Self-Closing Eyewear Pouch - Option 08 - Upgraded Millennial Pink 3",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/808569964690/012.webp"
           },
           {
             "model": "LZN-808569964690-09",
             "label": "Self-Closing Eyewear Pouch - Option 09 - Upgraded 4",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/808569964690/013.webp"
           }
         ],
@@ -1052,7 +1258,7 @@
         "description": "Mizuno Anti-Fog Lens Treatment supports clear lens care and routine optical product maintenance.",
         "priceUsd": 7.46,
         "priceOnRequest": false,
-        "priceDisplay": "USD 7.46 - 30.4",
+        "priceDisplay": "USD 7.46 - 30.40",
         "optionLabel": "Available options",
         "options": [
           {
@@ -1249,63 +1455,63 @@
           "assets/catalog/589448610321/003.webp"
         ],
         "description": "A soft microfiber cleaning cloth for removing fingerprints, dust, and light residue from optical lenses.",
-        "priceUsd": null,
+        "priceUsd": 1.53,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.53 - 15.29",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-589448610321-01",
-            "label": "Microfiber Lens Cleaning Cloth - Option 01 - 20 6X8cm",
-            "priceUsd": null,
+            "label": "Microfiber Lens Cleaning Cloth - Option 01 - 20 6X8cm - 10-Pack",
+            "priceUsd": 3.8,
             "image": "assets/catalog/589448610321/001.webp"
           },
           {
             "model": "LZN-589448610321-02",
             "label": "Microfiber Lens Cleaning Cloth - Option 02 - 100 6X8cm",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/589448610321/001.webp"
           },
           {
             "model": "LZN-589448610321-03",
             "label": "Microfiber Lens Cleaning Cloth - Option 03 - 200 6X8cm",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/589448610321/001.webp"
           },
           {
             "model": "LZN-589448610321-04",
             "label": "Microfiber Lens Cleaning Cloth - Option 04 - 500 6X8cm",
-            "priceUsd": null,
+            "priceUsd": 6.69,
             "image": "assets/catalog/589448610321/001.webp"
           },
           {
             "model": "LZN-589448610321-05",
             "label": "Microfiber Lens Cleaning Cloth - Option 05 - 1000 6X8cm",
-            "priceUsd": null,
+            "priceUsd": 12.43,
             "image": "assets/catalog/589448610321/001.webp"
           },
           {
             "model": "LZN-589448610321-06",
-            "label": "Microfiber Lens Cleaning Cloth - Option 06 - 20 12X12cm",
-            "priceUsd": null,
+            "label": "Microfiber Lens Cleaning Cloth - Option 06 - 20 12X12cm - 10-Pack",
+            "priceUsd": 7.6,
             "image": "assets/catalog/589448610321/003.webp"
           },
           {
             "model": "LZN-589448610321-07",
             "label": "Microfiber Lens Cleaning Cloth - Option 07 - 100 12X12cm",
-            "priceUsd": null,
+            "priceUsd": 3.44,
             "image": "assets/catalog/589448610321/003.webp"
           },
           {
             "model": "LZN-589448610321-08",
             "label": "Microfiber Lens Cleaning Cloth - Option 08 - 200 12X12cm",
-            "priceUsd": null,
+            "priceUsd": 6.5,
             "image": "assets/catalog/589448610321/003.webp"
           },
           {
             "model": "LZN-589448610321-09",
             "label": "Microfiber Lens Cleaning Cloth - Option 09 - 500 12X12cm",
-            "priceUsd": null,
+            "priceUsd": 15.29,
             "image": "assets/catalog/589448610321/003.webp"
           }
         ],
@@ -1313,6 +1519,40 @@
           "Designed for routine lens and optical surface care.",
           "Suitable for optical stores, workshops, and personal use.",
           "Available in multiple sizes or application formats."
+        ]
+      },
+      {
+        "category": "cleaning",
+        "model": "LZN-894845559590",
+        "nameEn": "Portable Ultrasonic Eyeglass Cleaner",
+        "chineseName": "Portable Ultrasonic Eyeglass Cleaner",
+        "image": "assets/catalog/894845559590/english-card.png",
+        "images": [
+          "assets/catalog/894845559590/english-card.png"
+        ],
+        "description": "A compact ultrasonic cleaner removes everyday debris from eyeglasses and small optical accessories.",
+        "priceUsd": 8.5,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 8.50 - 10.50",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-894845559590-01",
+            "label": "Rechargeable Model with USB Cable and Cleaning Cloth",
+            "priceUsd": 10.5,
+            "image": "assets/catalog/894845559590/english-card.png"
+          },
+          {
+            "model": "LZN-894845559590-02",
+            "label": "Battery Model with Four AAA Batteries and Cleaning Cloth",
+            "priceUsd": 8.5,
+            "image": "assets/catalog/894845559590/english-card.png"
+          }
+        ],
+        "features": [
+          "Compact basin fits common eyewear sizes.",
+          "High-frequency cleaning reaches frame joints and nose-pad areas.",
+          "Rechargeable and battery-powered versions are available."
         ]
       }
     ]
@@ -1387,63 +1627,63 @@
           "assets/catalog/670890306251/010.webp"
         ],
         "description": "A compact wooden display stand for presenting multiple eyewear styles on counters, shelves, and showcases.",
-        "priceUsd": null,
+        "priceUsd": 1.91,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.91 - 6.50",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-670890306251-01",
             "label": "Wooden Eyewear Display Stand - Option 01 - 2",
-            "priceUsd": null,
+            "priceUsd": 1.91,
             "image": "assets/catalog/670890306251/001.webp"
           },
           {
             "model": "LZN-670890306251-02",
             "label": "Wooden Eyewear Display Stand - Option 02 - 3",
-            "priceUsd": null,
+            "priceUsd": 2.68,
             "image": "assets/catalog/670890306251/003.webp"
           },
           {
             "model": "LZN-670890306251-03",
             "label": "Wooden Eyewear Display Stand - Option 03 - 4",
-            "priceUsd": null,
+            "priceUsd": 3.44,
             "image": "assets/catalog/670890306251/004.webp"
           },
           {
             "model": "LZN-670890306251-04",
             "label": "Wooden Eyewear Display Stand - Option 04 - 5",
-            "priceUsd": null,
+            "priceUsd": 4.21,
             "image": "assets/catalog/670890306251/005.webp"
           },
           {
             "model": "LZN-670890306251-05",
             "label": "Wooden Eyewear Display Stand - Option 05 - 2",
-            "priceUsd": null,
+            "priceUsd": 2.68,
             "image": "assets/catalog/670890306251/006.webp"
           },
           {
             "model": "LZN-670890306251-06",
             "label": "Wooden Eyewear Display Stand - Option 06 - 3",
-            "priceUsd": null,
+            "priceUsd": 3.63,
             "image": "assets/catalog/670890306251/007.webp"
           },
           {
             "model": "LZN-670890306251-07",
             "label": "Wooden Eyewear Display Stand - Option 07 - 4",
-            "priceUsd": null,
+            "priceUsd": 4.59,
             "image": "assets/catalog/670890306251/008.webp"
           },
           {
             "model": "LZN-670890306251-08",
             "label": "Wooden Eyewear Display Stand - Option 08 - 5",
-            "priceUsd": null,
+            "priceUsd": 5.54,
             "image": "assets/catalog/670890306251/009.webp"
           },
           {
             "model": "LZN-670890306251-09",
             "label": "Wooden Eyewear Display Stand - Option 09 - 6",
-            "priceUsd": null,
+            "priceUsd": 6.5,
             "image": "assets/catalog/670890306251/010.webp"
           }
         ],
@@ -1670,21 +1910,21 @@
           "assets/catalog/1030400367140/004.webp"
         ],
         "description": "A multi-level metal rack that organizes and presents eyewear clearly in optical stores and display areas.",
-        "priceUsd": null,
+        "priceUsd": 6.69,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 6.69 - 11.47",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-1030400367140-01",
             "label": "Multi-Level Metal Eyewear Display Rack - Option 01 - 9 28*28cm 7.5cm",
-            "priceUsd": null,
+            "priceUsd": 6.69,
             "image": "assets/catalog/1030400367140/001.webp"
           },
           {
             "model": "LZN-1030400367140-02",
             "label": "Multi-Level Metal Eyewear Display Rack - Option 02 - 16 35*35cm 7.5",
-            "priceUsd": null,
+            "priceUsd": 11.47,
             "image": "assets/catalog/1030400367140/004.webp"
           }
         ],
@@ -1706,27 +1946,27 @@
           "assets/catalog/739204891463/english-option-03.png"
         ],
         "description": "Detailed anatomical eye models for clinical education, patient explanation, and ophthalmic display.",
-        "priceUsd": null,
+        "priceUsd": 7.26,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 7.26 - 16.25",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-739204891463-01",
             "label": "3x Enlarged Eye Model - 7 Parts",
-            "priceUsd": null,
+            "priceUsd": 7.26,
             "image": "assets/catalog/739204891463/english-option-01.png"
           },
           {
             "model": "LZN-739204891463-02",
             "label": "6x Enlarged Eye Model - 8 Parts",
-            "priceUsd": null,
+            "priceUsd": 12.43,
             "image": "assets/catalog/739204891463/english-option-02.png"
           },
           {
             "model": "LZN-739204891463-03",
             "label": "3x Eye and Orbit Model - 10 Parts",
-            "priceUsd": null,
+            "priceUsd": 16.25,
             "image": "assets/catalog/739204891463/english-option-03.png"
           }
         ],
@@ -1872,21 +2112,21 @@
           "assets/catalog/628352782969/004.webp"
         ],
         "description": "A compact display head stand for presenting eyeglasses and sunglasses in a natural wearing position.",
-        "priceUsd": 0.19,
+        "priceUsd": 12.5,
         "priceOnRequest": false,
-        "priceDisplay": "USD 0.19",
+        "priceDisplay": "USD 12.50",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-628352782969-01",
             "label": "Eyewear Display Head Stand - Option 01 - Black",
-            "priceUsd": null,
+            "priceUsd": 12.5,
             "image": "assets/catalog/628352782969/001.webp"
           },
           {
             "model": "LZN-628352782969-02",
             "label": "Eyewear Display Head Stand - Option 02 - White",
-            "priceUsd": 0.19,
+            "priceUsd": 12.5,
             "image": "assets/catalog/628352782969/004.webp"
           }
         ],
@@ -1913,51 +2153,51 @@
           "assets/catalog/1000973896135/008.webp"
         ],
         "description": "Durable metal display plates for creating clean, stable eyewear presentation fixtures and retail displays.",
-        "priceUsd": null,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.00 - 1.53",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-1000973896135-01",
             "label": "Magnetic Metal Eyewear Display Plates - Option 01",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/1000973896135/001.webp"
           },
           {
             "model": "LZN-1000973896135-02",
             "label": "Magnetic Metal Eyewear Display Plates - Option 02 - Green",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/1000973896135/003.webp"
           },
           {
             "model": "LZN-1000973896135-03",
             "label": "Magnetic Metal Eyewear Display Plates - Option 03 - Gray",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/1000973896135/004.webp"
           },
           {
             "model": "LZN-1000973896135-04",
             "label": "Magnetic Metal Eyewear Display Plates - Option 04",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/1000973896135/005.webp"
           },
           {
             "model": "LZN-1000973896135-05",
             "label": "Magnetic Metal Eyewear Display Plates - Option 05",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/1000973896135/006.webp"
           },
           {
             "model": "LZN-1000973896135-06",
             "label": "Magnetic Metal Eyewear Display Plates - Option 06",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/1000973896135/007.webp"
           },
           {
             "model": "LZN-1000973896135-07",
             "label": "Magnetic Metal Eyewear Display Plates - Option 07",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/1000973896135/008.webp"
           }
         ],
@@ -2039,45 +2279,45 @@
           "assets/catalog/816789510780/008.webp"
         ],
         "description": "A space-saving multi-tier rack for organizing multiple pairs of eyewear on counters, shelves, or inside cabinets.",
-        "priceUsd": null,
+        "priceUsd": 1.53,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.53 - 8.03",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-816789510780-01",
             "label": "Multi-Tier Eyewear Storage Rack - Option 01 - 2 Display Stand",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/816789510780/english-card.png"
           },
           {
             "model": "LZN-816789510780-02",
             "label": "Multi-Tier Eyewear Storage Rack - Option 02 - 3 Display Stand",
-            "priceUsd": null,
+            "priceUsd": 3.44,
             "image": "assets/catalog/816789510780/004.webp"
           },
           {
             "model": "LZN-816789510780-03",
             "label": "Multi-Tier Eyewear Storage Rack - Option 03 - 5 Display Stand",
-            "priceUsd": null,
+            "priceUsd": 5.74,
             "image": "assets/catalog/816789510780/005.webp"
           },
           {
             "model": "LZN-816789510780-04",
             "label": "Multi-Tier Eyewear Storage Rack - Option 04 - 6 Display Stand",
-            "priceUsd": null,
+            "priceUsd": 6.88,
             "image": "assets/catalog/816789510780/006.webp"
           },
           {
             "model": "LZN-816789510780-05",
             "label": "Multi-Tier Eyewear Storage Rack - Option 05 - 7 Display Stand",
-            "priceUsd": null,
+            "priceUsd": 8.03,
             "image": "assets/catalog/816789510780/007.webp"
           },
           {
             "model": "LZN-816789510780-06",
             "label": "Multi-Tier Eyewear Storage Rack - Option 06 - 1 Display Stand",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/816789510780/008.webp"
           }
         ],
@@ -2147,6 +2387,188 @@
           "Suitable for counters, showcases, walls, and retail displays.",
           "Available in multiple capacities, finishes, or layouts."
         ]
+      },
+      {
+        "category": "display",
+        "model": "LZN-1056074869364",
+        "nameEn": "Acrylic Lens Packaging Display Holder",
+        "chineseName": "Acrylic Lens Packaging Display Holder",
+        "image": "assets/catalog/1056074869364/english-card.png",
+        "images": [
+          "assets/catalog/1056074869364/english-card.png"
+        ],
+        "description": "Transparent acrylic holders present packaged ophthalmic or sunglass lenses neatly on optical retail counters.",
+        "priceUsd": 1.55,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 1.55 - 4.75",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-1056074869364-01",
+            "label": "7.7 cm Aperture Holder - 1 Piece",
+            "priceUsd": 1.55,
+            "image": "assets/catalog/1056074869364/english-card.png"
+          },
+          {
+            "model": "LZN-1056074869364-02",
+            "label": "7.7 cm Aperture Holders - 3 Pieces",
+            "priceUsd": 4.25,
+            "image": "assets/catalog/1056074869364/english-card.png"
+          },
+          {
+            "model": "LZN-1056074869364-03",
+            "label": "8.8 cm Aperture Holder - 1 Piece",
+            "priceUsd": 1.75,
+            "image": "assets/catalog/1056074869364/english-card.png"
+          },
+          {
+            "model": "LZN-1056074869364-04",
+            "label": "8.8 cm Aperture Holders - 3 Pieces",
+            "priceUsd": 4.75,
+            "image": "assets/catalog/1056074869364/english-card.png"
+          }
+        ],
+        "features": [
+          "Clear acrylic keeps the lens package visible.",
+          "Two aperture sizes accommodate common lens presentations.",
+          "Available individually or in three-piece sets."
+        ]
+      },
+      {
+        "category": "display",
+        "model": "LZN-988991578790",
+        "nameEn": "Square-Base Eyewear Display Stand",
+        "chineseName": "Square-Base Eyewear Display Stand",
+        "image": "assets/catalog/988991578790/english-card.png",
+        "images": [
+          "assets/catalog/988991578790/english-card.png"
+        ],
+        "description": "Color-finished square-base stands organize eyeglasses and sunglasses across optical retail counters.",
+        "priceUsd": 2.5,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 2.50 - 11.50",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-988991578790-01",
+            "label": "Pure White - 1 Piece",
+            "priceUsd": 2.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-02",
+            "label": "Pure White - 3 Pieces",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-03",
+            "label": "Pure White - 6 Pieces",
+            "priceUsd": 11.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-04",
+            "label": "Coastal Blue - 1 Piece",
+            "priceUsd": 2.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-05",
+            "label": "Coastal Blue - 3 Pieces",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-06",
+            "label": "Coastal Blue - 6 Pieces",
+            "priceUsd": 11.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-07",
+            "label": "Smoke Gray - 1 Piece",
+            "priceUsd": 2.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-08",
+            "label": "Smoke Gray - 3 Pieces",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-09",
+            "label": "Sand Camel - 1 Piece",
+            "priceUsd": 2.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-10",
+            "label": "Sand Camel - 6 Pieces",
+            "priceUsd": 11.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-11",
+            "label": "Midnight Blue - 1 Piece",
+            "priceUsd": 2.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-12",
+            "label": "Midnight Blue - 6 Pieces",
+            "priceUsd": 11.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-13",
+            "label": "Field Green - 1 Piece",
+            "priceUsd": 2.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-14",
+            "label": "Field Green - 6 Pieces",
+            "priceUsd": 11.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-15",
+            "label": "Pomegranate Red - 1 Piece",
+            "priceUsd": 2.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-16",
+            "label": "Pomegranate Red - 3 Pieces",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-17",
+            "label": "Matte Black - 1 Piece",
+            "priceUsd": 2.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-18",
+            "label": "Matte Black - 3 Pieces",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          },
+          {
+            "model": "LZN-988991578790-19",
+            "label": "Matte Black - 6 Pieces",
+            "priceUsd": 11.5,
+            "image": "assets/catalog/988991578790/english-card.png"
+          }
+        ],
+        "features": [
+          "Stable square base suits retail counters and showcases.",
+          "Eight coordinated finishes support visual merchandising.",
+          "Single and multipack options simplify store planning."
+        ]
       }
     ]
   },
@@ -2172,27 +2594,27 @@
           "assets/catalog/779201236504/008.webp"
         ],
         "description": "Titanium Nose Pad Set provides a practical replacement solution for frame fit, comfort, and nose bridge support.",
-        "priceUsd": 0.19,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "USD 0.19",
+        "priceDisplay": "USD 1.00",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-779201236504-01",
             "label": "Titanium Silver - 2 Pairs",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/779201236504/english-card.png"
           },
           {
             "model": "LZN-779201236504-02",
             "label": "Titanium Gunmetal - 2 Pairs",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/779201236504/007.webp"
           },
           {
             "model": "LZN-779201236504-03",
             "label": "Titanium Gold - 2 Pairs",
-            "priceUsd": 0.19,
+            "priceUsd": 1,
             "image": "assets/catalog/779201236504/008.webp"
           }
         ],
@@ -2280,39 +2702,39 @@
           "assets/catalog/948519747052/009.webp"
         ],
         "description": "One-Piece Silicone Saddle Nose Pad provides a practical replacement solution for frame fit, comfort, and nose bridge support.",
-        "priceUsd": 0.19,
+        "priceUsd": 1.9,
         "priceOnRequest": false,
-        "priceDisplay": "USD 0.19",
+        "priceDisplay": "USD 1.90",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-948519747052-01",
-            "label": "Matte White",
-            "priceUsd": 0.19,
+            "label": "Matte White - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/948519747052/english-card.png"
           },
           {
             "model": "LZN-948519747052-02",
-            "label": "Matte Black",
-            "priceUsd": 0.19,
+            "label": "Matte Black - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/948519747052/006.webp"
           },
           {
             "model": "LZN-948519747052-03",
-            "label": "Dark Blue",
-            "priceUsd": 0.19,
+            "label": "Dark Blue - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/948519747052/007.webp"
           },
           {
             "model": "LZN-948519747052-04",
-            "label": "Light Pink",
-            "priceUsd": 0.19,
+            "label": "Light Pink - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/948519747052/008.webp"
           },
           {
             "model": "LZN-948519747052-05",
-            "label": "Light Blue",
-            "priceUsd": 0.19,
+            "label": "Light Blue - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/948519747052/009.webp"
           }
         ],
@@ -2320,6 +2742,130 @@
           "Replacement component for eyeglass fitting and repair.",
           "Designed to improve frame stability and wearer comfort.",
           "Available in multiple materials, colors, or sizes."
+        ]
+      },
+      {
+        "category": "nose-pads",
+        "model": "LZN-664805957052",
+        "nameEn": "Metal Nose-Pad Arms",
+        "chineseName": "Metal Nose-Pad Arms",
+        "image": "assets/catalog/664805957052/english-card.png",
+        "images": [
+          "assets/catalog/664805957052/english-card.png"
+        ],
+        "description": "Replacement metal nose-pad arms support frame repair, soldering, and bridge restoration in optical workshops.",
+        "priceUsd": 5.9,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 5.90",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-664805957052-01",
+            "label": "JT-14 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-02",
+            "label": "JT-15 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-03",
+            "label": "JT-17 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-04",
+            "label": "JT-19 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-05",
+            "label": "JT-20 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-06",
+            "label": "JT-21 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-07",
+            "label": "JT-22 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-08",
+            "label": "JT-24 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-09",
+            "label": "JT-25 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-10",
+            "label": "JT-26 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-11",
+            "label": "JT-27 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-12",
+            "label": "JT-35 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-13",
+            "label": "JT-36 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-14",
+            "label": "JT-40 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-15",
+            "label": "JT-44 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-16",
+            "label": "JT-46 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          },
+          {
+            "model": "LZN-664805957052-17",
+            "label": "JT-47 Nose-Pad Arms - 10 Pairs",
+            "priceUsd": 5.9,
+            "image": "assets/catalog/664805957052/english-card.png"
+          }
+        ],
+        "features": [
+          "Supplied as matched repair pairs.",
+          "Multiple mount geometries fit varied frame designs.",
+          "Suitable for professional soldering and frame restoration."
         ]
       }
     ]
@@ -2340,27 +2886,27 @@
           "assets/catalog/1046054732193/english-option-03.png"
         ],
         "description": "A complete optical workshop kit for installing and adjusting screw-mounted nose pads with precision.",
-        "priceUsd": null,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.00 - 3.44",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-1046054732193-01",
             "label": "Complete Nose-Pad Installation Kit - 5 mm",
-            "priceUsd": null,
+            "priceUsd": 3.44,
             "image": "assets/catalog/1046054732193/english-option-01.png"
           },
           {
             "model": "LZN-1046054732193-02",
             "label": "Complete Nose-Pad Installation Kit - 3 mm",
-            "priceUsd": null,
+            "priceUsd": 2.68,
             "image": "assets/catalog/1046054732193/english-option-01.png"
           },
           {
             "model": "LZN-1046054732193-03",
             "label": "Complete Nose-Pad Installation Kit - 1 mm",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/1046054732193/english-option-03.png"
           }
         ],
@@ -2380,15 +2926,15 @@
           "assets/catalog/964903108732/english-option-01.png"
         ],
         "description": "Soft cushioning tape for reducing localized pressure and improving comfort at the eyewear nose bridge.",
-        "priceUsd": null,
+        "priceUsd": 1.72,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.72",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-964903108732-01",
             "label": "Nasal-Bridge Pressure-Relief Tape - 3 Rolls",
-            "priceUsd": null,
+            "priceUsd": 1.72,
             "image": "assets/catalog/964903108732/english-option-01.png"
           }
         ],
@@ -2410,27 +2956,27 @@
           "assets/catalog/951327613005/003.webp"
         ],
         "description": "A precision adhesive set for securing and repairing compatible metal, plastic, and resin eyewear components.",
-        "priceUsd": null,
+        "priceUsd": 1.15,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.15 - 3.82",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-951327613005-01",
             "label": "Eyeglass Frame Repair Adhesive Set - Option 01 - 2",
-            "priceUsd": null,
+            "priceUsd": 2.87,
             "image": "assets/catalog/951327613005/english-card.png"
           },
           {
             "model": "LZN-951327613005-02",
             "label": "Eyeglass Frame Repair Adhesive Set - Option 02 - 3",
-            "priceUsd": null,
+            "priceUsd": 3.82,
             "image": "assets/catalog/951327613005/002.webp"
           },
           {
             "model": "LZN-951327613005-03",
             "label": "Eyeglass Frame Repair Adhesive Set - Option 03 - 1",
-            "priceUsd": null,
+            "priceUsd": 1.15,
             "image": "assets/catalog/951327613005/003.webp"
           }
         ],
@@ -2457,57 +3003,57 @@
           "assets/catalog/760918224534/english-option-08.png"
         ],
         "description": "Soft round silicone nose pads designed to improve eyewear comfort and reduce pressure at the nose bridge.",
-        "priceUsd": null,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.00 - 1.53",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-760918224534-01",
             "label": "Black Large Round Nose Pads - 2 Pairs",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/760918224534/english-option-01.png"
           },
           {
             "model": "LZN-760918224534-02",
             "label": "Clear Large Round Nose Pads - 2 Pairs",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/760918224534/english-option-02.png"
           },
           {
             "model": "LZN-760918224534-03",
             "label": "Black Small Round Nose Pads - 2 Pairs",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/760918224534/english-option-03.png"
           },
           {
             "model": "LZN-760918224534-04",
             "label": "Clear Small Round Nose Pads - 2 Pairs",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/760918224534/english-option-04.png"
           },
           {
             "model": "LZN-760918224534-05",
             "label": "Black Large Round Nose Pads - 4 Pairs",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/760918224534/english-option-05.png"
           },
           {
             "model": "LZN-760918224534-06",
             "label": "Clear Large Round Nose Pads - 4 Pairs",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/760918224534/english-option-06.png"
           },
           {
             "model": "LZN-760918224534-07",
             "label": "Black Small Round Nose Pads - 4 Pairs",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/760918224534/english-option-07.png"
           },
           {
             "model": "LZN-760918224534-08",
             "label": "Clear Small Round Nose Pads - 4 Pairs",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/760918224534/english-option-08.png"
           }
         ],
@@ -2529,27 +3075,27 @@
           "assets/catalog/628686984636/english-option-03.png"
         ],
         "description": "A compact magnetic aluminum tray that keeps small optical screws and metal parts organized during repairs.",
-        "priceUsd": null,
+        "priceUsd": 2.29,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 2.29",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-628686984636-01",
             "label": "Gold Aluminum Magnetic Screw Tray",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/628686984636/english-option-01.png"
           },
           {
             "model": "LZN-628686984636-02",
             "label": "Red Aluminum Magnetic Screw Tray",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/628686984636/english-option-02.png"
           },
           {
             "model": "LZN-628686984636-03",
             "label": "Purple Aluminum Magnetic Screw Tray",
-            "priceUsd": null,
+            "priceUsd": 2.29,
             "image": "assets/catalog/628686984636/english-option-03.png"
           }
         ],
@@ -2562,12 +3108,12 @@
     ]
   },
   {
-    "id": "tool-set",
+    "id": "tools",
     "en": "Tool Set",
     "desc": "Optical shop products with option-level images and USD catalog pricing.",
     "items": [
       {
-        "category": "tool-set",
+        "category": "tools",
         "model": "LZN-972711305522",
         "nameEn": "Eyeglass Repair Screw Assortment",
         "chineseName": "Eyeglass Repair Screw Assortment",
@@ -2598,123 +3144,123 @@
           "assets/catalog/972711305522/english-screw-option-19.png"
         ],
         "description": "Eyeglass Repair Screw Assortment is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
-        "priceUsd": 0.47,
+        "priceUsd": 4.7,
         "priceOnRequest": false,
-        "priceDisplay": "USD 0.47 - 0.7",
+        "priceDisplay": "USD 4.70 - 7.00",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-972711305522-01",
-            "label": "Eyeglass Repair Screw Assortment - Option 01 - Nose PadScrew1.2*3.6",
-            "priceUsd": 0.47,
+            "label": "Eyeglass Repair Screw Assortment - Option 01 - Nose PadScrew1.2*3.6 - 10-Pack",
+            "priceUsd": 4.7,
             "image": "assets/catalog/972711305522/english-card.png"
           },
           {
             "model": "LZN-972711305522-02",
-            "label": "Eyeglass Repair Screw Assortment - Option 02 - Screw2.0*1.4*2.4",
-            "priceUsd": 0.47,
+            "label": "Eyeglass Repair Screw Assortment - Option 02 - Screw2.0*1.4*2.4 - 10-Pack",
+            "priceUsd": 4.7,
             "image": "assets/catalog/972711305522/english-screw-option-02.png"
           },
           {
             "model": "LZN-972711305522-03",
-            "label": "Eyeglass Repair Screw Assortment - Option 03 - Screw2.0*1.4*2.6",
-            "priceUsd": 0.47,
+            "label": "Eyeglass Repair Screw Assortment - Option 03 - Screw2.0*1.4*2.6 - 10-Pack",
+            "priceUsd": 4.7,
             "image": "assets/catalog/972711305522/english-screw-option-03.png"
           },
           {
             "model": "LZN-972711305522-04",
-            "label": "Eyeglass Repair Screw Assortment - Option 04 - Screw2.0*1.4*2.8",
-            "priceUsd": 0.47,
+            "label": "Eyeglass Repair Screw Assortment - Option 04 - Screw2.0*1.4*2.8 - 10-Pack",
+            "priceUsd": 4.7,
             "image": "assets/catalog/972711305522/english-screw-option-04.png"
           },
           {
             "model": "LZN-972711305522-05",
-            "label": "Eyeglass Repair Screw Assortment - Option 05 - Screw2.0*1.4*3.0",
-            "priceUsd": 0.47,
+            "label": "Eyeglass Repair Screw Assortment - Option 05 - Screw2.0*1.4*3.0 - 10-Pack",
+            "priceUsd": 4.7,
             "image": "assets/catalog/972711305522/english-screw-option-05.png"
           },
           {
             "model": "LZN-972711305522-06",
-            "label": "Eyeglass Repair Screw Assortment - Option 06 - Screw2.0*1.4*3.2",
-            "priceUsd": 0.47,
+            "label": "Eyeglass Repair Screw Assortment - Option 06 - Screw2.0*1.4*3.2 - 10-Pack",
+            "priceUsd": 4.7,
             "image": "assets/catalog/972711305522/english-screw-option-06.png"
           },
           {
             "model": "LZN-972711305522-07",
-            "label": "Eyeglass Repair Screw Assortment - Option 07 - Screw2.0*1.4*3.4",
-            "priceUsd": 0.47,
+            "label": "Eyeglass Repair Screw Assortment - Option 07 - Screw2.0*1.4*3.4 - 10-Pack",
+            "priceUsd": 4.7,
             "image": "assets/catalog/972711305522/english-screw-option-07.png"
           },
           {
             "model": "LZN-972711305522-08",
-            "label": "Eyeglass Repair Screw Assortment - Option 08 - Screw2.0*1.4*3.6",
-            "priceUsd": 0.47,
+            "label": "Eyeglass Repair Screw Assortment - Option 08 - Screw2.0*1.4*3.6 - 10-Pack",
+            "priceUsd": 4.7,
             "image": "assets/catalog/972711305522/english-screw-option-08.png"
           },
           {
             "model": "LZN-972711305522-09",
-            "label": "Eyeglass Repair Screw Assortment - Option 09 - Screw2.0*1.4*3.8",
-            "priceUsd": 0.47,
+            "label": "Eyeglass Repair Screw Assortment - Option 09 - Screw2.0*1.4*3.8 - 10-Pack",
+            "priceUsd": 4.7,
             "image": "assets/catalog/972711305522/english-screw-option-09.png"
           },
           {
             "model": "LZN-972711305522-10",
-            "label": "Eyeglass Repair Screw Assortment - Option 10 - Screw2.0*1.4*4.0",
-            "priceUsd": 0.47,
+            "label": "Eyeglass Repair Screw Assortment - Option 10 - Screw2.0*1.4*4.0 - 10-Pack",
+            "priceUsd": 4.7,
             "image": "assets/catalog/972711305522/english-screw-option-10.png"
           },
           {
             "model": "LZN-972711305522-11",
-            "label": "Eyeglass Repair Screw Assortment - Option 11 - Screw2.5*1.4*4.0",
-            "priceUsd": 0.51,
+            "label": "Eyeglass Repair Screw Assortment - Option 11 - Screw2.5*1.4*4.0 - 10-Pack",
+            "priceUsd": 5.1,
             "image": "assets/catalog/972711305522/english-screw-option-11.png"
           },
           {
             "model": "LZN-972711305522-12",
-            "label": "Eyeglass Repair Screw Assortment - Option 12 - Screw2.5*1.4*4.5",
-            "priceUsd": 0.51,
+            "label": "Eyeglass Repair Screw Assortment - Option 12 - Screw2.5*1.4*4.5 - 10-Pack",
+            "priceUsd": 5.1,
             "image": "assets/catalog/972711305522/english-screw-option-12.png"
           },
           {
             "model": "LZN-972711305522-13",
-            "label": "Eyeglass Repair Screw Assortment - Option 13 - Screw2.5*1.4*5.0",
-            "priceUsd": 0.51,
+            "label": "Eyeglass Repair Screw Assortment - Option 13 - Screw2.5*1.4*5.0 - 10-Pack",
+            "priceUsd": 5.1,
             "image": "assets/catalog/972711305522/english-screw-option-13.png"
           },
           {
             "model": "LZN-972711305522-14",
-            "label": "Eyeglass Repair Screw Assortment - Option 14 - Screw2.5*1.6*4.0",
-            "priceUsd": 0.51,
+            "label": "Eyeglass Repair Screw Assortment - Option 14 - Screw2.5*1.6*4.0 - 10-Pack",
+            "priceUsd": 5.1,
             "image": "assets/catalog/972711305522/english-screw-option-14.png"
           },
           {
             "model": "LZN-972711305522-15",
-            "label": "Eyeglass Repair Screw Assortment - Option 15 - Screw2.5*1.6*4.5",
-            "priceUsd": 0.51,
+            "label": "Eyeglass Repair Screw Assortment - Option 15 - Screw2.5*1.6*4.5 - 10-Pack",
+            "priceUsd": 5.1,
             "image": "assets/catalog/972711305522/english-screw-option-15.png"
           },
           {
             "model": "LZN-972711305522-16",
-            "label": "Eyeglass Repair Screw Assortment - Option 16 - Screw2.5*1.6*5.0",
-            "priceUsd": 0.51,
+            "label": "Eyeglass Repair Screw Assortment - Option 16 - Screw2.5*1.6*5.0 - 10-Pack",
+            "priceUsd": 5.1,
             "image": "assets/catalog/972711305522/english-screw-option-16.png"
           },
           {
             "model": "LZN-972711305522-17",
-            "label": "Eyeglass Repair Screw Assortment - Option 17 - 2.5*1.4*6.0",
-            "priceUsd": 0.51,
+            "label": "Eyeglass Repair Screw Assortment - Option 17 - 2.5*1.4*6.0 - 10-Pack",
+            "priceUsd": 5.1,
             "image": "assets/catalog/972711305522/english-screw-option-17.png"
           },
           {
             "model": "LZN-972711305522-18",
-            "label": "Eyeglass Repair Screw Assortment - Option 18 - 2.5*1.4*8.0",
-            "priceUsd": 0.51,
+            "label": "Eyeglass Repair Screw Assortment - Option 18 - 2.5*1.4*8.0 - 10-Pack",
+            "priceUsd": 5.1,
             "image": "assets/catalog/972711305522/english-screw-option-18.png"
           },
           {
             "model": "LZN-972711305522-19",
-            "label": "Eyeglass Repair Screw Assortment - Option 19 - 1.4",
-            "priceUsd": 0.7,
+            "label": "Eyeglass Repair Screw Assortment - Option 19 - 1.4 - 10-Pack",
+            "priceUsd": 7,
             "image": "assets/catalog/972711305522/english-screw-option-19.png"
           }
         ],
@@ -2725,7 +3271,7 @@
         ]
       },
       {
-        "category": "tool-set",
+        "category": "tools",
         "model": "LZN-1028215754918",
         "nameEn": "Eyeglass Frame Adjustment Tool Set",
         "chineseName": "Eyeglass Frame Adjustment Tool Set",
@@ -2737,21 +3283,21 @@
           "assets/catalog/1028215754918/004.webp"
         ],
         "description": "Eyeglass Frame Adjustment Tool Set is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
-        "priceUsd": null,
+        "priceUsd": 1.53,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.53 - 2.68",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-1028215754918-01",
             "label": "Eyeglass Frame Adjustment Tool Set - Option 01",
-            "priceUsd": null,
+            "priceUsd": 1.53,
             "image": "assets/catalog/1028215754918/english-card.png"
           },
           {
             "model": "LZN-1028215754918-02",
             "label": "Eyeglass Frame Adjustment Tool Set - Option 02 - 2 Lens Cloth",
-            "priceUsd": null,
+            "priceUsd": 2.68,
             "image": "assets/catalog/1028215754918/004.webp"
           }
         ],
@@ -2762,7 +3308,7 @@
         ]
       },
       {
-        "category": "tool-set",
+        "category": "tools",
         "model": "LZN-989792061106",
         "nameEn": "Optical Frame Adjustment Pliers",
         "chineseName": "Optical Frame Adjustment Pliers",
@@ -2836,7 +3382,7 @@
         ]
       },
       {
-        "category": "tool-set",
+        "category": "tools",
         "model": "LZN-837845339246",
         "nameEn": "Professional Eyeglass Repair Pliers",
         "chineseName": "LZN Optical Product 837845339246",
@@ -2853,63 +3399,63 @@
           "assets/catalog/837845339246/english-option-09.png"
         ],
         "description": "Specialized optical pliers for frame adjustment, lens fitting, nose-pad work, cutting, and precision eyewear repair.",
-        "priceUsd": null,
+        "priceUsd": 4.21,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 4.21 - 26.38",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-837845339246-01",
             "label": "10-Piece Eyeglass Repair Pliers Set",
-            "priceUsd": null,
+            "priceUsd": 26.38,
             "image": "assets/catalog/837845339246/english-option-01.png"
           },
           {
             "model": "LZN-837845339246-02",
             "label": "AC21 Half-Round Plastic-Jaw Pliers",
-            "priceUsd": null,
+            "priceUsd": 4.21,
             "image": "assets/catalog/837845339246/english-option-02.png"
           },
           {
             "model": "LZN-837845339246-03",
             "label": "A38 Straight Suction-Cup Pliers",
-            "priceUsd": null,
+            "priceUsd": 4.21,
             "image": "assets/catalog/837845339246/english-option-03.png"
           },
           {
             "model": "LZN-837845339246-04",
             "label": "AC29 Lens-Ring Adjustment Pliers",
-            "priceUsd": null,
+            "priceUsd": 9.75,
             "image": "assets/catalog/837845339246/english-option-04.png"
           },
           {
             "model": "LZN-837845339246-05",
             "label": "AC14 Nose-Pad Pliers",
-            "priceUsd": null,
+            "priceUsd": 4.21,
             "image": "assets/catalog/837845339246/english-option-05.png"
           },
           {
             "model": "LZN-837845339246-06",
             "label": "AC47 Cutting Pliers",
-            "priceUsd": null,
+            "priceUsd": 4.59,
             "image": "assets/catalog/837845339246/english-option-06.png"
           },
           {
             "model": "LZN-837845339246-07",
             "label": "AC59 Triangular Plastic-Jaw Pliers",
-            "priceUsd": null,
+            "priceUsd": 4.59,
             "image": "assets/catalog/837845339246/english-option-07.png"
           },
           {
             "model": "LZN-837845339246-08",
             "label": "AC15 Curved Nose-Pad Pliers",
-            "priceUsd": null,
+            "priceUsd": 4.21,
             "image": "assets/catalog/837845339246/english-option-08.png"
           },
           {
             "model": "LZN-837845339246-09",
             "label": "AC901 Small Square Plastic-Jaw Pliers",
-            "priceUsd": null,
+            "priceUsd": 4.21,
             "image": "assets/catalog/837845339246/english-option-09.png"
           }
         ],
@@ -2920,7 +3466,7 @@
         ]
       },
       {
-        "category": "tool-set",
+        "category": "tools",
         "model": "LZN-807888035006",
         "nameEn": "Professional Optical Adjustment Pliers",
         "chineseName": "Professional Optical Adjustment Pliers",
@@ -3099,7 +3645,7 @@
         ]
       },
       {
-        "category": "tool-set",
+        "category": "tools",
         "model": "LZN-673765851712",
         "nameEn": "Semi-Rimless Eyewire Threading Tool Set",
         "chineseName": "Semi-Rimless Eyewire Threading Tool Set",
@@ -3223,7 +3769,7 @@
         ]
       },
       {
-        "category": "tool-set",
+        "category": "tools",
         "model": "LZN-582020332203",
         "nameEn": "Replacement Eyeglass Temple Arms",
         "chineseName": "Replacement Eyeglass Temple Arms",
@@ -3247,81 +3793,81 @@
           "assets/catalog/582020332203/016.webp"
         ],
         "description": "Replacement Eyeglass Temple Arms is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
-        "priceUsd": 0.08,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "USD 0.08 - 0.19",
+        "priceDisplay": "USD 1.00 - 1.90",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-582020332203-01",
-            "label": "Replacement Eyeglass Temple Arms - Option 01 - 3.5 3.5mm Screw",
-            "priceUsd": 0.08,
+            "label": "Replacement Eyeglass Temple Arms - Option 01 - 3.5 3.5mm Screw - 10-Pack",
+            "priceUsd": 1,
             "image": "assets/catalog/582020332203/english-card.png"
           },
           {
             "model": "LZN-582020332203-02",
-            "label": "Replacement Eyeglass Temple Arms - Option 02 - 4 4mm Screw",
-            "priceUsd": 0.19,
+            "label": "Replacement Eyeglass Temple Arms - Option 02 - 4 4mm Screw - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/582020332203/006.webp"
           },
           {
             "model": "LZN-582020332203-03",
-            "label": "Replacement Eyeglass Temple Arms - Option 03 - 4 4mm Screw",
-            "priceUsd": 0.19,
+            "label": "Replacement Eyeglass Temple Arms - Option 03 - 4 4mm Screw - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/582020332203/007.webp"
           },
           {
             "model": "LZN-582020332203-04",
-            "label": "Replacement Eyeglass Temple Arms - Option 04 - 5 5mm Screw",
-            "priceUsd": 0.19,
+            "label": "Replacement Eyeglass Temple Arms - Option 04 - 5 5mm Screw - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/582020332203/008.webp"
           },
           {
             "model": "LZN-582020332203-05",
-            "label": "Replacement Eyeglass Temple Arms - Option 05 - 5 5mm Screw",
-            "priceUsd": 0.19,
+            "label": "Replacement Eyeglass Temple Arms - Option 05 - 5 5mm Screw - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/582020332203/009.webp"
           },
           {
             "model": "LZN-582020332203-06",
-            "label": "Replacement Eyeglass Temple Arms - Option 06 - 6 6mm Screw",
-            "priceUsd": 0.19,
+            "label": "Replacement Eyeglass Temple Arms - Option 06 - 6 6mm Screw - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/582020332203/010.webp"
           },
           {
             "model": "LZN-582020332203-07",
-            "label": "Replacement Eyeglass Temple Arms - Option 07 - 6 6mm Screw",
-            "priceUsd": 0.19,
+            "label": "Replacement Eyeglass Temple Arms - Option 07 - 6 6mm Screw - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/582020332203/011.webp"
           },
           {
             "model": "LZN-582020332203-08",
-            "label": "Replacement Eyeglass Temple Arms - Option 08 - 6.5 6.5mm Screw",
-            "priceUsd": 0.19,
+            "label": "Replacement Eyeglass Temple Arms - Option 08 - 6.5 6.5mm Screw - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/582020332203/012.webp"
           },
           {
             "model": "LZN-582020332203-09",
-            "label": "Replacement Eyeglass Temple Arms - Option 09 - 7 7mm Screw",
-            "priceUsd": 0.19,
+            "label": "Replacement Eyeglass Temple Arms - Option 09 - 7 7mm Screw - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/582020332203/013.webp"
           },
           {
             "model": "LZN-582020332203-10",
-            "label": "Replacement Eyeglass Temple Arms - Option 10 - 7.5 7.5mm Screw",
-            "priceUsd": 0.19,
+            "label": "Replacement Eyeglass Temple Arms - Option 10 - 7.5 7.5mm Screw - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/582020332203/014.webp"
           },
           {
             "model": "LZN-582020332203-11",
-            "label": "Replacement Eyeglass Temple Arms - Option 11 - 8 8mm Screw",
-            "priceUsd": 0.19,
+            "label": "Replacement Eyeglass Temple Arms - Option 11 - 8 8mm Screw - 10-Pack",
+            "priceUsd": 1.9,
             "image": "assets/catalog/582020332203/015.webp"
           },
           {
             "model": "LZN-582020332203-12",
-            "label": "Replacement Eyeglass Temple Arms - Option 12 - 9 9mm Screw",
-            "priceUsd": 0.08,
+            "label": "Replacement Eyeglass Temple Arms - Option 12 - 9 9mm Screw - 10-Pack",
+            "priceUsd": 1,
             "image": "assets/catalog/582020332203/016.webp"
           }
         ],
@@ -3332,7 +3878,7 @@
         ]
       },
       {
-        "category": "tool-set",
+        "category": "tools",
         "model": "LZN-983486693358",
         "nameEn": "Round Occluder Set",
         "chineseName": "LZN Optical Product 983486693358",
@@ -3343,27 +3889,27 @@
           "assets/catalog/983486693358/english-option-03.webp"
         ],
         "description": "Handheld round occluders for monocular vision screening, refraction support, and clinical eye examinations.",
-        "priceUsd": null,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.00 - 2.00",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-983486693358-01",
             "label": "Single Round Occluder",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/983486693358/english-option-01.webp"
           },
           {
             "model": "LZN-983486693358-02",
             "label": "Triple Round Occluder Set",
-            "priceUsd": null,
+            "priceUsd": 2,
             "image": "assets/catalog/983486693358/english-option-02.webp"
           },
           {
             "model": "LZN-983486693358-03",
             "label": "Double Round Occluder Set",
-            "priceUsd": null,
+            "priceUsd": 1.5,
             "image": "assets/catalog/983486693358/english-option-03.webp"
           }
         ],
@@ -3374,7 +3920,7 @@
         ]
       },
       {
-        "category": "tool-set",
+        "category": "tools",
         "model": "LZN-608800446878",
         "nameEn": "Eyeglass Repair Screw and Parts Kit",
         "chineseName": "Eyeglass Repair Screw and Parts Kit",
@@ -3402,99 +3948,99 @@
           "assets/catalog/608800446878/020.webp"
         ],
         "description": "Eyeglass Repair Screw and Parts Kit is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
-        "priceUsd": 0.19,
+        "priceUsd": 12.9,
         "priceOnRequest": false,
-        "priceDisplay": "USD 0.19",
+        "priceDisplay": "USD 12.90",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-608800446878-01",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 01 - 500 Screw W8",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/english-card.png"
           },
           {
             "model": "LZN-608800446878-02",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 02 - 500 Screw W8",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/007.webp"
           },
           {
             "model": "LZN-608800446878-03",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 03 - Upgraded 500 Screw S8",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/008.webp"
           },
           {
             "model": "LZN-608800446878-04",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 04 - YZ Screw",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/009.webp"
           },
           {
             "model": "LZN-608800446878-05",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 05 - 150 Screw JS1-Gold",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/010.webp"
           },
           {
             "model": "LZN-608800446878-06",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 06 - Screw GoldGold-200",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/011.webp"
           },
           {
             "model": "LZN-608800446878-07",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 07 - GoldG18Screw",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/012.webp"
           },
           {
             "model": "LZN-608800446878-08",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 08 - 150 Screw JS1 Gunmetal",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/013.webp"
           },
           {
             "model": "LZN-608800446878-09",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 09 - 150 Screw JS1-Silver",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/014.webp"
           },
           {
             "model": "LZN-608800446878-10",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 10 - Screw SilverSilver-200",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/015.webp"
           },
           {
             "model": "LZN-608800446878-11",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 11 - ScrewB1",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/016.webp"
           },
           {
             "model": "LZN-608800446878-12",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 12 - 1.4 Screw",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/017.webp"
           },
           {
             "model": "LZN-608800446878-13",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 13 - Screw 3",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/018.webp"
           },
           {
             "model": "LZN-608800446878-14",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 14 - Screw 3",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/019.webp"
           },
           {
             "model": "LZN-608800446878-15",
             "label": "Eyeglass Repair Screw and Parts Kit - Option 15 - Screw 3",
-            "priceUsd": 0.19,
+            "priceUsd": 12.9,
             "image": "assets/catalog/608800446878/020.webp"
           }
         ],
@@ -3505,7 +4051,7 @@
         ]
       },
       {
-        "category": "tool-set",
+        "category": "tools",
         "model": "LZN-886101652276",
         "nameEn": "LED Desktop Reading Magnifier",
         "chineseName": "LED Desktop Reading Magnifier",
@@ -3520,7 +4066,7 @@
         "description": "LED Desktop Reading Magnifier is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
         "priceUsd": 6.5,
         "priceOnRequest": false,
-        "priceDisplay": "USD 6.5",
+        "priceDisplay": "USD 6.50",
         "optionLabel": "Available options",
         "options": [
           {
@@ -3535,16 +4081,584 @@
           "Suitable for optical workshops and service counters.",
           "Multiple configurations support different frame maintenance tasks."
         ]
+      },
+      {
+        "category": "tools",
+        "model": "LZN-642422319536",
+        "nameEn": "Ultra-Thin Flat Diamond File",
+        "chineseName": "Ultra-Thin Flat Diamond File",
+        "image": "assets/catalog/642422319536/english-card.png",
+        "images": [
+          "assets/catalog/642422319536/english-card.png"
+        ],
+        "description": "Precision diamond files reach narrow frame and metalwork areas for controlled optical workshop finishing.",
+        "priceUsd": 1.2,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 1.20 - 2.15",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-642422319536-01",
+            "label": "4 x 160 mm Ultra-Thin Double-Sided File",
+            "priceUsd": 1.2,
+            "image": "assets/catalog/642422319536/english-card.png"
+          },
+          {
+            "model": "LZN-642422319536-02",
+            "label": "5 x 180 mm Ultra-Thin Single-Sided File",
+            "priceUsd": 1.25,
+            "image": "assets/catalog/642422319536/english-card.png"
+          },
+          {
+            "model": "LZN-642422319536-03",
+            "label": "5 x 180 mm Ultra-Thin Double-Sided File",
+            "priceUsd": 1.45,
+            "image": "assets/catalog/642422319536/english-card.png"
+          },
+          {
+            "model": "LZN-642422319536-04",
+            "label": "3 x 140 mm Premium Single-Sided File",
+            "priceUsd": 1.35,
+            "image": "assets/catalog/642422319536/english-card.png"
+          },
+          {
+            "model": "LZN-642422319536-05",
+            "label": "3 x 140 mm Premium Double-Sided File",
+            "priceUsd": 1.55,
+            "image": "assets/catalog/642422319536/english-card.png"
+          },
+          {
+            "model": "LZN-642422319536-06",
+            "label": "4 x 160 mm Premium Single-Sided File",
+            "priceUsd": 1.55,
+            "image": "assets/catalog/642422319536/english-card.png"
+          },
+          {
+            "model": "LZN-642422319536-07",
+            "label": "4 x 160 mm Premium Double-Sided File",
+            "priceUsd": 1.75,
+            "image": "assets/catalog/642422319536/english-card.png"
+          },
+          {
+            "model": "LZN-642422319536-08",
+            "label": "5 x 180 mm Premium Single-Sided File",
+            "priceUsd": 1.85,
+            "image": "assets/catalog/642422319536/english-card.png"
+          },
+          {
+            "model": "LZN-642422319536-09",
+            "label": "5 x 180 mm Premium Double-Sided File",
+            "priceUsd": 2.15,
+            "image": "assets/catalog/642422319536/english-card.png"
+          }
+        ],
+        "features": [
+          "Ultra-thin profile reaches narrow working areas.",
+          "Diamond abrasive supports controlled material removal.",
+          "Single- and double-sided versions are available."
+        ]
+      },
+      {
+        "category": "tools",
+        "model": "LZN-828967224168",
+        "nameEn": "Jackson Cross-Cylinder Lens",
+        "chineseName": "Jackson Cross-Cylinder Lens",
+        "image": "assets/catalog/828967224168/english-card.png",
+        "images": [
+          "assets/catalog/828967224168/english-card.png"
+        ],
+        "description": "Handheld Jackson cross-cylinder lenses support cylinder power and axis refinement during subjective refraction.",
+        "priceUsd": 12.5,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 12.50 - 18.50",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-828967224168-01",
+            "label": "JCC-III +/-0.25 D",
+            "priceUsd": 12.5,
+            "image": "assets/catalog/828967224168/english-card.png"
+          },
+          {
+            "model": "LZN-828967224168-02",
+            "label": "JCC-III +/-0.50 D",
+            "priceUsd": 14.5,
+            "image": "assets/catalog/828967224168/english-card.png"
+          },
+          {
+            "model": "LZN-828967224168-03",
+            "label": "JCC-III +/-0.75 D",
+            "priceUsd": 16.5,
+            "image": "assets/catalog/828967224168/english-card.png"
+          },
+          {
+            "model": "LZN-828967224168-04",
+            "label": "JCC-III +/-1.00 D",
+            "priceUsd": 18.5,
+            "image": "assets/catalog/828967224168/english-card.png"
+          }
+        ],
+        "features": [
+          "Clear axis markings support repeatable examination.",
+          "Balanced handheld design allows quick lens flipping.",
+          "Four cylinder powers cover common clinical needs."
+        ]
+      },
+      {
+        "category": "tools",
+        "model": "LZN-902891883269",
+        "nameEn": "Lens-Edger Suction Cups",
+        "chineseName": "Lens-Edger Suction Cups",
+        "image": "assets/catalog/902891883269/english-card.png",
+        "images": [
+          "assets/catalog/902891883269/english-card.png"
+        ],
+        "description": "Replacement suction cups and blocking heads support secure lens handling across common edging workflows.",
+        "priceUsd": 6.5,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 6.50 - 8.50",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-902891883269-01",
+            "label": "Small Red 06445 - 10-Pack",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-02",
+            "label": "Small Blue 06445 - 10-Pack",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-03",
+            "label": "Small Base-Curve 06442 - 10-Pack",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-04",
+            "label": "Small 06441 - 10-Pack",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-05",
+            "label": "Metal Suction Cup 06433 - 10-Pack",
+            "priceUsd": 8.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-06",
+            "label": "Suction Cup 06435 - 10-Pack",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-07",
+            "label": "Suction Cup 06437 - 10-Pack",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-08",
+            "label": "Large Red 06438 - 10-Pack",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-09",
+            "label": "Large Blue 06438 - 10-Pack",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-10",
+            "label": "Small Red 06439 - 10-Pack",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-11",
+            "label": "Small Blue 06439 - 10-Pack",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-12",
+            "label": "Edger Cup 06425 - 10-Pack",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-13",
+            "label": "Edger Cup 06426 - 10-Pack",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-14",
+            "label": "Suction Cup 06459 - 10-Pack",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-15",
+            "label": "Suction Cup 06457 - 10-Pack",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-16",
+            "label": "Thin-Wall Stem Cup 06481 - 10-Pack",
+            "priceUsd": 8.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-17",
+            "label": "Flat Hard Cup 06480 - 10-Pack",
+            "priceUsd": 8.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-18",
+            "label": "Suction Cup 06484 - 10-Pack",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-19",
+            "label": "Suction Cup 06486 - 10-Pack",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-20",
+            "label": "Short Suction Cup 06431 - 10-Pack",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-21",
+            "label": "Transparent Suction Cup 06455 - 10-Pack",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-22",
+            "label": "Suction Cup 06433-1 - 10-Pack",
+            "priceUsd": 8.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          },
+          {
+            "model": "LZN-902891883269-23",
+            "label": "Universal Suction Cup 06475 - 10-Pack",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/902891883269/english-card.png"
+          }
+        ],
+        "features": [
+          "Ten-piece packs simplify workshop stocking.",
+          "Multiple profiles fit varied edger and blocker systems.",
+          "Color-coded options support quick identification."
+        ]
+      },
+      {
+        "category": "tools",
+        "model": "LZN-941513354434",
+        "nameEn": "Rechargeable Magnetic Inspection Pen Light",
+        "chineseName": "Rechargeable Magnetic Inspection Pen Light",
+        "image": "assets/catalog/941513354434/english-card.png",
+        "images": [
+          "assets/catalog/941513354434/english-card.png"
+        ],
+        "description": "A compact magnetic inspection light provides white, warm, and red illumination for optical repair and bench work.",
+        "priceUsd": 6.5,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 6.50",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-941513354434-01",
+            "label": "Gray Magnetic Three-Light Pen with Battery Display",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/941513354434/english-card.png"
+          },
+          {
+            "model": "LZN-941513354434-02",
+            "label": "Green Magnetic Three-Light Pen with Battery Display",
+            "priceUsd": 6.5,
+            "image": "assets/catalog/941513354434/english-card.png"
+          }
+        ],
+        "features": [
+          "Magnetic body supports hands-free positioning.",
+          "Three light colors suit inspection and repair tasks.",
+          "Digital battery display supports timely recharging."
+        ]
+      },
+      {
+        "category": "tools",
+        "model": "LZN-944318357191",
+        "nameEn": "Dual-Light Medical Pupil Pen",
+        "chineseName": "Dual-Light Medical Pupil Pen",
+        "image": "assets/catalog/944318357191/english-card.webp",
+        "images": [
+          "assets/catalog/944318357191/english-card.webp"
+        ],
+        "description": "Compact pupil pen lights provide white and warm illumination for eye, ear, nose, and throat examination support.",
+        "priceUsd": 4.5,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 4.50 - 10.50",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-944318357191-01",
+            "label": "Battery Single White Light - Carton",
+            "priceUsd": 4.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          },
+          {
+            "model": "LZN-944318357191-02",
+            "label": "Battery Single Warm Light - Carton",
+            "priceUsd": 4.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          },
+          {
+            "model": "LZN-944318357191-03",
+            "label": "Battery Dual Light Black - Carton",
+            "priceUsd": 5.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          },
+          {
+            "model": "LZN-944318357191-04",
+            "label": "Battery Dual Light Silver - Carton",
+            "priceUsd": 5.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          },
+          {
+            "model": "LZN-944318357191-05",
+            "label": "Rechargeable Dual Light Black - Carton",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          },
+          {
+            "model": "LZN-944318357191-06",
+            "label": "Rechargeable Dual Light Silver - Carton",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          },
+          {
+            "model": "LZN-944318357191-07",
+            "label": "Rechargeable Dual Light White - Carton",
+            "priceUsd": 7.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          },
+          {
+            "model": "LZN-944318357191-08",
+            "label": "Digital Display Dual Light Black - Carton",
+            "priceUsd": 8.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          },
+          {
+            "model": "LZN-944318357191-09",
+            "label": "Digital Display Dual Light Silver - Carton",
+            "priceUsd": 8.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          },
+          {
+            "model": "LZN-944318357191-10",
+            "label": "Digital Display Dual Light Black - Metal Case",
+            "priceUsd": 10.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          },
+          {
+            "model": "LZN-944318357191-11",
+            "label": "Digital Display Dual Light Silver - Metal Case",
+            "priceUsd": 10.5,
+            "image": "assets/catalog/944318357191/english-card.webp"
+          }
+        ],
+        "features": [
+          "White and warm light options support varied examinations.",
+          "Battery and rechargeable versions are available.",
+          "Compact clip design fits a professional coat pocket."
+        ]
+      },
+      {
+        "category": "tools",
+        "model": "LZN-946634520770",
+        "nameEn": "Lens-Edging Anti-Slip Protection Pads",
+        "chineseName": "Lens-Edging Anti-Slip Protection Pads",
+        "image": "assets/catalog/946634520770/english-card.png",
+        "images": [
+          "assets/catalog/946634520770/english-card.png"
+        ],
+        "description": "Transparent adhesive pads improve blocking stability and help protect lens surfaces during edging.",
+        "priceUsd": 11,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 11.00 - 13.00",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-946634520770-01",
+            "label": "Oval Pads with Center Hole - Box",
+            "priceUsd": 12,
+            "image": "assets/catalog/946634520770/english-card.png"
+          },
+          {
+            "model": "LZN-946634520770-02",
+            "label": "Oval Pads without Center Hole - Box",
+            "priceUsd": 11,
+            "image": "assets/catalog/946634520770/english-card.png"
+          },
+          {
+            "model": "LZN-946634520770-03",
+            "label": "Square Pads - Box",
+            "priceUsd": 13,
+            "image": "assets/catalog/946634520770/english-card.png"
+          }
+        ],
+        "features": [
+          "Transparent material keeps alignment visible.",
+          "Three shapes support varied lens and block requirements.",
+          "High-grip adhesive improves edging stability."
+        ]
+      },
+      {
+        "category": "tools",
+        "model": "LZN-955751797262",
+        "nameEn": "Heat-Resistant Silicone Repair Mat",
+        "chineseName": "Heat-Resistant Silicone Repair Mat",
+        "image": "assets/catalog/955751797262/english-card.png",
+        "images": [
+          "assets/catalog/955751797262/english-card.png"
+        ],
+        "description": "Heat-resistant silicone work mats organize screws, tools, and small parts while protecting optical repair benches.",
+        "priceUsd": 3.5,
+        "priceOnRequest": false,
+        "priceDisplay": "USD 3.50 - 14.00",
+        "optionLabel": "Available options",
+        "options": [
+          {
+            "model": "LZN-955751797262-01",
+            "label": "30 x 20 cm Component-Grid Mat 509",
+            "priceUsd": 3.5,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-02",
+            "label": "25 x 35 cm Magnetic Multi-Slot Mat 504",
+            "priceUsd": 5.5,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-03",
+            "label": "23 x 34 cm Component and Screw-Slot Mat S-120B",
+            "priceUsd": 5.5,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-04",
+            "label": "25 x 35 cm Component and Screw-Slot Mat S-130",
+            "priceUsd": 6,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-05",
+            "label": "30 x 45 cm Magnetic Parts-Cover Mat TE-603",
+            "priceUsd": 8,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-06",
+            "label": "60 x 35 cm Large Multi-Slot Mat 6035",
+            "priceUsd": 9.5,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-07",
+            "label": "25 x 35 cm Multi-Magnetic Multi-Slot Mat S-140",
+            "priceUsd": 7,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-08",
+            "label": "30 x 45 cm Dual-Board Parts-Cover Mat S-160",
+            "priceUsd": 8.5,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-09",
+            "label": "30 x 46 cm Anti-Bubble Parts-Cover Mat TE-607",
+            "priceUsd": 9,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-10",
+            "label": "31.8 x 48 cm Dual-Board Magnetic Mat S-170",
+            "priceUsd": 9.5,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-11",
+            "label": "30 x 45 cm Honeycomb Heat-Dissipation Mat S-160C",
+            "priceUsd": 8.5,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-12",
+            "label": "38 x 55 cm Hot-Air and Soldering Mat TE-702",
+            "priceUsd": 12,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-13",
+            "label": "30 x 45 cm T-Slot Board Mat DK-880",
+            "priceUsd": 9,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-14",
+            "label": "35 x 55 cm Thick Magnetic Mat S-180A1",
+            "priceUsd": 12,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-15",
+            "label": "82 x 37 cm Extended 3 mm Mat",
+            "priceUsd": 14,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-16",
+            "label": "82.5 x 37 cm Gray 2 mm Mat",
+            "priceUsd": 12,
+            "image": "assets/catalog/955751797262/english-card.png"
+          },
+          {
+            "model": "LZN-955751797262-17",
+            "label": "82.5 x 37 cm Blue 2 mm Mat",
+            "priceUsd": 12,
+            "image": "assets/catalog/955751797262/english-card.png"
+          }
+        ],
+        "features": [
+          "Heat-resistant silicone protects the work surface.",
+          "Integrated compartments organize small optical parts.",
+          "Multiple sizes support compact and full-size benches."
+        ]
       }
     ]
   },
   {
-    "id": "trial-lens-set",
+    "id": "trial-lens-sets",
     "en": "Trial Lens Set",
     "desc": "Optical shop products with option-level images and USD catalog pricing.",
     "items": [
       {
-        "category": "trial-lens-set",
+        "category": "trial-lens-sets",
         "model": "LZN-20052613980",
         "nameEn": "266-Piece Trial Lens Set",
         "chineseName": "266-Piece Trial Lens Set",
@@ -3556,27 +4670,27 @@
           "assets/catalog/20052613980/004.webp"
         ],
         "description": "266-Piece Trial Lens Set is designed for professional optical retail and vision-care applications.",
-        "priceUsd": null,
+        "priceUsd": 127.4,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 127.40 - 195.00",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-20052613980-01",
             "label": "266-Piece Trial Lens Set - Option 01 - SP-266A",
-            "priceUsd": null,
+            "priceUsd": 127.4,
             "image": "assets/catalog/20052613980/english-card.png"
           },
           {
             "model": "LZN-20052613980-02",
             "label": "266-Piece Trial Lens Set - Option 02 - JP-266A",
-            "priceUsd": null,
+            "priceUsd": 195,
             "image": "assets/catalog/20052613980/003.webp"
           },
           {
             "model": "LZN-20052613980-03",
             "label": "266-Piece Trial Lens Set - Option 03 - SP-266B",
-            "priceUsd": null,
+            "priceUsd": 143,
             "image": "assets/catalog/20052613980/004.webp"
           }
         ],
@@ -3613,7 +4727,7 @@
         "description": "Binocular Vision Training Vector Chart Set is designed for professional optical retail and vision-care applications.",
         "priceUsd": 17.4,
         "priceOnRequest": false,
-        "priceDisplay": "USD 17.4 - 47.6",
+        "priceDisplay": "USD 17.40 - 47.60",
         "optionLabel": "Available options",
         "options": [
           {
@@ -3700,24 +4814,17 @@
   const catalog = Array.isArray(window.CATALOG_DATA) ? window.CATALOG_DATA : [];
   const categoryAliases = {
     'tool-set': 'tools',
+    'tool-sets': 'tools',
     'trial-lens-set': 'trial-lens-sets'
   };
   importedCategories.forEach(incomingCategory => {
     const canonicalId = categoryAliases[incomingCategory.id] || incomingCategory.id;
     incomingCategory.id = canonicalId;
-    incomingCategory.items.forEach(product => {
-      product.category = canonicalId;
-    });
-    const existingCategory = catalog.find(category => category.id === incomingCategory.id);
-    if (!existingCategory) {
-      catalog.push(incomingCategory);
-      return;
-    }
-
+    incomingCategory.items.forEach(product => { product.category = canonicalId; });
+    const existingCategory = catalog.find(category => category.id === canonicalId);
+    if (!existingCategory) { catalog.push(incomingCategory); return; }
     const existingModels = new Set(existingCategory.items.map(product => product.model));
-    existingCategory.items.push(
-      ...incomingCategory.items.filter(product => !existingModels.has(product.model))
-    );
+    existingCategory.items.push(...incomingCategory.items.filter(product => !existingModels.has(product.model)));
   });
   window.CATALOG_DATA = catalog;
 })();
