@@ -21,27 +21,27 @@
           "assets/catalog/821168484924/english-option-07.webp"
         ],
         "description": "Decorative holder loops that attach securely to eyewear for use with chains, cords, and personalized accessories.",
-        "priceUsd": null,
+        "priceUsd": 1,
         "priceOnRequest": false,
-        "priceDisplay": "Price on request",
+        "priceDisplay": "USD 1.00 - 2.00",
         "optionLabel": "Available options",
         "options": [
           {
             "model": "LZN-821168484924-01",
             "label": "White Plain Eyeglass Holder Loops",
-            "priceUsd": null,
+            "priceUsd": 1,
             "image": "assets/catalog/821168484924/english-option-01.webp"
           },
           {
             "model": "LZN-821168484924-02",
             "label": "White Red-Blue Enamel Holder Loops",
-            "priceUsd": null,
+            "priceUsd": 2,
             "image": "assets/catalog/821168484924/english-option-02.webp"
           },
           {
             "model": "LZN-821168484924-03",
             "label": "Black Blue Enamel Holder Loops",
-            "priceUsd": null,
+            "priceUsd": 1.5,
             "image": "assets/catalog/821168484924/english-option-03.webp"
           },
           {
@@ -2578,24 +2578,24 @@
           "assets/catalog/972711305522/003.webp",
           "assets/catalog/972711305522/004.webp",
           "assets/catalog/972711305522/005.webp",
-          "assets/catalog/972711305522/006.webp",
-          "assets/catalog/972711305522/007.webp",
-          "assets/catalog/972711305522/008.webp",
-          "assets/catalog/972711305522/009.webp",
-          "assets/catalog/972711305522/010.webp",
-          "assets/catalog/972711305522/011.webp",
-          "assets/catalog/972711305522/012.webp",
-          "assets/catalog/972711305522/013.webp",
-          "assets/catalog/972711305522/014.webp",
-          "assets/catalog/972711305522/015.webp",
-          "assets/catalog/972711305522/016.webp",
-          "assets/catalog/972711305522/017.webp",
-          "assets/catalog/972711305522/018.webp",
-          "assets/catalog/972711305522/019.webp",
-          "assets/catalog/972711305522/020.webp",
-          "assets/catalog/972711305522/021.webp",
-          "assets/catalog/972711305522/022.webp",
-          "assets/catalog/972711305522/023.webp"
+          "assets/catalog/972711305522/english-screw-option-02.png",
+          "assets/catalog/972711305522/english-screw-option-03.png",
+          "assets/catalog/972711305522/english-screw-option-04.png",
+          "assets/catalog/972711305522/english-screw-option-05.png",
+          "assets/catalog/972711305522/english-screw-option-06.png",
+          "assets/catalog/972711305522/english-screw-option-07.png",
+          "assets/catalog/972711305522/english-screw-option-08.png",
+          "assets/catalog/972711305522/english-screw-option-09.png",
+          "assets/catalog/972711305522/english-screw-option-10.png",
+          "assets/catalog/972711305522/english-screw-option-11.png",
+          "assets/catalog/972711305522/english-screw-option-12.png",
+          "assets/catalog/972711305522/english-screw-option-13.png",
+          "assets/catalog/972711305522/english-screw-option-14.png",
+          "assets/catalog/972711305522/english-screw-option-15.png",
+          "assets/catalog/972711305522/english-screw-option-16.png",
+          "assets/catalog/972711305522/english-screw-option-17.png",
+          "assets/catalog/972711305522/english-screw-option-18.png",
+          "assets/catalog/972711305522/english-screw-option-19.png"
         ],
         "description": "Eyeglass Repair Screw Assortment is designed for precise eyewear adjustment, maintenance, and optical workshop repair.",
         "priceUsd": 0.47,
@@ -2613,109 +2613,109 @@
             "model": "LZN-972711305522-02",
             "label": "Eyeglass Repair Screw Assortment - Option 02 - Screw2.0*1.4*2.4",
             "priceUsd": 0.47,
-            "image": "assets/catalog/972711305522/006.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-02.png"
           },
           {
             "model": "LZN-972711305522-03",
             "label": "Eyeglass Repair Screw Assortment - Option 03 - Screw2.0*1.4*2.6",
             "priceUsd": 0.47,
-            "image": "assets/catalog/972711305522/007.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-03.png"
           },
           {
             "model": "LZN-972711305522-04",
             "label": "Eyeglass Repair Screw Assortment - Option 04 - Screw2.0*1.4*2.8",
             "priceUsd": 0.47,
-            "image": "assets/catalog/972711305522/008.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-04.png"
           },
           {
             "model": "LZN-972711305522-05",
             "label": "Eyeglass Repair Screw Assortment - Option 05 - Screw2.0*1.4*3.0",
             "priceUsd": 0.47,
-            "image": "assets/catalog/972711305522/009.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-05.png"
           },
           {
             "model": "LZN-972711305522-06",
             "label": "Eyeglass Repair Screw Assortment - Option 06 - Screw2.0*1.4*3.2",
             "priceUsd": 0.47,
-            "image": "assets/catalog/972711305522/010.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-06.png"
           },
           {
             "model": "LZN-972711305522-07",
             "label": "Eyeglass Repair Screw Assortment - Option 07 - Screw2.0*1.4*3.4",
             "priceUsd": 0.47,
-            "image": "assets/catalog/972711305522/011.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-07.png"
           },
           {
             "model": "LZN-972711305522-08",
             "label": "Eyeglass Repair Screw Assortment - Option 08 - Screw2.0*1.4*3.6",
             "priceUsd": 0.47,
-            "image": "assets/catalog/972711305522/012.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-08.png"
           },
           {
             "model": "LZN-972711305522-09",
             "label": "Eyeglass Repair Screw Assortment - Option 09 - Screw2.0*1.4*3.8",
             "priceUsd": 0.47,
-            "image": "assets/catalog/972711305522/013.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-09.png"
           },
           {
             "model": "LZN-972711305522-10",
             "label": "Eyeglass Repair Screw Assortment - Option 10 - Screw2.0*1.4*4.0",
             "priceUsd": 0.47,
-            "image": "assets/catalog/972711305522/014.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-10.png"
           },
           {
             "model": "LZN-972711305522-11",
             "label": "Eyeglass Repair Screw Assortment - Option 11 - Screw2.5*1.4*4.0",
             "priceUsd": 0.51,
-            "image": "assets/catalog/972711305522/015.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-11.png"
           },
           {
             "model": "LZN-972711305522-12",
             "label": "Eyeglass Repair Screw Assortment - Option 12 - Screw2.5*1.4*4.5",
             "priceUsd": 0.51,
-            "image": "assets/catalog/972711305522/016.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-12.png"
           },
           {
             "model": "LZN-972711305522-13",
             "label": "Eyeglass Repair Screw Assortment - Option 13 - Screw2.5*1.4*5.0",
             "priceUsd": 0.51,
-            "image": "assets/catalog/972711305522/017.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-13.png"
           },
           {
             "model": "LZN-972711305522-14",
             "label": "Eyeglass Repair Screw Assortment - Option 14 - Screw2.5*1.6*4.0",
             "priceUsd": 0.51,
-            "image": "assets/catalog/972711305522/018.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-14.png"
           },
           {
             "model": "LZN-972711305522-15",
             "label": "Eyeglass Repair Screw Assortment - Option 15 - Screw2.5*1.6*4.5",
             "priceUsd": 0.51,
-            "image": "assets/catalog/972711305522/019.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-15.png"
           },
           {
             "model": "LZN-972711305522-16",
             "label": "Eyeglass Repair Screw Assortment - Option 16 - Screw2.5*1.6*5.0",
             "priceUsd": 0.51,
-            "image": "assets/catalog/972711305522/020.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-16.png"
           },
           {
             "model": "LZN-972711305522-17",
             "label": "Eyeglass Repair Screw Assortment - Option 17 - 2.5*1.4*6.0",
             "priceUsd": 0.51,
-            "image": "assets/catalog/972711305522/021.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-17.png"
           },
           {
             "model": "LZN-972711305522-18",
             "label": "Eyeglass Repair Screw Assortment - Option 18 - 2.5*1.4*8.0",
             "priceUsd": 0.51,
-            "image": "assets/catalog/972711305522/022.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-18.png"
           },
           {
             "model": "LZN-972711305522-19",
             "label": "Eyeglass Repair Screw Assortment - Option 19 - 1.4",
             "priceUsd": 0.7,
-            "image": "assets/catalog/972711305522/023.webp"
+            "image": "assets/catalog/972711305522/english-screw-option-19.png"
           }
         ],
         "features": [
@@ -3698,7 +3698,16 @@
   }
 ];
   const catalog = Array.isArray(window.CATALOG_DATA) ? window.CATALOG_DATA : [];
+  const categoryAliases = {
+    'tool-set': 'tools',
+    'trial-lens-set': 'trial-lens-sets'
+  };
   importedCategories.forEach(incomingCategory => {
+    const canonicalId = categoryAliases[incomingCategory.id] || incomingCategory.id;
+    incomingCategory.id = canonicalId;
+    incomingCategory.items.forEach(product => {
+      product.category = canonicalId;
+    });
     const existingCategory = catalog.find(category => category.id === incomingCategory.id);
     if (!existingCategory) {
       catalog.push(incomingCategory);
