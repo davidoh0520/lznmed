@@ -470,7 +470,7 @@ async function submitQuote(event) {
     quantity: item.quantity,
     priceOnRequest: isPriceOnRequest(item)
   }));
-  const { data: orderId, error } = await client.rpc('place_order', {
+  const orderResult = await client.rpc('place_order', {
     p_payment_method: paymentCode(checkout.payment_method),
     p_destination_country: profile.country,
     p_company_name: profile.company_name,
@@ -485,6 +485,43 @@ async function submitQuote(event) {
     p_coupon_code: checkout.coupon_code || null,
     p_items: items
   });
+  let orderId = orderResult.data;
+  let error = orderResult.error;
+  let automatedCoupon = true;
+  const orderFunctionUnavailable = error?.code === 'PGRST202' || /place_order.*schema cache|function public\.place_order/i.test(String(error?.message || ''));
+  if (orderFunctionUnavailable && !checkout.coupon_code) {
+    const legacyOrderResult = await client.from('orders').insert({
+      user_id: session.user.id,
+      status: 'quote_requested',
+      subtotal_usd: subtotal,
+      payment_method: paymentCode(checkout.payment_method),
+      destination_country: profile.country,
+      buyer_type: 'company',
+      company_name: profile.company_name,
+      contact_name: profile.full_name,
+      contact_email: session.user.email,
+      contact_phone: profile.phone,
+      shipping_address: shipping,
+      postal_code: profile.postal_code,
+      courier: courierName,
+      courier_account_no: checkout.freight_method === 'collect' ? checkout.courier_account_no : null,
+      customer_note: `${storeNote} [USD 10 NEXT-ORDER COUPON ELIGIBLE]`
+    }).select('id').single();
+    orderId = legacyOrderResult.data?.id;
+    error = legacyOrderResult.error;
+    if (!error) {
+      const legacyItems = items.map(item => ({
+        order_id: orderId,
+        model: item.model,
+        product_name: item.productName,
+        unit_price_usd: item.unitPriceUsd,
+        quantity: item.quantity
+      }));
+      const legacyItemResult = await client.from('order_items').insert(legacyItems);
+      error = legacyItemResult.error;
+      automatedCoupon = false;
+    }
+  }
   if (error) { status.textContent = error.message; button.disabled = false; return; }
   const order = { id: orderId };
   cart = [];
@@ -494,7 +531,10 @@ async function submitQuote(event) {
   const paymentMessage = method === 'company_bank_transfer'
     ? `The Proforma Invoice with LZN MEDICAL CO., LTD. company bank details will be sent to <strong>${e(session.user.email)}</strong>.`
     : `The Proforma Invoice will be sent to <strong>${e(session.user.email)}</strong>. After freight and the final invoice are confirmed, a secure Card / PayPal payment request will be emailed through Payoneer. Available methods, any payer fee and the final amount will be shown on Payoneer before payment.`;
-  show(`<div class="panel-head"><p class="eyebrow">Checkout Complete</p><h2>Proforma Invoice requested</h2></div><p>Your request number is:</p><p class="request-id">${e(order.id)}</p>${checkout.coupon_code ? `<p class="coupon-applied"><strong>Coupon applied:</strong> ${e(checkout.coupon_code)} — USD ${money(COUPON_VALUE_USD)} off</p>` : ''}<p><strong>Payment method:</strong> ${e(paymentLabel(method))}</p><p>${freightMessage}</p><p>${paymentMessage}</p><p>After payment confirmation, this order will earn a new USD ${money(COUPON_VALUE_USD)} coupon because eligibility uses the USD ${money(subtotal)} product subtotal before coupon.</p><div class="cart-actions"><button class="button secondary-button" data-panel-close-final>Continue shopping</button><button class="button" id="viewOrdersAfterCheckout">View my orders</button></div>`);
+  const couponMessage = automatedCoupon
+    ? `After payment confirmation, this order will earn a new USD ${money(COUPON_VALUE_USD)} coupon because eligibility uses the USD ${money(subtotal)} product subtotal before coupon.`
+    : `This order qualifies for a USD ${money(COUPON_VALUE_USD)} next-order coupon. The eligibility has been marked on your order for our sales team.`;
+  show(`<div class="panel-head"><p class="eyebrow">Checkout Complete</p><h2>Proforma Invoice requested</h2></div><p>Your request number is:</p><p class="request-id">${e(order.id)}</p>${checkout.coupon_code ? `<p class="coupon-applied"><strong>Coupon applied:</strong> ${e(checkout.coupon_code)} — USD ${money(COUPON_VALUE_USD)} off</p>` : ''}<p><strong>Payment method:</strong> ${e(paymentLabel(method))}</p><p>${freightMessage}</p><p>${paymentMessage}</p><p>${couponMessage}</p><div class="cart-actions"><button class="button secondary-button" data-panel-close-final>Continue shopping</button><button class="button" id="viewOrdersAfterCheckout">View my orders</button></div>`);
   document.querySelector('[data-panel-close-final]').onclick = hide;
   document.querySelector('#viewOrdersAfterCheckout').onclick = ordersView;
 }
