@@ -3697,5 +3697,18 @@
     ]
   }
 ];
-  window.CATALOG_DATA = importedCategories;
+  const catalog = Array.isArray(window.CATALOG_DATA) ? window.CATALOG_DATA : [];
+  importedCategories.forEach(incomingCategory => {
+    const existingCategory = catalog.find(category => category.id === incomingCategory.id);
+    if (!existingCategory) {
+      catalog.push(incomingCategory);
+      return;
+    }
+
+    const existingModels = new Set(existingCategory.items.map(product => product.model));
+    existingCategory.items.push(
+      ...incomingCategory.items.filter(product => !existingModels.has(product.model))
+    );
+  });
+  window.CATALOG_DATA = catalog;
 })();
