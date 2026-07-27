@@ -358,7 +358,7 @@ function seriesEntryCard(series){
 function seriesSection(series, items, { showCategory=false }={}){
   const category = seriesCategory(series);
   const categoryHeading = showCategory
-    ? `<div class="category-head"><p class="eyebrow">Product Category</p><h2>${category === 'kids' ? 'Kids Frames · 유아용' : 'Adult Frames · 성인용'}</h2></div>` : '';
+    ? `<div class="category-head"><p class="eyebrow">Product Category</p><h2>${category === 'kids' ? 'Kids Frames' : 'Adult Frames'}</h2></div>` : '';
   return `${categoryHeading}<section class="series" id="series-${esc(series.code)}">
     <div class="series-head">
       <div class="series-summary"><p class="eyebrow">${esc(series.subtitle)}</p><div class="series-title-row"><h2>${esc(series.name)}</h2><p>${esc(SERIES_DESCRIPTIONS[series.code] || series.subtitle)}</p></div></div>
@@ -373,7 +373,7 @@ function renderSeriesLanding(cf){
   const groups = ['adult', 'kids'].map(category => {
     const series = visibleSeries.filter(item => seriesCategory(item) === category);
     if(!series.length) return '';
-    return `<section class="series-index-group"><div class="series-index-heading"><p class="eyebrow">Product Category</p><h2>${category === 'kids' ? 'Kids Frames · 유아용' : 'Adult Frames · 성인용'}</h2></div><div class="series-entry-grid">${series.map(seriesEntryCard).join('')}</div></section>`;
+    return `<section class="series-index-group"><div class="series-index-heading"><p class="eyebrow">Product Category</p><h2>${category === 'kids' ? 'Kids Frames' : 'Adult Frames'}</h2></div><div class="series-entry-grid">${series.map(seriesEntryCard).join('')}</div></section>`;
   }).join('');
   return `<div class="series-landing"><div class="series-landing-head"><div><p class="eyebrow">Browse by series</p><h2>Choose a frame series</h2></div><p>One representative model is shown for each series. Select a series to view all of its models and colors.</p></div>${groups}</div>`;
 }
@@ -589,7 +589,7 @@ function openProduct(model, trigger=document.activeElement, { updateHistory=true
     <section class="detail-head">
       <div class="detail-img"><img id="frameDetailMainImage" src="${esc(initialImage)}" alt="Model ${esc(p.model)} main image"></div>
       <div class="detail-copy"><p class="eyebrow">${esc(p.seriesName)}</p><h2 id="productModalTitle">Model ${esc(p.model)}</h2><h3>${esc(p.productTitle)}</h3><div class="detail-price" id="frameDetailPrice">${priceLabel(p, initialColorIndex)}</div><p>${esc(p.short)}</p><p>${esc(p.description)}</p>
-        <section class="colors frame-detail-options"><div class="frame-option-heading"><h4>Choose a color</h4><strong id="frameSelectedColor">${initialColor ? `C01 · ${esc(initialColor.en)}` : ''}</strong></div><div class="color-grid">${p.colors.map((c,index) => { const colorCode=`C${String(index+1).padStart(2,'0')}`; return `<button class="color-card${index === initialColorIndex ? ' is-selected' : ''}" type="button" data-frame-option-index="${index}" aria-label="Select model ${esc(p.model)}, ${colorCode} ${esc(c.en)}"><img src="${esc(c.src)}" alt="${esc(p.model)} ${colorCode} ${esc(c.en)}" loading="lazy" decoding="async"><span><strong>${colorCode} · ${esc(c.en)}</strong><small>${esc(c.ko)}</small></span><em>${priceLabel(p, index)}</em></button>`; }).join('')}</div></section>
+        <section class="colors frame-detail-options"><div class="frame-option-heading"><h4>Choose a color</h4><strong id="frameSelectedColor">${initialColor ? `C01 · ${esc(initialColor.en)}` : ''}</strong></div><div class="color-grid">${p.colors.map((c,index) => { const colorCode=`C${String(index+1).padStart(2,'0')}`; return `<button class="color-card${index === initialColorIndex ? ' is-selected' : ''}" type="button" data-frame-option-index="${index}" aria-label="Select model ${esc(p.model)}, ${colorCode} ${esc(c.en)}"><img src="${esc(c.src)}" alt="${esc(p.model)} ${colorCode} ${esc(c.en)}" loading="lazy" decoding="async"><span><strong>${colorCode} · ${esc(c.en)}</strong></span><em>${priceLabel(p, index)}</em></button>`; }).join('')}</div></section>
         <div class="frame-detail-buy-row"><div class="frame-detail-quantity" aria-label="Quantity"><button type="button" data-frame-quantity="minus" aria-label="Decrease quantity">−</button><output>1</output><button type="button" data-frame-quantity="plus" aria-label="Increase quantity">+</button></div><button type="button" class="frame-detail-add" data-frame-add>Add to cart</button></div>
         <p class="frame-detail-status" aria-live="polite"></p><p class="order-note">Minimum shipment value: $100. Shipping, duties, and taxes are calculated separately.</p>
       </div>
@@ -609,13 +609,13 @@ function openProduct(model, trigger=document.activeElement, { updateHistory=true
   renderDetailCartList(p.model);
   requestAnimationFrame(() => modal.querySelector('.close[data-close]')?.focus());
 }
-function openColorViewer(src, model, name, ko, key, code, series, trigger=document.activeElement){
+function openColorViewer(src, model, name, key, code, series, trigger=document.activeElement){
   setUrlState(model, key);
   openImageViewer({
     title:`Model ${model} · ${code || ''} ${name || ''}`.trim(),
     className:`series-${series || ''}`,
     trigger,
-    content:`<img src="${esc(src)}" alt="Model ${esc(model)} ${esc(code)} ${esc(name)}"><div class="color-viewer-caption"><strong>${esc(code)} · ${esc(name)}</strong><span>${esc(ko)}</span></div>`
+    content:`<img src="${esc(src)}" alt="Model ${esc(model)} ${esc(code)} ${esc(name)}"><div class="color-viewer-caption"><strong>${esc(code)} · ${esc(name)}</strong></div>`
   });
 }
 function openDiagramViewer(model, frontSrc, sideSrc, trigger=document.activeElement){
@@ -725,7 +725,7 @@ window.addEventListener('popstate', () => {
   }
   const product = allProducts().find(item => item.model === model);
   const selectedColor = product?.colors.find(item => item.key === color);
-  if(selectedColor && !activeImageViewer()) openColorViewer(selectedColor.src, product.model, selectedColor.en, selectedColor.ko, selectedColor.key);
+  if(selectedColor && !activeImageViewer()) openColorViewer(selectedColor.src, product.model, selectedColor.en, selectedColor.key);
 });
 
 function startRandomHero(){
@@ -782,6 +782,6 @@ if(initial.model){
   if(initial.color){
     const p = allProducts().find(x => x.model === initial.model);
     const c = p?.colors.find(x => x.key === initial.color);
-    if(c) setTimeout(() => openColorViewer(c.src, p.model, c.en, c.ko, c.key), 100);
+    if(c) setTimeout(() => openColorViewer(c.src, p.model, c.en, c.key), 100);
   }
 }
