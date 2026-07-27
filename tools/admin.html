@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/lzn-favicon.svg?v=20260723-2">
   <title>LZN Store Admin</title>
   <meta name="robots" content="noindex,nofollow">
-  <link rel="stylesheet" href="admin.css?v=20260723-6">
+  <link rel="stylesheet" href="admin.css?v=20260727-7">
 </head>
 <body>
   <header class="admin-header">
@@ -37,7 +37,7 @@
     <section id="dashboard" hidden>
       <div class="dashboard-heading"><div><p class="eyebrow">LZN commerce</p><h1>Administration</h1><p id="adminIdentity"></p></div><button class="outline-button" id="refreshData">Refresh data</button></div>
       <div class="summary-grid" id="summaryGrid"></div>
-      <div class="tabs"><button class="active" data-tab="orders">Orders</button><button data-tab="members">Members</button></div>
+      <div class="tabs"><button class="active" data-tab="orders">Orders</button><button data-tab="members">Members</button><button data-tab="purchases">Taobao purchase sources</button></div>
 
       <section class="data-panel" id="ordersPanel">
         <div class="panel-heading"><div><h2>Orders</h2><p>Open an order to manage freight, payment, shipment and PI.</p></div><div class="filters"><input id="orderSearch" type="search" placeholder="Search order, customer or email"><select id="statusFilter"><option value="">All statuses</option><option>quote_requested</option><option>quoted</option><option>payment_pending</option><option>payment_submitted</option><option>paid</option><option>processing</option><option>shipped</option><option>cancelled</option></select></div></div>
@@ -47,6 +47,12 @@
       <section class="data-panel" id="membersPanel" hidden>
         <div class="panel-heading"><div><h2>Members</h2><p>Registered customer and shipping information.</p></div><input id="memberSearch" type="search" placeholder="Search name, company, email or country"></div>
         <div class="table-wrap"><table><thead><tr><th>Joined</th><th>Name</th><th>Company</th><th>Email</th><th>Phone</th><th>Country</th><th>Courier account</th></tr></thead><tbody id="membersBody"></tbody></table></div>
+      </section>
+
+      <section class="data-panel" id="purchasesPanel" hidden>
+        <div class="panel-heading"><div><h2>Taobao purchase sources</h2><p>Original supplier links and captured CNY source prices for imported catalog products.</p></div><input id="purchaseSearch" type="search" placeholder="Search model, product or store"></div>
+        <div class="purchase-note">A source price marked “Not captured” was already blank in the original Taobao export. Open the supplier page to confirm the current price before purchasing.</div>
+        <div class="table-wrap"><table class="purchase-table"><thead><tr><th>Model / product</th><th>Original price</th><th>Store</th><th>Purchase link</th></tr></thead><tbody id="purchasesBody"></tbody></table></div>
       </section>
     </section>
   </main>
@@ -58,6 +64,9 @@
   <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.4/dist/jspdf.plugin.autotable.min.js"></script>
   <script src="supabase-config.js?v=20260713-10"></script>
   <script src="sf-freight-rates.js?v=20260722-1"></script>
-  <script src="admin.js?v=20260727-31"></script>
+  <script src="products.js?v=20260726-32"></script>
+  <script src="catalog-products.js?v=20260727-8"></script>
+  <script src="admin-purchase-sources.js?v=20260727-1"></script>
+  <script src="admin.js?v=20260727-32"></script>
 </body>
 </html>
