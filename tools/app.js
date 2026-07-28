@@ -1,4 +1,5 @@
-const data = window.CATALOG_DATA || [];
+const deviceCategoryIds = new Set(window.LZN_DEVICE_CATEGORY_IDS || []);
+const data = (window.CATALOG_DATA || []).filter(category => !deviceCategoryIds.has(category.id));
 const view = document.querySelector('#view');
 const hero = document.querySelector('#heroVisual');
 const modal = document.querySelector('#modal');
@@ -301,6 +302,13 @@ function close() {
 
 document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', close));
 document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
-function route() { const match = location.hash.match(/^#\/category\/([^/]+)/); match ? category(match[1]) : home(); }
+function route() {
+  const match = location.hash.match(/^#\/category\/([^/]+)/);
+  if (match && deviceCategoryIds.has(match[1])) {
+    location.replace(`/devices/#device-category-${encodeURIComponent(match[1])}`);
+    return;
+  }
+  match ? category(match[1]) : home();
+}
 addEventListener('hashchange', route);
 route();
