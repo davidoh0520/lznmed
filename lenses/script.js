@@ -395,7 +395,7 @@ function renderMarketplace(initialCategory='all'){
     grid.className='marketplace-scroll';
     nav.innerHTML=Object.entries(labels).map(([key,label],index)=>{
       const product=products.find(item=>item.cat===key);
-      return `<button type="button" data-marketplace-target="${key}" class="${index?'':'active'}" aria-pressed="${index?'false':'true'}"><img src="assets/lens-export-envelope.webp" alt="" loading="lazy" decoding="async"><span><strong>${e(label)}</strong><small>${products.filter(item=>item.cat===key).length} products</small></span></button>`;
+      return `<button type="button" data-marketplace-target="${key}" class="${index?'':'active'}" aria-pressed="${index?'false':'true'}"><div class="lens-category-envelope" aria-hidden="true"><img src="assets/lens-export-envelope.webp" alt="" loading="lazy" decoding="async"><div class="lens-category-envelope-copy"><em>LZN LENS</em><b>${e(label)}</b></div></div><span><strong>${e(label)}</strong><small>${products.filter(item=>item.cat===key).length} products</small></span></button>`;
     }).join('');
   }
   grid.innerHTML=`${Object.entries(labels).map(([key,label])=>{
