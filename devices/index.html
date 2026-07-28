@@ -16,9 +16,9 @@
   <meta property="og:url" content="/devices/" />
   <meta property="og:image" content="/devices/assets/hero-eyewear.webp" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="style.css?v=20260727-5" />
+  <link rel="stylesheet" href="style.css?v=20260728-6" />
   <link rel="stylesheet" href="/tools/unified-theme.css?v=20260717-1">
-  <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260720-22">
+  <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260728-23">
 </head>
 <body>
   <header class="nav">
@@ -44,6 +44,16 @@
       <div class="hero-photo" aria-label="Modern optical store">
         
       </div>
+    </section>
+
+    <section id="workshop-devices" class="section moved-device-section">
+      <div class="section-head">
+        <p class="eyebrow">ORDERABLE WORKSHOP DEVICES</p>
+        <h2>Choose a device category</h2>
+        <p class="sub">Prices remain visible and each model or selected option can be added directly to your order.</p>
+      </div>
+      <div id="deviceCategoryNav" class="moved-device-category-nav" aria-label="Workshop device categories"></div>
+      <div id="deviceCatalogContent" class="moved-device-content" aria-live="polite"></div>
     </section>
 
     <section id="products" class="section muted">
@@ -383,8 +393,11 @@
     });
   </script>
 
-<script src="/tools/shared-cart.js?v=20260723-7"></script>
-  <script src="/tools/portfolio-shell.js?v=20260723-29" defer></script>
+  <script src="/tools/catalog-placement.js?v=20260728-1"></script>
+  <script src="/tools/products.js?v=20260726-32"></script>
+  <script src="/tools/shared-cart.js?v=20260723-7"></script>
+  <script src="moved-catalog.js?v=20260728-1"></script>
+  <script src="/tools/portfolio-shell.js?v=20260728-30" defer></script>
   <script src="/tools/promotion-popup.js?v=20260727-5"></script>
 </body>
 </html>
