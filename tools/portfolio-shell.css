@@ -68,6 +68,30 @@ body.portfolio-www .site-header{justify-content:flex-start!important}body.portfo
 .portfolio-contact-footer .portfolio-policy-links{margin:0;gap:8px 18px}
 .portfolio-contact-footer .copyright{margin:0}
 @media(max-width:560px){
-  .portfolio-contact-footer.portfolio-contact-footer{margin-left:6px;margin-right:6px;padding:20px 14px 16px;gap:12px}
-  .portfolio-contact-footer .portfolio-policy-links{gap:7px 13px}
+.portfolio-contact-footer.portfolio-contact-footer{
+  min-height:46px;
+  margin:8px clamp(6px,1.2vw,18px) 0;
+  padding:8px 14px;
+  display:flex;
+  flex-wrap:nowrap;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  overflow-x:auto;
+  border-radius:14px 14px 0 0;
+  text-align:left;
+  scrollbar-width:none;
+}
+.portfolio-contact-footer.portfolio-contact-footer::-webkit-scrollbar{display:none}
+.portfolio-contact-footer .footer-brand{display:flex;flex:0 0 auto;gap:0}
+.portfolio-contact-footer .footer-brand img{width:54px!important;height:28px!important}
+.portfolio-contact-footer .portfolio-policy-links{flex:0 0 auto;max-width:none;margin:0;display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:10px}
+.portfolio-contact-footer .portfolio-policy-links a{white-space:nowrap;font-size:10px!important;line-height:1.15!important}
+.portfolio-contact-footer .copyright{flex:0 0 auto;margin:0;white-space:nowrap;font:400 10px/1.2 Arial,sans-serif}
+@media(max-width:560px){
+  .portfolio-contact-footer.portfolio-contact-footer{min-height:40px;margin:4px 4px 0;padding:7px 10px;justify-content:flex-start;gap:11px}
+  .portfolio-contact-footer .footer-brand img{width:46px!important;height:24px!important}
+  .portfolio-contact-footer .portfolio-policy-links{gap:8px}
+  .portfolio-contact-footer .portfolio-policy-links a{font-size:9px!important}
+  .portfolio-contact-footer .copyright{font-size:9px}
 }

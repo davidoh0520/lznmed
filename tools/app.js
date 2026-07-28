@@ -181,7 +181,7 @@ function marketplaceHome(initialCategory = '') {
     <div class="marketplace-category-head"><div><h2>${esc(category.en)}</h2><p>${esc(category.desc)}</p></div><span class="marketplace-category-count">${category.items.length} models</span></div>
     <div class="marketplace-products" data-marketplace-products="${esc(category.id)}">${category.items.map(product => marketplaceProductCard({ ...product, categoryEn: category.en })).join('')}</div>
   </section>`).join('');
-  view.innerHTML = `<section class="section product-section" id="categories"><div class="section-head"><div><p class="eyebrow">Order by category</p><h2>Browse products as one continuous catalog.</h2><p>Select a category on the left, then scroll through every product and the categories that follow.</p></div><span>${data.length} Categories</span></div>
+  view.innerHTML = `<section id="categories">
     <div class="marketplace-catalog" id="toolsMarketplace">
       <aside class="marketplace-major-nav" aria-label="Tool categories">${categoryNav}</aside>
       <div class="marketplace-scroll">
