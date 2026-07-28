@@ -474,7 +474,7 @@ function render(){
 function marketplaceFrameCard(product, seriesName){
   const colors=product.colors||[];
   const wearColorIndex=MODEL_WEAR_COLOR_INDEX[product.model]??0;
-  const image=colors[wearColorIndex]?.src||colors[0]?.src||product.title;
+  const image=MODEL_WEAR_IMAGES[product.model]||colors[wearColorIndex]?.src||colors[0]?.src||product.title;
   const values=colors.map(color=>validPrice(color.priceUsd)).filter(value=>value!==null);
   if(!values.length)values.push(unitPrice(product));
   const minimum=Math.min(...values);
@@ -503,8 +503,9 @@ function renderFramesMarketplace(){
     return;
   }
   const nav=grouped.map((group,index)=>{
-    const representative=group.series[0].visibleItems[0];
-    const image=representative.colors?.[0]?.src||representative.title;
+    const visibleProducts=group.series.flatMap(series=>series.visibleItems);
+    const representative=visibleProducts.find(product=>MODEL_WEAR_IMAGES[product.model])||visibleProducts[0];
+    const image=MODEL_WEAR_IMAGES[representative.model]||representative.colors?.[0]?.src||representative.title;
     const count=group.series.reduce((sum,item)=>sum+item.visibleItems.length,0);
     return `<button type="button" data-marketplace-target="${group.category}" class="${index?'':'active'}" aria-pressed="${index?'false':'true'}"><img src="${esc(image)}" alt="" loading="lazy" decoding="async"><span><strong>${group.category==='kids'?'Kids Frames':'Adult Frames'}</strong><small>${count} models</small></span></button>`;
   }).join('');
