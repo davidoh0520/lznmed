@@ -65,14 +65,6 @@
         "LZN-669731145847"
       ])
     },
-    {
-      categoryId: "accessories",
-      models: new Set([
-        "LZN-TL-0018",
-        "LZN-TL-0019",
-        "LZN-670127834258"
-      ])
-    }
   ];
 
   productRoutes.forEach(function (route) {
