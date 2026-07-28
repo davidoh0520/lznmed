@@ -2967,7 +2967,7 @@
             "model": "LZN-TL-0046-01",
             "label": "Eyeglass Repair Screw Assortment - Option 01 - Nose PadScrew1.2*3.6 - 10-Pack",
             "priceUsd": 4.7,
-            "image": "assets/catalog/TL-0046/english-card.webp"
+            "image": "assets/catalog/TL-0046/english-screw-option-01.webp"
           },
           {
             "model": "LZN-TL-0046-02",
