@@ -360,6 +360,66 @@ async function ordersView(){
   showCommerce('<p class="eyebrow">CUSTOMER ACCOUNT</p><h2>My Orders</h2><p>Loading...</p>');const {data,error}=await supabaseClient.from('orders').select('*, order_items(*)').eq('user_id',session.user.id).order('created_at',{ascending:false});if(error){commerceBody.innerHTML=`<p>${e(error.message)}</p>`;return;}const orders=data||[];showCommerce(`<p class="eyebrow">CUSTOMER ACCOUNT</p><h2>My Orders</h2><div class="lens-orders">${orders.length?orders.map(o=>`<article><div><strong>${e(o.invoice_no||`Order ${o.id.slice(0,8)}`)}</strong><span>${new Date(o.created_at).toLocaleDateString()}</span></div><div><b>${e(statusLabels[o.status]||o.status)}</b><strong>USD $${money(o.total_usd??o.subtotal_usd)}</strong></div><details><summary>View items</summary>${(o.order_items||[]).map(i=>`<p><strong>${e(i.model)}</strong><br><small>${e(i.product_name)} / Qty ${i.quantity}</small></p>`).join('')}</details></article>`).join(''):'<p class="empty-cart">No orders yet.</p>'}</div><button class="btn secondary" id="backAccount">Back to Account</button>`);document.getElementById('backAccount').onclick=()=>authView();
 }
 
+function marketplaceLensCard(product){
+  const priceMarkup=product.cat==='semi'
+    ? '<span class="marketplace-price">Price on request</span>'
+    : `<span class="marketplace-price">From USD ${fromPrice(product).toFixed(2)} <small>/ lens</small></span>`;
+  return `<article class="marketplace-product-card" data-lens-name="${e(product.name)}" tabindex="0" role="button" aria-label="View ${e(product.name)} details">
+    <div class="marketplace-product-image">${envelopeVisual(product,'card-lens-envelope')}</div>
+    <div class="marketplace-product-copy"><span class="marketplace-product-kicker">${e(labels[product.cat])}</span><h3>${e(product.name)}</h3><p>Index ${e(product.index)} · ${e(product.coating)}</p><div class="marketplace-product-meta">${priceMarkup}<span class="marketplace-open">Choose power &rarr;</span></div></div>
+  </article>`;
+}
+
+function bindMarketplaceLensCards(host){
+  host.querySelectorAll('[data-lens-name]').forEach(card=>{
+    const open=()=>{const product=products.find(item=>item.name===card.dataset.lensName);if(product)openProduct(product);};
+    card.addEventListener('click',open);
+    card.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();open();}});
+  });
+}
+
+function renderMarketplace(initialCategory='all'){
+  const catalogSection=grid.closest('.catalog');
+  let shell=document.getElementById('lensMarketplace');
+  if(!shell){
+    catalogSection.querySelector('.filters')?.setAttribute('hidden','');
+    shell=document.createElement('div');
+    shell.className='marketplace-catalog';
+    shell.id='lensMarketplace';
+    grid.parentNode.insertBefore(shell,grid);
+    const nav=document.createElement('aside');
+    nav.className='marketplace-major-nav';
+    nav.setAttribute('aria-label','Lens categories');
+    shell.append(nav,grid);
+    grid.className='marketplace-scroll';
+    nav.innerHTML=Object.entries(labels).map(([key,label],index)=>{
+      const product=products.find(item=>item.cat===key);
+      return `<button type="button" data-marketplace-target="${key}" class="${index?'':'active'}" aria-pressed="${index?'false':'true'}"><img src="assets/lens-export-envelope.webp" alt="" loading="lazy" decoding="async"><span><strong>${e(label)}</strong><small>${products.filter(item=>item.cat===key).length} products</small></span></button>`;
+    }).join('');
+  }
+  grid.innerHTML=`<div class="marketplace-search"><input id="lensCatalogSearch" type="search" placeholder="Search lens type, index or coating"></div>${Object.entries(labels).map(([key,label])=>{
+    const items=products.filter(item=>item.cat===key);
+    return `<section class="marketplace-category" data-marketplace-section="${key}"><div class="marketplace-category-head"><div><h2>${e(label)}</h2><p>Choose a lens to select its prescription power, coating and quantity.</p></div><span class="marketplace-category-count">${items.length} products</span></div><div class="marketplace-products" data-lens-products="${key}">${items.map(marketplaceLensCard).join('')}</div></section>`;
+  }).join('')}`;
+  window.LZNMarketplace?.bind(shell);
+  bindMarketplaceLensCards(grid);
+  document.getElementById('lensCatalogSearch')?.addEventListener('input',event=>{
+    const query=event.target.value.trim().toLowerCase();
+    Object.keys(labels).forEach(key=>{
+      const host=grid.querySelector(`[data-lens-products="${key}"]`);
+      const matches=products.filter(item=>item.cat===key&&`${item.name} ${item.index} ${item.coating} ${item.material}`.toLowerCase().includes(query));
+      host.innerHTML=matches.length?matches.map(marketplaceLensCard).join(''):'<p class="marketplace-empty">No matching lenses in this category.</p>';
+    });
+    bindMarketplaceLensCards(grid);
+  });
+  if(initialCategory!=='all')requestAnimationFrame(()=>{
+    const target=grid.querySelector(`[data-marketplace-section="${CSS.escape(initialCategory)}"]`);
+    if(target)grid.scrollTop=Math.max(0,target.offsetTop-64);
+  });
+}
+
+render=renderMarketplace;
+
 document.querySelectorAll('.filters button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render(btn.dataset.filter);}));
 document.querySelector('#productModal .close').addEventListener('click',()=>modal.close());document.querySelector('#cartDialog .close').addEventListener('click',()=>cartDialog.close());document.getElementById('cartButton').addEventListener('click',cartView);accountButton.addEventListener('click',()=>authView());addOrderLine.addEventListener('click',addToCart);modal.addEventListener('click',x=>{if(x.target===modal)modal.close();});cartDialog.addEventListener('click',x=>{if(x.target===cartDialog)cartDialog.close();});
 saveCart();render();

@@ -147,6 +147,74 @@ function category(id) {
   scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function productPrices(product) {
+  const optionPrices = (product.options || []).map(option => Number(option.priceUsd)).filter(value => Number.isFinite(value) && value > 0);
+  if (optionPrices.length) return optionPrices;
+  const price = Number(product.priceUsd);
+  return Number.isFinite(price) && price > 0 ? [price] : [];
+}
+
+function marketplaceProductCard(product) {
+  const prices = productPrices(product);
+  const minimum = prices.length ? Math.min(...prices) : null;
+  const hasChoices = (product.options?.length || 0) > 1 || product.pdMode === 'select';
+  const price = minimum === null
+    ? 'Price on request'
+    : `${hasChoices ? 'From ' : ''}USD ${usd(minimum)}`;
+  return `<article class="product-card marketplace-product-card" data-model="${esc(product.model)}" tabindex="0" role="button" aria-label="View ${esc(product.model)} details">
+    <div class="marketplace-product-image"><img loading="lazy" decoding="async" src="${esc(product.image)}" alt="${esc(product.model)} ${esc(product.nameEn)}"></div>
+    <div class="marketplace-product-copy">
+      <span class="marketplace-product-kicker">${esc(product.categoryEn)}</span>
+      <h3>${esc(product.model)}</h3>
+      <p>${esc(product.nameEn)}</p>
+      <div class="marketplace-product-meta"><span class="marketplace-price">${esc(price)}${minimum === null ? '' : ' <small>FOB China</small>'}</span><span class="marketplace-open">${hasChoices ? 'Choose options' : 'View details'} &rarr;</span></div>
+    </div>
+  </article>`;
+}
+
+function marketplaceHome(initialCategory = '') {
+  const categoryNav = data.map((category, index) => `<button type="button" data-marketplace-target="${esc(category.id)}" class="${(!initialCategory && index === 0) || initialCategory === category.id ? 'active' : ''}" aria-pressed="${String((!initialCategory && index === 0) || initialCategory === category.id)}">
+    <img loading="lazy" decoding="async" src="${esc(category.items[0]?.image)}" alt="">
+    <span><strong>${esc(category.en)}</strong><small>${category.items.length} models</small></span>
+  </button>`).join('');
+  const sections = data.map(category => `<section class="marketplace-category" data-marketplace-section="${esc(category.id)}">
+    <div class="marketplace-category-head"><div><h2>${esc(category.en)}</h2><p>${esc(category.desc)}</p></div><span class="marketplace-category-count">${category.items.length} models</span></div>
+    <div class="marketplace-products" data-marketplace-products="${esc(category.id)}">${category.items.map(product => marketplaceProductCard({ ...product, categoryEn: category.en })).join('')}</div>
+  </section>`).join('');
+  view.innerHTML = `<section class="section product-section" id="categories"><div class="section-head"><div><p class="eyebrow">Order by category</p><h2>Browse products as one continuous catalog.</h2><p>Select a category on the left, then scroll through every product and the categories that follow.</p></div><span>${data.length} Categories</span></div>
+    <div class="marketplace-catalog" id="toolsMarketplace">
+      <aside class="marketplace-major-nav" aria-label="Tool categories">${categoryNav}</aside>
+      <div class="marketplace-scroll">
+        <div class="marketplace-search"><input id="search" type="search" placeholder="Search model or product"></div>
+        ${sections}
+      </div>
+    </div>
+  </section>`;
+  bindCards();
+  window.LZNMarketplace?.bind(document.querySelector('#toolsMarketplace'));
+  document.querySelector('#search')?.addEventListener('input', event => {
+    const query = event.target.value.trim().toLowerCase();
+    data.forEach(category => {
+      const host = document.querySelector(`[data-marketplace-products="${CSS.escape(category.id)}"]`);
+      const matches = category.items.filter(product => `${product.model} ${product.nameEn} ${category.en}`.toLowerCase().includes(query));
+      host.innerHTML = matches.length
+        ? matches.map(product => marketplaceProductCard({ ...product, categoryEn: category.en })).join('')
+        : '<p class="marketplace-empty">No matching products in this category.</p>';
+    });
+    bindCards();
+  });
+  hero.innerHTML = data.slice(0, 4).map(category => `<img loading="lazy" decoding="async" src="${esc(category.items[0].image)}" alt="">`).join('');
+  if (initialCategory) requestAnimationFrame(() => {
+    const root = document.querySelector('#toolsMarketplace');
+    const target = root?.querySelector(`[data-marketplace-section="${CSS.escape(initialCategory)}"]`);
+    const scroller = root?.querySelector('.marketplace-scroll');
+    if (target && scroller) scroller.scrollTop = Math.max(0, target.offsetTop - 64);
+  });
+}
+
+home = marketplaceHome;
+category = id => marketplaceHome(data.some(item => item.id === id) ? id : '');
+
 function bindCards() {
   document.querySelectorAll('.product-card[data-model]').forEach(card => {
     card.addEventListener('click', event => {
