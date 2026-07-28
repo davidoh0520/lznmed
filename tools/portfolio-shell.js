@@ -385,7 +385,7 @@
     document.querySelector('.optical-grid')?.closest('section')?.setAttribute('id','lens-processing');
     document.querySelector('.vision-grid')?.closest('section')?.setAttribute('id','vision-test');
     document.querySelector('.motorized-section')?.setAttribute('id','motorized-tables');
-    [...document.querySelectorAll('main > .section')].find(section=>/DIGITAL OPTICAL SOLUTIONS/i.test(section.textContent))?.setAttribute('id','digital-solutions');
+    [...document.querySelectorAll('main > .section:not(.moved-device-section)')].find(section=>/DIGITAL OPTICAL SOLUTIONS/i.test(section.textContent))?.setAttribute('id','digital-solutions');
   }
   const activateCategory=target=>{
     if(kind==='lens'&&!target.startsWith('#')&&!target.startsWith('.')){document.querySelector(`.filters [data-filter="${target}"]`)?.click();document.querySelector('#catalog')?.scrollIntoView({behavior:'smooth',block:'start'});return}
