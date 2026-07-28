@@ -461,7 +461,11 @@
     const main=document.querySelector('main');main.insertBefore(deck,main.firstChild);const heroImg=deck.querySelector('.series-visual img');
     if(heroImg){const modelLabel=deck.querySelector('.series-visual span');const rotate=()=>{const p=pickImages()[0];if(p){heroImg.style.opacity='.15';setTimeout(()=>{heroImg.src=p.src;heroImg.alt=p.alt;modelLabel.textContent=p.label||p.alt;modelLabel.hidden=false;heroImg.style.opacity='1'},180)}};rotate();setInterval(rotate,4500)}
     deck.querySelectorAll('.series-pills button').forEach(b=>b.onclick=()=>{deck.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');activateCategory(b.dataset.target)});
-    if(kind==='devices'){hideDuplicateCategoryControl('#workshop-devices > .section-head');hideDuplicateCategoryControl('#deviceCategoryNav')}
+    if(document.querySelector('.marketplace-catalog'))hideDuplicateCategoryControl('.series-deck .series-pills');
+    if(kind==='devices'){
+      hideDuplicateCategoryControl('#workshop-devices > .section-head');
+      if(!document.querySelector('#deviceCategoryNav')?.closest('.marketplace-catalog'))hideDuplicateCategoryControl('#deviceCategoryNav');
+    }
     if(kind==='lens')hideDuplicateCategoryControl('.catalog .filters');
     if(kind==='frames'){const categoryControl=document.querySelector('#categoryFilter')?.closest('div');const seriesControl=document.querySelector('#seriesFilter')?.closest('div');[categoryControl,seriesControl].forEach(element=>{if(element){element.hidden=true;element.style.setProperty('display','none','important')}})}
   }
