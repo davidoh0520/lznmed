@@ -131,7 +131,8 @@ function fromPrice(p){
 }
 
 function envelopeVisual(p, className=''){
-  return `<div class="lens-envelope ${className}" aria-label="${e(p.name)} in standard export packing">
+  const lengthClass=p.name.length>=30?'lens-envelope-long-model':'';
+  return `<div class="lens-envelope ${className} ${lengthClass}" aria-label="${e(p.name)} in standard export packing">
     <img src="assets/lens-export-envelope.webp" alt="" loading="lazy" decoding="async">
     <div class="lens-envelope-copy">
       <span class="lens-envelope-power"><small>POWER</small><b>SELECTED AT ORDER</b></span>
