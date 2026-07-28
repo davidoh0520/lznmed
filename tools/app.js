@@ -136,8 +136,8 @@ function home() {
 function category(id) {
   const selected = data.find(item => item.id === id);
   if (!selected) return home();
-  view.innerHTML = `<section class="section product-section"><a class="back" href="#/">← All categories</a><div class="section-head"><div><p class="eyebrow">${esc(selected.en)}</p><h2>${esc(selected.en)}</h2><p>${esc(selected.desc)}</p></div><span>${selected.items.length} Models</span></div><div class="toolbar"><input id="search" type="search" placeholder="Search model"></div><div class="product-grid" id="productGrid">${selected.items.map(product => productCard({ ...product, categoryEn: selected.en })).join('')}</div></section>`;
-  document.querySelector('#search').addEventListener('input', event => {
+  view.innerHTML = `<section class="section product-section"><a class="back" href="#/">← All categories</a><div class="section-head"><div><p class="eyebrow">${esc(selected.en)}</p><h2>${esc(selected.en)}</h2><p>${esc(selected.desc)}</p></div><span>${selected.items.length} Models</span></div><div class="product-grid" id="productGrid">${selected.items.map(product => productCard({ ...product, categoryEn: selected.en })).join('')}</div></section>`;
+  document.querySelector('#search')?.addEventListener('input', event => {
     const query = event.target.value.trim().toLowerCase();
     document.querySelector('#productGrid').innerHTML = selected.items.filter(product => `${product.model} ${product.nameEn}`.toLowerCase().includes(query)).map(product => productCard({ ...product, categoryEn: selected.en })).join('');
     bindCards();
@@ -185,7 +185,7 @@ function marketplaceHome(initialCategory = '') {
     <div class="marketplace-catalog" id="toolsMarketplace">
       <aside class="marketplace-major-nav" aria-label="Tool categories">${categoryNav}</aside>
       <div class="marketplace-scroll">
-        <div class="marketplace-search"><input id="search" type="search" placeholder="Search model or product"></div>
+        
         ${sections}
       </div>
     </div>

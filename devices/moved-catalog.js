@@ -1,8 +1,115 @@
 (function () {
   const categoryIds = new Set(window.LZN_DEVICE_CATEGORY_IDS || []);
-  const categories = (window.CATALOG_DATA || []).filter(category => categoryIds.has(category.id));
+  const sourceCategories = (window.CATALOG_DATA || []).filter(category => categoryIds.has(category.id));
   const nav = document.querySelector('#deviceCategoryNav');
   const content = document.querySelector('#deviceCatalogContent');
+
+  const legacyPrices = Object.freeze({
+    'ET-1100': 1500,
+    'ET-660E': 800,
+    'ET-480A': 900,
+    'LZN-5': 1600,
+    'TOOLTIP': 13000,
+    'INT-200-IIOMA': 3000,
+    'HV-600': 700,
+    'AXL-800': 3000,
+    'RMK-800': 2500,
+    'CP-6': 500,
+    'CP-8': 2000,
+    'K215': 500,
+    'CV-700-CP-500': 3300,
+    'CV-700-K215': 3300,
+    'OT-1': 600,
+    'OT-3': 600,
+    'OT-5': 650,
+    'ANY-I-YEARLY': 150,
+    'CYCLOPS-LITE': 1300,
+    'BLUESPEC-HEV': 250,
+    'CYCLOPS-BLUESPEC-SET': 1400
+  });
+  const deviceAsset = value => {
+    const path = String(value || '').trim();
+    if (!path || /^(?:https?:)?\/\//i.test(path) || path.startsWith('/')) return path;
+    return `/devices/${path.replace(/^\.\//, '')}`;
+  };
+  const legacyItem = card => {
+    const offer = card.closest('.digital-sales-card')?.querySelector('.device-cart-add');
+    const heading = card.querySelector('h3')?.textContent?.trim() || '';
+    const model = String(card.dataset.saleModel || offer?.dataset.model || card.dataset.title || heading).trim();
+    if (!model) return null;
+    const type = card.querySelector('p')?.textContent?.trim() || '';
+    const suppliedName = String(offer?.dataset.name || card.dataset.title || '').trim();
+    const nameEn = suppliedName && suppliedName.toUpperCase() !== model.toUpperCase() ? suppliedName : (type || suppliedName || model);
+    const description = String(card.dataset.summary || card.querySelector('span')?.textContent || type || '').trim();
+    const image = deviceAsset(card.querySelector('img')?.getAttribute('src') || offer?.dataset.image || '');
+    return {
+      model,
+      nameEn,
+      image,
+      description,
+      priceUsd: legacyPrices[model] ?? null
+    };
+  };
+  const collectLegacyItems = section => section
+    ? [...section.querySelectorAll('.product-card, .equipment-card')].map(legacyItem).filter(Boolean)
+    : [];
+  const mergeItems = (primary, additions) => {
+    const items = new Map((primary || []).map(item => [String(item.model).toUpperCase(), item]));
+    (additions || []).forEach(item => {
+      const key = String(item.model).toUpperCase();
+      if (!items.has(key)) items.set(key, item);
+    });
+    return [...items.values()];
+  };
+
+  const unitSection = document.querySelector('#products');
+  const opticalSection = document.querySelector('.optical-grid')?.closest('section');
+  const visionSection = document.querySelector('.vision-grid')?.closest('section');
+  const motorizedSection = document.querySelector('.motorized-grid')?.closest('section');
+  const digitalSection = document.querySelector('.digital-sales-grid')?.closest('section');
+  const categoryMap = new Map(sourceCategories.map(category => [category.id, {
+    ...category,
+    items: [...(category.items || [])]
+  }]));
+  const tables = categoryMap.get('tables');
+  if (tables) tables.items = mergeItems(tables.items, collectLegacyItems(motorizedSection));
+  [
+    {
+      id: 'unit-tables',
+      en: 'Unit & Refraction Tables',
+      desc: 'Ophthalmic unit tables, refraction workstations and edger system tables.',
+      items: collectLegacyItems(unitSection)
+    },
+    {
+      id: 'clinical-equipment',
+      en: 'Clinical & Lens Processing',
+      desc: 'Lens processing, lens measurement and clinical diagnostic equipment.',
+      items: collectLegacyItems(opticalSection)
+    },
+    {
+      id: 'vision-test',
+      en: 'Vision Test Equipment',
+      desc: 'Chart projectors, LCD vision charts and digital refraction systems.',
+      items: collectLegacyItems(visionSection)
+    },
+    {
+      id: 'digital-solutions',
+      en: 'Digital Optical Solutions',
+      desc: 'Consulting, centering and lens demonstration systems for optical stores.',
+      items: collectLegacyItems(digitalSection)
+    }
+  ].forEach(category => {
+    if (!category.items.length) return;
+    const existing = categoryMap.get(category.id);
+    categoryMap.set(category.id, existing
+      ? { ...existing, items: mergeItems(existing.items, category.items) }
+      : category);
+  });
+  const categories = [...categoryMap.values()];
+  [unitSection, opticalSection, visionSection, motorizedSection, digitalSection]
+    .filter(Boolean)
+    .forEach(section => section.remove());
+
   if (!nav || !content || !categories.length) return;
 
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({
@@ -12,16 +119,20 @@
     '"': '&quot;',
     "'": '&#39;'
   })[character]);
-  const toolAsset = path => path ? `/tools/${String(path).replace(/^\/+/, '')}` : '';
+  const publicAsset = path => {
+    const value = String(path || '');
+    if (!value || /^(?:https?:)?\/\//i.test(value) || value.startsWith('/')) return value;
+    return `/tools/${value.replace(/^\/+/, '')}`;
+  };
   const formatUsd = value => Number(value).toFixed(Number(value) >= 100 ? 0 : 2);
   const publicProduct = product => ({
     ...product,
-    image: toolAsset(product.image),
-    images: (product.images || []).map(toolAsset),
+    image: publicAsset(product.image),
+    images: (product.images || []).map(publicAsset),
     options: (product.options || []).map(option => ({
       ...option,
-      image: toolAsset(option.image || product.image),
-      images: (option.images || []).map(toolAsset)
+      image: publicAsset(option.image || product.image),
+      images: (option.images || []).map(publicAsset)
     }))
   });
   const normalizedCategories = categories.map(category => ({
@@ -65,7 +176,7 @@
     <span><strong>${escapeHtml(category.en)}</strong><small>${category.items.length} models</small></span>
   </button>`).join('');
 
-  content.innerHTML = `<div class="marketplace-search"><input type="search" id="deviceCatalogSearch" placeholder="Search model or product"></div>${normalizedCategories.map(category => `<section class="marketplace-category" data-marketplace-section="${escapeHtml(category.id)}">
+  content.innerHTML = `${normalizedCategories.map(category => `<section class="marketplace-category" data-marketplace-section="${escapeHtml(category.id)}">
     <div class="marketplace-category-head"><div><h3>${escapeHtml(category.en)}</h3><p>${escapeHtml(category.desc)}</p></div><span class="marketplace-category-count">${category.items.length} models</span></div>
     <div class="marketplace-products" data-device-products="${escapeHtml(category.id)}">${category.items.map(product => card(product, category)).join('')}</div>
   </section>`).join('')}`;
