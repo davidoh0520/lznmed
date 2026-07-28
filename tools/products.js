@@ -2885,32 +2885,74 @@ window.CATALOG_DATA = [
     ['23132030', 'Push-in Silicone Nose Pads', '15 × 8.4 × 2.0 mm', 0.57, '1213'],
     ['23132120', 'Push-in Silicone Nose Pads', '13 × 6.95 × 2.0 mm', 0.57, '1214']
   ];
+  const nosePadPriceUsd = basePriceRmb => Number(((basePriceRmb === 1.13 ? 0.23 : 0.11) * 100).toFixed(2));
+  const nosePadOption = ([model, nameEn, dimensions, basePriceRmb, goodsId]) => ({
+    model,
+    label: `${model} · ${nameEn.replace(' Silicone Nose Pads', '')} · ${dimensions} · 100 pcs`,
+    image: `assets/3tmall/${model}.jpg`,
+    priceUsd: nosePadPriceUsd(basePriceRmb),
+    source: `https://www.3tmall.com/goods-${goodsId}.html`,
+    basePriceRmb,
+    priceSource: '3T official store listing',
+    orderUnitQty: 100,
+    orderUnitLabel: '100 pcs',
+    packageSize: dimensions
+  });
+  const nosePadProduct = row => {
+    const [model, nameEn, dimensions, basePriceRmb, goodsId] = row;
+    const priceUsd = nosePadPriceUsd(basePriceRmb);
+    return {
+      category: 'nose-pads',
+      model,
+      nameEn,
+      description: `${nameEn} model ${model}, supplied in 100-piece packs for professional eyewear fitting and repair.`,
+      image: `assets/3tmall/${model}.jpg`,
+      images: [`assets/3tmall/${model}.jpg`],
+      source: `https://www.3tmall.com/goods-${goodsId}.html`,
+      basePriceRmb,
+      priceSource: '3T official store listing',
+      priceUsd,
+      priceDisplay: `USD ${priceUsd.toFixed(2)} / 100 pcs`,
+      orderUnitQty: 100,
+      orderUnitLabel: '100 pcs',
+      packageSize: dimensions,
+      packingQuantity: '100 pcs / pack',
+      features: [dimensions, nameEn.replace(' Nose Pads', ' mounting style'), 'Soft clear silicone construction', '100 pieces per order unit']
+    };
+  };
+  const groupedNosePadRows = nosePadData.filter(([model]) =>
+    Number(model) >= 23131020 && Number(model) <= 23132120
+  );
+  const groupedNosePadModels = new Set(groupedNosePadRows.map(([model]) => model));
+  const groupedNosePadOptions = groupedNosePadRows.map(nosePadOption);
+  const groupedNosePadPrice = Math.min(...groupedNosePadOptions.map(option => option.priceUsd));
+  const groupedNosePadProduct = {
+    category: 'nose-pads',
+    model: '23131020',
+    nameEn: '3T Silicone Nose Pad Collection',
+    description: 'Choose a lock-in or push-in silicone nose pad size. Every option is supplied as one 100-piece order unit.',
+    image: 'assets/3tmall/23131020.jpg',
+    images: groupedNosePadRows.map(([model]) => `assets/3tmall/${model}.jpg`),
+    source: 'https://www.3tmall.com/goods-1205.html',
+    basePriceRmb: 0.57,
+    priceSource: '3T official store listing',
+    priceUsd: groupedNosePadPrice,
+    priceDisplay: `From USD ${groupedNosePadPrice.toFixed(2)} / 100 pcs`,
+    optionLabel: 'Choose style and size',
+    options: groupedNosePadOptions,
+    orderUnitQty: 100,
+    orderUnitLabel: '100 pcs',
+    packingQuantity: '100 pcs / pack',
+    features: ['10 lock-in and push-in options', 'Multiple sizes and profiles', 'Soft clear silicone construction', '100 pieces per selected option']
+  };
   const nosePads = {
     id: 'nose-pads',
     en: 'Nose Pads',
     desc: 'Official 3T lock-in and push-in silicone nose pads returned by the requested 3T store searches.',
-    items: nosePadData.map(([model, nameEn, dimensions, basePriceRmb, goodsId]) => {
-      const itemPriceUsd = basePriceRmb === 1.13 ? 0.23 : 0.11;
-      const priceUsd = Number((itemPriceUsd * 100).toFixed(2));
-      return {
-        category: 'nose-pads',
-        model,
-        nameEn,
-        description: `${nameEn} model ${model}, supplied in 100-piece packs for professional eyewear fitting and repair.`,
-        image: `assets/3tmall/${model}.jpg`,
-        images: [`assets/3tmall/${model}.jpg`],
-        source: `https://www.3tmall.com/goods-${goodsId}.html`,
-        basePriceRmb,
-        priceSource: '3T official store listing',
-        priceUsd,
-        priceDisplay: `USD ${priceUsd.toFixed(2)} / 100 pcs`,
-        orderUnitQty: 100,
-        orderUnitLabel: '100 pcs',
-        packageSize: dimensions,
-        packingQuantity: '100 pcs / pack',
-        features: [dimensions, nameEn.replace(' Nose Pads', ' mounting style'), 'Soft clear silicone construction', '100 pieces per order unit']
-      };
-    })
+    items: [
+      groupedNosePadProduct,
+      ...nosePadData.filter(([model]) => !groupedNosePadModels.has(model)).map(nosePadProduct)
+    ]
   };
 
   const clothOptions = (prefix, priceUsd, options) => options.map(([code, label]) => ({
