@@ -9,7 +9,10 @@
       body.lzn-product-detail-open {
         overflow: hidden;
       }
-      #modal:has(.lzn-commerce-detail) {
+      #modal[aria-hidden="true"]:has(.lzn-commerce-detail) {
+        display: none !important;
+      }
+      #modal[aria-hidden="false"]:has(.lzn-commerce-detail) {
         position: fixed !important;
         inset: 0 !important;
         z-index: 10000 !important;
@@ -343,7 +346,7 @@
         display: none !important;
       }
       @media (max-width: 820px) {
-        #modal:has(.lzn-commerce-detail) {
+        #modal[aria-hidden="false"]:has(.lzn-commerce-detail) {
           padding: 0 !important;
         }
         #modal:has(.lzn-commerce-detail) > article {
@@ -459,12 +462,25 @@
     });
   }
 
+  function closeDetailModal(modal) {
+    document.body.classList.remove('lzn-product-detail-open');
+    document.body.style.overflow = '';
+    if (!modal) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
   function buildDetail(body, product) {
     if (body.querySelector('.lzn-commerce-detail')?.dataset.model === product.model) return;
 
     const modal = body.closest('#modal');
     const originalCloseButton = modal?.querySelector(':scope > article > [data-close]') ||
       modal?.querySelector('[data-close]');
+    modal?.querySelectorAll('[data-close]').forEach(button => {
+      if (button.dataset.lznDetailCloseBound === '1') return;
+      button.dataset.lznDetailCloseBound = '1';
+      button.addEventListener('click', () => closeDetailModal(modal));
+    });
     const originalSelect = body.querySelector('select');
     const originalAddButton = findOriginalAddButton(body);
     const bridge = document.createElement('div');
@@ -646,12 +662,8 @@
       <span class="lzn-commerce-page-brand">LZN MEDICAL</span>
     `;
     pageHeader.querySelector('.lzn-commerce-back').addEventListener('click', () => {
-      document.body.classList.remove('lzn-product-detail-open');
-      if (originalCloseButton) {
-        originalCloseButton.click();
-      } else if (modal) {
-        modal.setAttribute('aria-hidden', 'true');
-      }
+      if (originalCloseButton) originalCloseButton.click();
+      closeDetailModal(modal);
     });
     page.append(pageHeader, detail);
     body.replaceChildren(page, bridge);
