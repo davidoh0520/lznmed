@@ -12,6 +12,7 @@ const MINIMUM_ORDER_USD = 100;
 const COUPON_VALUE_USD = 10;
 let session = null;
 let cart = JSON.parse(localStorage.getItem('lzn-cart') || '[]');
+let selectedCouponCode = '';
 let restoredCartUserId = null;
 let cartRestorePromise = null;
 const primaryCartHosts = new Set(['lznmed.com', 'www.lznmed.com']);
@@ -334,21 +335,37 @@ function cartLinePrice(item) {
   return `USD ${money(Number(item.priceUsd) * item.quantity)}`;
 }
 
-function cartView() {
+async function loadActiveCoupons() {
+  if (!client || !session?.user?.id) return { data: [], error: null };
+  return client.from('coupons')
+    .select('code,amount_usd,expires_at')
+    .eq('user_id', session.user.id)
+    .eq('status', 'active')
+    .gt('expires_at', new Date().toISOString())
+    .order('expires_at');
+}
+
+async function cartView() {
   if (repairCartImages(cart)) save();
   const total = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
   const hasQuote = cart.some(isPriceOnRequest);
   const belowMinimum = total < MINIMUM_ORDER_USD && !hasQuote;
   const couponUnlocked = total >= MINIMUM_ORDER_USD;
+  if (!couponUnlocked) selectedCouponCode = '';
   const minimumMessage = couponUnlocked
     ? ''
     : `<p class="minimum-order-notice"><strong>${hasQuote ? 'Coupon pending final quotation.' : `Add USD ${money(MINIMUM_ORDER_USD - total)} more.`}</strong> The USD ${money(COUPON_VALUE_USD)} coupon is earned when the final product subtotal reaches USD ${money(MINIMUM_ORDER_USD)} before coupon and freight.</p>`;
   const earnedCoupon = couponUnlocked
     ? `<aside class="cart-earned-coupon" aria-label="USD ${money(COUPON_VALUE_USD)} coupon unlocked"><span>Unlocked</span><div><strong>USD ${money(COUPON_VALUE_USD)} COUPON</strong><small>Issued after payment confirmation · Valid for 60 days · Use on your next USD ${money(MINIMUM_ORDER_USD)}+ order</small></div></aside>`
     : '';
+  const ownedCouponPanel = couponUnlocked
+    ? `<section class="cart-owned-coupons" id="cartOwnedCoupons" aria-live="polite">${session
+      ? '<p class="cart-coupon-loading">Checking your available coupons…</p>'
+      : '<div class="cart-coupon-signin"><strong>Already have a coupon?</strong><span>Sign in to see and use it on this order.</span></div>'}</section>`
+    : '';
   show(`<div class="panel-head cart-heading"><div><p class="eyebrow">Shopping Cart</p><h2>${cart.length ? 'Your cart' : 'Your cart is empty'}</h2></div><span>${cart.reduce((sum, item) => sum + item.quantity, 0)} items</span></div>
     <div class="cart-list">${cart.map((item, index) => `<div class="cart-row"><img src="${e(item.image)}" alt=""><div><strong>${e(item.model)}</strong><span>${e(item.nameEn)}</span>${item.optionLabel ? `<small class="chosen-option">${e(item.optionLabel)}</small>` : ''}${item.pd ? `<small class="chosen-option">Fixed PD: ${e(item.pd)} mm</small>` : ''}<small>${cartUnitPrice(item)}</small></div><label class="qty-label">Qty<input type="number" min="1" value="${item.quantity}" data-qty="${index}"></label><strong class="line-total">${cartLinePrice(item)}</strong><button class="remove-item" data-remove="${index}" aria-label="Remove item">×</button></div>`).join('')}</div>
-    ${cart.length ? `<div class="cart-summary"><div><span>${hasQuote ? 'Priced items subtotal' : 'FOB China product subtotal'}</span><strong>USD ${money(total)}</strong></div>${hasQuote ? '<p><strong>Price-on-request items will be quoted in your Proforma Invoice. The final product subtotal must be at least USD 100.</strong></p>' : ''}${minimumMessage}<p>Freight, destination duties and local taxes are not included. Availability and freight are confirmed before the Proforma Invoice is issued.</p></div>${earnedCoupon}<div class="cart-actions"><button class="button secondary-button" id="continueShopping">Continue shopping</button><button class="button" id="checkoutButton" ${belowMinimum ? 'disabled aria-disabled="true"' : ''}>Proceed to checkout</button></div><p class="form-status" id="quoteStatus"></p>` : `<button class="button" id="continueShopping">Continue shopping</button>`}`, true);
+    ${cart.length ? `<div class="cart-summary"><div><span>${hasQuote ? 'Priced items subtotal' : 'FOB China product subtotal'}</span><strong>USD ${money(total)}</strong></div>${hasQuote ? '<p><strong>Price-on-request items will be quoted in your Proforma Invoice. The final product subtotal must be at least USD 100.</strong></p>' : ''}${minimumMessage}<p>Freight, destination duties and local taxes are not included. Availability and freight are confirmed before the Proforma Invoice is issued.</p></div>${earnedCoupon}${ownedCouponPanel}<div class="cart-actions"><button class="button secondary-button" id="continueShopping">Continue shopping</button><button class="button" id="checkoutButton" ${belowMinimum ? 'disabled aria-disabled="true"' : ''}>Proceed to checkout</button></div><p class="form-status" id="quoteStatus"></p>` : `<button class="button" id="continueShopping">Continue shopping</button>`}`, true);
   body.querySelectorAll('.cart-row').forEach((row, index) => {
     if (!cart[index]?.pdLabel) return;
     const labels = row.querySelectorAll('.chosen-option');
@@ -359,6 +376,33 @@ function cartView() {
   body.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => { cart.splice(button.dataset.remove, 1); save(); cartView(); });
   document.querySelector('#continueShopping').onclick = hide;
   document.querySelector('#checkoutButton')?.addEventListener('click', () => session ? checkoutView() : authView());
+  if (couponUnlocked && session) {
+    const wallet = document.querySelector('#cartOwnedCoupons');
+    const { data: couponData, error } = await loadActiveCoupons();
+    if (!wallet?.isConnected) return;
+    if (error) {
+      wallet.remove();
+      return;
+    }
+    const availableCoupons = couponData || [];
+    if (!availableCoupons.some(coupon => coupon.code === selectedCouponCode)) selectedCouponCode = '';
+    wallet.innerHTML = availableCoupons.length
+      ? `<div class="cart-owned-coupon-head"><div><p class="eyebrow">Your available coupons</p><h3>Select a coupon for this order</h3></div><small>One coupon per order</small></div><div class="cart-owned-coupon-list">${availableCoupons.map((coupon, index) => `<label class="cart-owned-coupon ${coupon.code === selectedCouponCode ? 'selected' : ''}" for="cartCoupon${index}"><input id="cartCoupon${index}" type="radio" name="cart_coupon" value="${e(coupon.code)}" ${coupon.code === selectedCouponCode ? 'checked' : ''}><span><b>USD ${Number(coupon.amount_usd || COUPON_VALUE_USD).toFixed(2)} OFF</b><strong>${e(coupon.code)}</strong><small>Valid until ${e(orderDate(coupon.expires_at))}</small></span></label>`).join('')}</div><div class="cart-owned-coupon-foot"><p id="cartCouponSelection">${selectedCouponCode ? `Coupon ${e(selectedCouponCode)} will be carried to checkout.` : 'Choose a coupon now, or select it later at checkout.'}</p><button type="button" class="text-button" data-clear-cart-coupon ${selectedCouponCode ? '' : 'hidden'}>Do not use a coupon</button></div>`
+      : '<div class="cart-coupon-signin"><strong>No active coupon yet.</strong><span>Your next coupon will appear here after payment is confirmed on a qualifying order.</span></div>';
+    const updateCartCouponSelection = code => {
+      selectedCouponCode = code;
+      wallet.querySelectorAll('.cart-owned-coupon').forEach(label => label.classList.toggle('selected', label.querySelector('input').value === code));
+      const selection = wallet.querySelector('#cartCouponSelection');
+      if (selection) selection.textContent = code ? `Coupon ${code} will be carried to checkout.` : 'Choose a coupon now, or select it later at checkout.';
+      const clearButton = wallet.querySelector('[data-clear-cart-coupon]');
+      if (clearButton) clearButton.hidden = !code;
+    };
+    wallet.querySelectorAll('[name="cart_coupon"]').forEach(input => input.addEventListener('change', () => updateCartCouponSelection(input.value)));
+    wallet.querySelector('[data-clear-cart-coupon]')?.addEventListener('click', () => {
+      wallet.querySelectorAll('[name="cart_coupon"]').forEach(input => { input.checked = false; });
+      updateCartCouponSelection('');
+    });
+  }
 }
 
 async function checkoutView() {
@@ -371,13 +415,12 @@ async function checkoutView() {
     return;
   }
   const couponEligible = subtotal >= MINIMUM_ORDER_USD;
-  const { data: couponData } = couponEligible
-    ? await client.from('coupons').select('code,amount_usd,expires_at').eq('user_id', session.user.id).eq('status', 'active').gt('expires_at', new Date().toISOString()).order('expires_at')
-    : { data: [] };
+  const { data: couponData } = couponEligible ? await loadActiveCoupons() : { data: [] };
   const availableCoupons = couponData || [];
-  const couponOptions = availableCoupons.map(coupon => `<option value="${e(coupon.code)}">${e(coupon.code)} — USD ${Number(coupon.amount_usd || COUPON_VALUE_USD).toFixed(2)} off — valid until ${e(orderDate(coupon.expires_at))}</option>`).join('');
+  if (!availableCoupons.some(coupon => coupon.code === selectedCouponCode)) selectedCouponCode = '';
+  const couponOptions = availableCoupons.map(coupon => `<option value="${e(coupon.code)}" ${coupon.code === selectedCouponCode ? 'selected' : ''}>${e(coupon.code)} — USD ${Number(coupon.amount_usd || COUPON_VALUE_USD).toFixed(2)} off — valid until ${e(orderDate(coupon.expires_at))}</option>`).join('');
   const couponField = couponEligible
-    ? `<fieldset class="coupon-checkout"><legend>Coupon</legend><label>Available coupon<select name="coupon_code"><option value="">Do not use a coupon</option>${couponOptions}</select><small>One coupon per order. Eligibility uses the product subtotal before coupon, so a USD 100 order remains eligible even when the coupon reduces payment to USD 90.</small></label>${availableCoupons.length ? '' : '<p>Your next USD 10 coupon will appear here after payment is confirmed on a qualifying order.</p>'}</fieldset>`
+    ? `<fieldset class="coupon-checkout"><legend>Your available coupons</legend><label>Select a coupon<select name="coupon_code"><option value="" ${selectedCouponCode ? '' : 'selected'}>Do not use a coupon</option>${couponOptions}</select><small>One coupon per order. Eligibility uses the product subtotal before coupon, so a USD 100 order remains eligible even when the coupon reduces payment to USD 90.</small></label>${availableCoupons.length ? '' : '<p>Your next USD 10 coupon will appear here after payment is confirmed on a qualifying order.</p>'}</fieldset>`
     : '<fieldset class="coupon-checkout"><legend>Coupon</legend><p>A coupon can be used after the quoted product subtotal reaches USD 100.</p></fieldset>';
   show(`<div class="panel-head"><p class="eyebrow">Checkout</p><h2>Payment & freight</h2></div><div class="checkout-summary coupon-summary"><span>Product subtotal before coupon</span><strong>USD ${money(subtotal)}</strong><span id="checkoutCouponLabel" hidden>Coupon</span><strong id="checkoutCouponValue" hidden>-USD ${money(COUPON_VALUE_USD)}</strong><span>Before freight</span><strong id="checkoutBeforeFreight">USD ${money(subtotal)}</strong></div><div class="repeat-coupon-promo"><strong>Spend USD 100, get a USD 10 coupon</strong><span>Issued after payment confirmation and valid for 60 days.</span></div><form class="commerce-form checkout-form" id="checkoutForm">${couponField}<fieldset><legend>Payment method</legend><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="company_bank_transfer" checked><span><strong>Company bank transfer <em>Recommended for orders over USD 1,000</em></strong><small>No processing fee charged by LZN MEDICAL. Sending and intermediary bank charges are borne by the buyer.</small><span class="bank-transfer-details" aria-label="USD bank transfer details"><b class="bank-details-title">USD bank transfer details</b><span class="bank-detail-row"><span>Beneficiary</span><b>LZN MEDICAL CO., LTD.</b></span><span class="bank-detail-row"><span>USD Account</span><b class="bank-copy-value">100103205899</b></span><span class="bank-detail-row"><span>SWIFT / BIC</span><b class="bank-copy-value">HVBKCNBJ</b></span><span class="bank-detail-row"><span>Bank</span><b>Woori Bank(China) Limited Shanghai JinXiuJiangNan Sub-Branch</b></span><span class="bank-detail-row"><span>Bank Address</span><b>No.101-1,101-2b,102 MT BLDG, 3999 Hongxin Road, Minhang District, Shanghai, China</b></span></span></span></label><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="payoneer_card_paypal"><span><strong>Card / PayPal <em>Processed securely by Payoneer</em></strong><small>Available payment methods and processing fees may vary by country, customer and payment request. A payment link will be emailed after freight and the final invoice are confirmed.</small><span class="payment-logo-panel"><span class="payment-logo-row"><img class="payment-logo-strip" src="assets/payment/payoneer-payment-options.webp" alt="Possible payment options: Visa, Mastercard, American Express, Discover, Diners Club, JCB and Plaid"><span class="paypal-brand"><img src="assets/payment/paypal.webp" alt=""><b>PayPal</b></span></span><small>Possible options include cards and PayPal. Availability varies by country and payment request.</small></span></span></label><div class="payment-fee-estimate" id="paymentFeeEstimate" aria-live="polite"></div></fieldset><fieldset><legend>Freight arrangement</legend><label class="choice-card"><input type="radio" name="freight_method" value="quote" checked><span><strong>Request freight quotation — SF International</strong><small>Quoted-freight orders are shipped by SF International. By selecting this option, you accept SF International as the carrier and the quoted SF International freight charge. We do not automatically substitute the cheapest courier service.</small></span></label><label class="choice-card"><input type="radio" name="freight_method" value="collect"><span><strong>Courier collect</strong><small>Freight will be charged directly to your courier account.</small></span></label><div class="collect-fields" id="collectFields"><label>Courier<select name="courier" id="checkoutCourier"><option>DHL</option><option>FedEx</option><option>UPS</option><option>EMS</option><option>SF Express</option><option>Other</option></select></label><label id="otherCourierLabel">Other courier name<input name="other_courier" placeholder="Enter courier name"></label><label>Courier account number<input name="courier_account_no" placeholder="Required for courier collect"></label></div></fieldset><div class="cart-actions"><button type="button" class="button secondary-button" id="backToCart">Back to cart</button><button class="button" id="placeOrderButton">Request Proforma Invoice</button></div><p class="form-status" id="quoteStatus"></p></form>`, true);
   if (hasQuote) document.querySelector('.checkout-summary span').innerHTML = 'Priced items subtotal<small>Price-on-request items will be added after quotation.</small>';
@@ -415,7 +458,10 @@ async function checkoutView() {
   }
   form.querySelectorAll('[name="freight_method"]').forEach(input => input.addEventListener('change', updateFreightFields));
   form.querySelectorAll('[name="payment_method"]').forEach(input => input.addEventListener('change', updatePaymentEstimate));
-  form.elements.coupon_code?.addEventListener('change', updateCouponEstimate);
+  form.elements.coupon_code?.addEventListener('change', () => {
+    selectedCouponCode = form.elements.coupon_code.value || '';
+    updateCouponEstimate();
+  });
   form.elements.courier.addEventListener('change', updateFreightFields);
   document.querySelector('#backToCart').onclick = cartView;
   form.onsubmit = submitQuote;
@@ -525,6 +571,7 @@ async function submitQuote(event) {
   if (error) { status.textContent = error.message; button.disabled = false; return; }
   const order = { id: orderId };
   cart = [];
+  selectedCouponCode = '';
   save();
   const freightMessage = checkout.freight_method === 'quote' ? 'Your SF International freight quotation will be emailed within 1 business day. The order will be shipped by SF International after confirmation.' : `Freight will be charged to your ${e(checkout.courier === 'Other' ? checkout.other_courier : checkout.courier)} collect account.`;
   const method = paymentCode(checkout.payment_method);
@@ -600,6 +647,7 @@ if (client) {
     }
     if (event === 'SIGNED_OUT') {
       restoredCartUserId = null;
+      selectedCouponCode = '';
       toast('You have signed out.');
     }
   });
