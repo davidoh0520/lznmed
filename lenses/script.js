@@ -1,28 +1,31 @@
 const products = [
-  {cat:'single', name:'CR39 LENS', file:'cr39-lens.png', index:'1.49 / CR39', coating:'NC / SHMC', material:'CR-39', features:'Clear vision, UV protection, hard coating option', variants:[{name:'NC',tiers:[{price:.70,sphMin:-6,sphMax:6,cylMin:-2}]},{name:'SHMC',tiers:[{price:1.30,sphMin:-6,sphMax:6,cylMin:-2}]}]},
-  {cat:'single', name:'1.56 ASP BLUE RAY', file:'blueray-156.png', index:'1.56', coating:'SHMC', material:'Resin', features:'Blue ray protection, UV protection, comfortable viewing', tiers:[{price:2.80,sphMin:-6,sphMax:6,cylMin:-2}]},
-  {cat:'single', name:'1.56 UV450 PHOTO BLUE RAY', file:'uv450-photo-156.png', index:'1.56', coating:'SHMC', material:'Resin', features:'UV450 protection, photochromic, blue ray protection', tiers:[{price:5.00,sphMin:-6,sphMax:6,cylMin:-2}]},
-  {cat:'single', name:'1.60 ASP BLUE RAY', file:'mr160-blueray.png', index:'1.60', coating:'SHMC', material:'MR-8', features:'Aspheric, blue ray protection, thin profile', tiers:[{price:2.80,sphMin:-10,sphMax:6,cylMin:-2},{price:3.30,sphMin:-8,sphMax:6,cylMin:-4},{price:3.90,sphMin:-6,sphMax:6,cylMin:-6}]},
-  {cat:'single', name:'1.60 ASP PHOTO BLUE RAY', file:'mr160-photo.png', index:'1.60', coating:'SHMC', material:'MR-8', features:'Photochromic, blue ray protection, aspheric', tiers:[{price:5.50,sphMin:-10,sphMax:6,cylMin:-2},{price:6.10,sphMin:-10,sphMax:6,cylMin:-4}]},
-  {cat:'single', name:'1.67 ASP BLUE RAY', file:'mr167-blueray.png', index:'1.67', coating:'SHMC', material:'MR-7 / high index', features:'High index, blue ray protection, thinner lens', tiers:[{price:4.40,sphMin:-12,sphMax:6,cylMin:-2},{price:5.00,sphMin:-8,sphMax:6,cylMin:-4}]},
-  {cat:'single', name:'1.67 ASP PHOTO BLUE RAY', file:'mr167-photo.png', index:'1.67', coating:'SHMC', material:'MR-7 / high index', features:'Photochromic, blue ray protection, high index', tiers:[{price:7.20,sphMin:-12,sphMax:6,cylMin:-2},{price:7.70,sphMin:-8,sphMax:6,cylMin:-4}]},
-  {cat:'single', name:'1.70 ASP BLUE RAY', file:'mr170-blueray.png', index:'1.70', coating:'SHMC', material:'High index', features:'Ultra-thin design, blue ray protection', tiers:[{price:11.00,sphMin:-12,sphMax:6,cylMin:-2}]},
-  {cat:'single', name:'1.70 ASP PHOTO BLUE RAY', file:'mr170-photo.png', index:'1.70', coating:'SHMC', material:'High index', features:'Photochromic, blue ray protection, ultra-thin', tiers:[{price:16.50,sphMin:-12,sphMax:6,cylMin:-2}]},
-  {cat:'single', name:'1.74 ASP BLUE RAY', file:'mr174-blueray.png', index:'1.74', coating:'SHMC', material:'Ultra high index', features:'Ultra high index, blue ray protection', tiers:[{price:19.80,sphMin:-15,sphMax:6,cylMin:-4}]},
-  {cat:'single', name:'1.74 ASP PHOTO BLUE RAY', file:'mr174-photo.png', index:'1.74', coating:'SHMC', material:'Ultra high index', features:'Photochromic, blue ray protection, ultra high index', tiers:[{price:27.50,sphMin:-18,sphMax:6,cylMin:-4}]},
-  {cat:'progressive', name:'1.56 PROGRESSIVE BLUE RAY', file:'progressive-blueray-156.png', index:'1.56', coating:'SHMC', material:'Resin', features:'Progressive design, blue ray protection', price:2.20, sphMin:-3, sphMax:3, cylMin:-2, addMin:1, addMax:3},
-  {cat:'progressive', name:'1.56 PROGRESSIVE BLUE RAY PHOTO', file:'progressive-blueray-photo-156.png', index:'1.56', coating:'SHMC', material:'Resin', features:'Progressive, photochromic, blue ray protection', price:3.90, sphMin:-3, sphMax:3, cylMin:-2, addMin:1, addMax:3},
-  {cat:'progressive', name:'1.59 POLY PROGRESSIVE BLUE RAY', file:'poly-progressive.png', index:'1.59', coating:'SHMC', material:'Polycarbonate', features:'Impact resistant polycarbonate, progressive, blue ray protection', price:3.40, sphMin:-2, sphMax:3, cylMin:-2, addMin:1, addMax:3},
-  {cat:'progressive', name:'1.59 POLY PROGRESSIVE BLUE RAY PHOTO', file:'poly-progressive-photo.png', index:'1.59', coating:'SHMC', material:'Polycarbonate', features:'Polycarbonate, progressive, photochromic, blue ray protection', price:6.10, sphMin:-2, sphMax:3, cylMin:-2, addMin:1, addMax:3},
-  {cat:'semi', name:'1.60 ASP BLUE RAY SEMI', file:'semi-mr160.png', index:'1.60', coating:'NC', material:'MR-8', features:'Semi-finished blank, built-in blue ray material', price:4.40},
-  {cat:'semi', name:'1.60 ASP PHOTO BLUE RAY SEMI', file:'semi-mr160-photo.png', index:'1.60', coating:'SHMC', material:'MR-8', features:'Semi-finished, photochromic, blue ray, SHMC coating', price:8.30},
-  {cat:'semi', name:'1.67 ASP BLUE RAY SEMI', file:'semi-mr167.png', index:'1.67', coating:'NC', material:'High index', features:'Semi-finished blank, built-in blue ray material', price:6.60},
-  {cat:'semi', name:'1.67 ASP PHOTO BLUE RAY SEMI', file:'semi-mr167-photo.png', index:'1.67', coating:'SHMC', material:'High index', features:'Semi-finished, photochromic, blue ray, SHMC coating', price:10.50}
+  {cat:'single', name:'CR39 LENS', index:'1.49 / CR39', coating:'NC / SHMC', material:'CR-39', features:'Clear vision, UV protection, hard coating option', variants:[{name:'NC',tiers:[{price:.70,sphMin:-6,sphMax:6,cylMin:-2}]},{name:'SHMC',tiers:[{price:1.30,sphMin:-6,sphMax:6,cylMin:-2}]}]},
+  {cat:'single', name:'1.56 ASP BLUE RAY', index:'1.56', coating:'SHMC', material:'Resin', features:'Blue ray protection, UV protection, comfortable viewing', tiers:[{price:2.80,sphMin:-6,sphMax:6,cylMin:-2}]},
+  {cat:'single', name:'1.56 UV450 PHOTO BLUE RAY', index:'1.56', coating:'SHMC', material:'Resin', features:'UV450 protection, photochromic, blue ray protection', tiers:[{price:5.00,sphMin:-6,sphMax:6,cylMin:-2}]},
+  {cat:'single', name:'1.60 ASP BLUE RAY', index:'1.60', coating:'SHMC', material:'MR-8', features:'Aspheric, blue ray protection, thin profile', tiers:[{price:2.80,sphMin:-10,sphMax:6,cylMin:-2},{price:3.30,sphMin:-8,sphMax:6,cylMin:-4},{price:3.90,sphMin:-6,sphMax:6,cylMin:-6}]},
+  {cat:'single', name:'1.60 ASP PHOTO BLUE RAY', index:'1.60', coating:'SHMC', material:'MR-8', features:'Photochromic, blue ray protection, aspheric', tiers:[{price:5.50,sphMin:-10,sphMax:6,cylMin:-2},{price:6.10,sphMin:-10,sphMax:6,cylMin:-4}]},
+  {cat:'single', name:'1.67 ASP BLUE RAY', index:'1.67', coating:'SHMC', material:'MR-7 / high index', features:'High index, blue ray protection, thinner lens', tiers:[{price:4.40,sphMin:-12,sphMax:6,cylMin:-2},{price:5.00,sphMin:-8,sphMax:6,cylMin:-4}]},
+  {cat:'single', name:'1.67 ASP PHOTO BLUE RAY', index:'1.67', coating:'SHMC', material:'MR-7 / high index', features:'Photochromic, blue ray protection, high index', tiers:[{price:7.20,sphMin:-12,sphMax:6,cylMin:-2},{price:7.70,sphMin:-8,sphMax:6,cylMin:-4}]},
+  {cat:'single', name:'1.70 ASP BLUE RAY', index:'1.70', coating:'SHMC', material:'High index', features:'Ultra-thin design, blue ray protection', tiers:[{price:11.00,sphMin:-12,sphMax:6,cylMin:-2}]},
+  {cat:'single', name:'1.70 ASP PHOTO BLUE RAY', index:'1.70', coating:'SHMC', material:'High index', features:'Photochromic, blue ray protection, ultra-thin', tiers:[{price:16.50,sphMin:-12,sphMax:6,cylMin:-2}]},
+  {cat:'single', name:'1.74 ASP BLUE RAY', index:'1.74', coating:'SHMC', material:'Ultra high index', features:'Ultra high index, blue ray protection', tiers:[{price:19.80,sphMin:-15,sphMax:6,cylMin:-4}]},
+  {cat:'single', name:'1.74 ASP PHOTO BLUE RAY', index:'1.74', coating:'SHMC', material:'Ultra high index', features:'Photochromic, blue ray protection, ultra high index', tiers:[{price:27.50,sphMin:-18,sphMax:6,cylMin:-4}]},
+  {cat:'progressive', name:'1.56 PROGRESSIVE BLUE RAY', index:'1.56', coating:'SHMC', material:'Resin', features:'Progressive design, blue ray protection', price:2.20, sphMin:-3, sphMax:3, cylMin:-2, addMin:1, addMax:3},
+  {cat:'progressive', name:'1.56 PROGRESSIVE BLUE RAY PHOTO', index:'1.56', coating:'SHMC', material:'Resin', features:'Progressive, photochromic, blue ray protection', price:3.90, sphMin:-3, sphMax:3, cylMin:-2, addMin:1, addMax:3},
+  {cat:'progressive', name:'1.59 POLY PROGRESSIVE BLUE RAY', index:'1.59', coating:'SHMC', material:'Polycarbonate', features:'Impact resistant polycarbonate, progressive, blue ray protection', price:3.40, sphMin:-2, sphMax:3, cylMin:-2, addMin:1, addMax:3},
+  {cat:'progressive', name:'1.59 POLY PROGRESSIVE BLUE RAY PHOTO', index:'1.59', coating:'SHMC', material:'Polycarbonate', features:'Polycarbonate, progressive, photochromic, blue ray protection', price:6.10, sphMin:-2, sphMax:3, cylMin:-2, addMin:1, addMax:3},
+  {cat:'semi', name:'1.60 ASP BLUE RAY SEMI', index:'1.60', coating:'NC', material:'MR-8', features:'Semi-finished blank, built-in blue ray material', price:4.40},
+  {cat:'semi', name:'1.60 ASP PHOTO BLUE RAY SEMI', index:'1.60', coating:'SHMC', material:'MR-8', features:'Semi-finished, photochromic, blue ray, SHMC coating', price:8.30},
+  {cat:'semi', name:'1.67 ASP BLUE RAY SEMI', index:'1.67', coating:'NC', material:'High index', features:'Semi-finished blank, built-in blue ray material', price:6.60},
+  {cat:'semi', name:'1.67 ASP PHOTO BLUE RAY SEMI', index:'1.67', coating:'SHMC', material:'High index', features:'Semi-finished, photochromic, blue ray, SHMC coating', price:10.50}
 ];
 
 const grid = document.getElementById('productGrid');
 const modal = document.getElementById('productModal');
 const modalImage = document.getElementById('modalImage');
+const modalEnvelopePower = document.getElementById('modalEnvelopePower');
+const modalEnvelopeModel = document.getElementById('modalEnvelopeModel');
+const modalEnvelopeMeta = document.getElementById('modalEnvelopeMeta');
 const modalTitle = document.getElementById('modalTitle');
 const modalCategory = document.getElementById('modalCategory');
 const modalSpecs = document.getElementById('modalSpecs');
@@ -127,6 +130,17 @@ function fromPrice(p){
   return Math.min(...prices);
 }
 
+function envelopeVisual(p, className=''){
+  return `<div class="lens-envelope ${className}" aria-label="${e(p.name)} in standard export packing">
+    <img src="assets/lens-export-envelope.webp" alt="" loading="lazy" decoding="async">
+    <div class="lens-envelope-copy">
+      <span class="lens-envelope-power"><small>POWER</small><b>SELECTED AT ORDER</b></span>
+      <strong class="lens-envelope-model">${e(p.name)}</strong>
+      <span class="lens-envelope-meta">${e(labels[p.cat])} · INDEX ${e(p.index)}</span>
+    </div>
+  </div>`;
+}
+
 function render(filter='all'){
   grid.innerHTML='';
   products.filter(p=>filter==='all'||p.cat===filter).forEach(p=>{
@@ -134,7 +148,7 @@ function render(filter='all'){
     const priceMarkup=p.cat==='semi'
       ? '<div class="card-price inquiry-price"><strong>Bulk Inquiry</strong><small>Contact for pricing</small></div>'
       : `<div class="card-price">From <strong>${fromPrice(p).toFixed(2)}</strong> <small>/ lens</small></div>`;
-    card.innerHTML=`<div class="card-img"><img src="assets/thumbs/${p.file.replace(/\.png$/i,'.webp')}" alt="${p.name}" decoding="async"></div><div class="card-body"><h3>${p.name}</h3>${priceMarkup}<div class="meta"><span class="pill">${labels[p.cat]}</span><span class="pill">${p.coating}</span></div></div>`;
+    card.innerHTML=`<div class="card-img">${envelopeVisual(p,'card-lens-envelope')}</div><div class="card-body"><h3>${p.name}</h3>${priceMarkup}<div class="meta"><span class="pill">${labels[p.cat]}</span><span class="pill">${p.coating}</span></div></div>`;
     card.addEventListener('click',()=>openProduct(p)); grid.appendChild(card);
   });
 }
@@ -221,6 +235,19 @@ function selectedPrice(){
   const combinations=selectedCombinations();
   return combinations.length ? combinations.reduce((sum,x)=>sum+x.tier.price,0)/combinations.length : undefined;
 }
+function selectedEnvelopePower(){
+  if(!activeProduct) return 'SELECT POWER';
+  if(activeProduct.cat==='semi') return 'BASE CONFIRMED WITH ORDER';
+  if(isAllPowersSelected()) return activeProduct.cat==='progressive' ? 'ALL SPH / CYL / ADD' : 'ALL SPH / CYL';
+  const sph=document.getElementById('orderSph')?.value;
+  const cyl=document.getElementById('orderCyl')?.value;
+  const add=document.getElementById('orderAdd')?.value;
+  if(sph===undefined) return 'SELECT POWER';
+  return [`SPH ${power(Number(sph))}`,cyl!==undefined&&`CYL ${cylPower(Number(cyl))}`,add!==undefined&&`ADD ${power(Number(add))}`].filter(Boolean).join(' / ');
+}
+function updateEnvelopePower(){
+  if(modalEnvelopePower) modalEnvelopePower.textContent=selectedEnvelopePower();
+}
 function updateOrderPrice(){
   const qtyInput=document.getElementById('orderQty'),all=isAllPowersSelected();
   if(activeProduct.cat==='single'){
@@ -233,17 +260,18 @@ function updateOrderPrice(){
   const price=selectedPrice(),qty=Math.max(1,Number(qtyInput?.value)||1);
   orderPrice.innerHTML=price===undefined?'Combination unavailable':`$${price.toFixed(2)} × ${qty} lens${qty===1?'':'es'} = <strong>$${(price*qty).toFixed(2)}</strong>`;
   addOrderLine.disabled=price===undefined;
+  updateEnvelopePower();
 }
 function openProduct(p){
-  activeProduct=p; modalImage.src=`assets/products/${p.file}`; modalImage.alt=p.name; modalTitle.textContent=p.name; modalCategory.textContent=labels[p.cat];
+  activeProduct=p; modalImage.src='assets/lens-export-envelope.webp'; modalImage.alt=`${p.name} standard export envelope`; modalEnvelopeModel.textContent=p.name; modalEnvelopeMeta.textContent=`${labels[p.cat]} · INDEX ${p.index}`; modalTitle.textContent=p.name; modalCategory.textContent=labels[p.cat];
   modalSpecs.innerHTML=`<dt>Index</dt><dd>${p.index}</dd><dt>Coating</dt><dd>${p.coating}</dd><dt>Material</dt><dd>${p.material}</dd><dt>Range</dt><dd>${productRange(p)}</dd><dt>Features</dt><dd>${p.features}</dd>`;
   window.clearTimeout(addOrderLine._feedbackTimer);
   addOrderLine.textContent='Add to Cart';
-  renderOrderFields(p); renderModelCartSummary(); modal.showModal();
+  renderOrderFields(p); updateEnvelopePower(); renderModelCartSummary(); modal.showModal();
 }
 function addToCart(){
   const qty=Math.max(1,Math.floor(Number(document.getElementById('orderQty').value)||1)), price=selectedPrice(); if(price===undefined)return;
-  const line={name:activeProduct.name,coating:activeProduct.coating,qty,price,image:`assets/thumbs/${activeProduct.file.replace(/\.png$/i,'.webp')}`};
+  const line={name:activeProduct.name,coating:activeProduct.coating,qty,price,image:'assets/lens-export-envelope.webp'};
   if(activeProduct.cat==='single'){ const all=isAllPowersSelected(),sph=document.getElementById('orderSph').value,cyl=document.getElementById('orderCyl').value; line.sph=all?'ALL':power(sph); line.cyl=all?'ALL':cylPower(cyl); if(activeProduct.variants) line.coating=activeProduct.variants[Number(document.getElementById('orderVariant').value)].name; }
   if(activeProduct.cat==='progressive'){ const all=isAllPowersSelected(),sph=document.getElementById('orderSph').value,cyl=document.getElementById('orderCyl').value,add=document.getElementById('orderAdd').value; line.sph=all?'ALL':power(sph); line.cyl=all?'ALL':cylPower(cyl); line.add=all?'ALL':power(add); }
   if(activeProduct.cat==='semi') line.base=document.getElementById('orderBase').value;
@@ -297,7 +325,7 @@ function accountLabel(){
 }
 function cartView(){
   const totalQty=cart.reduce((s,x)=>s+x.qty,0),total=cart.reduce((s,x)=>s+x.price*x.qty,0);
-  showCommerce(`<p class="eyebrow">BULK LENS ORDER</p><h2>${cart.length?'Your Cart':'Your cart is empty'}</h2><p class="order-note">Unit prices are per lens. Availability, packing and shipping are confirmed before invoicing.</p><div class="cart-list">${cart.length?cart.map((x,i)=>`<div class="cart-line"><div><strong>${e(x.name)}</strong><span>${e(linePower(x))}</span><small>$${money(x.price)} each</small></div><label class="cart-qty">Qty<input data-qty="${i}" type="number" min="1" step="1" value="${x.qty}"></label><div><b>$${money(x.price*x.qty)}</b><button data-remove="${i}" aria-label="Remove">&times;</button></div></div>`).join(''):'<p class="empty-cart">Choose a product and add a lens power.</p>'}</div>${cart.length?`<div class="cart-summary"><span>${totalQty} lenses</span><strong>USD $${money(total)}</strong></div><div class="commerce-actions"><button class="btn secondary" id="continueShopping">Continue Shopping</button><button class="btn" id="checkoutButton">Proceed to Checkout</button></div>`:'<button class="btn" id="continueShopping">Continue Shopping</button>'}`);
+  showCommerce(`<p class="eyebrow">BULK LENS ORDER</p><h2>${cart.length?'Your Cart':'Your cart is empty'}</h2><p class="order-note">Unit prices are per lens. Standard export packing uses plain white envelopes marked with the lens type and prescription power. Availability and shipping are confirmed before invoicing.</p><div class="cart-list">${cart.length?cart.map((x,i)=>`<div class="cart-line"><div><strong>${e(x.name)}</strong><span>${e(linePower(x))}</span><small>$${money(x.price)} each</small></div><label class="cart-qty">Qty<input data-qty="${i}" type="number" min="1" step="1" value="${x.qty}"></label><div><b>$${money(x.price*x.qty)}</b><button data-remove="${i}" aria-label="Remove">&times;</button></div></div>`).join(''):'<p class="empty-cart">Choose a product and add a lens power.</p>'}</div>${cart.length?`<div class="cart-summary"><span>${totalQty} lenses</span><strong>USD $${money(total)}</strong></div><div class="commerce-actions"><button class="btn secondary" id="continueShopping">Continue Shopping</button><button class="btn" id="checkoutButton">Proceed to Checkout</button></div>`:'<button class="btn" id="continueShopping">Continue Shopping</button>'}`);
   commerceBody.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{cart.splice(Number(b.dataset.remove),1);saveCart();cartView();});
   commerceBody.querySelectorAll('[data-qty]').forEach(input=>input.onchange=()=>{cart[Number(input.dataset.qty)].qty=Math.max(1,Math.floor(Number(input.value)||1));saveCart();cartView();});
   document.getElementById('continueShopping').onclick=()=>cartDialog.close();
@@ -348,7 +376,6 @@ function startRandomLensHero() {
   const slides = products.map(product => ({
     product,
     name: product.name,
-    src: `assets/thumbs/${product.file.replace(/\.png$/i, '.webp')}`,
     meta: `${labels[product.cat]} · Index ${product.index}`
   }));
   const shuffle = list => {
@@ -363,15 +390,18 @@ function startRandomLensHero() {
   let position = 0;
   let activeSlide = order[0];
 
-  heroPanel.innerHTML = '<img alt=""><div class="hero-lens-label"><b></b><span></span></div>';
+  heroPanel.innerHTML = '<div class="lens-envelope hero-lens-envelope"><img src="assets/lens-export-envelope.webp" alt=""><div class="lens-envelope-copy"><span class="lens-envelope-power"><small>POWER</small><b>SELECTED AT ORDER</b></span><strong class="lens-envelope-model"></strong><span class="lens-envelope-meta"></span></div></div><div class="hero-lens-label"><b></b><span></span></div>';
   const image = heroPanel.querySelector('img');
+  const envelopeModel = heroPanel.querySelector('.lens-envelope-model');
+  const envelopeMeta = heroPanel.querySelector('.lens-envelope-meta');
   const label = heroPanel.querySelector('.hero-lens-label');
 
   const show = (slide, immediate = false) => {
     const update = () => {
       activeSlide = slide;
-      image.src = slide.src;
-      image.alt = `${slide.name} lens package`;
+      image.alt = `${slide.name} standard export envelope`;
+      envelopeModel.textContent = slide.name;
+      envelopeMeta.textContent = slide.meta;
       heroLensName.textContent = slide.name;
       label.querySelector('b').textContent = slide.name;
       label.querySelector('span').textContent = slide.meta;
@@ -387,13 +417,6 @@ function startRandomLensHero() {
     }
   };
 
-  const preloadNext = () => {
-    const next = order[(position + 1) % order.length];
-    if (next) {
-      const preloaded = new Image();
-      preloaded.src = next.src;
-    }
-  };
   const openFeaturedLens = () => activeSlide && openProduct(activeSlide.product);
   heroPanel.addEventListener('click', openFeaturedLens);
   heroPanel.addEventListener('keydown', event => {
@@ -404,7 +427,6 @@ function startRandomLensHero() {
   });
 
   show(activeSlide, true);
-  preloadNext();
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   window.setInterval(() => {
@@ -418,7 +440,6 @@ function startRandomLensHero() {
       position = 0;
     }
     show(order[position]);
-    preloadNext();
   }, 5000);
 }
 
