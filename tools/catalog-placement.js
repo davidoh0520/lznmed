@@ -11,7 +11,10 @@
     'template',
     'heaters',
     'testing',
-    'lensmeter'
+    'lensmeter',
+    'cleaning',
+    'trial-lens-sets',
+    'trial'
   ];
 
   window.LZN_DEVICE_CATEGORY_IDS = Object.freeze(deviceCategoryIds);
