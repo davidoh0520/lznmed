@@ -9,7 +9,7 @@
     'ET-660E': 800,
     'ET-480A': 900,
     'LZN-5': 1600,
-    'TOOLTIP': null,
+    'TOOLTIP': 18000,
     'INT-200-IIOMA': null,
     'HV-600': 700,
     'AXL-800': null,
