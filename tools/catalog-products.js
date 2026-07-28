@@ -827,9 +827,37 @@
         "model": "LZN-TL-1032",
         "nameEn": "Decorative Eyeglass Chain",
         "chineseName": "Decorative Eyeglass Chain",
-        "image": "assets/catalog/TL-1032/english-card.webp",
+        "image": "assets/catalog/TL-1032/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1032/english-card.webp"
+          "assets/catalog/TL-1032/clean-option-01.webp",
+          "assets/catalog/TL-1032/clean-option-02.webp",
+          "assets/catalog/TL-1032/clean-option-03.webp",
+          "assets/catalog/TL-1032/clean-option-04.webp",
+          "assets/catalog/TL-1032/clean-option-05.webp",
+          "assets/catalog/TL-1032/clean-option-06.webp",
+          "assets/catalog/TL-1032/clean-option-07.webp",
+          "assets/catalog/TL-1032/clean-option-08.webp",
+          "assets/catalog/TL-1032/clean-option-09.webp",
+          "assets/catalog/TL-1032/clean-option-10.webp",
+          "assets/catalog/TL-1032/clean-option-11.webp",
+          "assets/catalog/TL-1032/clean-option-12.webp",
+          "assets/catalog/TL-1032/clean-option-13.webp",
+          "assets/catalog/TL-1032/clean-option-14.webp",
+          "assets/catalog/TL-1032/clean-option-15.webp",
+          "assets/catalog/TL-1032/clean-option-16.webp",
+          "assets/catalog/TL-1032/clean-option-17.webp",
+          "assets/catalog/TL-1032/clean-option-18.webp",
+          "assets/catalog/TL-1032/clean-option-19.webp",
+          "assets/catalog/TL-1032/clean-option-20.webp",
+          "assets/catalog/TL-1032/clean-option-21.webp",
+          "assets/catalog/TL-1032/clean-option-22.webp",
+          "assets/catalog/TL-1032/clean-option-23.webp",
+          "assets/catalog/TL-1032/clean-option-24.webp",
+          "assets/catalog/TL-1032/clean-option-25.webp",
+          "assets/catalog/TL-1032/clean-option-26.webp",
+          "assets/catalog/TL-1032/clean-option-27.webp",
+          "assets/catalog/TL-1032/clean-option-28.webp",
+          "assets/catalog/TL-1032/clean-option-29.webp"
         ],
         "description": "Decorative Eyeglass Chain for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.89,
@@ -839,177 +867,177 @@
         "options": [
           {
             "model": "LZN-TL-1032-01",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 01",
             "priceUsd": 2.31,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1032-02",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 02",
             "priceUsd": 2.31,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1032-03",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 03",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1032-04",
-            "label": "Silver",
+            "label": "Eyewear Chain Design 04",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1032-05",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 05",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1032-06",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 06",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1032-07",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 07",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1032-08",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 08",
             "priceUsd": 2,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1032-09",
-            "label": "Silver",
+            "label": "Eyewear Chain Design 09",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1032-10",
-            "label": "Silver",
+            "label": "Eyewear Chain Design 10",
             "priceUsd": 2.31,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-10.webp"
           },
           {
             "model": "LZN-TL-1032-11",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 11",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-11.webp"
           },
           {
             "model": "LZN-TL-1032-12",
-            "label": "Silver",
+            "label": "Eyewear Chain Design 12",
             "priceUsd": 2.1,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-12.webp"
           },
           {
             "model": "LZN-TL-1032-13",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 13",
             "priceUsd": 2,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-13.webp"
           },
           {
             "model": "LZN-TL-1032-14",
-            "label": "Silver",
+            "label": "Eyewear Chain Design 14",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-14.webp"
           },
           {
             "model": "LZN-TL-1032-15",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 15",
             "priceUsd": 2.31,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-15.webp"
           },
           {
             "model": "LZN-TL-1032-16",
-            "label": "Silver",
+            "label": "Eyewear Chain Design 16",
             "priceUsd": 2.31,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-16.webp"
           },
           {
             "model": "LZN-TL-1032-17",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 17",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-17.webp"
           },
           {
             "model": "LZN-TL-1032-18",
-            "label": "Silver",
+            "label": "Eyewear Chain Design 18",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-18.webp"
           },
           {
             "model": "LZN-TL-1032-19",
-            "label": "Silver",
+            "label": "Eyewear Chain Design 19",
             "priceUsd": 2,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-19.webp"
           },
           {
             "model": "LZN-TL-1032-20",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 20",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-20.webp"
           },
           {
             "model": "LZN-TL-1032-21",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 21",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-21.webp"
           },
           {
             "model": "LZN-TL-1032-22",
-            "label": "Silver",
+            "label": "Eyewear Chain Design 22",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-22.webp"
           },
           {
             "model": "LZN-TL-1032-23",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 23",
             "priceUsd": 2,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-23.webp"
           },
           {
             "model": "LZN-TL-1032-24",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 24",
             "priceUsd": 2.22,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-24.webp"
           },
           {
             "model": "LZN-TL-1032-25",
-            "label": "Silver",
+            "label": "Eyewear Chain Design 25",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-25.webp"
           },
           {
             "model": "LZN-TL-1032-26",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 26",
             "priceUsd": 2.73,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-26.webp"
           },
           {
             "model": "LZN-TL-1032-27",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 27",
             "priceUsd": 2.1,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-27.webp"
           },
           {
             "model": "LZN-TL-1032-28",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 28",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-28.webp"
           },
           {
             "model": "LZN-TL-1032-29",
-            "label": "Gold",
+            "label": "Eyewear Chain Design 29",
             "priceUsd": 2.1,
-            "image": "assets/catalog/TL-1032/english-card.webp"
+            "image": "assets/catalog/TL-1032/clean-option-29.webp"
           }
         ],
         "features": [
@@ -1023,9 +1051,17 @@
         "model": "LZN-TL-1034",
         "nameEn": "Silicone Eyeglass Retainer Kit",
         "chineseName": "Silicone Eyeglass Retainer Kit",
-        "image": "assets/catalog/TL-1034/english-card.webp",
+        "image": "assets/catalog/TL-1034/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1034/english-card.webp"
+          "assets/catalog/TL-1034/clean-option-01.webp",
+          "assets/catalog/TL-1034/clean-option-02.webp",
+          "assets/catalog/TL-1034/clean-option-03.webp",
+          "assets/catalog/TL-1034/clean-option-04.webp",
+          "assets/catalog/TL-1034/clean-option-05.webp",
+          "assets/catalog/TL-1034/clean-option-06.webp",
+          "assets/catalog/TL-1034/clean-option-07.webp",
+          "assets/catalog/TL-1034/clean-option-08.webp",
+          "assets/catalog/TL-1034/clean-option-09.webp"
         ],
         "description": "Silicone Eyeglass Retainer Kit for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.34,
@@ -1035,57 +1071,57 @@
         "options": [
           {
             "model": "LZN-TL-1034-01",
-            "label": "Black / Pink",
+            "label": "Black",
             "priceUsd": 3.02,
-            "image": "assets/catalog/TL-1034/english-card.webp"
+            "image": "assets/catalog/TL-1034/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1034-02",
             "label": "White",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1034/english-card.webp"
+            "image": "assets/catalog/TL-1034/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1034-03",
-            "label": "Style 03",
+            "label": "Orange",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1034/english-card.webp"
+            "image": "assets/catalog/TL-1034/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1034-04",
-            "label": "Green",
+            "label": "Red",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1034/english-card.webp"
+            "image": "assets/catalog/TL-1034/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1034-05",
-            "label": "Purple",
+            "label": "Green",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1034/english-card.webp"
+            "image": "assets/catalog/TL-1034/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1034-06",
-            "label": "Pink",
+            "label": "Purple",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1034/english-card.webp"
+            "image": "assets/catalog/TL-1034/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1034-07",
-            "label": "Yellow",
+            "label": "Brown",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1034/english-card.webp"
+            "image": "assets/catalog/TL-1034/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1034-08",
-            "label": "Blue",
+            "label": "Pink",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1034/english-card.webp"
+            "image": "assets/catalog/TL-1034/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1034-09",
-            "label": "Blue",
+            "label": "Mixed Color Set",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1034/english-card.webp"
+            "image": "assets/catalog/TL-1034/clean-option-09.webp"
           }
         ],
         "features": [
@@ -1099,9 +1135,16 @@
         "model": "LZN-TL-1035",
         "nameEn": "Three-Hole Sports Eyeglass Strap",
         "chineseName": "Three-Hole Sports Eyeglass Strap",
-        "image": "assets/catalog/TL-1035/english-card.webp",
+        "image": "assets/catalog/TL-1035/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1035/english-card.webp"
+          "assets/catalog/TL-1035/clean-option-01.webp",
+          "assets/catalog/TL-1035/clean-option-02.webp",
+          "assets/catalog/TL-1035/clean-option-03.webp",
+          "assets/catalog/TL-1035/clean-option-04.webp",
+          "assets/catalog/TL-1035/clean-option-05.webp",
+          "assets/catalog/TL-1035/clean-option-06.webp",
+          "assets/catalog/TL-1035/clean-option-07.webp",
+          "assets/catalog/TL-1035/clean-option-08.webp"
         ],
         "description": "Three-Hole Sports Eyeglass Strap for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.7,
@@ -1111,81 +1154,51 @@
         "options": [
           {
             "model": "LZN-TL-1035-01",
-            "label": "Style 01",
+            "label": "Orange",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1035/english-card.webp"
+            "image": "assets/catalog/TL-1035/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1035-02",
             "label": "Pink",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1035/english-card.webp"
+            "image": "assets/catalog/TL-1035/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1035-03",
-            "label": "Black",
+            "label": "Light Pink",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1035/english-card.webp"
+            "image": "assets/catalog/TL-1035/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1035-04",
-            "label": "Red",
+            "label": "Black",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1035/english-card.webp"
+            "image": "assets/catalog/TL-1035/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1035-05",
-            "label": "Yellow",
+            "label": "Matte Black",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1035/english-card.webp"
+            "image": "assets/catalog/TL-1035/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1035-06",
-            "label": "Blue",
+            "label": "Red",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1035/english-card.webp"
+            "image": "assets/catalog/TL-1035/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1035-07",
-            "label": "Blue",
+            "label": "Burgundy",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1035/english-card.webp"
+            "image": "assets/catalog/TL-1035/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1035-08",
-            "label": "Green",
+            "label": "Wine Red",
             "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1035/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1035-09",
-            "label": "Clear",
-            "priceUsd": 1.89,
-            "image": "assets/catalog/TL-1035/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1035-10",
-            "label": "Purple",
-            "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1035/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1035-11",
-            "label": "Purple",
-            "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1035/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1035-12",
-            "label": "Style 12",
-            "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1035/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1035-13",
-            "label": "Style 13",
-            "priceUsd": 2.77,
-            "image": "assets/catalog/TL-1035/english-card.webp"
+            "image": "assets/catalog/TL-1035/clean-option-08.webp"
           }
         ],
         "features": [
@@ -1531,9 +1544,18 @@
         "model": "LZN-TL-1011",
         "nameEn": "Hook-Style Protective Eyeglass Case",
         "chineseName": "Hook-Style Protective Eyeglass Case",
-        "image": "assets/catalog/TL-1011/english-card.webp",
+        "image": "assets/catalog/TL-1011/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1011/english-card.webp"
+          "assets/catalog/TL-1011/clean-option-01.webp",
+          "assets/catalog/TL-1011/clean-option-02.webp",
+          "assets/catalog/TL-1011/clean-option-03.webp",
+          "assets/catalog/TL-1011/clean-option-04.webp",
+          "assets/catalog/TL-1011/clean-option-05.webp",
+          "assets/catalog/TL-1011/clean-option-06.webp",
+          "assets/catalog/TL-1011/clean-option-07.webp",
+          "assets/catalog/TL-1011/clean-option-08.webp",
+          "assets/catalog/TL-1011/clean-option-09.webp",
+          "assets/catalog/TL-1011/clean-option-10.webp"
         ],
         "description": "Hook-Style Protective Eyeglass Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 2.2,
@@ -1543,99 +1565,63 @@
         "options": [
           {
             "model": "LZN-TL-1011-01",
-            "label": "Black",
+            "label": "Camo Green",
             "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
+            "image": "assets/catalog/TL-1011/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1011-02",
-            "label": "Case Style 02",
+            "label": "Pink / Blue",
             "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
+            "image": "assets/catalog/TL-1011/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1011-03",
-            "label": "Brown / Silver",
+            "label": "Red",
             "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
+            "image": "assets/catalog/TL-1011/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1011-04",
-            "label": "Black",
+            "label": "Charcoal",
             "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
+            "image": "assets/catalog/TL-1011/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1011-05",
-            "label": "White",
+            "label": "Brown",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1011/english-card.webp"
+            "image": "assets/catalog/TL-1011/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1011-06",
-            "label": "Case Style 06",
+            "label": "Fuchsia",
             "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
+            "image": "assets/catalog/TL-1011/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1011-07",
-            "label": "Case Style 07",
+            "label": "Black Texture",
             "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
+            "image": "assets/catalog/TL-1011/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1011-08",
-            "label": "Case Style 08",
+            "label": "Black",
             "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
+            "image": "assets/catalog/TL-1011/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1011-09",
-            "label": "Case Style 09",
+            "label": "Yellow",
             "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
+            "image": "assets/catalog/TL-1011/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1011-10",
-            "label": "Case Style 10",
+            "label": "Blue",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1011/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1011-11",
-            "label": "Case Style 11",
-            "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1011/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1011-12",
-            "label": "Case Style 12",
-            "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1011-13",
-            "label": "Pink",
-            "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1011/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1011-14",
-            "label": "Case Style 14",
-            "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1011-15",
-            "label": "Case Style 15",
-            "priceUsd": 2.2,
-            "image": "assets/catalog/TL-1011/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-1011-16",
-            "label": "Case Style 16",
-            "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1011/english-card.webp"
+            "image": "assets/catalog/TL-1011/clean-option-10.webp"
           }
         ],
         "features": [
@@ -1649,9 +1635,9 @@
         "model": "LZN-TL-1012",
         "nameEn": "Wood-Grain Protective Eyeglass Case",
         "chineseName": "Wood-Grain Protective Eyeglass Case",
-        "image": "assets/catalog/TL-1012/english-card.webp",
+        "image": "assets/catalog/TL-1012/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1012/english-card.webp"
+          "assets/catalog/TL-1012/clean-option-01.webp"
         ],
         "description": "Wood-Grain Protective Eyeglass Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 2.45,
@@ -1661,9 +1647,9 @@
         "options": [
           {
             "model": "LZN-TL-1012-01",
-            "label": "Standard",
+            "label": "Standard Model",
             "priceUsd": 2.45,
-            "image": "assets/catalog/TL-1012/english-card.webp"
+            "image": "assets/catalog/TL-1012/clean-option-01.webp"
           }
         ],
         "features": [
@@ -1677,9 +1663,12 @@
         "model": "LZN-TL-1017",
         "nameEn": "Retro Soft Eyeglass Pouch",
         "chineseName": "Retro Soft Eyeglass Pouch",
-        "image": "assets/catalog/TL-1017/english-card.webp",
+        "image": "assets/catalog/TL-1017/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1017/english-card.webp"
+          "assets/catalog/TL-1017/clean-option-01.webp",
+          "assets/catalog/TL-1017/clean-option-02.webp",
+          "assets/catalog/TL-1017/clean-option-03.webp",
+          "assets/catalog/TL-1017/clean-option-04.webp"
         ],
         "description": "Retro Soft Eyeglass Pouch for professional optical retail, repair, care, or customer use.",
         "priceUsd": 3.56,
@@ -1691,25 +1680,25 @@
             "model": "LZN-TL-1017-01",
             "label": "Black",
             "priceUsd": 3.56,
-            "image": "assets/catalog/TL-1017/english-card.webp"
+            "image": "assets/catalog/TL-1017/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1017-02",
-            "label": "Case Style 02",
+            "label": "Taupe",
             "priceUsd": 3.56,
-            "image": "assets/catalog/TL-1017/english-card.webp"
+            "image": "assets/catalog/TL-1017/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1017-03",
-            "label": "Gray",
+            "label": "Light Gray",
             "priceUsd": 3.56,
-            "image": "assets/catalog/TL-1017/english-card.webp"
+            "image": "assets/catalog/TL-1017/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1017-04",
-            "label": "Brown",
+            "label": "Cognac Brown",
             "priceUsd": 3.56,
-            "image": "assets/catalog/TL-1017/english-card.webp"
+            "image": "assets/catalog/TL-1017/clean-option-04.webp"
           }
         ],
         "features": [
@@ -1723,9 +1712,18 @@
         "model": "LZN-TL-1019",
         "nameEn": "Felt Eyeglass Storage Pouch",
         "chineseName": "Felt Eyeglass Storage Pouch",
-        "image": "assets/catalog/TL-1019/english-card.webp",
+        "image": "assets/catalog/TL-1019/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1019/english-card.webp"
+          "assets/catalog/TL-1019/clean-option-01.webp",
+          "assets/catalog/TL-1019/clean-option-02.webp",
+          "assets/catalog/TL-1019/clean-option-03.webp",
+          "assets/catalog/TL-1019/clean-option-04.webp",
+          "assets/catalog/TL-1019/clean-option-05.webp",
+          "assets/catalog/TL-1019/clean-option-06.webp",
+          "assets/catalog/TL-1019/clean-option-07.webp",
+          "assets/catalog/TL-1019/clean-option-08.webp",
+          "assets/catalog/TL-1019/clean-option-09.webp",
+          "assets/catalog/TL-1019/clean-option-10.webp"
         ],
         "description": "Felt Eyeglass Storage Pouch for professional optical retail, repair, care, or customer use.",
         "priceUsd": 2.28,
@@ -1737,61 +1735,61 @@
             "model": "LZN-TL-1019-01",
             "label": "Pink / Red",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1019/english-card.webp"
+            "image": "assets/catalog/TL-1019/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1019-02",
             "label": "Red / Yellow",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1019/english-card.webp"
+            "image": "assets/catalog/TL-1019/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1019-03",
-            "label": "White / Blue",
+            "label": "Yellow / Orange",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1019/english-card.webp"
+            "image": "assets/catalog/TL-1019/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1019-04",
-            "label": "Gray / Red",
+            "label": "Blue / Gray",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1019/english-card.webp"
+            "image": "assets/catalog/TL-1019/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1019-05",
-            "label": "White / Purple",
+            "label": "White / Red",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1019/english-card.webp"
+            "image": "assets/catalog/TL-1019/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1019-06",
-            "label": "Gray",
+            "label": "Gray / Yellow",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1019/english-card.webp"
+            "image": "assets/catalog/TL-1019/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1019-07",
-            "label": "Purple",
+            "label": "Charcoal / Orange",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1019/english-card.webp"
+            "image": "assets/catalog/TL-1019/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1019-08",
-            "label": "Gray / Red",
+            "label": "Purple / White",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1019/english-card.webp"
+            "image": "assets/catalog/TL-1019/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1019-09",
-            "label": "Gray / Yellow",
+            "label": "Purple / Black",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1019/english-card.webp"
+            "image": "assets/catalog/TL-1019/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1019-10",
-            "label": "Gray / Blue",
+            "label": "Assorted Colors",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1019/english-card.webp"
+            "image": "assets/catalog/TL-1019/clean-option-10.webp"
           }
         ],
         "features": [
@@ -1805,9 +1803,24 @@
         "model": "LZN-TL-1021",
         "nameEn": "Geometric Hard Eyeglass Case",
         "chineseName": "Geometric Hard Eyeglass Case",
-        "image": "assets/catalog/TL-1021/english-card.webp",
+        "image": "assets/catalog/TL-1021/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1021/english-card.webp"
+          "assets/catalog/TL-1021/clean-option-01.webp",
+          "assets/catalog/TL-1021/clean-option-02.webp",
+          "assets/catalog/TL-1021/clean-option-03.webp",
+          "assets/catalog/TL-1021/clean-option-04.webp",
+          "assets/catalog/TL-1021/clean-option-05.webp",
+          "assets/catalog/TL-1021/clean-option-06.webp",
+          "assets/catalog/TL-1021/clean-option-07.webp",
+          "assets/catalog/TL-1021/clean-option-08.webp",
+          "assets/catalog/TL-1021/clean-option-09.webp",
+          "assets/catalog/TL-1021/clean-option-10.webp",
+          "assets/catalog/TL-1021/clean-option-11.webp",
+          "assets/catalog/TL-1021/clean-option-12.webp",
+          "assets/catalog/TL-1021/clean-option-13.webp",
+          "assets/catalog/TL-1021/clean-option-14.webp",
+          "assets/catalog/TL-1021/clean-option-15.webp",
+          "assets/catalog/TL-1021/clean-option-16.webp"
         ],
         "description": "Geometric Hard Eyeglass Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1,
@@ -1817,99 +1830,99 @@
         "options": [
           {
             "model": "LZN-TL-1021-01",
-            "label": "White",
+            "label": "White Geometric",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1021-02",
-            "label": "Pink",
+            "label": "Pink / White",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1021-03",
-            "label": "Blue",
+            "label": "Blue / White",
             "priceUsd": 1.82,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1021-04",
-            "label": "Green",
+            "label": "Green / White",
             "priceUsd": 1.82,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1021-05",
-            "label": "Black / White",
+            "label": "Brown / White",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1021-06",
-            "label": "Pink",
+            "label": "Black Lettering",
             "priceUsd": 1.82,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1021-07",
-            "label": "Brown",
+            "label": "Pink",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1021-08",
-            "label": "White",
+            "label": "Black",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1021-09",
-            "label": "Case Style 09",
+            "label": "Brown",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1021-10",
-            "label": "Case Style 10",
+            "label": "Bird Pattern",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-10.webp"
           },
           {
             "model": "LZN-TL-1021-11",
-            "label": "Case Style 11",
+            "label": "Floral Black",
             "priceUsd": 1.82,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-11.webp"
           },
           {
             "model": "LZN-TL-1021-12",
-            "label": "Case Style 12",
+            "label": "Floral Green",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-12.webp"
           },
           {
             "model": "LZN-TL-1021-13",
-            "label": "Case Style 13",
+            "label": "Floral Teal",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-13.webp"
           },
           {
             "model": "LZN-TL-1021-14",
-            "label": "Case Style 14",
+            "label": "Blue Botanical",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-14.webp"
           },
           {
             "model": "LZN-TL-1021-15",
-            "label": "Case Style 15",
+            "label": "Pink Floral",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-15.webp"
           },
           {
             "model": "LZN-TL-1021-16",
-            "label": "Case Style 16",
+            "label": "Soft Pink Floral",
             "priceUsd": 1.82,
-            "image": "assets/catalog/TL-1021/english-card.webp"
+            "image": "assets/catalog/TL-1021/clean-option-16.webp"
           }
         ],
         "features": [
@@ -1923,9 +1936,17 @@
         "model": "LZN-TL-1031",
         "nameEn": "Eyeglass Pouch and Cleaning Cloth Set",
         "chineseName": "Eyeglass Pouch and Cleaning Cloth Set",
-        "image": "assets/catalog/TL-1031/english-card.webp",
+        "image": "assets/catalog/TL-1031/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1031/english-card.webp"
+          "assets/catalog/TL-1031/clean-option-01.webp",
+          "assets/catalog/TL-1031/clean-option-02.webp",
+          "assets/catalog/TL-1031/clean-option-03.webp",
+          "assets/catalog/TL-1031/clean-option-04.webp",
+          "assets/catalog/TL-1031/clean-option-05.webp",
+          "assets/catalog/TL-1031/clean-option-06.webp",
+          "assets/catalog/TL-1031/clean-option-07.webp",
+          "assets/catalog/TL-1031/clean-option-08.webp",
+          "assets/catalog/TL-1031/clean-option-09.webp"
         ],
         "description": "Eyeglass Pouch and Cleaning Cloth Set for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1,
@@ -1935,57 +1956,57 @@
         "options": [
           {
             "model": "LZN-TL-1031-01",
-            "label": "White",
+            "label": "Orange Floral",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1031/english-card.webp"
+            "image": "assets/catalog/TL-1031/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1031-02",
-            "label": "Case Style 02",
+            "label": "Blue Floral",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1031/english-card.webp"
+            "image": "assets/catalog/TL-1031/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1031-03",
-            "label": "Case Style 03",
+            "label": "Pink Character",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1031/english-card.webp"
+            "image": "assets/catalog/TL-1031/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1031-04",
-            "label": "Red",
+            "label": "Navy Floral",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1031/english-card.webp"
+            "image": "assets/catalog/TL-1031/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1031-05",
-            "label": "Case Style 05",
+            "label": "Pink Flamingo",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1031/english-card.webp"
+            "image": "assets/catalog/TL-1031/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1031-06",
-            "label": "Case Style 06",
+            "label": "Indigo Pattern",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1031/english-card.webp"
+            "image": "assets/catalog/TL-1031/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1031-07",
-            "label": "Case Style 07",
+            "label": "Blue Wave",
             "priceUsd": 2.29,
-            "image": "assets/catalog/TL-1031/english-card.webp"
+            "image": "assets/catalog/TL-1031/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1031-08",
-            "label": "Case Style 08",
+            "label": "Ocean Wave",
             "priceUsd": 2.29,
-            "image": "assets/catalog/TL-1031/english-card.webp"
+            "image": "assets/catalog/TL-1031/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1031-09",
-            "label": "Case Style 09",
+            "label": "Fashion Print",
             "priceUsd": 2.29,
-            "image": "assets/catalog/TL-1031/english-card.webp"
+            "image": "assets/catalog/TL-1031/clean-option-09.webp"
           }
         ],
         "features": [
@@ -1999,9 +2020,21 @@
         "model": "LZN-TL-1039",
         "nameEn": "Cartoon Hard Eyeglass Case",
         "chineseName": "Cartoon Hard Eyeglass Case",
-        "image": "assets/catalog/TL-1039/english-card.webp",
+        "image": "assets/catalog/TL-1039/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1039/english-card.webp"
+          "assets/catalog/TL-1039/clean-option-01.webp",
+          "assets/catalog/TL-1039/clean-option-02.webp",
+          "assets/catalog/TL-1039/clean-option-03.webp",
+          "assets/catalog/TL-1039/clean-option-04.webp",
+          "assets/catalog/TL-1039/clean-option-05.webp",
+          "assets/catalog/TL-1039/clean-option-06.webp",
+          "assets/catalog/TL-1039/clean-option-07.webp",
+          "assets/catalog/TL-1039/clean-option-08.webp",
+          "assets/catalog/TL-1039/clean-option-09.webp",
+          "assets/catalog/TL-1039/clean-option-10.webp",
+          "assets/catalog/TL-1039/clean-option-11.webp",
+          "assets/catalog/TL-1039/clean-option-12.webp",
+          "assets/catalog/TL-1039/clean-option-13.webp"
         ],
         "description": "Cartoon Hard Eyeglass Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.51,
@@ -2011,81 +2044,81 @@
         "options": [
           {
             "model": "LZN-TL-1039-01",
-            "label": "Pink",
+            "label": "Light Blue Bear",
             "priceUsd": 2.08,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1039-02",
-            "label": "Green",
+            "label": "Mint Bear",
             "priceUsd": 1.51,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1039-03",
-            "label": "Pink",
+            "label": "Aqua Bear",
             "priceUsd": 1.51,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1039-04",
-            "label": "Case Style 04",
+            "label": "Blue Bear",
             "priceUsd": 1.51,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1039-05",
-            "label": "Case Style 05",
+            "label": "Pink Rabbit",
             "priceUsd": 2.08,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1039-06",
-            "label": "Pink",
+            "label": "Peach Bear",
             "priceUsd": 3.04,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1039-07",
-            "label": "Purple",
+            "label": "Lilac Bear",
             "priceUsd": 1.51,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1039-08",
-            "label": "Pink",
+            "label": "Turquoise Dinosaur",
             "priceUsd": 1.51,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1039-09",
-            "label": "Green",
+            "label": "Green Dinosaur",
             "priceUsd": 1.51,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1039-10",
-            "label": "Pink / Green",
+            "label": "Yellow Animal",
             "priceUsd": 2.39,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-10.webp"
           },
           {
             "model": "LZN-TL-1039-11",
-            "label": "Pink / Green",
+            "label": "Peach Character",
             "priceUsd": 2.39,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-11.webp"
           },
           {
             "model": "LZN-TL-1039-12",
-            "label": "Pink / Green",
+            "label": "Pink Character",
             "priceUsd": 2.39,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-12.webp"
           },
           {
             "model": "LZN-TL-1039-13",
-            "label": "Green / Purple",
+            "label": "Yellow Character",
             "priceUsd": 2.39,
-            "image": "assets/catalog/TL-1039/english-card.webp"
+            "image": "assets/catalog/TL-1039/clean-option-13.webp"
           }
         ],
         "features": [
@@ -2099,9 +2132,11 @@
         "model": "LZN-TL-1043",
         "nameEn": "Clip-On Sunglasses Storage Case",
         "chineseName": "Clip-On Sunglasses Storage Case",
-        "image": "assets/catalog/TL-1043/english-card.webp",
+        "image": "assets/catalog/TL-1043/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1043/english-card.webp"
+          "assets/catalog/TL-1043/clean-option-01.webp",
+          "assets/catalog/TL-1043/clean-option-02.webp",
+          "assets/catalog/TL-1043/clean-option-03.webp"
         ],
         "description": "Clip-On Sunglasses Storage Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.63,
@@ -2111,21 +2146,21 @@
         "options": [
           {
             "model": "LZN-TL-1043-01",
-            "label": "Case Style 01",
+            "label": "Gray Small",
             "priceUsd": 2.08,
-            "image": "assets/catalog/TL-1043/english-card.webp"
+            "image": "assets/catalog/TL-1043/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1043-02",
-            "label": "Case Style 02",
+            "label": "Gray Medium",
             "priceUsd": 1.63,
-            "image": "assets/catalog/TL-1043/english-card.webp"
+            "image": "assets/catalog/TL-1043/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1043-03",
             "label": "Clear",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1043/english-card.webp"
+            "image": "assets/catalog/TL-1043/clean-option-03.webp"
           }
         ],
         "features": [
@@ -2146,9 +2181,9 @@
         "model": "LZN-TL-1003",
         "nameEn": "Cute Star Contact Lens Travel Case",
         "chineseName": "Cute Star Contact Lens Travel Case",
-        "image": "assets/catalog/TL-1003/english-card.webp",
+        "image": "assets/catalog/TL-1003/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1003/english-card.webp"
+          "assets/catalog/TL-1003/clean-option-01.webp"
         ],
         "description": "Cute Star Contact Lens Travel Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1,
@@ -2158,9 +2193,9 @@
         "options": [
           {
             "model": "LZN-TL-1003-01",
-            "label": "Standard",
+            "label": "Pink Star Contact Lens Case",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1003/english-card.webp"
+            "image": "assets/catalog/TL-1003/clean-option-01.webp"
           }
         ],
         "features": [
@@ -2174,9 +2209,12 @@
         "model": "LZN-TL-1004",
         "nameEn": "Compact Mirrored Contact Lens Case",
         "chineseName": "Compact Mirrored Contact Lens Case",
-        "image": "assets/catalog/TL-1004/english-card.webp",
+        "image": "assets/catalog/TL-1004/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1004/english-card.webp"
+          "assets/catalog/TL-1004/clean-option-01.webp",
+          "assets/catalog/TL-1004/clean-option-02.webp",
+          "assets/catalog/TL-1004/clean-option-03.webp",
+          "assets/catalog/TL-1004/clean-option-04.webp"
         ],
         "description": "Compact Mirrored Contact Lens Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1,
@@ -2186,27 +2224,27 @@
         "options": [
           {
             "model": "LZN-TL-1004-01",
-            "label": "White",
+            "label": "Pink Care Kit A",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1004/english-card.webp"
+            "image": "assets/catalog/TL-1004/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1004-02",
-            "label": "White",
+            "label": "Pink Care Kit B",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1004/english-card.webp"
+            "image": "assets/catalog/TL-1004/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1004-03",
-            "label": "Pink",
+            "label": "Gray Care Kit",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1004/english-card.webp"
+            "image": "assets/catalog/TL-1004/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1004-04",
-            "label": "White",
+            "label": "Pink Care Kit C",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1004/english-card.webp"
+            "image": "assets/catalog/TL-1004/clean-option-04.webp"
           }
         ],
         "features": [
@@ -2220,9 +2258,12 @@
         "model": "LZN-TL-1005",
         "nameEn": "Leak-Resistant Mirrored Contact Lens Case",
         "chineseName": "Leak-Resistant Mirrored Contact Lens Case",
-        "image": "assets/catalog/TL-1005/english-card.webp",
+        "image": "assets/catalog/TL-1005/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1005/english-card.webp"
+          "assets/catalog/TL-1005/clean-option-01.webp",
+          "assets/catalog/TL-1005/clean-option-02.webp",
+          "assets/catalog/TL-1005/clean-option-03.webp",
+          "assets/catalog/TL-1005/clean-option-04.webp"
         ],
         "description": "Leak-Resistant Mirrored Contact Lens Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1,
@@ -2232,27 +2273,27 @@
         "options": [
           {
             "model": "LZN-TL-1005-01",
-            "label": "Pink",
+            "label": "Pink Care Kit A",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1005/english-card.webp"
+            "image": "assets/catalog/TL-1005/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1005-02",
-            "label": "White",
+            "label": "White Care Kit",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1005/english-card.webp"
+            "image": "assets/catalog/TL-1005/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1005-03",
-            "label": "White",
+            "label": "Gray Care Kit",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1005/english-card.webp"
+            "image": "assets/catalog/TL-1005/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1005-04",
-            "label": "White",
+            "label": "Pink Care Kit B",
             "priceUsd": 1,
-            "image": "assets/catalog/TL-1005/english-card.webp"
+            "image": "assets/catalog/TL-1005/clean-option-04.webp"
           }
         ],
         "features": [
@@ -2266,35 +2307,35 @@
         "model": "LZN-TL-1007",
         "nameEn": "RGP Lens Care Storage Organizer",
         "chineseName": "RGP Lens Care Storage Organizer",
-        "image": "assets/catalog/TL-1007/english-option-01.webp",
+        "image": "assets/catalog/TL-1007/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1007/english-option-01.webp",
-          "assets/catalog/TL-1007/english-option-02.webp",
-          "assets/catalog/TL-1007/english-option-03.webp",
-          "assets/catalog/TL-1007/english-option-04.webp",
-          "assets/catalog/TL-1007/english-option-05.webp",
-          "assets/catalog/TL-1007/english-option-06.webp",
-          "assets/catalog/TL-1007/english-option-07.webp",
-          "assets/catalog/TL-1007/english-option-08.webp",
-          "assets/catalog/TL-1007/english-option-09.webp",
-          "assets/catalog/TL-1007/english-option-10.webp",
-          "assets/catalog/TL-1007/english-option-11.webp",
-          "assets/catalog/TL-1007/english-option-12.webp",
-          "assets/catalog/TL-1007/english-option-13.webp",
-          "assets/catalog/TL-1007/english-option-14.webp",
-          "assets/catalog/TL-1007/english-option-15.webp",
-          "assets/catalog/TL-1007/english-option-16.webp",
-          "assets/catalog/TL-1007/english-option-17.webp",
-          "assets/catalog/TL-1007/english-option-18.webp",
-          "assets/catalog/TL-1007/english-option-19.webp",
-          "assets/catalog/TL-1007/english-option-20.webp",
-          "assets/catalog/TL-1007/english-option-21.webp",
-          "assets/catalog/TL-1007/english-option-22.webp",
-          "assets/catalog/TL-1007/english-option-23.webp",
-          "assets/catalog/TL-1007/english-option-24.webp",
-          "assets/catalog/TL-1007/english-option-25.webp",
-          "assets/catalog/TL-1007/english-option-26.webp",
-          "assets/catalog/TL-1007/english-option-27.webp"
+          "assets/catalog/TL-1007/clean-option-01.webp",
+          "assets/catalog/TL-1007/clean-option-02.webp",
+          "assets/catalog/TL-1007/clean-option-03.webp",
+          "assets/catalog/TL-1007/clean-option-04.webp",
+          "assets/catalog/TL-1007/clean-option-05.webp",
+          "assets/catalog/TL-1007/clean-option-06.webp",
+          "assets/catalog/TL-1007/clean-option-07.webp",
+          "assets/catalog/TL-1007/clean-option-08.webp",
+          "assets/catalog/TL-1007/clean-option-09.webp",
+          "assets/catalog/TL-1007/clean-option-10.webp",
+          "assets/catalog/TL-1007/clean-option-11.webp",
+          "assets/catalog/TL-1007/clean-option-12.webp",
+          "assets/catalog/TL-1007/clean-option-13.webp",
+          "assets/catalog/TL-1007/clean-option-14.webp",
+          "assets/catalog/TL-1007/clean-option-15.webp",
+          "assets/catalog/TL-1007/clean-option-16.webp",
+          "assets/catalog/TL-1007/clean-option-17.webp",
+          "assets/catalog/TL-1007/clean-option-18.webp",
+          "assets/catalog/TL-1007/clean-option-19.webp",
+          "assets/catalog/TL-1007/clean-option-20.webp",
+          "assets/catalog/TL-1007/clean-option-21.webp",
+          "assets/catalog/TL-1007/clean-option-22.webp",
+          "assets/catalog/TL-1007/clean-option-23.webp",
+          "assets/catalog/TL-1007/clean-option-24.webp",
+          "assets/catalog/TL-1007/clean-option-25.webp",
+          "assets/catalog/TL-1007/clean-option-26.webp",
+          "assets/catalog/TL-1007/clean-option-27.webp"
         ],
         "description": "RGP Lens Care Storage Organizer for professional optical retail, repair, care, or customer use.",
         "priceUsd": 3.98,
@@ -2304,165 +2345,165 @@
         "options": [
           {
             "model": "LZN-TL-1007-01",
-            "label": "Single-Tier Basic - White",
+            "label": "Single-Tier White",
             "priceUsd": 7.95,
-            "image": "assets/catalog/TL-1007/english-option-01.webp"
+            "image": "assets/catalog/TL-1007/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1007-02",
-            "label": "Double-Tier Classic - Brown",
+            "label": "Double-Tier Brown",
             "priceUsd": 11.59,
-            "image": "assets/catalog/TL-1007/english-option-02.webp"
+            "image": "assets/catalog/TL-1007/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1007-03",
-            "label": "Double-Tier Elegant - White",
+            "label": "Double-Tier White",
             "priceUsd": 11.59,
-            "image": "assets/catalog/TL-1007/english-option-03.webp"
+            "image": "assets/catalog/TL-1007/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1007-04",
-            "label": "Triple-Tier Classic - Brown",
+            "label": "Triple-Tier Brown",
             "priceUsd": 15.83,
-            "image": "assets/catalog/TL-1007/english-option-04.webp"
+            "image": "assets/catalog/TL-1007/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1007-05",
-            "label": "Triple-Tier Elegant - White",
+            "label": "Triple-Tier White",
             "priceUsd": 15.83,
-            "image": "assets/catalog/TL-1007/english-option-05.webp"
+            "image": "assets/catalog/TL-1007/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1007-06",
-            "label": "Double-Tier Elegant - White - Set A",
+            "label": "Organizer Set 06",
             "priceUsd": 13.54,
-            "image": "assets/catalog/TL-1007/english-option-06.webp"
+            "image": "assets/catalog/TL-1007/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1007-07",
-            "label": "Double-Tier Elegant - White - Set B",
+            "label": "Organizer Set 07",
             "priceUsd": 12.62,
-            "image": "assets/catalog/TL-1007/english-option-07.webp"
+            "image": "assets/catalog/TL-1007/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1007-08",
-            "label": "Double-Tier Elegant - White - Set C",
+            "label": "Organizer Set 08",
             "priceUsd": 15.86,
-            "image": "assets/catalog/TL-1007/english-option-08.webp"
+            "image": "assets/catalog/TL-1007/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1007-09",
-            "label": "Double-Tier Elegant - White - Set D",
+            "label": "Organizer Set 09",
             "priceUsd": 15.1,
-            "image": "assets/catalog/TL-1007/english-option-09.webp"
+            "image": "assets/catalog/TL-1007/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1007-10",
-            "label": "Double-Tier Classic - Brown - Set A",
+            "label": "Organizer Set 10",
             "priceUsd": 20.07,
-            "image": "assets/catalog/TL-1007/english-option-10.webp"
+            "image": "assets/catalog/TL-1007/clean-option-10.webp"
           },
           {
             "model": "LZN-TL-1007-11",
-            "label": "Double-Tier Classic - Brown - Set B",
+            "label": "Organizer Set 11",
             "priceUsd": 13.54,
-            "image": "assets/catalog/TL-1007/english-option-11.webp"
+            "image": "assets/catalog/TL-1007/clean-option-11.webp"
           },
           {
             "model": "LZN-TL-1007-12",
-            "label": "Double-Tier Classic - Brown - Set C",
+            "label": "Organizer Set 12",
             "priceUsd": 12.62,
-            "image": "assets/catalog/TL-1007/english-option-12.webp"
+            "image": "assets/catalog/TL-1007/clean-option-12.webp"
           },
           {
             "model": "LZN-TL-1007-13",
-            "label": "Double-Tier Classic - Brown - Set D",
+            "label": "Organizer Set 13",
             "priceUsd": 15.86,
-            "image": "assets/catalog/TL-1007/english-option-13.webp"
+            "image": "assets/catalog/TL-1007/clean-option-13.webp"
           },
           {
             "model": "LZN-TL-1007-14",
-            "label": "Double-Tier Classic - Brown - Set E",
+            "label": "Organizer Set 14",
             "priceUsd": 15.1,
-            "image": "assets/catalog/TL-1007/english-option-14.webp"
+            "image": "assets/catalog/TL-1007/clean-option-14.webp"
           },
           {
             "model": "LZN-TL-1007-15",
-            "label": "Triple-Tier Classic - Brown - Set A",
+            "label": "Organizer Set 15",
             "priceUsd": 18.7,
-            "image": "assets/catalog/TL-1007/english-option-15.webp"
+            "image": "assets/catalog/TL-1007/clean-option-15.webp"
           },
           {
             "model": "LZN-TL-1007-16",
-            "label": "Triple-Tier Classic - Brown - Set B",
+            "label": "Organizer Set 16",
             "priceUsd": 16.98,
-            "image": "assets/catalog/TL-1007/english-option-16.webp"
+            "image": "assets/catalog/TL-1007/clean-option-16.webp"
           },
           {
             "model": "LZN-TL-1007-17",
-            "label": "Triple-Tier Classic - Brown - Set C",
+            "label": "Organizer Set 17",
             "priceUsd": 20.61,
-            "image": "assets/catalog/TL-1007/english-option-17.webp"
+            "image": "assets/catalog/TL-1007/clean-option-17.webp"
           },
           {
             "model": "LZN-TL-1007-18",
-            "label": "Triple-Tier Classic - Brown - Set D",
+            "label": "Organizer Set 18",
             "priceUsd": 19.27,
-            "image": "assets/catalog/TL-1007/english-option-18.webp"
+            "image": "assets/catalog/TL-1007/clean-option-18.webp"
           },
           {
             "model": "LZN-TL-1007-19",
-            "label": "Triple-Tier Classic - Brown - Set E",
+            "label": "Organizer Set 19",
             "priceUsd": 24.05,
-            "image": "assets/catalog/TL-1007/english-option-19.webp"
+            "image": "assets/catalog/TL-1007/clean-option-19.webp"
           },
           {
             "model": "LZN-TL-1007-20",
-            "label": "Triple-Tier Elegant - White - Set A",
+            "label": "Organizer Set 20",
             "priceUsd": 18.7,
-            "image": "assets/catalog/TL-1007/english-option-20.webp"
+            "image": "assets/catalog/TL-1007/clean-option-20.webp"
           },
           {
             "model": "LZN-TL-1007-21",
-            "label": "Triple-Tier Elegant - White - Set B",
+            "label": "Organizer Set 21",
             "priceUsd": 20.61,
-            "image": "assets/catalog/TL-1007/english-option-21.webp"
+            "image": "assets/catalog/TL-1007/clean-option-21.webp"
           },
           {
             "model": "LZN-TL-1007-22",
-            "label": "Triple-Tier Elegant - White - Set C",
+            "label": "Organizer Set 22",
             "priceUsd": 24.05,
-            "image": "assets/catalog/TL-1007/english-option-22.webp"
+            "image": "assets/catalog/TL-1007/clean-option-22.webp"
           },
           {
             "model": "LZN-TL-1007-23",
-            "label": "Triple-Tier Elegant - White - Set D",
+            "label": "Organizer Set 23",
             "priceUsd": 11.07,
-            "image": "assets/catalog/TL-1007/english-option-23.webp"
+            "image": "assets/catalog/TL-1007/clean-option-23.webp"
           },
           {
             "model": "LZN-TL-1007-24",
-            "label": "Triple-Tier Elegant - White - Set E",
+            "label": "Organizer Set 24",
             "priceUsd": 8.99,
-            "image": "assets/catalog/TL-1007/english-option-24.webp"
+            "image": "assets/catalog/TL-1007/clean-option-24.webp"
           },
           {
             "model": "LZN-TL-1007-25",
-            "label": "Single-Tier Basic - White - Set A",
+            "label": "Organizer Set 25",
             "priceUsd": 11.62,
-            "image": "assets/catalog/TL-1007/english-option-25.webp"
+            "image": "assets/catalog/TL-1007/clean-option-25.webp"
           },
           {
             "model": "LZN-TL-1007-26",
-            "label": "Single-Tier Basic - White - Set B",
+            "label": "Organizer Set 26",
             "priceUsd": 17.24,
-            "image": "assets/catalog/TL-1007/english-option-26.webp"
+            "image": "assets/catalog/TL-1007/clean-option-26.webp"
           },
           {
             "model": "LZN-TL-1007-27",
-            "label": "Single-Tier Basic - White - Set C",
+            "label": "Organizer Set 27",
             "priceUsd": 3.98,
-            "image": "assets/catalog/TL-1007/english-option-27.webp"
+            "image": "assets/catalog/TL-1007/clean-option-27.webp"
           }
         ],
         "features": [
@@ -2476,13 +2517,13 @@
         "model": "LZN-TL-1009",
         "nameEn": "Multi-Pair RGP Lens Storage Case",
         "chineseName": "Multi-Pair RGP Lens Storage Case",
-        "image": "assets/catalog/TL-1009/english-option-01.webp",
+        "image": "assets/catalog/TL-1009/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1009/english-option-01.webp",
-          "assets/catalog/TL-1009/english-option-02.webp",
-          "assets/catalog/TL-1009/english-option-03.webp",
-          "assets/catalog/TL-1009/english-option-04.webp",
-          "assets/catalog/TL-1009/english-option-05.webp"
+          "assets/catalog/TL-1009/clean-option-01.webp",
+          "assets/catalog/TL-1009/clean-option-02.webp",
+          "assets/catalog/TL-1009/clean-option-03.webp",
+          "assets/catalog/TL-1009/clean-option-04.webp",
+          "assets/catalog/TL-1009/clean-option-05.webp"
         ],
         "description": "Multi-Pair RGP Lens Storage Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 2.41,
@@ -2494,31 +2535,31 @@
             "model": "LZN-TL-1009-01",
             "label": "1 Piece",
             "priceUsd": 2.41,
-            "image": "assets/catalog/TL-1009/english-option-01.webp"
+            "image": "assets/catalog/TL-1009/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1009-02",
             "label": "3 Pieces",
             "priceUsd": 3.17,
-            "image": "assets/catalog/TL-1009/english-option-02.webp"
+            "image": "assets/catalog/TL-1009/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1009-03",
             "label": "5 Pieces",
             "priceUsd": 3.94,
-            "image": "assets/catalog/TL-1009/english-option-03.webp"
+            "image": "assets/catalog/TL-1009/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1009-04",
             "label": "7 Pieces",
             "priceUsd": 4.51,
-            "image": "assets/catalog/TL-1009/english-option-04.webp"
+            "image": "assets/catalog/TL-1009/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1009-05",
             "label": "9 Pieces",
             "priceUsd": 4.89,
-            "image": "assets/catalog/TL-1009/english-option-05.webp"
+            "image": "assets/catalog/TL-1009/clean-option-05.webp"
           }
         ],
         "features": [
@@ -2532,9 +2573,12 @@
         "model": "LZN-TL-1013",
         "nameEn": "Compact Contact Lens Care Case",
         "chineseName": "Compact Contact Lens Care Case",
-        "image": "assets/catalog/TL-1013/english-card.webp",
+        "image": "assets/catalog/TL-1013/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1013/english-card.webp"
+          "assets/catalog/TL-1013/clean-option-01.webp",
+          "assets/catalog/TL-1013/clean-option-02.webp",
+          "assets/catalog/TL-1013/clean-option-03.webp",
+          "assets/catalog/TL-1013/clean-option-04.webp"
         ],
         "description": "Compact Contact Lens Care Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 2.45,
@@ -2546,25 +2590,25 @@
             "model": "LZN-TL-1013-01",
             "label": "Black",
             "priceUsd": 2.45,
-            "image": "assets/catalog/TL-1013/english-card.webp"
+            "image": "assets/catalog/TL-1013/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1013-02",
             "label": "Pink",
             "priceUsd": 2.45,
-            "image": "assets/catalog/TL-1013/english-card.webp"
+            "image": "assets/catalog/TL-1013/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1013-03",
             "label": "Blue",
             "priceUsd": 2.45,
-            "image": "assets/catalog/TL-1013/english-card.webp"
+            "image": "assets/catalog/TL-1013/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1013-04",
             "label": "White / Green",
             "priceUsd": 6.61,
-            "image": "assets/catalog/TL-1013/english-card.webp"
+            "image": "assets/catalog/TL-1013/clean-option-04.webp"
           }
         ],
         "features": [
@@ -2578,9 +2622,12 @@
         "model": "LZN-TL-1046",
         "nameEn": "Multi-Pair Contact Lens Storage Case",
         "chineseName": "Multi-Pair Contact Lens Storage Case",
-        "image": "assets/catalog/TL-1046/english-card.webp",
+        "image": "assets/catalog/TL-1046/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1046/english-card.webp"
+          "assets/catalog/TL-1046/clean-option-01.webp",
+          "assets/catalog/TL-1046/clean-option-02.webp",
+          "assets/catalog/TL-1046/clean-option-03.webp",
+          "assets/catalog/TL-1046/clean-option-04.webp"
         ],
         "description": "Multi-Pair Contact Lens Storage Case for professional optical retail, repair, care, or customer use.",
         "priceUsd": 2.06,
@@ -2590,27 +2637,27 @@
         "options": [
           {
             "model": "LZN-TL-1046-01",
-            "label": "White",
+            "label": "Blue",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1046/english-card.webp"
+            "image": "assets/catalog/TL-1046/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1046-02",
             "label": "Pink",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1046/english-card.webp"
+            "image": "assets/catalog/TL-1046/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1046-03",
             "label": "Yellow",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1046/english-card.webp"
+            "image": "assets/catalog/TL-1046/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1046-04",
-            "label": "Case Style 04",
+            "label": "Assorted Black",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1046/english-card.webp"
+            "image": "assets/catalog/TL-1046/clean-option-04.webp"
           }
         ],
         "features": [
@@ -2976,9 +3023,10 @@
         "model": "LZN-TL-1001",
         "nameEn": "100-Pack Microfiber Lens Cloth Set",
         "chineseName": "100-Pack Microfiber Lens Cloth Set",
-        "image": "assets/catalog/TL-1001/english-card.webp",
+        "image": "assets/catalog/TL-1001/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1001/english-card.webp"
+          "assets/catalog/TL-1001/clean-option-01.webp",
+          "assets/catalog/TL-1001/clean-option-02.webp"
         ],
         "description": "100-Pack Microfiber Lens Cloth Set for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.34,
@@ -2988,15 +3036,15 @@
         "options": [
           {
             "model": "LZN-TL-1001-01",
-            "label": "Style 01",
+            "label": "10 Cleaning Cloths",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1001/english-card.webp"
+            "image": "assets/catalog/TL-1001/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1001-02",
-            "label": "Style 02",
+            "label": "100 Cleaning Cloths",
             "priceUsd": 5.64,
-            "image": "assets/catalog/TL-1001/english-card.webp"
+            "image": "assets/catalog/TL-1001/clean-option-02.webp"
           }
         ],
         "features": [
@@ -3010,9 +3058,17 @@
         "model": "LZN-TL-1006",
         "nameEn": "RGP Lens Rinsing and Drain Tray",
         "chineseName": "RGP Lens Rinsing and Drain Tray",
-        "image": "assets/catalog/TL-1006/english-card.webp",
+        "image": "assets/catalog/TL-1006/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1006/english-card.webp"
+          "assets/catalog/TL-1006/clean-option-01.webp",
+          "assets/catalog/TL-1006/clean-option-02.webp",
+          "assets/catalog/TL-1006/clean-option-03.webp",
+          "assets/catalog/TL-1006/clean-option-04.webp",
+          "assets/catalog/TL-1006/clean-option-05.webp",
+          "assets/catalog/TL-1006/clean-option-06.webp",
+          "assets/catalog/TL-1006/clean-option-07.webp",
+          "assets/catalog/TL-1006/clean-option-08.webp",
+          "assets/catalog/TL-1006/clean-option-09.webp"
         ],
         "description": "RGP Lens Rinsing and Drain Tray for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.3,
@@ -3022,57 +3078,57 @@
         "options": [
           {
             "model": "LZN-TL-1006-01",
-            "label": "Gray",
+            "label": "Gray Drain Tray",
             "priceUsd": 1.3,
-            "image": "assets/catalog/TL-1006/english-card.webp"
+            "image": "assets/catalog/TL-1006/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1006-02",
-            "label": "Green",
+            "label": "Green Drain Tray",
             "priceUsd": 2.39,
-            "image": "assets/catalog/TL-1006/english-card.webp"
+            "image": "assets/catalog/TL-1006/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1006-03",
-            "label": "Yellow",
+            "label": "Yellow Drain Tray",
             "priceUsd": 1.3,
-            "image": "assets/catalog/TL-1006/english-card.webp"
+            "image": "assets/catalog/TL-1006/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1006-04",
-            "label": "Gray",
+            "label": "Gray Tray + 250ml Bottle",
             "priceUsd": 2.96,
-            "image": "assets/catalog/TL-1006/english-card.webp"
+            "image": "assets/catalog/TL-1006/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1006-05",
-            "label": "Green",
+            "label": "Green Tray + 250ml Bottle",
             "priceUsd": 1.3,
-            "image": "assets/catalog/TL-1006/english-card.webp"
+            "image": "assets/catalog/TL-1006/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1006-06",
-            "label": "Yellow",
+            "label": "Yellow Tray + 250ml Bottle",
             "priceUsd": 2.96,
-            "image": "assets/catalog/TL-1006/english-card.webp"
+            "image": "assets/catalog/TL-1006/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1006-07",
-            "label": "Style 07",
+            "label": "Rinse Bottle Set",
             "priceUsd": 2.39,
-            "image": "assets/catalog/TL-1006/english-card.webp"
+            "image": "assets/catalog/TL-1006/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1006-08",
-            "label": "White",
+            "label": "White Rinse Bottle",
             "priceUsd": 2.96,
-            "image": "assets/catalog/TL-1006/english-card.webp"
+            "image": "assets/catalog/TL-1006/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1006-09",
-            "label": "White",
+            "label": "250ml Rinse Bottle",
             "priceUsd": 1.3,
-            "image": "assets/catalog/TL-1006/english-card.webp"
+            "image": "assets/catalog/TL-1006/clean-option-09.webp"
           }
         ],
         "features": [
@@ -3086,9 +3142,14 @@
         "model": "LZN-TL-1008",
         "nameEn": "RGP Lens Rinse Bottle",
         "chineseName": "RGP Lens Rinse Bottle",
-        "image": "assets/catalog/TL-1008/english-card.webp",
+        "image": "assets/catalog/TL-1008/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1008/english-card.webp"
+          "assets/catalog/TL-1008/clean-option-01.webp",
+          "assets/catalog/TL-1008/clean-option-02.webp",
+          "assets/catalog/TL-1008/clean-option-03.webp",
+          "assets/catalog/TL-1008/clean-option-04.webp",
+          "assets/catalog/TL-1008/clean-option-05.webp",
+          "assets/catalog/TL-1008/clean-option-06.webp"
         ],
         "description": "RGP Lens Rinse Bottle for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.68,
@@ -3098,39 +3159,39 @@
         "options": [
           {
             "model": "LZN-TL-1008-01",
-            "label": "White",
+            "label": "White Curved Rinse Bottle",
             "priceUsd": 1.87,
-            "image": "assets/catalog/TL-1008/english-card.webp"
+            "image": "assets/catalog/TL-1008/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1008-02",
-            "label": "White",
+            "label": "White Rinse Bottle",
             "priceUsd": 2.06,
-            "image": "assets/catalog/TL-1008/english-card.webp"
+            "image": "assets/catalog/TL-1008/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1008-03",
-            "label": "Pink",
+            "label": "Aqua Rinse Bottle",
             "priceUsd": 1.68,
-            "image": "assets/catalog/TL-1008/english-card.webp"
+            "image": "assets/catalog/TL-1008/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1008-04",
-            "label": "White",
+            "label": "Pink Rinse Bottle",
             "priceUsd": 2.26,
-            "image": "assets/catalog/TL-1008/english-card.webp"
+            "image": "assets/catalog/TL-1008/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1008-05",
-            "label": "Pink",
+            "label": "White Bottle + Tips",
             "priceUsd": 2.26,
-            "image": "assets/catalog/TL-1008/english-card.webp"
+            "image": "assets/catalog/TL-1008/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1008-06",
-            "label": "5 pcs / 30 pcs",
+            "label": "Aqua Bottle + Tips",
             "priceUsd": 1.68,
-            "image": "assets/catalog/TL-1008/english-card.webp"
+            "image": "assets/catalog/TL-1008/clean-option-06.webp"
           }
         ],
         "features": [
@@ -3144,9 +3205,9 @@
         "model": "LZN-TL-1041",
         "nameEn": "Premium Screen and Lens Polishing Cloth",
         "chineseName": "Premium Screen and Lens Polishing Cloth",
-        "image": "assets/catalog/TL-1041/english-card.webp",
+        "image": "assets/catalog/TL-1041/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1041/english-card.webp"
+          "assets/catalog/TL-1041/clean-option-01.webp"
         ],
         "description": "Premium Screen and Lens Polishing Cloth for professional optical retail, repair, care, or customer use.",
         "priceUsd": 2.28,
@@ -3156,9 +3217,9 @@
         "options": [
           {
             "model": "LZN-TL-1041-01",
-            "label": "Standard",
+            "label": "Standard Model",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1041/english-card.webp"
+            "image": "assets/catalog/TL-1041/clean-option-01.webp"
           }
         ],
         "features": [
@@ -3172,9 +3233,14 @@
         "model": "LZN-TL-1045",
         "nameEn": "Anti-Fog Lens Cleaning Brush Set",
         "chineseName": "Anti-Fog Lens Cleaning Brush Set",
-        "image": "assets/catalog/TL-1045/english-card.webp",
+        "image": "assets/catalog/TL-1045/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1045/english-card.webp"
+          "assets/catalog/TL-1045/clean-option-01.webp",
+          "assets/catalog/TL-1045/clean-option-02.webp",
+          "assets/catalog/TL-1045/clean-option-03.webp",
+          "assets/catalog/TL-1045/clean-option-04.webp",
+          "assets/catalog/TL-1045/clean-option-05.webp",
+          "assets/catalog/TL-1045/clean-option-06.webp"
         ],
         "description": "Anti-Fog Lens Cleaning Brush Set for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.05,
@@ -3184,39 +3250,39 @@
         "options": [
           {
             "model": "LZN-TL-1045-01",
-            "label": "Style 01",
+            "label": "Orange",
             "priceUsd": 1.05,
-            "image": "assets/catalog/TL-1045/english-card.webp"
+            "image": "assets/catalog/TL-1045/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1045-02",
             "label": "Black",
             "priceUsd": 1.05,
-            "image": "assets/catalog/TL-1045/english-card.webp"
+            "image": "assets/catalog/TL-1045/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1045-03",
             "label": "Red",
             "priceUsd": 1.05,
-            "image": "assets/catalog/TL-1045/english-card.webp"
+            "image": "assets/catalog/TL-1045/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1045-04",
-            "label": "Green",
+            "label": "Blue",
             "priceUsd": 1.05,
-            "image": "assets/catalog/TL-1045/english-card.webp"
+            "image": "assets/catalog/TL-1045/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1045-05",
-            "label": "Style 05",
+            "label": "Green",
             "priceUsd": 4.97,
-            "image": "assets/catalog/TL-1045/english-card.webp"
+            "image": "assets/catalog/TL-1045/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1045-06",
-            "label": "Style 06",
+            "label": "Light Green",
             "priceUsd": 5.93,
-            "image": "assets/catalog/TL-1045/english-card.webp"
+            "image": "assets/catalog/TL-1045/clean-option-06.webp"
           }
         ],
         "features": [
@@ -4461,9 +4527,20 @@
         "model": "LZN-TL-1038",
         "nameEn": "Soft Saddle Nose Pad Set",
         "chineseName": "Soft Saddle Nose Pad Set",
-        "image": "assets/catalog/TL-1038/english-card.webp",
+        "image": "assets/catalog/TL-1038/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1038/english-card.webp"
+          "assets/catalog/TL-1038/clean-option-01.webp",
+          "assets/catalog/TL-1038/clean-option-02.webp",
+          "assets/catalog/TL-1038/clean-option-03.webp",
+          "assets/catalog/TL-1038/clean-option-04.webp",
+          "assets/catalog/TL-1038/clean-option-05.webp",
+          "assets/catalog/TL-1038/clean-option-06.webp",
+          "assets/catalog/TL-1038/clean-option-07.webp",
+          "assets/catalog/TL-1038/clean-option-08.webp",
+          "assets/catalog/TL-1038/clean-option-09.webp",
+          "assets/catalog/TL-1038/clean-option-10.webp",
+          "assets/catalog/TL-1038/clean-option-11.webp",
+          "assets/catalog/TL-1038/clean-option-12.webp"
         ],
         "description": "Soft Saddle Nose Pad Set for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.91,
@@ -4473,75 +4550,75 @@
         "options": [
           {
             "model": "LZN-TL-1038-01",
-            "label": "Style 01",
+            "label": "Nose Pad Design 01",
             "priceUsd": 2.67,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1038-02",
-            "label": "2 pcs / 1 pcs",
+            "label": "Nose Pad Design 02",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1038-03",
-            "label": "2 pcs / 1 pcs",
+            "label": "Nose Pad Design 03",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1038-04",
-            "label": "2 pcs / 1 pcs",
+            "label": "Nose Pad Design 04",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1038-05",
-            "label": "2 pcs / 1 pcs",
+            "label": "Nose Pad Design 05",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1038-06",
-            "label": "Style 06",
+            "label": "Nose Pad Design 06",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1038-07",
-            "label": "Style 07",
+            "label": "Nose Pad Design 07",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1038-08",
-            "label": "Style 08",
+            "label": "Nose Pad Design 08",
             "priceUsd": 2.98,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1038-09",
-            "label": "2 pcs / 1 pcs",
+            "label": "Nose Pad Design 09",
             "priceUsd": 3.56,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1038-10",
-            "label": "2 pcs / 1 pcs",
+            "label": "Nose Pad Design 10",
             "priceUsd": 3.56,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-10.webp"
           },
           {
             "model": "LZN-TL-1038-11",
-            "label": "Style 11",
+            "label": "Nose Pad Design 11",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-11.webp"
           },
           {
             "model": "LZN-TL-1038-12",
-            "label": "Style 12",
+            "label": "Nose Pad Design 12",
             "priceUsd": 3.02,
-            "image": "assets/catalog/TL-1038/english-card.webp"
+            "image": "assets/catalog/TL-1038/clean-option-12.webp"
           }
         ],
         "features": [
@@ -4793,9 +4870,18 @@
         "model": "LZN-TL-1002",
         "nameEn": "1 mm External-Tooth Metal Temple Arms",
         "chineseName": "1 mm External-Tooth Metal Temple Arms",
-        "image": "assets/catalog/TL-1002/english-card.webp",
+        "image": "assets/catalog/TL-1002/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1002/english-card.webp"
+          "assets/catalog/TL-1002/clean-option-01.webp",
+          "assets/catalog/TL-1002/clean-option-02.webp",
+          "assets/catalog/TL-1002/clean-option-03.webp",
+          "assets/catalog/TL-1002/clean-option-04.webp",
+          "assets/catalog/TL-1002/clean-option-05.webp",
+          "assets/catalog/TL-1002/clean-option-06.webp",
+          "assets/catalog/TL-1002/clean-option-07.webp",
+          "assets/catalog/TL-1002/clean-option-08.webp",
+          "assets/catalog/TL-1002/clean-option-09.webp",
+          "assets/catalog/TL-1002/clean-option-10.webp"
         ],
         "description": "1 mm External-Tooth Metal Temple Arms for professional optical retail, repair, care, or customer use.",
         "priceUsd": 4.78,
@@ -4805,63 +4891,63 @@
         "options": [
           {
             "model": "LZN-TL-1002-01",
-            "label": "Black / 1mm",
+            "label": "Black Temple Pair",
             "priceUsd": 4.78,
-            "image": "assets/catalog/TL-1002/english-card.webp"
+            "image": "assets/catalog/TL-1002/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1002-02",
-            "label": "1mm",
+            "label": "Brown Temple Pair",
             "priceUsd": 4.78,
-            "image": "assets/catalog/TL-1002/english-card.webp"
+            "image": "assets/catalog/TL-1002/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1002-03",
-            "label": "Gold / 1mm",
+            "label": "Gold Temple Pair",
             "priceUsd": 4.78,
-            "image": "assets/catalog/TL-1002/english-card.webp"
+            "image": "assets/catalog/TL-1002/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1002-04",
-            "label": "Silver / 1mm",
+            "label": "Silver Temple Pair",
             "priceUsd": 4.78,
-            "image": "assets/catalog/TL-1002/english-card.webp"
+            "image": "assets/catalog/TL-1002/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1002-05",
-            "label": "Gold / 1mm",
+            "label": "Rose Gold Temple Pair",
             "priceUsd": 4.78,
-            "image": "assets/catalog/TL-1002/english-card.webp"
+            "image": "assets/catalog/TL-1002/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1002-06",
-            "label": "Black / 1mm",
+            "label": "Black Pair + Repair Tool",
             "priceUsd": 5.35,
-            "image": "assets/catalog/TL-1002/english-card.webp"
+            "image": "assets/catalog/TL-1002/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1002-07",
-            "label": "1mm",
+            "label": "Brown Pair + Repair Tool",
             "priceUsd": 5.35,
-            "image": "assets/catalog/TL-1002/english-card.webp"
+            "image": "assets/catalog/TL-1002/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1002-08",
-            "label": "Gold / 1mm",
+            "label": "Gold Pair + Repair Tool",
             "priceUsd": 5.35,
-            "image": "assets/catalog/TL-1002/english-card.webp"
+            "image": "assets/catalog/TL-1002/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1002-09",
-            "label": "Silver / 1mm",
+            "label": "Silver Pair + Repair Tool",
             "priceUsd": 5.35,
-            "image": "assets/catalog/TL-1002/english-card.webp"
+            "image": "assets/catalog/TL-1002/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1002-10",
-            "label": "Gold / 1mm",
+            "label": "Rose Gold Pair + Repair Tool",
             "priceUsd": 5.35,
-            "image": "assets/catalog/TL-1002/english-card.webp"
+            "image": "assets/catalog/TL-1002/clean-option-10.webp"
           }
         ],
         "features": [
@@ -4875,9 +4961,11 @@
         "model": "LZN-TL-1010",
         "nameEn": "1 mm External-Tooth TR Temple Arms",
         "chineseName": "1 mm External-Tooth TR Temple Arms",
-        "image": "assets/catalog/TL-1010/english-card.webp",
+        "image": "assets/catalog/TL-1010/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1010/english-card.webp"
+          "assets/catalog/TL-1010/clean-option-01.webp",
+          "assets/catalog/TL-1010/clean-option-02.webp",
+          "assets/catalog/TL-1010/clean-option-03.webp"
         ],
         "description": "1 mm External-Tooth TR Temple Arms for professional optical retail, repair, care, or customer use.",
         "priceUsd": 4.17,
@@ -4887,21 +4975,21 @@
         "options": [
           {
             "model": "LZN-TL-1010-01",
-            "label": "1mm / 6mm",
+            "label": "Temple Pair",
             "priceUsd": 4.17,
-            "image": "assets/catalog/TL-1010/english-card.webp"
+            "image": "assets/catalog/TL-1010/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1010-02",
-            "label": "Style 02",
+            "label": "Temple Pair + Screwdriver",
             "priceUsd": 4.55,
-            "image": "assets/catalog/TL-1010/english-card.webp"
+            "image": "assets/catalog/TL-1010/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1010-03",
-            "label": "Style 03",
+            "label": "Temple Pair + Nose Pads and Screwdriver",
             "priceUsd": 4.55,
-            "image": "assets/catalog/TL-1010/english-card.webp"
+            "image": "assets/catalog/TL-1010/clean-option-03.webp"
           }
         ],
         "features": [
@@ -4915,9 +5003,12 @@
         "model": "LZN-TL-1014",
         "nameEn": "Soft Silicone Children's Temple Arms",
         "chineseName": "Soft Silicone Children's Temple Arms",
-        "image": "assets/catalog/TL-1014/english-card.webp",
+        "image": "assets/catalog/TL-1014/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1014/english-card.webp"
+          "assets/catalog/TL-1014/clean-option-01.webp",
+          "assets/catalog/TL-1014/clean-option-02.webp",
+          "assets/catalog/TL-1014/clean-option-03.webp",
+          "assets/catalog/TL-1014/clean-option-04.webp"
         ],
         "description": "Soft Silicone Children's Temple Arms for professional optical retail, repair, care, or customer use.",
         "priceUsd": 3.25,
@@ -4927,27 +5018,27 @@
         "options": [
           {
             "model": "LZN-TL-1014-01",
-            "label": "Pink / 1 pcs",
+            "label": "Pink",
             "priceUsd": 3.25,
-            "image": "assets/catalog/TL-1014/english-card.webp"
+            "image": "assets/catalog/TL-1014/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1014-02",
-            "label": "Black / Purple / 1 pcs",
+            "label": "Black",
             "priceUsd": 3.25,
-            "image": "assets/catalog/TL-1014/english-card.webp"
+            "image": "assets/catalog/TL-1014/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1014-03",
-            "label": "Purple / 1 pcs",
+            "label": "Purple",
             "priceUsd": 3.25,
-            "image": "assets/catalog/TL-1014/english-card.webp"
+            "image": "assets/catalog/TL-1014/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1014-04",
-            "label": "Blue / 1 pcs",
+            "label": "Blue",
             "priceUsd": 3.25,
-            "image": "assets/catalog/TL-1014/english-card.webp"
+            "image": "assets/catalog/TL-1014/clean-option-04.webp"
           }
         ],
         "features": [
@@ -4961,9 +5052,12 @@
         "model": "LZN-TL-1016",
         "nameEn": "Universal Single-Tooth Temple Arms",
         "chineseName": "Universal Single-Tooth Temple Arms",
-        "image": "assets/catalog/TL-1016/english-card.webp",
+        "image": "assets/catalog/TL-1016/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1016/english-card.webp"
+          "assets/catalog/TL-1016/clean-option-01.webp",
+          "assets/catalog/TL-1016/clean-option-02.webp",
+          "assets/catalog/TL-1016/clean-option-03.webp",
+          "assets/catalog/TL-1016/clean-option-04.webp"
         ],
         "description": "Universal Single-Tooth Temple Arms for professional optical retail, repair, care, or customer use.",
         "priceUsd": 5.16,
@@ -4973,27 +5067,27 @@
         "options": [
           {
             "model": "LZN-TL-1016-01",
-            "label": "Style 01",
+            "label": "Temple Pair",
             "priceUsd": 5.16,
-            "image": "assets/catalog/TL-1016/english-card.webp"
+            "image": "assets/catalog/TL-1016/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1016-02",
-            "label": "Black / Medium",
+            "label": "Black Pair + Nose Pads",
             "priceUsd": 5.74,
-            "image": "assets/catalog/TL-1016/english-card.webp"
+            "image": "assets/catalog/TL-1016/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1016-03",
-            "label": "Style 03",
+            "label": "Black Pair + Nose Pads and Silicone Tips",
             "priceUsd": 5.74,
-            "image": "assets/catalog/TL-1016/english-card.webp"
+            "image": "assets/catalog/TL-1016/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1016-04",
-            "label": "Style 04",
+            "label": "Black Pair + Nose Pads and Care Kit",
             "priceUsd": 5.74,
-            "image": "assets/catalog/TL-1016/english-card.webp"
+            "image": "assets/catalog/TL-1016/clean-option-04.webp"
           }
         ],
         "features": [
@@ -5007,9 +5101,9 @@
         "model": "LZN-TL-1020",
         "nameEn": "8 mm Universal Replacement Temple Arms",
         "chineseName": "8 mm Universal Replacement Temple Arms",
-        "image": "assets/catalog/TL-1020/english-card.webp",
+        "image": "assets/catalog/TL-1020/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1020/english-card.webp"
+          "assets/catalog/TL-1020/clean-option-01.webp"
         ],
         "description": "8 mm Universal Replacement Temple Arms for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.53,
@@ -5019,9 +5113,9 @@
         "options": [
           {
             "model": "LZN-TL-1020-01",
-            "label": "Standard",
+            "label": "Standard Model",
             "priceUsd": 1.53,
-            "image": "assets/catalog/TL-1020/english-card.webp"
+            "image": "assets/catalog/TL-1020/clean-option-01.webp"
           }
         ],
         "features": [
@@ -5035,9 +5129,36 @@
         "model": "LZN-TL-1022",
         "nameEn": "Fine-Round Temple Tip Sleeves",
         "chineseName": "Fine-Round Temple Tip Sleeves",
-        "image": "assets/catalog/TL-1022/english-card.webp",
+        "image": "assets/catalog/TL-1022/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1022/english-card.webp"
+          "assets/catalog/TL-1022/clean-option-01.webp",
+          "assets/catalog/TL-1022/clean-option-02.webp",
+          "assets/catalog/TL-1022/clean-option-03.webp",
+          "assets/catalog/TL-1022/clean-option-04.webp",
+          "assets/catalog/TL-1022/clean-option-05.webp",
+          "assets/catalog/TL-1022/clean-option-06.webp",
+          "assets/catalog/TL-1022/clean-option-07.webp",
+          "assets/catalog/TL-1022/clean-option-08.webp",
+          "assets/catalog/TL-1022/clean-option-09.webp",
+          "assets/catalog/TL-1022/clean-option-10.webp",
+          "assets/catalog/TL-1022/clean-option-11.webp",
+          "assets/catalog/TL-1022/clean-option-12.webp",
+          "assets/catalog/TL-1022/clean-option-13.webp",
+          "assets/catalog/TL-1022/clean-option-14.webp",
+          "assets/catalog/TL-1022/clean-option-15.webp",
+          "assets/catalog/TL-1022/clean-option-16.webp",
+          "assets/catalog/TL-1022/clean-option-17.webp",
+          "assets/catalog/TL-1022/clean-option-18.webp",
+          "assets/catalog/TL-1022/clean-option-19.webp",
+          "assets/catalog/TL-1022/clean-option-20.webp",
+          "assets/catalog/TL-1022/clean-option-21.webp",
+          "assets/catalog/TL-1022/clean-option-22.webp",
+          "assets/catalog/TL-1022/clean-option-23.webp",
+          "assets/catalog/TL-1022/clean-option-24.webp",
+          "assets/catalog/TL-1022/clean-option-25.webp",
+          "assets/catalog/TL-1022/clean-option-26.webp",
+          "assets/catalog/TL-1022/clean-option-27.webp",
+          "assets/catalog/TL-1022/clean-option-28.webp"
         ],
         "description": "Fine-Round Temple Tip Sleeves for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.91,
@@ -5047,171 +5168,171 @@
         "options": [
           {
             "model": "LZN-TL-1022-01",
-            "label": "Gold",
+            "label": "Temple Design 01",
             "priceUsd": 3.25,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1022-02",
-            "label": "Gold",
+            "label": "Temple Design 02",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1022-03",
-            "label": "Black / Gold",
+            "label": "Temple Design 03",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1022-04",
-            "label": "Style 04",
+            "label": "Temple Design 04",
             "priceUsd": 2.67,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1022-05",
-            "label": "Style 05",
+            "label": "Temple Design 05",
             "priceUsd": 4.97,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1022-06",
-            "label": "Gold",
+            "label": "Temple Design 06",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1022-07",
-            "label": "Gold",
+            "label": "Temple Design 07",
             "priceUsd": 5.92,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1022-08",
-            "label": "Gold",
+            "label": "Temple Design 08",
             "priceUsd": 5.92,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1022-09",
-            "label": "Black / Gold",
+            "label": "Temple Design 09",
             "priceUsd": 3.06,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1022-10",
-            "label": "Gold",
+            "label": "Temple Design 10",
             "priceUsd": 3.06,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-10.webp"
           },
           {
             "model": "LZN-TL-1022-11",
-            "label": "Gold",
+            "label": "Temple Design 11",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-11.webp"
           },
           {
             "model": "LZN-TL-1022-12",
-            "label": "Style 12",
+            "label": "Temple Design 12",
             "priceUsd": 4.58,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-12.webp"
           },
           {
             "model": "LZN-TL-1022-13",
-            "label": "Black / Gold",
+            "label": "Temple Design 13",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-13.webp"
           },
           {
             "model": "LZN-TL-1022-14",
-            "label": "Black / Gold",
+            "label": "Temple Design 14",
             "priceUsd": 3.06,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-14.webp"
           },
           {
             "model": "LZN-TL-1022-15",
-            "label": "Style 15",
+            "label": "Temple Design 15",
             "priceUsd": 3.06,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-15.webp"
           },
           {
             "model": "LZN-TL-1022-16",
-            "label": "Gold",
+            "label": "Temple Design 16",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-16.webp"
           },
           {
             "model": "LZN-TL-1022-17",
-            "label": "Gold",
+            "label": "Temple Design 17",
             "priceUsd": 5.92,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-17.webp"
           },
           {
             "model": "LZN-TL-1022-18",
-            "label": "Gold",
+            "label": "Temple Design 18",
             "priceUsd": 3.25,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-18.webp"
           },
           {
             "model": "LZN-TL-1022-19",
-            "label": "Gold",
+            "label": "Temple Design 19",
             "priceUsd": 3.25,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-19.webp"
           },
           {
             "model": "LZN-TL-1022-20",
-            "label": "Gold",
+            "label": "Temple Design 20",
             "priceUsd": 4.01,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-20.webp"
           },
           {
             "model": "LZN-TL-1022-21",
-            "label": "Gold",
+            "label": "Temple Design 21",
             "priceUsd": 4.39,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-21.webp"
           },
           {
             "model": "LZN-TL-1022-22",
-            "label": "Gold",
+            "label": "Temple Design 22",
             "priceUsd": 3.06,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-22.webp"
           },
           {
             "model": "LZN-TL-1022-23",
-            "label": "Gold",
+            "label": "Temple Design 23",
             "priceUsd": 4.01,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-23.webp"
           },
           {
             "model": "LZN-TL-1022-24",
-            "label": "Gold",
+            "label": "Temple Design 24",
             "priceUsd": 4.01,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-24.webp"
           },
           {
             "model": "LZN-TL-1022-25",
-            "label": "Gold",
+            "label": "Temple Design 25",
             "priceUsd": 4.01,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-25.webp"
           },
           {
             "model": "LZN-TL-1022-26",
-            "label": "Style 26",
+            "label": "Temple Design 26",
             "priceUsd": 1.91,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-26.webp"
           },
           {
             "model": "LZN-TL-1022-27",
-            "label": "Style 27",
+            "label": "Temple Design 27",
             "priceUsd": 4.01,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-27.webp"
           },
           {
             "model": "LZN-TL-1022-28",
-            "label": "Gold",
+            "label": "Temple Design 28",
             "priceUsd": 5.92,
-            "image": "assets/catalog/TL-1022/english-card.webp"
+            "image": "assets/catalog/TL-1022/clean-option-28.webp"
           }
         ],
         "features": [
@@ -5225,9 +5346,11 @@
         "model": "LZN-TL-1023",
         "nameEn": "Universal Short Temple Tip Sleeves",
         "chineseName": "Universal Short Temple Tip Sleeves",
-        "image": "assets/catalog/TL-1023/english-card.webp",
+        "image": "assets/catalog/TL-1023/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1023/english-card.webp"
+          "assets/catalog/TL-1023/clean-option-01.webp",
+          "assets/catalog/TL-1023/clean-option-02.webp",
+          "assets/catalog/TL-1023/clean-option-03.webp"
         ],
         "description": "Universal Short Temple Tip Sleeves for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.7,
@@ -5239,19 +5362,19 @@
             "model": "LZN-TL-1023-01",
             "label": "White",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1023/english-card.webp"
+            "image": "assets/catalog/TL-1023/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1023-02",
             "label": "Black",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1023/english-card.webp"
+            "image": "assets/catalog/TL-1023/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1023-03",
             "label": "Green",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1023/english-card.webp"
+            "image": "assets/catalog/TL-1023/clean-option-03.webp"
           }
         ],
         "features": [
@@ -5265,9 +5388,9 @@
         "model": "LZN-TL-1024",
         "nameEn": "Anti-Allergy Temple Tip Sleeves",
         "chineseName": "Anti-Allergy Temple Tip Sleeves",
-        "image": "assets/catalog/TL-1024/english-card.webp",
+        "image": "assets/catalog/TL-1024/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1024/english-card.webp"
+          "assets/catalog/TL-1024/clean-option-01.webp"
         ],
         "description": "Anti-Allergy Temple Tip Sleeves for professional optical retail, repair, care, or customer use.",
         "priceUsd": 3.06,
@@ -5277,9 +5400,9 @@
         "options": [
           {
             "model": "LZN-TL-1024-01",
-            "label": "Standard",
+            "label": "Standard Model",
             "priceUsd": 3.06,
-            "image": "assets/catalog/TL-1024/english-card.webp"
+            "image": "assets/catalog/TL-1024/clean-option-01.webp"
           }
         ],
         "features": [
@@ -5293,9 +5416,12 @@
         "model": "LZN-TL-1025",
         "nameEn": "Universal Straight-Tooth Temple Arms",
         "chineseName": "Universal Straight-Tooth Temple Arms",
-        "image": "assets/catalog/TL-1025/english-card.webp",
+        "image": "assets/catalog/TL-1025/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1025/english-card.webp"
+          "assets/catalog/TL-1025/clean-option-01.webp",
+          "assets/catalog/TL-1025/clean-option-02.webp",
+          "assets/catalog/TL-1025/clean-option-03.webp",
+          "assets/catalog/TL-1025/clean-option-04.webp"
         ],
         "description": "Universal Straight-Tooth Temple Arms for professional optical retail, repair, care, or customer use.",
         "priceUsd": 3.98,
@@ -5307,25 +5433,25 @@
             "model": "LZN-TL-1025-01",
             "label": "Black",
             "priceUsd": 3.98,
-            "image": "assets/catalog/TL-1025/english-card.webp"
+            "image": "assets/catalog/TL-1025/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1025-02",
             "label": "Black / 4 pcs",
             "priceUsd": 3.98,
-            "image": "assets/catalog/TL-1025/english-card.webp"
+            "image": "assets/catalog/TL-1025/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1025-03",
-            "label": "Black / 4 pcs",
+            "label": "Black / 4 pcs - Variant 2",
             "priceUsd": 4.55,
-            "image": "assets/catalog/TL-1025/english-card.webp"
+            "image": "assets/catalog/TL-1025/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1025-04",
             "label": "Black / Medium",
             "priceUsd": 4.55,
-            "image": "assets/catalog/TL-1025/english-card.webp"
+            "image": "assets/catalog/TL-1025/clean-option-04.webp"
           }
         ],
         "features": [
@@ -5339,9 +5465,11 @@
         "model": "LZN-TL-1026",
         "nameEn": "Screw-Fastened Silicone Ear Hooks",
         "chineseName": "Screw-Fastened Silicone Ear Hooks",
-        "image": "assets/catalog/TL-1026/english-card.webp",
+        "image": "assets/catalog/TL-1026/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1026/english-card.webp"
+          "assets/catalog/TL-1026/clean-option-01.webp",
+          "assets/catalog/TL-1026/clean-option-02.webp",
+          "assets/catalog/TL-1026/clean-option-03.webp"
         ],
         "description": "Screw-Fastened Silicone Ear Hooks for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.53,
@@ -5351,21 +5479,21 @@
         "options": [
           {
             "model": "LZN-TL-1026-01",
-            "label": "Blue / 1 pcs",
+            "label": "Blue",
             "priceUsd": 1.53,
-            "image": "assets/catalog/TL-1026/english-card.webp"
+            "image": "assets/catalog/TL-1026/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1026-02",
-            "label": "Black / 1 pcs",
+            "label": "Orange",
             "priceUsd": 1.53,
-            "image": "assets/catalog/TL-1026/english-card.webp"
+            "image": "assets/catalog/TL-1026/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1026-03",
-            "label": "Purple / 1 pcs",
+            "label": "Black",
             "priceUsd": 1.53,
-            "image": "assets/catalog/TL-1026/english-card.webp"
+            "image": "assets/catalog/TL-1026/clean-option-03.webp"
           }
         ],
         "features": [
@@ -5379,9 +5507,34 @@
         "model": "LZN-TL-1027",
         "nameEn": "Universal Replacement Temple Arms",
         "chineseName": "Universal Replacement Temple Arms",
-        "image": "assets/catalog/TL-1027/english-card.webp",
+        "image": "assets/catalog/TL-1027/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1027/english-card.webp"
+          "assets/catalog/TL-1027/clean-option-01.webp",
+          "assets/catalog/TL-1027/clean-option-02.webp",
+          "assets/catalog/TL-1027/clean-option-03.webp",
+          "assets/catalog/TL-1027/clean-option-04.webp",
+          "assets/catalog/TL-1027/clean-option-05.webp",
+          "assets/catalog/TL-1027/clean-option-06.webp",
+          "assets/catalog/TL-1027/clean-option-07.webp",
+          "assets/catalog/TL-1027/clean-option-08.webp",
+          "assets/catalog/TL-1027/clean-option-09.webp",
+          "assets/catalog/TL-1027/clean-option-10.webp",
+          "assets/catalog/TL-1027/clean-option-11.webp",
+          "assets/catalog/TL-1027/clean-option-12.webp",
+          "assets/catalog/TL-1027/clean-option-13.webp",
+          "assets/catalog/TL-1027/clean-option-14.webp",
+          "assets/catalog/TL-1027/clean-option-15.webp",
+          "assets/catalog/TL-1027/clean-option-16.webp",
+          "assets/catalog/TL-1027/clean-option-17.webp",
+          "assets/catalog/TL-1027/clean-option-18.webp",
+          "assets/catalog/TL-1027/clean-option-19.webp",
+          "assets/catalog/TL-1027/clean-option-20.webp",
+          "assets/catalog/TL-1027/clean-option-21.webp",
+          "assets/catalog/TL-1027/clean-option-22.webp",
+          "assets/catalog/TL-1027/clean-option-23.webp",
+          "assets/catalog/TL-1027/clean-option-24.webp",
+          "assets/catalog/TL-1027/clean-option-25.webp",
+          "assets/catalog/TL-1027/clean-option-26.webp"
         ],
         "description": "Universal Replacement Temple Arms for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.34,
@@ -5393,157 +5546,157 @@
             "model": "LZN-TL-1027-01",
             "label": "Black / 1.2mm / 5mm",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1027-02",
-            "label": "Black / 1.2mm / 5mm",
+            "label": "Black / 1.2mm / 5mm - Variant 2",
             "priceUsd": 3.04,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1027-03",
             "label": "Clear / 1.2mm / 5mm",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1027-04",
-            "label": "Black / 1.2mm / 5mm",
+            "label": "Black / 1.2mm / 5mm - Variant 3",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1027-05",
             "label": "Black / 1.2mm / 6mm",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1027-06",
-            "label": "Black / 1.2mm / 6mm",
+            "label": "Black / 1.2mm / 6mm - Variant 2",
             "priceUsd": 3.04,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1027-07",
             "label": "Clear / 1.2mm / 6mm",
             "priceUsd": 3.61,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1027-08",
             "label": "Black / 1.2mm / 6.5mm",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1027-09",
             "label": "Clear / 1.2mm / 6.5mm",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1027-10",
-            "label": "Black / 1.2mm / 6.5mm",
+            "label": "Black / 1.2mm / 6.5mm - Variant 2",
             "priceUsd": 3.04,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-10.webp"
           },
           {
             "model": "LZN-TL-1027-11",
-            "label": "Clear / 1.2mm / 6.5mm",
+            "label": "Clear / 1.2mm / 6.5mm - Variant 2",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-11.webp"
           },
           {
             "model": "LZN-TL-1027-12",
-            "label": "Black / 1.2mm / 6.5mm",
+            "label": "Black / 1.2mm / 6.5mm - Variant 3",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-12.webp"
           },
           {
             "model": "LZN-TL-1027-13",
             "label": "Black / 1.2mm / 7mm",
             "priceUsd": 2.28,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-13.webp"
           },
           {
             "model": "LZN-TL-1027-14",
-            "label": "Black / 1.2mm / 7mm",
+            "label": "Black / 1.2mm / 7mm - Variant 2",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-14.webp"
           },
           {
             "model": "LZN-TL-1027-15",
-            "label": "Black / 1.2mm / 7mm",
+            "label": "Black / 1.2mm / 7mm - Variant 3",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-15.webp"
           },
           {
             "model": "LZN-TL-1027-16",
             "label": "Clear / 1.2mm / 7mm",
             "priceUsd": 3.61,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-16.webp"
           },
           {
             "model": "LZN-TL-1027-17",
             "label": "Black / 1.2mm / 7.5mm",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-17.webp"
           },
           {
             "model": "LZN-TL-1027-18",
             "label": "Clear / 1.2mm / 7.5mm",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-18.webp"
           },
           {
             "model": "LZN-TL-1027-19",
-            "label": "Black / 1.2mm / 7.5mm",
+            "label": "Black / 1.2mm / 7.5mm - Variant 2",
             "priceUsd": 1.34,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-19.webp"
           },
           {
             "model": "LZN-TL-1027-20",
-            "label": "Black / 1.2mm / 7.5mm",
+            "label": "Black / 1.2mm / 7.5mm - Variant 3",
             "priceUsd": 2.85,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-20.webp"
           },
           {
             "model": "LZN-TL-1027-21",
-            "label": "Black / 1.2mm / 7.5mm",
+            "label": "Black / 1.2mm / 7.5mm - Variant 4",
             "priceUsd": 3.61,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-21.webp"
           },
           {
             "model": "LZN-TL-1027-22",
             "label": "Clear / 1.2mm / 8mm",
             "priceUsd": 3.04,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-22.webp"
           },
           {
             "model": "LZN-TL-1027-23",
             "label": "Black / 1.2mm / 8mm",
             "priceUsd": 2.85,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-23.webp"
           },
           {
             "model": "LZN-TL-1027-24",
-            "label": "Black / 1.2mm / 8mm",
+            "label": "Black / 1.2mm / 8mm - Variant 2",
             "priceUsd": 3.61,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-24.webp"
           },
           {
             "model": "LZN-TL-1027-25",
             "label": "Black / 1.2mm / 8.5mm",
             "priceUsd": 2.85,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-25.webp"
           },
           {
             "model": "LZN-TL-1027-26",
             "label": "Black / 1.2mm / 10mm",
             "priceUsd": 2.85,
-            "image": "assets/catalog/TL-1027/english-card.webp"
+            "image": "assets/catalog/TL-1027/clean-option-26.webp"
           }
         ],
         "features": [
@@ -5557,9 +5710,11 @@
         "model": "LZN-TL-1028",
         "nameEn": "1.5 mm External-Tooth TR Temple Arms",
         "chineseName": "1.5 mm External-Tooth TR Temple Arms",
-        "image": "assets/catalog/TL-1028/english-card.webp",
+        "image": "assets/catalog/TL-1028/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1028/english-card.webp"
+          "assets/catalog/TL-1028/clean-option-01.webp",
+          "assets/catalog/TL-1028/clean-option-02.webp",
+          "assets/catalog/TL-1028/clean-option-03.webp"
         ],
         "description": "1.5 mm External-Tooth TR Temple Arms for professional optical retail, repair, care, or customer use.",
         "priceUsd": 4.13,
@@ -5571,19 +5726,19 @@
             "model": "LZN-TL-1028-01",
             "label": "1.5mm / 6mm",
             "priceUsd": 4.13,
-            "image": "assets/catalog/TL-1028/english-card.webp"
+            "image": "assets/catalog/TL-1028/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1028-02",
-            "label": "Style 02",
+            "label": "Standard Model",
             "priceUsd": 4.55,
-            "image": "assets/catalog/TL-1028/english-card.webp"
+            "image": "assets/catalog/TL-1028/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1028-03",
-            "label": "Style 03",
+            "label": "Standard Model - Variant 2",
             "priceUsd": 4.55,
-            "image": "assets/catalog/TL-1028/english-card.webp"
+            "image": "assets/catalog/TL-1028/clean-option-03.webp"
           }
         ],
         "features": [
@@ -5597,9 +5752,32 @@
         "model": "LZN-TL-1037",
         "nameEn": "Children's Silicone Ear Hook Set",
         "chineseName": "Children's Silicone Ear Hook Set",
-        "image": "assets/catalog/TL-1037/english-card.webp",
+        "image": "assets/catalog/TL-1037/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1037/english-card.webp"
+          "assets/catalog/TL-1037/clean-option-01.webp",
+          "assets/catalog/TL-1037/clean-option-02.webp",
+          "assets/catalog/TL-1037/clean-option-03.webp",
+          "assets/catalog/TL-1037/clean-option-04.webp",
+          "assets/catalog/TL-1037/clean-option-05.webp",
+          "assets/catalog/TL-1037/clean-option-06.webp",
+          "assets/catalog/TL-1037/clean-option-07.webp",
+          "assets/catalog/TL-1037/clean-option-08.webp",
+          "assets/catalog/TL-1037/clean-option-09.webp",
+          "assets/catalog/TL-1037/clean-option-10.webp",
+          "assets/catalog/TL-1037/clean-option-11.webp",
+          "assets/catalog/TL-1037/clean-option-12.webp",
+          "assets/catalog/TL-1037/clean-option-13.webp",
+          "assets/catalog/TL-1037/clean-option-14.webp",
+          "assets/catalog/TL-1037/clean-option-15.webp",
+          "assets/catalog/TL-1037/clean-option-16.webp",
+          "assets/catalog/TL-1037/clean-option-17.webp",
+          "assets/catalog/TL-1037/clean-option-18.webp",
+          "assets/catalog/TL-1037/clean-option-19.webp",
+          "assets/catalog/TL-1037/clean-option-20.webp",
+          "assets/catalog/TL-1037/clean-option-21.webp",
+          "assets/catalog/TL-1037/clean-option-22.webp",
+          "assets/catalog/TL-1037/clean-option-23.webp",
+          "assets/catalog/TL-1037/clean-option-24.webp"
         ],
         "description": "Children's Silicone Ear Hook Set for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.49,
@@ -5611,145 +5789,145 @@
             "model": "LZN-TL-1037-01",
             "label": "White",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1037-02",
-            "label": "White",
+            "label": "White - Variant 2",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1037-03",
-            "label": "White",
+            "label": "White - Variant 3",
             "priceUsd": 2.45,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1037-04",
             "label": "Black / White",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1037-05",
             "label": "White / Brown",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1037-06",
-            "label": "Black / White",
+            "label": "Black / White - Variant 2",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1037-07",
             "label": "Black / Gray",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-07.webp"
           },
           {
             "model": "LZN-TL-1037-08",
-            "label": "Black / Gray",
+            "label": "Black / Gray - Variant 2",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-08.webp"
           },
           {
             "model": "LZN-TL-1037-09",
             "label": "Black / Brown",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-09.webp"
           },
           {
             "model": "LZN-TL-1037-10",
-            "label": "Black / Brown",
+            "label": "Black / Brown - Variant 2",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-10.webp"
           },
           {
             "model": "LZN-TL-1037-11",
             "label": "Black",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-11.webp"
           },
           {
             "model": "LZN-TL-1037-12",
-            "label": "Black",
+            "label": "Black - Variant 2",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-12.webp"
           },
           {
             "model": "LZN-TL-1037-13",
-            "label": "Black",
+            "label": "Black - Variant 3",
             "priceUsd": 2.45,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-13.webp"
           },
           {
             "model": "LZN-TL-1037-14",
             "label": "Black / White / Gray / Brown",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-14.webp"
           },
           {
             "model": "LZN-TL-1037-15",
             "label": "White / Gray",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-15.webp"
           },
           {
             "model": "LZN-TL-1037-16",
             "label": "Gray",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-16.webp"
           },
           {
             "model": "LZN-TL-1037-17",
-            "label": "Gray",
+            "label": "Gray - Variant 2",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-17.webp"
           },
           {
             "model": "LZN-TL-1037-18",
-            "label": "Gray",
+            "label": "Gray - Variant 3",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-18.webp"
           },
           {
             "model": "LZN-TL-1037-19",
-            "label": "White / Brown",
+            "label": "White / Brown - Variant 2",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-19.webp"
           },
           {
             "model": "LZN-TL-1037-20",
             "label": "Gray / Brown",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-20.webp"
           },
           {
             "model": "LZN-TL-1037-21",
-            "label": "Gray / Brown",
+            "label": "Gray / Brown - Variant 2",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-21.webp"
           },
           {
             "model": "LZN-TL-1037-22",
             "label": "Brown",
             "priceUsd": 2.45,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-22.webp"
           },
           {
             "model": "LZN-TL-1037-23",
-            "label": "Brown",
+            "label": "Brown - Variant 2",
             "priceUsd": 1.49,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-23.webp"
           },
           {
             "model": "LZN-TL-1037-24",
-            "label": "Brown",
+            "label": "Brown - Variant 3",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1037/english-card.webp"
+            "image": "assets/catalog/TL-1037/clean-option-24.webp"
           }
         ],
         "features": [
@@ -5763,9 +5941,15 @@
         "model": "LZN-TL-1044",
         "nameEn": "Transparent Temple Tip Sleeves",
         "chineseName": "Transparent Temple Tip Sleeves",
-        "image": "assets/catalog/TL-1044/english-card.webp",
+        "image": "assets/catalog/TL-1044/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1044/english-card.webp"
+          "assets/catalog/TL-1044/clean-option-01.webp",
+          "assets/catalog/TL-1044/clean-option-02.webp",
+          "assets/catalog/TL-1044/clean-option-03.webp",
+          "assets/catalog/TL-1044/clean-option-04.webp",
+          "assets/catalog/TL-1044/clean-option-05.webp",
+          "assets/catalog/TL-1044/clean-option-06.webp",
+          "assets/catalog/TL-1044/clean-option-07.webp"
         ],
         "description": "Transparent Temple Tip Sleeves for professional optical retail, repair, care, or customer use.",
         "priceUsd": 1.7,
@@ -5775,45 +5959,45 @@
         "options": [
           {
             "model": "LZN-TL-1044-01",
-            "label": "Black",
+            "label": "Jet Black",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1044/english-card.webp"
+            "image": "assets/catalog/TL-1044/clean-option-01.webp"
           },
           {
             "model": "LZN-TL-1044-02",
-            "label": "Style 02",
+            "label": "Black",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1044/english-card.webp"
+            "image": "assets/catalog/TL-1044/clean-option-02.webp"
           },
           {
             "model": "LZN-TL-1044-03",
-            "label": "Clear / White",
+            "label": "Beige",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1044/english-card.webp"
+            "image": "assets/catalog/TL-1044/clean-option-03.webp"
           },
           {
             "model": "LZN-TL-1044-04",
-            "label": "Clear / Blue",
+            "label": "Blue Gray",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1044/english-card.webp"
+            "image": "assets/catalog/TL-1044/clean-option-04.webp"
           },
           {
             "model": "LZN-TL-1044-05",
-            "label": "Clear / Purple",
+            "label": "Clear White",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1044/english-card.webp"
+            "image": "assets/catalog/TL-1044/clean-option-05.webp"
           },
           {
             "model": "LZN-TL-1044-06",
-            "label": "Pink",
+            "label": "Clear Pink",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1044/english-card.webp"
+            "image": "assets/catalog/TL-1044/clean-option-06.webp"
           },
           {
             "model": "LZN-TL-1044-07",
-            "label": "Blue",
+            "label": "Clear Blue",
             "priceUsd": 1.7,
-            "image": "assets/catalog/TL-1044/english-card.webp"
+            "image": "assets/catalog/TL-1044/clean-option-07.webp"
           }
         ],
         "features": [
@@ -7334,9 +7518,9 @@
         "model": "LZN-TL-1042",
         "nameEn": "RGP Lens Suction Remover",
         "chineseName": "RGP Lens Suction Remover",
-        "image": "assets/catalog/TL-1042/english-card.webp",
+        "image": "assets/catalog/TL-1042/clean-option-01.webp",
         "images": [
-          "assets/catalog/TL-1042/english-card.webp"
+          "assets/catalog/TL-1042/clean-option-01.webp"
         ],
         "description": "RGP Lens Suction Remover for professional optical retail, repair, care, or customer use.",
         "priceUsd": 2.1,
@@ -7346,9 +7530,9 @@
         "options": [
           {
             "model": "LZN-TL-1042-01",
-            "label": "Standard",
+            "label": "Standard Model",
             "priceUsd": 2.1,
-            "image": "assets/catalog/TL-1042/english-card.webp"
+            "image": "assets/catalog/TL-1042/clean-option-01.webp"
           }
         ],
         "features": [
