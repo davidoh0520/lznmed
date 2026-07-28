@@ -104,7 +104,7 @@
       }
       .lzn-commerce-detail {
         display: grid;
-        grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr);
+        grid-template-columns: minmax(0, .92fr) minmax(380px, 1.08fr);
         gap: 24px;
         box-sizing: border-box;
         width: 100%;
@@ -120,11 +120,14 @@
       .lzn-commerce-main-media {
         display: grid;
         place-items: center;
-        aspect-ratio: 4 / 3;
-        max-height: 440px;
+        box-sizing: border-box;
+        width: 100%;
+        height: clamp(220px, 27vw, 320px);
+        max-height: 320px;
         overflow: hidden;
         border: 1px solid #e1e5e4;
         border-radius: 22px;
+        padding: 14px;
         background: #f4f3ef;
       }
       .lzn-commerce-main-media img {
@@ -134,7 +137,8 @@
       }
       .lzn-commerce-thumbnails {
         display: grid;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-columns: repeat(6, minmax(54px, 72px));
+        justify-content: start;
         gap: 8px;
         margin-top: 10px;
       }
@@ -376,7 +380,12 @@
           padding: 12px;
         }
         .lzn-commerce-main-media {
-          aspect-ratio: 4 / 3;
+          height: min(38vh, 280px);
+          min-height: 200px;
+          padding: 10px;
+        }
+        .lzn-commerce-thumbnails {
+          grid-template-columns: repeat(5, minmax(0, 1fr));
         }
         .lzn-commerce-title {
           font-size: 30px;

@@ -486,44 +486,33 @@ function marketplaceFrameCard(product, seriesName){
 
 function renderFramesMarketplace(){
   const query=searchInput.value.trim().toLowerCase();
-  const categoryChoice=categoryFilter.value;
-  const grouped=['adult','kids'].map(category=>{
-    const series=orderedSeries().filter(item=>seriesCategory(item)===category&&(categoryChoice==='all'||categoryChoice===category)).map(item=>({
-      ...item,
-      visibleItems:item.items.filter(product=>{
-        if(!query)return true;
-        return [product.model,product.productTitle,item.name,...(product.colors||[]).flatMap(color=>[color.en,color.ko])].join(' ').toLowerCase().includes(query);
-      }).sort((a,b)=>Number(a.model)-Number(b.model))
-    })).filter(item=>item.visibleItems.length);
-    return {category,series};
-  }).filter(group=>group.series.length);
-  if(!grouped.length){
+  const series=orderedSeries().map(item=>({
+    ...item,
+    visibleItems:item.items.filter(product=>{
+      if(!query)return true;
+      return [product.model,product.productTitle,item.name,...(product.colors||[]).flatMap(color=>[color.en,color.ko])].join(' ').toLowerCase().includes(query);
+    }).sort((a,b)=>Number(a.model)-Number(b.model))
+  })).filter(item=>item.visibleItems.length);
+  if(!series.length){
     catalog.innerHTML='<div class="catalog-empty"><h2>No matching models</h2><p>Try another model number, series, or color.</p></div>';
     catalogColorGuide.hidden=true;
     return;
   }
-  const nav=grouped.map((group,index)=>{
-    const visibleProducts=group.series.flatMap(series=>series.visibleItems);
-    const representative=visibleProducts.find(product=>MODEL_WEAR_IMAGES[product.model])||visibleProducts[0];
+  const nav=series.map((item,index)=>{
+    const representative=item.visibleItems.find(product=>MODEL_WEAR_IMAGES[product.model])||item.visibleItems[0];
     const image=MODEL_WEAR_IMAGES[representative.model]||representative.colors?.[0]?.src||representative.title;
-    const count=group.series.reduce((sum,item)=>sum+item.visibleItems.length,0);
-    return `<button type="button" data-marketplace-target="${group.category}" class="${index?'':'active'}" aria-pressed="${index?'false':'true'}"><img src="${esc(image)}" alt="" loading="lazy" decoding="async"><span><strong>${group.category==='kids'?'Kids Frames':'Adult Frames'}</strong><small>${count} models</small></span></button>`;
+    return `<button type="button" data-marketplace-target="${esc(item.code)}" class="${index?'':'active'}" aria-pressed="${index?'false':'true'}"><img src="${esc(image)}" alt="" loading="lazy" decoding="async"><span><strong>${esc(item.name)}</strong><small>${item.visibleItems.length} models</small></span></button>`;
   }).join('');
-  const sections=grouped.map(group=>{
-    const name=group.category==='kids'?'Kids Frames':'Adult Frames';
-    const subnav=group.series.length>1?`<nav class="marketplace-subnav" aria-label="${esc(name)} series">${group.series.map((series,index)=>`<button type="button" data-marketplace-subtarget="marketplace-series-${esc(series.code)}" class="${index?'':'active'}">${esc(series.name)}</button>`).join('')}</nav>`:'';
-    const seriesMarkup=group.series.map(series=>`<section class="marketplace-subsection" id="marketplace-series-${esc(series.code)}"><div class="marketplace-category-head"><div><h3>${esc(series.name)}</h3><p>${esc(SERIES_DESCRIPTIONS[series.code]||series.subtitle)}</p></div><span class="marketplace-category-count">${series.visibleItems.length} models</span></div><div class="marketplace-products">${series.visibleItems.map(product=>marketplaceFrameCard(product,series.name)).join('')}</div></section>`).join('');
-    return `<section class="marketplace-category" data-marketplace-section="${group.category}"><div class="marketplace-category-head"><div><h2>${esc(name)}</h2><p>Select a series above, or keep scrolling to browse every frame and color option.</p></div></div>${subnav}${seriesMarkup}</section>`;
-  }).join('');
-  catalog.innerHTML=`<div class="marketplace-catalog marketplace-no-search" id="frameMarketplace"><aside class="marketplace-major-nav" aria-label="Frame categories">${nav}</aside><div class="marketplace-scroll">${sections}</div></div>`;
+  const sections=series.map(item=>`<section class="marketplace-category" data-marketplace-section="${esc(item.code)}"><div class="marketplace-category-head"><div><h2>${esc(item.name)}</h2><p>${esc(SERIES_DESCRIPTIONS[item.code]||item.subtitle)}</p></div><span class="marketplace-category-count">${item.visibleItems.length} models</span></div><div class="marketplace-products">${item.visibleItems.map(product=>marketplaceFrameCard(product,item.name)).join('')}</div></section>`).join('');
+  catalog.innerHTML=`<div class="marketplace-catalog marketplace-no-search" id="frameMarketplace"><aside class="marketplace-major-nav" aria-label="Frame series">${nav}</aside><div class="marketplace-scroll">${sections}</div></div>`;
   catalogColorGuide.hidden=true;
   window.LZNMarketplace?.bind(document.querySelector('#frameMarketplace'));
   bindCatalogInteractions();
   if(activeSeriesCode)requestAnimationFrame(()=>{
     const root=document.querySelector('#frameMarketplace');
-    const target=root?.querySelector(`#marketplace-series-${CSS.escape(activeSeriesCode)}`);
+    const target=root?.querySelector(`[data-marketplace-section="${CSS.escape(activeSeriesCode)}"]`);
     const scroller=root?.querySelector('.marketplace-scroll');
-    if(target&&scroller)scroller.scrollTop=Math.max(0,target.offsetTop-76);
+    if(target&&scroller)scroller.scrollTop=Math.max(0,target.offsetTop-24);
   });
 }
 
