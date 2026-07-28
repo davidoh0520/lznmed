@@ -13,37 +13,46 @@
         position: fixed !important;
         inset: 0 !important;
         z-index: 10000 !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
         width: 100vw !important;
         height: 100dvh !important;
         margin: 0 !important;
-        padding: 0 !important;
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
-        background: #f5f4f1 !important;
+        padding: 16px !important;
+        overflow: auto !important;
+        background: rgba(16, 24, 32, .62) !important;
       }
       #modal:has(.lzn-commerce-detail) > .modal-bg {
-        display: none !important;
+        display: block !important;
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 0 !important;
+        background: transparent !important;
       }
       #modal:has(.lzn-commerce-detail) > article {
         position: relative !important;
+        z-index: 1 !important;
         inset: auto !important;
         transform: none !important;
+        display: block !important;
         box-sizing: border-box !important;
-        width: 100% !important;
-        max-width: none !important;
-        min-height: 100dvh !important;
-        max-height: none !important;
-        margin: 0 !important;
-        overflow: visible !important;
+        width: min(1180px, 100%) !important;
+        max-width: 1180px !important;
+        min-height: 0 !important;
+        max-height: calc(100dvh - 32px) !important;
+        margin: 0 auto !important;
+        overflow: auto !important;
         border: 0 !important;
-        border-radius: 0 !important;
+        border-radius: 22px !important;
         background: #f5f4f1 !important;
-        box-shadow: none !important;
+        box-shadow: 0 28px 90px rgba(0, 0, 0, .3) !important;
       }
       #modal:has(.lzn-commerce-detail) > article > .close {
         position: fixed !important;
-        top: 17px !important;
-        right: 22px !important;
+        top: 26px !important;
+        right: max(26px, calc((100vw - 1180px) / 2 + 26px)) !important;
         z-index: 4 !important;
       }
       #modal:has(.lzn-commerce-detail) #modalBody {
@@ -54,9 +63,9 @@
       .lzn-commerce-page-shell {
         box-sizing: border-box;
         width: min(1440px, 100%);
-        min-height: 100dvh;
+        min-height: 0;
         margin: 0 auto;
-        padding: 0 32px 64px;
+        padding: 0 22px 28px;
       }
       .lzn-commerce-page-header {
         position: relative;
@@ -64,8 +73,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 72px;
-        margin-bottom: 24px;
+        min-height: 58px;
+        margin-bottom: 14px;
         border-bottom: 1px solid #dce1df;
         background: rgba(245, 244, 241, .96);
         backdrop-filter: blur(12px);
@@ -93,12 +102,12 @@
       .lzn-commerce-detail {
         display: grid;
         grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr);
-        gap: 38px;
+        gap: 24px;
         box-sizing: border-box;
         width: 100%;
         border: 1px solid #e1e5e3;
-        border-radius: 28px;
-        padding: 30px;
+        border-radius: 18px;
+        padding: 20px;
         background: #fff;
         color: #14262b;
       }
@@ -108,7 +117,8 @@
       .lzn-commerce-main-media {
         display: grid;
         place-items: center;
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 4 / 3;
+        max-height: 440px;
         overflow: hidden;
         border: 1px solid #e1e5e4;
         border-radius: 22px;
@@ -194,7 +204,7 @@
       .lzn-commerce-options {
         display: grid;
         gap: 8px;
-        max-height: 360px;
+        max-height: 280px;
         overflow: auto;
         padding: 2px 4px 2px 2px;
       }
@@ -333,6 +343,15 @@
         display: none !important;
       }
       @media (max-width: 820px) {
+        #modal:has(.lzn-commerce-detail) {
+          padding: 0 !important;
+        }
+        #modal:has(.lzn-commerce-detail) > article {
+          width: 100% !important;
+          max-width: none !important;
+          max-height: 100dvh !important;
+          border-radius: 0 !important;
+        }
         #modal:has(.lzn-commerce-detail) > article > .close {
           top: 15px !important;
           right: 14px !important;
