@@ -406,8 +406,7 @@
     if(account&&!/signed/i.test(account.textContent))account.textContent='Sign in';
     if(cart){const badge=cart.querySelector('#cartCount,.lzn-shared-cart-count');[...cart.childNodes].forEach(node=>{if(node!==badge)node.remove()});cart.insertBefore(document.createTextNode('Cart '),badge||null);cart.className='portfolio-cart-button'}
     header.querySelectorAll(':scope > nav:not(.portfolio-switcher),:scope > .header-tools,:scope > .header-actions').forEach(node=>node.remove());
-    const menuItems=categoryMenus[kind]||[];const actions=document.createElement('nav');actions.className='portfolio-actions';actions.setAttribute('aria-label','Categories, contact and account');actions.innerHTML=`<div class="portfolio-category-menu"><button class="portfolio-category-trigger" type="button" aria-expanded="false" aria-haspopup="true">Categories <span aria-hidden="true">⌄</span></button><div class="portfolio-category-dropdown" role="menu">${menuItems.map(([name,target])=>`<a href="${target.startsWith('#')?target:'#'}" data-category-target="${target}" role="menuitem">${name}</a>`).join('')}</div></div><a href="#contact">Contact</a>`;if(account)actions.appendChild(account);if(cart)actions.appendChild(cart);header.appendChild(actions);
-    const categoryMenu=actions.querySelector('.portfolio-category-menu');const categoryTrigger=actions.querySelector('.portfolio-category-trigger');const closeCategoryMenu=()=>{categoryMenu.classList.remove('open');categoryTrigger.setAttribute('aria-expanded','false')};categoryTrigger.onclick=event=>{event.stopPropagation();const open=categoryMenu.classList.toggle('open');categoryTrigger.setAttribute('aria-expanded',String(open))};categoryMenu.querySelectorAll('[data-category-target]').forEach(link=>link.onclick=event=>{event.preventDefault();activateCategory(link.dataset.categoryTarget);closeCategoryMenu()});document.addEventListener('click',event=>{if(!categoryMenu.contains(event.target))closeCategoryMenu()});categoryMenu.addEventListener('keydown',event=>{if(event.key==='Escape'){closeCategoryMenu();categoryTrigger.focus()}});
+    const actions=document.createElement('nav');actions.className='portfolio-actions';actions.setAttribute('aria-label','Account and cart');if(account)actions.appendChild(account);if(cart)actions.appendChild(cart);header.appendChild(actions);
   }
   const config={
     tools:{label:'LZN Tools Catalog',title:'Optical Tools & Equipment',desc:'Choose an equipment series, then explore every product for your optical workshop.',series:categoryMenus.tools},
@@ -462,12 +461,13 @@
     }
     if(kind==='lens')hideDuplicateCategoryControl('.catalog .filters');
     if(kind==='frames'){
-      const categoryControl=document.querySelector('#categoryFilter')?.closest('div');
-      const seriesControl=document.querySelector('#seriesFilter')?.closest('div');
-      [categoryControl,seriesControl].forEach(element=>{if(element){element.hidden=true;element.style.setProperty('display','none','important')}});
+      const toolbar=document.querySelector('#searchInput')?.closest('.toolbar');
+      if(toolbar){toolbar.hidden=true;toolbar.style.setProperty('display','none','important')}
     }
   }
   document.querySelector('main #contact')?.remove();
   document.querySelector('body > footer')?.remove();
-  const unifiedFooter=document.createElement('section');unifiedFooter.id='contact';unifiedFooter.className='portfolio-contact-footer';unifiedFooter.innerHTML=`<div class="footer-brand"><img src="/tools/lzn-transparent-logo.svg?v=original-ai" alt="LZN"></div><nav class="portfolio-policy-links" aria-label="Store policies"><a href="/policies/#terms">Terms &amp; Conditions</a><a href="/policies/#privacy">Privacy</a><a href="/policies/#shipping">Shipping</a><a href="/policies/#returns">Returns &amp; Refunds</a><a href="/policies/#warranty">Warranty</a><a href="/policies/#cookies">Cookies</a></nav><p class="copyright">© 2026 LZN MEDICAL CO., LTD. All Rights Reserved.</p>`;document.querySelector('main')?.appendChild(unifiedFooter);
+  if(kind==='www'){
+    const unifiedFooter=document.createElement('section');unifiedFooter.id='contact';unifiedFooter.className='portfolio-contact-footer';unifiedFooter.innerHTML=`<div class="footer-brand"><img src="/tools/lzn-transparent-logo.svg?v=original-ai" alt="LZN"></div><nav class="portfolio-policy-links" aria-label="Store policies"><a href="/policies/#terms">Terms &amp; Conditions</a><a href="/policies/#privacy">Privacy</a><a href="/policies/#shipping">Shipping</a><a href="/policies/#returns">Returns &amp; Refunds</a><a href="/policies/#warranty">Warranty</a><a href="/policies/#cookies">Cookies</a></nav><p class="copyright">© 2026 LZN MEDICAL CO., LTD. All Rights Reserved.</p>`;document.querySelector('main')?.appendChild(unifiedFooter);
+  }
 })();

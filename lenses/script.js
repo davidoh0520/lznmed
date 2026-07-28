@@ -397,7 +397,7 @@ function renderMarketplace(initialCategory='all'){
       return `<button type="button" data-marketplace-target="${key}" class="${index?'':'active'}" aria-pressed="${index?'false':'true'}"><img src="assets/lens-export-envelope.webp" alt="" loading="lazy" decoding="async"><span><strong>${e(label)}</strong><small>${products.filter(item=>item.cat===key).length} products</small></span></button>`;
     }).join('');
   }
-  grid.innerHTML=`<div class="marketplace-search"><input id="lensCatalogSearch" type="search" placeholder="Search lens type, index or coating"></div>${Object.entries(labels).map(([key,label])=>{
+  grid.innerHTML=`${Object.entries(labels).map(([key,label])=>{
     const items=products.filter(item=>item.cat===key);
     return `<section class="marketplace-category" data-marketplace-section="${key}"><div class="marketplace-category-head"><div><h2>${e(label)}</h2><p>Choose a lens to select its prescription power, coating and quantity.</p></div><span class="marketplace-category-count">${items.length} products</span></div><div class="marketplace-products" data-lens-products="${key}">${items.map(marketplaceLensCard).join('')}</div></section>`;
   }).join('')}`;
