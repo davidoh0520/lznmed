@@ -35,6 +35,8 @@ assert.match(commerce, /USD 10 NEXT-ORDER COUPON ELIGIBLE/, 'legacy checkout mar
 assert.match(commerce, /Product subtotal before coupon/, 'checkout explains the eligibility basis');
 assert.match(commerce, /const couponUnlocked = total >= MINIMUM_ORDER_USD/, 'cart unlocks the coupon display at USD 100');
 assert.match(commerce, /cart-earned-coupon/, 'the unlocked coupon is displayed beneath the cart summary');
+assert.match(commerce, /Your available coupons/, 'owned active coupons are shown in the cart and checkout');
+assert.match(commerce, /selectedCouponCode/, 'a coupon selected in the cart is carried to checkout');
 assert.match(admin, /Coupon discount \(USD\)/, 'admin order detail shows the coupon discount');
 assert.match(admin, /Number\(order\.subtotal_usd \|\| 0\) - discount \+ freight/, 'admin total subtracts coupon before freight');
 assert.match(email, /issued_for_order_id/, 'payment confirmation email loads the newly issued coupon');
