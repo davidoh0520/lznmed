@@ -3,7 +3,7 @@
   {
     "code": "ESSENTIALS",
     "name": "Essentials",
-    "subtitle": "Essential optical frames with option-level images and USD catalog pricing",
+    "subtitle": "Essential optical frames with option-level images for company-member purchasing",
     "items": [
       {
         "model": "LZN-FR-0001",
