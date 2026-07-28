@@ -394,6 +394,7 @@
     if(target.startsWith('#/')){location.hash=target.slice(1);return}
     document.querySelector(target)?.scrollIntoView({behavior:'smooth',block:'start'});
   };
+  const hideDuplicateCategoryControl=selector=>{const element=document.querySelector(selector);if(element){element.hidden=true;element.style.setProperty('display','none','important')}};
   document.querySelectorAll('a.admin-link,a[href*="/admin"]').forEach(x=>x.remove());
   document.querySelectorAll('header img[alt*="LZN" i], footer img[alt*="LZN" i], .contact img[alt="LZN"]').forEach(img=>{img.src='/tools/lzn-transparent-logo.svg?v=original-ai';img.classList.add('portfolio-logo')});
   const header=document.querySelector('body > header');
@@ -459,9 +460,9 @@
     const main=document.querySelector('main');main.insertBefore(deck,main.firstChild);const heroImg=deck.querySelector('.series-visual img');
     const modelLabel=deck.querySelector('.series-visual span');const rotate=()=>{const p=pickImages()[0];if(p){heroImg.style.opacity='.15';setTimeout(()=>{heroImg.src=p.src;heroImg.alt=p.alt;modelLabel.textContent=p.label||p.alt;modelLabel.hidden=false;heroImg.style.opacity='1'},180)}};rotate();setInterval(rotate,4500);
     deck.querySelectorAll('.series-pills button').forEach(b=>b.onclick=()=>{deck.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');activateCategory(b.dataset.target)});
-    if(kind==='devices'){document.querySelector('#workshop-devices > .section-head')?.setAttribute('hidden','');document.querySelector('#deviceCategoryNav')?.setAttribute('hidden','')}
-    if(kind==='lens')document.querySelector('.catalog .filters')?.setAttribute('hidden','');
-    if(kind==='frames'){document.querySelector('#categoryFilter')?.closest('div')?.setAttribute('hidden','');document.querySelector('#seriesFilter')?.closest('div')?.setAttribute('hidden','')}
+    if(kind==='devices'){hideDuplicateCategoryControl('#workshop-devices > .section-head');hideDuplicateCategoryControl('#deviceCategoryNav')}
+    if(kind==='lens')hideDuplicateCategoryControl('.catalog .filters');
+    if(kind==='frames'){const categoryControl=document.querySelector('#categoryFilter')?.closest('div');const seriesControl=document.querySelector('#seriesFilter')?.closest('div');[categoryControl,seriesControl].forEach(element=>{if(element){element.hidden=true;element.style.setProperty('display','none','important')}})}
   }
   const footerNames={www:'Connected Optical Solutions',devices:'Professional Ophthalmic Device Collection',tools:'Professional Optical Tools & Equipment',lens:'Professional Optical Lens Collection',frames:'Professional Optical Frame Collection'};
   document.querySelector('main #contact')?.remove();

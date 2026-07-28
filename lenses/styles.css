@@ -52,3 +52,36 @@
 
 .btn.secondary{background:var(--blue2);color:#fff;border-color:var(--blue2);box-shadow:0 10px 22px rgba(11,79,214,.2)}
 .btn.secondary:hover,.btn.secondary:focus-visible{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* One lightweight export-envelope image is reused everywhere; exact product and power text stays crisp HTML. */
+.lens-envelope{position:relative;width:100%;aspect-ratio:1;overflow:hidden;color:var(--blue);isolation:isolate}
+.lens-envelope>img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:contain!important;border-radius:0!important;box-shadow:none!important}
+.lens-envelope-copy{position:absolute;z-index:1;inset:12% 13% 11%;display:grid;grid-template-rows:auto 1fr auto;text-align:center}
+.lens-envelope-power{align-self:start;display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:0 0 9px;border-bottom:1px solid rgba(8,36,111,.22);text-align:left}
+.lens-envelope-power small{font-size:clamp(8px,.72vw,11px);font-weight:900;letter-spacing:.18em}
+.lens-envelope-power b{font-size:clamp(9px,.82vw,13px);line-height:1.2;text-align:right}
+.lens-envelope-model{align-self:center;justify-self:center;max-width:95%;font-size:clamp(17px,1.75vw,30px);line-height:1.02;letter-spacing:-.035em;overflow-wrap:anywhere}
+.lens-envelope-meta{align-self:end;font-size:clamp(8px,.72vw,11px);font-weight:800;letter-spacing:.08em;color:#53678e}
+.card-lens-envelope .lens-envelope-copy{inset:12% 12% 10%}
+.card-lens-envelope .lens-envelope-model{font-size:clamp(15px,1.35vw,23px)}
+.card-img .lens-envelope img{object-fit:contain}
+.hero-lens-envelope{width:min(82%,420px)}
+.hero-panel .hero-lens-envelope img{width:100%;height:100%}
+.hero-panel.switching .hero-lens-envelope{opacity:.2;transform:scale(.975)}
+.hero-lens-envelope{transition:opacity .32s ease,transform .6s ease}
+.modal-lens-envelope{align-self:start;border-radius:18px;box-shadow:var(--shadow)}
+.modal-lens-envelope .lens-envelope-model{font-size:clamp(22px,2.6vw,38px)}
+.modal-lens-envelope .lens-envelope-power b{font-size:clamp(10px,1.1vw,15px)}
+
+.export-packaging-note{margin:38px 5vw 0;padding:clamp(24px,3vw,42px);display:grid;grid-template-columns:minmax(260px,.8fr) minmax(320px,1.2fr);gap:clamp(24px,5vw,72px);align-items:center;border:1px solid #d9e5f6;border-radius:26px;background:#f7faff}
+.export-packaging-note h2{margin:0;font-size:clamp(28px,3.4vw,48px)}
+.export-packaging-note>p{margin:0;color:#344054;font-size:clamp(16px,1.35vw,20px);line-height:1.65}
+
+@media(max-width:760px){
+  .export-packaging-note{grid-template-columns:1fr;margin-top:22px}
+  .lens-envelope-copy{inset:12%}
+  .lens-envelope-model{font-size:clamp(16px,5vw,28px)}
+  .lens-envelope-power b{font-size:clamp(9px,2.5vw,13px)}
+  .hero-lens-envelope{width:min(88%,390px)}
+}
+@media(prefers-reduced-motion:reduce){.hero-lens-envelope{transition:none}}

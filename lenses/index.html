@@ -9,7 +9,7 @@
   <style>html{background:#f6f6f3}html.lzn-booting body{opacity:0;visibility:hidden;pointer-events:none}</style>
   <noscript><style>html.lzn-booting body{opacity:1;visibility:visible;pointer-events:auto}</style></noscript>
   <script>window.addEventListener('DOMContentLoaded',()=>requestAnimationFrame(()=>document.documentElement.classList.remove('lzn-booting')),{once:true});</script>
-  <link rel="stylesheet" href="styles.css?v=20260719-11" />
+  <link rel="stylesheet" href="styles.css?v=20260728-12" />
   <link rel="stylesheet" href="/tools/unified-theme.css?v=20260717-1">
   <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260728-23">
 </head>
@@ -35,6 +35,14 @@
         <a class="btn" href="#catalog">Explore Lenses</a>
       </div>
       <div class="hero-panel" id="heroPanel" role="button" tabindex="0" aria-label="View featured lens"></div>
+    </section>
+
+    <section class="export-packaging-note" aria-labelledby="exportPackagingTitle">
+      <div>
+        <p class="eyebrow">STANDARD EXPORT PACKING</p>
+        <h2 id="exportPackagingTitle">Plain white lens envelopes</h2>
+      </div>
+      <p>Standard export lenses are packed in plain white envelopes. The prescription power is printed at the top, and the product model or lens type is printed prominently in the center. Decorative retail envelopes are not included unless separately agreed in writing.</p>
     </section>
 
     <section class="catalog" id="catalog">
@@ -70,7 +78,14 @@
   <dialog id="productModal">
     <button class="close" aria-label="Close">×</button>
     <div class="modal-body">
-      <img id="modalImage" alt="" />
+      <div class="lens-envelope modal-lens-envelope">
+        <img id="modalImage" src="assets/lens-export-envelope.webp" alt="Plain white export lens envelope" />
+        <div class="lens-envelope-copy">
+          <span class="lens-envelope-power"><small>POWER</small><b id="modalEnvelopePower">SELECT POWER</b></span>
+          <strong class="lens-envelope-model" id="modalEnvelopeModel">OPTICAL LENS</strong>
+          <span class="lens-envelope-meta" id="modalEnvelopeMeta">STANDARD EXPORT PACKING</span>
+        </div>
+      </div>
       <div>
         <p class="eyebrow" id="modalCategory"></p>
         <h2 id="modalTitle"></h2>
@@ -94,9 +109,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js?v=20260713-1"></script>
-  <script src="script.js?v=20260719-8"></script>
+  <script src="script.js?v=20260728-9"></script>
 <script src="/tools/shared-cart.js?v=20260723-7"></script>
-<script src="/tools/portfolio-shell.js?v=20260728-31" defer></script>
+<script src="/tools/portfolio-shell.js?v=20260728-32" defer></script>
 <script src="/tools/promotion-popup.js?v=20260727-5"></script>
 </body>
 </html>
