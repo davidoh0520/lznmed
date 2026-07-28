@@ -27,6 +27,7 @@ assert.match(sql, /status = 'reserved'/i, 'coupon is reserved atomically when th
 assert.match(sql, /status = 'redeemed'/i, 'coupon is finalized when payment is confirmed');
 assert.match(sql, /issued_for_order_id uuid not null unique/i, 'only one coupon can be issued per qualifying order');
 assert.match(sql, /now\(\) \+ interval '60 days'/i, 'issued coupons expire after 60 days');
+assert.match(sql, /customer_note like '%\[USD 10 NEXT-ORDER COUPON ELIGIBLE\]%'/i, 'pre-migration paid orders receive their earned coupons');
 
 assert.match(commerce, /MINIMUM_ORDER_USD = 100/, 'cart uses the USD 100 minimum');
 assert.match(commerce, /client\.rpc\('place_order'/, 'checkout uses the atomic database order function');
