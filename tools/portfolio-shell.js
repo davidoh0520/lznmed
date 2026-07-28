@@ -40,7 +40,7 @@
       ? 'This account is not registered as a company member. Please complete or update the company profile in your account.'
       : commerceMessage;
     notice.querySelector('button').textContent=signedIn?'Open company account':'Sign in / Create company account';
-    document.querySelectorAll('#cartButton,[data-card-add],[data-add-cart],#addOrderLine').forEach(control=>{
+    document.querySelectorAll('#cartButton,[data-card-add],[data-add-cart],#addOrderLine,.lzn-commerce-add').forEach(control=>{
       control.setAttribute('aria-disabled',String(!commerceAccess.allowed));
       if(!commerceAccess.allowed)control.setAttribute('tabindex','-1');
       else control.removeAttribute('tabindex');
@@ -352,7 +352,7 @@
   };
   document.addEventListener('click',event=>{
     if(commerceAccess.allowed)return;
-    const blocked=event.target.closest('#cartButton,[data-card-add],[data-add-cart],#addOrderLine,.add-cart,.card-add-button,[data-color-index],[data-cart-add]');
+    const blocked=event.target.closest('#cartButton,[data-card-add],[data-add-cart],#addOrderLine,.add-cart,.card-add-button,[data-color-index],[data-cart-add],.lzn-commerce-add');
     if(!blocked)return;
     event.preventDefault();
     event.stopImmediatePropagation();
@@ -456,9 +456,10 @@
   if(kind!=='www'&&config[kind]){
     const oldHero=document.querySelector('main > .hero');if(oldHero)oldHero.style.display='none';
     const deck=document.createElement('section');deck.className='series-deck';const c=config[kind];
-    deck.innerHTML=`<div class="series-deck-inner"><div class="series-copy"><small>${c.label}</small><h1>${c.title}</h1><p>${c.desc}</p><div class="series-pills">${c.series.map((s,i)=>`<button type="button" data-target="${s[1]}" class="${i?'':'active'} ${s[2]?'has-thumb':''}">${s[2]?`<img src="${s[2]}" alt="" loading="lazy" decoding="async">`:''}<span>${s[0]}</span></button>`).join('')}</div></div><div class="series-visual"><img alt="Featured LZN product"><span hidden></span></div></div>`;
+    const visual=kind==='lens'?'':'<div class="series-visual"><img alt="Featured LZN product"><span hidden></span></div>';
+    deck.innerHTML=`<div class="series-deck-inner"><div class="series-copy"><small>${c.label}</small><h1>${c.title}</h1><p>${c.desc}</p><div class="series-pills">${c.series.map((s,i)=>`<button type="button" data-target="${s[1]}" class="${i?'':'active'} ${s[2]?'has-thumb':''}">${s[2]?`<img src="${s[2]}" alt="" loading="lazy" decoding="async">`:''}<span>${s[0]}</span></button>`).join('')}</div></div>${visual}</div>`;
     const main=document.querySelector('main');main.insertBefore(deck,main.firstChild);const heroImg=deck.querySelector('.series-visual img');
-    const modelLabel=deck.querySelector('.series-visual span');const rotate=()=>{const p=pickImages()[0];if(p){heroImg.style.opacity='.15';setTimeout(()=>{heroImg.src=p.src;heroImg.alt=p.alt;modelLabel.textContent=p.label||p.alt;modelLabel.hidden=false;heroImg.style.opacity='1'},180)}};rotate();setInterval(rotate,4500);
+    if(heroImg){const modelLabel=deck.querySelector('.series-visual span');const rotate=()=>{const p=pickImages()[0];if(p){heroImg.style.opacity='.15';setTimeout(()=>{heroImg.src=p.src;heroImg.alt=p.alt;modelLabel.textContent=p.label||p.alt;modelLabel.hidden=false;heroImg.style.opacity='1'},180)}};rotate();setInterval(rotate,4500)}
     deck.querySelectorAll('.series-pills button').forEach(b=>b.onclick=()=>{deck.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');activateCategory(b.dataset.target)});
     if(kind==='devices'){hideDuplicateCategoryControl('#workshop-devices > .section-head');hideDuplicateCategoryControl('#deviceCategoryNav')}
     if(kind==='lens')hideDuplicateCategoryControl('.catalog .filters');

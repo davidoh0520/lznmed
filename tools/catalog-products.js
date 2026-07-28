@@ -3,7 +3,7 @@
   {
     "id": "accessories",
     "en": "Accessories",
-    "desc": "Optical shop products with option-level images and USD catalog pricing.",
+    "desc": "Optical shop products with option-level images for company-member purchasing.",
     "items": [
       {
         "category": "accessories",
@@ -827,7 +827,7 @@
   {
     "id": "cases",
     "en": "Cases",
-    "desc": "Optical shop products with option-level images and USD catalog pricing.",
+    "desc": "Optical shop products with option-level images for company-member purchasing.",
     "items": [
       {
         "category": "cases",
@@ -1144,7 +1144,7 @@
   {
     "id": "cleaning",
     "en": "Cleaning",
-    "desc": "Optical shop products with option-level images and USD catalog pricing.",
+    "desc": "Optical shop products with option-level images for company-member purchasing.",
     "items": [
       {
         "category": "cleaning",
@@ -1480,7 +1480,7 @@
   {
     "id": "display",
     "en": "Display",
-    "desc": "Optical shop products with option-level images and USD catalog pricing.",
+    "desc": "Optical shop products with option-level images for company-member purchasing.",
     "items": [
       {
         "category": "display",
@@ -2413,7 +2413,7 @@
   {
     "id": "nose-pads",
     "en": "Nose Pads",
-    "desc": "Optical shop products with option-level images and USD catalog pricing.",
+    "desc": "Optical shop products with option-level images for company-member purchasing.",
     "items": [
       {
         "category": "nose-pads",
@@ -2691,7 +2691,7 @@
   {
     "id": "repair-parts",
     "en": "Repair Parts",
-    "desc": "Optical shop products with option-level images and USD catalog pricing.",
+    "desc": "Optical shop products with option-level images for company-member purchasing.",
     "items": [
       {
         "category": "repair-parts",
@@ -2927,7 +2927,7 @@
   {
     "id": "tools",
     "en": "Tool Set",
-    "desc": "Optical shop products with option-level images and USD catalog pricing.",
+    "desc": "Optical shop products with option-level images for company-member purchasing.",
     "items": [
       {
         "category": "tools",
@@ -4382,7 +4382,7 @@
   {
     "id": "trial-lens-sets",
     "en": "Trial Lens Set",
-    "desc": "Optical shop products with option-level images and USD catalog pricing.",
+    "desc": "Optical shop products with option-level images for company-member purchasing.",
     "items": [
       {
         "category": "trial-lens-sets",
@@ -4430,7 +4430,7 @@
   {
     "id": "vision-training-kits",
     "en": "Vision Training Kits",
-    "desc": "Optical shop products with option-level images and USD catalog pricing.",
+    "desc": "Optical shop products with option-level images for company-member purchasing.",
     "items": [
       {
         "category": "vision-training-kits",
