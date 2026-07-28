@@ -9,11 +9,11 @@
     'ET-660E': 800,
     'ET-480A': 900,
     'LZN-5': 1600,
-    'TOOLTIP': 13000,
-    'INT-200-IIOMA': 3000,
+    'TOOLTIP': null,
+    'INT-200-IIOMA': null,
     'HV-600': 700,
-    'AXL-800': 3000,
-    'RMK-800': 2500,
+    'AXL-800': null,
+    'RMK-800': null,
     'CP-6': 500,
     'CP-8': 2000,
     'K215': 500,
@@ -22,10 +22,10 @@
     'OT-1': 600,
     'OT-3': 600,
     'OT-5': 650,
-    'ANY-I-YEARLY': 150,
-    'CYCLOPS-LITE': 1300,
-    'BLUESPEC-HEV': 250,
-    'CYCLOPS-BLUESPEC-SET': 1400
+    'ANY-I-YEARLY': 200,
+    'CYCLOPS-LITE': 1800,
+    'BLUESPEC-HEV': 300,
+    'CYCLOPS-BLUESPEC-SET': 2000
   });
   const deviceAsset = value => {
     const path = String(value || '').trim();
@@ -125,6 +125,51 @@
     return `/tools/${value.replace(/^\/+/, '')}`;
   };
   const formatUsd = value => Number(value).toFixed(Number(value) >= 100 ? 0 : 2);
+  function animateToCart(sourceImage) {
+    const cartButton = document.querySelector('#cartButton');
+    if (!sourceImage?.getBoundingClientRect || !cartButton?.getBoundingClientRect) return;
+    const sourceRect = sourceImage.getBoundingClientRect();
+    const cartRect = cartButton.getBoundingClientRect();
+    if (!sourceRect.width || !sourceRect.height || !cartRect.width || !cartRect.height) return;
+    const flyer = document.createElement('img');
+    flyer.src = sourceImage.currentSrc || sourceImage.src || '';
+    flyer.alt = '';
+    flyer.setAttribute('aria-hidden', 'true');
+    Object.assign(flyer.style, {
+      position: 'fixed',
+      left: sourceRect.left + 'px',
+      top: sourceRect.top + 'px',
+      width: sourceRect.width + 'px',
+      height: sourceRect.height + 'px',
+      objectFit: 'contain',
+      borderRadius: '16px',
+      background: '#fff',
+      boxShadow: '0 16px 40px rgba(0,0,0,.28)',
+      pointerEvents: 'none',
+      zIndex: '10050'
+    });
+    document.body.appendChild(flyer);
+    const deltaX = cartRect.left + cartRect.width / 2 - (sourceRect.left + sourceRect.width / 2);
+    const deltaY = cartRect.top + cartRect.height / 2 - (sourceRect.top + sourceRect.height / 2);
+    const finish = () => {
+      flyer.remove();
+      cartButton.animate?.([
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.18)' },
+        { transform: 'scale(1)' }
+      ], { duration: 320, easing: 'ease-out' });
+    };
+    if (!flyer.animate || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      finish();
+      return;
+    }
+    flyer.animate([
+      { transform: 'translate(0,0) scale(1)', opacity: 1 },
+      { transform: 'translate(' + (deltaX * .55) + 'px,' + (deltaY * .35 - 70) + 'px) scale(.62)', opacity: .95, offset: .58 },
+      { transform: 'translate(' + deltaX + 'px,' + deltaY + 'px) scale(.12)', opacity: .08 }
+    ], { duration: 720, easing: 'cubic-bezier(.2,.8,.25,1)', fill: 'forwards' }).finished.then(finish, finish);
+  }
+  window.LZNDeviceAnimateToCart = animateToCart;
   const publicProduct = product => ({
     ...product,
     image: publicAsset(product.image),
@@ -237,6 +282,7 @@
     body.querySelector('[data-device-detail-option]')?.addEventListener('change', refresh);
     body.querySelector('[data-device-modal-add]').addEventListener('click', event => {
       const selected = selectedOffer(product);
+      animateToCart(body.querySelector('[data-device-detail-image]'));
       const quantity = Math.max(1, Number(body.querySelector('[data-device-detail-quantity]').value) || 1);
       window.LZNSharedCart?.addItems([{
         model: selected.model,
