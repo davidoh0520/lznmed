@@ -141,19 +141,19 @@
   <div class="digital-sales-grid">
     <article class="digital-sales-card">
       <button class="equipment-card show-brochure" data-title="Any-I Consultant" data-brochures="assets/anyi_b1.webp,assets/anyi_b2.webp"><img loading="lazy" decoding="async" src="assets/anyi_product.webp" alt="Any-I Consultant lens consulting software"><div><h3>Any-I Consultant</h3><p>Lens Consulting Software</p><span>Interactive lens education and sales support</span></div></button>
-      <div class="digital-offer"><p class="digital-price">Price on request</p><p>Annual software licence</p><p>Minimum order: 1 licence</p><button class="device-cart-add" type="button" data-model="ANY-I-YEARLY" data-name="Any-I Consultant" data-price-on-request="true" data-image="/devices/assets/anyi_product.webp" data-option="1-year software licence · Price on request">Add to cart</button></div>
+      <div class="digital-offer"><p class="digital-price">USD 200</p><p>Annual software licence</p><p>Minimum order: 1 licence</p><button class="device-cart-add" type="button" data-model="ANY-I-YEARLY" data-name="Any-I Consultant" data-price-usd="200" data-image="/devices/assets/anyi_product.webp" data-option="1-year software licence · USD 200">Add to cart</button></div>
     </article>
     <article class="digital-sales-card">
       <button class="equipment-card show-brochure" data-title="Cyclops Lite" data-brochures="assets/cyclops_b1.webp,assets/cyclops_b2.webp"><img loading="lazy" decoding="async" src="assets/cyclops_product.webp" alt="Cyclops Lite digital centering solution"><div><h3>Cyclops Lite</h3><p>Digital Centering Solution</p><span>PD, fitting height and frame parameter measurement</span></div></button>
-      <div class="digital-offer"><p class="digital-price">Price on request</p><p>Software included</p><p>Minimum order: 1 device</p><button class="device-cart-add" type="button" data-model="CYCLOPS-LITE" data-name="Cyclops Lite" data-price-on-request="true" data-image="/devices/assets/cyclops_product.webp" data-option="1 device · Price on request">Add to cart</button></div>
+      <div class="digital-offer"><p class="digital-price">USD 1,800</p><p>Software included</p><p>Minimum order: 1 device</p><button class="device-cart-add" type="button" data-model="CYCLOPS-LITE" data-name="Cyclops Lite" data-price-usd="1800" data-image="/devices/assets/cyclops_product.webp" data-option="1 device · USD 1,800">Add to cart</button></div>
     </article>
     <article class="digital-sales-card">
       <button class="equipment-card show-brochure" data-title="Bluespec HEV" data-brochures="assets/bluespec_b1.webp,assets/bluespec_b2.webp"><img loading="lazy" decoding="async" src="assets/bluespec_product.webp" alt="Bluespec HEV demonstration device"><div><h3>Bluespec HEV</h3><p>UV & HEV Demonstration Device</p><span>Blue light and UV transmission analysis</span></div></button>
-      <div class="digital-offer"><p class="digital-price">Price on request</p><p>Software included</p><p>Minimum order: 1 device</p><button class="device-cart-add" type="button" data-model="BLUESPEC-HEV" data-name="Bluespec HEV" data-price-on-request="true" data-image="/devices/assets/bluespec_product.webp" data-option="1 device · Price on request">Add to cart</button></div>
+      <div class="digital-offer"><p class="digital-price">USD 300</p><p>Software included</p><p>Minimum order: 1 device</p><button class="device-cart-add" type="button" data-model="BLUESPEC-HEV" data-name="Bluespec HEV" data-price-usd="300" data-image="/devices/assets/bluespec_product.webp" data-option="1 device · USD 300">Add to cart</button></div>
     </article>
     <article class="digital-sales-card digital-set-card">
       <button class="equipment-card show-brochure" data-title="Cyclops Lite + Bluespec HEV Set" data-brochures="assets/cyclops_b1.webp,assets/cyclops_b2.webp,assets/bluespec_b1.webp,assets/bluespec_b2.webp"><div class="digital-set-image"><img loading="lazy" decoding="async" src="assets/cyclops_product.webp" alt="Cyclops Lite"><strong>+</strong><img loading="lazy" decoding="async" src="assets/bluespec_product.webp" alt="Bluespec HEV"></div><div><h3>Cyclops Lite + Bluespec HEV</h3><p>Digital Centering & Demonstration Set</p><span>One Cyclops Lite and one Bluespec HEV</span></div></button>
-      <div class="digital-offer"><p class="digital-price">Price on request</p><p>Software included</p><p>Minimum order: 1 set</p><button class="device-cart-add" type="button" data-model="CYCLOPS-BLUESPEC-SET" data-name="Cyclops Lite + Bluespec HEV" data-price-on-request="true" data-image="/devices/assets/cyclops_product.webp" data-option="1 set · Price on request">Add to cart</button></div>
+      <div class="digital-offer"><p class="digital-price">USD 2,000</p><p>Software included</p><p>Minimum order: 1 set</p><button class="device-cart-add" type="button" data-model="CYCLOPS-BLUESPEC-SET" data-name="Cyclops Lite + Bluespec HEV" data-price-usd="2000" data-image="/devices/assets/cyclops_product.webp" data-option="1 set · USD 2,000">Add to cart</button></div>
     </article>
   </div>
 </section>
@@ -371,12 +371,15 @@
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && detailModal.classList.contains('active')) closeDetails(); });
     document.querySelectorAll('.device-cart-add').forEach(button => {
       button.addEventListener('click', () => {
+        const numericPrice = Number(button.dataset.priceUsd);
+        const priceUsd = Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice : null;
+        window.LZNDeviceAnimateToCart?.(button.closest('.digital-sales-card')?.querySelector('img'));
         window.LZNSharedCart?.addItems([{
           model: button.dataset.model,
           nameEn: `[Devices] ${button.dataset.name}`,
           image: button.dataset.image,
-          priceUsd: null,
-          priceOnRequest: true,
+          priceUsd,
+          priceOnRequest: priceUsd === null,
           quantity: 1,
           optionLabel: button.dataset.option,
           sourceStore: 'Devices'
@@ -393,7 +396,7 @@
   <script src="/tools/products.js?v=20260726-32"></script>
   <script src="/tools/shared-cart.js?v=20260723-7"></script>
   <script src="/tools/marketplace-catalog.js?v=20260728-1"></script>
-  <script src="moved-catalog.js?v=20260729-1"></script>
+  <script src="moved-catalog.js?v=20260729-2"></script>
   <script src="/tools/portfolio-shell.js?v=20260729-1" defer></script>
   <script src="/tools/promotion-popup.js?v=20260727-5"></script>
 </body>
