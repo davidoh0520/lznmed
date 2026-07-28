@@ -370,11 +370,14 @@
   const section=location.pathname.split('/').filter(Boolean)[0]||'';const kind=section==='devices'?'devices':section==='tools'?'tools':section==='frames'?'frames':section==='lenses'?'lens':'www';
   document.body.classList.add('portfolio-'+kind);
   const sites=[['ALL PRODUCTS','/','www'],['DEVICES','/devices/','devices'],['TOOLS','/tools/','tools'],['LENSES','/lenses/','lens'],['FRAMES','/frames/','frames']];
-  const toolSeries=[['Motorized Chairs','#/category/chairs'],['Motorized Tables','#/category/tables'],['PD Measurement','#/category/pd'],['Grooving & Beveling','#/category/grooving'],['Lens Cutting','#/category/pattern'],['Hand Edgers','#/category/edging'],['Drilling','#/category/drilling'],['Frame Heaters','#/category/heaters'],['Lensmeters','#/category/lensmeter'],['Optical Pliers','#/category/pliers']];
+  const deviceCategoryIds=new Set(window.LZN_DEVICE_CATEGORY_IDS||[]);
+  const catalogCategories=Array.isArray(window.CATALOG_DATA)?window.CATALOG_DATA:[];
+  const toolSeries=[['Ultrasonic Cleaners','#/category/cleaning'],['Trial Lens Sets','#/category/trial-lens-sets'],['Trial Frames','#/category/trial'],['Job Trays','#/category/job-trays'],['Nose Pads','#/category/nose-pads'],['Lens Cleaning Cloths','#/category/lens-cloths'],['Tool Sets','#/category/tools']];
+  const deviceToolSeries=catalogCategories.filter(category=>deviceCategoryIds.has(category.id)).map(category=>[category.en,`device-category:${category.id}`,`/tools/${category.items?.[0]?.image||''}`]);
   const categoryMenus={
     www:[['Devices','#devices'],['Tools','#tools'],['Frames','#frames'],['Lens','#lens']],
-    tools:Array.isArray(window.CATALOG_DATA)?window.CATALOG_DATA.map(category=>[category.en,`#/category/${category.id}`]):toolSeries,
-    devices:[['Unit Tables','#products'],['Lens Processing','#lens-processing'],['Vision Test','#vision-test'],['Motorized Tables','#motorized-tables'],['Digital Solutions','#digital-solutions']],
+    tools:catalogCategories.length?catalogCategories.filter(category=>!deviceCategoryIds.has(category.id)).map(category=>[category.en,`#/category/${category.id}`,category.items?.[0]?.image||'']):toolSeries,
+    devices:[...deviceToolSeries,['Unit Tables','#products','/devices/assets/ast1000_photo.webp'],['Lens Processing','#lens-processing','/devices/assets/lzn5_photo.webp'],['Vision Test','#vision-test','/devices/assets/cp6.webp'],['Digital Solutions','#digital-solutions','/devices/assets/cyclops_product.webp']],
     lens:[['All Lenses','all'],['Single Vision','single'],['Progressive','progressive'],['Semi-Finished','semi']],
     frames:[['Classic Browline','#series-86'],['Modern Browline','#series-87'],['Super Engineered Ultem','#series-ULTEM-TITANIUM'],['Lightweight Ultem','#series-LIGHT-ULTEM'],['Ultem-Ppsu Kids','#series-ULTEM-PPSU'],['Kids Myopia Control','#series-KIDS-CONTROL'],['Teen Ppsu Flex','#series-TEEN-PPSU']]
   };
@@ -386,6 +389,7 @@
   }
   const activateCategory=target=>{
     if(kind==='lens'&&!target.startsWith('#')&&!target.startsWith('.')){document.querySelector(`.filters [data-filter="${target}"]`)?.click();document.querySelector('#catalog')?.scrollIntoView({behavior:'smooth',block:'start'});return}
+    if(kind==='devices'&&target.startsWith('device-category:')){window.LZNSelectDeviceCategory?.(target.slice('device-category:'.length));return}
     if(target.startsWith('#/')){location.hash=target.slice(1);return}
     document.querySelector(target)?.scrollIntoView({behavior:'smooth',block:'start'});
   };
@@ -450,7 +454,7 @@
   if(kind!=='www'&&config[kind]){
     const oldHero=document.querySelector('main > .hero');if(oldHero)oldHero.style.display='none';
     const deck=document.createElement('section');deck.className='series-deck';const c=config[kind];
-    deck.innerHTML=`<div class="series-deck-inner"><div class="series-copy"><small>${c.label}</small><h1>${c.title}</h1><p>${c.desc}</p><div class="series-pills">${c.series.map((s,i)=>`<button type="button" data-target="${s[1]}" class="${i?'':'active'}">${s[0]}</button>`).join('')}</div></div><div class="series-visual"><img alt="Featured LZN product"><span hidden></span></div></div>`;
+    deck.innerHTML=`<div class="series-deck-inner"><div class="series-copy"><small>${c.label}</small><h1>${c.title}</h1><p>${c.desc}</p><div class="series-pills">${c.series.map((s,i)=>`<button type="button" data-target="${s[1]}" class="${i?'':'active'} ${s[2]?'has-thumb':''}">${s[2]?`<img src="${s[2]}" alt="" loading="lazy" decoding="async">`:''}<span>${s[0]}</span></button>`).join('')}</div></div><div class="series-visual"><img alt="Featured LZN product"><span hidden></span></div></div>`;
     const main=document.querySelector('main');main.insertBefore(deck,main.firstChild);const heroImg=deck.querySelector('.series-visual img');
     const modelLabel=deck.querySelector('.series-visual span');const rotate=()=>{const p=pickImages()[0];if(p){heroImg.style.opacity='.15';setTimeout(()=>{heroImg.src=p.src;heroImg.alt=p.alt;modelLabel.textContent=p.label||p.alt;modelLabel.hidden=false;heroImg.style.opacity='1'},180)}};rotate();setInterval(rotate,4500);
     deck.querySelectorAll('.series-pills button').forEach(b=>b.onclick=()=>{deck.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');activateCategory(b.dataset.target)});
