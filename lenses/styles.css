@@ -85,3 +85,18 @@
   .hero-lens-envelope{width:min(88%,390px)}
 }
 @media(prefers-reduced-motion:reduce){.hero-lens-envelope{transition:none}}
+/* Compact text-only export envelope used inside marketplace thumbnails. */
+.marketplace-product-image .card-lens-envelope{width:min(112px,100%);aspect-ratio:1}
+.marketplace-product-image .card-lens-envelope .lens-envelope-copy{inset:15% 13% 13%}
+.marketplace-product-image .card-lens-envelope .lens-envelope-power{gap:4px;padding-bottom:4px}
+.marketplace-product-image .card-lens-envelope .lens-envelope-power small{font-size:6px;letter-spacing:.12em}
+.marketplace-product-image .card-lens-envelope .lens-envelope-power b{max-width:58%;font-size:6px;line-height:1.08;letter-spacing:0}
+.marketplace-product-image .card-lens-envelope .lens-envelope-model{display:-webkit-box;max-width:100%;max-height:3.15em;overflow:hidden;font-size:11px;line-height:1.05;letter-spacing:-.02em;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+.marketplace-product-image .card-lens-envelope .lens-envelope-meta{font-size:6px;letter-spacing:.035em;white-space:nowrap}
+@media(max-width:720px){
+  .marketplace-product-image .card-lens-envelope{width:min(88px,100%)}
+  .marketplace-product-image .card-lens-envelope .lens-envelope-model{font-size:9px}
+  .marketplace-product-image .card-lens-envelope .lens-envelope-power small,
+  .marketplace-product-image .card-lens-envelope .lens-envelope-power b,
+  .marketplace-product-image .card-lens-envelope .lens-envelope-meta{font-size:5px}
+}

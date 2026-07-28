@@ -370,3 +370,7 @@ html,body{max-width:100%;overflow-x:hidden}
   .marketplace-scroll{scroll-behavior:auto}
   .marketplace-product-card{transition:none}
 }
+.product-card.marketplace-product-card>.marketplace-product-image,
+.product-card.marketplace-product-card>.marketplace-product-copy{aspect-ratio:auto}
+.product-card.marketplace-product-card>.marketplace-product-copy{place-items:normal;background:#fff}
+.product-card.marketplace-product-card .marketplace-product-copy :is(span,p,h3){margin-left:0;margin-right:0}
