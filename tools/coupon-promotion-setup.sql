@@ -343,6 +343,32 @@ create trigger handle_order_coupon_lifecycle
 after update of status on public.orders
 for each row execute function public.handle_order_coupon_lifecycle();
 
+-- Recover coupons earned while checkout was using the pre-migration fallback.
+-- Only orders explicitly marked by that fallback are included.
+insert into public.coupons (
+  code,
+  user_id,
+  amount_usd,
+  status,
+  issued_for_order_id,
+  issued_at,
+  expires_at
+)
+select
+  public.generate_coupon_code(),
+  orders.user_id,
+  10.00,
+  'active',
+  orders.id,
+  now(),
+  now() + interval '60 days'
+from public.orders
+where orders.status = 'paid'
+  and orders.user_id is not null
+  and orders.subtotal_usd >= 100
+  and orders.customer_note like '%[USD 10 NEXT-ORDER COUPON ELIGIBLE]%'
+on conflict (issued_for_order_id) do nothing;
+
 comment on table public.coupons is
 'USD 10 repeat-order coupons. One coupon is issued after payment confirmation for each order with a pre-coupon product subtotal of at least USD 100.';
 comment on column public.orders.subtotal_usd is
