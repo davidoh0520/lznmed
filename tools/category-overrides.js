@@ -99,3 +99,114 @@
     });
   });
 })();
+
+(function () {
+  var catalog = window.CATALOG_DATA || [];
+
+  function ensureCategory(id, en, desc, afterId) {
+    var existing = catalog.find(function (category) {
+      return category.id === id;
+    });
+    if (existing) return existing;
+
+    var category = {
+      id: id,
+      en: en,
+      desc: desc,
+      items: []
+    };
+    var anchorIndex = catalog.findIndex(function (item) {
+      return item.id === afterId;
+    });
+    catalog.splice(anchorIndex >= 0 ? anchorIndex + 1 : catalog.length, 0, category);
+    return category;
+  }
+
+  ensureCategory(
+    "lens-processing-consumables",
+    "Lens Processing Consumables",
+    "Blocking cups, anti-slip pads, and replaceable supplies used during lens edging and finishing.",
+    "edging"
+  );
+  ensureCategory(
+    "refraction-accessories",
+    "Refraction & Examination Accessories",
+    "Occluders, cross-cylinder lenses, pupil lights, and supporting accessories for eye examinations.",
+    "testing"
+  );
+  ensureCategory(
+    "low-vision-aids",
+    "Low Vision Aids",
+    "Magnifiers and practical visual aids for reading and near-vision support.",
+    "refraction-accessories"
+  );
+
+  var routes = [
+    {
+      categoryId: "repair-parts",
+      models: new Set([
+        "ST-A21G",
+        "ST-A21F",
+        "LZN-TL-0046",
+        "LZN-TL-0052"
+      ])
+    },
+    {
+      categoryId: "nose-pads",
+      models: new Set([
+        "ST-A21H"
+      ])
+    },
+    {
+      categoryId: "contact-lens-cases",
+      models: new Set([
+        "LZN-676143210189"
+      ])
+    },
+    {
+      categoryId: "refraction-accessories",
+      models: new Set([
+        "LZN-TL-0053",
+        "LZN-TL-0057",
+        "LZN-TL-0060"
+      ])
+    },
+    {
+      categoryId: "low-vision-aids",
+      models: new Set([
+        "LZN-TL-0055"
+      ])
+    },
+    {
+      categoryId: "lens-processing-consumables",
+      models: new Set([
+        "LZN-TL-0058",
+        "LZN-TL-0061"
+      ])
+    }
+  ];
+
+  routes.forEach(function (route) {
+    var target = catalog.find(function (category) {
+      return category.id === route.categoryId;
+    });
+    if (!target) return;
+
+    var existingModels = new Set((target.items || []).map(function (item) {
+      return item.model;
+    }));
+
+    catalog.forEach(function (category) {
+      if (category.id === route.categoryId) return;
+      category.items = (category.items || []).filter(function (item) {
+        if (!route.models.has(item.model)) return true;
+        if (!existingModels.has(item.model)) {
+          item.category = route.categoryId;
+          target.items.push(item);
+          existingModels.add(item.model);
+        }
+        return false;
+      });
+    });
+  });
+})();
