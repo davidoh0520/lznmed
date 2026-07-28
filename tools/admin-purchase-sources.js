@@ -2243,40 +2243,6 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
     ],
     "verification": "Captured from the original supplier export"
   },
-  "LZN-TL-0043": {
-    "publicModel": "LZN-TL-0043",
-    "productName": "Eyeglass Frame Repair Adhesive Set",
-    "sourceProductId": "951327613005",
-    "legacyModel": "LZN-951327613005",
-    "url": "https://detail.tmall.com/item.htm?id=951327613005",
-    "store": "非凡力旗舰店",
-    "optionPricesCny": [
-      null,
-      null,
-      null
-    ],
-    "catalogPricesUsd": [
-      2.87,
-      3.82,
-      1.15
-    ],
-    "publicOptionModels": [
-      "LZN-TL-0043-01",
-      "LZN-TL-0043-02",
-      "LZN-TL-0043-03"
-    ],
-    "legacyOptionModels": [
-      "LZN-951327613005-01",
-      "LZN-951327613005-02",
-      "LZN-951327613005-03"
-    ],
-    "optionLabels": [
-      "Eyeglass Frame Repair Adhesive Set - Option 01 - 2",
-      "Eyeglass Frame Repair Adhesive Set - Option 02 - 3",
-      "Eyeglass Frame Repair Adhesive Set - Option 03 - 1"
-    ],
-    "verification": "Captured from the original supplier export"
-  },
   "LZN-TL-0044": {
     "publicModel": "LZN-TL-0044",
     "productName": "Round Silicone Nose Pads",
