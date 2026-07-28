@@ -2764,47 +2764,6 @@
       },
       {
         "category": "repair-parts",
-        "model": "LZN-TL-0043",
-        "nameEn": "Eyeglass Frame Repair Adhesive Set",
-        "chineseName": "Eyeglass Frame Repair Adhesive Set",
-        "image": "assets/catalog/TL-0043/english-card.webp",
-        "images": [
-          "assets/catalog/TL-0043/english-card.webp",
-          "assets/catalog/TL-0043/english-overview.webp"
-        ],
-        "description": "A precision adhesive set for securing and repairing compatible metal, plastic, and resin eyewear components.",
-        "priceUsd": 1.15,
-        "priceOnRequest": false,
-        "priceDisplay": "USD 1.15 - 3.82",
-        "optionLabel": "Available options",
-        "options": [
-          {
-            "model": "LZN-TL-0043-01",
-            "label": "Eyeglass Frame Repair Adhesive Set - Option 01 - 2",
-            "priceUsd": 2.87,
-            "image": "assets/catalog/TL-0043/english-card.webp"
-          },
-          {
-            "model": "LZN-TL-0043-02",
-            "label": "Eyeglass Frame Repair Adhesive Set - Option 02 - 3",
-            "priceUsd": 3.82,
-            "image": "assets/catalog/TL-0043/english-catalog-option-02.webp"
-          },
-          {
-            "model": "LZN-TL-0043-03",
-            "label": "Eyeglass Frame Repair Adhesive Set - Option 03 - 1",
-            "priceUsd": 1.15,
-            "image": "assets/catalog/TL-0043/english-catalog-option-03.webp"
-          }
-        ],
-        "features": [
-          "Supports routine frame maintenance and component replacement.",
-          "Suitable for optical repair benches and service kits.",
-          "Choose the configuration required for the frame design."
-        ]
-      },
-      {
-        "category": "repair-parts",
         "model": "LZN-TL-0044",
         "nameEn": "Round Silicone Nose Pads",
         "chineseName": "LZN Optical Product TL-0044",
