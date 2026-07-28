@@ -131,9 +131,12 @@
         background: #f4f3ef;
       }
       .lzn-commerce-main-media img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
       }
       .lzn-commerce-thumbnails {
         display: grid;
