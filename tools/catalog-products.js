@@ -974,9 +974,9 @@
         "model": "LZN-TL-0014",
         "nameEn": "Minimalist Hard-Shell Eyeglass Case",
         "chineseName": "Minimalist Hard-Shell Eyeglass Case",
-        "image": "assets/catalog/TL-0014/english-card.webp",
+        "image": "assets/catalog/TL-0014/english-card-no-liquid.webp",
         "images": [
-          "assets/catalog/TL-0014/english-card.webp",
+          "assets/catalog/TL-0014/english-card-no-liquid.webp",
           "assets/catalog/TL-0014/english-overview.webp"
         ],
         "description": "Minimalist Hard-Shell Eyeglass Case protects and organizes eyewear for storage, travel, and daily use.",
@@ -989,7 +989,7 @@
             "model": "LZN-TL-0014-01",
             "label": "Minimalist Hard-Shell Eyeglass Case - Option 01 - Porcelain White",
             "priceUsd": 6.06,
-            "image": "assets/catalog/TL-0014/english-card.webp"
+            "image": "assets/catalog/TL-0014/english-card-no-liquid.webp"
           },
           {
             "model": "LZN-TL-0014-02",
@@ -1007,7 +1007,7 @@
             "model": "LZN-TL-0014-04",
             "label": "Minimalist Hard-Shell Eyeglass Case - Option 04 - Sky Blue",
             "priceUsd": 6.06,
-            "image": "assets/catalog/TL-0014/english-catalog-option-04.webp"
+            "image": "assets/catalog/TL-0014/english-catalog-option-04-no-liquid.webp"
           },
           {
             "model": "LZN-TL-0014-05",
