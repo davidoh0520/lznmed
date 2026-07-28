@@ -379,7 +379,7 @@
     tools:catalogCategories.length?catalogCategories.filter(category=>!deviceCategoryIds.has(category.id)).map(category=>[category.en,`#/category/${category.id}`,category.items?.[0]?.image||'']):toolSeries,
     devices:[...deviceToolSeries,['Unit Tables','#products','/devices/assets/ast1000_photo.webp'],['Lens Processing','#lens-processing','/devices/assets/lzn5_photo.webp'],['Vision Test','#vision-test','/devices/assets/cp6.webp'],['Digital Solutions','#digital-solutions','/devices/assets/cyclops_product.webp']],
     lens:[['All Lenses','all'],['Single Vision','single'],['Progressive','progressive'],['Semi-Finished','semi']],
-    frames:[['Classic Browline','#series-86'],['Modern Browline','#series-87'],['Super Engineered Ultem','#series-ULTEM-TITANIUM'],['Lightweight Ultem','#series-LIGHT-ULTEM'],['Ultem-Ppsu Kids','#series-ULTEM-PPSU'],['Kids Myopia Control','#series-KIDS-CONTROL'],['Teen Ppsu Flex','#series-TEEN-PPSU']]
+    frames:[['All Frames','frame-series:all'],['Classic Browline','frame-series:86'],['Modern Browline','frame-series:87'],['Super Engineered Ultem','frame-series:ULTEM-TITANIUM'],['Lightweight Ultem','frame-series:LIGHT-ULTEM'],['Ultem-Ppsu Kids','frame-series:ULTEM-PPSU'],['Kids Myopia Control','frame-series:KIDS-CONTROL'],['Teen Ppsu Flex','frame-series:TEEN-PPSU']]
   };
   if(kind==='devices'){
     document.querySelector('.optical-grid')?.closest('section')?.setAttribute('id','lens-processing');
@@ -390,6 +390,7 @@
   const activateCategory=target=>{
     if(kind==='lens'&&!target.startsWith('#')&&!target.startsWith('.')){document.querySelector(`.filters [data-filter="${target}"]`)?.click();document.querySelector('#catalog')?.scrollIntoView({behavior:'smooth',block:'start'});return}
     if(kind==='devices'&&target.startsWith('device-category:')){window.LZNSelectDeviceCategory?.(target.slice('device-category:'.length));return}
+    if(kind==='frames'&&target.startsWith('frame-series:')){const filter=document.querySelector('#seriesFilter');const value=target.slice('frame-series:'.length);if(filter){filter.value=value;filter.dispatchEvent(new Event('change',{bubbles:true}))}document.querySelector('#catalog')?.scrollIntoView({behavior:'smooth',block:'start'});return}
     if(target.startsWith('#/')){location.hash=target.slice(1);return}
     document.querySelector(target)?.scrollIntoView({behavior:'smooth',block:'start'});
   };
@@ -458,6 +459,9 @@
     const main=document.querySelector('main');main.insertBefore(deck,main.firstChild);const heroImg=deck.querySelector('.series-visual img');
     const modelLabel=deck.querySelector('.series-visual span');const rotate=()=>{const p=pickImages()[0];if(p){heroImg.style.opacity='.15';setTimeout(()=>{heroImg.src=p.src;heroImg.alt=p.alt;modelLabel.textContent=p.label||p.alt;modelLabel.hidden=false;heroImg.style.opacity='1'},180)}};rotate();setInterval(rotate,4500);
     deck.querySelectorAll('.series-pills button').forEach(b=>b.onclick=()=>{deck.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');activateCategory(b.dataset.target)});
+    if(kind==='devices'){document.querySelector('#workshop-devices > .section-head')?.setAttribute('hidden','');document.querySelector('#deviceCategoryNav')?.setAttribute('hidden','')}
+    if(kind==='lens')document.querySelector('.catalog .filters')?.setAttribute('hidden','');
+    if(kind==='frames'){document.querySelector('#categoryFilter')?.closest('div')?.setAttribute('hidden','');document.querySelector('#seriesFilter')?.closest('div')?.setAttribute('hidden','')}
   }
   const footerNames={www:'Connected Optical Solutions',devices:'Professional Ophthalmic Device Collection',tools:'Professional Optical Tools & Equipment',lens:'Professional Optical Lens Collection',frames:'Professional Optical Frame Collection'};
   document.querySelector('main #contact')?.remove();
