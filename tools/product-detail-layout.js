@@ -118,6 +118,7 @@
         min-width: 0;
       }
       .lzn-commerce-main-media {
+        position: relative;
         display: grid;
         place-items: center;
         box-sizing: border-box;
@@ -131,11 +132,13 @@
         background: #f4f3ef;
       }
       .lzn-commerce-main-media img {
+        position: absolute !important;
+        inset: 14px !important;
         display: block !important;
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
+        width: calc(100% - 28px) !important;
+        height: calc(100% - 28px) !important;
+        max-width: none !important;
+        max-height: none !important;
         object-fit: contain !important;
       }
       .lzn-commerce-thumbnails {
@@ -386,6 +389,11 @@
           height: min(38vh, 280px);
           min-height: 200px;
           padding: 10px;
+        }
+        .lzn-commerce-main-media img {
+          inset: 10px !important;
+          width: calc(100% - 20px) !important;
+          height: calc(100% - 20px) !important;
         }
         .lzn-commerce-thumbnails {
           grid-template-columns: repeat(5, minmax(0, 1fr));
