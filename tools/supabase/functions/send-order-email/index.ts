@@ -58,9 +58,9 @@ Deno.serve(async request => {
     const { data: order, error } = await admin.from('orders').select('*, order_items(*)').eq('id', order_id).single();
     if (error) throw error;
     if (!order.contact_email) throw new Error('Customer email is missing.');
-    const { data: issuedCoupon, error: couponError } = event_type === 'payment_confirmed'
-      ? await admin.from('coupons').select('code,amount_usd,expires_at').eq('issued_for_order_id', order.id).maybeSingle()
-      : { data: null, error: null };
+    const { data: issuedCoupons, error: couponError } = event_type === 'payment_confirmed'
+      ? await admin.from('coupons').select('code,amount_usd,expires_at').eq('issued_for_order_id', order.id).order('issued_at')
+      : { data: [], error: null };
     if (couponError) throw couponError;
 
     const now = new Date().toISOString();
@@ -82,8 +82,9 @@ Deno.serve(async request => {
     const tracking = event_type === 'shipped' && order.tracking_no ? `<p><strong>Tracking number:</strong> ${escapeHtml(order.tracking_no)}<br><a href="https://www.17track.net/en/track#nums=${encodeURIComponent(order.tracking_no)}">Track shipment</a></p>` : '';
     const accountUrl = 'https://lznmed.com/tools/#account';
     const message = event_type === 'pi_ready' ? proformaPaymentMessage(order) : template.message;
-    const couponDiscount = Number(order.discount_usd || 0) > 0 ? `<p style="text-align:right;margin:6px 0"><span>Product subtotal before coupon: ${money(order.subtotal_usd)}</span><br><span>Coupon ${escapeHtml(order.coupon_code || '')}: -${money(order.discount_usd)}</span></p>` : '';
-    const earnedCoupon = issuedCoupon ? `<div style="margin:24px 0;padding:20px;border:2px dashed #d92d20;background:#fff5d6;text-align:center"><strong style="display:block;font-size:20px;color:#b42318">Your USD ${Number(issuedCoupon.amount_usd || 10).toFixed(2)} coupon</strong><code style="display:block;margin:12px 0;font-size:24px;font-weight:700;letter-spacing:1px">${escapeHtml(issuedCoupon.code)}</code><span>Use it on your next order of USD 100 or more before coupon and freight.<br>Valid until ${escapeHtml(new Date(issuedCoupon.expires_at).toLocaleDateString('en-CA'))}.</span></div>` : '';
+    const couponCodes = Array.isArray(order.coupon_codes) && order.coupon_codes.length ? order.coupon_codes : (order.coupon_code ? [order.coupon_code] : []);
+    const couponDiscount = Number(order.discount_usd || 0) > 0 ? `<p style="text-align:right;margin:6px 0"><span>Product subtotal before coupons: ${money(order.subtotal_usd)}</span><br><span>${couponCodes.length} coupon${couponCodes.length === 1 ? '' : 's'} (${escapeHtml(couponCodes.join(', '))}): -${money(order.discount_usd)}</span></p>` : '';
+    const earnedCoupon = issuedCoupons?.length ? `<div style="margin:24px 0;padding:20px;border:2px dashed #d92d20;background:#fff5d6;text-align:center"><strong style="display:block;font-size:20px;color:#b42318">You earned ${issuedCoupons.length} × USD 10 coupons</strong><span style="display:block;margin:8px 0">USD ${Number(issuedCoupons.reduce((sum: number, coupon: any) => sum + Number(coupon.amount_usd || 10), 0)).toFixed(2)} total</span>${issuedCoupons.map((coupon: any) => `<code style="display:block;margin:8px 0;font-size:18px;font-weight:700;letter-spacing:1px">${escapeHtml(coupon.code)}</code>`).join('')}<span>Use one coupon for every complete USD 100 of product subtotal.<br>Valid until the date shown in your account.</span></div>` : '';
     const html = `<div style="max-width:680px;margin:auto;font-family:Arial,sans-serif;color:#171717"><div style="border-bottom:3px solid #075f7c;padding:20px 0"><strong style="font-size:24px;color:#075f7c">LZN MEDICAL</strong></div><h1 style="font-size:24px">${template.heading}</h1><p>Dear ${escapeHtml(order.contact_name || 'Customer')},</p><p>${message}</p><p><strong>PI / Order:</strong> ${escapeHtml(order.invoice_no || order.id.slice(0, 8))}<br><strong>Status:</strong> ${escapeHtml(order.status)}</p>${earnedCoupon}${tracking}<table style="width:100%;border-collapse:collapse"><thead><tr><th style="padding:8px;text-align:left;background:#f3f3f3">Model</th><th style="padding:8px;text-align:left;background:#f3f3f3">Product</th><th style="padding:8px;text-align:right;background:#f3f3f3">Qty</th><th style="padding:8px;text-align:right;background:#f3f3f3">Amount</th></tr></thead><tbody>${rows}</tbody></table>${couponDiscount}<p style="text-align:right"><strong>Total: ${money(order.total_usd ?? order.subtotal_usd)}</strong></p><p><a href="${accountUrl}" style="display:inline-block;background:#111;color:#fff;padding:12px 18px;text-decoration:none;border-radius:24px">View my orders & coupons</a></p><p style="margin-top:32px">Best regards,<br><strong>LZN MEDICAL CO., LTD.</strong><br>sales@lznmed.com</p></div>`;
     const attachments = pdf_base64 ? [{ filename: pdf_filename || `Invoice-${order.invoice_no || order.id.slice(0, 8)}.pdf`, content: pdf_base64 }] : undefined;
 
