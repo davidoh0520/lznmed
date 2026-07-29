@@ -189,9 +189,51 @@
       images: (option.images || []).map(publicAsset)
     }))
   });
+  const priceTotal = options => {
+    const values = options.map(option => Number(option.priceUsd));
+    return values.every(value => Number.isFinite(value) && value > 0)
+      ? values.reduce((sum, value) => sum + value, 0)
+      : null;
+  };
+  const withOrderingOptions = (product, categoryId) => {
+    const existing = [...(product.options || [])];
+    if (categoryId === 'trial-lens-sets' && existing.length > 1 && !existing.some(option => /^ALL\b/i.test(option.label))) {
+      const total = priceTotal(existing);
+      return {
+        ...product,
+        optionLabel: product.optionLabel || 'Available options',
+        options: [...existing, {
+          model: `${product.model}-ALL`,
+          label: 'ALL (All configurations)',
+          priceUsd: total,
+          image: product.image
+        }]
+      };
+    }
+    const pdRange = String(product.description || '').match(/Selectable PD:\s*(\d+)\s*-\s*(\d+)\s*mm/i);
+    if (!pdRange || existing.length) return product;
+    const minimum = Number(pdRange[1]);
+    const maximum = Number(pdRange[2]);
+    const sizes = [];
+    for (let size = minimum; size <= maximum; size += 2) sizes.push(size);
+    const options = sizes.map(size => ({
+      model: `${product.model}-${size}MM`,
+      label: `${size} MM`,
+      priceUsd: product.priceUsd,
+      image: product.image
+    }));
+    const total = priceTotal(options);
+    options.push({
+      model: `${product.model}-ALL`,
+      label: `ALL (${minimum}–${maximum} MM)`,
+      priceUsd: total,
+      image: product.image
+    });
+    return { ...product, optionLabel: 'PD size', options };
+  };
   const normalizedCategories = categories.map(category => ({
     ...category,
-    items: category.items.map(publicProduct)
+    items: category.items.map(item => withOrderingOptions(publicProduct(item), category.id))
   }));
 
   function prices(product) {
@@ -257,8 +299,9 @@
   }
 
   function selectedOffer(product) {
-    const select = detail.querySelector('[data-device-detail-option]');
-    const option = select && product.options?.length ? product.options[Number(select.value)] || product.options[0] : null;
+    const active = detail.querySelector('[data-device-detail-option][aria-pressed="true"]');
+    const optionIndex = Number(active?.dataset.deviceDetailOption || 0);
+    const option = product.options?.length ? product.options[optionIndex] || product.options[0] : null;
     const price = Number(option?.priceUsd ?? product.priceUsd);
     return {
       model: option?.model || product.model,
@@ -270,7 +313,11 @@
 
   function openDetail(product, category) {
     const body = detail.querySelector('#deviceOrderDetailBody');
-    const optionSelect = product.options?.length ? `<label class="marketplace-detail-option"><span>${escapeHtml(product.optionLabel || 'Configuration')}</span><select data-device-detail-option>${product.options.map((option, index) => `<option value="${index}">${escapeHtml(option.label)}</option>`).join('')}</select></label>` : '';
+    const optionToggles = product.options?.length ? `<fieldset class="marketplace-detail-option"><legend>${escapeHtml(product.optionLabel || 'Configuration')}</legend><div class="device-option-toggles" role="group">${product.options.map((option, index) => {
+      const optionPrice = Number(option.priceUsd);
+      const priceLabel = Number.isFinite(optionPrice) && optionPrice > 0 ? `USD ${formatUsd(optionPrice)}` : 'Price on request';
+      return `<button type="button" class="device-option-toggle${index ? '' : ' active'}" data-device-detail-option="${index}" aria-pressed="${index ? 'false' : 'true'}"><span>${escapeHtml(option.label)}</span><strong>${escapeHtml(priceLabel)}</strong></button>`;
+    }).join('')}</div></fieldset>` : '';
     const brochurePages = [...new Set((product.brochurePages || []).filter(Boolean))];
     const galleryImages = brochurePages.length
       ? [...new Set([...brochurePages, product.image].filter(Boolean))]
@@ -299,7 +346,7 @@
         <h3>${escapeHtml(product.nameEn)}</h3>
         <div class="marketplace-price" data-device-detail-price></div>
         <p>${escapeHtml(product.description || product.desc || category.desc || '')}</p>
-        ${optionSelect}
+        ${optionToggles}
         <label class="marketplace-detail-quantity"><span>Quantity</span><input type="number" min="1" max="999" step="1" value="1" inputmode="numeric" data-device-detail-quantity></label>
         <button type="button" class="marketplace-detail-add add-cart" data-device-modal-add>Add to cart</button>
       </div>`;
@@ -336,7 +383,16 @@
       body.querySelector('[data-device-detail-model]').textContent = selected.model;
       body.querySelector('[data-device-detail-price]').textContent = selected.priceUsd ? `USD ${formatUsd(selected.priceUsd)}` : 'Price on request';
     };
-    body.querySelector('[data-device-detail-option]')?.addEventListener('change', refresh);
+    body.querySelectorAll('[data-device-detail-option]').forEach(button => {
+      button.addEventListener('click', () => {
+        body.querySelectorAll('[data-device-detail-option]').forEach(optionButton => {
+          const active = optionButton === button;
+          optionButton.classList.toggle('active', active);
+          optionButton.setAttribute('aria-pressed', String(active));
+        });
+        refresh();
+      });
+    });
     body.querySelector('[data-device-modal-add]').addEventListener('click', event => {
       const selected = selectedOffer(product);
       animateToCart(body.querySelector('[data-device-detail-image]'));
