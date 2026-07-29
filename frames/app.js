@@ -597,9 +597,20 @@ function frameModelCard(p, seriesName, index){
   </article>`;
 }
 
+function hasSpecValue(value){
+  const text = String(value ?? '').trim();
+  return Boolean(text) && !/^(?:-|—|n\/a|n\.a\.|not available|to be confirmed)$/i.test(text);
+}
+
+function renderSpecTable(rows, className){
+  const availableRows = rows.filter(([, value]) => hasSpecValue(value));
+  if(!availableRows.length) return '';
+  return `<div class="spec-table ${className}">${availableRows.map(([k,v])=>`<div><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join('')}</div>`;
+}
+
 function sizeSpecTable(p){
   if(!p.specs) return '';
-  const rows = [
+  return renderSpecTable([
     ['Size Code', p.sizeCode],
     ['Frame Width', p.specs.frameWidth],
     ['Lens Width', p.specs.lensWidth],
@@ -607,18 +618,16 @@ function sizeSpecTable(p){
     ['Bridge', p.specs.bridge],
     ['Temple Length', p.specs.templeLength],
     ['Weight', p.specs.weight]
-  ];
-  return `<div class="spec-table size-only">${rows.map(([k,v])=>`<div><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join('')}</div>`;
+  ], 'size-only');
 }
 
 function generalSpecTable(p){
-  const rows = [
+  return renderSpecTable([
     ['Material', p.material],
     ['Frame Type', p.frameType],
     ['Gender', p.gender],
     ['Origin', p.origin]
-  ];
-  return `<div class="spec-table general-only">${rows.map(([k,v])=>`<div><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join('')}</div>`;
+  ], 'general-only');
 }
 
 
@@ -641,12 +650,12 @@ function openProduct(model, trigger=document.activeElement, { updateHistory=true
         <p class="frame-detail-status" aria-live="polite"></p><p class="order-note">Minimum shipment value: $100. Shipping, duties, and taxes are calculated separately.</p>
       </div>
     </section>
-    <section class="feature-grid hinge-grid">
+    <section class="feature-grid hinge-grid"${p.sub1 || p.sub2 ? '' : ' hidden'}>
       ${p.sub1 ? `<div class="feature"><h4>Outer Hinge Detail</h4><p>Exterior hinge construction engineered for durability and stable fitting.</p><img src="${esc(p.sub1)}" alt="Model ${esc(p.model)} outer hinge detail" loading="lazy" decoding="async"></div>` : ''}
       ${p.sub2 ? `<div class="feature"><h4>Inner Hinge Detail</h4><p>Internal hinge finishing designed for a clean fit and smooth wearing comfort.</p><img src="${esc(p.sub2)}" alt="Model ${esc(p.model)} inner hinge detail" loading="lazy" decoding="async"></div>` : ''}
     </section>
-    <section class="spec size-section${p.frontImage || p.sub3 ? '' : ' no-image'}">${p.frontImage || p.sub3 ? `<div class="size-image"><img src="${esc(p.frontImage || p.sub3)}" alt="Model ${esc(p.model)} front view" loading="lazy" decoding="async"></div>` : ''}<div class="size-data"><h4>Size Specification</h4>${sizeSpecTable(p)}<p class="note">Measurements may vary slightly depending on the measuring method.</p></div></section>
-    <section class="spec general-section"><h4>Product Information</h4>${generalSpecTable(p)}</section>
+    <section class="spec size-section${p.frontImage || p.sub3 ? '' : ' no-image'}"${sizeSpecTable(p) ? '' : ' hidden'}>${p.frontImage || p.sub3 ? `<div class="size-image"><img src="${esc(p.frontImage || p.sub3)}" alt="Model ${esc(p.model)} front view" loading="lazy" decoding="async"></div>` : ''}<div class="size-data"><h4>Size Specification</h4>${sizeSpecTable(p)}<p class="note">Measurements may vary slightly depending on the measuring method.</p></div></section>
+    <section class="spec general-section"${generalSpecTable(p) ? '' : ' hidden'}><h4>Product Information</h4>${generalSpecTable(p)}</section>
     <section class="detail-cart-summary" id="detailCartList" data-detail-model="${esc(p.model)}" hidden aria-live="polite"></section>
   </div>`;
   modal.classList.add('active'); modal.setAttribute('aria-hidden','false'); modal.setAttribute('aria-labelledby','productModalTitle'); document.body.style.overflow='hidden'; setPageInert(true);
