@@ -7,52 +7,8 @@ const modalBody = document.querySelector('#modalBody');
 const esc = value => String(value || '').replace(/[&<>\"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
 const all = data.flatMap(category => category.items.map(product => ({ ...product, categoryEn: category.en, desc: category.desc })));
 const catalogImagePlaceholder = 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
-let catalogImageObservers = [];
-
-function loadCatalogImage(image, priority = 'auto') {
-  const source = image?.dataset.catalogSrc;
-  if (!source) return;
-  image.fetchPriority = priority;
-  image.loading = 'eager';
-  image.src = source;
-  image.removeAttribute('data-catalog-src');
-}
-
 function deferCatalogImages(root) {
-  catalogImageObservers.forEach(observer => observer.disconnect());
-  catalogImageObservers = [];
-  if (!root) return;
-
-  const activeCategory = root.querySelector('[data-marketplace-target].active')?.dataset.marketplaceTarget;
-  const sections = [...root.querySelectorAll('[data-marketplace-section]')];
-  const prioritySection = sections.find(section => section.dataset.marketplaceSection === activeCategory) || sections[0];
-  [...(prioritySection?.querySelectorAll('.marketplace-product-image img[data-catalog-src]') || [])]
-    .slice(0, 4)
-    .forEach(image => loadCatalogImage(image, 'high'));
-
-  const groups = [
-    {
-      host: root.querySelector('.marketplace-scroll'),
-      images: [...root.querySelectorAll('.marketplace-product-image img[data-catalog-src]')],
-      margin: window.matchMedia('(max-width: 720px)').matches ? '520px 0px' : '680px 0px'
-    }
-  ];
-  if (!('IntersectionObserver' in window)) {
-    groups.flatMap(group => group.images).forEach(image => loadCatalogImage(image));
-    return;
-  }
-  groups.forEach(group => {
-    if (!group.host || !group.images.length) return;
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        loadCatalogImage(entry.target);
-        observer.unobserve(entry.target);
-      });
-    }, { root: group.host, rootMargin: group.margin, threshold: 0.01 });
-    group.images.forEach(image => observer.observe(image));
-    catalogImageObservers.push(observer);
-  });
+  window.LZNMarketplace?.refresh(root);
 }
 const popularModels = new Set([
   'MC-S', 'LY-3AD', 'LY-3B-2', 'LY-T-27AT', 'LY-T-27C', 'LY-12AT',
