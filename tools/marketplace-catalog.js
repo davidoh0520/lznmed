@@ -66,18 +66,16 @@
       const maxTop = Math.max(0, nav.scrollHeight - nav.clientHeight);
       nav.scrollTo({ top: Math.max(0, Math.min(centeredTop, maxTop)), behavior: 'smooth' });
     };
-    const categoryPreviewMedia = window.matchMedia('(max-width: 720px)');
     const syncCategoryPreview = activeButton => {
-      const compact = categoryPreviewMedia.matches;
       buttons.forEach(button => {
         const image = button.querySelector('img');
         const active = button === activeButton;
-        button.querySelector('.lens-category-envelope')?.toggleAttribute('hidden', compact && !active);
+        button.querySelector('.lens-category-envelope')?.toggleAttribute('hidden', !active);
         if (!image) return;
-        image.hidden = compact && !active;
-        image.setAttribute('aria-hidden', String(compact && !active));
-        if ((!compact || active) && image.dataset.catalogSrc) {
-          image.fetchPriority = compact && active ? 'high' : 'auto';
+        image.hidden = !active;
+        image.setAttribute('aria-hidden', String(!active));
+        if (active && image.dataset.catalogSrc) {
+          image.fetchPriority = 'high';
           image.loading = 'eager';
           image.src = image.dataset.catalogSrc;
           image.removeAttribute('data-catalog-src');
@@ -104,9 +102,6 @@
     };
     const initialButton = buttons.find(button => button.dataset.marketplaceTarget === selectedId) || buttons[0];
     syncCategoryPreview(initialButton);
-    const handlePreviewModeChange = () => syncCategoryPreview(buttons.find(button => button.dataset.marketplaceTarget === selectedId) || buttons[0]);
-    if (categoryPreviewMedia.addEventListener) categoryPreviewMedia.addEventListener('change', handlePreviewModeChange);
-    else categoryPreviewMedia.addListener(handlePreviewModeChange);
     refreshImages(root);
     const scrollTo = target => {
       const top = target.offsetTop - 64;
