@@ -1,4 +1,55 @@
 (function () {
+  const productImageObservers = new WeakMap();
+
+  function loadProductImage(image, priority = 'auto') {
+    const source = image?.dataset.catalogSrc;
+    if (!source) return;
+    image.fetchPriority = priority;
+    image.loading = 'eager';
+    image.src = source;
+    image.removeAttribute('data-catalog-src');
+  }
+
+  function prioritizeCategoryImages(root, categoryId) {
+    const compact = window.matchMedia('(max-width: 720px)').matches;
+    const sections = [...root.querySelectorAll('[data-marketplace-section]')];
+    const section = sections.find(item => item.dataset.marketplaceSection === categoryId) || sections[0];
+    const images = [...(section?.querySelectorAll('.marketplace-product-image img[data-catalog-src]') || [])];
+    const highPriorityCount = compact ? 4 : 6;
+    images.forEach((image, index) => loadProductImage(image, index < highPriorityCount ? 'high' : 'auto'));
+  }
+
+  function refreshImages(root) {
+    if (!root) return;
+    productImageObservers.get(root)?.disconnect();
+    const scroller = root.querySelector('.marketplace-scroll');
+    if (!scroller) return;
+
+    const activeId = root.querySelector('[data-marketplace-target].active')?.dataset.marketplaceTarget || '';
+    prioritizeCategoryImages(root, activeId);
+    const images = [...root.querySelectorAll('.marketplace-product-image img[data-catalog-src]')];
+    if (!images.length) return;
+    if (!('IntersectionObserver' in window)) {
+      images.forEach(image => loadProductImage(image));
+      return;
+    }
+
+    const compact = window.matchMedia('(max-width: 720px)').matches;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        loadProductImage(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, {
+      root: scroller,
+      rootMargin: compact ? '900px 0px' : '1400px 0px',
+      threshold: 0.01
+    });
+    images.forEach(image => observer.observe(image));
+    productImageObservers.set(root, observer);
+  }
+
   function bind(root) {
     if (!root || root.dataset.marketplaceBound === 'true') return;
     const scroller = root.querySelector('.marketplace-scroll');
@@ -26,7 +77,8 @@
         image.hidden = compact && !active;
         image.setAttribute('aria-hidden', String(compact && !active));
         if ((!compact || active) && image.dataset.catalogSrc) {
-          image.fetchPriority = 'low';
+          image.fetchPriority = compact && active ? 'high' : 'auto';
+          image.loading = 'eager';
           image.src = image.dataset.catalogSrc;
           image.removeAttribute('data-catalog-src');
         }
@@ -47,6 +99,7 @@
         if (active) activeButton = button;
       });
       syncCategoryPreview(activeButton);
+      refreshImages(root);
       if (activeButton) requestAnimationFrame(() => keepCategoryVisible(activeButton));
     };
     const initialButton = buttons.find(button => button.dataset.marketplaceTarget === selectedId) || buttons[0];
@@ -54,6 +107,7 @@
     const handlePreviewModeChange = () => syncCategoryPreview(buttons.find(button => button.dataset.marketplaceTarget === selectedId) || buttons[0]);
     if (categoryPreviewMedia.addEventListener) categoryPreviewMedia.addEventListener('change', handlePreviewModeChange);
     else categoryPreviewMedia.addListener(handlePreviewModeChange);
+    refreshImages(root);
     const scrollTo = target => {
       const top = target.offsetTop - 64;
       scroller.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
@@ -90,5 +144,5 @@
     }, { passive: true });
   }
 
-  window.LZNMarketplace = { bind };
+  window.LZNMarketplace = { bind, refresh: refreshImages };
 })();
