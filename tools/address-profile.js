@@ -363,13 +363,12 @@
     stateInput.addEventListener('blur', () => applyState());
     cityInput.addEventListener('change', () => {
       postalInput.value = '';
-      lookupPostalCode();
+      setPostalStatus('Enter the postal code manually. It is required for delivery.');
     });
     streetInput.addEventListener('input', () => {
-      lastPostalAddress = '';
-      setPostalStatus('The postal code will be refreshed after you finish the detailed address.');
+      setPostalStatus('Enter the postal code manually. It is required for delivery.');
     });
-    streetInput.addEventListener('blur', lookupPostalCode);
+    setPostalStatus('Enter the postal code manually. It is required for delivery.');
 
     setCountryStatus('Loading countries and calling codes…');
     countries(currentConfig)
