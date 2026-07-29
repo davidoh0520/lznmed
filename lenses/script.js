@@ -333,15 +333,49 @@ function cartView(){
   document.getElementById('checkoutButton')?.addEventListener('click',()=>session?checkoutView():authView(true));
 }
 function authView(returnToCart=false){
-  if(session){showCommerce(`<p class="eyebrow">CUSTOMER ACCOUNT</p><h2>My Account</h2><p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="commerce-actions stack"><button class="btn" id="ordersOpen">My Orders</button><button class="btn secondary" id="profileOpen">Profile & Shipping</button><button class="text-button" id="signOut">Sign Out</button></div>`);document.getElementById('ordersOpen').onclick=ordersView;document.getElementById('profileOpen').onclick=profileView;document.getElementById('signOut').onclick=async()=>{await supabaseClient.auth.signOut();cartDialog.close();};return;}
-  showCommerce(`<p class="eyebrow">CUSTOMER ACCOUNT</p><h2>Sign in or register</h2><form class="commerce-form" id="authForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><div class="commerce-actions"><button class="btn" name="mode" value="signin">Sign In</button><button class="btn secondary" name="mode" value="signup">Create Company Account</button></div><p class="form-status" id="authStatus"></p></form>`);
-  document.getElementById('authForm').onsubmit=async event=>{event.preventDefault();const mode=event.submitter.value,form=new FormData(event.currentTarget),status=document.getElementById('authStatus');if(mode==='signup'&&(!String(form.get('company_name')||'').trim()||!String(form.get('full_name')||'').trim())){status.textContent='Company name and Manager / Contact name are required.';return;}status.textContent='Please wait...';localStorage.setItem('lznLensReturnToCart','0');const result=mode==='signup'?await supabaseClient.auth.signUp({email:form.get('email'),password:form.get('password'),options:{emailRedirectTo:`${location.origin}${location.pathname}?email-confirmed=1#cart`,data:{company_name:String(form.get('company_name')).trim(),full_name:String(form.get('full_name')).trim(),buyer_type:'company',cart_reminder_opt_in:form.get('cart_reminder_opt_in')==='true'}}}):await supabaseClient.auth.signInWithPassword({email:form.get('email'),password:form.get('password')});status.textContent=result.error?result.error.message:(mode==='signup'?'Check your email to confirm the account.':'Signed in.');if(!result.error&&mode==='signup')localStorage.setItem('lznLensAwaitingEmailConfirmation','1');if(!result.error&&mode==='signin')setTimeout(authView,300);};
+  if(session){
+    showCommerce(`<p class="eyebrow">CUSTOMER ACCOUNT</p><h2>My Account</h2><p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="commerce-actions stack"><button class="btn" id="ordersOpen">My Orders</button><button class="btn secondary" id="profileOpen">Edit Account & Shipping</button><button class="text-button" id="signOut">Sign Out</button></div>`);
+    document.getElementById('ordersOpen').onclick=ordersView;
+    document.getElementById('profileOpen').onclick=profileView;
+    document.getElementById('signOut').onclick=async()=>{await supabaseClient.auth.signOut();cartDialog.close();};
+    return;
+  }
+  showCommerce(`<p class="eyebrow">CUSTOMER ACCOUNT</p><h2>Sign in or register</h2><form class="commerce-form" id="authForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><div class="commerce-actions"><button class="btn" name="mode" value="signin">Sign In</button><button class="btn secondary" name="mode" value="signup">Create Company Account</button></div><button class="text-button auth-resend" id="authResend" type="button" hidden>Resend confirmation email</button><p class="form-status" id="authStatus" aria-live="polite"></p></form>`);
+  document.getElementById('authForm').onsubmit=async event=>{
+    event.preventDefault();
+    const mode=event.submitter.value,form=new FormData(event.currentTarget),status=document.getElementById('authStatus');
+    if(mode==='signup'&&(!String(form.get('company_name')||'').trim()||!String(form.get('full_name')||'').trim())){status.textContent='Company name and Manager / Contact name are required.';return;}
+    status.textContent='Please wait...';
+    localStorage.setItem('lznLensReturnToCart',returnToCart?'1':'0');
+    const result=mode==='signup'
+      ?await supabaseClient.auth.signUp({email:form.get('email'),password:form.get('password'),options:{emailRedirectTo:`${location.origin}${location.pathname}?email-confirmed=1#cart`,data:{company_name:String(form.get('company_name')).trim(),full_name:String(form.get('full_name')).trim(),buyer_type:'company',cart_reminder_opt_in:form.get('cart_reminder_opt_in')==='true'}}})
+      :await supabaseClient.auth.signInWithPassword({email:form.get('email'),password:form.get('password')});
+    status.textContent=result.error?result.error.message:(mode==='signup'?'If this address is new or still unconfirmed, a confirmation email has been requested. Already registered? Sign in instead.':'Signed in.');
+    if(!result.error&&mode==='signup'){
+      localStorage.setItem('lznLensAwaitingEmailConfirmation','1');
+      const resend=document.getElementById('authResend');
+      resend.hidden=false;
+      resend.dataset.email=String(form.get('email')||'').trim().toLowerCase();
+    }
+    if(!result.error&&mode==='signin')setTimeout(authView,300);
+  };
+  document.getElementById('authResend').onclick=resendLensConfirmation;
+}
+async function resendLensConfirmation(){
+  const button=document.getElementById('authResend'),status=document.getElementById('authStatus'),email=button?.dataset.email;
+  if(!email)return;
+  button.disabled=true;
+  status.textContent='Requesting another confirmation email...';
+  const {error}=await supabaseClient.auth.resend({type:'signup',email,options:{emailRedirectTo:`${location.origin}${location.pathname}?email-confirmed=1#cart`}});
+  status.textContent=error?error.message:'Confirmation email requested. Please check spam or junk folders too.';
+  setTimeout(()=>{button.disabled=false;},180000);
 }
 async function profileView(){
   const {data}=await supabaseClient.from('profiles').select('*').eq('id',session.user.id).maybeSingle();const p=data||{};
   showCommerce(`<p class="eyebrow">SHIPPING PROFILE</p><h2>Buyer Information</h2>
     <form class="commerce-form two-col" id="profileForm">
       <input type="hidden" name="buyer_type" value="company">
+      <label class="wide">Account email<input name="account_email" type="email" required autocomplete="email" value="${e(session.user.email)}"><small>Changing this address sends confirmation emails to the current and new addresses.</small></label>
       <label>Company name<input name="company_name" required autocomplete="organization" value="${e(p.company_name)}"></label>
       <label>Manager / Contact name<input name="full_name" required autocomplete="name" value="${e(p.full_name)}"></label>
       <label>Country<input name="country" list="profileCountryOptions" required autocomplete="country-name" value="${e(p.country)}"><datalist id="profileCountryOptions"></datalist><small data-country-status aria-live="polite">Choose a country to load its calling code and regions.</small></label>
@@ -356,7 +390,25 @@ async function profileView(){
       <button class="btn wide">Save Profile</button><p class="form-status wide" id="profileStatus"></p>
     </form>`);
   const form=document.getElementById('profileForm');
-  form.onsubmit=async event=>{event.preventDefault();const values=Object.fromEntries(new FormData(event.currentTarget));values.buyer_type='company';values.cart_reminder_opt_in=event.currentTarget.elements.cart_reminder_opt_in.checked;const {error}=await supabaseClient.from('profiles').update(values).eq('id',session.user.id);document.getElementById('profileStatus').textContent=error?error.message:'Profile saved.';};
+  form.onsubmit=async event=>{
+    event.preventDefault();
+    const status=document.getElementById('profileStatus'),values=Object.fromEntries(new FormData(event.currentTarget));
+    const accountEmail=String(values.account_email||'').trim().toLowerCase(),emailChanged=accountEmail!==String(session.user.email||'').toLowerCase();
+    delete values.account_email;
+    values.email=accountEmail;
+    values.buyer_type='company';
+    values.cart_reminder_opt_in=event.currentTarget.elements.cart_reminder_opt_in.checked;
+    status.textContent='Saving account changes...';
+    const authAttributes={data:{...(session.user.user_metadata||{}),company_name:values.company_name,full_name:values.full_name,buyer_type:'company'}};
+    if(emailChanged)authAttributes.email=accountEmail;
+    const authResult=await supabaseClient.auth.updateUser(authAttributes);
+    if(authResult.error){status.textContent=authResult.error.message;return;}
+    const {error}=await supabaseClient.from('profiles').update(values).eq('id',session.user.id);
+    if(error){status.textContent=error.message;return;}
+    session={...session,user:authResult.data.user||session.user};
+    accountLabel();
+    status.textContent=emailChanged?'Account saved. Check the current and new email addresses to confirm the change.':'Account and shipping profile saved.';
+  };
   window.LZNAddressProfile?.enhance(form);
 }
 function checkoutView(){

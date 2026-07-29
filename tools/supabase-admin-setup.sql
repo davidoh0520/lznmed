@@ -1,4 +1,4 @@
--돼- LZN MEDICAL storefront admin setup
+-- LZN MEDICAL storefront admin setup
 -- Run this file once in Supabase > SQL Editor.
 
 create table if not exists public.admin_users (
@@ -45,6 +45,13 @@ alter table public.orders add column if not exists ci_created_at timestamptz;
 alter table public.orders add column if not exists ci_emailed_at timestamptz;
 alter table public.orders add column if not exists shipped_emailed_at timestamptz;
 alter table public.orders add column if not exists delivered_emailed_at timestamptz;
+
+-- Keep historical business records when an administrator removes a member login.
+-- The member's auth account, profile and cart are deleted; their past orders remain.
+alter table public.orders alter column user_id drop not null;
+alter table public.orders drop constraint if exists orders_user_id_fkey;
+alter table public.orders add constraint orders_user_id_fkey
+foreign key (user_id) references auth.users(id) on delete set null;
 
 insert into storage.buckets (id, name, public)
 values ('invoices', 'invoices', false)
@@ -156,6 +163,75 @@ for update using (public.is_admin()) with check (public.is_admin());
 drop policy if exists "order_items_admin_select" on public.order_items;
 create policy "order_items_admin_select" on public.order_items
 for select using (public.is_admin());
+
+drop policy if exists "order_items_admin_update" on public.order_items;
+create policy "order_items_admin_update" on public.order_items
+for update using (public.is_admin()) with check (public.is_admin());
+
+create or replace function public.admin_update_order_items(
+  p_order_id uuid,
+  p_items jsonb
+)
+returns public.orders
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  item jsonb;
+  item_id uuid;
+  item_quantity integer;
+  item_price numeric(12,2);
+  updated_order public.orders;
+begin
+  if not public.is_admin() then
+    raise exception 'Administrator access required.';
+  end if;
+  if p_items is null or jsonb_typeof(p_items) <> 'array' or jsonb_array_length(p_items) = 0 then
+    raise exception 'At least one order item is required.';
+  end if;
+
+  for item in select value from jsonb_array_elements(p_items)
+  loop
+    item_id := (item ->> 'id')::uuid;
+    item_quantity := (item ->> 'quantity')::integer;
+    item_price := round((item ->> 'unit_price_usd')::numeric, 2);
+    if item_quantity < 1 or item_price < 0 then
+      raise exception 'Invalid quantity or selling price.';
+    end if;
+    update public.order_items
+    set quantity = item_quantity,
+        unit_price_usd = item_price
+    where id = item_id and order_id = p_order_id;
+    if not found then
+      raise exception 'Order item % was not found.', item_id;
+    end if;
+  end loop;
+
+  update public.orders
+  set subtotal_usd = coalesce((
+        select sum(line_total_usd)
+        from public.order_items
+        where order_id = p_order_id
+      ), 0),
+      total_usd = greatest(0, coalesce((
+        select sum(line_total_usd)
+        from public.order_items
+        where order_id = p_order_id
+      ), 0) - coalesce(discount_usd, 0) + coalesce(freight_usd, 0)),
+      updated_at = now()
+  where id = p_order_id
+  returning * into updated_order;
+
+  if updated_order.id is null then
+    raise exception 'Order was not found.';
+  end if;
+  return updated_order;
+end;
+$$;
+
+revoke all on function public.admin_update_order_items(uuid, jsonb) from public;
+grant execute on function public.admin_update_order_items(uuid, jsonb) to authenticated;
 
 -- Replace the email below with the email account you use to sign in to the storefront.
 -- Then remove the two leading dashes and run this statement once:

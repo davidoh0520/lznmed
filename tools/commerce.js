@@ -6,6 +6,7 @@ const accountButton = document.querySelector('#accountButton');
 const cartButton = document.querySelector('#cartButton');
 const cartCount = document.querySelector('#cartCount');
 const explicitCartOpen = new URLSearchParams(location.search).get('open-cart') === '1';
+const requestedAccountView = new URLSearchParams(location.search).get('account');
 const products = (window.CATALOG_DATA || []).flatMap(category => category.items.map(product => ({ ...product, categoryEn: category.en })));
 const e = value => String(value || '').replace(/[&<>\"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
 const MINIMUM_ORDER_USD = 100;
@@ -135,7 +136,9 @@ function hide() {
 document.querySelectorAll('[data-panel-close]').forEach(button => button.addEventListener('click', hide));
 
 function authView() {
-  show(`<div class="panel-head"><p class="eyebrow">Customer Account</p><h2>${session ? 'My account' : 'Sign in or register'}</h2></div>${session ? `<p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="account-actions"><button class="button" id="ordersOpen">My orders</button><button class="button secondary-button" id="profileOpen">Profile & shipping</button></div><button class="text-button" id="signOut">Sign out</button>` : `<form class="commerce-form" id="authForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><button class="button" name="mode" value="signin">Sign in</button><button class="button secondary-button" name="mode" value="signup">Create company account</button><p class="form-status" id="authStatus"></p></form>`}`);
+  show(`<div class="panel-head"><p class="eyebrow">Customer Account</p><h2>${session ? 'My account' : 'Sign in or register'}</h2></div>${session
+    ? `<p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="account-actions"><button class="button" id="ordersOpen">My orders</button><button class="button secondary-button" id="profileOpen">Edit account & shipping</button></div><button class="text-button" id="signOut">Sign out</button>`
+    : `<form class="commerce-form" id="authForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><button class="button" name="mode" value="signin">Sign in</button><button class="button secondary-button" name="mode" value="signup">Create company account</button><button class="text-button auth-resend" id="authResend" type="button" hidden>Resend confirmation email</button><p class="form-status" id="authStatus" aria-live="polite"></p></form>`}`);
   if (session) {
     document.querySelector('#signOut').onclick = async () => {
       await client.auth.signOut();
@@ -147,7 +150,10 @@ function authView() {
     };
     document.querySelector('#profileOpen').onclick = profileView;
     document.querySelector('#ordersOpen').onclick = ordersView;
-  } else document.querySelector('#authForm').onsubmit = handleAuth;
+  } else {
+    document.querySelector('#authForm').onsubmit = handleAuth;
+    document.querySelector('#authResend').onclick = resendSignupConfirmation;
+  }
 }
 
 const statusLabels = {
@@ -273,9 +279,37 @@ async function handleAuth(event) {
   const result = mode === 'signup'
     ? await client.auth.signUp({ email: form.get('email'), password: form.get('password'), options: { emailRedirectTo: `${location.origin}${location.pathname}?email-confirmed=1#cart`, data: { company_name: String(form.get('company_name')).trim(), full_name: String(form.get('full_name')).trim(), buyer_type: 'company', cart_reminder_opt_in: form.get('cart_reminder_opt_in') === 'true' } } })
     : await client.auth.signInWithPassword({ email: form.get('email'), password: form.get('password') });
-  status.textContent = result.error ? result.error.message : (mode === 'signup' ? 'Check your email. The confirmation link will return you to your cart.' : 'Signed in. Returning to your cart…');
-  if (!result.error && mode === 'signup') localStorage.setItem('lzn-awaiting-email-confirmation', '1');
-  if (!result.error && mode === 'signin') hide();
+  status.textContent = result.error ? result.error.message : (mode === 'signup'
+    ? 'If this address is new or still unconfirmed, a confirmation email has been requested. Already registered? Sign in instead.'
+    : 'Signed in. Returning to your cart…');
+  if (!result.error && mode === 'signup') {
+    localStorage.setItem('lzn-awaiting-email-confirmation', '1');
+    const resend = document.querySelector('#authResend');
+    resend.hidden = false;
+    resend.dataset.email = String(form.get('email') || '').trim().toLowerCase();
+  }
+  if (!result.error && mode === 'signin') {
+    session = result.data.session || session;
+    if (requestedAccountView === 'orders') setTimeout(ordersView, 0);
+    else if (requestedAccountView) setTimeout(profileView, 0);
+    else hide();
+  }
+}
+
+async function resendSignupConfirmation() {
+  const button = document.querySelector('#authResend');
+  const status = document.querySelector('#authStatus');
+  const email = button?.dataset.email;
+  if (!email) return;
+  button.disabled = true;
+  status.textContent = 'Requesting another confirmation email…';
+  const { error } = await client.auth.resend({
+    type: 'signup',
+    email,
+    options: { emailRedirectTo: `${location.origin}${location.pathname}?email-confirmed=1#cart` }
+  });
+  status.textContent = error ? error.message : 'Confirmation email requested. Please check spam or junk folders too.';
+  setTimeout(() => { button.disabled = false; }, 180000);
 }
 
 async function profileView() {
@@ -287,6 +321,7 @@ async function profileView() {
   show(`<div class="panel-head"><p class="eyebrow">Shipping Profile</p><h2>Buyer information</h2></div>
     <form class="commerce-form two-col" id="profileForm">
       <input name="buyer_type" type="hidden" value="company">
+      <label class="wide">Account email<input name="account_email" type="email" required autocomplete="email" value="${e(session.user.email)}"><small>Changing this address sends confirmation emails to the current and new addresses.</small></label>
       <label>Company name<input name="company_name" required autocomplete="organization" value="${e(profile.company_name)}"></label>
       <label>Manager / Contact name<input name="full_name" required autocomplete="name" value="${e(profile.full_name)}"></label>
       <label>Country<input name="country" list="profileCountryOptions" required autocomplete="country-name" value="${e(profile.country)}"><datalist id="profileCountryOptions"></datalist><small data-country-status aria-live="polite">Choose a country to load its calling code and regions.</small></label>
@@ -310,11 +345,39 @@ async function profileView() {
 
 async function saveProfile(event) {
   event.preventDefault();
+  const status = document.querySelector('#profileStatus');
   const values = Object.fromEntries(new FormData(event.currentTarget));
+  const accountEmail = String(values.account_email || '').trim().toLowerCase();
+  const emailChanged = accountEmail !== String(session.user.email || '').toLowerCase();
+  delete values.account_email;
+  values.email = accountEmail;
   values.buyer_type = 'company';
   values.cart_reminder_opt_in = event.currentTarget.elements.cart_reminder_opt_in.checked;
+  status.textContent = 'Saving account changes…';
+  const authAttributes = {
+    data: {
+      ...(session.user.user_metadata || {}),
+      company_name: values.company_name,
+      full_name: values.full_name,
+      buyer_type: 'company'
+    }
+  };
+  if (emailChanged) authAttributes.email = accountEmail;
+  const authResult = await client.auth.updateUser(authAttributes);
+  if (authResult.error) {
+    status.textContent = authResult.error.message;
+    return;
+  }
   const { error } = await client.from('profiles').update(values).eq('id', session.user.id);
-  document.querySelector('#profileStatus').textContent = error ? error.message : 'Profile saved.';
+  if (error) {
+    status.textContent = error.message;
+    return;
+  }
+  session = { ...session, user: authResult.data.user || session.user };
+  accountLabel();
+  status.textContent = emailChanged
+    ? 'Account saved. Check the current and new email addresses to confirm the change.'
+    : 'Account and shipping profile saved.';
 }
 
 function money(value) {
@@ -690,6 +753,14 @@ if (client) {
     session = data.session;
     accountLabel();
     restoreCloudCart();
+    if (requestedAccountView && !emailConfirmationReturn) {
+      history.replaceState({}, '', location.pathname);
+      setTimeout(() => {
+        if (!session) authView();
+        else if (requestedAccountView === 'orders') ordersView();
+        else profileView();
+      }, 0);
+    }
     if (session && emailConfirmationReturn) {
       localStorage.removeItem('lzn-return-to-cart');
       setTimeout(emailConfirmedView, 250);

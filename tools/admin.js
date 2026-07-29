@@ -11,7 +11,7 @@ const purchaseSourceData = window.LZN_ADMIN_PURCHASE_SOURCES || {};
 const catalogProducts = (window.CATALOG_DATA || []).flatMap(category => category.items || []);
 const money = value => `USD ${Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const cny = value => `CNY ${Number(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-const itemPriceOnRequest = item => /price on request/i.test(String(item?.product_name || ''));
+const itemPriceOnRequest = item => /price on request/i.test(String(item?.product_name || '')) && Number(item?.unit_price_usd || 0) <= 0;
 const itemMoney = (item, field) => itemPriceOnRequest(item) ? 'Price required' : money(item?.[field]);
 const date = value => value ? new Date(value).toLocaleString('en-GB', { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : '-';
 const e = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -399,13 +399,14 @@ document.querySelector('#membersBody').addEventListener('click', event => {
 function openMember(id) {
   const member = members.find(item => item.id === id);
   if (!member) return;
+  const linkedOrderCount = orders.filter(order => order.user_id === member.id).length;
   detail.innerHTML = `
     <div class="detail-head"><p class="eyebrow">Member management</p><h2>${e(member.full_name || member.email || 'Member')}</h2><p>Joined ${e(date(member.created_at))}</p></div>
     <section class="detail-section"><form id="memberForm" class="form-grid">
       <input type="hidden" name="buyer_type" value="company">
       <label>Manager / Contact name<input name="full_name" required value="${e(member.full_name || '')}"></label>
       <label>Company name<input name="company_name" required value="${e(member.company_name || '')}"></label>
-      <label>Email<input value="${e(member.email || '')}" readonly></label>
+      <label>Email<input name="email" type="email" required value="${e(member.email || '')}"><small>The customer receives an account-change notification.</small></label>
       <label>Phone<input name="phone" value="${e(member.phone || '')}"></label>
       <label>WhatsApp<input name="whatsapp" value="${e(member.whatsapp || '')}"></label>
       <label>Country<input name="country" value="${e(member.country || '')}"></label>
@@ -416,29 +417,69 @@ function openMember(id) {
       <label>Postal code<input name="postal_code" value="${e(member.postal_code || '')}"></label>
       <label>Preferred courier<select name="preferred_courier"><option value="">Not specified</option>${['DHL','FedEx','UPS','EMS','SF Express','Other'].map(value => `<option ${member.preferred_courier === value ? 'selected' : ''}>${value}</option>`).join('')}</select></label>
       <label>Courier account<input name="courier_account_no" value="${e(member.courier_account_no || '')}"></label>
-    </form><div class="order-actions"><button class="primary-button" id="saveMember">Save member</button></div><p class="save-status" id="memberSaveStatus"></p></section>`;
+    </form><div class="order-actions"><button class="primary-button" id="saveMember">Save member & notify customer</button></div><p class="save-status" id="memberSaveStatus"></p></section>
+    <section class="detail-section danger-zone"><h3>Delete member</h3><p>Removes the customer's login and profile. ${linkedOrderCount ? `${linkedOrderCount} historical order${linkedOrderCount === 1 ? '' : 's'} will be retained for business records.` : 'This member has no historical orders.'}</p><button class="danger-button" id="deleteMember">Delete member account</button><p class="save-status" id="memberDeleteStatus"></p></section>`;
   drawer.classList.add('open');
   drawer.setAttribute('aria-hidden', 'false');
   document.querySelector('#saveMember').addEventListener('click', async () => {
     const status = document.querySelector('#memberSaveStatus');
+    const button = document.querySelector('#saveMember');
     const values = Object.fromEntries(new FormData(document.querySelector('#memberForm')));
-    Object.keys(values).forEach(key => values[key] = values[key].trim() || null);
+    Object.keys(values).forEach(key => values[key] = String(values[key] || '').trim() || null);
     values.buyer_type = 'company';
-    if (!values.company_name || !values.full_name) {
-      status.textContent = 'Company name and Manager / Contact name are required.';
+    if (!values.company_name || !values.full_name || !values.email) {
+      status.textContent = 'Email, company name and Manager / Contact name are required.';
       return;
     }
-    values.updated_at = new Date().toISOString();
-    status.textContent = 'Saving...';
-    const { data, error } = await client.from('profiles').update(values).eq('id', member.id).select('*').single();
+    button.disabled = true;
+    status.textContent = 'Saving account and sending notification...';
+    const { data, error } = await invokeMemberAdminFunction({
+      action: 'update_user',
+      user_id: member.id,
+      email: values.email,
+      profile: values
+    });
+    button.disabled = false;
     if (error) {
-      status.textContent = error.message;
+      status.textContent = await functionErrorMessage(error);
       return;
     }
-    members = members.map(item => item.id === data.id ? data : item);
-    status.textContent = 'Saved.';
+    const savedMember = data?.profile || { ...member, ...values };
+    members = members.map(item => item.id === member.id ? savedMember : item);
+    status.textContent = data?.email_sent
+      ? 'Member saved and the customer notification email was sent.'
+      : `Member saved. Notification email was not sent${data?.email_error ? `: ${data.email_error}` : '.'}`;
     renderMembers();
     renderSummary();
+  });
+  document.querySelector('#deleteMember').addEventListener('click', async () => {
+    const status = document.querySelector('#memberDeleteStatus');
+    const confirmation = window.prompt(`Type DELETE to remove ${member.email || member.full_name || 'this member'}.\nHistorical orders will be retained.`);
+    if (confirmation !== 'DELETE') {
+      status.textContent = 'Deletion cancelled.';
+      return;
+    }
+    const button = document.querySelector('#deleteMember');
+    button.disabled = true;
+    status.textContent = 'Deleting member account...';
+    const { data, error } = await invokeMemberAdminFunction({
+      action: 'delete_user',
+      user_id: member.id
+    });
+    if (error) {
+      button.disabled = false;
+      status.textContent = await functionErrorMessage(error);
+      return;
+    }
+    members = members.filter(item => item.id !== member.id);
+    orders = orders.map(order => order.user_id === member.id ? { ...order, user_id: null } : order);
+    renderMembers();
+    renderOrders();
+    renderSummary();
+    closeDrawer();
+    document.querySelector('#adminIdentity').textContent = data?.email_sent
+      ? 'Member deleted and the customer was notified.'
+      : 'Member deleted. Historical orders were retained.';
   });
 }
 
@@ -606,12 +647,22 @@ function renderOrderDetail() {
     <div class="detail-head"><p class="eyebrow">${e(storeName(order, true))}</p><h2>${e(order.invoice_no || 'Proforma Invoice not assigned')}</h2><p class="request-id">Order ${e(order.id)}</p></div>
     <div class="workflow-banner"><span>Current stage</span><strong>${e(statusLabels[order.status] || order.status)}</strong><small>Next: ${e(nextStepLabels[order.status] || 'Review the order')}</small></div>
     <section class="detail-section"><h3>Customer & shipping</h3><div class="customer-box"><strong>Recipient type:</strong> ${(order.buyer_type || 'company') === 'company' ? 'Company' : 'Individual'}<br>${(order.buyer_type || 'company') === 'company' && order.company_name ? `<strong>${e(order.company_name)}</strong><br>Attn: ` : ''}<strong>${e(order.contact_name || '-')}</strong>${order.contact_email ? `<br><a href="mailto:${e(order.contact_email)}">${e(order.contact_email)}</a>` : ''}<br>${e(order.contact_phone || '')}<br>${e(order.shipping_address || '')}<br>${e(order.postal_code || '')}<br><br><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}${paymentCode(order.payment_method) === 'company_bank_transfer' ? '' : '<br><strong>Processing fee:</strong> Confirmed on Payoneer and may vary.<br><small>Not included in the PI total; do not add it again if Payoneer charges the payer.</small>'}<br><br><strong>Freight request:</strong> ${e(order.courier || '-')}<br><strong>Collect account:</strong> ${e(order.courier_account_no || '-')}</div></section>
-    <section class="detail-section"><h3>Items</h3>${activeItems.some(itemPriceOnRequest) ? '<p class="price-request-alert"><strong>Price quotation required.</strong> Confirm a selling price for the marked items before issuing the final Proforma Invoice.</p>' : ''}<table class="order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small>${purchaseSourceHtml(item.model)}</td><td>${e(item.quantity)}</td><td>${itemMoney(item, 'unit_price_usd')}</td><td>${itemMoney(item, 'line_total_usd')}</td></tr>`).join('')}</tbody></table></section>
+    <section class="detail-section"><h3>Items & selling prices</h3>${activeItems.some(itemPriceOnRequest) ? '<p class="price-request-alert"><strong>Price quotation required.</strong> Enter a selling price for the marked items before issuing the final Proforma Invoice.</p>' : ''}<form id="orderItemsForm"><div class="table-wrap"><table class="order-items editable-order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit price (USD)</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr data-order-item-row data-item-id="${e(item.id)}"><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small>${purchaseSourceHtml(item.model)}</td><td><input aria-label="Quantity for ${e(item.model)}" data-item-quantity type="number" min="1" step="1" value="${e(item.quantity)}"></td><td><input aria-label="Unit price for ${e(item.model)}" data-item-price type="number" min="0" step="0.01" value="${Number(item.unit_price_usd || 0).toFixed(2)}"></td><td data-item-total>${money(item.line_total_usd)}</td></tr>`).join('')}</tbody></table></div><div class="order-actions"><button class="outline-button" type="button" id="saveOrderItems">Save item quantities & prices</button></div><p class="save-status" id="itemSaveStatus"></p></form></section>
     ${order.payment_submitted_at ? `<section class="detail-section"><h3>Customer payment notice</h3><div class="customer-box payment-review"><strong>Verification required</strong><br>Submitted: ${e(date(order.payment_submitted_at))}<br>Remitter / Reference: ${e(order.payment_reference || '-')}<br>Customer note: ${e(order.payment_note || '-')}<p>Confirm receipt through ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'the company bank account' : 'Payoneer'} before changing the status to Paid.</p></div></section>` : ''}
     ${activeIssuedCoupons.length ? `<section class="detail-section"><h3>Issued repeat-order coupons (${activeIssuedCoupons.length})</h3><div class="customer-box">${activeIssuedCoupons.map((coupon, index) => `<div><strong>${index + 1}. ${e(coupon.code)}</strong><br>Value: ${money(coupon.amount_usd)} · Status: ${e(coupon.status)}<br>Issued: ${e(date(coupon.issued_at))} · Expires: ${e(date(coupon.expires_at))}</div>`).join('<hr>')}</div></section>` : ''}
     ${invoiceActivity(order)}
     ${sfFreightCalculatorHtml(order)}
     <section class="detail-section"><h3>Order & invoice</h3><form id="orderForm" class="form-grid">
+      <label>Company name<input name="company_name" value="${e(order.company_name || '')}"></label>
+      <label>Manager / Contact<input name="contact_name" required value="${e(order.contact_name || '')}"></label>
+      <label>Customer email<input name="contact_email" type="email" required value="${e(order.contact_email || '')}"></label>
+      <label>Customer phone<input name="contact_phone" value="${e(order.contact_phone || '')}"></label>
+      <label>Destination country<input name="destination_country" value="${e(order.destination_country || '')}"></label>
+      <label>Postal code<input name="postal_code" value="${e(order.postal_code || '')}"></label>
+      <label class="wide">Shipping address<textarea name="shipping_address" rows="3">${e(order.shipping_address || '')}</textarea></label>
+      <label>Payment method<select name="payment_method"><option value="company_bank_transfer" ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'selected' : ''}>Company bank transfer</option><option value="payoneer_card_paypal" ${paymentCode(order.payment_method) === 'payoneer_card_paypal' ? 'selected' : ''}>Card / PayPal — Payoneer</option></select></label>
+      <label>Courier / freight instruction<input name="courier" value="${e(order.courier || '')}"></label>
+      <label>Courier collect account<input name="courier_account_no" value="${e(order.courier_account_no || '')}"></label>
       <label>PI number<input name="invoice_no" value="${e(order.invoice_no || '')}" placeholder="LZN-20260713-001"></label>
       <label>Status<select name="status">${['quote_requested','quoted','payment_pending','payment_submitted','paid','processing','shipped','cancelled'].map(status => `<option value="${status}" ${order.status === status ? 'selected' : ''}>${e(statusLabels[status])}</option>`).join('')}</select></label>
       <label>Subtotal (USD)<input name="subtotal_usd" type="number" step="0.01" value="${Number(order.subtotal_usd || 0).toFixed(2)}" readonly></label>
@@ -624,7 +675,17 @@ function renderOrderDetail() {
     </form><div class="order-actions"><button class="outline-button" id="generatePi">Generate PI number</button><button class="primary-button" id="saveOrder">Save changes</button><button class="outline-button" id="printInvoice">Create & Email Proforma Invoice PDF</button><button class="primary-button" id="confirmPayment">Confirm payment</button><button class="outline-button" id="printCi">Create & Email Commercial Invoice PDF</button><button class="primary-button" id="markShipped">Mark as shipped</button>${order.status === 'shipped' ? `<button class="outline-button" id="confirmDelivery">Confirm delivery & Email customer</button>` : ''}${order.tracking_no ? `<button class="outline-button" id="trackShipment">Track shipment</button>` : ''}</div><p class="save-status" id="saveStatus"></p></section>`;
   const form = document.querySelector('#orderForm');
   form.elements.freight_usd.addEventListener('input', () => form.elements.total_usd.value = (Number(order.subtotal_usd || 0) - discount + Number(form.elements.freight_usd.value || 0)).toFixed(2));
+  document.querySelectorAll('[data-order-item-row]').forEach(row => {
+    const updateLineTotal = () => {
+      const quantity = Number(row.querySelector('[data-item-quantity]').value || 0);
+      const unitPrice = Number(row.querySelector('[data-item-price]').value || 0);
+      row.querySelector('[data-item-total]').textContent = money(quantity * unitPrice);
+    };
+    row.querySelector('[data-item-quantity]').addEventListener('input', updateLineTotal);
+    row.querySelector('[data-item-price]').addEventListener('input', updateLineTotal);
+  });
   initializeSfFreightCalculator();
+  document.querySelector('#saveOrderItems').addEventListener('click', () => saveOrderItems(true));
   document.querySelector('#generatePi').addEventListener('click', generatePiNumber);
   document.querySelector('#saveOrder').addEventListener('click', () => saveOrder(true));
   document.querySelector('#printInvoice').addEventListener('click', createProformaInvoice);
@@ -665,13 +726,21 @@ async function sendOrderEmail(eventType) {
 }
 
 async function invokeAdminFunction(body) {
+  return invokeSecureFunction('smooth-processor', body);
+}
+
+async function invokeMemberAdminFunction(body) {
+  return invokeSecureFunction('admin-user-management', body);
+}
+
+async function invokeSecureFunction(functionName, body) {
   let { data: { session } } = await client.auth.getSession();
   if (!session || (session.expires_at && session.expires_at * 1000 < Date.now() + 60000)) {
     const refreshed = await client.auth.refreshSession();
     session = refreshed.data.session;
   }
   if (!session?.access_token) return { data: null, error: new Error('Administrator session expired. Please sign in again.') };
-  return client.functions.invoke('smooth-processor', {
+  return client.functions.invoke(functionName, {
     body,
     headers: { Authorization: `Bearer ${session.access_token}` },
   });
@@ -741,7 +810,13 @@ async function saveOrder(notifyStatusChange = false) {
   const form = document.querySelector('#orderForm');
   const status = document.querySelector('#saveStatus');
   const previousStatus = activeOrder.status;
+  const itemsSaved = await saveOrderItems(false);
+  if (!itemsSaved) return false;
   const values = Object.fromEntries(new FormData(form));
+  if (!['quote_requested', 'quoted', 'cancelled'].includes(values.status) && activeItems.some(item => Number(item.unit_price_usd || 0) <= 0)) {
+    status.textContent = 'Enter a selling price above USD 0 for every item before issuing the final PI or confirming payment.';
+    return false;
+  }
   if (!['quote_requested', 'quoted', 'cancelled'].includes(values.status) && Number(activeOrder.subtotal_usd || 0) < 100) {
     status.textContent = 'The product subtotal before coupon must be at least USD 100 before issuing the final PI or confirming payment.';
     return false;
@@ -752,10 +827,21 @@ async function saveOrder(notifyStatusChange = false) {
     return false;
   }
   const changes = {
+    buyer_type: 'company',
+    company_name: values.company_name.trim() || null,
+    contact_name: values.contact_name.trim() || null,
+    contact_email: values.contact_email.trim().toLowerCase() || null,
+    contact_phone: values.contact_phone.trim() || null,
+    destination_country: values.destination_country.trim() || null,
+    postal_code: values.postal_code.trim() || null,
+    shipping_address: values.shipping_address.trim() || null,
+    payment_method: paymentCode(values.payment_method),
+    courier: values.courier.trim() || null,
+    courier_account_no: values.courier_account_no.trim() || null,
     invoice_no: values.invoice_no.trim() || null,
     status: values.status,
     freight_usd: Number(values.freight_usd || 0),
-    total_usd: Number(values.total_usd || 0),
+    total_usd: Number(activeOrder.subtotal_usd || 0) - Number(activeOrder.discount_usd || 0) + Number(values.freight_usd || 0),
     tracking_no: values.tracking_no.trim() || null,
     admin_note: `${storeName(activeOrder) === 'Frames' ? '[FRAMES STORE] ' : storeName(activeOrder) === 'Lens' ? '[LENS STORE] ' : ''}${values.admin_note.trim()}`.trim() || null,
     updated_at: new Date().toISOString()
@@ -775,6 +861,57 @@ async function saveOrder(notifyStatusChange = false) {
   if (notifyStatusChange && previousStatus !== data.status) {
     const eventType = { paid: 'payment_confirmed', processing: 'processing', shipped: 'shipped' }[data.status];
     if (eventType) await sendOrderEmail(eventType);
+  }
+  return true;
+}
+
+async function saveOrderItems(refreshDetail = false) {
+  const form = document.querySelector('#orderItemsForm');
+  if (!form) return true;
+  const rows = [...form.querySelectorAll('[data-order-item-row]')];
+  const items = rows.map(row => ({
+    id: row.dataset.itemId,
+    quantity: Number(row.querySelector('[data-item-quantity]').value),
+    unit_price_usd: Number(row.querySelector('[data-item-price]').value)
+  }));
+  const status = document.querySelector('#itemSaveStatus') || document.querySelector('#saveStatus');
+  if (items.some(item => !Number.isInteger(item.quantity) || item.quantity < 1 || !Number.isFinite(item.unit_price_usd) || item.unit_price_usd < 0)) {
+    status.textContent = 'Each item needs a quantity of at least 1 and a valid non-negative selling price.';
+    return false;
+  }
+  status.textContent = 'Saving item quantities and prices...';
+  const { data, error } = await client.rpc('admin_update_order_items', {
+    p_order_id: activeOrder.id,
+    p_items: items
+  });
+  if (error) {
+    status.textContent = error.message;
+    return false;
+  }
+  const { data: savedItems, error: itemError } = await client.from('order_items').select('*').eq('order_id', activeOrder.id).order('id');
+  if (itemError) {
+    status.textContent = itemError.message;
+    return false;
+  }
+  activeItems = savedItems || [];
+  activeOrder = data;
+  orders = orders.map(order => order.id === activeOrder.id ? activeOrder : order);
+  const orderForm = document.querySelector('#orderForm');
+  if (orderForm) {
+    orderForm.elements.subtotal_usd.value = Number(activeOrder.subtotal_usd || 0).toFixed(2);
+    orderForm.elements.total_usd.value = (
+      Number(activeOrder.subtotal_usd || 0) -
+      Number(activeOrder.discount_usd || 0) +
+      Number(orderForm.elements.freight_usd.value || 0)
+    ).toFixed(2);
+  }
+  renderSummary();
+  renderOrders();
+  if (refreshDetail) {
+    renderOrderDetail();
+    document.querySelector('#itemSaveStatus').textContent = 'Item quantities, prices and order totals saved.';
+  } else {
+    status.textContent = 'Item quantities and prices saved.';
   }
   return true;
 }
