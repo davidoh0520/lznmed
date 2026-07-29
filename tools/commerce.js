@@ -6,6 +6,7 @@ const accountButton = document.querySelector('#accountButton');
 const cartButton = document.querySelector('#cartButton');
 const cartCount = document.querySelector('#cartCount');
 const explicitCartOpen = new URLSearchParams(location.search).get('open-cart') === '1';
+const requestedAccountView = new URLSearchParams(location.search).get('account');
 const products = (window.CATALOG_DATA || []).flatMap(category => category.items.map(product => ({ ...product, categoryEn: category.en })));
 const e = value => String(value || '').replace(/[&<>\"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
 const MINIMUM_ORDER_USD = 100;
@@ -135,7 +136,9 @@ function hide() {
 document.querySelectorAll('[data-panel-close]').forEach(button => button.addEventListener('click', hide));
 
 function authView() {
-  show(`<div class="panel-head"><p class="eyebrow">Customer Account</p><h2>${session ? 'My account' : 'Sign in or register'}</h2></div>${session ? `<p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="account-actions"><button class="button" id="ordersOpen">My orders</button><button class="button secondary-button" id="profileOpen">Profile & shipping</button></div><button class="text-button" id="signOut">Sign out</button>` : `<form class="commerce-form" id="authForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><button class="button" name="mode" value="signin">Sign in</button><button class="button secondary-button" name="mode" value="signup">Create company account</button><p class="form-status" id="authStatus"></p></form>`}`);
+  show(`<div class="panel-head"><p class="eyebrow">Customer Account</p><h2>${session ? 'My account' : 'Sign in or register'}</h2></div>${session
+    ? `<p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="account-actions"><button class="button" id="ordersOpen">My orders</button><button class="button secondary-button" id="profileOpen">Edit account & shipping</button></div><button class="text-button" id="signOut">Sign out</button>`
+    : `<form class="commerce-form" id="authForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><button class="button" name="mode" value="signin">Sign in</button><button class="button secondary-button" name="mode" value="signup">Create company account</button><button class="text-button auth-resend" id="authResend" type="button" hidden>Resend confirmation email</button><p class="form-status" id="authStatus" aria-live="polite"></p></form>`}`);
   if (session) {
     document.querySelector('#signOut').onclick = async () => {
       await client.auth.signOut();
@@ -147,7 +150,10 @@ function authView() {
     };
     document.querySelector('#profileOpen').onclick = profileView;
     document.querySelector('#ordersOpen').onclick = ordersView;
-  } else document.querySelector('#authForm').onsubmit = handleAuth;
+  } else {
+    document.querySelector('#authForm').onsubmit = handleAuth;
+    document.querySelector('#authResend').onclick = resendSignupConfirmation;
+  }
 }
 
 const statusLabels = {
@@ -246,204 +252,7 @@ function paymentNoticeView(order) {
   document.querySelector('#backToOrders').onclick = ordersView;
   document.querySelector('#paymentNoticeForm').onsubmit = async event => {
     event.preventDefault();
-    const status = document.querySelector('#paymentNoticeStatus');
-    const values = Object.fromEntries(new FormData(event.currentTarget));
-    status.textContent = 'Submitting payment notice...';
-    const { error } = await client.rpc('submit_payment_notice', { p_order_id: order.id, p_reference: values.reference, p_note: values.note });
-    if (error) {
-      status.textContent = error.message;
-      return;
-    }
-    status.textContent = 'Payment notice submitted. We will update the order after confirming receipt in our bank account.';
-    setTimeout(ordersView, 900);
-  };
-}
-
-async function handleAuth(event) {
-  event.preventDefault();
-  const mode = event.submitter.value;
-  const form = new FormData(event.currentTarget);
-  const status = document.querySelector('#authStatus');
-  if (mode === 'signup' && (!String(form.get('company_name') || '').trim() || !String(form.get('full_name') || '').trim())) {
-    status.textContent = 'Company name and Manager / Contact name are required.';
-    return;
-  }
-  status.textContent = 'Please wait…';
-  localStorage.setItem('lzn-return-to-cart', '1');
-  const result = mode === 'signup'
-    ? await client.auth.signUp({ email: form.get('email'), password: form.get('password'), options: { emailRedirectTo: `${location.origin}${location.pathname}?email-confirmed=1#cart`, data: { company_name: String(form.get('company_name')).trim(), full_name: String(form.get('full_name')).trim(), buyer_type: 'company', cart_reminder_opt_in: form.get('cart_reminder_opt_in') === 'true' } } })
-    : await client.auth.signInWithPassword({ email: form.get('email'), password: form.get('password') });
-  status.textContent = result.error ? result.error.message : (mode === 'signup' ? 'Check your email. The confirmation link will return you to your cart.' : 'Signed in. Returning to your cart…');
-  if (!result.error && mode === 'signup') localStorage.setItem('lzn-awaiting-email-confirmation', '1');
-  if (!result.error && mode === 'signin') hide();
-}
-
-async function profileView() {
-  let profile = {};
-  if (client && session) {
-    const { data } = await client.from('profiles').select('*').eq('id', session.user.id).maybeSingle();
-    profile = data || {};
-  }
-  show(`<div class="panel-head"><p class="eyebrow">Shipping Profile</p><h2>Buyer information</h2></div>
-    <form class="commerce-form two-col" id="profileForm">
-      <input name="buyer_type" type="hidden" value="company">
-      <label>Company name<input name="company_name" required autocomplete="organization" value="${e(profile.company_name)}"></label>
-      <label>Manager / Contact name<input name="full_name" required autocomplete="name" value="${e(profile.full_name)}"></label>
-      <label>Country<input name="country" list="profileCountryOptions" required autocomplete="country-name" value="${e(profile.country)}"><datalist id="profileCountryOptions"></datalist><small data-country-status aria-live="polite">Choose a country to load its calling code and regions.</small></label>
-      <label>Phone<input name="phone" type="tel" required autocomplete="tel" inputmode="tel" value="${e(profile.phone)}"><small>The selected country's calling code is added automatically.</small></label>
-      <label>WhatsApp<input name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" value="${e(profile.whatsapp)}"></label>
-      <label>State / Province<input name="state_province" list="profileStateOptions" autocomplete="address-level1" value="${e(profile.state_province)}"><datalist id="profileStateOptions"></datalist></label>
-      <label>City<input name="city" list="profileCityOptions" required autocomplete="address-level2" value="${e(profile.city)}"><datalist id="profileCityOptions"></datalist></label>
-      <label class="wide">Detailed street address<input name="address_line_1" required autocomplete="address-line1" placeholder="Building number and street name" value="${e(profile.address_line_1)}"></label>
-      <label class="wide">Address line 2 (optional)<input name="address_line_2" autocomplete="address-line2" placeholder="Suite, unit, floor, etc." value="${e(profile.address_line_2)}"></label>
-      <label>Postal code<input name="postal_code" required autocomplete="postal-code" value="${e(profile.postal_code)}"><small><span data-postal-status aria-live="polite">Filled automatically after the detailed address is completed.</span> Address lookup by <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>; the completed address is sent only for this lookup.</small></label>
-      <label>Importer / Customs ID (optional)<input name="tax_id" value="${e(profile.tax_id)}"><small>Enter the importer or customs identification number requested by your local customs authority or courier (for example, an EORI or Importer Number). This is not a general business registration number. Leave it blank if it is not required for your shipment.</small></label>
-      <label>Preferred courier<select name="preferred_courier"><option value="">No collect account</option>${['DHL', 'FedEx', 'UPS', 'EMS', 'SF Express', 'Other'].map(value => `<option ${profile.preferred_courier === value ? 'selected' : ''}>${value}</option>`).join('')}</select></label>
-      <label class="wide">Courier collect account (optional)<input name="courier_account_no" value="${e(profile.courier_account_no)}"></label>
-      <label class="wide reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true" ${[true, 'true', 1, '1'].includes(profile.cart_reminder_opt_in) ? 'checked' : ''}><span>Email me reminders about items left in my cart. I can turn these reminders off at any time.</span></label>
-      <button class="button wide">Save profile</button><p class="form-status wide" id="profileStatus"></p>
-    </form>`);
-  const form = document.querySelector('#profileForm');
-  form.onsubmit = saveProfile;
-  window.LZNAddressProfile?.enhance(form);
-}
-
-async function saveProfile(event) {
-  event.preventDefault();
-  const values = Object.fromEntries(new FormData(event.currentTarget));
-  values.buyer_type = 'company';
-  values.cart_reminder_opt_in = event.currentTarget.elements.cart_reminder_opt_in.checked;
-  const { error } = await client.from('profiles').update(values).eq('id', session.user.id);
-  document.querySelector('#profileStatus').textContent = error ? error.message : 'Profile saved.';
-}
-
-function money(value) {
-  return Number(value).toFixed(Number(value) >= 100 ? 0 : 2);
-}
-
-function isPriceOnRequest(item) {
-  return item?.priceOnRequest === true || item?.priceUsd == null || !Number.isFinite(Number(item.priceUsd));
-}
-
-function isOrderPriceOnRequest(item) {
-  return /price on request/i.test(String(item?.product_name || ''));
-}
-
-function cartUnitPrice(item) {
-  if (isPriceOnRequest(item)) return 'Price on request';
-  if (Number(item.priceUsd) === 0) return 'Free of charge';
-  return `USD ${money(item.priceUsd)} ${item.orderUnitLabel ? `per ${e(item.orderUnitLabel)}` : 'each'}`;
-}
-
-function cartLinePrice(item) {
-  if (isPriceOnRequest(item)) return 'To be quoted';
-  if (Number(item.priceUsd) === 0) return 'Free';
-  return `USD ${money(Number(item.priceUsd) * item.quantity)}`;
-}
-
-async function loadActiveCoupons() {
-  if (!client || !session?.user?.id) return { data: [], error: null };
-  return client.from('coupons')
-    .select('code,amount_usd,expires_at')
-    .eq('user_id', session.user.id)
-    .eq('status', 'active')
-    .gt('expires_at', new Date().toISOString())
-    .order('expires_at');
-}
-
-async function cartView() {
-  if (repairCartImages(cart)) save();
-  const total = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
-  const hasQuote = cart.some(isPriceOnRequest);
-  const belowMinimum = total < MINIMUM_ORDER_USD && !hasQuote;
-  const couponLimit = Math.floor(total / MINIMUM_ORDER_USD);
-  const couponUnlocked = couponLimit > 0;
-  selectedCouponCodes = couponUnlocked ? selectedCouponCodes.slice(0, couponLimit) : [];
-  const minimumMessage = couponUnlocked
-    ? ''
-    : `<p class="minimum-order-notice"><strong>${hasQuote ? 'Coupons pending final quotation.' : `Add USD ${money(MINIMUM_ORDER_USD - total)} more.`}</strong> One USD ${money(COUPON_VALUE_USD)} coupon is earned for every complete USD ${money(MINIMUM_ORDER_USD)} of final product subtotal before coupon and freight.</p>`;
-  const earnedCoupon = couponUnlocked
-    ? `<aside class="cart-earned-coupon" aria-label="${couponLimit} coupons unlocked"><span>Unlocked</span><div><strong>${couponLimit} × USD ${money(COUPON_VALUE_USD)} COUPONS</strong><small>USD ${money(couponLimit * COUPON_VALUE_USD)} total · Issued after payment confirmation · Valid for 60 days</small></div></aside>`
-    : '';
-  const ownedCouponPanel = couponUnlocked
-    ? `<section class="cart-owned-coupons" id="cartOwnedCoupons" aria-live="polite">${session
-      ? '<p class="cart-coupon-loading">Checking your available coupons…</p>'
-      : '<div class="cart-coupon-signin"><strong>Already have coupons?</strong><span>Sign in to see and use them on this order.</span></div>'}</section>`
-    : '';
-  show(`<div class="panel-head cart-heading"><div><p class="eyebrow">Shopping Cart</p><h2>${cart.length ? 'Your cart' : 'Your cart is empty'}</h2></div><span>${cart.reduce((sum, item) => sum + item.quantity, 0)} items</span></div>
-    <div class="cart-list">${cart.map((item, index) => `<div class="cart-row"><img src="${e(item.image)}" alt=""><div><strong>${e(item.model)}</strong><span>${e(item.nameEn)}</span>${item.optionLabel ? `<small class="chosen-option">${e(item.optionLabel)}</small>` : ''}${item.pd ? `<small class="chosen-option">Fixed PD: ${e(item.pd)} mm</small>` : ''}<small>${cartUnitPrice(item)}</small></div><label class="qty-label">Qty<input type="number" min="1" value="${item.quantity}" data-qty="${index}"></label><strong class="line-total">${cartLinePrice(item)}</strong><button class="remove-item" data-remove="${index}" aria-label="Remove item">×</button></div>`).join('')}</div>
-    ${cart.length ? `<div class="cart-summary"><div><span>${hasQuote ? 'Priced items subtotal' : 'FOB China product subtotal'}</span><strong>USD ${money(total)}</strong></div>${hasQuote ? '<p><strong>Price-on-request items will be quoted in your Proforma Invoice. The final product subtotal must be at least USD 100.</strong></p>' : ''}${minimumMessage}<p>Freight, destination duties and local taxes are not included. Availability and freight are confirmed before the Proforma Invoice is issued.</p></div>${earnedCoupon}${ownedCouponPanel}<div class="cart-actions"><button class="button secondary-button" id="continueShopping">Continue shopping</button><button class="button" id="checkoutButton" ${belowMinimum ? 'disabled aria-disabled="true"' : ''}>Proceed to checkout</button></div><p class="form-status" id="quoteStatus"></p>` : `<button class="button" id="continueShopping">Continue shopping</button>`}`, true);
-  body.querySelectorAll('.cart-row').forEach((row, index) => {
-    if (!cart[index]?.pdLabel) return;
-    const labels = row.querySelectorAll('.chosen-option');
-    const target = labels[labels.length - 1];
-    if (target) target.textContent = cart[index].pdLabel;
-  });
-  body.querySelectorAll('[data-qty]').forEach(input => input.onchange = () => { cart[input.dataset.qty].quantity = Math.max(1, Number(input.value) || 1); save(); cartView(); });
-  body.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => { cart.splice(button.dataset.remove, 1); save(); cartView(); });
-  document.querySelector('#continueShopping').onclick = hide;
-  document.querySelector('#checkoutButton')?.addEventListener('click', () => session ? checkoutView() : authView());
-  if (couponUnlocked && session) {
-    const wallet = document.querySelector('#cartOwnedCoupons');
-    const { data: couponData, error } = await loadActiveCoupons();
-    if (!wallet?.isConnected) return;
-    if (error) {
-      wallet.remove();
-      return;
-    }
-    const availableCoupons = couponData || [];
-    const availableCodes = new Set(availableCoupons.map(coupon => coupon.code));
-    selectedCouponCodes = selectedCouponCodes.filter(code => availableCodes.has(code)).slice(0, couponLimit);
-    const selectionMessage = () => selectedCouponCodes.length
-      ? `${selectedCouponCodes.length} coupon${selectedCouponCodes.length === 1 ? '' : 's'} (USD ${money(selectedCouponCodes.length * COUPON_VALUE_USD)}) will be carried to checkout.`
-      : `Choose up to ${couponLimit} coupon${couponLimit === 1 ? '' : 's'} now, or select them later at checkout.`;
-    wallet.innerHTML = availableCoupons.length
-      ? `<div class="cart-owned-coupon-head"><div><p class="eyebrow">Your available coupons</p><h3>Select up to ${couponLimit} for this order</h3></div><small id="cartCouponCount">${selectedCouponCodes.length}/${couponLimit} selected</small></div><div class="cart-owned-coupon-list">${availableCoupons.map((coupon, index) => `<label class="cart-owned-coupon ${selectedCouponCodes.includes(coupon.code) ? 'selected' : ''}" for="cartCoupon${index}"><input id="cartCoupon${index}" type="checkbox" name="cart_coupon_codes" value="${e(coupon.code)}" ${selectedCouponCodes.includes(coupon.code) ? 'checked' : ''}><span><b>USD ${Number(coupon.amount_usd || COUPON_VALUE_USD).toFixed(2)} OFF</b><strong>${e(coupon.code)}</strong><small>Valid until ${e(orderDate(coupon.expires_at))}</small></span></label>`).join('')}</div><div class="cart-owned-coupon-foot"><p id="cartCouponSelection">${selectionMessage()}</p><button type="button" class="text-button" data-clear-cart-coupons ${selectedCouponCodes.length ? '' : 'hidden'}>Do not use coupons</button></div>`
-      : '<div class="cart-coupon-signin"><strong>No active coupon yet.</strong><span>Your coupons will appear here after payment is confirmed on a qualifying order.</span></div>';
-    const updateCartCouponSelection = () => {
-      selectedCouponCodes = [...wallet.querySelectorAll('[name="cart_coupon_codes"]:checked')].map(input => input.value);
-      wallet.querySelectorAll('.cart-owned-coupon').forEach(label => label.classList.toggle('selected', label.querySelector('input').checked));
-      const count = wallet.querySelector('#cartCouponCount');
-      if (count) count.textContent = `${selectedCouponCodes.length}/${couponLimit} selected`;
-      const selection = wallet.querySelector('#cartCouponSelection');
-      if (selection) selection.textContent = selectionMessage();
-      const clearButton = wallet.querySelector('[data-clear-cart-coupons]');
-      if (clearButton) clearButton.hidden = !selectedCouponCodes.length;
-    };
-    wallet.querySelectorAll('[name="cart_coupon_codes"]').forEach(input => input.addEventListener('change', () => {
-      if (input.checked && wallet.querySelectorAll('[name="cart_coupon_codes"]:checked').length > couponLimit) {
-        input.checked = false;
-        toast(`Use up to ${couponLimit} coupon${couponLimit === 1 ? '' : 's'} on this order.`);
-      }
-      updateCartCouponSelection();
-    }));
-    wallet.querySelector('[data-clear-cart-coupons]')?.addEventListener('click', () => {
-      wallet.querySelectorAll('[name="cart_coupon_codes"]').forEach(input => { input.checked = false; });
-      updateCartCouponSelection();
-    });
-  }
-}
-
-async function checkoutView() {
-  const subtotal = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
-  const hasQuote = cart.some(isPriceOnRequest);
-  if (subtotal < MINIMUM_ORDER_USD && !hasQuote) {
-    cartView();
-    const status = document.querySelector('#quoteStatus');
-    if (status) status.textContent = `Minimum order is USD ${money(MINIMUM_ORDER_USD)} before coupons, excluding freight.`;
-    return;
-  }
-  const couponLimit = Math.floor(subtotal / MINIMUM_ORDER_USD);
-  const couponEligible = couponLimit > 0;
-  const { data: couponData } = couponEligible ? await loadActiveCoupons() : { data: [] };
-  const availableCoupons = couponData || [];
-  const availableCodes = new Set(availableCoupons.map(coupon => coupon.code));
-  selectedCouponCodes = selectedCouponCodes.filter(code => availableCodes.has(code)).slice(0, couponLimit);
-  const couponChoices = availableCoupons.map((coupon, index) => `<label class="cart-owned-coupon ${selectedCouponCodes.includes(coupon.code) ? 'selected' : ''}" for="checkoutCoupon${index}"><input id="checkoutCoupon${index}" type="checkbox" name="coupon_codes" value="${e(coupon.code)}" ${selectedCouponCodes.includes(coupon.code) ? 'checked' : ''}><span><b>USD ${Number(coupon.amount_usd || COUPON_VALUE_USD).toFixed(2)} OFF</b><strong>${e(coupon.code)}</strong><small>Valid until ${e(orderDate(coupon.expires_at))}</small></span></label>`).join('');
-  const couponField = couponEligible
-    ? `<fieldset class="coupon-checkout"><legend>Your available coupons</legend>${availableCoupons.length ? `<div class="cart-owned-coupon-head"><div><h3>Select up to ${couponLimit}</h3><small>One coupon for each USD 100 of product subtotal.</small></div><small id="checkoutCouponCount">${selectedCouponCodes.length}/${couponLimit} selected</small></div><div class="cart-owned-coupon-list">${couponChoices}</div><div class="cart-owned-coupon-foot"><p id="checkoutCouponSelection"></p><button type="button" class="text-button" id="clearCheckoutCoupons" ${selectedCouponCodes.length ? '' : 'hidden'}>Do not use coupons</button></div>` : '<p>Your coupons will appear here after payment is confirmed on a qualifying order.</p>'}<small>Eligibility uses the product subtotal before coupons, so every complete USD 100 permits one coupon and still earns the next coupons after payment.</small></fieldset>`
-    : '<fieldset class="coupon-checkout"><legend>Coupons</legend><p>One coupon can be used for every complete USD 100 of quoted product subtotal.</p></fieldset>';
-  show(`<div class="panel-head"><p class="eyebrow">Checkout</p><h2>Payment & freight</h2></div><div class="checkout-summary coupon-summary"><span>Product subtotal before coupon</span><strong>USD ${money(subtotal)}</strong><span id="checkoutCouponLabel" hidden>Coupons</span><strong id="checkoutCouponValue" hidden>-USD ${money(COUPON_VALUE_USD)}</strong><span>Before freight</span><strong id="checkoutBeforeFreight">USD ${money(subtotal)}</strong></div><div class="repeat-coupon-promo"><strong>Earn and use one USD 10 coupon for every USD 100</strong><span>Issued after payment confirmation and valid for 60 days.</span></div><form class="commerce-form checkout-form" id="checkoutForm">${couponField}<fieldset><legend>Payment method</legend><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="company_bank_transfer" checked><span><strong>Company bank transfer <em>Recommended for orders over USD 1,000</em></strong><small>No processing fee charged by LZN MEDICAL. Sending and intermediary bank charges are borne by the buyer.</small><span class="bank-transfer-details" aria-label="USD bank transfer details"><b class="bank-details-title">USD bank transfer details</b><span class="bank-detail-row"><span>Beneficiary</span><b>LZN MEDICAL CO., LTD.</b></span><span class="bank-detail-row"><span>USD Account</span><b class="bank-copy-value">100103205899</b></span><span class="bank-detail-row"><span>SWIFT / BIC</span><b class="bank-copy-value">HVBKCNBJ</b></span><span class="bank-detail-row"><span>Bank</span><b>Woori Bank(China) Limited Shanghai JinXiuJiangNan Sub-Branch</b></span><span class="bank-detail-row"><span>Bank Address</span><b>No.101-1,101-2b,102 MT BLDG, 3999 Hongxin Road, Minhang District, Shanghai, China</b></span></span></span></label><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="payoneer_card_paypal"><span><strong>Card / PayPal <em>Processed securely by Payoneer</em></strong><small>Available payment methods and processing fees may vary by country, customer and payment request. A payment link will be emailed after freight and the final invoice are confirmed.</small><span class="payment-logo-panel"><span class="payment-logo-row"><img class="payment-logo-strip" src="assets/payment/payoneer-payment-options.webp" alt="Possible payment options: Visa, Mastercard, American Express, Discover, Diners Club, JCB and Plaid"><span class="paypal-brand"><img src="assets/payment/paypal.webp" alt=""><b>PayPal</b></span></span><small>Possible options include cards and PayPal. Availability varies by country and payment request.</small></span></span></label><div class="payment-fee-estimate" id="paymentFeeEstimate" aria-live="polite"></div></fieldset><fieldset><legend>Freight arrangement</legend><label class="choice-card"><input type="radio" name="freight_method" value="quote" checked><span><strong>Request freight quotation — SF International</strong><small>Quoted-freight orders are shipped by SF International. By selecting this option, you accept SF International as the carrier and the quoted SF International freight charge. We do not automatically substitute the cheapest courier service.</small></span></label><label class="choice-card"><input type="radio" name="freight_method" value="collect"><span><strong>Courier collect</strong><small>Freight will be charged directly to your courier account.</small></span></label><div class="collect-fields" id="collectFields"><label>Courier<select name="courier" id="checkoutCourier"><option>DHL</option><option>FedEx</option><option>UPS</option><option>EMS</option><option>SF Express</option><option>Other</option></select></label><label id="otherCourierLabel">Other courier name<input name="other_courier" placeholder="Enter courier name"></label><label>Courier account number<input name="courier_account_no" placeholder="Required for courier collect"></label></div></fieldset><div class="cart-actions"><button type="button" class="button secondary-button" id="backToCart">Back to cart</button><button class="button" id="placeOrderButton">Request Proforma Invoice</button></div><p class="form-status" id="quoteStatus"></p></form>`, true);
+    con…5190 tokens truncated…{couponField}<fieldset><legend>Payment method</legend><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="company_bank_transfer" checked><span><strong>Company bank transfer <em>Recommended for orders over USD 1,000</em></strong><small>No processing fee charged by LZN MEDICAL. Sending and intermediary bank charges are borne by the buyer.</small><span class="bank-transfer-details" aria-label="USD bank transfer details"><b class="bank-details-title">USD bank transfer details</b><span class="bank-detail-row"><span>Beneficiary</span><b>LZN MEDICAL CO., LTD.</b></span><span class="bank-detail-row"><span>USD Account</span><b class="bank-copy-value">100103205899</b></span><span class="bank-detail-row"><span>SWIFT / BIC</span><b class="bank-copy-value">HVBKCNBJ</b></span><span class="bank-detail-row"><span>Bank</span><b>Woori Bank(China) Limited Shanghai JinXiuJiangNan Sub-Branch</b></span><span class="bank-detail-row"><span>Bank Address</span><b>No.101-1,101-2b,102 MT BLDG, 3999 Hongxin Road, Minhang District, Shanghai, China</b></span></span></span></label><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="payoneer_card_paypal"><span><strong>Card / PayPal <em>Processed securely by Payoneer</em></strong><small>Available payment methods and processing fees may vary by country, customer and payment request. A payment link will be emailed after freight and the final invoice are confirmed.</small><span class="payment-logo-panel"><span class="payment-logo-row"><img class="payment-logo-strip" src="assets/payment/payoneer-payment-options.webp" alt="Possible payment options: Visa, Mastercard, American Express, Discover, Diners Club, JCB and Plaid"><span class="paypal-brand"><img src="assets/payment/paypal.webp" alt=""><b>PayPal</b></span></span><small>Possible options include cards and PayPal. Availability varies by country and payment request.</small></span></span></label><div class="payment-fee-estimate" id="paymentFeeEstimate" aria-live="polite"></div></fieldset><fieldset><legend>Freight arrangement</legend><label class="choice-card"><input type="radio" name="freight_method" value="quote" checked><span><strong>Request freight quotation — SF International</strong><small>Quoted-freight orders are shipped by SF International. By selecting this option, you accept SF International as the carrier and the quoted SF International freight charge. We do not automatically substitute the cheapest courier service.</small></span></label><label class="choice-card"><input type="radio" name="freight_method" value="collect"><span><strong>Courier collect</strong><small>Freight will be charged directly to your courier account.</small></span></label><div class="collect-fields" id="collectFields"><label>Courier<select name="courier" id="checkoutCourier"><option>DHL</option><option>FedEx</option><option>UPS</option><option>EMS</option><option>SF Express</option><option>Other</option></select></label><label id="otherCourierLabel">Other courier name<input name="other_courier" placeholder="Enter courier name"></label><label>Courier account number<input name="courier_account_no" placeholder="Required for courier collect"></label></div></fieldset><div class="cart-actions"><button type="button" class="button secondary-button" id="backToCart">Back to cart</button><button class="button" id="placeOrderButton">Request Proforma Invoice</button></div><p class="form-status" id="quoteStatus"></p></form>`, true);
   if (hasQuote) document.querySelector('.checkout-summary span').innerHTML = 'Priced items subtotal<small>Price-on-request items will be added after quotation.</small>';
   const form = document.querySelector('#checkoutForm');
   const collectFields = document.querySelector('#collectFields');
@@ -690,6 +499,14 @@ if (client) {
     session = data.session;
     accountLabel();
     restoreCloudCart();
+    if (requestedAccountView && !emailConfirmationReturn) {
+      history.replaceState({}, '', location.pathname);
+      setTimeout(() => {
+        if (!session) authView();
+        else if (requestedAccountView === 'orders') ordersView();
+        else profileView();
+      }, 0);
+    }
     if (session && emailConfirmationReturn) {
       localStorage.removeItem('lzn-return-to-cart');
       setTimeout(emailConfirmedView, 250);
@@ -710,3 +527,4 @@ if (client) {
     }
   });
 }
+
