@@ -167,7 +167,7 @@ function marketplaceProductCard(product) {
       <span class="marketplace-product-kicker">${esc(product.categoryEn)}</span>
       <h3>${esc(product.model)}</h3>
       <p>${esc(product.nameEn)}</p>
-      <div class="marketplace-product-meta"><span class="marketplace-price">${esc(price)}${minimum === null ? '' : ' <small>FOB China</small>'}</span><span class="marketplace-open">${hasChoices ? 'Choose options' : 'View details'} &rarr;</span></div>
+      <div class="marketplace-product-meta"><span class="marketplace-price">${esc(price)}${minimum === null ? '' : ' <small>FOB China</small>'}</span></div>
     </div>
   </article>`;
 }
