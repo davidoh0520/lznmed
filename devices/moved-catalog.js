@@ -4,6 +4,18 @@
   const nav = document.querySelector('#deviceCategoryNav');
   const content = document.querySelector('#deviceCatalogContent');
 
+  // Models marked with a star in the supplied Liangyou wholesale price list.
+  const bestChoiceModels = new Set(["LY-166","LY-166X","LY-188","LY-188X","LY-188-2","LY-188X-2","LY-199X","LY-199X-1","LY-199X-2","LY-160","LY-160X","LY-700","LY-700X","LY-700-2","LY-700X-2","LY-600","LY-800A","LY-800B","MC-S","MC-W","MC-G","MC-A","LY-3AHT","LY-3AHL","LY-3AH-AL","LY-3AH-2","LY-3B","LY-3B-1","LY-3B-2","LY-18","LY-5FC-35WV","LY-5FA-35P","LY-316A","LY-316B","LY-918D","LY-6AG","LY-7X"]);
+  const cleanCatalogValue = value => {
+    const text = String(value || '').trim();
+    return !text || /^to be confirmed\.?$/i.test(text) ? '' : text;
+  };
+  const cleanDescription = value => String(value || '')
+    .replace(/\s*Package size:\s*To be confirmed\.\s*/gi, ' ')
+    .replace(/\s*Gross weight:\s*To be confirmed\.\s*/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
   const legacyPrices = Object.freeze({
     'ET-1100': 1500,
     'ET-660E': 800,
@@ -179,6 +191,8 @@
   window.LZNDeviceAnimateToCart = animateToCart;
   const publicProduct = product => ({
     ...product,
+    bestChoice: Boolean(product.bestChoice || bestChoiceModels.has(String(product.model || '').toUpperCase())),
+    description: cleanDescription(product.description),
     image: publicAsset(product.image),
     images: (product.images || []).map(publicAsset),
     brochurePages: (product.brochurePages || []).map(deviceAsset),
@@ -233,7 +247,9 @@
   };
   const normalizedCategories = categories.map(category => ({
     ...category,
-    items: category.items.map(item => withOrderingOptions(publicProduct(item), category.id))
+    items: category.items
+      .map(item => withOrderingOptions(publicProduct(item), category.id))
+      .sort((first, second) => Number(second.bestChoice) - Number(first.bestChoice))
   }));
 
   function prices(product) {
@@ -243,17 +259,50 @@
     return Number.isFinite(price) && price > 0 ? [price] : [];
   }
 
+  function detailInformation(product) {
+    const features = (product.features || []).map(cleanCatalogValue).filter(Boolean);
+    const logistics = [
+      ['Unit package', product.packageSize],
+      ['Unit gross weight', product.grossWeight],
+      ['Packing quantity', product.packingQuantity],
+      ['Carton size', product.cartonSize],
+      ['Carton gross weight', product.cartonGrossWeight]
+    ].map(([label, value]) => [label, cleanCatalogValue(value)]).filter(([, value]) => value);
+    if (!features.length && !logistics.length) return '';
+    return `<div class="device-product-information">
+      ${features.length ? `<section><h4>Product highlights</h4><ul>${features.map(feature => `<li>${escapeHtml(feature)}</li>`).join('')}</ul></section>` : ''}
+      ${logistics.length ? `<section><h4>Packing & shipping</h4><dl>${logistics.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl></section>` : ''}
+    </div>`;
+  }
+
+  function cardNotes(product) {
+    const feature = cleanCatalogValue(product.features?.[0]);
+    const shipping = [
+      cleanCatalogValue(product.packageSize) ? `Package ${cleanCatalogValue(product.packageSize)}` : '',
+      cleanCatalogValue(product.grossWeight) ? `G.W. ${cleanCatalogValue(product.grossWeight)}` : ''
+    ].filter(Boolean).join(' · ');
+    if (!feature && !shipping) return '';
+    return `<div class="marketplace-product-notes">
+      ${feature ? `<span class="marketplace-product-feature">${escapeHtml(feature)}</span>` : ''}
+      ${shipping ? `<span class="marketplace-product-shipping">${escapeHtml(shipping)}</span>` : ''}
+    </div>`;
+  }
+
   function card(product, category) {
     const values = prices(product);
     const minimum = values.length ? Math.min(...values) : null;
     const hasChoices = (product.options?.length || 0) > 1;
     const display = minimum === null ? 'Price on request' : `${hasChoices ? 'From ' : ''}USD ${formatUsd(minimum)}`;
-    return `<article class="marketplace-product-card" data-device-model="${escapeHtml(product.model)}" tabindex="0" role="button" aria-label="View ${escapeHtml(product.model)} details">
-      <div class="marketplace-product-image"><img width="240" height="240" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${escapeHtml(product.image)}" alt="${escapeHtml(product.model)} ${escapeHtml(product.nameEn)}"></div>
+    return `<article class="marketplace-product-card${product.bestChoice ? ' is-best-choice' : ''}" data-device-model="${escapeHtml(product.model)}" tabindex="0" role="button" aria-label="View ${escapeHtml(product.model)} details${product.bestChoice ? ', Best Choice' : ''}">
+      <div class="marketplace-product-image">
+        ${product.bestChoice ? '<span class="device-best-choice">★ Best Choice</span>' : ''}
+        <img width="240" height="240" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${escapeHtml(product.image)}" alt="${escapeHtml(product.model)} ${escapeHtml(product.nameEn)}">
+      </div>
       <div class="marketplace-product-copy">
         <span class="marketplace-product-kicker">${escapeHtml(category.en)}</span>
         <h3>${escapeHtml(product.model)}</h3>
         <p>${escapeHtml(product.nameEn)}</p>
+        ${cardNotes(product)}
         <div class="marketplace-product-meta"><span class="marketplace-price">${escapeHtml(display)}</span><span class="marketplace-open">${hasChoices ? 'Choose options' : 'View details'} &rarr;</span></div>
       </div>
     </article>`;
@@ -268,7 +317,7 @@
   content.className = 'marketplace-scroll';
 
   nav.innerHTML = normalizedCategories.map((category, index) => `<button type="button" data-marketplace-target="${escapeHtml(category.id)}" class="${index ? '' : 'active'}" aria-pressed="${index ? 'false' : 'true'}">
-    <img width="72" height="72" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${escapeHtml(category.items[0]?.image)}" alt="">
+    <img width="72" height="72" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${escapeHtml(category.items.find(item => item.bestChoice)?.image || category.items[0]?.image)}" alt="">
     <span><strong>${escapeHtml(category.en)}</strong><small>${category.items.length} models</small></span>
   </button>`).join('');
 
@@ -334,6 +383,7 @@
       : '';
     body.innerHTML = `<div class="marketplace-detail-media">
         <div class="device-detail-stage">
+          ${product.bestChoice ? '<span class="device-best-choice device-best-choice-detail">★ Best Choice</span>' : ''}
           <img data-device-detail-image src="${escapeHtml(galleryImages[0] || product.image)}" alt="${escapeHtml(product.model)} ${escapeHtml(product.nameEn)}">
           <span class="device-detail-page" data-device-gallery-label ${brochurePages.length ? '' : 'hidden'}>${brochurePages.length ? 'Brochure page 1' : ''}</span>
         </div>
@@ -346,6 +396,7 @@
         <h3>${escapeHtml(product.nameEn)}</h3>
         <div class="marketplace-price" data-device-detail-price></div>
         <p>${escapeHtml(product.description || product.desc || category.desc || '')}</p>
+        ${detailInformation(product)}
         ${optionToggles}
         <label class="marketplace-detail-quantity"><span>Quantity</span><input type="number" min="1" max="999" step="1" value="1" inputmode="numeric" data-device-detail-quantity></label>
         <button type="button" class="marketplace-detail-add add-cart" data-device-modal-add>Add to cart</button>
