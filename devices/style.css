@@ -245,3 +245,85 @@ footer img{height:30px;}
   .device-detail-thumb{flex-basis:74px}
   .device-detail-thumb img{height:56px}
 }
+
+
+/* v20260730 large device detail and button-style options */
+@media(min-width:721px){
+  body .marketplace-detail-card{
+    width:min(94vw,1680px);
+    height:min(92vh,980px);
+    max-height:92vh;
+    grid-template-columns:minmax(420px,1.08fr) minmax(420px,.92fr);
+    gap:clamp(32px,4vw,72px);
+    padding:clamp(30px,3vw,56px);
+  }
+  body .device-detail-stage>img{
+    height:min(68vh,700px);
+    max-height:none;
+  }
+}
+body .marketplace-detail-option{
+  min-width:0;
+  margin:18px 0 0;
+  padding:0;
+  border:0;
+}
+body .marketplace-detail-option legend{
+  margin:0 0 9px;
+  padding:0;
+  color:#344054;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+.device-option-toggles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:9px;
+}
+.device-option-toggle{
+  display:flex;
+  min-width:0;
+  min-height:54px;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  gap:5px;
+  padding:10px 13px;
+  border:1px solid #cdd4de;
+  border-radius:13px;
+  background:#fff;
+  color:#101828;
+  text-align:left;
+  cursor:pointer;
+  transition:border-color .16s ease,background .16s ease,color .16s ease,transform .16s ease;
+}
+.device-option-toggle:hover{
+  border-color:#101828;
+  transform:translateY(-1px);
+}
+.device-option-toggle.active,
+.device-option-toggle[aria-pressed="true"]{
+  border-color:#101828;
+  background:#101828;
+  color:#fff;
+  box-shadow:0 8px 20px rgba(16,24,40,.16);
+}
+.device-option-toggle span{
+  font-size:12px;
+  font-weight:850;
+  line-height:1.25;
+  overflow-wrap:anywhere;
+}
+.device-option-toggle strong{
+  color:#667085;
+  font-size:11px;
+  line-height:1.2;
+}
+.device-option-toggle.active strong,
+.device-option-toggle[aria-pressed="true"] strong{color:#dbe4f0}
+@media(max-width:720px){
+  body .marketplace-detail-card{height:auto}
+  .device-option-toggles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
