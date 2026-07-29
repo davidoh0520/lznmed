@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" class="lzn-booting">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://snyvexlqpxpqjswizszz.supabase.co" crossorigin>
   <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/lzn-favicon.svg?v=20260723-2">
-  <style>html{background:#f6f6f3}html.lzn-booting body{opacity:0;visibility:hidden;pointer-events:none}</style>
-  <noscript><style>html.lzn-booting body{opacity:1;visibility:visible;pointer-events:auto}</style></noscript>
-  <script>window.addEventListener('DOMContentLoaded',()=>requestAnimationFrame(()=>document.documentElement.classList.remove('lzn-booting')),{once:true});</script>
+  <style>html{background:#f6f6f3}#view:empty::before{content:"Loading products…";display:block;padding:48px 24px;color:#5f6f69;font-weight:800;text-align:center}</style>
   <title>LZN Optical Tools & Equipment</title>
   <meta name="description" content="LZN professional optical examination instruments and lens-processing equipment.">
   <link rel="stylesheet" href="styles.css?v=20260729-49">
@@ -35,14 +35,16 @@
   <footer>© 2026 LZN MEDICAL CO., LTD.</footer>
   <div class="modal" id="modal" aria-hidden="true"><button class="modal-bg" data-close aria-label="Close"></button><article><button class="close" data-close aria-label="Close">×</button><div id="modalBody"></div></article></div>
   <div class="commerce-panel" id="commercePanel" aria-hidden="true"><button class="panel-bg" data-panel-close aria-label="Close"></button><section><button class="close" data-panel-close aria-label="Close">×</button><div id="commerceBody"></div></section></div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js?v=20260713-10"></script>
-  <script src="cloud-cart.js?v=20260722-3"></script>
+  <script src="catalog-data-tools.js?v=20260729-1" defer></script>
+  <script src="marketplace-catalog.js?v=20260729-4" defer></script>
+  <script src="app.js?v=20260729-7" defer></script>
+  <script src="product-detail-layout.js?v=20260729-7" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="supabase-config.js?v=20260713-10" defer></script>
+  <script src="cloud-cart.js?v=20260722-3" defer></script>
   <script src="portfolio-shell.js?v=20260729-1" defer></script>
-  <script src="products.js?v=20260729-1"></script>
-  <script src="catalog-placement.js?v=20260728-2"></script>
-    <script src="catalog-products.js?v=20260729-6"></script><script src="catalog-product-exclusions.js?v=20260729-3"></script><script src="category-overrides.js?v=20260729-4"></script><script src="reading-glasses-category.js?v=20260729-1"></script><script src="catalog-model-overrides.js?v=20260729-4"></script><script src="catalog-option-image-overrides.js?v=20260728-2"></script><script src="marketplace-catalog.js?v=20260729-4"></script><script src="app.js?v=20260729-6"></script><script src="/tools/address-profile.js?v=20260729-2"></script><script src="commerce.js?v=20260729-66"></script>
-    <script src="product-detail-layout.js?v=20260729-7"></script>
-  <script src="/tools/promotion-popup.js?v=20260727-5"></script>
+  <script src="/tools/address-profile.js?v=20260729-2" defer></script>
+  <script src="commerce.js?v=20260729-66" defer></script>
+  <script src="/tools/promotion-popup.js?v=20260727-5" defer></script>
 </body>
 </html>

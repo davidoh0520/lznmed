@@ -166,7 +166,7 @@ function marketplaceProductCard(product) {
     ? 'Price on request'
     : `${hasChoices ? 'From ' : ''}USD ${usd(minimum)}`;
   return `<article class="product-card marketplace-product-card" data-model="${esc(product.model)}" tabindex="0" role="button" aria-label="View ${esc(product.model)} details">
-    <div class="marketplace-product-image"><img loading="lazy" decoding="async" src="${catalogImagePlaceholder}" data-catalog-src="${esc(product.image)}" alt="${esc(product.model)} ${esc(product.nameEn)}"></div>
+    <div class="marketplace-product-image"><img width="240" height="240" loading="lazy" decoding="async" src="${catalogImagePlaceholder}" data-catalog-src="${esc(product.image)}" alt="${esc(product.model)} ${esc(product.nameEn)}"></div>
     <div class="marketplace-product-copy">
       <span class="marketplace-product-kicker">${esc(product.categoryEn)}</span>
       <h3>${esc(product.model)}</h3>
@@ -178,7 +178,7 @@ function marketplaceProductCard(product) {
 
 function marketplaceHome(initialCategory = '') {
   const categoryNav = data.map((category, index) => `<button type="button" data-marketplace-target="${esc(category.id)}" class="${(!initialCategory && index === 0) || initialCategory === category.id ? 'active' : ''}" aria-pressed="${String((!initialCategory && index === 0) || initialCategory === category.id)}">
-    <img loading="lazy" decoding="async" src="${catalogImagePlaceholder}" data-catalog-src="${esc(category.items[0]?.image)}" alt="">
+    <img width="72" height="72" loading="lazy" decoding="async" src="${catalogImagePlaceholder}" data-catalog-src="${esc(category.items[0]?.image)}" alt="">
     <span><strong>${esc(category.en)}</strong><small>${category.items.length} models</small></span>
   </button>`).join('');
   const sections = data.map(category => `<section class="marketplace-category" data-marketplace-section="${esc(category.id)}">
