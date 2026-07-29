@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en" class="lzn-booting">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://snyvexlqpxpqjswizszz.supabase.co" crossorigin>
   <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/lzn-favicon.svg?v=20260723-2" />
   <title>LZN Optical Lens</title>
   <meta name="description" content="LZN Optical Lens product catalogue: blue ray, photochromic, progressive and semi-finished optical lenses." />
-  <style>html{background:#f6f6f3}html.lzn-booting body{opacity:0;visibility:hidden;pointer-events:none}</style>
-  <noscript><style>html.lzn-booting body{opacity:1;visibility:visible;pointer-events:auto}</style></noscript>
-  <script>window.addEventListener('DOMContentLoaded',()=>requestAnimationFrame(()=>document.documentElement.classList.remove('lzn-booting')),{once:true});</script>
+  <style>html{background:#f6f6f3}#productGrid:empty::before{content:"Loading products…";display:block;padding:48px 24px;color:#5f6f69;font-weight:800;text-align:center}</style>
   <link rel="stylesheet" href="styles.css?v=20260729-17" />
   <link rel="stylesheet" href="/tools/unified-theme.css?v=20260717-1">
   <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260729-28">
@@ -100,13 +100,13 @@
     <div class="cart-body" id="commerceBody"></div>
   </dialog>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js?v=20260713-1"></script>
-  <script src="/tools/marketplace-catalog.js?v=20260729-4"></script>
-  <script src="/tools/address-profile.js?v=20260729-2"></script>
-  <script src="script.js?v=20260729-7"></script>
-<script src="/tools/shared-cart.js?v=20260723-7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="supabase-config.js?v=20260713-1" defer></script>
+  <script src="/tools/marketplace-catalog.js?v=20260729-4" defer></script>
+  <script src="/tools/address-profile.js?v=20260729-2" defer></script>
+  <script src="script.js?v=20260729-7" defer></script>
+<script src="/tools/shared-cart.js?v=20260723-7" defer></script>
 <script src="/tools/portfolio-shell.js?v=20260729-1" defer></script>
-<script src="/tools/promotion-popup.js?v=20260727-5"></script>
+<script src="/tools/promotion-popup.js?v=20260727-5" defer></script>
 </body>
 </html>
