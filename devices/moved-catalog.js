@@ -207,7 +207,7 @@
     const hasChoices = (product.options?.length || 0) > 1;
     const display = minimum === null ? 'Price on request' : `${hasChoices ? 'From ' : ''}USD ${formatUsd(minimum)}`;
     return `<article class="marketplace-product-card" data-device-model="${escapeHtml(product.model)}" tabindex="0" role="button" aria-label="View ${escapeHtml(product.model)} details">
-      <div class="marketplace-product-image"><img loading="lazy" decoding="async" src="${escapeHtml(product.image)}" alt="${escapeHtml(product.model)} ${escapeHtml(product.nameEn)}"></div>
+      <div class="marketplace-product-image"><img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${escapeHtml(product.image)}" alt="${escapeHtml(product.model)} ${escapeHtml(product.nameEn)}"></div>
       <div class="marketplace-product-copy">
         <span class="marketplace-product-kicker">${escapeHtml(category.en)}</span>
         <h3>${escapeHtml(product.model)}</h3>
@@ -390,6 +390,7 @@
       host.innerHTML = matches.length ? matches.map(product => card(product, category)).join('') : '<p class="marketplace-empty">No matching products in this category.</p>';
     });
     bindCards();
+    window.LZNMarketplace?.refresh(shell);
   });
 
   window.LZNMarketplace?.bind(shell);
