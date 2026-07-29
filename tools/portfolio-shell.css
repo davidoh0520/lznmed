@@ -95,3 +95,87 @@ body.portfolio-www .site-header{justify-content:flex-start!important}body.portfo
   .portfolio-contact-footer .portfolio-policy-links a{font-size:9px!important}
   .portfolio-contact-footer .copyright{font-size:9px}
 }
+
+}
+
+/* Compact two-row mobile storefront header. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media(max-width:720px){
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .site-header{
+    min-height:0!important;
+    height:auto!important;
+    padding:6px 10px 7px!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    grid-template-areas:"brand actions" "departments departments";
+    align-items:center!important;
+    gap:5px 8px!important;
+    flex-wrap:nowrap!important;
+  }
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .site-header>:is(.brand,.wordmark){
+    grid-area:brand;
+    min-width:0;
+    gap:7px!important;
+  }
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .portfolio-logo{
+    width:46px!important;
+    height:25px!important;
+  }
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .portfolio-brand-copy{
+    min-width:0;
+  }
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .portfolio-brand-copy strong{
+    overflow:hidden;
+    font-size:12px!important;
+    line-height:1!important;
+    text-overflow:ellipsis;
+  }
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .portfolio-brand-copy small{
+    display:none!important;
+  }
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .portfolio-actions{
+    grid-area:actions;
+    min-width:0;
+    margin:0!important;
+    gap:5px!important;
+  }
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .portfolio-actions>button{
+    min-height:30px!important;
+    padding:6px 9px!important;
+    font-size:10px!important;
+    line-height:1!important;
+  }
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .portfolio-actions #accountButton{
+    max-width:124px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .portfolio-switcher{
+    grid-area:departments;
+    order:4;
+    width:100%!important;
+    min-width:0;
+    flex-basis:auto!important;
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    justify-content:flex-start!important;
+    gap:4px!important;
+    overflow-x:auto;
+    margin:0!important;
+    padding:0!important;
+    scrollbar-width:none;
+  }
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .portfolio-switcher::-webkit-scrollbar{display:none}
+  body:is(.portfolio-www,.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .portfolio-switcher>a{
+    display:block!important;
+    flex:1 0 auto;
+    min-height:27px;
+    padding:7px 8px!important;
+    border-radius:999px;
+    white-space:nowrap;
+    text-align:center;
+    font-size:9px!important;
+    line-height:1!important;
+    letter-spacing:.025em!important;
+  }
+}
