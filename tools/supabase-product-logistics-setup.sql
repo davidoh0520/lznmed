@@ -136,3 +136,16 @@ values
   ('GB-113T','Ultrasonic Cleaner','Devices',2.3,25,24,28,6,15,75,52,30,'Liangyou 2024 brochure; Ultrasonic Cleaners'),
   ('GB-008','Ultrasonic Cleaner','Devices',1.2,23,17,18,12,16.2,47,35,56,'Liangyou 2024 brochure; Ultrasonic Cleaners')
 on conflict (model) do nothing;
+
+-- PD-adjustable trial frames from page 53 of the Liangyou 2024 brochure.
+insert into public.product_logistics (
+  model, product_name, store_section,
+  package_weight_kg, package_length_cm, package_width_cm, package_height_cm,
+  units_per_carton, carton_weight_kg,
+  carton_length_cm, carton_width_cm, carton_height_cm, notes
+)
+values
+  ('TF-B','Adjustable Trial Frame','Devices',0.12,19,10,5.5,50,6.9,50,41,30,'Liangyou 2024 brochure page 53; continuously adjustable PD 48-80 mm'),
+  ('TF-BT','Adjustable Trial Frame','Devices',0.15,16.5,9,5.5,50,7.9,47,36,30,'Liangyou 2024 brochure page 53; continuously adjustable PD 54-70 mm'),
+  ('TF-S','Adjustable Trial Frame','Devices',0.15,18.5,10.5,6,25,4.5,53,33,22,'Liangyou 2024 brochure page 53; continuously adjustable PD 50-80 mm')
+on conflict (model) do nothing;
