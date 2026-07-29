@@ -483,6 +483,9 @@
   }
 
   function closeDetailModal(modal) {
+    modal?.querySelectorAll('.lzn-commerce-detail').forEach(detail => {
+      detail.dispatchEvent(new Event('lzn:detail-close'));
+    });
     document.body.classList.remove('lzn-product-detail-open');
     document.body.style.overflow = '';
     if (!modal) return;
@@ -625,7 +628,32 @@
     }
 
     const thumbnailWrap = detail.querySelector('.lzn-commerce-thumbnails');
-    galleryImages.slice(0, 12).forEach((source, index) => {
+    const gallerySources = galleryImages.slice(0, 12);
+    let galleryIndex = 0;
+    let galleryTimer = 0;
+    const showGalleryImage = index => {
+      if (!gallerySources.length) return;
+      galleryIndex = (index + gallerySources.length) % gallerySources.length;
+      mainImage.src = gallerySources[galleryIndex];
+      thumbnailWrap.querySelectorAll('.lzn-commerce-thumb').forEach((item, itemIndex) => {
+        item.classList.toggle('is-selected', itemIndex === galleryIndex);
+      });
+    };
+    const stopGalleryRotation = () => {
+      if (!galleryTimer) return;
+      window.clearInterval(galleryTimer);
+      galleryTimer = 0;
+    };
+    const startGalleryRotation = () => {
+      stopGalleryRotation();
+      if (gallerySources.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.hidden) return;
+      galleryTimer = window.setInterval(() => showGalleryImage(galleryIndex + 1), 2000);
+    };
+    const handleGalleryVisibility = () => {
+      if (document.hidden) stopGalleryRotation();
+      else startGalleryRotation();
+    };
+    gallerySources.forEach((source, index) => {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'lzn-commerce-thumb';
@@ -633,13 +661,18 @@
       button.querySelector('img').src = source;
       button.querySelector('img').alt = `${product.nameEn || product.model} image ${index + 1}`;
       button.addEventListener('click', () => {
-        mainImage.src = source;
-        thumbnailWrap.querySelectorAll('.lzn-commerce-thumb').forEach(item => item.classList.remove('is-selected'));
-        button.classList.add('is-selected');
+        showGalleryImage(index);
+        startGalleryRotation();
       });
       thumbnailWrap.appendChild(button);
     });
-    thumbnailWrap.firstElementChild?.classList.add('is-selected');
+    showGalleryImage(0);
+    document.addEventListener('visibilitychange', handleGalleryVisibility);
+    startGalleryRotation();
+    detail.addEventListener('lzn:detail-close', () => {
+      stopGalleryRotation();
+      document.removeEventListener('visibilitychange', handleGalleryVisibility);
+    }, { once: true });
 
     const featureList = detail.querySelector('.lzn-commerce-features ul');
     (product.features || []).forEach(feature => {
