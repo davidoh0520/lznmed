@@ -49,6 +49,9 @@ html,body{max-width:100%;overflow-x:hidden}
   background:#fff;
   color:#101828;
 }
+.marketplace-major-nav button:not(.active){grid-template-columns:1fr}
+.marketplace-major-nav button:not(.active)>img,
+.marketplace-major-nav button:not(.active) .lens-category-envelope{display:none}
 .marketplace-major-nav button.active::before{background:var(--market-accent)}
 .marketplace-major-nav img{
   width:44px;
