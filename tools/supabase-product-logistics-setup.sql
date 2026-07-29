@@ -182,3 +182,12 @@ values
   ('PA-1','Counter-mounted Phoropter Arm with Light','Devices',20,'Liangyou 2024 brochure page 63; up/down angle +/-30 degrees; rotation 90 degrees; price on request'),
   ('PA-2','Wall-mounted Phoropter Arm','Devices',14,'Liangyou 2024 brochure page 63; up/down angle +/-30 degrees; rotation 180 degrees; price on request')
 on conflict (model) do nothing;
+
+-- Compact progressive trial lens set.
+insert into public.product_logistics (
+  model, product_name, store_section,
+  package_weight_kg, package_length_cm, package_width_cm, package_height_cm, notes
+)
+values
+  ('JS-22','22-Piece Progressive Trial Lens Set','Devices',0.9,22,18,9,'Liangyou brochure; 22 metal-rim lenses in an aluminium case; price on request')
+on conflict (model) do nothing;
