@@ -4,8 +4,6 @@
   const nav = document.querySelector('#deviceCategoryNav');
   const content = document.querySelector('#deviceCatalogContent');
 
-  // Models marked with a star in the supplied Liangyou wholesale price list.
-  const bestChoiceModels = new Set(["LY-166","LY-166X","LY-188","LY-188X","LY-188-2","LY-188X-2","LY-199X","LY-199X-1","LY-199X-2","LY-160","LY-160X","LY-700","LY-700X","LY-700-2","LY-700X-2","LY-600","LY-800A","LY-800B","MC-S","MC-W","MC-G","MC-A","LY-3AHT","LY-3AHL","LY-3AH-AL","LY-3AH-2","LY-3B","LY-3B-1","LY-3B-2","LY-18","LY-5FC-35WV","LY-5FA-35P","LY-316A","LY-316B","LY-918D","LY-6AG","LY-7X"]);
   const cleanCatalogValue = value => {
     const text = String(value || '').trim();
     return !text || /^to be confirmed\.?$/i.test(text) ? '' : text;
@@ -191,7 +189,7 @@
   window.LZNDeviceAnimateToCart = animateToCart;
   const publicProduct = product => ({
     ...product,
-    bestChoice: Boolean(product.bestChoice || bestChoiceModels.has(String(product.model || '').toUpperCase())),
+    bestChoice: false,
     description: cleanDescription(product.description),
     image: publicAsset(product.image),
     images: (product.images || []).map(publicAsset),
@@ -245,19 +243,45 @@
     });
     return { ...product, optionLabel: 'PD size', options };
   };
-  const normalizedCategories = categories.map(category => ({
-    ...category,
-    items: category.items
-      .map(item => withOrderingOptions(publicProduct(item), category.id))
-      .sort((first, second) => Number(second.bestChoice) - Number(first.bestChoice))
-  }));
-
   function prices(product) {
     const optionPrices = (product.options || []).map(option => Number(option.priceUsd)).filter(value => Number.isFinite(value) && value > 0);
     if (optionPrices.length) return optionPrices;
     const price = Number(product.priceUsd);
     return Number.isFinite(price) && price > 0 ? [price] : [];
   }
+
+  const modelKey = product => String(product.model || '').trim().toUpperCase();
+  const lowestAvailablePrice = product => {
+    const values = prices(product);
+    return values.length ? Math.min(...values) : null;
+  };
+  const bestChoiceKeys = products => {
+    const ranked = products
+      .map((product, index) => ({
+        index,
+        key: modelKey(product),
+        price: lowestAvailablePrice(product)
+      }))
+      .filter(item => item.key && Number.isFinite(item.price))
+      .sort((first, second) => first.price - second.price || first.index - second.index);
+    if (!ranked.length) return new Set();
+
+    // Up to four models: one second-most-expensive choice. Five or more:
+    // add the third-cheapest choice so recommendations are spread across the series.
+    const selected = [ranked[Math.max(0, ranked.length - 2)]];
+    if (products.length >= 5 && ranked.length >= 3) selected.push(ranked[2]);
+    return new Set(selected.map(item => item.key));
+  };
+  const normalizedCategories = categories.map(category => {
+    const products = category.items.map(item => withOrderingOptions(publicProduct(item), category.id));
+    const selected = bestChoiceKeys(products);
+    return {
+      ...category,
+      items: products
+        .map(product => ({ ...product, bestChoice: selected.has(modelKey(product)) }))
+        .sort((first, second) => Number(second.bestChoice) - Number(first.bestChoice))
+    };
+  });
 
   function detailInformation(product) {
     const features = (product.features || []).map(cleanCatalogValue).filter(Boolean);

@@ -90,6 +90,121 @@ function purchaseSourceHtml(model) {
   </div>`;
 }
 
+function logisticsTableUnavailable(error) {
+  const message = String(error?.message || '');
+  return error?.code === 'PGRST205' ||
+    /could not find the table ['"]?public\.product_logistics/i.test(message) ||
+    /relation .*(?:public\.)?product_logistics.* does not exist/i.test(message);
+}
+
+function positiveNumber(value) {
+  const number = Number(value);
+  return Number.isFinite(number) && number > 0 ? number : null;
+}
+
+function dimensionText(record, prefix) {
+  const dimensions = ['length', 'width', 'height'].map(axis => positiveNumber(record?.[`${prefix}_${axis}_cm`]));
+  return dimensions.every(Boolean) ? `${dimensions.map(value => Number(value.toFixed(2))).join(' × ')} cm` : '';
+}
+
+function volumeCbm(record, prefix) {
+  const dimensions = ['length', 'width', 'height'].map(axis => positiveNumber(record?.[`${prefix}_${axis}_cm`]));
+  return dimensions.every(Boolean) ? dimensions.reduce((total, value) => total * value, 1) / 1000000 : 0;
+}
+
+function logisticsForModel(model) {
+  const key = String(model || '').trim().toUpperCase();
+  if (!key) return null;
+  const catalogModel = catalogProductForModel(model)?.model;
+  const candidates = [key, String(catalogModel || '').toUpperCase(), publicRootModel(model)].filter(Boolean);
+  for (const candidate of candidates) {
+    const exact = productLogistics.find(item => String(item.model).toUpperCase() === candidate);
+    if (exact) return exact;
+  }
+  return productLogistics
+    .filter(item => {
+      const logisticsModel = String(item.model).toUpperCase();
+      if (key.startsWith(`${logisticsModel}-`)) return true;
+      return logisticsModel.endsWith(' SERIES') && key.startsWith(logisticsModel.slice(0, -7).trim());
+    })
+    .sort((first, second) => String(second.model).length - String(first.model).length)[0] || null;
+}
+
+function unitChargeableWeight(record) {
+  if (!record) return null;
+  const actual = positiveNumber(record.package_weight_kg) || positiveNumber(record.unit_weight_kg) || 0;
+  const volume = volumeCbm(record, 'package') * 200;
+  if (!actual && !volume) return null;
+  return { actual, volume, chargeable: Math.max(actual, volume) };
+}
+
+function shipmentEstimate(items = activeItems) {
+  let actualKg = 0;
+  let cbm = 0;
+  const lines = [];
+  const missing = [];
+  (items || []).forEach(item => {
+    const quantity = Math.max(0, Number(item.quantity) || 0);
+    const logistics = logisticsForModel(item.model);
+    if (!quantity || !logistics) {
+      if (quantity) missing.push(item.model);
+      return;
+    }
+    const unitsPerCarton = Math.max(0, Math.floor(Number(logistics.units_per_carton) || 0));
+    const cartonWeight = positiveNumber(logistics.carton_weight_kg);
+    const cartonCbm = volumeCbm(logistics, 'carton');
+    const packageWeight = positiveNumber(logistics.package_weight_kg) || positiveNumber(logistics.unit_weight_kg);
+    const packageCbm = volumeCbm(logistics, 'package');
+    const canUseCarton = unitsPerCarton > 0 && cartonWeight && cartonCbm;
+    const cartonCount = canUseCarton ? Math.floor(quantity / unitsPerCarton) : 0;
+    const remainder = canUseCarton ? quantity % unitsPerCarton : quantity;
+    const lineActual = cartonCount * cartonWeight + remainder * (packageWeight || 0);
+    const lineCbm = cartonCount * cartonCbm + remainder * packageCbm;
+    actualKg += lineActual;
+    cbm += lineCbm;
+    if (remainder > 0 && (!packageWeight || !packageCbm)) missing.push(item.model);
+    lines.push({
+      model: item.model,
+      quantity,
+      cartonCount,
+      remainder,
+      actualKg: lineActual,
+      cbm: lineCbm
+    });
+  });
+  const volumeKg = cbm * 200;
+  return {
+    actualKg,
+    cbm,
+    volumeKg,
+    chargeableKg: Math.max(actualKg, volumeKg),
+    lines,
+    missing: [...new Set(missing)]
+  };
+}
+
+function logisticsInlineHtml(item) {
+  const logistics = logisticsForModel(item.model);
+  if (!logistics) return '<div class="logistics-inline"><strong>Logistics data missing</strong><span>Add this model in Product logistics.</span></div>';
+  const weight = positiveNumber(logistics.package_weight_kg) || positiveNumber(logistics.unit_weight_kg);
+  const size = dimensionText(logistics, 'package');
+  return `<div class="logistics-inline"><strong>${e(weight ? `${weight} kg packed` : 'Packed weight missing')}</strong><span>${e(size || 'Package size missing')}${logistics.units_per_carton ? ` · ${e(logistics.units_per_carton)} pcs/carton` : ''}</span></div>`;
+}
+
+function shipmentEstimateHtml(estimate) {
+  if (!logisticsTableReady) return '<div class="shipment-estimate"><strong>Product logistics setup required.</strong><p>Run <code>supabase-product-logistics-setup.sql</code> before using automatic shipment estimates.</p></div>';
+  if (!estimate.lines.length) return '<div class="shipment-estimate"><strong>No saved logistics data matches this order.</strong><p>Add the order models in Product logistics before calculating freight.</p></div>';
+  const lineNotes = estimate.lines.map(line => `<li>${e(line.model)} × ${e(line.quantity)}${line.cartonCount ? ` · ${e(line.cartonCount)} full carton${line.cartonCount === 1 ? '' : 's'} + ${e(line.remainder)} unit${line.remainder === 1 ? '' : 's'}` : ''}</li>`).join('');
+  return `<div class="shipment-estimate">
+    <div class="shipment-estimate-grid">
+      <div><span>Estimated actual</span><strong>${e(estimate.actualKg.toFixed(2))} kg</strong></div>
+      <div><span>Total volume</span><strong>${e(estimate.cbm.toFixed(4))} CBM</strong></div>
+      <div><span>Chargeable estimate</span><strong>${e(estimate.chargeableKg.toFixed(2))} kg</strong></div>
+    </div>
+    <ul>${lineNotes}${estimate.missing.length ? `<li class="logistics-missing">Incomplete or missing package data: ${e(estimate.missing.join(', '))}</li>` : ''}</ul>
+  </div>`;
+}
+
 function couponTableUnavailable(error) {
   const message = String(error?.message || '');
   return error?.code === 'PGRST205' ||
@@ -198,6 +313,8 @@ let activeOrder = null;
 let activeItems = [];
 let activeIssuedCoupons = [];
 let activeSfCalculation = null;
+let productLogistics = [];
+let logisticsTableReady = true;
 let loadingData = false;
 
 function showOnly(view) {
@@ -256,6 +373,7 @@ signOutButton.addEventListener('click', async () => {
   session = null;
   orders = [];
   members = [];
+  productLogistics = [];
   showOnly(authView);
 });
 
@@ -263,13 +381,15 @@ async function loadData(retried = false) {
   if (loadingData) return;
   loadingData = true;
   document.querySelector('#refreshData').disabled = true;
-  const [orderResult, memberResult] = await Promise.all([
+  const [orderResult, memberResult, logisticsResult] = await Promise.all([
     client.from('orders').select('*').order('created_at', { ascending: false }),
-    client.from('profiles').select('*').order('created_at', { ascending: false })
+    client.from('profiles').select('*').order('created_at', { ascending: false }),
+    client.from('product_logistics').select('*').order('store_section').order('model')
   ]);
   document.querySelector('#refreshData').disabled = false;
-  if (orderResult.error || memberResult.error) {
-    const message = orderResult.error?.message || memberResult.error?.message || 'Unable to load admin data.';
+  const logisticsError = logisticsResult.error && !logisticsTableUnavailable(logisticsResult.error) ? logisticsResult.error : null;
+  if (orderResult.error || memberResult.error || logisticsError) {
+    const message = orderResult.error?.message || memberResult.error?.message || logisticsError?.message || 'Unable to load admin data.';
     if (!retried && /jwt issued at future/i.test(message)) {
       const refreshed = await client.auth.refreshSession();
       if (refreshed.data?.session) {
@@ -284,9 +404,12 @@ async function loadData(retried = false) {
   }
   orders = orderResult.data || [];
   members = memberResult.data || [];
+  logisticsTableReady = !logisticsTableUnavailable(logisticsResult.error);
+  productLogistics = logisticsTableReady ? (logisticsResult.data || []) : [];
   renderSummary();
   renderOrders();
   renderMembers();
+  renderLogistics();
   renderPurchases();
   loadingData = false;
 }
@@ -307,6 +430,7 @@ function renderSummary() {
     <div class="summary-card"><span>Members</span><strong>${members.length}</strong></div>
     <div class="summary-card"><span>Total orders</span><strong>${orders.length}</strong></div>
     <div class="summary-card"><span>Open orders</span><strong>${open}</strong></div>
+    <div class="summary-card"><span>Logistics records</span><strong>${logisticsTableReady ? productLogistics.length : 'Setup'}</strong><small>${logisticsTableReady ? 'Available for freight estimates' : 'SQL table required'}</small></div>
     <div class="summary-card"><span>Paid order value</span><strong>${money(paid)}</strong><small>${awaitingPayment} awaiting payment</small></div>`;
 }
 
@@ -371,9 +495,169 @@ function renderPurchases() {
   }).join('') : '<tr><td class="empty" colspan="4">No matching Taobao products.</td></tr>';
 }
 
+function renderLogistics() {
+  const body = document.querySelector('#logisticsBody');
+  const search = document.querySelector('#logisticsSearch');
+  const note = document.querySelector('#logisticsNote');
+  if (!body || !search || !note) return;
+  if (!logisticsTableReady) {
+    note.classList.add('setup-required');
+    note.innerHTML = 'Setup required: run <code>supabase-product-logistics-setup.sql</code> in the Supabase SQL Editor. The admin page remains usable while this table is unavailable.';
+    body.innerHTML = '<tr><td class="empty" colspan="6">Product logistics table has not been installed yet.</td></tr>';
+    return;
+  }
+  note.classList.remove('setup-required');
+  note.textContent = 'Shipment estimates use full-carton data first, then individual package data for the remaining quantity. Chargeable weight is the greater of actual weight and volume weight.';
+  const query = search.value.trim().toLowerCase();
+  const filtered = productLogistics.filter(item => !query || `${item.model} ${item.product_name || ''} ${item.store_section || ''} ${item.notes || ''}`.toLowerCase().includes(query));
+  body.innerHTML = filtered.length ? filtered.map(item => {
+    const productSize = dimensionText(item, 'product');
+    const packageSize = dimensionText(item, 'package');
+    const cartonSize = dimensionText(item, 'carton');
+    const packageWeight = positiveNumber(item.package_weight_kg) || positiveNumber(item.unit_weight_kg);
+    const estimate = unitChargeableWeight(item);
+    return `<tr data-logistics-model="${e(item.model)}">
+      <td><strong>${e(item.model)}</strong><br><small>${e(item.product_name || 'Product name not entered')}</small></td>
+      <td><span class="status">${e(item.store_section || 'Other')}</span></td>
+      <td>${productSize ? `<strong>${e(productSize)}</strong>` : '<span class="missing-value">Not entered</span>'}${item.unit_weight_kg ? `<small>Net ${e(item.unit_weight_kg)} kg</small>` : ''}</td>
+      <td>${packageSize ? `<strong>${e(packageSize)}</strong>` : '<span class="missing-value">Size missing</span>'}<small>${packageWeight ? `${e(packageWeight)} kg gross` : '<span class="missing-value">Weight missing</span>'}</small></td>
+      <td>${cartonSize ? `<strong>${e(cartonSize)}</strong>` : '<span class="missing-value">Not entered</span>'}<small>${item.units_per_carton ? `${e(item.units_per_carton)} pcs · ` : ''}${item.carton_weight_kg ? `${e(item.carton_weight_kg)} kg` : ''}</small></td>
+      <td><div class="logistics-volume">${estimate ? `<strong>${e(estimate.chargeable.toFixed(2))} kg</strong><small>Actual ${e(estimate.actual.toFixed(2))} / volume ${e(estimate.volume.toFixed(2))}</small>` : '<span class="missing-value">Insufficient data</span>'}</div></td>
+    </tr>`;
+  }).join('') : '<tr><td class="empty" colspan="6">No matching product logistics records.</td></tr>';
+}
+
+function logisticsNumberInput(name, label, value, step = '0.01') {
+  return `<label>${e(label)}<input name="${e(name)}" type="number" min="0" step="${e(step)}" value="${e(value ?? '')}"></label>`;
+}
+
+function updateLogisticsPreview(form) {
+  const preview = document.querySelector('#logisticsPreview');
+  if (!preview || !form) return;
+  const values = Object.fromEntries(new FormData(form));
+  const estimate = unitChargeableWeight(values);
+  const packageCbm = volumeCbm(values, 'package');
+  preview.innerHTML = `
+    <div><span>Package volume</span><strong>${e(packageCbm.toFixed(4))} CBM</strong></div>
+    <div><span>Volume weight</span><strong>${e((packageCbm * 200).toFixed(2))} kg</strong></div>
+    <div><span>Chargeable / unit</span><strong>${estimate ? e(estimate.chargeable.toFixed(2)) : '—'} kg</strong></div>`;
+}
+
+function openLogisticsEditor(model = '') {
+  if (!logisticsTableReady) {
+    detail.innerHTML = '<div class="detail-head"><p class="eyebrow">Product logistics</p><h2>Database setup required</h2></div><section class="detail-section"><p>Run <code>tools/supabase-product-logistics-setup.sql</code> in the Supabase SQL Editor, then refresh this page.</p></section>';
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    return;
+  }
+  const record = productLogistics.find(item => item.model === model) || null;
+  const value = field => record?.[field] ?? '';
+  const storeOptions = ['Devices','Tools','Frames','Lenses','Other'].map(store => `<option value="${store}" ${(record?.store_section || 'Devices') === store ? 'selected' : ''}>${store}</option>`).join('');
+  detail.innerHTML = `
+    <div class="detail-head"><p class="eyebrow">Product logistics</p><h2>${e(record?.model || 'Add product')}</h2><p>Saved separately from the customer-facing catalog and used for freight estimates.</p></div>
+    <form id="logisticsForm" class="form-grid">
+      <label>Model<input class="${record ? 'model-locked' : ''}" name="model" required ${record ? 'readonly' : ''} value="${e(value('model'))}" placeholder="e.g. LY-21C"></label>
+      <label>Store / product family<select name="store_section">${storeOptions}</select></label>
+      <label class="wide">Product name<input name="product_name" value="${e(value('product_name'))}" placeholder="English product name"></label>
+      <section class="logistics-form-section wide"><h3>Product itself</h3>
+        ${logisticsNumberInput('unit_weight_kg', 'Net product weight (kg)', value('unit_weight_kg'), '0.001')}
+        <div class="dimension-grid">
+          ${logisticsNumberInput('product_length_cm', 'Length (cm)', value('product_length_cm'))}
+          ${logisticsNumberInput('product_width_cm', 'Width (cm)', value('product_width_cm'))}
+          ${logisticsNumberInput('product_height_cm', 'Height (cm)', value('product_height_cm'))}
+        </div>
+      </section>
+      <section class="logistics-form-section wide"><h3>Individual shipping package</h3>
+        ${logisticsNumberInput('package_weight_kg', 'Gross weight (kg)', value('package_weight_kg'), '0.001')}
+        <div class="dimension-grid">
+          ${logisticsNumberInput('package_length_cm', 'Length (cm)', value('package_length_cm'))}
+          ${logisticsNumberInput('package_width_cm', 'Width (cm)', value('package_width_cm'))}
+          ${logisticsNumberInput('package_height_cm', 'Height (cm)', value('package_height_cm'))}
+        </div>
+      </section>
+      <section class="logistics-form-section wide"><h3>Master carton</h3>
+        <div class="dimension-grid">
+          ${logisticsNumberInput('units_per_carton', 'Units / carton', value('units_per_carton'), '1')}
+          ${logisticsNumberInput('carton_weight_kg', 'Carton gross (kg)', value('carton_weight_kg'), '0.001')}
+          <span></span>
+          ${logisticsNumberInput('carton_length_cm', 'Length (cm)', value('carton_length_cm'))}
+          ${logisticsNumberInput('carton_width_cm', 'Width (cm)', value('carton_width_cm'))}
+          ${logisticsNumberInput('carton_height_cm', 'Height (cm)', value('carton_height_cm'))}
+        </div>
+      </section>
+      <label class="wide">Source / internal notes<textarea name="notes" rows="3" placeholder="Brochure page, test distance, packing caveats...">${e(value('notes'))}</textarea></label>
+      <div class="logistics-calculation wide" id="logisticsPreview"></div>
+    </form>
+    <div class="order-actions"><button class="primary-button" id="saveLogistics" type="button">Save logistics</button>${record ? '<button class="danger-button" id="deleteLogistics" type="button">Delete record</button>' : ''}</div>
+    <p class="save-status" id="logisticsSaveStatus"></p>`;
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
+  const form = document.querySelector('#logisticsForm');
+  form.addEventListener('input', () => updateLogisticsPreview(form));
+  updateLogisticsPreview(form);
+  document.querySelector('#saveLogistics').addEventListener('click', async () => {
+    const status = document.querySelector('#logisticsSaveStatus');
+    const button = document.querySelector('#saveLogistics');
+    const values = Object.fromEntries(new FormData(form));
+    values.model = String(values.model || '').trim().toUpperCase();
+    values.product_name = String(values.product_name || '').trim() || null;
+    values.notes = String(values.notes || '').trim() || null;
+    const numericFields = [
+      'unit_weight_kg','product_length_cm','product_width_cm','product_height_cm',
+      'package_weight_kg','package_length_cm','package_width_cm','package_height_cm',
+      'units_per_carton','carton_weight_kg','carton_length_cm','carton_width_cm','carton_height_cm'
+    ];
+    numericFields.forEach(field => {
+      const number = Number(values[field]);
+      values[field] = values[field] === '' ? null : number;
+    });
+    if (!values.model) {
+      status.textContent = 'Model is required.';
+      return;
+    }
+    if (numericFields.some(field => values[field] !== null && (!Number.isFinite(values[field]) || values[field] < 0)) ||
+        (values.units_per_carton !== null && !Number.isInteger(values.units_per_carton))) {
+      status.textContent = 'Weights and dimensions must be non-negative numbers; units per carton must be a whole number.';
+      return;
+    }
+    values.updated_by = session.user.id;
+    button.disabled = true;
+    status.textContent = 'Saving product logistics...';
+    const { data, error } = await client.from('product_logistics').upsert(values, { onConflict: 'model' }).select().single();
+    button.disabled = false;
+    if (error) {
+      status.textContent = error.message;
+      return;
+    }
+    productLogistics = [...productLogistics.filter(item => item.model !== data.model), data]
+      .sort((first, second) => `${first.store_section} ${first.model}`.localeCompare(`${second.store_section} ${second.model}`));
+    renderLogistics();
+    renderSummary();
+    status.textContent = 'Product logistics saved. Future order freight estimates will use this data.';
+  });
+  document.querySelector('#deleteLogistics')?.addEventListener('click', async () => {
+    const status = document.querySelector('#logisticsSaveStatus');
+    if (window.prompt(`Type DELETE to remove logistics for ${record.model}.`) !== 'DELETE') {
+      status.textContent = 'Deletion cancelled.';
+      return;
+    }
+    const { error } = await client.from('product_logistics').delete().eq('model', record.model);
+    if (error) {
+      status.textContent = error.message;
+      return;
+    }
+    productLogistics = productLogistics.filter(item => item.model !== record.model);
+    renderLogistics();
+    renderSummary();
+    closeDrawer();
+  });
+}
+
 document.querySelector('#orderSearch').addEventListener('input', renderOrders);
 document.querySelector('#statusFilter').addEventListener('change', renderOrders);
 document.querySelector('#memberSearch').addEventListener('input', renderMembers);
+document.querySelector('#logisticsSearch')?.addEventListener('input', renderLogistics);
+document.querySelector('#addLogistics')?.addEventListener('click', () => openLogisticsEditor());
 document.querySelector('#purchaseSearch')?.addEventListener('input', renderPurchases);
 document.querySelector('#refreshData').addEventListener('click', () => loadData());
 
@@ -383,6 +667,7 @@ document.querySelector('.tabs').addEventListener('click', event => {
   document.querySelectorAll('.tabs button').forEach(item => item.classList.toggle('active', item === button));
   document.querySelector('#ordersPanel').hidden = button.dataset.tab !== 'orders';
   document.querySelector('#membersPanel').hidden = button.dataset.tab !== 'members';
+  document.querySelector('#logisticsPanel').hidden = button.dataset.tab !== 'logistics';
   document.querySelector('#purchasesPanel').hidden = button.dataset.tab !== 'purchases';
 });
 
@@ -394,6 +679,11 @@ document.querySelector('#ordersBody').addEventListener('click', event => {
 document.querySelector('#membersBody').addEventListener('click', event => {
   const row = event.target.closest('[data-member-id]');
   if (row) openMember(row.dataset.memberId);
+});
+
+document.querySelector('#logisticsBody')?.addEventListener('click', event => {
+  const row = event.target.closest('[data-logistics-model]');
+  if (row) openLogisticsEditor(row.dataset.logisticsModel);
 });
 
 function openMember(id) {
@@ -504,6 +794,7 @@ async function openOrder(id) {
 
 function sfFreightCalculatorHtml(order) {
   if (!sfFreight) return '<section class="detail-section"><h3>SF International freight calculator</h3><p class="sf-message error">SF tariff data is unavailable. Refresh the page.</p></section>';
+  const estimate = shipmentEstimate();
   const matched = sfFreight.findDestination(order.destination_country);
   const destinationOptions = sfFreight.destinations
     .slice()
@@ -515,12 +806,13 @@ function sfFreightCalculatorHtml(order) {
   const today = new Date().toLocaleDateString('en-CA');
   return `<section class="detail-section sf-freight-section">
     <div class="sf-section-heading"><div><p class="eyebrow">China export public tariff</p><h3>SF International freight calculator</h3></div><div class="sf-source-links"><a href="${e(sfFreight.publicRateUrl)}" target="_blank" rel="noopener">2026 export tariff</a><a href="${e(sfFreight.fuelRateUrl)}" target="_blank" rel="noopener">Official fuel rate</a></div></div>
+    ${shipmentEstimateHtml(estimate)}
     <form id="sfFreightForm" class="sf-freight-form">
       <label class="wide">Destination country<select name="destination" required><option value="">Select destination</option>${destinationOptions}</select></label>
       <label>SF service<select name="service" required></select></label>
       <label>Planned shipment date<input name="ship_date" type="date" value="${e(today)}" required></label>
-      <label>Actual gross weight (kg)<input name="actual_kg" type="number" min="0" step="0.01" placeholder="e.g. 30"></label>
-      <label>Total volume (CBM)<input name="cbm" type="number" min="0" step="0.0001" placeholder="e.g. 0.20"></label>
+      <label>Actual gross weight (kg)<input name="actual_kg" type="number" min="0" step="0.01" value="${estimate.actualKg ? e(estimate.actualKg.toFixed(2)) : ''}" placeholder="e.g. 30"><small>Prefilled from Product logistics; confirm after final packing.</small></label>
+      <label>Total volume (CBM)<input name="cbm" type="number" min="0" step="0.0001" value="${estimate.cbm ? e(estimate.cbm.toFixed(4)) : ''}" placeholder="e.g. 0.20"><small>Prefilled from package/carton dimensions; remains editable.</small></label>
       <label>Fuel surcharge (%)<input name="fuel_rate" type="number" min="0" step="0.01" placeholder="Loading official rate"></label>
       <label>Exchange rate (RMB per USD)<input name="rmb_per_usd" type="number" min="0.01" step="0.0001" value="${e(exchangeRate)}" required></label>
       <label class="wide">Other SF surcharges (RMB)<input name="other_rmb" type="number" min="0" step="0.01" value="0"><small>Remote area, resource allocation, oversize, overweight or special handling charges, if applicable.</small></label>
@@ -647,7 +939,7 @@ function renderOrderDetail() {
     <div class="detail-head"><p class="eyebrow">${e(storeName(order, true))}</p><h2>${e(order.invoice_no || 'Proforma Invoice not assigned')}</h2><p class="request-id">Order ${e(order.id)}</p></div>
     <div class="workflow-banner"><span>Current stage</span><strong>${e(statusLabels[order.status] || order.status)}</strong><small>Next: ${e(nextStepLabels[order.status] || 'Review the order')}</small></div>
     <section class="detail-section"><h3>Customer & shipping</h3><div class="customer-box"><strong>Recipient type:</strong> ${(order.buyer_type || 'company') === 'company' ? 'Company' : 'Individual'}<br>${(order.buyer_type || 'company') === 'company' && order.company_name ? `<strong>${e(order.company_name)}</strong><br>Attn: ` : ''}<strong>${e(order.contact_name || '-')}</strong>${order.contact_email ? `<br><a href="mailto:${e(order.contact_email)}">${e(order.contact_email)}</a>` : ''}<br>${e(order.contact_phone || '')}<br>${e(order.shipping_address || '')}<br>${e(order.postal_code || '')}<br><br><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}${paymentCode(order.payment_method) === 'company_bank_transfer' ? '' : '<br><strong>Processing fee:</strong> Confirmed on Payoneer and may vary.<br><small>Not included in the PI total; do not add it again if Payoneer charges the payer.</small>'}<br><br><strong>Freight request:</strong> ${e(order.courier || '-')}<br><strong>Collect account:</strong> ${e(order.courier_account_no || '-')}</div></section>
-    <section class="detail-section"><h3>Items & selling prices</h3>${activeItems.some(itemPriceOnRequest) ? '<p class="price-request-alert"><strong>Price quotation required.</strong> Enter a selling price for the marked items before issuing the final Proforma Invoice.</p>' : ''}<form id="orderItemsForm"><div class="table-wrap"><table class="order-items editable-order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit price (USD)</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr data-order-item-row data-item-id="${e(item.id)}"><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small>${purchaseSourceHtml(item.model)}</td><td><input aria-label="Quantity for ${e(item.model)}" data-item-quantity type="number" min="1" step="1" value="${e(item.quantity)}"></td><td><input aria-label="Unit price for ${e(item.model)}" data-item-price type="number" min="0" step="0.01" value="${Number(item.unit_price_usd || 0).toFixed(2)}"></td><td data-item-total>${money(item.line_total_usd)}</td></tr>`).join('')}</tbody></table></div><div class="order-actions"><button class="outline-button" type="button" id="saveOrderItems">Save item quantities & prices</button></div><p class="save-status" id="itemSaveStatus"></p></form></section>
+    <section class="detail-section"><h3>Items & selling prices</h3>${activeItems.some(itemPriceOnRequest) ? '<p class="price-request-alert"><strong>Price quotation required.</strong> Enter a selling price for the marked items before issuing the final Proforma Invoice.</p>' : ''}<form id="orderItemsForm"><div class="table-wrap"><table class="order-items editable-order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit price (USD)</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr data-order-item-row data-item-id="${e(item.id)}"><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small>${purchaseSourceHtml(item.model)}${logisticsInlineHtml(item)}</td><td><input aria-label="Quantity for ${e(item.model)}" data-item-quantity type="number" min="1" step="1" value="${e(item.quantity)}"></td><td><input aria-label="Unit price for ${e(item.model)}" data-item-price type="number" min="0" step="0.01" value="${Number(item.unit_price_usd || 0).toFixed(2)}"></td><td data-item-total>${money(item.line_total_usd)}</td></tr>`).join('')}</tbody></table></div><div class="order-actions"><button class="outline-button" type="button" id="saveOrderItems">Save item quantities & prices</button></div><p class="save-status" id="itemSaveStatus"></p></form></section>
     ${order.payment_submitted_at ? `<section class="detail-section"><h3>Customer payment notice</h3><div class="customer-box payment-review"><strong>Verification required</strong><br>Submitted: ${e(date(order.payment_submitted_at))}<br>Remitter / Reference: ${e(order.payment_reference || '-')}<br>Customer note: ${e(order.payment_note || '-')}<p>Confirm receipt through ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'the company bank account' : 'Payoneer'} before changing the status to Paid.</p></div></section>` : ''}
     ${activeIssuedCoupons.length ? `<section class="detail-section"><h3>Issued repeat-order coupons (${activeIssuedCoupons.length})</h3><div class="customer-box">${activeIssuedCoupons.map((coupon, index) => `<div><strong>${index + 1}. ${e(coupon.code)}</strong><br>Value: ${money(coupon.amount_usd)} · Status: ${e(coupon.status)}<br>Issued: ${e(date(coupon.issued_at))} · Expires: ${e(date(coupon.expires_at))}</div>`).join('<hr>')}</div></section>` : ''}
     ${invoiceActivity(order)}
