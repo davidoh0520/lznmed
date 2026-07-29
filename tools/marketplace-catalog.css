@@ -524,3 +524,18 @@ body:is(.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .
   .marketplace-product-copy{padding:6px 7px}
   .marketplace-product-copy h3{font-size:12px}
 }
+
+
+/* Mobile category rail uses text only to avoid decorative thumbnail downloads. */
+@media(max-width:720px){
+  .marketplace-major-nav button{
+    min-height:52px;
+    gap:0;
+    padding:7px 4px;
+  }
+  .marketplace-major-nav img{display:none}
+  .marketplace-major-nav strong{
+    font-size:10px;
+    line-height:1.18;
+  }
+}
