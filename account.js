@@ -161,4 +161,3 @@ accountButton.addEventListener('click', openAccount);
 document.querySelector('.account-close').addEventListener('click', () => accountDialog.close());
 accountClient.auth.getSession().then(({data}) => { accountSession = data.session; updateAccountLabel(); });
 accountClient.auth.onAuthStateChange((_event, session) => { accountSession = session; accountProfile = null; updateAccountLabel(); });
-
