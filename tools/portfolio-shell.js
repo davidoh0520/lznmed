@@ -470,4 +470,5 @@
   if(kind==='www'){
     const unifiedFooter=document.createElement('section');unifiedFooter.id='contact';unifiedFooter.className='portfolio-contact-footer';unifiedFooter.innerHTML=`<div class="footer-brand"><img src="/tools/lzn-transparent-logo.svg?v=original-ai" alt="LZN"></div><nav class="portfolio-policy-links" aria-label="Store policies"><a href="/policies/#terms">Terms &amp; Conditions</a><a href="/policies/#privacy">Privacy</a><a href="/policies/#shipping">Shipping</a><a href="/policies/#returns">Returns &amp; Refunds</a><a href="/policies/#warranty">Warranty</a><a href="/policies/#cookies">Cookies</a></nav><p class="copyright">© 2026 LZN MEDICAL CO., LTD. All Rights Reserved.</p>`;document.querySelector('main')?.appendChild(unifiedFooter);
   }
+  requestAnimationFrame(()=>document.documentElement.classList.remove('lzn-shell-pending'));
 })();
