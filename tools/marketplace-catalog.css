@@ -524,3 +524,25 @@ body:is(.portfolio-devices,.portfolio-tools,.portfolio-lens,.portfolio-frames) .
   .marketplace-product-copy{padding:6px 7px}
   .marketplace-product-copy h3{font-size:12px}
 }
+
+
+/* Mobile category rail shows one preview only: the first product in the active category. */
+@media(max-width:720px){
+  .marketplace-major-nav button{
+    min-height:52px;
+    gap:0;
+    padding:7px 4px;
+  }
+  .marketplace-major-nav img,
+  .marketplace-major-nav .lens-category-envelope{display:none}
+  .marketplace-major-nav button.active{
+    min-height:68px;
+    gap:4px;
+  }
+  .marketplace-major-nav button.active>img{display:block}
+  .marketplace-major-nav button.active .lens-category-envelope{display:block}
+  .marketplace-major-nav strong{
+    font-size:10px;
+    line-height:1.18;
+  }
+}

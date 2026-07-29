@@ -226,7 +226,7 @@
   content.className = 'marketplace-scroll';
 
   nav.innerHTML = normalizedCategories.map((category, index) => `<button type="button" data-marketplace-target="${escapeHtml(category.id)}" class="${index ? '' : 'active'}" aria-pressed="${index ? 'false' : 'true'}">
-    <img loading="lazy" decoding="async" src="${escapeHtml(category.items[0]?.image)}" alt="">
+    <img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${escapeHtml(category.items[0]?.image)}" alt="">
     <span><strong>${escapeHtml(category.en)}</strong><small>${category.items.length} models</small></span>
   </button>`).join('');
 

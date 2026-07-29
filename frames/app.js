@@ -501,7 +501,7 @@ function renderFramesMarketplace(){
   const nav=series.map((item,index)=>{
     const representative=item.visibleItems.find(product=>MODEL_WEAR_IMAGES[product.model])||item.visibleItems[0];
     const image=MODEL_WEAR_IMAGES[representative.model]||representative.colors?.[0]?.src||representative.title;
-    return `<button type="button" data-marketplace-target="${esc(item.code)}" class="${index?'':'active'}" aria-pressed="${index?'false':'true'}"><img src="${esc(image)}" alt="" loading="lazy" decoding="async"><span><strong>${esc(item.name)}</strong><small>${item.visibleItems.length} models</small></span></button>`;
+    return `<button type="button" data-marketplace-target="${esc(item.code)}" class="${index?'':'active'}" aria-pressed="${index?'false':'true'}"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${esc(image)}" alt="" loading="lazy" decoding="async"><span><strong>${esc(item.name)}</strong><small>${item.visibleItems.length} models</small></span></button>`;
   }).join('');
   const sections=series.map(item=>`<section class="marketplace-category" data-marketplace-section="${esc(item.code)}"><div class="marketplace-category-head"><div><h2>${esc(item.name)}</h2><p>${esc(SERIES_DESCRIPTIONS[item.code]||item.subtitle)}</p></div><span class="marketplace-category-count">${item.visibleItems.length} models</span></div><div class="marketplace-products">${item.visibleItems.map(product=>marketplaceFrameCard(product,item.name)).join('')}</div></section>`).join('');
   catalog.innerHTML=`<div class="marketplace-catalog marketplace-no-search" id="frameMarketplace"><aside class="marketplace-major-nav" aria-label="Frame series">${nav}</aside><div class="marketplace-scroll">${sections}</div></div>`;

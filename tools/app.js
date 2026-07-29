@@ -6,6 +6,45 @@ const modal = document.querySelector('#modal');
 const modalBody = document.querySelector('#modalBody');
 const esc = value => String(value || '').replace(/[&<>\"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
 const all = data.flatMap(category => category.items.map(product => ({ ...product, categoryEn: category.en, desc: category.desc })));
+const catalogImagePlaceholder = 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
+let catalogImageObservers = [];
+
+function loadCatalogImage(image) {
+  const source = image?.dataset.catalogSrc;
+  if (!source) return;
+  image.fetchPriority = 'low';
+  image.src = source;
+  image.removeAttribute('data-catalog-src');
+}
+
+function deferCatalogImages(root) {
+  catalogImageObservers.forEach(observer => observer.disconnect());
+  catalogImageObservers = [];
+  if (!root) return;
+  const groups = [
+    {
+      host: root.querySelector('.marketplace-scroll'),
+      images: [...root.querySelectorAll('.marketplace-product-image img[data-catalog-src]')],
+      margin: window.matchMedia('(max-width: 720px)').matches ? '180px 0px' : '480px 0px'
+    }
+  ];
+  if (!('IntersectionObserver' in window)) {
+    groups.flatMap(group => group.images).forEach(loadCatalogImage);
+    return;
+  }
+  groups.forEach(group => {
+    if (!group.host || !group.images.length) return;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        loadCatalogImage(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { root: group.host, rootMargin: group.margin, threshold: 0.01 });
+    group.images.forEach(image => observer.observe(image));
+    catalogImageObservers.push(observer);
+  });
+}
 const popularModels = new Set([
   'MC-S', 'LY-3AD', 'LY-3B-2', 'LY-T-27AT', 'LY-T-27C', 'LY-12AT',
   'LY-1800ADT', 'LY-400A', 'LY-988AT', 'LY-2GH', 'LY-918S', 'LY-6AST',
@@ -162,7 +201,7 @@ function marketplaceProductCard(product) {
     ? 'Price on request'
     : `${hasChoices ? 'From ' : ''}USD ${usd(minimum)}`;
   return `<article class="product-card marketplace-product-card" data-model="${esc(product.model)}" tabindex="0" role="button" aria-label="View ${esc(product.model)} details">
-    <div class="marketplace-product-image"><img loading="lazy" decoding="async" src="${esc(product.image)}" alt="${esc(product.model)} ${esc(product.nameEn)}"></div>
+    <div class="marketplace-product-image"><img loading="lazy" decoding="async" src="${catalogImagePlaceholder}" data-catalog-src="${esc(product.image)}" alt="${esc(product.model)} ${esc(product.nameEn)}"></div>
     <div class="marketplace-product-copy">
       <span class="marketplace-product-kicker">${esc(product.categoryEn)}</span>
       <h3>${esc(product.model)}</h3>
@@ -174,7 +213,7 @@ function marketplaceProductCard(product) {
 
 function marketplaceHome(initialCategory = '') {
   const categoryNav = data.map((category, index) => `<button type="button" data-marketplace-target="${esc(category.id)}" class="${(!initialCategory && index === 0) || initialCategory === category.id ? 'active' : ''}" aria-pressed="${String((!initialCategory && index === 0) || initialCategory === category.id)}">
-    <img loading="lazy" decoding="async" src="${esc(category.items[0]?.image)}" alt="">
+    <img loading="lazy" decoding="async" src="${catalogImagePlaceholder}" data-catalog-src="${esc(category.items[0]?.image)}" alt="">
     <span><strong>${esc(category.en)}</strong><small>${category.items.length} models</small></span>
   </button>`).join('');
   const sections = data.map(category => `<section class="marketplace-category" data-marketplace-section="${esc(category.id)}">
@@ -191,7 +230,9 @@ function marketplaceHome(initialCategory = '') {
     </div>
   </section>`;
   bindCards();
-  window.LZNMarketplace?.bind(document.querySelector('#toolsMarketplace'));
+  const marketplaceRoot = document.querySelector('#toolsMarketplace');
+  window.LZNMarketplace?.bind(marketplaceRoot);
+  deferCatalogImages(marketplaceRoot);
   document.querySelector('#search')?.addEventListener('input', event => {
     const query = event.target.value.trim().toLowerCase();
     data.forEach(category => {
@@ -202,8 +243,9 @@ function marketplaceHome(initialCategory = '') {
         : '<p class="marketplace-empty">No matching products in this category.</p>';
     });
     bindCards();
+    deferCatalogImages(marketplaceRoot);
   });
-  hero.innerHTML = data.slice(0, 4).map(category => `<img loading="lazy" decoding="async" src="${esc(category.items[0].image)}" alt="">`).join('');
+  hero.replaceChildren();
   if (initialCategory) requestAnimationFrame(() => {
     const root = document.querySelector('#toolsMarketplace');
     const target = root?.querySelector(`[data-marketplace-section="${CSS.escape(initialCategory)}"]`);
