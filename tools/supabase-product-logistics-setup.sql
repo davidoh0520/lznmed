@@ -163,3 +163,13 @@ values
   ('LY-220A','21.5-inch All-in-one LCD Vision Tester','Devices',6.5,58.5,18,50,'Liangyou 2024 brochure page 30; screen size 21.5 inches; price on request'),
   ('LY-215A(3D)','21.5-inch 3D LCD Vision Tester','Devices',5.2,60.5,15,46,'Liangyou 2024 brochure page 30; polarized accessories; price on request')
 on conflict (model) do nothing;
+
+-- Small combined ophthalmic table from page 18 of the Liangyou 2024 brochure.
+insert into public.product_logistics (
+  model, product_name, store_section,
+  product_length_cm, product_width_cm, product_height_cm,
+  package_weight_kg, package_length_cm, package_width_cm, package_height_cm, notes
+)
+values
+  ('LY-180A','Small Combined Ophthalmic Table','Devices',90,60,71,62,99,59,43,'Liangyou 2024 brochure page 18; table 95 x 52 cm; drawer 54.5 x 32 cm; vertical travel 20 cm; light 20 W; price on request')
+on conflict (model) do nothing;
