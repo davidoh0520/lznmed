@@ -7,12 +7,25 @@
     if (!scroller || !buttons.length || !sections.length) return;
 
     root.dataset.marketplaceBound = 'true';
+    let selectedId = buttons.find(button => button.classList.contains('active'))?.dataset.marketplaceTarget || '';
+    const keepCategoryVisible = button => {
+      const nav = button?.closest('.marketplace-major-nav');
+      if (!nav || nav.scrollHeight <= nav.clientHeight) return;
+      const centeredTop = button.offsetTop - (nav.clientHeight - button.offsetHeight) / 2;
+      const maxTop = Math.max(0, nav.scrollHeight - nav.clientHeight);
+      nav.scrollTo({ top: Math.max(0, Math.min(centeredTop, maxTop)), behavior: 'smooth' });
+    };
     const select = id => {
+      if (!id || id === selectedId) return;
+      selectedId = id;
+      let activeButton = null;
       buttons.forEach(button => {
         const active = button.dataset.marketplaceTarget === id;
         button.classList.toggle('active', active);
         button.setAttribute('aria-pressed', String(active));
+        if (active) activeButton = button;
       });
+      if (activeButton) requestAnimationFrame(() => keepCategoryVisible(activeButton));
     };
     const scrollTo = target => {
       const top = target.offsetTop - 64;
