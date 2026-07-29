@@ -191,3 +191,16 @@ insert into public.product_logistics (
 values
   ('JS-22','22-Piece Progressive Trial Lens Set','Devices',0.9,22,18,9,'Liangyou brochure; 22 metal-rim lenses in an aluminium case; price on request')
 on conflict (model) do nothing;
+
+-- Multi-pot lens dyeing machines.
+insert into public.product_logistics (
+  model, product_name, store_section,
+  package_weight_kg, package_length_cm, package_width_cm, package_height_cm,
+  units_per_carton, carton_weight_kg,
+  carton_length_cm, carton_width_cm, carton_height_cm, notes
+)
+values
+  ('DM-2','2-Pot Lens Dyeing Machine','Devices',2.4,33,17,21,4,10.5,43,38,50,'Liangyou brochure; 2 pots; price on request'),
+  ('DM-4','4-Pot Lens Dyeing Machine','Devices',5,39,37,22,2,10.9,43,38,50,'Liangyou brochure; 4 pots with mechanical timer; price on request'),
+  ('DM-6','6-Pot Lens Dyeing Machine','Devices',6.4,51,37,22,2,15.1,55,47,40,'Liangyou brochure; 6 pots with mechanical timer; price on request')
+on conflict (model) do nothing;
