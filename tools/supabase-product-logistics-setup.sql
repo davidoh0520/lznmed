@@ -149,3 +149,17 @@ values
   ('TF-BT','Adjustable Trial Frame','Devices',0.15,16.5,9,5.5,50,7.9,47,36,30,'Liangyou 2024 brochure page 53; continuously adjustable PD 54-70 mm'),
   ('TF-S','Adjustable Trial Frame','Devices',0.15,18.5,10.5,6,25,4.5,53,33,22,'Liangyou 2024 brochure page 53; continuously adjustable PD 50-80 mm')
 on conflict (model) do nothing;
+
+-- LCD vision testers from page 30 of the Liangyou 2024 brochure.
+insert into public.product_logistics (
+  model, product_name, store_section,
+  package_weight_kg, package_length_cm, package_width_cm, package_height_cm, notes
+)
+values
+  ('LY-185','18.5-inch LCD Vision Tester','Devices',4.6,52,12,41,'Liangyou 2024 brochure page 30; screen size 18.5 inches; price on request'),
+  ('LY-215','21.5-inch LCD Vision Tester','Devices',5.3,60,13,45,'Liangyou 2024 brochure page 30; screen size 21.5 inches; price on request'),
+  ('LY-230','23-inch LCD Vision Tester','Devices',5.6,68,12,45,'Liangyou 2024 brochure page 30; screen size 23 inches; price on request'),
+  ('LY-230(3D)','23-inch 3D LCD Vision Tester','Devices',5.6,68,12,45,'Liangyou 2024 brochure page 30; screen size 23 inches; price on request'),
+  ('LY-220A','21.5-inch All-in-one LCD Vision Tester','Devices',6.5,58.5,18,50,'Liangyou 2024 brochure page 30; screen size 21.5 inches; price on request'),
+  ('LY-215A(3D)','21.5-inch 3D LCD Vision Tester','Devices',5.2,60.5,15,46,'Liangyou 2024 brochure page 30; polarized accessories; price on request')
+on conflict (model) do nothing;

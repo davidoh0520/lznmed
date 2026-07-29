@@ -47,6 +47,27 @@
     cartonSize,
     cartonGrossWeight
   });
+  const inquiryProduct = ({
+    model,
+    nameEn,
+    imageModel,
+    description,
+    features,
+    packageSize,
+    grossWeight
+  }) => ({
+    category: categoryId,
+    model,
+    nameEn,
+    image: asset(imageModel || model),
+    images: [asset(imageModel || model)],
+    description,
+    features,
+    priceOnRequest: true,
+    priceDisplay: "Price on request",
+    packageSize,
+    grossWeight
+  });
 
   const items = [
     product({
@@ -174,6 +195,95 @@
       packingQuantity: "5 pcs/carton",
       cartonSize: "76 × 63 × 37 cm",
       cartonGrossWeight: "9.7 kg"
+    }),
+    inquiryProduct({
+      model: "LY-185",
+      nameEn: "18.5-inch LCD Vision Tester",
+      imageModel: "LY-185-215-230",
+      description: "Remote-controlled LCD vision tester with nine built-in chart series for visual-acuity and related vision examinations. Supports test distances from 1 to 6 metres.",
+      features: [
+        "Screen size: 18.5 inches",
+        "Nine built-in vision-chart series",
+        "Tests include acuity, myopia, hyperopia, colour vision and astigmatism",
+        "Test distance: 1-6 m",
+        "Remote-control operation"
+      ],
+      packageSize: "52 × 12 × 41 cm",
+      grossWeight: "4.6 kg"
+    }),
+    inquiryProduct({
+      model: "LY-215",
+      nameEn: "21.5-inch LCD Vision Tester",
+      imageModel: "LY-185-215-230",
+      description: "Remote-controlled LCD vision tester with nine built-in chart series for visual-acuity and related vision examinations. Supports test distances from 1 to 6 metres.",
+      features: [
+        "Screen size: 21.5 inches",
+        "Nine built-in vision-chart series",
+        "Tests include acuity, myopia, hyperopia, colour vision and astigmatism",
+        "Test distance: 1-6 m",
+        "Remote-control operation"
+      ],
+      packageSize: "60 × 13 × 45 cm",
+      grossWeight: "5.3 kg"
+    }),
+    inquiryProduct({
+      model: "LY-230",
+      nameEn: "23-inch LCD Vision Tester",
+      imageModel: "LY-185-215-230",
+      description: "Remote-controlled 23-inch LCD vision tester with nine built-in chart series for visual-acuity and related vision examinations. Supports test distances from 1 to 6 metres.",
+      features: [
+        "Screen size: 23 inches",
+        "Nine built-in vision-chart series",
+        "Tests include acuity, myopia, hyperopia, colour vision and astigmatism",
+        "Test distance: 1-6 m",
+        "Remote-control operation"
+      ],
+      packageSize: "68 × 12 × 45 cm",
+      grossWeight: "5.6 kg"
+    }),
+    inquiryProduct({
+      model: "LY-230(3D)",
+      nameEn: "23-inch 3D LCD Vision Tester",
+      imageModel: "LY-185-215-230",
+      description: "Remote-controlled 23-inch 3D LCD vision tester with nine built-in chart series for visual-acuity and related vision examinations. Supports test distances from 1 to 6 metres.",
+      features: [
+        "Screen size: 23 inches",
+        "3D-capable LCD vision tester",
+        "Nine built-in vision-chart series",
+        "Test distance: 1-6 m",
+        "Remote-control operation"
+      ],
+      packageSize: "68 × 12 × 45 cm",
+      grossWeight: "5.6 kg"
+    }),
+    inquiryProduct({
+      model: "LY-220A",
+      nameEn: "21.5-inch All-in-one LCD Vision Tester",
+      description: "All-in-one remote-controlled LCD vision tester with nine built-in chart series for visual-acuity and related vision examinations. Supports test distances from 1 to 6 metres.",
+      features: [
+        "Screen size: 21.5 inches",
+        "All-in-one desktop-style housing",
+        "Nine built-in vision-chart series",
+        "Test distance: 1-6 m",
+        "Remote-control operation"
+      ],
+      packageSize: "58.5 × 18 × 50 cm",
+      grossWeight: "6.5 kg"
+    }),
+    inquiryProduct({
+      model: "LY-215A(3D)",
+      nameEn: "21.5-inch 3D LCD Vision Tester",
+      imageModel: "LY-215A-3D",
+      description: "Remote-controlled 3D LCD vision tester with polarized accessories and nine built-in chart series. Supports test distances from 1 to 6 metres.",
+      features: [
+        "Screen size: 21.5 inches",
+        "Polarized 3D accessories included",
+        "Nine built-in vision-chart series",
+        "Test distance: 1-6 m",
+        "Remote-control operation"
+      ],
+      packageSize: "60.5 × 15 × 46 cm",
+      grossWeight: "5.2 kg"
     })
   ];
 
@@ -189,7 +299,7 @@
     catalog.push({
       id: categoryId,
       en: "LED Vision Charts",
-      desc: "Illuminated Snellen, Landolt, letter, number and children's vision charts for professional examination rooms.",
+      desc: "Illuminated charts and remote-controlled LCD vision testers for professional examination rooms.",
       items
     });
   }
