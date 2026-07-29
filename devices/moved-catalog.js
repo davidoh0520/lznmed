@@ -207,7 +207,7 @@
     const hasChoices = (product.options?.length || 0) > 1;
     const display = minimum === null ? 'Price on request' : `${hasChoices ? 'From ' : ''}USD ${formatUsd(minimum)}`;
     return `<article class="marketplace-product-card" data-device-model="${escapeHtml(product.model)}" tabindex="0" role="button" aria-label="View ${escapeHtml(product.model)} details">
-      <div class="marketplace-product-image"><img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${escapeHtml(product.image)}" alt="${escapeHtml(product.model)} ${escapeHtml(product.nameEn)}"></div>
+      <div class="marketplace-product-image"><img width="240" height="240" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${escapeHtml(product.image)}" alt="${escapeHtml(product.model)} ${escapeHtml(product.nameEn)}"></div>
       <div class="marketplace-product-copy">
         <span class="marketplace-product-kicker">${escapeHtml(category.en)}</span>
         <h3>${escapeHtml(product.model)}</h3>
@@ -226,7 +226,7 @@
   content.className = 'marketplace-scroll';
 
   nav.innerHTML = normalizedCategories.map((category, index) => `<button type="button" data-marketplace-target="${escapeHtml(category.id)}" class="${index ? '' : 'active'}" aria-pressed="${index ? 'false' : 'true'}">
-    <img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${escapeHtml(category.items[0]?.image)}" alt="">
+    <img width="72" height="72" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${escapeHtml(category.items[0]?.image)}" alt="">
     <span><strong>${escapeHtml(category.en)}</strong><small>${category.items.length} models</small></span>
   </button>`).join('');
 
