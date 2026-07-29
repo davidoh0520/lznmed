@@ -11,13 +11,14 @@
     contactCases = {
       id: "contact-lens-cases",
       en: "Contact Lens Care & Cases",
-      desc: "Cases, rinse bottles, drain trays, organizers, and care accessories for soft contact lenses and RGP lenses.",
+      desc: "Cleaners, cases, rinse bottles, drain trays, organizers, and care accessories for soft contact lenses and RGP lenses.",
       items: []
     };
     catalog.splice(casesIndex >= 0 ? casesIndex + 1 : catalog.length, 0, contactCases);
   }
 
   var contactCaseModels = new Set([
+    "LZN-TL-0013",
     "LZN-622631947328",
     "LZN-723662946871",
     "LZN-723282936906",
