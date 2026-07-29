@@ -238,4 +238,3 @@ grant execute on function public.admin_update_order_items(uuid, jsonb) to authen
 -- insert into public.admin_users (user_id)
 -- select id from auth.users where lower(email) = lower('YOUR-ADMIN-EMAIL@example.com')
 -- on conflict (user_id) do nothing;
-
