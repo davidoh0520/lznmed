@@ -222,6 +222,7 @@
         }]
       };
     }
+    if (product.pdMode === 'adjustable') return product;
     const pdRange = String(product.description || '').match(/Selectable PD:\s*(\d+)\s*-\s*(\d+)\s*mm/i);
     if (!pdRange || existing.length) return product;
     const minimum = Number(pdRange[1]);
