@@ -44,13 +44,13 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-821168484924-07"
     ],
     "optionLabels": [
-      "White Plain Eyeglass Holder Loops",
-      "White Red-Blue Enamel Holder Loops",
-      "Black Blue Enamel Holder Loops",
-      "Black Silver-Pattern Holder Loops",
-      "White Multicolor Enamel Holder Loops",
-      "White Silver-Floral Holder Loops",
-      "White Gold Lucky-Charm Holder Loops"
+      "White Rubber Loop with Titanium Wave Charm",
+      "White Rubber Loop with Red-Heart Enamel Charm",
+      "Black Rubber Loop with Blue-Heart Enamel Charm",
+      "Black Rubber Loop with Gold Cloud-Pattern Charm",
+      "White Rubber Loop with Gold Leaf-Flower Charm",
+      "White Rubber Loop with Silver Leaf-Flower Charm",
+      "White Rubber Loop with Gold Fu-Character Charm"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -248,7 +248,7 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
   },
   "LZN-TL-0005": {
     "publicModel": "LZN-TL-0005",
-    "productName": "Flip-Up Multifocal Reading Glasses",
+    "productName": "Flip-Up Blue-Light Reading Glasses",
     "sourceProductId": "840574461963",
     "legacyModel": "LZN-840574461963",
     "url": "https://item.taobao.com/item.htm?id=840574461963",
@@ -290,13 +290,13 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-840574461963-07"
     ],
     "optionLabels": [
-      "Flip-Up Multifocal Reading Glasses - Option 01 - Upgraded",
-      "Flip-Up Multifocal Reading Glasses - Option 02 - 45-49 100",
-      "Flip-Up Multifocal Reading Glasses - Option 03 - 50-54 150",
-      "Flip-Up Multifocal Reading Glasses - Option 04 - 60-65 250",
-      "Flip-Up Multifocal Reading Glasses - Option 05 - 65-69 300",
-      "Flip-Up Multifocal Reading Glasses - Option 06 - 70-74 350",
-      "Flip-Up Multifocal Reading Glasses - Option 07 - 75 400"
+      "Upgraded Variable-Power Model - No Power Selection Required",
+      "Age 45-49 Reference - +1.00 D",
+      "Age 50-54 Reference - +1.50 D",
+      "Age 60-65 Reference - +2.50 D",
+      "Age 65-69 Reference - +3.00 D",
+      "Age 70-74 Reference - +3.50 D",
+      "Age 75+ Reference - +4.00 D"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -340,12 +340,12 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-815613043837-06"
     ],
     "optionLabels": [
-      "Adult 3D Amblyopia Eye Patch - 1 Piece",
-      "Adult 3D Amblyopia Eye Patches - 2 Pieces",
-      "Adult 3D Amblyopia Eye Patches - 3 Pieces",
-      "Child 3D Amblyopia Eye Patch - 1 Piece",
-      "Child 3D Amblyopia Eye Patches - 2 Pieces",
-      "Child 3D Amblyopia Eye Patches - 3 Pieces"
+      "Adult 3D Eye Patch - 1 Piece, Universal Left / Right",
+      "Adult 3D Eye Patches - 2 Pieces, Universal Left / Right",
+      "Adult 3D Eye Patches - 3 Pieces, Universal Left / Right",
+      "Child 3D Eye Patch - 1 Piece, Universal Left / Right",
+      "Child 3D Eye Patches - 2 Pieces, Universal Left / Right",
+      "Child 3D Eye Patches - 3 Pieces, Universal Left / Right"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -413,18 +413,18 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-729967954702-12"
     ],
     "optionLabels": [
-      "Blue Fabric Eye Patch",
-      "Pink Fabric Eye Patch",
-      "Black Fabric Eye Patch",
-      "Blue Large Fabric Eye Patch",
-      "Black Large Fabric Eye Patch",
-      "Pink Fabric Eye Patches - 6 Pieces",
-      "Pink Cartoon Eye Patch Set A - 6 Pieces",
-      "Pink Cartoon Eye Patch Set B - 6 Pieces",
-      "Blue Cartoon Eye Patch Set A - 6 Pieces",
-      "Blue Cartoon Eye Patch Set B - 6 Pieces",
-      "Pink Pattern Eye Patch Set",
-      "Blue Pattern Eye Patch Set"
+      "Solid Blue Eye Patches - 12 Pieces / 2 Boxes, Universal Side",
+      "Solid Pink Eye Patches - 12 Pieces / 2 Boxes, Universal Side",
+      "Solid Black Eye Patches - 12 Pieces / 2 Boxes, Universal Side",
+      "Large Blue Eye Patches - 6 Pieces / 1 Box, Universal Side",
+      "Large Black Eye Patches - 6 Pieces / 1 Box, Universal Side",
+      "Large Pink Eye Patches - 6 Pieces / 1 Box, Universal Side",
+      "Pink Mixed-Cartoon Right-Eye Patches - 6 Pieces / 1 Box",
+      "Pink Mixed-Cartoon Left-Eye Patches - 6 Pieces / 1 Box",
+      "Blue Mixed-Cartoon Right-Eye Patches - 6 Pieces / 1 Box",
+      "Blue Mixed-Cartoon Left-Eye Patches - 6 Pieces / 1 Box",
+      "Pink Cartoon Eye Patches - 6 Pieces / 1 Box, Universal Side",
+      "Blue Cartoon Eye Patches - 6 Pieces / 1 Box, Universal Side"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -468,12 +468,12 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-624508088377-06"
     ],
     "optionLabels": [
-      "Optical Lens Layout Marking Gauge - Option 01 - 3",
-      "Optical Lens Layout Marking Gauge - Option 02 - 1",
-      "Optical Lens Layout Marking Gauge - Option 03 - 5",
-      "Optical Lens Layout Marking Gauge - Option 04 - 1",
-      "Optical Lens Layout Marking Gauge - Option 05 - 2",
-      "Optical Lens Layout Marking Gauge - Option 06 - 5"
+      "Oil-Based Marking Pens - 3 Pieces",
+      "Lens Layout Marking Gauge + 1 Pen",
+      "Lens Layout Marking Gauge + 5 Pens",
+      "Silicone Lens Layout Marking Gauge + 1 Pen",
+      "Square Lens Layout Marking Gauge + 2 Pens",
+      "Oil-Based Marking Pens - 5 Pieces"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -763,7 +763,7 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-1011125552269-01"
     ],
     "optionLabels": [
-      "Portable Ultrasonic Contact Lens Cleaner - Option 01"
+      "Standard Model with Timer, High-Frequency Vibration and Digital Display"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -1143,15 +1143,15 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-589448610321-09"
     ],
     "optionLabels": [
-      "Microfiber Lens Cleaning Cloth - Option 01 - 20 6X8cm - 10-Pack",
-      "Microfiber Lens Cleaning Cloth - Option 02 - 100 6X8cm",
-      "Microfiber Lens Cleaning Cloth - Option 03 - 200 6X8cm",
-      "Microfiber Lens Cleaning Cloth - Option 04 - 500 6X8cm",
-      "Microfiber Lens Cleaning Cloth - Option 05 - 1000 6X8cm",
-      "Microfiber Lens Cleaning Cloth - Option 06 - 20 12X12cm - 10-Pack",
-      "Microfiber Lens Cleaning Cloth - Option 07 - 100 12X12cm",
-      "Microfiber Lens Cleaning Cloth - Option 08 - 200 12X12cm",
-      "Microfiber Lens Cleaning Cloth - Option 09 - 500 12X12cm"
+      "Microfiber Lens Cleaning Cloths - 20 Pieces, 6 x 8 cm",
+      "Microfiber Lens Cleaning Cloths - 100 Pieces, 6 x 8 cm",
+      "Microfiber Lens Cleaning Cloths - 200 Pieces, 6 x 8 cm",
+      "Microfiber Lens Cleaning Cloths - 500 Pieces, 6 x 8 cm",
+      "Microfiber Lens Cleaning Cloths - 1,000 Pieces, 6 x 8 cm",
+      "Microfiber Lens Cleaning Cloths - 20 Pieces, 12 x 12 cm",
+      "Microfiber Lens Cleaning Cloths - 100 Pieces, 12 x 12 cm",
+      "Microfiber Lens Cleaning Cloths - 200 Pieces, 12 x 12 cm",
+      "Microfiber Lens Cleaning Cloths - 500 Pieces, 12 x 12 cm"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -1179,8 +1179,8 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-894845559590-02"
     ],
     "optionLabels": [
-      "Rechargeable Model with USB Cable and Cleaning Cloth",
-      "Battery Model with Four AAA Batteries and Cleaning Cloth"
+      "Violet-Light Rechargeable Model with USB Cable and Cleaning Cloth",
+      "Battery Model with 4 AAA Batteries and Cleaning Cloth"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -1220,7 +1220,7 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
   },
   "LZN-TL-0023": {
     "publicModel": "LZN-TL-0023",
-    "productName": "Wooden Eyewear Display Stand",
+    "productName": "Acrylic and Wooden Eyewear Display Stands",
     "sourceProductId": "670890306251",
     "legacyModel": "LZN-670890306251",
     "url": "https://item.taobao.com/item.htm?id=670890306251",
@@ -1270,15 +1270,15 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-670890306251-09"
     ],
     "optionLabels": [
-      "Wooden Eyewear Display Stand - Option 01 - 2",
-      "Wooden Eyewear Display Stand - Option 02 - 3",
-      "Wooden Eyewear Display Stand - Option 03 - 4",
-      "Wooden Eyewear Display Stand - Option 04 - 5",
-      "Wooden Eyewear Display Stand - Option 05 - 2",
-      "Wooden Eyewear Display Stand - Option 06 - 3",
-      "Wooden Eyewear Display Stand - Option 07 - 4",
-      "Wooden Eyewear Display Stand - Option 08 - 5",
-      "Wooden Eyewear Display Stand - Option 09 - 6"
+      "Acrylic Eyewear Display Stand - 2 Pairs",
+      "Acrylic Eyewear Display Stand - 3 Pairs",
+      "Acrylic Eyewear Display Stand - 4 Pairs",
+      "Acrylic Eyewear Display Stand - 5 Pairs",
+      "Wooden Eyewear Display Stand - 2 Pairs",
+      "Wooden Eyewear Display Stand - 3 Pairs",
+      "Wooden Eyewear Display Stand - 4 Pairs",
+      "Wooden Eyewear Display Stand - 5 Pairs",
+      "Wooden Eyewear Display Stand - 6 Pairs"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -1432,7 +1432,7 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
   },
   "LZN-TL-0026": {
     "publicModel": "LZN-TL-0026",
-    "productName": "Multi-Level Metal Eyewear Display Rack",
+    "productName": "Multi-Level Acrylic Lens Display Rack",
     "sourceProductId": "1030400367140",
     "legacyModel": "LZN-1030400367140",
     "url": "https://item.taobao.com/item.htm?id=1030400367140",
@@ -1454,8 +1454,8 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-1030400367140-02"
     ],
     "optionLabels": [
-      "Multi-Level Metal Eyewear Display Rack - Option 01 - 9 28*28cm 7.5cm",
-      "Multi-Level Metal Eyewear Display Rack - Option 02 - 16 35*35cm 7.5"
+      "Clear Acrylic 9-Hole Rack - 28 x 28 cm, 7.5 cm Apertures",
+      "Clear Acrylic 16-Hole Rack - 35 x 35 cm, 7.5 cm Apertures"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -1610,14 +1610,14 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-628352782969-02"
     ],
     "optionLabels": [
-      "Eyewear Display Head Stand - Option 01 - Black",
-      "Eyewear Display Head Stand - Option 02 - White"
+      "Black Eyewear Display Head Stand",
+      "White Eyewear Display Head Stand"
     ],
     "verification": "Captured from the original supplier export"
   },
   "LZN-TL-0031": {
     "publicModel": "LZN-TL-0031",
-    "productName": "Magnetic Metal Eyewear Display Plates",
+    "productName": "Leather-Finish Eyewear Display Mats",
     "sourceProductId": "1000973896135",
     "legacyModel": "LZN-1000973896135",
     "url": "https://item.taobao.com/item.htm?id=1000973896135",
@@ -1659,13 +1659,13 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-1000973896135-07"
     ],
     "optionLabels": [
-      "Magnetic Metal Eyewear Display Plates - Option 01",
-      "Magnetic Metal Eyewear Display Plates - Option 02 - Green",
-      "Magnetic Metal Eyewear Display Plates - Option 03 - Gray",
-      "Magnetic Metal Eyewear Display Plates - Option 04",
-      "Magnetic Metal Eyewear Display Plates - Option 05",
-      "Magnetic Metal Eyewear Display Plates - Option 06",
-      "Magnetic Metal Eyewear Display Plates - Option 07"
+      "Ivory Display Mat - 1 Sheet",
+      "Green Display Mat - 1 Sheet",
+      "Gray Display Mat - 1 Sheet",
+      "Dark Brown Display Mat - 1 Sheet",
+      "Reversible Blue / Gray Display Mat - 1 Sheet",
+      "Reversible Brown / Dark Gray Display Mat - 1 Sheet",
+      "Reversible Green / Gray Display Mat - 1 Sheet"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -1753,12 +1753,12 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-816789510780-06"
     ],
     "optionLabels": [
-      "Multi-Tier Eyewear Storage Rack - Option 01 - 2 Display Stand",
-      "Multi-Tier Eyewear Storage Rack - Option 02 - 3 Display Stand",
-      "Multi-Tier Eyewear Storage Rack - Option 03 - 5 Display Stand",
-      "Multi-Tier Eyewear Storage Rack - Option 04 - 6 Display Stand",
-      "Multi-Tier Eyewear Storage Rack - Option 05 - 7 Display Stand",
-      "Multi-Tier Eyewear Storage Rack - Option 06 - 1 Display Stand"
+      "2-Tier One-Piece Eyewear Display Rack - No Assembly Required",
+      "3-Tier One-Piece Eyewear Display Rack - No Assembly Required",
+      "5-Tier One-Piece Eyewear Display Rack - No Assembly Required",
+      "6-Tier One-Piece Eyewear Display Rack - No Assembly Required",
+      "7-Tier One-Piece Eyewear Display Rack - No Assembly Required",
+      "1-Tier One-Piece Eyewear Display Rack - No Assembly Required"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -2187,7 +2187,7 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
   },
   "LZN-TL-0041": {
     "publicModel": "LZN-TL-0041",
-    "productName": "Complete Nose-Pad Installation Kit",
+    "productName": "Integrated Silicone Nose Pads and Installation Kit",
     "sourceProductId": "1046054732193",
     "legacyModel": "LZN-1046054732193",
     "url": "https://item.taobao.com/item.htm?id=1046054732193",
@@ -2213,9 +2213,9 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-1046054732193-03"
     ],
     "optionLabels": [
-      "Complete Nose-Pad Installation Kit - 5 mm",
-      "Complete Nose-Pad Installation Kit - 3 mm",
-      "Complete Nose-Pad Installation Kit - 1 mm"
+      "Soft Integrated Silicone Nose Pads - 5 Pieces with Installation Kit and Storage Case",
+      "Soft Integrated Silicone Nose Pads - 3 Pieces with Installation Kit and Storage Case",
+      "Soft Integrated Silicone Nose Pad - 1 Piece, Bagged without Installation Kit"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -2239,7 +2239,7 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-964903108732-01"
     ],
     "optionLabels": [
-      "Nasal-Bridge Pressure-Relief Tape - 3 Rolls"
+      "Nasal-Bridge Pressure-Relief Tape - 3 Rolls, 2 cm x 1 m Each"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -2330,9 +2330,9 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-628686984636-03"
     ],
     "optionLabels": [
-      "Gold Aluminum Magnetic Screw Tray",
-      "Red Aluminum Magnetic Screw Tray",
-      "Purple Aluminum Magnetic Screw Tray"
+      "Orange DS-901 Aluminum Magnetic Screw Tray",
+      "Red DS-901 Aluminum Magnetic Screw Tray",
+      "Purple DS-901 Aluminum Magnetic Screw Tray"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -2922,9 +2922,9 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-983486693358-03"
     ],
     "optionLabels": [
-      "Single Round Occluder",
-      "Triple Round Occluder Set",
-      "Double Round Occluder Set"
+      "Black Round Occluder - 1 Piece",
+      "Black Round Occluders - 3 Pieces",
+      "Black Round Occluders - 2 Pieces"
     ],
     "verification": "Captured from the original supplier export"
   },
@@ -3518,7 +3518,7 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "38 x 55 cm Hot-Air and Soldering Mat TE-702",
       "30 x 45 cm T-Slot Board Mat DK-880",
       "35 x 55 cm Thick Magnetic Mat S-180A1",
-      "82 x 37 cm Extended 3 mm Mat",
+      "82 x 37 cm Extra-Long Thick Mat - 3 mm",
       "82.5 x 37 cm Gray 2 mm Mat",
       "82.5 x 37 cm Blue 2 mm Mat"
     ],

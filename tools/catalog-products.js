@@ -28,58 +28,58 @@
         "options": [
           {
             "model": "LZN-TL-0001-01",
-            "label": "White Plain Eyeglass Holder Loops",
+            "label": "White Rubber Loop with Titanium Wave Charm",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0001/english-option-01.webp"
           },
           {
             "model": "LZN-TL-0001-02",
-            "label": "White Red-Blue Enamel Holder Loops",
+            "label": "White Rubber Loop with Red-Heart Enamel Charm",
             "priceUsd": 2,
             "image": "assets/catalog/TL-0001/english-option-02.webp"
           },
           {
             "model": "LZN-TL-0001-03",
-            "label": "Black Blue Enamel Holder Loops",
+            "label": "Black Rubber Loop with Blue-Heart Enamel Charm",
             "priceUsd": 1.5,
             "image": "assets/catalog/TL-0001/english-option-03.webp"
           },
           {
             "model": "LZN-TL-0001-04",
-            "label": "Black Silver-Pattern Holder Loops",
+            "label": "Black Rubber Loop with Gold Cloud-Pattern Charm",
             "priceUsd": 1.5,
             "image": "assets/catalog/TL-0001/english-option-04.webp"
           },
           {
             "model": "LZN-TL-0001-05",
-            "label": "White Multicolor Enamel Holder Loops",
+            "label": "White Rubber Loop with Gold Leaf-Flower Charm",
             "priceUsd": 1.5,
             "image": "assets/catalog/TL-0001/english-option-05.webp"
           },
           {
             "model": "LZN-TL-0001-06",
-            "label": "White Silver-Floral Holder Loops",
+            "label": "White Rubber Loop with Silver Leaf-Flower Charm",
             "priceUsd": 1.5,
             "image": "assets/catalog/TL-0001/english-option-06.webp"
           },
           {
             "model": "LZN-TL-0001-07",
-            "label": "White Gold Lucky-Charm Holder Loops",
+            "label": "White Rubber Loop with Gold Fu-Character Charm",
             "priceUsd": 2,
             "image": "assets/catalog/TL-0001/english-option-07.webp"
           }
         ],
         "features": [
-          "Designed for professional optical and vision-care use.",
-          "Suitable for retail, service, or customer-care settings.",
-          "Multiple configurations are available for different applications."
+          "Rubber loops attach eyewear securely to chains and cords.",
+          "Decorative metal and enamel charms support varied retail styles.",
+          "Seven white- and black-loop designs are available."
         ]
       },
       {
         "category": "accessories",
         "model": "LZN-TL-0002",
         "nameEn": "Press-Type Alcohol Dispenser Bottles and Parts",
-        "chineseName": "LZN Optical Product TL-0002",
+        "chineseName": "Press-Type Alcohol Dispenser Bottles and Parts",
         "image": "assets/catalog/TL-0002/english-option-01.webp",
         "images": [
           "assets/catalog/TL-0002/english-option-01.webp",
@@ -105,7 +105,7 @@
           "assets/catalog/TL-0002/english-option-21.webp",
           "assets/catalog/TL-0002/english-option-22.webp"
         ],
-        "description": "Press-type dispenser bottles and replacement parts for controlled dispensing of workshop cleaning liquids.",
+        "description": "Empty press-type dispenser bottles and replacement parts for controlled workshop dispensing. Alcohol and cleaning liquids are not included.",
         "priceUsd": 1,
         "priceOnRequest": false,
         "priceDisplay": "USD 1.00 - 9.60",
@@ -245,9 +245,9 @@
           }
         ],
         "features": [
-          "Designed for professional optical and vision-care use.",
-          "Suitable for retail, service, or customer-care settings.",
-          "Multiple configurations are available for different applications."
+          "Bottles are supplied empty without alcohol or cleaning liquid.",
+          "Straight-nozzle and anti-spray brass-core pump styles are available.",
+          "Replacement nozzles and 200 ml, 250 ml, and 500 ml suction tubes are sold separately."
         ]
       },
       {
@@ -273,9 +273,9 @@
           }
         ],
         "features": [
-          "Designed for professional optical and vision-care use.",
-          "Suitable for retail, service, or customer-care settings.",
-          "Multiple configurations are available for different applications."
+          "Adjustable length keeps eyewear secure during sports and daily activity.",
+          "Lightweight cord reduces movement without adding bulky hardware.",
+          "Supplied as a 10-pack in sky blue."
         ]
       },
       {
@@ -322,22 +322,22 @@
           }
         ],
         "features": [
-          "Designed for professional optical and vision-care use.",
-          "Suitable for retail, service, or customer-care settings.",
-          "Multiple configurations are available for different applications."
+          "Adjustable strap helps prevent eyewear from slipping or falling.",
+          "Two-piece packs are available in black, red, brown, and blue.",
+          "Suitable for active, work, and everyday eyewear."
         ]
       },
       {
         "category": "accessories",
         "model": "LZN-TL-0005",
-        "nameEn": "Flip-Up Multifocal Reading Glasses",
-        "chineseName": "Flip-Up Multifocal Reading Glasses",
+        "nameEn": "Flip-Up Blue-Light Reading Glasses",
+        "chineseName": "Flip-Up Blue-Light Reading Glasses",
         "image": "assets/catalog/TL-0005/english-card.webp",
         "images": [
           "assets/catalog/TL-0005/english-card.webp",
           "assets/catalog/TL-0005/english-overview.webp"
         ],
-        "description": "Flip-up multifocal reading glasses support near, intermediate, and distance viewing with a convenient lifting front.",
+        "description": "Flip-up reading glasses combine a lifting front with blue-light filtering and variable-power or fixed-power choices.",
         "priceUsd": 2.87,
         "priceOnRequest": false,
         "priceDisplay": "USD 2.87 - 3.80",
@@ -345,51 +345,51 @@
         "options": [
           {
             "model": "LZN-TL-0005-01",
-            "label": "Flip-Up Multifocal Reading Glasses - Option 01 - Upgraded",
+            "label": "Upgraded Variable-Power Model - No Power Selection Required",
             "priceUsd": 3.8,
             "image": "assets/catalog/TL-0005/english-card.webp"
           },
           {
             "model": "LZN-TL-0005-02",
-            "label": "Flip-Up Multifocal Reading Glasses - Option 02 - 45-49 100",
+            "label": "Age 45-49 Reference - +1.00 D",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0005/english-card.webp"
           },
           {
             "model": "LZN-TL-0005-03",
-            "label": "Flip-Up Multifocal Reading Glasses - Option 03 - 50-54 150",
+            "label": "Age 50-54 Reference - +1.50 D",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0005/english-card.webp"
           },
           {
             "model": "LZN-TL-0005-04",
-            "label": "Flip-Up Multifocal Reading Glasses - Option 04 - 60-65 250",
+            "label": "Age 60-65 Reference - +2.50 D",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0005/english-card.webp"
           },
           {
             "model": "LZN-TL-0005-05",
-            "label": "Flip-Up Multifocal Reading Glasses - Option 05 - 65-69 300",
+            "label": "Age 65-69 Reference - +3.00 D",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0005/english-card.webp"
           },
           {
             "model": "LZN-TL-0005-06",
-            "label": "Flip-Up Multifocal Reading Glasses - Option 06 - 70-74 350",
+            "label": "Age 70-74 Reference - +3.50 D",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0005/english-card.webp"
           },
           {
             "model": "LZN-TL-0005-07",
-            "label": "Flip-Up Multifocal Reading Glasses - Option 07 - 75 400",
+            "label": "Age 75+ Reference - +4.00 D",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0005/english-card.webp"
           }
         ],
         "features": [
-          "Designed for professional optical and vision-care use.",
-          "Suitable for retail, service, or customer-care settings.",
-          "Multiple configurations are available for different applications."
+          "Flip-up front switches quickly between reading and unobstructed distance viewing.",
+          "Blue-light filtering supports screen and near-work use.",
+          "Variable-power and age-reference fixed-power options are available."
         ]
       },
       {
@@ -411,45 +411,45 @@
         "options": [
           {
             "model": "LZN-TL-0006-01",
-            "label": "Adult 3D Amblyopia Eye Patch - 1 Piece",
+            "label": "Adult 3D Eye Patch - 1 Piece, Universal Left / Right",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0006/english-option-01.webp"
           },
           {
             "model": "LZN-TL-0006-02",
-            "label": "Adult 3D Amblyopia Eye Patches - 2 Pieces",
+            "label": "Adult 3D Eye Patches - 2 Pieces, Universal Left / Right",
             "priceUsd": 1.72,
             "image": "assets/catalog/TL-0006/english-option-02.webp"
           },
           {
             "model": "LZN-TL-0006-03",
-            "label": "Adult 3D Amblyopia Eye Patches - 3 Pieces",
+            "label": "Adult 3D Eye Patches - 3 Pieces, Universal Left / Right",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0006/english-option-02.webp"
           },
           {
             "model": "LZN-TL-0006-04",
-            "label": "Child 3D Amblyopia Eye Patch - 1 Piece",
+            "label": "Child 3D Eye Patch - 1 Piece, Universal Left / Right",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0006/english-option-04.webp"
           },
           {
             "model": "LZN-TL-0006-05",
-            "label": "Child 3D Amblyopia Eye Patches - 2 Pieces",
+            "label": "Child 3D Eye Patches - 2 Pieces, Universal Left / Right",
             "priceUsd": 1.72,
             "image": "assets/catalog/TL-0006/english-option-04.webp"
           },
           {
             "model": "LZN-TL-0006-06",
-            "label": "Child 3D Amblyopia Eye Patches - 3 Pieces",
+            "label": "Child 3D Eye Patches - 3 Pieces, Universal Left / Right",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0006/english-option-04.webp"
           }
         ],
         "features": [
-          "Designed for professional optical and vision-care use.",
-          "Suitable for retail, service, or customer-care settings.",
-          "Multiple configurations are available for different applications."
+          "Three-dimensional contour reduces direct contact around the covered eye.",
+          "Adult and child sizes fit either the left or right eye.",
+          "Available in one-, two-, and three-piece packs."
         ]
       },
       {
@@ -472,7 +472,7 @@
           "assets/catalog/TL-0007/english-option-11.webp",
           "assets/catalog/TL-0007/english-option-12.webp"
         ],
-        "description": "Comfortable fabric eye patches for pediatric vision training, available in multiple sizes, colors, and patterns.",
+        "description": "Comfortable pediatric fabric eye patches for vision training, with solid, large, cartoon, left-eye, right-eye, and universal-side configurations.",
         "priceUsd": 1.91,
         "priceOnRequest": false,
         "priceDisplay": "USD 1.91 - 2.87",
@@ -480,81 +480,81 @@
         "options": [
           {
             "model": "LZN-TL-0007-01",
-            "label": "Blue Fabric Eye Patch",
+            "label": "Solid Blue Eye Patches - 12 Pieces / 2 Boxes, Universal Side",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0007/english-option-01.webp"
           },
           {
             "model": "LZN-TL-0007-02",
-            "label": "Pink Fabric Eye Patch",
+            "label": "Solid Pink Eye Patches - 12 Pieces / 2 Boxes, Universal Side",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0007/english-option-02.webp"
           },
           {
             "model": "LZN-TL-0007-03",
-            "label": "Black Fabric Eye Patch",
+            "label": "Solid Black Eye Patches - 12 Pieces / 2 Boxes, Universal Side",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0007/english-option-03.webp"
           },
           {
             "model": "LZN-TL-0007-04",
-            "label": "Blue Large Fabric Eye Patch",
+            "label": "Large Blue Eye Patches - 6 Pieces / 1 Box, Universal Side",
             "priceUsd": 1.91,
             "image": "assets/catalog/TL-0007/english-option-04.webp"
           },
           {
             "model": "LZN-TL-0007-05",
-            "label": "Black Large Fabric Eye Patch",
+            "label": "Large Black Eye Patches - 6 Pieces / 1 Box, Universal Side",
             "priceUsd": 1.91,
             "image": "assets/catalog/TL-0007/english-option-05.webp"
           },
           {
             "model": "LZN-TL-0007-06",
-            "label": "Pink Fabric Eye Patches - 6 Pieces",
+            "label": "Large Pink Eye Patches - 6 Pieces / 1 Box, Universal Side",
             "priceUsd": 1.91,
             "image": "assets/catalog/TL-0007/english-option-06.webp"
           },
           {
             "model": "LZN-TL-0007-07",
-            "label": "Pink Cartoon Eye Patch Set A - 6 Pieces",
+            "label": "Pink Mixed-Cartoon Right-Eye Patches - 6 Pieces / 1 Box",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0007/english-option-07.webp"
           },
           {
             "model": "LZN-TL-0007-08",
-            "label": "Pink Cartoon Eye Patch Set B - 6 Pieces",
+            "label": "Pink Mixed-Cartoon Left-Eye Patches - 6 Pieces / 1 Box",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0007/english-option-08.webp"
           },
           {
             "model": "LZN-TL-0007-09",
-            "label": "Blue Cartoon Eye Patch Set A - 6 Pieces",
+            "label": "Blue Mixed-Cartoon Right-Eye Patches - 6 Pieces / 1 Box",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0007/english-option-09.webp"
           },
           {
             "model": "LZN-TL-0007-10",
-            "label": "Blue Cartoon Eye Patch Set B - 6 Pieces",
+            "label": "Blue Mixed-Cartoon Left-Eye Patches - 6 Pieces / 1 Box",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0007/english-option-10.webp"
           },
           {
             "model": "LZN-TL-0007-11",
-            "label": "Pink Pattern Eye Patch Set",
+            "label": "Pink Cartoon Eye Patches - 6 Pieces / 1 Box, Universal Side",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0007/english-option-11.webp"
           },
           {
             "model": "LZN-TL-0007-12",
-            "label": "Blue Pattern Eye Patch Set",
+            "label": "Blue Cartoon Eye Patches - 6 Pieces / 1 Box, Universal Side",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0007/english-option-12.webp"
           }
         ],
         "features": [
-          "Designed for professional optical and vision-care use.",
-          "Suitable for retail, service, or customer-care settings.",
-          "Multiple configurations are available for different applications."
+          "Solid, large, and cartoon designs suit varied pediatric preferences.",
+          "Left-eye, right-eye, and universal-side configurations are clearly identified.",
+          "Each option states the exact six- or twelve-piece pack quantity."
         ]
       },
       {
@@ -575,45 +575,45 @@
         "options": [
           {
             "model": "LZN-TL-0008-01",
-            "label": "Optical Lens Layout Marking Gauge - Option 01 - 3",
+            "label": "Oil-Based Marking Pens - 3 Pieces",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0008/english-card.webp"
           },
           {
             "model": "LZN-TL-0008-02",
-            "label": "Optical Lens Layout Marking Gauge - Option 02 - 1",
+            "label": "Lens Layout Marking Gauge + 1 Pen",
             "priceUsd": 3.44,
             "image": "assets/catalog/TL-0008/english-card.webp"
           },
           {
             "model": "LZN-TL-0008-03",
-            "label": "Optical Lens Layout Marking Gauge - Option 03 - 5",
+            "label": "Lens Layout Marking Gauge + 5 Pens",
             "priceUsd": 4.21,
             "image": "assets/catalog/TL-0008/english-card.webp"
           },
           {
             "model": "LZN-TL-0008-04",
-            "label": "Optical Lens Layout Marking Gauge - Option 04 - 1",
+            "label": "Silicone Lens Layout Marking Gauge + 1 Pen",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0008/english-card.webp"
           },
           {
             "model": "LZN-TL-0008-05",
-            "label": "Optical Lens Layout Marking Gauge - Option 05 - 2",
+            "label": "Square Lens Layout Marking Gauge + 2 Pens",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0008/english-card.webp"
           },
           {
             "model": "LZN-TL-0008-06",
-            "label": "Optical Lens Layout Marking Gauge - Option 06 - 5",
+            "label": "Oil-Based Marking Pens - 5 Pieces",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0008/english-card.webp"
           }
         ],
         "features": [
-          "Designed for professional optical and vision-care use.",
-          "Suitable for retail, service, or customer-care settings.",
-          "Multiple configurations are available for different applications."
+          "Marks parallel reference lines for lens layout and drilling preparation.",
+          "Standard, silicone, and square gauge options are available.",
+          "Bundles state the exact number of included oil-based marking pens."
         ]
       },
       {
@@ -958,15 +958,15 @@
         "options": [
           {
             "model": "LZN-TL-0013-01",
-            "label": "Portable Ultrasonic Contact Lens Cleaner - Option 01",
+            "label": "Standard Model with Timer, High-Frequency Vibration and Digital Display",
             "priceUsd": 7.63,
             "image": "assets/catalog/TL-0013/english-card.webp"
           }
         ],
         "features": [
-          "Protects eyewear from scratches and everyday impact.",
-          "Designed for organized storage and convenient transport.",
-          "Available in multiple capacities, finishes, or colors."
+          "Timer supports a controlled contact-lens cleaning cycle.",
+          "High-frequency vibration cleans dedicated left and right lens chambers.",
+          "Digital display shows the operating status clearly."
         ]
       },
       {
@@ -1382,63 +1382,63 @@
         "options": [
           {
             "model": "LZN-TL-0020-01",
-            "label": "Microfiber Lens Cleaning Cloth - Option 01 - 20 6X8cm - 10-Pack",
+            "label": "Microfiber Lens Cleaning Cloths - 20 Pieces, 6 x 8 cm",
             "priceUsd": 3.8,
             "image": "assets/catalog/TL-0020/english-catalog-option-01.webp"
           },
           {
             "model": "LZN-TL-0020-02",
-            "label": "Microfiber Lens Cleaning Cloth - Option 02 - 100 6X8cm",
+            "label": "Microfiber Lens Cleaning Cloths - 100 Pieces, 6 x 8 cm",
             "priceUsd": 1.53,
             "image": "assets/catalog/TL-0020/english-catalog-option-02.webp"
           },
           {
             "model": "LZN-TL-0020-03",
-            "label": "Microfiber Lens Cleaning Cloth - Option 03 - 200 6X8cm",
+            "label": "Microfiber Lens Cleaning Cloths - 200 Pieces, 6 x 8 cm",
             "priceUsd": 2.87,
             "image": "assets/catalog/TL-0020/english-catalog-option-03.webp"
           },
           {
             "model": "LZN-TL-0020-04",
-            "label": "Microfiber Lens Cleaning Cloth - Option 04 - 500 6X8cm",
+            "label": "Microfiber Lens Cleaning Cloths - 500 Pieces, 6 x 8 cm",
             "priceUsd": 6.69,
             "image": "assets/catalog/TL-0020/english-catalog-option-04.webp"
           },
           {
             "model": "LZN-TL-0020-05",
-            "label": "Microfiber Lens Cleaning Cloth - Option 05 - 1000 6X8cm",
+            "label": "Microfiber Lens Cleaning Cloths - 1,000 Pieces, 6 x 8 cm",
             "priceUsd": 12.43,
             "image": "assets/catalog/TL-0020/english-catalog-option-05.webp"
           },
           {
             "model": "LZN-TL-0020-06",
-            "label": "Microfiber Lens Cleaning Cloth - Option 06 - 20 12X12cm - 10-Pack",
+            "label": "Microfiber Lens Cleaning Cloths - 20 Pieces, 12 x 12 cm",
             "priceUsd": 7.6,
             "image": "assets/catalog/TL-0020/english-catalog-option-06.webp"
           },
           {
             "model": "LZN-TL-0020-07",
-            "label": "Microfiber Lens Cleaning Cloth - Option 07 - 100 12X12cm",
+            "label": "Microfiber Lens Cleaning Cloths - 100 Pieces, 12 x 12 cm",
             "priceUsd": 3.44,
             "image": "assets/catalog/TL-0020/english-catalog-option-07.webp"
           },
           {
             "model": "LZN-TL-0020-08",
-            "label": "Microfiber Lens Cleaning Cloth - Option 08 - 200 12X12cm",
+            "label": "Microfiber Lens Cleaning Cloths - 200 Pieces, 12 x 12 cm",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0020/english-catalog-option-08.webp"
           },
           {
             "model": "LZN-TL-0020-09",
-            "label": "Microfiber Lens Cleaning Cloth - Option 09 - 500 12X12cm",
+            "label": "Microfiber Lens Cleaning Cloths - 500 Pieces, 12 x 12 cm",
             "priceUsd": 15.29,
             "image": "assets/catalog/TL-0020/english-catalog-option-09.webp"
           }
         ],
         "features": [
-          "Designed for routine lens and optical surface care.",
-          "Suitable for optical stores, workshops, and personal use.",
-          "Available in multiple sizes or application formats."
+          "Soft microfiber removes fingerprints, dust, and light residue.",
+          "Choose compact 6 x 8 cm or larger 12 x 12 cm cloths.",
+          "Bulk quantities range from 20 to 1,000 pieces."
         ]
       },
       {
@@ -1450,7 +1450,7 @@
         "images": [
           "assets/catalog/TL-0021/english-card.webp"
         ],
-        "description": "A compact ultrasonic cleaner removes everyday debris from eyeglasses and small optical accessories.",
+        "description": "A compact ultrasonic cleaner removes everyday debris from eyeglasses and small optical accessories. Cleaning liquid is not included.",
         "priceUsd": 8.5,
         "priceOnRequest": false,
         "priceDisplay": "USD 8.50 - 10.50",
@@ -1458,13 +1458,13 @@
         "options": [
           {
             "model": "LZN-TL-0021-01",
-            "label": "Rechargeable Model with USB Cable and Cleaning Cloth",
+            "label": "Violet-Light Rechargeable Model with USB Cable and Cleaning Cloth",
             "priceUsd": 10.5,
             "image": "assets/catalog/TL-0021/english-card.webp"
           },
           {
             "model": "LZN-TL-0021-02",
-            "label": "Battery Model with Four AAA Batteries and Cleaning Cloth",
+            "label": "Battery Model with 4 AAA Batteries and Cleaning Cloth",
             "priceUsd": 8.5,
             "image": "assets/catalog/TL-0021/english-card.webp"
           }
@@ -1472,7 +1472,7 @@
         "features": [
           "Compact basin fits common eyewear sizes.",
           "High-frequency cleaning reaches frame joints and nose-pad areas.",
-          "Rechargeable and battery-powered versions are available."
+          "Rechargeable and battery-powered versions are available; cleaning liquid is not included."
         ]
       }
     ]
@@ -1518,21 +1518,21 @@
           }
         ],
         "features": [
-          "Designed for clean and organized eyewear presentation.",
-          "Suitable for counters, showcases, walls, and retail displays.",
-          "Available in multiple capacities, finishes, or layouts."
+          "Clear acrylic tiers keep multiple frames separated and visible.",
+          "Three-, four-, and five-tier capacities are available.",
+          "Compact vertical layout suits counters, shelves, and showcases."
         ]
       },
       {
         "category": "display",
         "model": "LZN-TL-0023",
-        "nameEn": "Wooden Eyewear Display Stand",
-        "chineseName": "Wooden Eyewear Display Stand",
+        "nameEn": "Acrylic and Wooden Eyewear Display Stands",
+        "chineseName": "Acrylic and Wooden Eyewear Display Stands",
         "image": "assets/catalog/TL-0023/english-overview.webp",
         "images": [
           "assets/catalog/TL-0023/english-overview.webp"
         ],
-        "description": "A compact wooden display stand for presenting multiple eyewear styles on counters, shelves, and showcases.",
+        "description": "Compact acrylic and wooden stands present two to six pairs of eyewear on counters, shelves, and showcases.",
         "priceUsd": 1.91,
         "priceOnRequest": false,
         "priceDisplay": "USD 1.91 - 6.50",
@@ -1540,63 +1540,63 @@
         "options": [
           {
             "model": "LZN-TL-0023-01",
-            "label": "Wooden Eyewear Display Stand - Option 01 - 2",
+            "label": "Acrylic Eyewear Display Stand - 2 Pairs",
             "priceUsd": 1.91,
             "image": "assets/catalog/TL-0023/english-catalog-option-01.webp"
           },
           {
             "model": "LZN-TL-0023-02",
-            "label": "Wooden Eyewear Display Stand - Option 02 - 3",
+            "label": "Acrylic Eyewear Display Stand - 3 Pairs",
             "priceUsd": 2.68,
             "image": "assets/catalog/TL-0023/english-catalog-option-02.webp"
           },
           {
             "model": "LZN-TL-0023-03",
-            "label": "Wooden Eyewear Display Stand - Option 03 - 4",
+            "label": "Acrylic Eyewear Display Stand - 4 Pairs",
             "priceUsd": 3.44,
             "image": "assets/catalog/TL-0023/english-catalog-option-03.webp"
           },
           {
             "model": "LZN-TL-0023-04",
-            "label": "Wooden Eyewear Display Stand - Option 04 - 5",
+            "label": "Acrylic Eyewear Display Stand - 5 Pairs",
             "priceUsd": 4.21,
             "image": "assets/catalog/TL-0023/english-catalog-option-04.webp"
           },
           {
             "model": "LZN-TL-0023-05",
-            "label": "Wooden Eyewear Display Stand - Option 05 - 2",
+            "label": "Wooden Eyewear Display Stand - 2 Pairs",
             "priceUsd": 2.68,
             "image": "assets/catalog/TL-0023/english-catalog-option-05.webp"
           },
           {
             "model": "LZN-TL-0023-06",
-            "label": "Wooden Eyewear Display Stand - Option 06 - 3",
+            "label": "Wooden Eyewear Display Stand - 3 Pairs",
             "priceUsd": 3.63,
             "image": "assets/catalog/TL-0023/english-catalog-option-06.webp"
           },
           {
             "model": "LZN-TL-0023-07",
-            "label": "Wooden Eyewear Display Stand - Option 07 - 4",
+            "label": "Wooden Eyewear Display Stand - 4 Pairs",
             "priceUsd": 4.59,
             "image": "assets/catalog/TL-0023/english-catalog-option-07.webp"
           },
           {
             "model": "LZN-TL-0023-08",
-            "label": "Wooden Eyewear Display Stand - Option 08 - 5",
+            "label": "Wooden Eyewear Display Stand - 5 Pairs",
             "priceUsd": 5.54,
             "image": "assets/catalog/TL-0023/english-catalog-option-08.webp"
           },
           {
             "model": "LZN-TL-0023-09",
-            "label": "Wooden Eyewear Display Stand - Option 09 - 6",
+            "label": "Wooden Eyewear Display Stand - 6 Pairs",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0023/english-catalog-option-09.webp"
           }
         ],
         "features": [
-          "Designed for clean and organized eyewear presentation.",
-          "Suitable for counters, showcases, walls, and retail displays.",
-          "Available in multiple capacities, finishes, or layouts."
+          "Acrylic and wooden materials support different display styles.",
+          "Capacity options hold two, three, four, five, or six pairs.",
+          "Compact upright layout suits counters, shelves, and showcases."
         ]
       },
       {
@@ -1683,9 +1683,9 @@
           }
         ],
         "features": [
-          "Designed for clean and organized eyewear presentation.",
-          "Suitable for counters, showcases, walls, and retail displays.",
-          "Available in multiple capacities, finishes, or layouts."
+          "Choose 12-, 18-, or 24-slot capacities for organized eyewear storage.",
+          "Wood-finish and leather-finish cases suit different retail presentations.",
+          "Individual slots separate frames during display, storage, and transport."
         ]
       },
       {
@@ -1779,13 +1779,13 @@
       {
         "category": "display",
         "model": "LZN-TL-0026",
-        "nameEn": "Multi-Level Metal Eyewear Display Rack",
-        "chineseName": "Multi-Level Metal Eyewear Display Rack",
+        "nameEn": "Multi-Level Acrylic Lens Display Rack",
+        "chineseName": "Multi-Level Acrylic Lens Display Rack",
         "image": "assets/catalog/TL-0026/english-overview.webp",
         "images": [
           "assets/catalog/TL-0026/english-overview.webp"
         ],
-        "description": "A multi-level metal rack that organizes and presents eyewear clearly in optical stores and display areas.",
+        "description": "A transparent multi-level acrylic rack organizes sample lenses in 9-hole or 16-hole optical-store displays.",
         "priceUsd": 6.69,
         "priceOnRequest": false,
         "priceDisplay": "USD 6.69 - 11.47",
@@ -1793,28 +1793,28 @@
         "options": [
           {
             "model": "LZN-TL-0026-01",
-            "label": "Multi-Level Metal Eyewear Display Rack - Option 01 - 9 28*28cm 7.5cm",
+            "label": "Clear Acrylic 9-Hole Rack - 28 x 28 cm, 7.5 cm Apertures",
             "priceUsd": 6.69,
             "image": "assets/catalog/TL-0026/english-catalog-option-01.webp"
           },
           {
             "model": "LZN-TL-0026-02",
-            "label": "Multi-Level Metal Eyewear Display Rack - Option 02 - 16 35*35cm 7.5",
+            "label": "Clear Acrylic 16-Hole Rack - 35 x 35 cm, 7.5 cm Apertures",
             "priceUsd": 11.47,
             "image": "assets/catalog/TL-0026/english-catalog-option-02.webp"
           }
         ],
         "features": [
-          "Designed for clean and organized eyewear presentation.",
-          "Suitable for counters, showcases, walls, and retail displays.",
-          "Available in multiple capacities, finishes, or layouts."
+          "Transparent acrylic keeps displayed sample lenses clearly visible.",
+          "Choose a 9-hole 28 cm rack or a 16-hole 35 cm rack.",
+          "Each circular aperture measures 7.5 cm in diameter."
         ]
       },
       {
         "category": "display",
         "model": "LZN-TL-0027",
         "nameEn": "Enlarged Anatomical Eye Models",
-        "chineseName": "LZN Optical Product TL-0027",
+        "chineseName": "Enlarged Anatomical Eye Models",
         "image": "assets/catalog/TL-0027/english-option-01.webp",
         "images": [
           "assets/catalog/TL-0027/english-option-01.webp",
@@ -1847,9 +1847,9 @@
           }
         ],
         "features": [
-          "Designed for clean and organized eyewear presentation.",
-          "Suitable for counters, showcases, walls, and retail displays.",
-          "Available in multiple capacities, finishes, or layouts."
+          "Enlarged anatomical sections support clear patient explanation.",
+          "Detachable components show the internal structure of the eye.",
+          "Suitable for clinical education, training, and ophthalmic display."
         ]
       },
       {
@@ -1981,33 +1981,33 @@
         "options": [
           {
             "model": "LZN-TL-0030-01",
-            "label": "Eyewear Display Head Stand - Option 01 - Black",
+            "label": "Black Eyewear Display Head Stand",
             "priceUsd": 12.5,
             "image": "assets/catalog/TL-0030/english-catalog-option-01.webp"
           },
           {
             "model": "LZN-TL-0030-02",
-            "label": "Eyewear Display Head Stand - Option 02 - White",
+            "label": "White Eyewear Display Head Stand",
             "priceUsd": 12.5,
             "image": "assets/catalog/TL-0030/english-catalog-option-02.webp"
           }
         ],
         "features": [
-          "Designed for clean and organized eyewear presentation.",
-          "Suitable for counters, showcases, walls, and retail displays.",
-          "Available in multiple capacities, finishes, or layouts."
+          "Natural head-form presentation shows eyewear in a wearing position.",
+          "Black and white finishes suit varied display themes.",
+          "Compact base fits counters, showcases, and photography setups."
         ]
       },
       {
         "category": "display",
         "model": "LZN-TL-0031",
-        "nameEn": "Magnetic Metal Eyewear Display Plates",
-        "chineseName": "Magnetic Metal Eyewear Display Plates",
+        "nameEn": "Leather-Finish Eyewear Display Mats",
+        "chineseName": "Leather-Finish Eyewear Display Mats",
         "image": "assets/catalog/TL-0031/english-overview.webp",
         "images": [
           "assets/catalog/TL-0031/english-overview.webp"
         ],
-        "description": "Durable metal display plates for creating clean, stable eyewear presentation fixtures and retail displays.",
+        "description": "Soft leather-finish mats create a clean surface for eyewear presentation, product photography, and counter displays.",
         "priceUsd": 1,
         "priceOnRequest": false,
         "priceDisplay": "USD 1.00 - 1.53",
@@ -2015,51 +2015,51 @@
         "options": [
           {
             "model": "LZN-TL-0031-01",
-            "label": "Magnetic Metal Eyewear Display Plates - Option 01",
+            "label": "Ivory Display Mat - 1 Sheet",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0031/english-catalog-option-01.webp"
           },
           {
             "model": "LZN-TL-0031-02",
-            "label": "Magnetic Metal Eyewear Display Plates - Option 02 - Green",
+            "label": "Green Display Mat - 1 Sheet",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0031/english-catalog-option-02.webp"
           },
           {
             "model": "LZN-TL-0031-03",
-            "label": "Magnetic Metal Eyewear Display Plates - Option 03 - Gray",
+            "label": "Gray Display Mat - 1 Sheet",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0031/english-catalog-option-03.webp"
           },
           {
             "model": "LZN-TL-0031-04",
-            "label": "Magnetic Metal Eyewear Display Plates - Option 04",
+            "label": "Dark Brown Display Mat - 1 Sheet",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0031/english-catalog-option-04.webp"
           },
           {
             "model": "LZN-TL-0031-05",
-            "label": "Magnetic Metal Eyewear Display Plates - Option 05",
+            "label": "Reversible Blue / Gray Display Mat - 1 Sheet",
             "priceUsd": 1.53,
             "image": "assets/catalog/TL-0031/english-catalog-option-05.webp"
           },
           {
             "model": "LZN-TL-0031-06",
-            "label": "Magnetic Metal Eyewear Display Plates - Option 06",
+            "label": "Reversible Brown / Dark Gray Display Mat - 1 Sheet",
             "priceUsd": 1.53,
             "image": "assets/catalog/TL-0031/english-catalog-option-06.webp"
           },
           {
             "model": "LZN-TL-0031-07",
-            "label": "Magnetic Metal Eyewear Display Plates - Option 07",
+            "label": "Reversible Green / Gray Display Mat - 1 Sheet",
             "priceUsd": 1.53,
             "image": "assets/catalog/TL-0031/english-catalog-option-07.webp"
           }
         ],
         "features": [
-          "Designed for clean and organized eyewear presentation.",
-          "Suitable for counters, showcases, walls, and retail displays.",
-          "Available in multiple capacities, finishes, or layouts."
+          "Soft leather-finish surface protects eyewear during presentation.",
+          "Single-color and reversible two-color options are available.",
+          "Suitable for counters, display shelves, and product photography."
         ]
       },
       {
@@ -2133,45 +2133,45 @@
         "options": [
           {
             "model": "LZN-TL-0033-01",
-            "label": "Multi-Tier Eyewear Storage Rack - Option 01 - 2 Display Stand",
+            "label": "2-Tier One-Piece Eyewear Display Rack - No Assembly Required",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0033/english-card.webp"
           },
           {
             "model": "LZN-TL-0033-02",
-            "label": "Multi-Tier Eyewear Storage Rack - Option 02 - 3 Display Stand",
+            "label": "3-Tier One-Piece Eyewear Display Rack - No Assembly Required",
             "priceUsd": 3.44,
             "image": "assets/catalog/TL-0033/english-catalog-option-02.webp"
           },
           {
             "model": "LZN-TL-0033-03",
-            "label": "Multi-Tier Eyewear Storage Rack - Option 03 - 5 Display Stand",
+            "label": "5-Tier One-Piece Eyewear Display Rack - No Assembly Required",
             "priceUsd": 5.74,
             "image": "assets/catalog/TL-0033/english-catalog-option-03.webp"
           },
           {
             "model": "LZN-TL-0033-04",
-            "label": "Multi-Tier Eyewear Storage Rack - Option 04 - 6 Display Stand",
+            "label": "6-Tier One-Piece Eyewear Display Rack - No Assembly Required",
             "priceUsd": 6.88,
             "image": "assets/catalog/TL-0033/english-catalog-option-04.webp"
           },
           {
             "model": "LZN-TL-0033-05",
-            "label": "Multi-Tier Eyewear Storage Rack - Option 05 - 7 Display Stand",
+            "label": "7-Tier One-Piece Eyewear Display Rack - No Assembly Required",
             "priceUsd": 8.03,
             "image": "assets/catalog/TL-0033/english-catalog-option-05.webp"
           },
           {
             "model": "LZN-TL-0033-06",
-            "label": "Multi-Tier Eyewear Storage Rack - Option 06 - 1 Display Stand",
+            "label": "1-Tier One-Piece Eyewear Display Rack - No Assembly Required",
             "priceUsd": 1.53,
             "image": "assets/catalog/TL-0033/english-catalog-option-06.webp"
           }
         ],
         "features": [
-          "Designed for clean and organized eyewear presentation.",
-          "Suitable for counters, showcases, walls, and retail displays.",
-          "Available in multiple capacities, finishes, or layouts."
+          "One-piece construction arrives ready to use without assembly.",
+          "Choose capacities from one to seven eyewear tiers.",
+          "Space-saving vertical layout suits counters, shelves, and cabinets."
         ]
       },
       {
@@ -2696,14 +2696,14 @@
       {
         "category": "repair-parts",
         "model": "LZN-TL-0041",
-        "nameEn": "Complete Nose-Pad Installation Kit",
-        "chineseName": "LZN Optical Product TL-0041",
+        "nameEn": "Integrated Silicone Nose Pads and Installation Kit",
+        "chineseName": "Integrated Silicone Nose Pads and Installation Kit",
         "image": "assets/catalog/TL-0041/english-option-01.webp",
         "images": [
           "assets/catalog/TL-0041/english-option-01.webp",
           "assets/catalog/TL-0041/english-option-03.webp"
         ],
-        "description": "A complete optical workshop kit for installing and adjusting screw-mounted nose pads with precision.",
+        "description": "Soft integrated silicone bridge pads are supplied in one-, three-, or five-piece configurations, with installation tools and storage included where specified.",
         "priceUsd": 1,
         "priceOnRequest": false,
         "priceDisplay": "USD 1.00 - 3.44",
@@ -2711,27 +2711,27 @@
         "options": [
           {
             "model": "LZN-TL-0041-01",
-            "label": "Complete Nose-Pad Installation Kit - 5 mm",
+            "label": "Soft Integrated Silicone Nose Pads - 5 Pieces with Installation Kit and Storage Case",
             "priceUsd": 3.44,
             "image": "assets/catalog/TL-0041/english-option-01.webp"
           },
           {
             "model": "LZN-TL-0041-02",
-            "label": "Complete Nose-Pad Installation Kit - 3 mm",
+            "label": "Soft Integrated Silicone Nose Pads - 3 Pieces with Installation Kit and Storage Case",
             "priceUsd": 2.68,
             "image": "assets/catalog/TL-0041/english-option-01.webp"
           },
           {
             "model": "LZN-TL-0041-03",
-            "label": "Complete Nose-Pad Installation Kit - 1 mm",
+            "label": "Soft Integrated Silicone Nose Pad - 1 Piece, Bagged without Installation Kit",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0041/english-option-03.webp"
           }
         ],
         "features": [
-          "Supports routine frame maintenance and component replacement.",
-          "Suitable for optical repair benches and service kits.",
-          "Choose the configuration required for the frame design."
+          "Integrated silicone bridge design cushions the nose without separate pad arms.",
+          "Three- and five-piece options include installation tools and a storage case.",
+          "Single-piece option is supplied bagged without the installation kit."
         ]
       },
       {
@@ -2751,15 +2751,15 @@
         "options": [
           {
             "model": "LZN-TL-0042-01",
-            "label": "Nasal-Bridge Pressure-Relief Tape - 3 Rolls",
+            "label": "Nasal-Bridge Pressure-Relief Tape - 3 Rolls, 2 cm x 1 m Each",
             "priceUsd": 1.72,
             "image": "assets/catalog/TL-0042/english-option-01.webp"
           }
         ],
         "features": [
-          "Supports routine frame maintenance and component replacement.",
-          "Suitable for optical repair benches and service kits.",
-          "Choose the configuration required for the frame design."
+          "Soft cushioning reduces concentrated pressure at the nose bridge.",
+          "Each roll measures 2 cm x 1 m.",
+          "Three-roll pack supports repeated fitting and service use."
         ]
       },
       {
@@ -2858,27 +2858,27 @@
         "options": [
           {
             "model": "LZN-TL-0045-01",
-            "label": "Gold Aluminum Magnetic Screw Tray",
+            "label": "Orange DS-901 Aluminum Magnetic Screw Tray",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0045/english-option-01.webp"
           },
           {
             "model": "LZN-TL-0045-02",
-            "label": "Red Aluminum Magnetic Screw Tray",
+            "label": "Red DS-901 Aluminum Magnetic Screw Tray",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0045/english-option-02.webp"
           },
           {
             "model": "LZN-TL-0045-03",
-            "label": "Purple Aluminum Magnetic Screw Tray",
+            "label": "Purple DS-901 Aluminum Magnetic Screw Tray",
             "priceUsd": 2.29,
             "image": "assets/catalog/TL-0045/english-option-03.webp"
           }
         ],
         "features": [
-          "Supports routine frame maintenance and component replacement.",
-          "Suitable for optical repair benches and service kits.",
-          "Choose the configuration required for the frame design."
+          "DS-901 magnetic base keeps optical screws and metal parts together.",
+          "Aluminum construction is compact and suitable for repair benches.",
+          "Available in orange, red, and purple."
         ]
       }
     ]
@@ -3147,7 +3147,7 @@
         "category": "tools",
         "model": "LZN-TL-0049",
         "nameEn": "Professional Eyeglass Repair Pliers",
-        "chineseName": "LZN Optical Product TL-0049",
+        "chineseName": "Professional Eyeglass Repair Pliers",
         "image": "assets/catalog/TL-0049/english-option-01.webp",
         "images": [
           "assets/catalog/TL-0049/english-option-01.webp",
@@ -3222,9 +3222,9 @@
           }
         ],
         "features": [
-          "Designed for precise eyewear adjustment and repair.",
-          "Suitable for optical workshops and service counters.",
-          "Multiple configurations support different frame maintenance tasks."
+          "Specialized jaws support nose-pad, lens-ring, suction-cup, and cutting work.",
+          "Individual AC-series pliers let workshops replace only the tool they need.",
+          "A complete 10-piece assortment is also available."
         ]
       },
       {
@@ -3603,27 +3603,27 @@
         "options": [
           {
             "model": "LZN-TL-0053-01",
-            "label": "Single Round Occluder",
+            "label": "Black Round Occluder - 1 Piece",
             "priceUsd": 1,
             "image": "assets/catalog/TL-0053/english-option-01.webp"
           },
           {
             "model": "LZN-TL-0053-02",
-            "label": "Triple Round Occluder Set",
+            "label": "Black Round Occluders - 3 Pieces",
             "priceUsd": 2,
             "image": "assets/catalog/TL-0053/english-option-02.webp"
           },
           {
             "model": "LZN-TL-0053-03",
-            "label": "Double Round Occluder Set",
+            "label": "Black Round Occluders - 2 Pieces",
             "priceUsd": 1.5,
             "image": "assets/catalog/TL-0053/english-option-03.webp"
           }
         ],
         "features": [
-          "Designed for precise eyewear adjustment and repair.",
-          "Suitable for optical workshops and service counters.",
-          "Multiple configurations support different frame maintenance tasks."
+          "Handheld black occluders support monocular vision screening.",
+          "Round shields suit refraction and routine clinical examinations.",
+          "Available in one-, two-, and three-piece packs."
         ]
       },
       {
@@ -4313,7 +4313,7 @@
           },
           {
             "model": "LZN-TL-0062-15",
-            "label": "82 x 37 cm Extended 3 mm Mat",
+            "label": "82 x 37 cm Extra-Long Thick Mat - 3 mm",
             "priceUsd": 14,
             "image": "assets/catalog/TL-0062/english-card.webp"
           },
