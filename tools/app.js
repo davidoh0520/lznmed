@@ -26,11 +26,6 @@ function deferCatalogImages(root) {
       host: root.querySelector('.marketplace-scroll'),
       images: [...root.querySelectorAll('.marketplace-product-image img[data-catalog-src]')],
       margin: window.matchMedia('(max-width: 720px)').matches ? '180px 0px' : '480px 0px'
-    },
-    {
-      host: root.querySelector('.marketplace-major-nav'),
-      images: [...root.querySelectorAll('.marketplace-major-nav img[data-catalog-src]')],
-      margin: '100px 0px'
     }
   ];
   if (!('IntersectionObserver' in window)) {
