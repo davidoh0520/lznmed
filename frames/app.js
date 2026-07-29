@@ -479,7 +479,7 @@ function marketplaceFrameCard(product, seriesName){
   if(!values.length)values.push(unitPrice(product));
   const minimum=Math.min(...values);
   return `<article class="card marketplace-product-card" data-model="${esc(product.model)}" tabindex="0" role="button" aria-label="View model ${esc(product.model)} details">
-    <div class="marketplace-product-image"><img src="${esc(image)}" alt="Model ${esc(product.model)}" loading="lazy" decoding="async" fetchpriority="low"></div>
+    <div class="marketplace-product-image"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-catalog-src="${esc(image)}" alt="Model ${esc(product.model)}" loading="lazy" decoding="async"></div>
     <div class="marketplace-product-copy"><span class="marketplace-product-kicker">${esc(seriesName)}</span><h3>${esc(product.model)}</h3><p>${esc(product.productTitle)}</p><div class="marketplace-product-meta"><span class="marketplace-price">${colors.length>1?'From ':''}USD ${minimum.toFixed(2)} <small>/ frame</small></span><span class="marketplace-open">Choose color &rarr;</span></div></div>
   </article>`;
 }
