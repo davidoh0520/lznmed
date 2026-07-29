@@ -42,12 +42,19 @@
     const nameEn = suppliedName && suppliedName.toUpperCase() !== model.toUpperCase() ? suppliedName : (type || suppliedName || model);
     const description = String(card.dataset.summary || card.querySelector('span')?.textContent || type || '').trim();
     const image = deviceAsset(card.querySelector('img')?.getAttribute('src') || offer?.dataset.image || '');
+    const brochurePages = (
+      card.dataset.brochures
+        ? card.dataset.brochures.split(',')
+        : (card.dataset.brochure ? [card.dataset.brochure] : [])
+    ).map(deviceAsset).filter(Boolean);
     return {
       model,
       nameEn,
       image,
       description,
-      priceUsd: legacyPrices[model] ?? null
+      priceUsd: legacyPrices[model] ?? null,
+      brochurePages,
+      brochureDownload: deviceAsset(card.dataset.download || '')
     };
   };
   const collectLegacyItems = section => section
@@ -174,6 +181,8 @@
     ...product,
     image: publicAsset(product.image),
     images: (product.images || []).map(publicAsset),
+    brochurePages: (product.brochurePages || []).map(deviceAsset),
+    brochureDownload: deviceAsset(product.brochureDownload),
     options: (product.options || []).map(option => ({
       ...option,
       image: publicAsset(option.image || product.image),
@@ -262,7 +271,28 @@
   function openDetail(product, category) {
     const body = detail.querySelector('#deviceOrderDetailBody');
     const optionSelect = product.options?.length ? `<label class="marketplace-detail-option"><span>${escapeHtml(product.optionLabel || 'Configuration')}</span><select data-device-detail-option>${product.options.map((option, index) => `<option value="${index}">${escapeHtml(option.label)}</option>`).join('')}</select></label>` : '';
-    body.innerHTML = `<div class="marketplace-detail-media"><img data-device-detail-image src="${escapeHtml(product.image)}" alt="${escapeHtml(product.model)} ${escapeHtml(product.nameEn)}"></div>
+    const brochurePages = [...new Set((product.brochurePages || []).filter(Boolean))];
+    const galleryImages = brochurePages.length
+      ? [...new Set([...brochurePages, product.image].filter(Boolean))]
+      : [product.image];
+    const galleryThumbs = galleryImages.length > 1
+      ? `<div class="device-detail-thumbs" aria-label="Product images">${galleryImages.map((image, index) => {
+        const isBrochure = index < brochurePages.length;
+        const label = isBrochure ? `Brochure page ${index + 1}` : 'Product image';
+        return `<button type="button" class="device-detail-thumb ${index ? '' : 'active'}" data-device-gallery-index="${index}" aria-label="Show ${escapeHtml(label)}" aria-pressed="${index ? 'false' : 'true'}"><img loading="lazy" decoding="async" src="${escapeHtml(image)}" alt=""><span>${escapeHtml(label)}</span></button>`;
+      }).join('')}</div>`
+      : '';
+    const brochureLink = product.brochureDownload
+      ? `<a class="device-detail-brochure-link" href="${escapeHtml(product.brochureDownload)}" target="_blank" rel="noopener">Download brochure / manual PDF</a>`
+      : '';
+    body.innerHTML = `<div class="marketplace-detail-media">
+        <div class="device-detail-stage">
+          <img data-device-detail-image src="${escapeHtml(galleryImages[0] || product.image)}" alt="${escapeHtml(product.model)} ${escapeHtml(product.nameEn)}">
+          <span class="device-detail-page" data-device-gallery-label ${brochurePages.length ? '' : 'hidden'}>${brochurePages.length ? 'Brochure page 1' : ''}</span>
+        </div>
+        ${galleryThumbs}
+        ${brochureLink}
+      </div>
       <div class="marketplace-detail-copy">
         <span class="marketplace-product-kicker">${escapeHtml(category.en)}</span>
         <h2 data-device-detail-model>${escapeHtml(product.model)}</h2>
@@ -273,9 +303,36 @@
         <label class="marketplace-detail-quantity"><span>Quantity</span><input type="number" min="1" max="999" step="1" value="1" inputmode="numeric" data-device-detail-quantity></label>
         <button type="button" class="marketplace-detail-add add-cart" data-device-modal-add>Add to cart</button>
       </div>`;
+    let activeGalleryIndex = 0;
+    const mainImage = body.querySelector('[data-device-detail-image]');
+    const galleryLabel = body.querySelector('[data-device-gallery-label]');
+    const showGalleryImage = index => {
+      activeGalleryIndex = Math.max(0, Math.min(index, galleryImages.length - 1));
+      const isBrochure = activeGalleryIndex < brochurePages.length;
+      const selected = selectedOffer(product);
+      mainImage.src = isBrochure ? brochurePages[activeGalleryIndex] : selected.image;
+      mainImage.alt = isBrochure
+        ? `${product.model} brochure page ${activeGalleryIndex + 1}`
+        : `${selected.model} ${product.nameEn}`;
+      if (galleryLabel) {
+        galleryLabel.hidden = false;
+        galleryLabel.textContent = isBrochure ? `Brochure page ${activeGalleryIndex + 1}` : 'Product image';
+      }
+      body.querySelectorAll('[data-device-gallery-index]').forEach(button => {
+        const active = Number(button.dataset.deviceGalleryIndex) === activeGalleryIndex;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+    };
+    body.querySelectorAll('[data-device-gallery-index]').forEach(button => {
+      button.addEventListener('click', () => showGalleryImage(Number(button.dataset.deviceGalleryIndex)));
+    });
     const refresh = () => {
       const selected = selectedOffer(product);
-      body.querySelector('[data-device-detail-image]').src = selected.image;
+      if (!brochurePages.length || activeGalleryIndex >= brochurePages.length) {
+        mainImage.src = selected.image;
+        mainImage.alt = `${selected.model} ${product.nameEn}`;
+      }
       body.querySelector('[data-device-detail-model]').textContent = selected.model;
       body.querySelector('[data-device-detail-price]').textContent = selected.priceUsd ? `USD ${formatUsd(selected.priceUsd)}` : 'Price on request';
     };
