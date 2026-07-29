@@ -385,7 +385,7 @@ async function profileView(){
       <label>City<input name="city" list="profileCityOptions" required autocomplete="address-level2" value="${e(p.city)}"><datalist id="profileCityOptions"></datalist></label>
       <label class="wide">Detailed street address<input name="address_line_1" required autocomplete="address-line1" placeholder="Building number and street name" value="${e(p.address_line_1)}"></label>
       <label class="wide">Address line 2 (optional)<input name="address_line_2" autocomplete="address-line2" placeholder="Suite, unit, floor, etc." value="${e(p.address_line_2)}"></label>
-      <label class="wide">Postal code<input name="postal_code" required autocomplete="postal-code" value="${e(p.postal_code)}"><small><span data-postal-status aria-live="polite">Filled automatically after the detailed address is completed.</span> Address lookup by <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>; the completed address is sent only for this lookup.</small></label>
+      <label class="wide">Postal code<input name="postal_code" required autocomplete="postal-code" value="${e(p.postal_code)}"><small><span data-postal-status aria-live="polite">Enter the postal code manually. It is required for delivery.</span></small></label>
       <label class="wide reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true" ${p.cart_reminder_opt_in?'checked':''}><span>Email me reminders about items left in my cart. I can turn these reminders off at any time.</span></label>
       <button class="btn wide">Save Profile</button><p class="form-status wide" id="profileStatus"></p>
     </form>`);
