@@ -6,10 +6,7 @@
     countryCodesUrl: 'https://countriesnow.space/api/v0.1/countries/codes',
     statesUrl: 'https://countriesnow.space/api/v0.1/countries/states',
     citiesUrl: 'https://countriesnow.space/api/v0.1/countries/state/cities',
-    geocoderUrl: 'https://nominatim.openstreetmap.org/search',
-    geocoderEmail: 'sales@lznmed.com',
-    referenceCacheMs: 7 * 24 * 60 * 60 * 1000,
-    postalCacheMs: 30 * 24 * 60 * 60 * 1000
+    referenceCacheMs: 7 * 24 * 60 * 60 * 1000
   };
   const COUNTRY_ALIASES = {
     'korea republic of': 'south korea',
@@ -24,8 +21,6 @@
   };
 
   let countryRecordsPromise;
-  let lastGeocoderRequestAt = 0;
-  let geocoderQueue = Promise.resolve();
 
   function config() {
     return { ...DEFAULT_CONFIG, ...(window.LZN_ADDRESS_PROFILE_CONFIG || {}) };
@@ -168,51 +163,6 @@
     if (!current.startsWith('+')) input.value = `${nextDialCode} ${current}`;
   }
 
-  function wait(milliseconds) {
-    return new Promise(resolve => setTimeout(resolve, milliseconds));
-  }
-
-  function queuedGeocoderRequest(url) {
-    const run = async () => {
-      const remaining = 1100 - (Date.now() - lastGeocoderRequestAt);
-      if (remaining > 0) await wait(remaining);
-      lastGeocoderRequestAt = Date.now();
-      return requestJson(url);
-    };
-    const result = geocoderQueue.then(run, run);
-    geocoderQueue = result.catch(() => {});
-    return result;
-  }
-
-  async function findPostalCode(currentConfig, address, country) {
-    const key = `postal:${normalize([
-      address.street,
-      address.city,
-      address.state,
-      address.country
-    ].join('|'))}`;
-    const cached = cacheRead(key);
-    if (cached !== null) return cached;
-
-    const params = new URLSearchParams({
-      format: 'jsonv2',
-      addressdetails: '1',
-      limit: '1',
-      street: address.street,
-      city: address.city,
-      country: address.country
-    });
-    if (address.state) params.set('state', address.state);
-    if (country?.code) params.set('countrycodes', country.code.toLowerCase());
-    if (currentConfig.geocoderEmail) params.set('email', currentConfig.geocoderEmail);
-
-    const separator = currentConfig.geocoderUrl.includes('?') ? '&' : '?';
-    const results = await queuedGeocoderRequest(`${currentConfig.geocoderUrl}${separator}${params}`);
-    const postcode = String(results?.[0]?.address?.postcode || '').trim();
-    cacheWrite(key, postcode, currentConfig.postalCacheMs);
-    return postcode;
-  }
-
   function enhance(form) {
     if (!form) return;
     const currentConfig = config();
@@ -237,8 +187,6 @@
     let countryTimer;
     let countryRequest = 0;
     let cityRequest = 0;
-    let postalRequest = 0;
-    let lastPostalAddress = '';
 
     const setCountryStatus = message => {
       if (countryStatus) countryStatus.textContent = message;
@@ -315,37 +263,6 @@
         if (requestId !== cityRequest) return;
         fillDatalist(cityList, []);
         setCountryStatus('City suggestions are unavailable; type the city manually.');
-      }
-    };
-
-    const lookupPostalCode = async () => {
-      const address = {
-        street: streetInput.value.trim(),
-        city: cityInput.value.trim(),
-        state: stateInput.value.trim(),
-        country: countryInput.value.trim()
-      };
-      if (!address.street || !address.city || !address.country) {
-        setPostalStatus('Complete the country, city and detailed street address to find the postal code.');
-        return;
-      }
-      const addressKey = normalize(Object.values(address).join('|'));
-      if (addressKey === lastPostalAddress) return;
-      lastPostalAddress = addressKey;
-      const requestId = ++postalRequest;
-      setPostalStatus('Finding the postal code from the completed address…');
-      try {
-        const postcode = await findPostalCode(currentConfig, address, selectedCountry);
-        if (requestId !== postalRequest || !document.body.contains(form)) return;
-        if (postcode) {
-          postalInput.value = postcode;
-          setPostalStatus(`Postal code ${postcode} was filled automatically. You can correct it if needed.`);
-        } else {
-          setPostalStatus('No postal code was found. Please enter it manually.');
-        }
-      } catch (_) {
-        if (requestId !== postalRequest) return;
-        setPostalStatus('Postal-code lookup is temporarily unavailable. Please enter it manually.');
       }
     };
 
