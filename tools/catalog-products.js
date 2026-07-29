@@ -3899,7 +3899,7 @@
         "images": [
           "assets/catalog/TL-0058/english-card.webp"
         ],
-        "description": "Replacement suction cups and blocking heads support secure lens handling across common edging workflows.",
+        "description": "Replacement suction cups and blocking heads for Nidek, Essilor, Charops, Weco, Briot, Supore, Fario and selected domestic lens-edger systems.",
         "priceUsd": 6.5,
         "priceOnRequest": false,
         "priceDisplay": "USD 6.50 - 8.50",
@@ -3907,147 +3907,147 @@
         "options": [
           {
             "model": "LZN-TL-0058-01",
-            "label": "Small Red 06445 - 10-Pack",
+            "label": "Nidek Small Red Cup 06445 - 10-Pack",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-02",
-            "label": "Small Blue 06445 - 10-Pack",
+            "label": "Nidek Small Blue Cup 06445 - 10-Pack",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-03",
-            "label": "Small Base-Curve 06442 - 10-Pack",
+            "label": "Nidek Small Base-Curve Cup 06442 - 10-Pack",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-04",
-            "label": "Small 06441 - 10-Pack",
+            "label": "Nidek Small Cup 06441 - 10-Pack",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-05",
-            "label": "Metal Suction Cup 06433 - 10-Pack",
+            "label": "Essilor Metal Cup 06433 - 10-Pack",
             "priceUsd": 8.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-06",
-            "label": "Suction Cup 06435 - 10-Pack",
+            "label": "Essilor Cup 06435 - 10-Pack",
             "priceUsd": 7.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-07",
-            "label": "Suction Cup 06437 - 10-Pack",
+            "label": "Essilor Cup 06437 - 10-Pack",
             "priceUsd": 7.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-08",
-            "label": "Large Red 06438 - 10-Pack",
+            "label": "Charops Large Red Cup 06438 - 10-Pack",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-09",
-            "label": "Large Blue 06438 - 10-Pack",
+            "label": "Charops Large Blue Cup 06438 - 10-Pack",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-10",
-            "label": "Small Red 06439 - 10-Pack",
+            "label": "Charops Small Red Cup 06439 - 10-Pack",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-11",
-            "label": "Small Blue 06439 - 10-Pack",
+            "label": "Charops Small Blue Cup 06439 - 10-Pack",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-12",
-            "label": "Edger Cup 06425 - 10-Pack",
+            "label": "Weco Edger Cup 06425 - 10-Pack",
             "priceUsd": 7.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-13",
-            "label": "Edger Cup 06426 - 10-Pack",
+            "label": "Weco Edger Cup 06426 - 10-Pack",
             "priceUsd": 7.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-14",
-            "label": "Suction Cup 06459 - 10-Pack",
+            "label": "Briot Cup 06459 - 10-Pack",
             "priceUsd": 7.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-15",
-            "label": "Suction Cup 06457 - 10-Pack",
+            "label": "Briot Cup 06457 - 10-Pack",
             "priceUsd": 7.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-16",
-            "label": "Thin-Wall Stem Cup 06481 - 10-Pack",
+            "label": "Supore Thin-Wall Stem Cup 06481 - 10-Pack",
             "priceUsd": 8.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-17",
-            "label": "Flat Hard Cup 06480 - 10-Pack",
+            "label": "Supore / Jinda Flat Hard Cup 06480 - 10-Pack",
             "priceUsd": 8.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-18",
-            "label": "Suction Cup 06484 - 10-Pack",
+            "label": "Jinggong / Jinglian Cup 06484 - 10-Pack",
             "priceUsd": 7.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-19",
-            "label": "Suction Cup 06486 - 10-Pack",
+            "label": "Jinggong / Jinglian Cup 06486 - 10-Pack",
             "priceUsd": 7.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-20",
-            "label": "Short Suction Cup 06431 - 10-Pack",
+            "label": "Tianwa Short Cup 06431 - 10-Pack",
             "priceUsd": 6.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-21",
-            "label": "Transparent Suction Cup 06455 - 10-Pack",
+            "label": "Supore Transparent Cup 06455 - 10-Pack",
             "priceUsd": 7.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-22",
-            "label": "Suction Cup 06433-1 - 10-Pack",
+            "label": "Fario Cup 06433-1 - 10-Pack",
             "priceUsd": 8.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           },
           {
             "model": "LZN-TL-0058-23",
-            "label": "Universal Suction Cup 06475 - 10-Pack",
+            "label": "Xinyuan / Jinggong / Tianwa / Jinglian Universal Cup 06475 - 10-Pack",
             "priceUsd": 7.5,
             "image": "assets/catalog/TL-0058/english-card.webp"
           }
         ],
         "features": [
-          "Ten-piece packs simplify workshop stocking.",
-          "Multiple profiles fit varied edger and blocker systems.",
-          "Color-coded options support quick identification."
+          "Each option names its compatible edger brand or system family.",
+          "Part numbers and cup profiles help prevent incompatible selections.",
+          "Ten-piece packs simplify workshop stocking."
         ]
       },
       {
