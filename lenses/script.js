@@ -274,7 +274,115 @@ function addToCart(){
   const qty=Math.max(1,Math.floor(Number(document.getElementById('orderQty').value)||1)), price=selectedPrice(); if(price===undefined)return;
   const line={name:activeProduct.name,coating:activeProduct.coating,qty,price,image:'assets/lens-export-envelope.webp'};
   if(activeProduct.cat==='single'){ const all=isAllPowersSelected(),sph=document.getElementById('orderSph').value,cyl=document.getElementById('orderCyl').value; line.sph=all?'ALL':power(sph); line.cyl=all?'ALL':cylPower(cyl); if(activeProduct.variants) line.coating=activeProduct.variants[Number(document.getElementById('orderVariant').value)].name; }
-  if(activePro…2874 tokens truncated…bel>
+  if(activeProduct.cat==='progressive'){ const all=isAllPowersSelected(),sph=document.getElementById('orderSph').value,cyl=document.getElementById('orderCyl').value,add=document.getElementById('orderAdd').value; line.sph=all?'ALL':power(sph); line.cyl=all?'ALL':cylPower(cyl); line.add=all?'ALL':power(add); }
+  if(activeProduct.cat==='semi') line.base=document.getElementById('orderBase').value;
+  cart.push(line); saveCart();
+  animateProductToCart();
+  toast(`${activeProduct.name} added to cart.`);
+  window.clearTimeout(addOrderLine._feedbackTimer);
+  addOrderLine.textContent='Added to Cart ✓';
+  addOrderLine._feedbackTimer=window.setTimeout(()=>{addOrderLine.textContent='Add to Cart';},1000);
+}
+function linePower(x){ return [x.coating,x.sph&&`SPH ${x.sph}`,x.cyl&&`CYL ${x.cyl}`,x.add&&`ADD ${x.add}`,x.base&&`Base ${x.base}`].filter(Boolean).join(' / '); }
+function renderModelCartSummary(){
+  if(!modelCartSummary||!activeProduct||activeProduct.cat==='semi'){
+    if(modelCartSummary){modelCartSummary.hidden=true;modelCartSummary.innerHTML='';}
+    return;
+  }
+  const lines=cart.filter(item=>item.name===activeProduct.name);
+  if(!lines.length){
+    modelCartSummary.hidden=true;
+    modelCartSummary.innerHTML='';
+    return;
+  }
+  const totalQty=lines.reduce((sum,item)=>sum+item.qty,0);
+  const total=lines.reduce((sum,item)=>sum+item.price*item.qty,0);
+  modelCartSummary.innerHTML=`<div class="model-cart-head"><strong>Selected powers</strong><span>${totalQty} lens${totalQty===1?'':'es'}</span></div><div class="model-cart-lines">${lines.map(item=>`<div class="model-cart-line"><span>${e(linePower(item))}</span><b>Qty ${item.qty}</b><strong>USD ${money(item.price*item.qty)}</strong></div>`).join('')}</div><div class="model-cart-total"><span>Model total</span><strong>USD ${money(total)}</strong></div>`;
+  modelCartSummary.hidden=false;
+}
+function money(value){ return Number(value||0).toFixed(2); }
+function paymentCode(value){const normalized=String(value||'').toLowerCase();if(normalized.includes('paypal'))return'payoneer_paypal';if(normalized.includes('card'))return'payoneer_card';return'company_bank_transfer';}
+function paymentLabel(value){return({company_bank_transfer:'Company bank transfer',payoneer_card:'Credit / debit card — processed by Payoneer',payoneer_paypal:'PayPal — processed by Payoneer where supported'})[paymentCode(value)];}
+function paymentFee(value,subtotal){const method=paymentCode(value);if(method==='payoneer_card')return Number(subtotal||0)*.03;if(method==='payoneer_paypal')return Number(subtotal||0)*.0399+.49;return 0;}
+function sameCartLine(a,b){
+  return a.name===b.name&&a.coating===b.coating&&(a.sph||'')===(b.sph||'')&&(a.cyl||'')===(b.cyl||'')&&(a.add||'')===(b.add||'')&&(a.base||'')===(b.base||'')&&Number(a.price)===Number(b.price);
+}
+function saveCart(){
+  const merged=[];
+  cart.forEach(line=>{
+    const existing=merged.find(item=>sameCartLine(item,line));
+    if(existing)existing.qty+=Math.max(1,Number(line.qty)||1);
+    else merged.push({...line,qty:Math.max(1,Number(line.qty)||1)});
+  });
+  cart=merged;
+  localStorage.setItem('lznLensCart',JSON.stringify(cart));
+  cartCount.textContent=cart.reduce((s,x)=>s+x.qty,0);
+  if(modal.open)renderModelCartSummary();
+}
+function showCommerce(html){ commerceBody.innerHTML=html; if(!cartDialog.open)cartDialog.showModal(); }
+function accountLabel(){
+  if(!session){accountButton.textContent='SIGN IN';accountButton.title='Sign in or create an account';return;}
+  const name=session.user.user_metadata?.full_name||session.user.email?.split('@')[0]||'ACCOUNT'; accountButton.textContent=name.toUpperCase().slice(0,14); accountButton.title=`Signed in as ${session.user.email}`;
+}
+function cartView(){
+  const totalQty=cart.reduce((s,x)=>s+x.qty,0),total=cart.reduce((s,x)=>s+x.price*x.qty,0);
+  showCommerce(`<p class="eyebrow">BULK LENS ORDER</p><h2>${cart.length?'Your Cart':'Your cart is empty'}</h2><p class="order-note">Unit prices are per lens. Standard export packing uses plain white envelopes marked with the lens type and prescription power. Availability and shipping are confirmed before invoicing.</p><div class="cart-list">${cart.length?cart.map((x,i)=>`<div class="cart-line"><div><strong>${e(x.name)}</strong><span>${e(linePower(x))}</span><small>$${money(x.price)} each</small></div><label class="cart-qty">Qty<input data-qty="${i}" type="number" min="1" step="1" value="${x.qty}"></label><div><b>$${money(x.price*x.qty)}</b><button data-remove="${i}" aria-label="Remove">&times;</button></div></div>`).join(''):'<p class="empty-cart">Choose a product and add a lens power.</p>'}</div>${cart.length?`<div class="cart-summary"><span>${totalQty} lenses</span><strong>USD $${money(total)}</strong></div><div class="commerce-actions"><button class="btn secondary" id="continueShopping">Continue Shopping</button><button class="btn" id="checkoutButton">Proceed to Checkout</button></div>`:'<button class="btn" id="continueShopping">Continue Shopping</button>'}`);
+  commerceBody.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{cart.splice(Number(b.dataset.remove),1);saveCart();cartView();});
+  commerceBody.querySelectorAll('[data-qty]').forEach(input=>input.onchange=()=>{cart[Number(input.dataset.qty)].qty=Math.max(1,Math.floor(Number(input.value)||1));saveCart();cartView();});
+  document.getElementById('continueShopping').onclick=()=>cartDialog.close();
+  document.getElementById('checkoutButton')?.addEventListener('click',()=>session?checkoutView():authView(true));
+}
+function authView(returnToCart=false){
+  if(session){
+    showCommerce(`<p class="eyebrow">CUSTOMER ACCOUNT</p><h2>My Account</h2><p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="commerce-actions stack"><button class="btn" id="ordersOpen">My Orders</button><button class="btn secondary" id="profileOpen">Edit Account & Shipping</button><button class="text-button" id="signOut">Sign Out</button></div>`);
+    document.getElementById('ordersOpen').onclick=ordersView;
+    document.getElementById('profileOpen').onclick=profileView;
+    document.getElementById('signOut').onclick=async()=>{await supabaseClient.auth.signOut();cartDialog.close();};
+    return;
+  }
+  showCommerce(`<p class="eyebrow">CUSTOMER ACCOUNT</p><h2>Sign in or register</h2><form class="commerce-form" id="authForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><div class="commerce-actions"><button class="btn" name="mode" value="signin">Sign In</button><button class="btn secondary" name="mode" value="signup">Create Company Account</button></div><button class="text-button auth-resend" id="authResend" type="button" hidden>Resend confirmation email</button><p class="form-status" id="authStatus" aria-live="polite"></p></form>`);
+  document.getElementById('authForm').onsubmit=async event=>{
+    event.preventDefault();
+    const mode=event.submitter.value,form=new FormData(event.currentTarget),status=document.getElementById('authStatus');
+    if(mode==='signup'&&(!String(form.get('company_name')||'').trim()||!String(form.get('full_name')||'').trim())){status.textContent='Company name and Manager / Contact name are required.';return;}
+    status.textContent='Please wait...';
+    localStorage.setItem('lznLensReturnToCart',returnToCart?'1':'0');
+    const result=mode==='signup'
+      ?await supabaseClient.auth.signUp({email:form.get('email'),password:form.get('password'),options:{emailRedirectTo:`${location.origin}${location.pathname}?email-confirmed=1#cart`,data:{company_name:String(form.get('company_name')).trim(),full_name:String(form.get('full_name')).trim(),buyer_type:'company',cart_reminder_opt_in:form.get('cart_reminder_opt_in')==='true'}}})
+      :await supabaseClient.auth.signInWithPassword({email:form.get('email'),password:form.get('password')});
+    status.textContent=result.error?result.error.message:(mode==='signup'?'If this address is new or still unconfirmed, a confirmation email has been requested. Already registered? Sign in instead.':'Signed in.');
+    if(!result.error&&mode==='signup'){
+      localStorage.setItem('lznLensAwaitingEmailConfirmation','1');
+      const resend=document.getElementById('authResend');
+      resend.hidden=false;
+      resend.dataset.email=String(form.get('email')||'').trim().toLowerCase();
+    }
+    if(!result.error&&mode==='signin')setTimeout(authView,300);
+  };
+  document.getElementById('authResend').onclick=resendLensConfirmation;
+}
+async function resendLensConfirmation(){
+  const button=document.getElementById('authResend'),status=document.getElementById('authStatus'),email=button?.dataset.email;
+  if(!email)return;
+  button.disabled=true;
+  status.textContent='Requesting another confirmation email...';
+  const {error}=await supabaseClient.auth.resend({type:'signup',email,options:{emailRedirectTo:`${location.origin}${location.pathname}?email-confirmed=1#cart`}});
+  status.textContent=error?error.message:'Confirmation email requested. Please check spam or junk folders too.';
+  setTimeout(()=>{button.disabled=false;},180000);
+}
+async function profileView(){
+  const {data}=await supabaseClient.from('profiles').select('*').eq('id',session.user.id).maybeSingle();const p=data||{};
+  showCommerce(`<p class="eyebrow">SHIPPING PROFILE</p><h2>Buyer Information</h2>
+    <form class="commerce-form two-col" id="profileForm">
+      <input type="hidden" name="buyer_type" value="company">
+      <label class="wide">Account email<input name="account_email" type="email" required autocomplete="email" value="${e(session.user.email)}"><small>Changing this address sends confirmation emails to the current and new addresses.</small></label>
+      <label>Company name<input name="company_name" required autocomplete="organization" value="${e(p.company_name)}"></label>
+      <label>Manager / Contact name<input name="full_name" required autocomplete="name" value="${e(p.full_name)}"></label>
+      <label>Country<input name="country" list="profileCountryOptions" required autocomplete="country-name" value="${e(p.country)}"><datalist id="profileCountryOptions"></datalist><small data-country-status aria-live="polite">Choose a country to load its calling code and regions.</small></label>
+      <label>Phone<input name="phone" type="tel" required autocomplete="tel" inputmode="tel" value="${e(p.phone)}"><small>The selected country's calling code is added automatically.</small></label>
+      <label>WhatsApp<input name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" value="${e(p.whatsapp)}"></label>
+      <label>State / Province<input name="state_province" list="profileStateOptions" autocomplete="address-level1" value="${e(p.state_province)}"><datalist id="profileStateOptions"></datalist></label>
+      <label>City<input name="city" list="profileCityOptions" required autocomplete="address-level2" value="${e(p.city)}"><datalist id="profileCityOptions"></datalist></label>
       <label class="wide">Detailed street address<input name="address_line_1" required autocomplete="address-line1" placeholder="Building number and street name" value="${e(p.address_line_1)}"></label>
       <label class="wide">Address line 2 (optional)<input name="address_line_2" autocomplete="address-line2" placeholder="Suite, unit, floor, etc." value="${e(p.address_line_2)}"></label>
       <label class="wide">Postal code<input name="postal_code" required autocomplete="postal-code" value="${e(p.postal_code)}"><small><span data-postal-status aria-live="polite">Filled automatically after the detailed address is completed.</span> Address lookup by <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>; the completed address is sent only for this lookup.</small></label>
@@ -466,4 +574,3 @@ function startRandomLensHero() {
 }
 
 startRandomLensHero();
-
