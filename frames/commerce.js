@@ -399,4 +399,3 @@ if (client) {
     if (event === 'SIGNED_OUT') toast('You have signed out.');
   });
 }
-
