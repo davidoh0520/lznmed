@@ -173,3 +173,12 @@ insert into public.product_logistics (
 values
   ('LY-180A','Small Combined Ophthalmic Table','Devices',90,60,71,62,99,59,43,'Liangyou 2024 brochure page 18; table 95 x 52 cm; drawer 54.5 x 32 cm; vertical travel 20 cm; light 20 W; price on request')
 on conflict (model) do nothing;
+
+-- Phoropter support arms from page 63 of the Liangyou 2024 brochure.
+insert into public.product_logistics (
+  model, product_name, store_section, package_weight_kg, notes
+)
+values
+  ('PA-1','Counter-mounted Phoropter Arm with Light','Devices',20,'Liangyou 2024 brochure page 63; up/down angle +/-30 degrees; rotation 90 degrees; price on request'),
+  ('PA-2','Wall-mounted Phoropter Arm','Devices',14,'Liangyou 2024 brochure page 63; up/down angle +/-30 degrees; rotation 180 degrees; price on request')
+on conflict (model) do nothing;
