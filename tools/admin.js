@@ -392,7 +392,369 @@ document.querySelector('#ordersBody').addEventListener('click', event => {
 });
 
 document.querySelector('#membersBody').addEventListener('click', event => {
-  const row = event.target.c…6878 tokens truncated…const text = await error.context?.clone().text();
+  const row = event.target.closest('[data-member-id]');
+  if (row) openMember(row.dataset.memberId);
+});
+
+function openMember(id) {
+  const member = members.find(item => item.id === id);
+  if (!member) return;
+  const linkedOrderCount = orders.filter(order => order.user_id === member.id).length;
+  detail.innerHTML = `
+    <div class="detail-head"><p class="eyebrow">Member management</p><h2>${e(member.full_name || member.email || 'Member')}</h2><p>Joined ${e(date(member.created_at))}</p></div>
+    <section class="detail-section"><form id="memberForm" class="form-grid">
+      <input type="hidden" name="buyer_type" value="company">
+      <label>Manager / Contact name<input name="full_name" required value="${e(member.full_name || '')}"></label>
+      <label>Company name<input name="company_name" required value="${e(member.company_name || '')}"></label>
+      <label>Email<input name="email" type="email" required value="${e(member.email || '')}"><small>The customer receives an account-change notification.</small></label>
+      <label>Phone<input name="phone" value="${e(member.phone || '')}"></label>
+      <label>WhatsApp<input name="whatsapp" value="${e(member.whatsapp || '')}"></label>
+      <label>Country<input name="country" value="${e(member.country || '')}"></label>
+      <label class="wide">Address line 1<input name="address_line_1" value="${e(member.address_line_1 || '')}"></label>
+      <label class="wide">Address line 2<input name="address_line_2" value="${e(member.address_line_2 || '')}"></label>
+      <label>City<input name="city" value="${e(member.city || '')}"></label>
+      <label>State / Province<input name="state_province" value="${e(member.state_province || '')}"></label>
+      <label>Postal code<input name="postal_code" value="${e(member.postal_code || '')}"></label>
+      <label>Preferred courier<select name="preferred_courier"><option value="">Not specified</option>${['DHL','FedEx','UPS','EMS','SF Express','Other'].map(value => `<option ${member.preferred_courier === value ? 'selected' : ''}>${value}</option>`).join('')}</select></label>
+      <label>Courier account<input name="courier_account_no" value="${e(member.courier_account_no || '')}"></label>
+    </form><div class="order-actions"><button class="primary-button" id="saveMember">Save member & notify customer</button></div><p class="save-status" id="memberSaveStatus"></p></section>
+    <section class="detail-section danger-zone"><h3>Delete member</h3><p>Removes the customer's login and profile. ${linkedOrderCount ? `${linkedOrderCount} historical order${linkedOrderCount === 1 ? '' : 's'} will be retained for business records.` : 'This member has no historical orders.'}</p><button class="danger-button" id="deleteMember">Delete member account</button><p class="save-status" id="memberDeleteStatus"></p></section>`;
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
+  document.querySelector('#saveMember').addEventListener('click', async () => {
+    const status = document.querySelector('#memberSaveStatus');
+    const button = document.querySelector('#saveMember');
+    const values = Object.fromEntries(new FormData(document.querySelector('#memberForm')));
+    Object.keys(values).forEach(key => values[key] = String(values[key] || '').trim() || null);
+    values.buyer_type = 'company';
+    if (!values.company_name || !values.full_name || !values.email) {
+      status.textContent = 'Email, company name and Manager / Contact name are required.';
+      return;
+    }
+    button.disabled = true;
+    status.textContent = 'Saving account and sending notification...';
+    const { data, error } = await invokeMemberAdminFunction({
+      action: 'update_user',
+      user_id: member.id,
+      email: values.email,
+      profile: values
+    });
+    button.disabled = false;
+    if (error) {
+      status.textContent = await functionErrorMessage(error);
+      return;
+    }
+    const savedMember = data?.profile || { ...member, ...values };
+    members = members.map(item => item.id === member.id ? savedMember : item);
+    status.textContent = data?.email_sent
+      ? 'Member saved and the customer notification email was sent.'
+      : `Member saved. Notification email was not sent${data?.email_error ? `: ${data.email_error}` : '.'}`;
+    renderMembers();
+    renderSummary();
+  });
+  document.querySelector('#deleteMember').addEventListener('click', async () => {
+    const status = document.querySelector('#memberDeleteStatus');
+    const confirmation = window.prompt(`Type DELETE to remove ${member.email || member.full_name || 'this member'}.\nHistorical orders will be retained.`);
+    if (confirmation !== 'DELETE') {
+      status.textContent = 'Deletion cancelled.';
+      return;
+    }
+    const button = document.querySelector('#deleteMember');
+    button.disabled = true;
+    status.textContent = 'Deleting member account...';
+    const { data, error } = await invokeMemberAdminFunction({
+      action: 'delete_user',
+      user_id: member.id
+    });
+    if (error) {
+      button.disabled = false;
+      status.textContent = await functionErrorMessage(error);
+      return;
+    }
+    members = members.filter(item => item.id !== member.id);
+    orders = orders.map(order => order.user_id === member.id ? { ...order, user_id: null } : order);
+    renderMembers();
+    renderOrders();
+    renderSummary();
+    closeDrawer();
+    document.querySelector('#adminIdentity').textContent = data?.email_sent
+      ? 'Member deleted and the customer was notified.'
+      : 'Member deleted. Historical orders were retained.';
+  });
+}
+
+async function openOrder(id) {
+  activeOrder = orders.find(order => order.id === id);
+  if (!activeOrder) return;
+  detail.innerHTML = '<p>Loading order...</p>';
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
+  const [itemResult, couponResult] = await Promise.all([
+    client.from('order_items').select('*').eq('order_id', id).order('id'),
+    loadIssuedCoupons(id)
+  ]);
+  if (itemResult.error || couponResult.error) {
+    detail.innerHTML = `<p>${e(itemResult.error?.message || couponResult.error?.message)}</p>`;
+    return;
+  }
+  activeItems = itemResult.data || [];
+  activeIssuedCoupons = couponResult.data || [];
+  renderOrderDetail();
+}
+
+function sfFreightCalculatorHtml(order) {
+  if (!sfFreight) return '<section class="detail-section"><h3>SF International freight calculator</h3><p class="sf-message error">SF tariff data is unavailable. Refresh the page.</p></section>';
+  const matched = sfFreight.findDestination(order.destination_country);
+  const destinationOptions = sfFreight.destinations
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(item => `<option value="${e(item.code)}" ${matched?.code === item.code ? 'selected' : ''}>${e(item.name)} (${e(item.code)}) · Zone ${e(item.zone)}</option>`)
+    .join('');
+  let exchangeRate = 6.8;
+  try { exchangeRate = Number(localStorage.getItem('lzn_sf_rmb_per_usd')) || exchangeRate; } catch (_) {}
+  const today = new Date().toLocaleDateString('en-CA');
+  return `<section class="detail-section sf-freight-section">
+    <div class="sf-section-heading"><div><p class="eyebrow">China export public tariff</p><h3>SF International freight calculator</h3></div><div class="sf-source-links"><a href="${e(sfFreight.publicRateUrl)}" target="_blank" rel="noopener">2026 export tariff</a><a href="${e(sfFreight.fuelRateUrl)}" target="_blank" rel="noopener">Official fuel rate</a></div></div>
+    <form id="sfFreightForm" class="sf-freight-form">
+      <label class="wide">Destination country<select name="destination" required><option value="">Select destination</option>${destinationOptions}</select></label>
+      <label>SF service<select name="service" required></select></label>
+      <label>Planned shipment date<input name="ship_date" type="date" value="${e(today)}" required></label>
+      <label>Actual gross weight (kg)<input name="actual_kg" type="number" min="0" step="0.01" placeholder="e.g. 30"></label>
+      <label>Total volume (CBM)<input name="cbm" type="number" min="0" step="0.0001" placeholder="e.g. 0.20"></label>
+      <label>Fuel surcharge (%)<input name="fuel_rate" type="number" min="0" step="0.01" placeholder="Loading official rate"></label>
+      <label>Exchange rate (RMB per USD)<input name="rmb_per_usd" type="number" min="0.01" step="0.0001" value="${e(exchangeRate)}" required></label>
+      <label class="wide">Other SF surcharges (RMB)<input name="other_rmb" type="number" min="0" step="0.01" value="0"><small>Remote area, resource allocation, oversize, overweight or special handling charges, if applicable.</small></label>
+      <div class="sf-freight-actions wide"><button class="outline-button" type="button" id="sfRefreshFuel">Refresh fuel rate</button><button class="primary-button" type="submit">Calculate freight</button></div>
+    </form>
+    <p class="sf-message" id="sfFuelStatus"></p>
+    <div class="sf-result" id="sfFreightResult" hidden></div>
+    <p class="sf-disclaimer">Published shipper-pay rates from Mainland China. Duties, destination taxes and unlisted SF surcharges are not included.</p>
+  </section>`;
+}
+
+function syncSfServiceOptions() {
+  const form = document.querySelector('#sfFreightForm');
+  if (!form || !sfFreight) return;
+  const destination = sfFreight.findDestination(form.elements.destination.value);
+  const select = form.elements.service;
+  const previous = select.value;
+  const preferredOrder = ['EE', 'SE', 'GE+'];
+  const services = destination ? preferredOrder.filter(service => destination.services.includes(service)) : [];
+  select.innerHTML = services.length
+    ? services.map(service => `<option value="${e(service)}">${e(sfFreight.serviceLabels[service])}</option>`).join('')
+    : '<option value="">Select destination first</option>';
+  if (services.includes(previous)) select.value = previous;
+  else if (services.length) select.value = services[0];
+}
+
+async function refreshSfFuelRate(force = false) {
+  const form = document.querySelector('#sfFreightForm');
+  const status = document.querySelector('#sfFuelStatus');
+  if (!form || !status || !sfFreight) return;
+  const service = form.elements.service.value;
+  const shipDate = form.elements.ship_date.value;
+  if (!service || !shipDate) {
+    status.textContent = 'Select a destination, service and shipment date.';
+    return;
+  }
+  status.classList.remove('error');
+  status.textContent = 'Checking the applicable fuel surcharge...';
+  try {
+    const result = await sfFreight.loadFuelRate(shipDate, service, force);
+    form.elements.fuel_rate.value = Number(result.rate).toFixed(2);
+    form.elements.fuel_rate.dataset.rateSource = result.source;
+    const validity = result.end ? `${result.start} to ${result.end}` : `EIA reference ${result.eiaPeriod || result.start}`;
+    status.innerHTML = `<strong>${e(Number(result.rate).toFixed(2))}%</strong> · ${e(validity)} · ${e(result.source)}`;
+  } catch (error) {
+    form.elements.fuel_rate.dataset.rateSource = 'Manual rate';
+    status.classList.add('error');
+    status.innerHTML = `${e(error.message || String(error))} <a href="${e(sfFreight.fuelRateUrl)}" target="_blank" rel="noopener">Open SF official rate</a>`;
+  }
+}
+
+function calculateSfFreight(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const resultBox = document.querySelector('#sfFreightResult');
+  const fuelStatus = document.querySelector('#sfFuelStatus');
+  try {
+    const values = Object.fromEntries(new FormData(form));
+    const fuelRate = Number(values.fuel_rate);
+    const exchangeRate = Number(values.rmb_per_usd);
+    const otherRmb = Number(values.other_rmb || 0);
+    if (values.fuel_rate === '' || !(fuelRate >= 0)) throw new Error('Enter the applicable SF fuel surcharge percentage.');
+    if (!(exchangeRate > 0)) throw new Error('Enter the RMB per USD exchange rate.');
+    if (otherRmb < 0) throw new Error('Other surcharges cannot be negative.');
+    const weight = sfFreight.calculateChargeableWeight(values.actual_kg, values.cbm);
+    const base = sfFreight.calculateBaseFreight(values.destination, values.service, weight.chargeable);
+    const fuelRmb = Math.round(base.amount * fuelRate) / 100;
+    const totalRmb = Math.round((base.amount + fuelRmb + otherRmb) * 100) / 100;
+    const totalUsd = Math.round(totalRmb / exchangeRate * 100) / 100;
+    activeSfCalculation = { ...values, ...weight, ...base, fuelRate, fuelRmb, otherRmb, totalRmb, totalUsd, exchangeRate };
+    try { localStorage.setItem('lzn_sf_rmb_per_usd', String(exchangeRate)); } catch (_) {}
+    resultBox.hidden = false;
+    resultBox.innerHTML = `<div class="sf-result-title"><div><span>Calculated freight</span><strong>USD ${e(totalUsd.toFixed(2))}</strong></div><button class="primary-button" type="button" id="sfApplyFreight">Apply to order</button></div>
+      <div class="sf-breakdown">
+        <div><span>Destination / service</span><strong>${e(base.destination.name)} · ${e(sfFreight.serviceLabels[values.service])} · Zone ${e(base.zone)}</strong></div>
+        <div><span>Actual / volume weight</span><strong>${e(weight.actual.toFixed(2))} kg / ${e(weight.volume.toFixed(2))} kg</strong></div>
+        <div><span>Chargeable weight</span><strong>${e(weight.chargeable.toFixed(1))} kg</strong></div>
+        <div><span>Published base freight</span><strong>RMB ${e(base.amount.toFixed(2))}${base.rateType === 'per_kg' ? ` (${e(base.rate)} / kg)` : ''}</strong></div>
+        <div><span>Fuel surcharge</span><strong>RMB ${e(fuelRmb.toFixed(2))} (${e(fuelRate.toFixed(2))}%)</strong></div>
+        <div><span>Other surcharges</span><strong>RMB ${e(otherRmb.toFixed(2))}</strong></div>
+        <div class="sf-total-row"><span>Total</span><strong>RMB ${e(totalRmb.toFixed(2))} / USD ${e(totalUsd.toFixed(2))}</strong></div>
+      </div>`;
+    document.querySelector('#sfApplyFreight').addEventListener('click', applySfFreightToOrder);
+    fuelStatus.classList.remove('error');
+  } catch (error) {
+    activeSfCalculation = null;
+    resultBox.hidden = true;
+    fuelStatus.classList.add('error');
+    fuelStatus.textContent = error.message || String(error);
+  }
+}
+
+function applySfFreightToOrder() {
+  if (!activeSfCalculation) return;
+  const orderForm = document.querySelector('#orderForm');
+  const freightInput = orderForm?.elements.freight_usd;
+  if (!freightInput) return;
+  freightInput.value = activeSfCalculation.totalUsd.toFixed(2);
+  freightInput.dispatchEvent(new Event('input', { bubbles: true }));
+  const status = document.querySelector('#saveStatus');
+  if (status) status.textContent = `SF freight applied: USD ${activeSfCalculation.totalUsd.toFixed(2)}. Save changes to keep it on the order.`;
+}
+
+function initializeSfFreightCalculator() {
+  const form = document.querySelector('#sfFreightForm');
+  if (!form || !sfFreight) return;
+  activeSfCalculation = null;
+  syncSfServiceOptions();
+  form.addEventListener('submit', calculateSfFreight);
+  form.elements.destination.addEventListener('change', () => { syncSfServiceOptions(); refreshSfFuelRate(); });
+  form.elements.service.addEventListener('change', () => refreshSfFuelRate());
+  form.elements.ship_date.addEventListener('change', () => refreshSfFuelRate());
+  form.elements.fuel_rate.addEventListener('input', () => { form.elements.fuel_rate.dataset.rateSource = 'Manual rate'; });
+  document.querySelector('#sfRefreshFuel').addEventListener('click', () => refreshSfFuelRate());
+  refreshSfFuelRate();
+}
+
+function renderOrderDetail() {
+  const order = activeOrder;
+  const freight = Number(order.freight_usd || 0);
+  const discount = Number(order.discount_usd || 0);
+  const total = Number(order.total_usd ?? Number(order.subtotal_usd || 0) - discount + freight);
+  detail.innerHTML = `
+    <div class="detail-head"><p class="eyebrow">${e(storeName(order, true))}</p><h2>${e(order.invoice_no || 'Proforma Invoice not assigned')}</h2><p class="request-id">Order ${e(order.id)}</p></div>
+    <div class="workflow-banner"><span>Current stage</span><strong>${e(statusLabels[order.status] || order.status)}</strong><small>Next: ${e(nextStepLabels[order.status] || 'Review the order')}</small></div>
+    <section class="detail-section"><h3>Customer & shipping</h3><div class="customer-box"><strong>Recipient type:</strong> ${(order.buyer_type || 'company') === 'company' ? 'Company' : 'Individual'}<br>${(order.buyer_type || 'company') === 'company' && order.company_name ? `<strong>${e(order.company_name)}</strong><br>Attn: ` : ''}<strong>${e(order.contact_name || '-')}</strong>${order.contact_email ? `<br><a href="mailto:${e(order.contact_email)}">${e(order.contact_email)}</a>` : ''}<br>${e(order.contact_phone || '')}<br>${e(order.shipping_address || '')}<br>${e(order.postal_code || '')}<br><br><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}${paymentCode(order.payment_method) === 'company_bank_transfer' ? '' : '<br><strong>Processing fee:</strong> Confirmed on Payoneer and may vary.<br><small>Not included in the PI total; do not add it again if Payoneer charges the payer.</small>'}<br><br><strong>Freight request:</strong> ${e(order.courier || '-')}<br><strong>Collect account:</strong> ${e(order.courier_account_no || '-')}</div></section>
+    <section class="detail-section"><h3>Items & selling prices</h3>${activeItems.some(itemPriceOnRequest) ? '<p class="price-request-alert"><strong>Price quotation required.</strong> Enter a selling price for the marked items before issuing the final Proforma Invoice.</p>' : ''}<form id="orderItemsForm"><div class="table-wrap"><table class="order-items editable-order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit price (USD)</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr data-order-item-row data-item-id="${e(item.id)}"><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small>${purchaseSourceHtml(item.model)}</td><td><input aria-label="Quantity for ${e(item.model)}" data-item-quantity type="number" min="1" step="1" value="${e(item.quantity)}"></td><td><input aria-label="Unit price for ${e(item.model)}" data-item-price type="number" min="0" step="0.01" value="${Number(item.unit_price_usd || 0).toFixed(2)}"></td><td data-item-total>${money(item.line_total_usd)}</td></tr>`).join('')}</tbody></table></div><div class="order-actions"><button class="outline-button" type="button" id="saveOrderItems">Save item quantities & prices</button></div><p class="save-status" id="itemSaveStatus"></p></form></section>
+    ${order.payment_submitted_at ? `<section class="detail-section"><h3>Customer payment notice</h3><div class="customer-box payment-review"><strong>Verification required</strong><br>Submitted: ${e(date(order.payment_submitted_at))}<br>Remitter / Reference: ${e(order.payment_reference || '-')}<br>Customer note: ${e(order.payment_note || '-')}<p>Confirm receipt through ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'the company bank account' : 'Payoneer'} before changing the status to Paid.</p></div></section>` : ''}
+    ${activeIssuedCoupons.length ? `<section class="detail-section"><h3>Issued repeat-order coupons (${activeIssuedCoupons.length})</h3><div class="customer-box">${activeIssuedCoupons.map((coupon, index) => `<div><strong>${index + 1}. ${e(coupon.code)}</strong><br>Value: ${money(coupon.amount_usd)} · Status: ${e(coupon.status)}<br>Issued: ${e(date(coupon.issued_at))} · Expires: ${e(date(coupon.expires_at))}</div>`).join('<hr>')}</div></section>` : ''}
+    ${invoiceActivity(order)}
+    ${sfFreightCalculatorHtml(order)}
+    <section class="detail-section"><h3>Order & invoice</h3><form id="orderForm" class="form-grid">
+      <label>Company name<input name="company_name" value="${e(order.company_name || '')}"></label>
+      <label>Manager / Contact<input name="contact_name" required value="${e(order.contact_name || '')}"></label>
+      <label>Customer email<input name="contact_email" type="email" required value="${e(order.contact_email || '')}"></label>
+      <label>Customer phone<input name="contact_phone" value="${e(order.contact_phone || '')}"></label>
+      <label>Destination country<input name="destination_country" value="${e(order.destination_country || '')}"></label>
+      <label>Postal code<input name="postal_code" value="${e(order.postal_code || '')}"></label>
+      <label class="wide">Shipping address<textarea name="shipping_address" rows="3">${e(order.shipping_address || '')}</textarea></label>
+      <label>Payment method<select name="payment_method"><option value="company_bank_transfer" ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'selected' : ''}>Company bank transfer</option><option value="payoneer_card_paypal" ${paymentCode(order.payment_method) === 'payoneer_card_paypal' ? 'selected' : ''}>Card / PayPal — Payoneer</option></select></label>
+      <label>Courier / freight instruction<input name="courier" value="${e(order.courier || '')}"></label>
+      <label>Courier collect account<input name="courier_account_no" value="${e(order.courier_account_no || '')}"></label>
+      <label>PI number<input name="invoice_no" value="${e(order.invoice_no || '')}" placeholder="LZN-20260713-001"></label>
+      <label>Status<select name="status">${['quote_requested','quoted','payment_pending','payment_submitted','paid','processing','shipped','cancelled'].map(status => `<option value="${status}" ${order.status === status ? 'selected' : ''}>${e(statusLabels[status])}</option>`).join('')}</select></label>
+      <label>Subtotal (USD)<input name="subtotal_usd" type="number" step="0.01" value="${Number(order.subtotal_usd || 0).toFixed(2)}" readonly></label>
+      <label>Coupon codes<input name="coupon_code" value="${e(orderCouponCodes(order).join(', ') || 'Not used')}" readonly></label>
+      <label>Coupon discount (USD)<input name="discount_usd" type="number" step="0.01" value="${discount.toFixed(2)}" readonly></label>
+      <label>Freight (USD)<input name="freight_usd" type="number" min="0" step="0.01" value="${freight.toFixed(2)}"></label>
+      <label>Total (USD)<input name="total_usd" type="number" step="0.01" value="${total.toFixed(2)}" readonly></label>
+      <label>Tracking number<input name="tracking_no" value="${e(order.tracking_no || '')}" placeholder="Visible to customer after status is Shipped"><small>Shown to the customer only when status is Shipped.</small></label>
+      <label class="wide">Internal note<textarea name="admin_note" rows="3">${e(visibleAdminNote(order))}</textarea></label>
+    </form><div class="order-actions"><button class="outline-button" id="generatePi">Generate PI number</button><button class="primary-button" id="saveOrder">Save changes</button><button class="outline-button" id="printInvoice">Create & Email Proforma Invoice PDF</button><button class="primary-button" id="confirmPayment">Confirm payment</button><button class="outline-button" id="printCi">Create & Email Commercial Invoice PDF</button><button class="primary-button" id="markShipped">Mark as shipped</button>${order.status === 'shipped' ? `<button class="outline-button" id="confirmDelivery">Confirm delivery & Email customer</button>` : ''}${order.tracking_no ? `<button class="outline-button" id="trackShipment">Track shipment</button>` : ''}</div><p class="save-status" id="saveStatus"></p></section>`;
+  const form = document.querySelector('#orderForm');
+  form.elements.freight_usd.addEventListener('input', () => form.elements.total_usd.value = (Number(order.subtotal_usd || 0) - discount + Number(form.elements.freight_usd.value || 0)).toFixed(2));
+  document.querySelectorAll('[data-order-item-row]').forEach(row => {
+    const updateLineTotal = () => {
+      const quantity = Number(row.querySelector('[data-item-quantity]').value || 0);
+      const unitPrice = Number(row.querySelector('[data-item-price]').value || 0);
+      row.querySelector('[data-item-total]').textContent = money(quantity * unitPrice);
+    };
+    row.querySelector('[data-item-quantity]').addEventListener('input', updateLineTotal);
+    row.querySelector('[data-item-price]').addEventListener('input', updateLineTotal);
+  });
+  initializeSfFreightCalculator();
+  document.querySelector('#saveOrderItems').addEventListener('click', () => saveOrderItems(true));
+  document.querySelector('#generatePi').addEventListener('click', generatePiNumber);
+  document.querySelector('#saveOrder').addEventListener('click', () => saveOrder(true));
+  document.querySelector('#printInvoice').addEventListener('click', createProformaInvoice);
+  document.querySelector('#confirmPayment').addEventListener('click', () => setOrderStatus('paid'));
+  document.querySelector('#printCi').addEventListener('click', printCommercialInvoice);
+  document.querySelector('#markShipped').addEventListener('click', () => setOrderStatus('shipped', true));
+  document.querySelector('#confirmDelivery')?.addEventListener('click', confirmDelivery);
+  document.querySelectorAll('[data-invoice-path]').forEach(button => button.addEventListener('click', () => openStoredInvoice(button.dataset.invoicePath)));
+  document.querySelector('#trackShipment')?.addEventListener('click', trackShipment);
+}
+
+async function setOrderStatus(nextStatus, requireTracking = false) {
+  const form = document.querySelector('#orderForm');
+  const status = document.querySelector('#saveStatus');
+  if (nextStatus === 'processing' && !['paid', 'processing'].includes(activeOrder.status)) {
+    status.textContent = 'Confirm payment before moving the order to awaiting shipment.';
+    return;
+  }
+  if (requireTracking && !form.elements.tracking_no.value.trim()) {
+    status.textContent = 'Enter the tracking number before marking this order as shipped.';
+    form.elements.tracking_no.focus();
+    return;
+  }
+  form.elements.status.value = nextStatus;
+  const saved = await saveOrder();
+  if (!saved) return;
+  const eventType = { paid: 'payment_confirmed', processing: 'processing', shipped: 'shipped' }[nextStatus];
+  if (eventType) await sendOrderEmail(eventType);
+  if (nextStatus === 'paid') await refreshActiveOrder();
+}
+
+async function sendOrderEmail(eventType) {
+  const status = document.querySelector('#saveStatus');
+  status.textContent = 'Sending customer email...';
+  const { error } = await invokeAdminFunction({ order_id: activeOrder.id, event_type: eventType });
+  status.textContent = error ? `Status saved, but email was not sent: ${await functionErrorMessage(error)}` : 'Status saved and customer email sent.';
+  return !error;
+}
+
+async function invokeAdminFunction(body) {
+  return invokeSecureFunction('smooth-processor', body);
+}
+
+async function invokeMemberAdminFunction(body) {
+  return invokeSecureFunction('admin-user-management', body);
+}
+
+async function invokeSecureFunction(functionName, body) {
+  let { data: { session } } = await client.auth.getSession();
+  if (!session || (session.expires_at && session.expires_at * 1000 < Date.now() + 60000)) {
+    const refreshed = await client.auth.refreshSession();
+    session = refreshed.data.session;
+  }
+  if (!session?.access_token) return { data: null, error: new Error('Administrator session expired. Please sign in again.') };
+  return client.functions.invoke(functionName, {
+    body,
+    headers: { Authorization: `Bearer ${session.access_token}` },
+  });
+}
+
+async function functionErrorMessage(error) {
+  try {
+    if (error?.context?.clone) {
+      const payload = await error.context.clone().json();
+      return payload.error || payload.message || error.message;
+    }
+  } catch (_ignored) {
+    try {
+      const text = await error.context?.clone().text();
       if (text) return text;
     } catch (_alsoIgnored) {}
   }
@@ -721,4 +1083,3 @@ drawer.querySelectorAll('[data-close-drawer]').forEach(button => button.addEvent
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeDrawer(); });
 
 boot();
-
