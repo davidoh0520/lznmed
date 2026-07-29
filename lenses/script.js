@@ -339,8 +339,25 @@ function authView(returnToCart=false){
 }
 async function profileView(){
   const {data}=await supabaseClient.from('profiles').select('*').eq('id',session.user.id).maybeSingle();const p=data||{};
-  showCommerce(`<p class="eyebrow">SHIPPING PROFILE</p><h2>Company Information</h2><form class="commerce-form two-col" id="profileForm"><input type="hidden" name="buyer_type" value="company"><label>Manager / Contact name<input name="full_name" required value="${e(p.full_name)}"></label><label>Company name<input name="company_name" required value="${e(p.company_name)}"></label><label>Phone<input name="phone" required value="${e(p.phone)}"></label><label>WhatsApp<input name="whatsapp" value="${e(p.whatsapp)}"></label><label>Country<input name="country" required value="${e(p.country)}"></label><label>Postal code<input name="postal_code" required value="${e(p.postal_code)}"></label><label class="wide">Address line 1<input name="address_line_1" required value="${e(p.address_line_1)}"></label><label class="wide">Address line 2<input name="address_line_2" value="${e(p.address_line_2)}"></label><label>City<input name="city" required value="${e(p.city)}"></label><label>State / Province<input name="state_province" value="${e(p.state_province)}"></label><label class="wide reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true" ${p.cart_reminder_opt_in?'checked':''}><span>Email me reminders about items left in my cart. I can turn these reminders off at any time.</span></label><button class="btn wide">Save Profile</button><p class="form-status wide" id="profileStatus"></p></form>`);
-  document.getElementById('profileForm').onsubmit=async event=>{event.preventDefault();const values=Object.fromEntries(new FormData(event.currentTarget));values.buyer_type='company';values.cart_reminder_opt_in=event.currentTarget.elements.cart_reminder_opt_in.checked;const {error}=await supabaseClient.from('profiles').update(values).eq('id',session.user.id);document.getElementById('profileStatus').textContent=error?error.message:'Profile saved.';};
+  showCommerce(`<p class="eyebrow">SHIPPING PROFILE</p><h2>Buyer Information</h2>
+    <form class="commerce-form two-col" id="profileForm">
+      <input type="hidden" name="buyer_type" value="company">
+      <label>Company name<input name="company_name" required autocomplete="organization" value="${e(p.company_name)}"></label>
+      <label>Manager / Contact name<input name="full_name" required autocomplete="name" value="${e(p.full_name)}"></label>
+      <label>Country<input name="country" list="profileCountryOptions" required autocomplete="country-name" value="${e(p.country)}"><datalist id="profileCountryOptions"></datalist><small data-country-status aria-live="polite">Choose a country to load its calling code and regions.</small></label>
+      <label>Phone<input name="phone" type="tel" required autocomplete="tel" inputmode="tel" value="${e(p.phone)}"><small>The selected country's calling code is added automatically.</small></label>
+      <label>WhatsApp<input name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" value="${e(p.whatsapp)}"></label>
+      <label>State / Province<input name="state_province" list="profileStateOptions" autocomplete="address-level1" value="${e(p.state_province)}"><datalist id="profileStateOptions"></datalist></label>
+      <label>City<input name="city" list="profileCityOptions" required autocomplete="address-level2" value="${e(p.city)}"><datalist id="profileCityOptions"></datalist></label>
+      <label class="wide">Detailed street address<input name="address_line_1" required autocomplete="address-line1" placeholder="Building number and street name" value="${e(p.address_line_1)}"></label>
+      <label class="wide">Address line 2 (optional)<input name="address_line_2" autocomplete="address-line2" placeholder="Suite, unit, floor, etc." value="${e(p.address_line_2)}"></label>
+      <label class="wide">Postal code<input name="postal_code" required autocomplete="postal-code" value="${e(p.postal_code)}"><small><span data-postal-status aria-live="polite">Filled automatically after the detailed address is completed.</span> Address lookup by <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>; the completed address is sent only for this lookup.</small></label>
+      <label class="wide reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true" ${p.cart_reminder_opt_in?'checked':''}><span>Email me reminders about items left in my cart. I can turn these reminders off at any time.</span></label>
+      <button class="btn wide">Save Profile</button><p class="form-status wide" id="profileStatus"></p>
+    </form>`);
+  const form=document.getElementById('profileForm');
+  form.onsubmit=async event=>{event.preventDefault();const values=Object.fromEntries(new FormData(event.currentTarget));values.buyer_type='company';values.cart_reminder_opt_in=event.currentTarget.elements.cart_reminder_opt_in.checked;const {error}=await supabaseClient.from('profiles').update(values).eq('id',session.user.id);document.getElementById('profileStatus').textContent=error?error.message:'Profile saved.';};
+  window.LZNAddressProfile?.enhance(form);
 }
 function checkoutView(){
   const subtotal=cart.reduce((s,x)=>s+x.price*x.qty,0);
@@ -505,4 +522,3 @@ function startRandomLensHero() {
 }
 
 startRandomLensHero();
-
