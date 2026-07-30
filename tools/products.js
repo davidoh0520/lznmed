@@ -2955,10 +2955,11 @@ window.CATALOG_DATA = [
     ]
   };
 
-  const clothOptions = (prefix, priceUsd, options) => options.map(([code, label]) => ({
+  const clothOptions = (prefix, priceUsd, options) => options.map(([code, label, image]) => ({
     model: `${prefix}-${code}`,
     label: `${label} · 100 pcs / pack`,
-    priceUsd
+    priceUsd,
+    image: image ? `assets/3tmall/${image}.webp` : undefined
   }));
   const lensCloths = {
     id: 'lens-cloths',
@@ -2983,16 +2984,16 @@ window.CATALOG_DATA = [
         optionLabel: 'Color / size',
         optionDisplay: 'buttons',
         options: clothOptions('3T-1456', 38.35, [
-          ['CYAN-150', 'Cyan Blue · 150 × 150 mm'],
-          ['GRAY-150', 'Gray · 150 × 150 mm'],
-          ['BLUE-150', 'Blue · 150 × 150 mm'],
-          ['PINK-150', 'Pink · 150 × 150 mm'],
-          ['PURPLE-150', 'Purple · 150 × 150 mm'],
-          ['CYAN-180', 'Cyan Blue · 180 × 150 mm'],
-          ['BEIGE-180', 'Beige · 180 × 150 mm'],
-          ['BLUE-180', 'Blue · 180 × 150 mm'],
-          ['BLACK-180', 'Black · 180 × 150 mm'],
-          ['PINK-180', 'Pink · 180 × 150 mm']
+          ['CYAN-150', 'Cyan Blue · 150 × 150 mm', 'cloth-single-01'],
+          ['GRAY-150', 'Gray · 150 × 150 mm', 'cloth-single-08'],
+          ['BLUE-150', 'Blue · 150 × 150 mm', 'cloth-single-09'],
+          ['PINK-150', 'Pink · 150 × 150 mm', 'cloth-single-05'],
+          ['PURPLE-150', 'Purple · 150 × 150 mm', 'cloth-single-01'],
+          ['CYAN-180', 'Cyan Blue · 180 × 150 mm', 'cloth-single-01'],
+          ['BEIGE-180', 'Beige · 180 × 150 mm', 'cloth-single-01'],
+          ['BLUE-180', 'Blue · 180 × 150 mm', 'cloth-single-10'],
+          ['BLACK-180', 'Black · 180 × 150 mm', 'cloth-single-07'],
+          ['PINK-180', 'Pink · 180 × 150 mm', 'cloth-single-06']
         ]),
         features: ['Single-sided lens cloth', 'All officially listed colors and sizes selectable', '100 pieces per order unit']
       },
@@ -3014,16 +3015,16 @@ window.CATALOG_DATA = [
         optionLabel: 'Color / size',
         optionDisplay: 'buttons',
         options: clothOptions('3T-1458', 47.65, [
-          ['CYAN-150', 'Cyan Blue · 150 × 150 mm'],
-          ['GREEN-150', 'Green · 150 × 150 mm'],
-          ['BEIGE-150', 'Beige · 150 × 150 mm'],
-          ['YELLOW-150', 'Yellow · 150 × 150 mm'],
-          ['PINK-150', 'Pink · 150 × 150 mm'],
-          ['CYAN-180', 'Cyan Blue · 180 × 150 mm'],
-          ['GREEN-180', 'Green · 180 × 150 mm'],
-          ['BEIGE-180', 'Beige · 180 × 150 mm'],
-          ['LIGHT-BROWN-180', 'Light Brown · 180 × 150 mm'],
-          ['PINK-180', 'Pink · 180 × 150 mm']
+          ['CYAN-150', 'Cyan Blue · 150 × 150 mm', 'cloth-double-09'],
+          ['GREEN-150', 'Green · 150 × 150 mm', 'cloth-double-06'],
+          ['BEIGE-150', 'Beige · 150 × 150 mm', 'cloth-double-08'],
+          ['YELLOW-150', 'Yellow · 150 × 150 mm', 'cloth-double-05'],
+          ['PINK-150', 'Pink · 150 × 150 mm', 'cloth-double-07'],
+          ['CYAN-180', 'Cyan Blue · 180 × 150 mm', 'cloth-double-09'],
+          ['GREEN-180', 'Green · 180 × 150 mm', 'cloth-double-10'],
+          ['BEIGE-180', 'Beige · 180 × 150 mm', 'cloth-double-08'],
+          ['LIGHT-BROWN-180', 'Light Brown · 180 × 150 mm', 'cloth-double-01'],
+          ['PINK-180', 'Pink · 180 × 150 mm', 'cloth-double-07']
         ]),
         features: ['Double-sided velvet lens cloth', 'All officially listed colors and sizes selectable', '100 pieces per order unit']
       }
