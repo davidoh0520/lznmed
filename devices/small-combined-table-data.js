@@ -13,8 +13,11 @@
     image,
     images: [image],
     description: "Compact motorized combined table for optical shops and ophthalmic examination rooms where space is limited. The table provides stable vertical travel, an integrated drawer and a 20 W examination light.",
-    priceOnRequest: true,
-    priceDisplay: "Price on request",
+    basePriceRmb: 1400,
+    priceSource: "Liangyou untaxed wholesale price × 1.30 ÷ CNY 6.8/USD",
+    priceUsd: 267.65,
+    priceOnRequest: false,
+    priceDisplay: "USD 267.65",
     packageSize: "99 × 59 × 43 cm",
     grossWeight: "62 kg",
     features: [
