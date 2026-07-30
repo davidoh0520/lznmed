@@ -1101,18 +1101,6 @@
       {
         label: "Option 06 - Pink Flamingo Set",
         image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/006.webp"
-      },
-      {
-        label: "Option 07 - Navy Clock Pouch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/007.webp"
-      },
-      {
-        label: "Option 08 - Blue Wave Pouch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/008.webp"
-      },
-      {
-        label: "Option 09 - Pink Flamingo Long Pouch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/016.webp"
       }
     ],
     "LZN-635408516585": [
@@ -1524,7 +1512,79 @@
         label: "Option 12 - 7 mm Glossy Black - 1 Pair",
         image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/026.webp"
       }
+    ],
+    "LZN-594962368226": [
+      {
+        label: "Option 01 - Red Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/002.webp"
+      },
+      {
+        label: "Option 02 - Yellow Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/003.webp"
+      },
+      {
+        label: "Option 03 - Gray Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/004.webp"
+      },
+      {
+        label: "Option 04 - Blue Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/005.webp"
+      },
+      {
+        label: "Option 05 - Silver Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/006.webp"
+      }
+    ],
+    "LZN-617968191574": [
+      {
+        label: "Option 01 - Red / +1.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/002.webp"
+      },
+      {
+        label: "Option 02 - Red / +1.50 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/003.webp"
+      },
+      {
+        label: "Option 03 - Red / +2.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/004.webp"
+      },
+      {
+        label: "Option 04 - Red / +2.50 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/005.webp"
+      },
+      {
+        label: "Option 05 - Red / +3.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/006.webp"
+      },
+      {
+        label: "Option 06 - Red / +3.50 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/007.webp"
+      },
+      {
+        label: "Option 07 - Red / +4.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/008.webp"
+      },
+      {
+        label: "Option 08 - Gold / +1.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/009.webp"
+      },
+      {
+        label: "Option 09 - Gold / +1.50 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/010.webp"
+      },
+      {
+        label: "Option 10 - Gold / +2.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/011.webp"
+      }
     ]
+  };
+
+  var toolProductCurations = {
+    "LZN-594962368226": {
+      nameEn: "Pen-Style Eyeglass Case",
+      chineseName: "Pen-Style Eyeglass Case",
+      description: "Compact pen-style eyeglass cases for storing slim reading glasses or optical frames."
+    }
   };
 
   var missingOptionImageCurations = {
@@ -1628,6 +1688,14 @@
     ? CATALOG_DATA
     : (window.CATALOG_DATA || []);
   toolsCatalog.forEach(function (category) {
+    (category.items || []).forEach(function (item) {
+      var productCuration = toolProductCurations[legacyModel(item)] ||
+        toolProductCurations[String(item && item.model || "")];
+      if (!productCuration) return;
+      Object.keys(productCuration).forEach(function (key) {
+        item[key] = productCuration[key];
+      });
+    });
     cleanOptions(category.items || [], "options");
     restoreChineseOriginals(category.items || [], "options");
     restoreMissingOptionImages(category.items || []);
