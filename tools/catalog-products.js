@@ -2461,10 +2461,13 @@
         "model": "LZN-TL-0038",
         "nameEn": "Titanium and Silicone Nose Pad Set",
         "chineseName": "Titanium and Silicone Nose Pad Set",
-        "image": "assets/catalog/TL-0038/english-card.webp",
+        "image": "assets/catalog/curated-20260730/english/TL-0038/titanium-gunmetal-1-pair.webp",
         "images": [
-          "assets/catalog/TL-0038/english-card.webp",
-          "assets/catalog/TL-0038/english-overview.webp"
+          "assets/catalog/curated-20260730/english/TL-0038/titanium-gunmetal-1-pair.webp",
+          "assets/catalog/curated-20260730/english/TL-0038/titanium-black-1-pair.webp",
+          "assets/catalog/curated-20260730/english/TL-0038/ceramic-rose-gold-1-pair.webp",
+          "assets/catalog/curated-20260730/english/TL-0038/ceramic-gold-1-pair.webp",
+          "assets/catalog/curated-20260730/english/TL-0038/silicone-air-cushion-2-pairs.webp"
         ],
         "description": "Titanium and Silicone Nose Pad Set provides a practical replacement solution for frame fit, comfort, and nose bridge support.",
         "priceUsd": 1.62,
@@ -2476,31 +2479,31 @@
             "model": "LZN-TL-0038-01",
             "label": "Titanium Gunmetal - 1 Pair",
             "priceUsd": 2.39,
-            "image": "assets/catalog/TL-0038/english-card.webp"
+            "image": "assets/catalog/curated-20260730/english/TL-0038/titanium-gunmetal-1-pair.webp"
           },
           {
             "model": "LZN-TL-0038-02",
             "label": "Titanium Black - 1 Pair",
             "priceUsd": 2.39,
-            "image": "assets/catalog/TL-0038/english-catalog-option-02.webp"
+            "image": "assets/catalog/curated-20260730/english/TL-0038/titanium-black-1-pair.webp"
           },
           {
             "model": "LZN-TL-0038-03",
             "label": "Ceramic Rose Gold - 1 Pair",
             "priceUsd": 2.39,
-            "image": "assets/catalog/TL-0038/english-catalog-option-03.webp"
+            "image": "assets/catalog/curated-20260730/english/TL-0038/ceramic-rose-gold-1-pair.webp"
           },
           {
             "model": "LZN-TL-0038-04",
             "label": "Ceramic Gold - 1 Pair",
             "priceUsd": 2.39,
-            "image": "assets/catalog/TL-0038/english-catalog-option-04.webp"
+            "image": "assets/catalog/curated-20260730/english/TL-0038/ceramic-gold-1-pair.webp"
           },
           {
             "model": "LZN-TL-0038-05",
             "label": "Soft Silicone Air-Cushion Pads - 2 Pairs",
             "priceUsd": 1.62,
-            "image": "assets/catalog/TL-0038/english-catalog-option-05.webp"
+            "image": "assets/catalog/curated-20260730/english/TL-0038/silicone-air-cushion-2-pairs.webp"
           }
         ],
         "features": [
@@ -2514,10 +2517,13 @@
         "model": "LZN-TL-0039",
         "nameEn": "One-Piece Silicone Saddle Nose Pad",
         "chineseName": "One-Piece Silicone Saddle Nose Pad",
-        "image": "assets/catalog/TL-0039/english-card.webp",
+        "image": "assets/catalog/curated-20260730/english/TL-0039/matte-white.webp",
         "images": [
-          "assets/catalog/TL-0039/english-card.webp",
-          "assets/catalog/TL-0039/english-overview.webp"
+          "assets/catalog/curated-20260730/english/TL-0039/matte-white.webp",
+          "assets/catalog/curated-20260730/english/TL-0039/matte-black.webp",
+          "assets/catalog/curated-20260730/english/TL-0039/dark-blue.webp",
+          "assets/catalog/curated-20260730/english/TL-0039/light-pink.webp",
+          "assets/catalog/curated-20260730/english/TL-0039/light-blue.webp"
         ],
         "description": "One-Piece Silicone Saddle Nose Pad provides a practical replacement solution for frame fit, comfort, and nose bridge support.",
         "priceUsd": 1.9,
@@ -2529,31 +2535,31 @@
             "model": "LZN-TL-0039-01",
             "label": "Matte White - 10-Pack",
             "priceUsd": 1.9,
-            "image": "assets/catalog/TL-0039/english-card.webp"
+            "image": "assets/catalog/curated-20260730/english/TL-0039/matte-white.webp"
           },
           {
             "model": "LZN-TL-0039-02",
             "label": "Matte Black - 10-Pack",
             "priceUsd": 1.9,
-            "image": "assets/catalog/TL-0039/english-catalog-option-02.webp"
+            "image": "assets/catalog/curated-20260730/english/TL-0039/matte-black.webp"
           },
           {
             "model": "LZN-TL-0039-03",
             "label": "Dark Blue - 10-Pack",
             "priceUsd": 1.9,
-            "image": "assets/catalog/TL-0039/english-catalog-option-03.webp"
+            "image": "assets/catalog/curated-20260730/english/TL-0039/dark-blue.webp"
           },
           {
             "model": "LZN-TL-0039-04",
             "label": "Light Pink - 10-Pack",
             "priceUsd": 1.9,
-            "image": "assets/catalog/TL-0039/english-catalog-option-04.webp"
+            "image": "assets/catalog/curated-20260730/english/TL-0039/light-pink.webp"
           },
           {
             "model": "LZN-TL-0039-05",
             "label": "Light Blue - 10-Pack",
             "priceUsd": 1.9,
-            "image": "assets/catalog/TL-0039/english-catalog-option-05.webp"
+            "image": "assets/catalog/curated-20260730/english/TL-0039/light-blue.webp"
           }
         ],
         "features": [
