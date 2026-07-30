@@ -1168,6 +1168,208 @@
         label: "Option 13 - Green Duck / Green Crocodile",
         image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/034.webp"
       }
+    ],
+    "LZN-777094994614": [
+      {
+        label: "Option 01 - Orange - 1 Strap",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/001.webp"
+      },
+      {
+        label: "Option 02 - Orange - 2 Straps",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/002.webp"
+      },
+      {
+        label: "Option 03 - Pink - 1 Strap",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/003.webp"
+      },
+      {
+        label: "Option 04 - Pink - 2 Straps",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/004.webp"
+      },
+      {
+        label: "Option 05 - Black - 1 Strap",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/005.webp"
+      },
+      {
+        label: "Option 06 - Black - 2 Straps",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/006.webp"
+      },
+      {
+        label: "Option 07 - Red - 1 Strap",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/007.webp"
+      },
+      {
+        label: "Option 08 - Red - 2 Straps",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/008.webp"
+      },
+      {
+        label: "Option 09 - Assorted Colors - 3 Straps",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/009.webp"
+      }
+    ],
+    "LZN-605818164392": [
+      {
+        label: "Option 01 - A6 Round-Hole Alloy Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/002.webp"
+      },
+      {
+        label: "Option 02 - A6 Round-Hole Alloy Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/003.webp"
+      },
+      {
+        label: "Option 03 - B3 Round-Hole Alloy Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/004.webp"
+      },
+      {
+        label: "Option 04 - A9 Round-Hole Titanium Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/005.webp"
+      },
+      {
+        label: "Option 05 - B2 Round-Hole Titanium Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/006.webp"
+      },
+      {
+        label: "Option 06 - B5 Round-Hole Alloy Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/007.webp"
+      },
+      {
+        label: "Option 07 - B5 Round-Hole Alloy Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/008.webp"
+      },
+      {
+        label: "Option 08 - B1 / B2 / A8 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/015.webp"
+      },
+      {
+        label: "Option 09 - B3 Round-Hole Alloy Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/016.webp"
+      },
+      {
+        label: "Option 10 - A8 Round-Hole Alloy Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/017.webp"
+      },
+      {
+        label: "Option 11 - A8 Round-Hole Alloy Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/018.webp"
+      },
+      {
+        label: "Option 12 - A9 Round-Hole Titanium Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/019.webp"
+      },
+      {
+        label: "Option 13 - B4 Round-Hole Alloy Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/020.webp"
+      },
+      {
+        label: "Option 14 - B4 Round-Hole Alloy Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/021.webp"
+      },
+      {
+        label: "Option 15 - B2 Round-Hole Titanium Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/022.webp"
+      },
+      {
+        label: "Option 16 - A8 / B1 / B2 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/023.webp"
+      },
+      {
+        label: "Option 17 - A6 / A7 / A8 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/024.webp"
+      },
+      {
+        label: "Option 18 - A6 / A7 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/025.webp"
+      },
+      {
+        label: "Option 19 - A6 / A8 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/026.webp"
+      },
+      {
+        label: "Option 20 - A6 / A9 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/027.webp"
+      },
+      {
+        label: "Option 21 - A6 / B1 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/028.webp"
+      }
+    ],
+    "LZN-717183914442": [
+      {
+        label: "Option 01 - TTS-09 White - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/001.webp"
+      },
+      {
+        label: "Option 02 - TTS-09 White - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/002.webp"
+      },
+      {
+        label: "Option 03 - TTS-09 White - 4 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/003.webp"
+      },
+      {
+        label: "Option 04 - TTS-09 Black / White - 2 Pairs Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/004.webp"
+      },
+      {
+        label: "Option 05 - TTS-09 Brown / White - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/005.webp"
+      },
+      {
+        label: "Option 06 - TTS-09 Black / White - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/006.webp"
+      },
+      {
+        label: "Option 07 - TTS-09 Black / Gray - 2 Pairs Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/007.webp"
+      },
+      {
+        label: "Option 08 - TTS-09 Black / Gray - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/008.webp"
+      },
+      {
+        label: "Option 09 - TTS-09 Black / Brown - 2 Pairs Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/009.webp"
+      },
+      {
+        label: "Option 10 - TTS-09 Black / Brown - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/015.webp"
+      },
+      {
+        label: "Option 11 - TTS-09 Black - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/016.webp"
+      },
+      {
+        label: "Option 12 - TTS-09 Black - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/017.webp"
+      },
+      {
+        label: "Option 13 - TTS-09 Black - 4 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/018.webp"
+      },
+      {
+        label: "Option 14 - TTS-09 Black / Gray / Brown / White - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/019.webp"
+      },
+      {
+        label: "Option 15 - TTS-09 Gray / White - 2 Pairs Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/020.webp"
+      },
+      {
+        label: "Option 16 - TTS-09 Gray - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/021.webp"
+      },
+      {
+        label: "Option 17 - TTS-09 Gray - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/022.webp"
+      },
+      {
+        label: "Option 18 - TTS-09 Gray - 4 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/023.webp"
+      },
+      {
+        label: "Option 19 - TTS-09 Brown / White - 2 Pairs Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/024.webp"
+      }
     ]
   };
 
@@ -1238,9 +1440,12 @@
         if (curated && curated.label) option.label = curated.label;
         if (field === "colors") option.src = image;
       });
-      item.image = list[0];
-      item.title = list[0];
-      item.images = Array.from(new Set(list));
+      var gallery = curatedOptions
+        ? curatedOptions.map(function (option) { return option.image; })
+        : list;
+      item.image = gallery[0];
+      item.title = gallery[0];
+      item.images = Array.from(new Set(gallery));
     });
   }
 
