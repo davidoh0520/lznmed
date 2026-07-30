@@ -10,6 +10,11 @@
 
   function cleanOptions(items, field) {
     (items || []).forEach(function (item) {
+      var curatedOptions = toolOptionCurations && (
+        toolOptionCurations[legacyModel(item)] ||
+        toolOptionCurations[String(item && item.model || "")]
+      );
+      if (curatedOptions) return;
       item[field] = (item[field] || []).filter(function (option) {
         return !invalidOptionImages.has(String(option && (option.image || option.src) || ""));
       });
@@ -210,12 +215,7 @@
     "/tools/assets/catalog/curated-20260729/original-cn/585323017499/008.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/585323017499/009.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/585323017499/010.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/011.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/012.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/013.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/014.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/015.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/016.webp"
+    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/011.webp"
   ],
   "LZN-TL-1011": [
     "/tools/assets/catalog/curated-20260729/original-cn/585323017499/001.webp",
@@ -228,12 +228,7 @@
     "/tools/assets/catalog/curated-20260729/original-cn/585323017499/008.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/585323017499/009.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/585323017499/010.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/011.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/012.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/013.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/014.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/015.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/016.webp"
+    "/tools/assets/catalog/curated-20260729/original-cn/585323017499/011.webp"
   ],
   "LZN-691330957794": [
     "/tools/assets/catalog/curated-20260729/original-cn/691330957794/001.webp"
@@ -284,18 +279,16 @@
     "/tools/assets/catalog/curated-20260729/original-cn/625178269004/004.webp"
   ],
   "LZN-739604309325": [
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/005.webp"
+    "/tools/assets/catalog/curated-20260730/english/739604309325/black.webp",
+    "/tools/assets/catalog/curated-20260730/english/739604309325/taupe.webp",
+    "/tools/assets/catalog/curated-20260730/english/739604309325/light-gray.webp",
+    "/tools/assets/catalog/curated-20260730/english/739604309325/brown.webp"
   ],
   "LZN-TL-1017": [
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/005.webp"
+    "/tools/assets/catalog/curated-20260730/english/739604309325/black.webp",
+    "/tools/assets/catalog/curated-20260730/english/739604309325/taupe.webp",
+    "/tools/assets/catalog/curated-20260730/english/739604309325/light-gray.webp",
+    "/tools/assets/catalog/curated-20260730/english/739604309325/brown.webp"
   ],
   "LZN-626769523006": [
     "/tools/assets/catalog/curated-20260729/original-cn/626769523006/001.webp"
@@ -544,7 +537,7 @@
     "/tools/assets/catalog/curated-20260729/original-cn/598559007116/006.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/598559007116/007.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/598559007116/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/598559007116/009.webp"
+    "/tools/assets/catalog/curated-20260729/original-cn/598559007116/016.webp"
   ],
   "LZN-TL-1031": [
     "/tools/assets/catalog/curated-20260729/original-cn/598559007116/001.webp",
@@ -555,7 +548,7 @@
     "/tools/assets/catalog/curated-20260729/original-cn/598559007116/006.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/598559007116/007.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/598559007116/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/598559007116/009.webp"
+    "/tools/assets/catalog/curated-20260729/original-cn/598559007116/016.webp"
   ],
   "LZN-610342838181": [
     "/tools/assets/catalog/curated-20260729/original-cn/610342838181/001.webp",
@@ -764,11 +757,7 @@
     "/tools/assets/catalog/curated-20260729/original-cn/602743600864/012.webp"
   ],
   "LZN-635408516585": [
-    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/001.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/005.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/006.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/007.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/008.webp",
@@ -776,14 +765,14 @@
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/010.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/011.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/012.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/013.webp"
+    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/015.webp",
+    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/025.webp",
+    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/026.webp",
+    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/027.webp",
+    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/034.webp"
   ],
   "LZN-TL-1039": [
-    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/001.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/005.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/006.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/007.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/008.webp",
@@ -791,7 +780,11 @@
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/010.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/011.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/635408516585/012.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/013.webp"
+    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/015.webp",
+    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/025.webp",
+    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/026.webp",
+    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/027.webp",
+    "/tools/assets/catalog/curated-20260729/original-cn/635408516585/034.webp"
   ],
   "LZN-607384329144": [
     "/tools/assets/catalog/curated-20260729/original-cn/607384329144/001.webp"
@@ -920,22 +913,68 @@
 };
 
   var toolOptionCurations = {
+    "LZN-585323017499": [
+      {
+        label: "Option 01 - Black Fabric",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/001.webp"
+      },
+      {
+        label: "Option 02 - Green Camouflage",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/002.webp"
+      },
+      {
+        label: "Option 03 - Silver Pink",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/003.webp"
+      },
+      {
+        label: "Option 04 - Silver Red",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/004.webp"
+      },
+      {
+        label: "Option 05 - Silver Gray",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/005.webp"
+      },
+      {
+        label: "Option 06 - Silver Brown",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/006.webp"
+      },
+      {
+        label: "Option 07 - Hot Pink",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/007.webp"
+      },
+      {
+        label: "Option 08 - Woven Black",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/008.webp"
+      },
+      {
+        label: "Option 09 - Smooth Black",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/009.webp"
+      },
+      {
+        label: "Option 10 - Yellow",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/010.webp"
+      },
+      {
+        label: "Option 11 - Deep Blue",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/585323017499/011.webp"
+      }
+    ],
     "LZN-739604309325": [
       {
         label: "Option 01 - Black",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/739604309325/002.webp"
+        image: "/tools/assets/catalog/curated-20260730/english/739604309325/black.webp"
       },
       {
         label: "Option 02 - Taupe",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/739604309325/003.webp"
+        image: "/tools/assets/catalog/curated-20260730/english/739604309325/taupe.webp"
       },
       {
         label: "Option 03 - Light Gray",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/739604309325/004.webp"
+        image: "/tools/assets/catalog/curated-20260730/english/739604309325/light-gray.webp"
       },
       {
         label: "Option 04 - Brown",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/739604309325/005.webp"
+        image: "/tools/assets/catalog/curated-20260730/english/739604309325/brown.webp"
       }
     ],
     "LZN-607829059398": [
@@ -1036,6 +1075,98 @@
       {
         label: "Option 16 - White Botanical Print",
         image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/016.webp"
+      }
+    ],
+    "LZN-598559007116": [
+      {
+        label: "Option 01 - White Deer Constellation Set",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/001.webp"
+      },
+      {
+        label: "Option 02 - Pink Lily Set",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/002.webp"
+      },
+      {
+        label: "Option 03 - Turquoise Cherry Blossom Set",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/003.webp"
+      },
+      {
+        label: "Option 04 - Pink Polar Bear Set",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/004.webp"
+      },
+      {
+        label: "Option 05 - Blue Floral Portrait Set",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/005.webp"
+      },
+      {
+        label: "Option 06 - Pink Flamingo Set",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/006.webp"
+      },
+      {
+        label: "Option 07 - Navy Clock Pouch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/007.webp"
+      },
+      {
+        label: "Option 08 - Blue Wave Pouch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/008.webp"
+      },
+      {
+        label: "Option 09 - Pink Flamingo Long Pouch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/016.webp"
+      }
+    ],
+    "LZN-635408516585": [
+      {
+        label: "Option 01 - Blue Elephant",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/002.webp"
+      },
+      {
+        label: "Option 02 - Pink Cat Hi",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/006.webp"
+      },
+      {
+        label: "Option 03 - Pink Bear Wow",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/007.webp"
+      },
+      {
+        label: "Option 04 - Blue Koala OK",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/008.webp"
+      },
+      {
+        label: "Option 05 - Blue Dinosaur Oh",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/009.webp"
+      },
+      {
+        label: "Option 06 - Green Crocodile Well",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/010.webp"
+      },
+      {
+        label: "Option 07 - Green Duck Nice",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/011.webp"
+      },
+      {
+        label: "Option 08 - Pink Bear",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/012.webp"
+      },
+      {
+        label: "Option 09 - Purple Rabbit",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/015.webp"
+      },
+      {
+        label: "Option 10 - Pink Bear / Blue Dinosaur",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/025.webp"
+      },
+      {
+        label: "Option 11 - Pink Bear / Beige Alpaca",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/026.webp"
+      },
+      {
+        label: "Option 12 - Pink Bear / Blue Koala",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/027.webp"
+      },
+      {
+        label: "Option 13 - Green Duck / Green Crocodile",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/034.webp"
       }
     ]
   };
