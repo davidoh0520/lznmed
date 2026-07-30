@@ -1,5 +1,6 @@
 -- LZN MEDICAL product logistics management
--- Run once in Supabase > SQL Editor.
+-- Run in Supabase > SQL Editor. Re-run after brochure logistics updates:
+-- missing rows are added, while records edited by an administrator are kept.
 -- Product and shipping dimensions are stored separately from storefront catalog data.
 
 create table if not exists public.product_logistics (
@@ -127,14 +128,63 @@ values
   ('LY-2B','Lens Centering Device','Devices',3,29,22,30,6,19,68,32,65,'Liangyou 2024 brochure; Centering Equipment'),
   ('LY-2D','Lens Centering Device','Devices',3,29,22,30,6,19,68,32,65,'Liangyou 2024 brochure; Centering Equipment'),
   ('LY-6AG','Frame Heater','Devices',1.3,22.5,21.5,20,12,16.8,67,48,43,'Liangyou 2024 brochure; Frame Heaters'),
-  ('LY-6C','Frame Heater','Devices',0.45,14,14,21,24,12.1,58,44,45.5,'Liangyou 2024 brochure; Frame Heaters'),
+  ('LY-6E','Frame Heater','Devices',0.45,14,14,21,24,12.1,58,44,45.5,'Liangyou 2024 brochure page 44; Frame Heaters'),
   ('UV818WL','UV Transmission Tester','Devices',0.55,26,14,11,20,12,74,29,46,'Liangyou 2024 brochure; Lens Testing Instruments'),
   ('UV818-2','UV Transmission Tester','Devices',0.73,26,14,11,20,15.5,74,29,46,'Liangyou 2024 brochure; Lens Testing Instruments'),
   ('LY-15T','Progressive Lens Tester','Devices',1,20,16,27,10,11.5,84,42,31,'Liangyou 2024 brochure; Lens Testing Instruments'),
   ('PR888','Multi-function Lens Tester','Devices',1.8,28,16,11,5,9.6,73,32,32,'Liangyou 2024 brochure; Lens Testing Instruments'),
   ('GB-120T','Ultrasonic Cleaner','Devices',2.6,25,25,32,6,16,76,53,35,'Liangyou 2024 brochure; Ultrasonic Cleaners'),
   ('GB-113T','Ultrasonic Cleaner','Devices',2.3,25,24,28,6,15,75,52,30,'Liangyou 2024 brochure; Ultrasonic Cleaners'),
-  ('GB-008','Ultrasonic Cleaner','Devices',1.2,23,17,18,12,16.2,47,35,56,'Liangyou 2024 brochure; Ultrasonic Cleaners')
+  ('GB-008','Ultrasonic Cleaner','Devices',1.2,23,17,18,12,15.2,47,35,56,'Liangyou 2024 brochure page 51; Ultrasonic Cleaners')
+on conflict (model) do nothing;
+
+-- Additional packing data verified visually from the Liangyou 2024 brochure.
+-- A specification block shared by multiple products is repeated only for the
+-- models positioned inside that block. Product load capacity is not stored as
+-- shipping weight, and models without a stated packing value remain unfilled.
+insert into public.product_logistics (
+  model, product_name, store_section,
+  package_weight_kg, package_length_cm, package_width_cm, package_height_cm,
+  units_per_carton, carton_weight_kg,
+  carton_length_cm, carton_width_cm, carton_height_cm, notes
+)
+values
+  ('LY-3A','Motorized Instrument Table','Devices',19,61,53,30,null,null,null,null,null,'Liangyou 2024 brochure page 21; approximate packed gross weight'),
+  ('LY-3AT','Motorized Instrument Table','Devices',19,61,53,30,null,null,null,null,null,'Liangyou 2024 brochure page 21; approximate packed gross weight'),
+  ('LY-3AL','Motorized Instrument Table','Devices',19,61,53,30,null,null,null,null,null,'Liangyou 2024 brochure page 21; approximate packed gross weight'),
+  ('LY-11A','Lens Groover and Beveller','Devices',2.6,28,24,22,null,null,null,null,null,'Liangyou 2024 brochure page 31; LY-11 shared unit specification'),
+  ('LY-11B','Lens Groover and Beveller','Devices',2.6,28,24,22,null,null,null,null,null,'Liangyou 2024 brochure page 31; LY-11 shared unit specification'),
+  ('LY-12AT','Lens Groover and Beveller','Devices',3.8,34,26.5,21,null,null,null,null,null,'Liangyou 2024 brochure page 31; LY-12 shared unit specification'),
+  ('LY-12A','Lens Groover and Beveller','Devices',3.8,34,26.5,21,null,null,null,null,null,'Liangyou 2024 brochure page 31; LY-12 shared unit specification'),
+  ('LY-12B','Lens Groover and Beveller','Devices',3.8,34,26.5,21,null,null,null,null,null,'Liangyou 2024 brochure page 31; LY-12 shared unit specification'),
+  ('LY-400A','Pattern Maker','Devices',4.2,34,22,21,4,18,43,38,49,'Liangyou 2024 brochure page 36; shared LY-400A/LY-400B packing block'),
+  ('LY-400B','Pattern Maker','Devices',4.2,34,22,21,4,18,43,38,49,'Liangyou 2024 brochure page 36; shared LY-400A/LY-400B packing block'),
+  ('LY-5FA-35P','High-speed Polishing Hand Edger','Devices',7,41,27,30,4,29,56,44,62,'Liangyou 2024 brochure page 37; shared LY-5F family packing block'),
+  ('LY-316A','Hand Edger','Devices',6.5,39,26,31,2,14,54,42,34,'Liangyou 2024 brochure page 40; model-specific packing data'),
+  ('LY-316B','Hand Edger','Devices',5.8,42,31,23,2,12.3,44,32,48,'Liangyou 2024 brochure page 40; model-specific packing data'),
+  ('LY-5D-35WV','Hand Edger','Devices',6.6,42,29,32,2,15.2,59,47,35,'Liangyou 2024 brochure page 40; model-specific packing data'),
+  ('LY-918S','Pattern Driller','Devices',4,22,20,27,6,25,60,24,56,'Liangyou 2024 brochure page 43; shared LY-918S/LY-918S-2 packing block'),
+  ('LY-918S-2','Pattern Driller','Devices',4,22,20,27,6,25,60,24,56,'Liangyou 2024 brochure page 43; shared LY-918S/LY-918S-2 packing block'),
+  ('LY-918A','Pattern Driller','Devices',2.5,23,13,22,8,20,55,26,46,'Liangyou 2024 brochure page 43; shared LY-918A/B/C/CL packing block'),
+  ('LY-918B','Pattern Driller','Devices',2.5,23,13,22,8,20,55,26,46,'Liangyou 2024 brochure page 43; shared LY-918A/B/C/CL packing block'),
+  ('LY-918C','Pattern Driller','Devices',2.5,23,13,22,8,20,55,26,46,'Liangyou 2024 brochure page 43; shared LY-918A/B/C/CL packing block'),
+  ('LY-918CL','Pattern Driller','Devices',2.5,23,13,22,8,20,55,26,46,'Liangyou 2024 brochure page 43; shared LY-918A/B/C/CL packing block'),
+  ('LY-6BT','Frame Heater','Devices',1.2,30.5,14.5,19,10,13,36,44,74,'Liangyou 2024 brochure page 44; shared LY-6BT/LY-6B packing block'),
+  ('LY-6B','Frame Heater','Devices',1.2,30.5,14.5,19,10,13,36,44,74,'Liangyou 2024 brochure page 44; shared LY-6BT/LY-6B packing block'),
+  ('LY-6D','Frame Heater','Devices',1,20,16,27,10,11,84,42,31,'Liangyou 2024 brochure page 44; model-specific packing data'),
+  ('LY-6AST','Frame Heater','Devices',1,21,19,23,8,8.5,43,38,49,'Liangyou 2024 brochure page 45; shared LY-6AST/LY-6AT packing block'),
+  ('LY-6AT','Frame Heater','Devices',1,21,19,23,8,8.5,43,38,49,'Liangyou 2024 brochure page 45; shared LY-6AST/LY-6AT packing block'),
+  ('LT828','Blue Ray Tester','Devices',1.4,38,24,16,10,15.7,52,39,78,'Liangyou 2024 brochure page 46; model-specific packing data'),
+  ('LY-838-1','Photochromic Lens Tester','Devices',0.5,23,10.5,12,20,10.2,57,26,50,'Liangyou 2024 brochure page 47; model-specific packing data'),
+  ('LY-838-4','Photochromic Lens Tester','Devices',0.3,22,13,9,24,8.2,46,39,41,'Liangyou 2024 brochure page 47; model-specific packing data'),
+  ('UV888','UV and Photochromic Lens Tester','Devices',1.1,24,21,18,12,13.4,51,64,41,'Liangyou 2024 brochure page 47; model-specific packing data'),
+  ('UV818-1','UV Anti-radiation Tester','Devices',0.7,26,14,11,20,14.9,74,29,46,'Liangyou 2024 brochure page 48; model-specific packing data'),
+  ('UV818AT','UV Anti-radiation Tester','Devices',0.83,26,14,11,20,17.5,74,29,46,'Liangyou 2024 brochure page 48; model-specific packing data'),
+  ('LY-15A','Lens Stress Tester','Devices',0.5,17,12,20,12,6.7,56,26,46,'Liangyou 2024 brochure page 49; model-specific packing data'),
+  ('LY-15B','Lens Stress Tester','Devices',0.75,14,14,21,12,10,43,29,52,'Liangyou 2024 brochure page 49; model-specific packing data'),
+  ('LY-16T','Frame Parallel Measuring Instrument','Devices',0.45,23,14,5.5,null,null,null,null,null,'Liangyou 2024 brochure page 50; unit data only'),
+  ('GB-1613','Ultrasonic Cleaner','Devices',2.1,23,20,26,6,13.7,63,48,29,'Liangyou 2024 brochure page 51; model-specific packing data'),
+  ('DSA-50','Ultrasonic Cleaner','Devices',2.1,23,20,26,6,13.5,63,48,29,'Liangyou 2024 brochure page 51; model-specific packing data')
 on conflict (model) do nothing;
 
 -- PD-adjustable trial frames from page 53 of the Liangyou 2024 brochure.
@@ -171,7 +221,7 @@ insert into public.product_logistics (
   package_weight_kg, package_length_cm, package_width_cm, package_height_cm, notes
 )
 values
-  ('LY-180A','Small Combined Ophthalmic Table','Devices',90,60,71,62,99,59,43,'Liangyou 2024 brochure page 18; table 95 x 52 cm; drawer 54.5 x 32 cm; vertical travel 20 cm; light 20 W; price on request')
+  ('LY-180A','Small Combined Ophthalmic Table','Devices',90,60,71,62,99,59,43,'Liangyou 2024 brochure page 18; table 95 x 52 cm; drawer 54.5 x 32 cm; vertical travel 20 cm; light 20 W')
 on conflict (model) do nothing;
 
 -- Phoropter support arms from page 63 of the Liangyou 2024 brochure.
@@ -189,7 +239,7 @@ insert into public.product_logistics (
   package_weight_kg, package_length_cm, package_width_cm, package_height_cm, notes
 )
 values
-  ('JS-22','22-Piece Progressive Trial Lens Set','Devices',0.9,22,18,9,'Liangyou brochure; 22 metal-rim lenses in an aluminium case; price on request')
+  ('JS-22','22-Piece Progressive Trial Lens Set','Devices',0.9,22,18,9,'Liangyou 2024 brochure page 56; 22 metal-rim lenses in an aluminium case')
 on conflict (model) do nothing;
 
 -- Multi-pot lens dyeing machines.
@@ -204,3 +254,16 @@ values
   ('DM-4','4-Pot Lens Dyeing Machine','Devices',5,39,37,22,2,10.9,43,38,50,'Liangyou brochure; 4 pots with mechanical timer; price on request'),
   ('DM-6','6-Pot Lens Dyeing Machine','Devices',6.4,51,37,22,2,15.1,55,47,40,'Liangyou brochure; 6 pots with mechanical timer; price on request')
 on conflict (model) do nothing;
+
+-- Correct values seeded by earlier versions of this setup while preserving any
+-- record that an administrator has edited through the Product logistics UI.
+delete from public.product_logistics
+where model = 'LY-6C'
+  and updated_by is null
+  and notes = 'Liangyou 2024 brochure; Frame Heaters';
+
+update public.product_logistics
+set carton_weight_kg = 15.2,
+    notes = 'Liangyou 2024 brochure page 51; Ultrasonic Cleaners'
+where model = 'GB-008'
+  and updated_by is null;
