@@ -13,8 +13,11 @@
     image,
     images: [image],
     description: "Compact professional progressive trial lens set with 22 metal-rim lenses in an aluminium carrying case.",
-    priceOnRequest: true,
-    priceDisplay: "Price on request",
+    basePriceRmb: 350,
+    priceSource: "Liangyou untaxed wholesale price × 1.30 ÷ CNY 6.8/USD",
+    priceUsd: 66.91,
+    priceOnRequest: false,
+    priceDisplay: "USD 66.91",
     packageSize: "22 × 18 × 9 cm",
     grossWeight: "0.9 kg",
     features: [
