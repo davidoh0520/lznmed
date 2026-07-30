@@ -287,13 +287,15 @@
     "/tools/assets/catalog/curated-20260729/original-cn/739604309325/001.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/739604309325/002.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/739604309325/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/004.webp"
+    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/004.webp",
+    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/005.webp"
   ],
   "LZN-TL-1017": [
     "/tools/assets/catalog/curated-20260729/original-cn/739604309325/001.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/739604309325/002.webp",
     "/tools/assets/catalog/curated-20260729/original-cn/739604309325/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/004.webp"
+    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/004.webp",
+    "/tools/assets/catalog/curated-20260729/original-cn/739604309325/005.webp"
   ],
   "LZN-626769523006": [
     "/tools/assets/catalog/curated-20260729/original-cn/626769523006/001.webp"
@@ -917,15 +919,173 @@
   ]
 };
 
+  var toolOptionCurations = {
+    "LZN-739604309325": [
+      {
+        label: "Option 01 - Black",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/739604309325/002.webp"
+      },
+      {
+        label: "Option 02 - Taupe",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/739604309325/003.webp"
+      },
+      {
+        label: "Option 03 - Light Gray",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/739604309325/004.webp"
+      },
+      {
+        label: "Option 04 - Brown",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/739604309325/005.webp"
+      }
+    ],
+    "LZN-607829059398": [
+      {
+        label: "Option 01 - Light Pink / Red Stitch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/002.webp"
+      },
+      {
+        label: "Option 02 - Magenta / White Stitch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/003.webp"
+      },
+      {
+        label: "Option 03 - Yellow / Red Stitch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/004.webp"
+      },
+      {
+        label: "Option 04 - Blue / White Stitch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/005.webp"
+      },
+      {
+        label: "Option 05 - Light Gray / Red Stitch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/006.webp"
+      },
+      {
+        label: "Option 06 - Light Gray / Yellow Stitch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/007.webp"
+      },
+      {
+        label: "Option 07 - Dark Gray / Yellow Stitch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/008.webp"
+      },
+      {
+        label: "Option 08 - Purple / White Stitch",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/009.webp"
+      }
+    ],
+    "LZN-592494388948": [
+      {
+        label: "Option 01 - White Geometric Triangle",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/002.webp"
+      },
+      {
+        label: "Option 02 - Pink Journey Triangle",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/001.webp"
+      },
+      {
+        label: "Option 03 - Blue / White Square",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/004.webp"
+      },
+      {
+        label: "Option 04 - Green / White Square",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/005.webp"
+      },
+      {
+        label: "Option 05 - Black / White Square",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/007.webp"
+      },
+      {
+        label: "Option 06 - Pink / White Square",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/003.webp"
+      },
+      {
+        label: "Option 07 - Brown Small Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/010.webp"
+      },
+      {
+        label: "Option 08 - White Eagle Print",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/011.webp"
+      },
+      {
+        label: "Option 09 - Pink Small Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/008.webp"
+      },
+      {
+        label: "Option 10 - Black Small Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/009.webp"
+      },
+      {
+        label: "Option 11 - Brown / White Square",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/006.webp"
+      },
+      {
+        label: "Option 12 - Red Mosaic Print",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/012.webp"
+      },
+      {
+        label: "Option 13 - Multicolor Mosaic Print",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/013.webp"
+      },
+      {
+        label: "Option 14 - Green Owl Print",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/014.webp"
+      },
+      {
+        label: "Option 15 - Blue Graphic Print",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/015.webp"
+      },
+      {
+        label: "Option 16 - White Botanical Print",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/016.webp"
+      }
+    ]
+  };
+
+  var missingOptionImageCurations = {
+    "3T-1456": [
+      "assets/3tmall/cloth-single-01.webp",
+      "assets/3tmall/cloth-single-08.webp",
+      "assets/3tmall/cloth-single-09.webp",
+      "assets/3tmall/cloth-single-05.webp",
+      "assets/3tmall/cloth-single-01.webp",
+      "assets/3tmall/cloth-single-01.webp",
+      "assets/3tmall/cloth-single-01.webp",
+      "assets/3tmall/cloth-single-10.webp",
+      "assets/3tmall/cloth-single-07.webp",
+      "assets/3tmall/cloth-single-06.webp"
+    ],
+    "3T-1458": [
+      "assets/3tmall/cloth-double-09.webp",
+      "assets/3tmall/cloth-double-06.webp",
+      "assets/3tmall/cloth-double-08.webp",
+      "assets/3tmall/cloth-double-05.webp",
+      "assets/3tmall/cloth-double-07.webp",
+      "assets/3tmall/cloth-double-09.webp",
+      "assets/3tmall/cloth-double-10.webp",
+      "assets/3tmall/cloth-double-08.webp",
+      "assets/3tmall/cloth-double-01.webp",
+      "assets/3tmall/cloth-double-07.webp"
+    ]
+  };
+
   function restoreChineseOriginals(items, field) {
     (items || []).forEach(function (item) {
       var list = originalCnCurations[legacyModel(item)] ||
         originalCnCurations[String(item && item.model || "")];
       if (!list || !list.length) return;
       var options = item[field] || [];
+      var curatedOptions = toolOptionCurations[legacyModel(item)] ||
+        toolOptionCurations[String(item && item.model || "")];
+      if (curatedOptions && curatedOptions.length < options.length) {
+        options = options.slice(0, curatedOptions.length);
+        item[field] = options;
+      }
       options.forEach(function (option, index) {
-        var image = list[Math.min(index, list.length - 1)];
+        var curated = curatedOptions && curatedOptions[index];
+        var image = curated
+          ? curated.image
+          : list[Math.min(index, list.length - 1)];
         option.image = image;
+        if (curated && curated.label) option.label = curated.label;
         if (field === "colors") option.src = image;
       });
       item.image = list[0];
@@ -934,12 +1094,28 @@
     });
   }
 
+  function restoreMissingOptionImages(items) {
+    (items || []).forEach(function (item) {
+      var list = missingOptionImageCurations[String(item && item.model || "")];
+      if (!list || !list.length) return;
+      (item.options || []).forEach(function (option, index) {
+        if (list[index]) option.image = list[index];
+      });
+      item.images = Array.from(new Set([
+        item.image,
+        ...(item.images || []),
+        ...list
+      ].filter(Boolean)));
+    });
+  }
+
   var toolsCatalog = typeof CATALOG_DATA !== "undefined"
     ? CATALOG_DATA
     : (window.CATALOG_DATA || []);
   toolsCatalog.forEach(function (category) {
-    restoreChineseOriginals(category.items || [], "options");
     cleanOptions(category.items || [], "options");
+    restoreChineseOriginals(category.items || [], "options");
+    restoreMissingOptionImages(category.items || []);
   });
 
   var frameSeries = typeof PRODUCT_SERIES !== "undefined"
