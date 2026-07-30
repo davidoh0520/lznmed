@@ -1195,7 +1195,26 @@
       "assets/3tmall/cloth-double-08.webp",
       "assets/3tmall/cloth-double-01.webp",
       "assets/3tmall/cloth-double-07.webp"
+    ],
+    "LZN-TL-0038": [
+      "assets/catalog/curated-20260730/english/TL-0038/titanium-gunmetal-1-pair.webp",
+      "assets/catalog/curated-20260730/english/TL-0038/titanium-black-1-pair.webp",
+      "assets/catalog/curated-20260730/english/TL-0038/ceramic-rose-gold-1-pair.webp",
+      "assets/catalog/curated-20260730/english/TL-0038/ceramic-gold-1-pair.webp",
+      "assets/catalog/curated-20260730/english/TL-0038/silicone-air-cushion-2-pairs.webp"
+    ],
+    "LZN-TL-0039": [
+      "assets/catalog/curated-20260730/english/TL-0039/matte-white.webp",
+      "assets/catalog/curated-20260730/english/TL-0039/matte-black.webp",
+      "assets/catalog/curated-20260730/english/TL-0039/dark-blue.webp",
+      "assets/catalog/curated-20260730/english/TL-0039/light-pink.webp",
+      "assets/catalog/curated-20260730/english/TL-0039/light-blue.webp"
     ]
+  };
+
+  var replaceGalleryFromOptionImages = {
+    "LZN-TL-0038": true,
+    "LZN-TL-0039": true
   };
 
   function restoreChineseOriginals(items, field) {
@@ -1232,11 +1251,17 @@
       (item.options || []).forEach(function (option, index) {
         if (list[index]) option.image = list[index];
       });
-      item.images = Array.from(new Set([
-        item.image,
-        ...(item.images || []),
-        ...list
-      ].filter(Boolean)));
+      if (replaceGalleryFromOptionImages[String(item && item.model || "")]) {
+        item.image = list[0];
+        item.title = list[0];
+        item.images = Array.from(new Set(list));
+      } else {
+        item.images = Array.from(new Set([
+          item.image,
+          ...(item.images || []),
+          ...list
+        ].filter(Boolean)));
+      }
     });
   }
 
