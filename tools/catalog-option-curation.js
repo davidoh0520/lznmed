@@ -1101,18 +1101,6 @@
       {
         label: "Option 06 - Pink Flamingo Set",
         image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/006.webp"
-      },
-      {
-        label: "Option 07 - Navy Clock Pouch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/007.webp"
-      },
-      {
-        label: "Option 08 - Blue Wave Pouch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/008.webp"
-      },
-      {
-        label: "Option 09 - Pink Flamingo Long Pouch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/598559007116/016.webp"
       }
     ],
     "LZN-635408516585": [
@@ -1168,7 +1156,435 @@
         label: "Option 13 - Green Duck / Green Crocodile",
         image: "/tools/assets/catalog/curated-20260729/original-cn/635408516585/034.webp"
       }
+    ],
+    "LZN-777094994614": [
+      {
+        label: "Option 01 - Orange - 1 Strap",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/001.webp"
+      },
+      {
+        label: "Option 02 - Orange - 2 Straps",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/002.webp"
+      },
+      {
+        label: "Option 03 - Pink - 1 Strap",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/003.webp"
+      },
+      {
+        label: "Option 04 - Pink - 2 Straps",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/004.webp"
+      },
+      {
+        label: "Option 05 - Black - 1 Strap",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/005.webp"
+      },
+      {
+        label: "Option 06 - Black - 2 Straps",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/006.webp"
+      },
+      {
+        label: "Option 07 - Red - 1 Strap",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/007.webp"
+      },
+      {
+        label: "Option 08 - Red - 2 Straps",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/008.webp"
+      },
+      {
+        label: "Option 09 - Assorted Colors - 3 Straps",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/777094994614/009.webp"
+      }
+    ],
+    "LZN-605818164392": [
+      {
+        label: "Option 01 - A6 Round-Hole Alloy Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/002.webp"
+      },
+      {
+        label: "Option 02 - A6 Round-Hole Alloy Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/003.webp"
+      },
+      {
+        label: "Option 03 - B3 Round-Hole Alloy Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/004.webp"
+      },
+      {
+        label: "Option 04 - A9 Round-Hole Titanium Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/005.webp"
+      },
+      {
+        label: "Option 05 - B2 Round-Hole Titanium Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/006.webp"
+      },
+      {
+        label: "Option 06 - B5 Round-Hole Alloy Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/007.webp"
+      },
+      {
+        label: "Option 07 - B5 Round-Hole Alloy Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/008.webp"
+      },
+      {
+        label: "Option 08 - B1 / B2 / A8 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/015.webp"
+      },
+      {
+        label: "Option 09 - B3 Round-Hole Alloy Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/016.webp"
+      },
+      {
+        label: "Option 10 - A8 Round-Hole Alloy Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/017.webp"
+      },
+      {
+        label: "Option 11 - A8 Round-Hole Alloy Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/018.webp"
+      },
+      {
+        label: "Option 12 - A9 Round-Hole Titanium Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/019.webp"
+      },
+      {
+        label: "Option 13 - B4 Round-Hole Alloy Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/020.webp"
+      },
+      {
+        label: "Option 14 - B4 Round-Hole Alloy Sleeves - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/021.webp"
+      },
+      {
+        label: "Option 15 - B2 Round-Hole Titanium Sleeves - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/022.webp"
+      },
+      {
+        label: "Option 16 - A8 / B1 / B2 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/023.webp"
+      },
+      {
+        label: "Option 17 - A6 / A7 / A8 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/024.webp"
+      },
+      {
+        label: "Option 18 - A6 / A7 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/025.webp"
+      },
+      {
+        label: "Option 19 - A6 / A8 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/026.webp"
+      },
+      {
+        label: "Option 20 - A6 / A9 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/027.webp"
+      },
+      {
+        label: "Option 21 - A6 / B1 Alloy Set - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/028.webp"
+      }
+    ],
+    "LZN-717183914442": [
+      {
+        label: "Option 01 - TTS-09 White - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/001.webp"
+      },
+      {
+        label: "Option 02 - TTS-09 White - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/002.webp"
+      },
+      {
+        label: "Option 03 - TTS-09 White - 4 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/003.webp"
+      },
+      {
+        label: "Option 04 - TTS-09 Black / White - 2 Pairs Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/004.webp"
+      },
+      {
+        label: "Option 05 - TTS-09 Brown / White - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/005.webp"
+      },
+      {
+        label: "Option 06 - TTS-09 Black / White - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/006.webp"
+      },
+      {
+        label: "Option 07 - TTS-09 Black / Gray - 2 Pairs Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/007.webp"
+      },
+      {
+        label: "Option 08 - TTS-09 Black / Gray - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/008.webp"
+      },
+      {
+        label: "Option 09 - TTS-09 Black / Brown - 2 Pairs Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/009.webp"
+      },
+      {
+        label: "Option 10 - TTS-09 Black / Brown - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/015.webp"
+      },
+      {
+        label: "Option 11 - TTS-09 Black - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/016.webp"
+      },
+      {
+        label: "Option 12 - TTS-09 Black - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/017.webp"
+      },
+      {
+        label: "Option 13 - TTS-09 Black - 4 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/018.webp"
+      },
+      {
+        label: "Option 14 - TTS-09 Black / Gray / Brown / White - 1 Pair Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/019.webp"
+      },
+      {
+        label: "Option 15 - TTS-09 Gray / White - 2 Pairs Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/020.webp"
+      },
+      {
+        label: "Option 16 - TTS-09 Gray - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/021.webp"
+      },
+      {
+        label: "Option 17 - TTS-09 Gray - 2 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/022.webp"
+      },
+      {
+        label: "Option 18 - TTS-09 Gray - 4 Pairs",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/023.webp"
+      },
+      {
+        label: "Option 19 - TTS-09 Brown / White - 2 Pairs Each",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/717183914442/024.webp"
+      }
+    ],
+    "LZN-610342838181": [
+      {
+        label: "Option 01 - Butterfly Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/003.webp"
+      },
+      {
+        label: "Option 02 - Five-Bead Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/004.webp"
+      },
+      {
+        label: "Option 03 - Snake Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/005.webp"
+      },
+      {
+        label: "Option 04 - Snake Chain - Silver",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/006.webp"
+      },
+      {
+        label: "Option 05 - Small Wave Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/007.webp"
+      },
+      {
+        label: "Option 06 - Lantern Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/008.webp"
+      },
+      {
+        label: "Option 07 - Star Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/009.webp"
+      },
+      {
+        label: "Option 08 - Handmade Star Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/010.webp"
+      },
+      {
+        label: "Option 09 - Small Two-Bead Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/011.webp"
+      },
+      {
+        label: "Option 10 - Small Two-Bead Chain - Silver",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/016.webp"
+      },
+      {
+        label: "Option 11 - Multicolor Gem Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/017.webp"
+      },
+      {
+        label: "Option 12 - Multicolor Gem Chain - Silver",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/018.webp"
+      },
+      {
+        label: "Option 13 - D Charm Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/019.webp"
+      },
+      {
+        label: "Option 14 - D Charm Chain - Silver",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/020.webp"
+      },
+      {
+        label: "Option 15 - Large Two-Bead Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/021.webp"
+      },
+      {
+        label: "Option 16 - Large Two-Bead Chain - Silver",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/022.webp"
+      },
+      {
+        label: "Option 17 - Round Ring Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/023.webp"
+      },
+      {
+        label: "Option 18 - Round Ring Chain - Silver",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/024.webp"
+      },
+      {
+        label: "Option 19 - Double-Ring Charm Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/025.webp"
+      },
+      {
+        label: "Option 20 - Double-Ring Charm Chain - Silver",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/026.webp"
+      },
+      {
+        label: "Option 21 - Five-Star Chain - Silver",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/027.webp"
+      },
+      {
+        label: "Option 22 - Pendant Ring Chain - Gold",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/028.webp"
+      },
+      {
+        label: "Option 23 - Heart Charm Chain - Silver",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/610342838181/029.webp"
+      }
+    ],
+    "LZN-694016088201": [
+      {
+        label: "Option 01 - Rose Gold / Pink Glitter",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/694016088201/001.webp"
+      },
+      {
+        label: "Option 02 - Silver / Pink Glitter",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/694016088201/002.webp"
+      }
+    ],
+    "LZN-696035777060": [
+      {
+        label: "Option 01 - 5 mm Matte Black - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/002.webp"
+      },
+      {
+        label: "Option 02 - 5 mm Clear - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/003.webp"
+      },
+      {
+        label: "Option 03 - 5 mm Glossy Black - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/004.webp"
+      },
+      {
+        label: "Option 04 - 6 mm Matte Black - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/012.webp"
+      },
+      {
+        label: "Option 05 - 6 mm Clear - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/013.webp"
+      },
+      {
+        label: "Option 06 - 6 mm Glossy Black - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/014.webp"
+      },
+      {
+        label: "Option 07 - 6.5 mm Matte Black - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/018.webp"
+      },
+      {
+        label: "Option 08 - 6.5 mm Clear - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/019.webp"
+      },
+      {
+        label: "Option 09 - 6.5 mm Glossy Black - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/020.webp"
+      },
+      {
+        label: "Option 10 - 7 mm Matte Black - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/024.webp"
+      },
+      {
+        label: "Option 11 - 7 mm Clear - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/025.webp"
+      },
+      {
+        label: "Option 12 - 7 mm Glossy Black - 1 Pair",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/696035777060/026.webp"
+      }
+    ],
+    "LZN-594962368226": [
+      {
+        label: "Option 01 - Red Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/002.webp"
+      },
+      {
+        label: "Option 02 - Yellow Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/003.webp"
+      },
+      {
+        label: "Option 03 - Gray Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/004.webp"
+      },
+      {
+        label: "Option 04 - Blue Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/005.webp"
+      },
+      {
+        label: "Option 05 - Silver Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/006.webp"
+      }
+    ],
+    "LZN-617968191574": [
+      {
+        label: "Option 01 - Red / +1.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/002.webp"
+      },
+      {
+        label: "Option 02 - Red / +1.50 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/003.webp"
+      },
+      {
+        label: "Option 03 - Red / +2.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/004.webp"
+      },
+      {
+        label: "Option 04 - Red / +2.50 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/005.webp"
+      },
+      {
+        label: "Option 05 - Red / +3.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/006.webp"
+      },
+      {
+        label: "Option 06 - Red / +3.50 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/007.webp"
+      },
+      {
+        label: "Option 07 - Red / +4.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/008.webp"
+      },
+      {
+        label: "Option 08 - Gold / +1.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/009.webp"
+      },
+      {
+        label: "Option 09 - Gold / +1.50 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/010.webp"
+      },
+      {
+        label: "Option 10 - Gold / +2.00 D",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/011.webp"
+      }
     ]
+  };
+
+  var toolProductCurations = {
+    "LZN-594962368226": {
+      nameEn: "Pen-Style Eyeglass Case",
+      chineseName: "Pen-Style Eyeglass Case",
+      description: "Compact pen-style eyeglass cases for storing slim reading glasses or optical frames."
+    }
   };
 
   var missingOptionImageCurations = {
@@ -1238,9 +1654,12 @@
         if (curated && curated.label) option.label = curated.label;
         if (field === "colors") option.src = image;
       });
-      item.image = list[0];
-      item.title = list[0];
-      item.images = Array.from(new Set(list));
+      var gallery = curatedOptions
+        ? curatedOptions.map(function (option) { return option.image; })
+        : list;
+      item.image = gallery[0];
+      item.title = gallery[0];
+      item.images = Array.from(new Set(gallery));
     });
   }
 
@@ -1269,6 +1688,14 @@
     ? CATALOG_DATA
     : (window.CATALOG_DATA || []);
   toolsCatalog.forEach(function (category) {
+    (category.items || []).forEach(function (item) {
+      var productCuration = toolProductCurations[legacyModel(item)] ||
+        toolProductCurations[String(item && item.model || "")];
+      if (!productCuration) return;
+      Object.keys(productCuration).forEach(function (key) {
+        item[key] = productCuration[key];
+      });
+    });
     cleanOptions(category.items || [], "options");
     restoreChineseOriginals(category.items || [], "options");
     restoreMissingOptionImages(category.items || []);
