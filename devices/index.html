@@ -220,10 +220,10 @@
     }
     function showAccount() {
       if (accountSession) {
-        accountBody.innerHTML = `<p class="eyebrow">COMPANY ACCOUNT</p><h2>My Account</h2><p>Signed in as <strong>${accountEscape(accountSession.user.email)}</strong></p><div class="account-actions"><a class="btn primary" href="/tools/?account=profile">Edit Account & Shipping</a><button class="btn secondary" id="accountSignOut">Sign Out</button></div>`;
+        accountBody.innerHTML = `<p class="eyebrow">MEMBER ACCOUNT</p><h2>My Account</h2><p>Signed in as <strong>${accountEscape(accountSession.user.email)}</strong></p><div class="account-actions"><a class="btn primary" href="/tools/?account=profile">Edit Account & Shipping</a><button class="btn secondary" id="accountSignOut">Sign Out</button></div>`;
         document.getElementById('accountSignOut').onclick = async () => { await accountClient.auth.signOut(); accountDialog.close(); };
       } else {
-        accountBody.innerHTML = `<p class="eyebrow">COMPANY ACCOUNT</p><h2>Sign in or register</h2><form class="account-form" id="deviceAuthForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><div class="account-actions"><button class="btn primary" name="mode" value="signin">Sign In</button><button class="btn secondary" name="mode" value="signup">Create Company Account</button></div><button class="btn secondary" id="deviceAuthResend" type="button" hidden>Resend Confirmation Email</button><p class="account-status" id="deviceAuthStatus" aria-live="polite"></p></form>`;
+        accountBody.innerHTML = `<p class="eyebrow">MEMBER ACCOUNT</p><h2>Sign in or register</h2><form class="account-form" id="deviceAuthForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><div class="account-actions"><button class="btn primary" name="mode" value="signin">Sign In</button><button class="btn secondary" name="mode" value="signup">Create Account</button></div><button class="btn secondary" id="deviceAuthResend" type="button" hidden>Resend Confirmation Email</button><p class="account-status" id="deviceAuthStatus" aria-live="polite"></p></form>`;
         document.getElementById('deviceAuthForm').onsubmit = handleDeviceAuth;
         document.getElementById('deviceAuthResend').onclick = resendDeviceConfirmation;
       }
@@ -265,7 +265,7 @@
     function showDeviceEmailConfirmed() {
       localStorage.removeItem('lznDevicesAwaitingEmailConfirmation');
       history.replaceState({}, '', location.pathname);
-      accountBody.innerHTML = `<p class="eyebrow">EMAIL CONFIRMED</p><h2>Your company account is ready</h2><p>Your email address has been confirmed successfully. You are signed in as <strong>${accountEscape(accountSession?.user?.email)}</strong>.</p><button class="btn primary" id="confirmedDeviceClose">Continue</button>`;
+      accountBody.innerHTML = `<p class="eyebrow">EMAIL CONFIRMED</p><h2>Your account is ready</h2><p>Your email address has been confirmed successfully. You are signed in as <strong>${accountEscape(accountSession?.user?.email)}</strong>.</p><button class="btn primary" id="confirmedDeviceClose">Continue</button>`;
       document.getElementById('confirmedDeviceClose').onclick = () => accountDialog.close();
       accountDialog.showModal();
     }
@@ -417,11 +417,13 @@
   <script src="dyeing-machine-data.js?v=20260730-1"></script>
   <script src="led-vision-chart-data.js?v=20260730-2"></script>
   <script src="adjustable-trial-frame-data.js?v=20260730-1"></script>
-  <script src="/tools/catalog-option-curation.js?v=20260730-4"></script>
+  <script src="/tools/catalog-option-curation.js?v=20260730-3"></script>
   <script src="/tools/shared-cart.js?v=20260723-7"></script>
   <script src="/tools/marketplace-catalog.js?v=20260729-5"></script>
   <script src="moved-catalog.js?v=20260730-11"></script>
-  <script src="/tools/portfolio-shell.js?v=20260730-3" defer></script>
+  <script src="/tools/address-profile.js?v=20260729-2" defer></script>
+  <script src="/tools/portfolio-shell.js?v=20260801-1" defer></script>
   <script src="/tools/promotion-popup.js?v=20260727-5"></script>
 </body>
 </html>
+
