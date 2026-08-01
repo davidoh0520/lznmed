@@ -10,6 +10,7 @@ const e = value => String(value || '').replace(/[&<>\"]/g, char => ({ '&': '&amp
 const frameCartKey = 'lznFramesCart';
 let session = null;
 let cart = JSON.parse(localStorage.getItem(frameCartKey) || '[]');
+const BANK_TRANSFER_THRESHOLD_USD = 1000;
 
 function accountLabel() {
   if (!session) {
@@ -92,20 +93,17 @@ const statusLabels = {
 
 function paymentCode(value) {
   const normalized = String(value || '').toLowerCase();
-  if (normalized.includes('paypal')) return 'payoneer_paypal';
-  if (normalized.includes('card')) return 'payoneer_card';
+  if (normalized.includes('paypal') || normalized.includes('card') || normalized.includes('payoneer')) return 'payoneer_card_paypal';
   return 'company_bank_transfer';
 }
 
 function paymentLabel(value) {
-  return ({ company_bank_transfer: 'Company bank transfer', payoneer_card: 'Credit / debit card — processed by Payoneer', payoneer_paypal: 'PayPal — processed by Payoneer where supported' })[paymentCode(value)];
+  return ({ company_bank_transfer: 'Company bank transfer', payoneer_card_paypal: 'Card / PayPal — processed by Payoneer' })[paymentCode(value)];
 }
 
-function estimatedPaymentFee(value, subtotal) {
-  const method = paymentCode(value);
-  if (method === 'payoneer_card') return Number(subtotal || 0) * 0.03;
-  if (method === 'payoneer_paypal') return Number(subtotal || 0) * 0.0399 + 0.49;
-  return 0;
+
+function isFreightFinalized(order) {
+  return order?.freight_usd != null || /courier collect/i.test(String(order?.courier || ''));
 }
 
 function orderDate(value) {
@@ -127,7 +125,7 @@ async function ordersView() {
       const tracking = order.status === 'shipped' && order.tracking_no ? `<div class="tracking-box"><span>Tracking number</span><strong>${e(order.tracking_no)}</strong><small>${e(order.courier || '')}</small></div>` : '';
       const confirmAction = order.pi_created_at && !order.pi_confirmed_at && ['quoted', 'payment_pending'].includes(order.status) ? `<button class="payment-notice" data-confirm-pi="${e(order.id)}">Confirm Proforma Invoice</button>` : '';
       const method = paymentCode(order.payment_method);
-      const readyForPayment = order.invoice_no && order.pi_confirmed_at && ['quoted', 'payment_pending'].includes(order.status);
+      const readyForPayment = order.invoice_no && order.pi_confirmed_at && isFreightFinalized(order) && ['quoted', 'payment_pending'].includes(order.status);
       const paymentAction = `${confirmAction}${readyForPayment && method === 'company_bank_transfer' ? `<button class="payment-notice" data-payment-id="${e(order.id)}">I have completed bank transfer</button>` : ''}${readyForPayment && method !== 'company_bank_transfer' ? `<div class="payment-waiting payoneer-link-notice"><strong>Secure Payoneer payment link</strong><span>We will email your payment request after freight and the final invoice are confirmed.</span></div>` : ''}`;
       const paymentWaiting = order.status === 'payment_submitted' ? `<div class="payment-waiting"><strong>Payment verification pending</strong><span>We received your transfer notice${order.payment_submitted_at ? ` on ${orderDate(order.payment_submitted_at)}` : ''}. Your order will change to Paid after the funds are confirmed in our company bank account.</span></div>` : '';
       return `<article class="customer-order"><div class="customer-order-head"><div><span>${e(order.invoice_no || `Order ${order.id.slice(0, 8)}`)}</span><strong>${orderDate(order.created_at)}</strong></div><div><b class="order-status ${e(order.status)}">${e(statusLabels[order.status] || order.status)}</b><strong>USD ${Number(total || 0).toFixed(2)}</strong></div></div><div class="order-progress"><span class="${['quote_requested','quoted','payment_pending','payment_submitted','paid','processing','shipped'].includes(order.status) ? 'done' : ''}">Received</span><span class="${['paid','processing','shipped'].includes(order.status) ? 'done' : ''}">Paid</span><span class="${['processing','shipped'].includes(order.status) ? 'done' : ''}">Preparing</span><span class="${order.status === 'shipped' ? 'done' : ''}">Shipped</span></div>${paymentAction}${paymentWaiting}${tracking}<details><summary>View order details</summary><div class="customer-order-items">${(order.order_items || []).map(item => `<div><span><strong>${e(item.model)}</strong><small>${e(item.product_name)}</small></span><span>Qty ${e(item.quantity)}</span><strong>USD ${Number(item.line_total_usd || 0).toFixed(2)}</strong></div>`).join('')}</div><div class="customer-order-totals"><span>Products <strong>USD ${Number(order.subtotal_usd || 0).toFixed(2)}</strong></span><span>Freight <strong>${order.freight_usd == null ? 'Pending quotation' : `USD ${Number(order.freight_usd).toFixed(2)}`}</strong></span><span>Total <strong>USD ${Number(total || 0).toFixed(2)}</strong></span></div><p><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}</p><p><strong>Shipping address:</strong> ${e(order.shipping_address || '-')} ${e(order.postal_code || '')}</p><p><strong>Freight arrangement:</strong> ${e(order.courier || '-')}</p></details></article>`;
@@ -282,8 +280,9 @@ function cartView() {
 
 function checkoutView() {
   const subtotal = cart.reduce((sum, item) => sum + (item.priceUsd || 0) * item.quantity, 0);
+  const defaultPaymentMethod = subtotal < BANK_TRANSFER_THRESHOLD_USD ? 'payoneer_card_paypal' : 'company_bank_transfer';
   if (subtotal < 100) { cartView(); return; }
-  show(`<div class="panel-head"><p class="eyebrow">Checkout</p><h2>Payment & freight</h2></div><div class="checkout-summary"><span>FOB China product subtotal</span><strong>USD ${money(subtotal)}</strong></div><form class="commerce-form checkout-form" id="checkoutForm"><fieldset><legend>Payment method</legend><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="company_bank_transfer" checked><span><strong>Company bank transfer <em>Recommended for orders over USD 1,000</em></strong><small>No processing fee charged by LZN MEDICAL. Sending and intermediary bank charges are borne by the buyer.</small></span></label><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="payoneer_card"><span><strong>Credit / debit card <em>Processed securely by Payoneer</em></strong><small>A 3% card processing fee applies. A payment link will be emailed after the freight charge and final invoice are confirmed.</small><span class="payment-brands"><b>Visa</b><b>Mastercard</b><b>American Express</b></span></span></label><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="payoneer_paypal"><span><strong>PayPal <em>Processed by Payoneer where supported</em></strong><small>A 3.99% processing fee plus USD 0.49 applies. A payment link will be emailed after the freight charge and final invoice are confirmed.</small><span class="payment-brands"><b>PayPal</b></span></span></label><div class="payment-fee-estimate" id="paymentFeeEstimate" aria-live="polite"></div></fieldset><fieldset><legend>Freight arrangement</legend><label class="choice-card"><input type="radio" name="freight_method" value="quote" checked><span><strong>Request freight quotation — SF International</strong><small>Quoted-freight orders are shipped by SF International. By selecting this option, you accept SF International as the carrier and the quoted SF International freight charge. We do not automatically substitute the cheapest courier service.</small></span></label><label class="choice-card"><input type="radio" name="freight_method" value="collect"><span><strong>Courier collect</strong><small>Freight will be charged directly to your courier account.</small></span></label><div class="collect-fields" id="collectFields"><label>Courier<select name="courier" id="checkoutCourier"><option>DHL</option><option>FedEx</option><option>UPS</option><option>EMS</option><option>SF Express</option><option>Other</option></select></label><label id="otherCourierLabel">Other courier name<input name="other_courier" placeholder="Enter courier name"></label><label>Courier account number<input name="courier_account_no" placeholder="Required for courier collect"></label></div></fieldset><div class="cart-actions"><button type="button" class="button secondary-button" id="backToCart">Back to cart</button><button class="button" id="placeOrderButton">Request Proforma Invoice</button></div><p class="form-status" id="quoteStatus"></p></form>`, true);
+  show(`<div class="panel-head"><p class="eyebrow">Checkout</p><h2>Payment & freight</h2></div><div class="checkout-summary"><span>FOB China product subtotal</span><strong>USD ${money(subtotal)}</strong></div><form class="commerce-form checkout-form" id="checkoutForm"><fieldset><legend>Preferred payment method</legend><p class="payment-hold-notice">Payment is not collected at checkout. Freight and the final total will be confirmed in the Proforma Invoice and by email.</p><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="company_bank_transfer" ${defaultPaymentMethod === 'company_bank_transfer' ? 'checked' : ''}><span><strong>Company bank transfer <em>Default for USD 1,000 or more</em></strong><small>Payment instructions will be provided only with the final Proforma Invoice and email.</small></span></label><label class="choice-card payment-choice"><input type="radio" name="payment_method" value="payoneer_card_paypal" ${defaultPaymentMethod === 'payoneer_card_paypal' ? 'checked' : ''}><span><strong>Card / PayPal <em>Default below USD 1,000</em></strong><small>A secure payment request will be emailed after freight and the final Proforma Invoice are confirmed.</small></span></label><div class="payment-fee-estimate" id="paymentFeeEstimate" aria-live="polite"></div></fieldset><fieldset><legend>Freight arrangement</legend><label class="choice-card"><input type="radio" name="freight_method" value="quote" checked><span><strong>Request freight quotation — SF International</strong><small>Quoted-freight orders are shipped by SF International. By selecting this option, you accept SF International as the carrier and the quoted SF International freight charge. We do not automatically substitute the cheapest courier service.</small></span></label><label class="choice-card"><input type="radio" name="freight_method" value="collect"><span><strong>Courier collect</strong><small>Freight will be charged directly to your courier account.</small></span></label><div class="collect-fields" id="collectFields"><label>Courier<select name="courier" id="checkoutCourier"><option>DHL</option><option>FedEx</option><option>UPS</option><option>EMS</option><option>SF Express</option><option>Other</option></select></label><label id="otherCourierLabel">Other courier name<input name="other_courier" placeholder="Enter courier name"></label><label>Courier account number<input name="courier_account_no" placeholder="Required for courier collect"></label></div></fieldset><div class="cart-actions"><button type="button" class="button secondary-button" id="backToCart">Back to cart</button><button class="button" id="placeOrderButton">Request Proforma Invoice</button></div><p class="form-status" id="quoteStatus"></p></form>`, true);
   const form = document.querySelector('#checkoutForm');
   const collectFields = document.querySelector('#collectFields');
   const otherLabel = document.querySelector('#otherCourierLabel');
@@ -295,12 +294,11 @@ function checkoutView() {
   }
   function updatePaymentEstimate() {
     const method = paymentCode(form.elements.payment_method.value);
-    const fee = estimatedPaymentFee(method, subtotal);
     const estimate = document.querySelector('#paymentFeeEstimate');
     form.querySelectorAll('.payment-choice').forEach(label => label.classList.toggle('selected', label.querySelector('input').checked));
     estimate.innerHTML = method === 'company_bank_transfer'
-      ? `<strong>${subtotal >= 1000 ? 'Recommended — Company bank transfer' : 'Company bank transfer'}</strong><span>No processing fee is charged by LZN MEDICAL.</span>`
-      : `<strong>Estimated processing fee on the current subtotal: USD ${fee.toFixed(2)}</strong><span>The fee is not added here. The final amount is confirmed on Payoneer and applied once after freight and the final invoice are confirmed.</span>`;
+      ? '<strong>Company bank transfer selected</strong><span>Payment instructions will be sent with the final PI after freight is confirmed.</span>'
+      : '<strong>Card / PayPal selected</strong><span>A secure payment request will be emailed after freight and the final PI are confirmed.</span>';
   }
   form.querySelectorAll('[name="freight_method"]').forEach(input => input.addEventListener('change', updateFreightFields));
   form.querySelectorAll('[name="payment_method"]').forEach(input => input.addEventListener('change', updatePaymentEstimate));
@@ -348,7 +346,7 @@ async function submitQuote(event) {
   save();
   const freightMessage = checkout.freight_method === 'quote' ? 'Your SF International freight quotation will be emailed within 1 business day. The order will be shipped by SF International after confirmation.' : `Freight will be charged to your ${e(checkout.courier === 'Other' ? checkout.other_courier : checkout.courier)} collect account.`;
   const method = paymentCode(checkout.payment_method);
-  const paymentMessage = method === 'company_bank_transfer' ? 'The Proforma Invoice will include LZN MEDICAL CO., LTD. company bank details.' : `A secure ${method === 'payoneer_paypal' ? 'PayPal' : 'card'} payment request will be emailed through Payoneer after freight and the final invoice are confirmed. The fee and final amount will be charged once on Payoneer.`;
+  const paymentMessage = method === 'company_bank_transfer' ? 'Bank transfer instructions will be provided with the final Proforma Invoice and email after freight is confirmed.' : 'A secure Card / PayPal payment request will be emailed after freight and the final Proforma Invoice are confirmed.';
   show(`<div class="panel-head"><p class="eyebrow">Checkout Complete</p><h2>Proforma Invoice requested</h2></div><p>Your request number is:</p><p class="request-id">${e(order.id)}</p><p><strong>Payment method:</strong> ${e(paymentLabel(method))}</p><p>${freightMessage}</p><p>${paymentMessage}</p><div class="cart-actions"><button class="button secondary-button" data-panel-close-final>Continue shopping</button><button class="button" id="viewOrdersAfterCheckout">View my orders</button></div>`);
   document.querySelector('[data-panel-close-final]').onclick = hide;
   document.querySelector('#viewOrdersAfterCheckout').onclick = ordersView;
