@@ -138,16 +138,58 @@ function unitChargeableWeight(record) {
   return { actual, volume, chargeable: Math.max(actual, volume) };
 }
 
-function shipmentEstimate(items = activeItems) {
+function normalizedShipmentPackages(value = activeOrder?.shipment_packages) {
+  const packages = Array.isArray(value) ? value : [];
+  return packages.map((shipmentPackage, index) => ({
+    id: String(shipmentPackage?.id || `carton-${index + 1}`),
+    name: String(shipmentPackage?.name || `Carton ${index + 1}`),
+    gross_weight_kg: positiveNumber(shipmentPackage?.gross_weight_kg),
+    cbm: positiveNumber(shipmentPackage?.cbm),
+    items: (Array.isArray(shipmentPackage?.items) ? shipmentPackage.items : [])
+      .map(item => ({
+        order_item_id: String(item?.order_item_id || ''),
+        quantity: Math.max(0, Math.floor(Number(item?.quantity) || 0))
+      }))
+      .filter(item => item.order_item_id && item.quantity)
+  }));
+}
+
+function assignedShipmentQuantities(packages = activeShipmentPackages) {
+  const assigned = new Map();
+  packages.forEach(shipmentPackage => shipmentPackage.items.forEach(item => {
+    assigned.set(item.order_item_id, (assigned.get(item.order_item_id) || 0) + item.quantity);
+  }));
+  return assigned;
+}
+
+function shipmentEstimate(items = activeItems, packages = activeShipmentPackages) {
   let actualKg = 0;
   let cbm = 0;
   const lines = [];
   const missing = [];
+  const assigned = assignedShipmentQuantities(packages);
+  packages.forEach((shipmentPackage, index) => {
+    if (!shipmentPackage.items.length) return;
+    const packageWeight = positiveNumber(shipmentPackage.gross_weight_kg);
+    const packageCbm = positiveNumber(shipmentPackage.cbm);
+    if (packageWeight) actualKg += packageWeight;
+    if (packageCbm) cbm += packageCbm;
+    if (!packageWeight || !packageCbm) missing.push(shipmentPackage.name || `Carton ${index + 1}`);
+    lines.push({
+      type: 'manual',
+      model: shipmentPackage.name || `Carton ${index + 1}`,
+      quantity: shipmentPackage.items.reduce((sum, item) => sum + item.quantity, 0),
+      actualKg: packageWeight || 0,
+      cbm: packageCbm || 0
+    });
+  });
   (items || []).forEach(item => {
-    const quantity = Math.max(0, Number(item.quantity) || 0);
+    const orderedQuantity = Math.max(0, Number(item.quantity) || 0);
+    const quantity = Math.max(0, orderedQuantity - (assigned.get(String(item.id)) || 0));
+    if (!quantity) return;
     const logistics = logisticsForModel(item.model);
-    if (!quantity || !logistics) {
-      if (quantity) missing.push(item.model);
+    if (!logistics) {
+      missing.push(item.model);
       return;
     }
     const unitsPerCarton = Math.max(0, Math.floor(Number(logistics.units_per_carton) || 0));
@@ -191,7 +233,7 @@ function logisticsInlineHtml(item) {
   return `<div class="logistics-inline"><strong>${e(weight ? `${weight} kg packed` : 'Packed weight missing')}</strong><span>${e(size || 'Package size missing')}${logistics.units_per_carton ? ` · ${e(logistics.units_per_carton)} pcs/carton` : ''}</span></div>`;
 }
 
-function shipmentEstimateHtml(estimate) {
+function legacyShipmentEstimateHtml(estimate) {
   if (!logisticsTableReady) return '<div class="shipment-estimate"><strong>Product logistics setup required.</strong><p>Run <code>supabase-product-logistics-setup.sql</code> before using automatic shipment estimates.</p></div>';
   if (!estimate.lines.length) return '<div class="shipment-estimate"><strong>No saved logistics data matches this order.</strong><p>Add the order models in Product logistics before calculating freight.</p></div>';
   const lineNotes = estimate.lines.map(line => `<li>${e(line.model)} × ${e(line.quantity)}${line.cartonCount ? ` · ${e(line.cartonCount)} full carton${line.cartonCount === 1 ? '' : 's'} + ${e(line.remainder)} unit${line.remainder === 1 ? '' : 's'}` : ''}</li>`).join('');
@@ -202,6 +244,22 @@ function shipmentEstimateHtml(estimate) {
       <div><span>Chargeable estimate</span><strong>${e(estimate.chargeableKg.toFixed(2))} kg</strong></div>
     </div>
     <ul>${lineNotes}${estimate.missing.length ? `<li class="logistics-missing">Incomplete or missing package data: ${e(estimate.missing.join(', '))}</li>` : ''}</ul>
+  </div>`;
+}
+
+function shipmentEstimateHtml(estimate) {
+  if (!logisticsTableReady && !estimate.lines.some(line => line.type === 'manual')) return '<div class="shipment-estimate"><strong>Product logistics setup required.</strong><p>Create a manual carton or run <code>supabase-product-logistics-setup.sql</code> before calculating freight.</p></div>';
+  if (!estimate.lines.length) return '<div class="shipment-estimate"><strong>No shipment data is available yet.</strong><p>Create a manual carton or add the models in Product logistics.</p></div>';
+  const lineNotes = estimate.lines.map(line => line.type === 'manual'
+    ? `<li><strong>${e(line.model)}</strong> (manual carton) · ${e(line.quantity)} pcs · ${e(line.actualKg.toFixed(2))} kg · ${e(line.cbm.toFixed(4))} CBM</li>`
+    : `<li>${e(line.model)} × ${e(line.quantity)}${line.cartonCount ? ` · ${e(line.cartonCount)} full carton${line.cartonCount === 1 ? '' : 's'} + ${e(line.remainder)} unit${line.remainder === 1 ? '' : 's'}` : ''}</li>`).join('');
+  return `<div class="shipment-estimate">
+    <div class="shipment-estimate-grid">
+      <div><span>Estimated actual</span><strong>${e(estimate.actualKg.toFixed(2))} kg</strong></div>
+      <div><span>Total volume</span><strong>${e(estimate.cbm.toFixed(4))} CBM</strong></div>
+      <div><span>Chargeable estimate</span><strong>${e(estimate.chargeableKg.toFixed(2))} kg</strong></div>
+    </div>
+    <ul>${lineNotes}${estimate.missing.length ? `<li class="logistics-missing">Enter manual GW and CBM or complete logistics data: ${e(estimate.missing.join(', '))}</li>` : ''}</ul>
   </div>`;
 }
 
@@ -311,755 +369,7 @@ let orders = [];
 let members = [];
 let activeOrder = null;
 let activeItems = [];
-let activeIssuedCoupons = [];
-let activeSfCalculation = null;
-let productLogistics = [];
-let logisticsTableReady = true;
-let loadingData = false;
-
-function showOnly(view) {
-  [authView, accessView, dashboard].forEach(item => item.hidden = item !== view);
-  signOutButton.hidden = !session;
-}
-
-async function boot() {
-  if (!client) {
-    showOnly(authView);
-    document.querySelector('#loginStatus').textContent = 'Supabase configuration is unavailable.';
-    return;
-  }
-  const { data } = await client.auth.getSession();
-  session = data.session;
-  if (session) {
-    const refreshed = await client.auth.refreshSession();
-    if (refreshed.data?.session) session = refreshed.data.session;
-  }
-  await routeSession();
-}
-
-async function routeSession() {
-  if (!session) {
-    showOnly(authView);
-    return;
-  }
-  const { data: admin, error } = await client.from('admin_users').select('user_id').eq('user_id', session.user.id).maybeSingle();
-  if (error || !admin) {
-    showOnly(accessView);
-    document.querySelector('#accessEmail').textContent = session.user.email || '';
-    return;
-  }
-  showOnly(dashboard);
-  document.querySelector('#adminIdentity').textContent = `Signed in as ${session.user.email}`;
-  await loadData();
-}
-
-document.querySelector('#loginForm').addEventListener('submit', async event => {
-  event.preventDefault();
-  const status = document.querySelector('#loginStatus');
-  const values = Object.fromEntries(new FormData(event.currentTarget));
-  status.textContent = 'Signing in...';
-  const { data, error } = await client.auth.signInWithPassword(values);
-  if (error) {
-    status.textContent = error.message;
-    return;
-  }
-  session = data.session;
-  status.textContent = '';
-  await routeSession();
-});
-
-signOutButton.addEventListener('click', async () => {
-  await client.auth.signOut();
-  session = null;
-  orders = [];
-  members = [];
-  productLogistics = [];
-  showOnly(authView);
-});
-
-async function loadData(retried = false) {
-  if (loadingData) return;
-  loadingData = true;
-  document.querySelector('#refreshData').disabled = true;
-  const [orderResult, memberResult, logisticsResult] = await Promise.all([
-    client.from('orders').select('*').order('created_at', { ascending: false }),
-    client.from('profiles').select('*').order('created_at', { ascending: false }),
-    client.from('product_logistics').select('*').order('store_section').order('model')
-  ]);
-  document.querySelector('#refreshData').disabled = false;
-  const logisticsError = logisticsResult.error && !logisticsTableUnavailable(logisticsResult.error) ? logisticsResult.error : null;
-  if (orderResult.error || memberResult.error || logisticsError) {
-    const message = orderResult.error?.message || memberResult.error?.message || logisticsError?.message || 'Unable to load admin data.';
-    if (!retried && /jwt issued at future/i.test(message)) {
-      const refreshed = await client.auth.refreshSession();
-      if (refreshed.data?.session) {
-        session = refreshed.data.session;
-        loadingData = false;
-        return loadData(true);
-      }
-    }
-    document.querySelector('#adminIdentity').textContent = `Data could not be refreshed: ${message}`;
-    loadingData = false;
-    return;
-  }
-  orders = orderResult.data || [];
-  members = memberResult.data || [];
-  logisticsTableReady = !logisticsTableUnavailable(logisticsResult.error);
-  productLogistics = logisticsTableReady ? (logisticsResult.data || []) : [];
-  renderSummary();
-  renderOrders();
-  renderMembers();
-  renderLogistics();
-  renderPurchases();
-  loadingData = false;
-}
-
-function refreshVisibleDashboard() {
-  if (session && !dashboard.hidden && document.visibilityState === 'visible') loadData();
-}
-
-window.addEventListener('focus', refreshVisibleDashboard);
-document.addEventListener('visibilitychange', refreshVisibleDashboard);
-window.setInterval(refreshVisibleDashboard, 30000);
-
-function renderSummary() {
-  const open = orders.filter(order => !['shipped', 'cancelled'].includes(order.status)).length;
-  const awaitingPayment = orders.filter(order => ['quoted', 'payment_pending', 'payment_submitted'].includes(order.status)).length;
-  const paid = orders.filter(order => ['paid', 'processing', 'shipped'].includes(order.status)).reduce((sum, order) => sum + Number(order.total_usd || order.subtotal_usd || 0), 0);
-  document.querySelector('#summaryGrid').innerHTML = `
-    <div class="summary-card"><span>Members</span><strong>${members.length}</strong></div>
-    <div class="summary-card"><span>Total orders</span><strong>${orders.length}</strong></div>
-    <div class="summary-card"><span>Open orders</span><strong>${open}</strong></div>
-    <div class="summary-card"><span>Logistics records</span><strong>${logisticsTableReady ? productLogistics.length : 'Setup'}</strong><small>${logisticsTableReady ? 'Available for freight estimates' : 'SQL table required'}</small></div>
-    <div class="summary-card"><span>Paid order value</span><strong>${money(paid)}</strong><small>${awaitingPayment} awaiting payment</small></div>`;
-}
-
-function orderMatches(order) {
-  const query = document.querySelector('#orderSearch').value.trim().toLowerCase();
-  const filter = document.querySelector('#statusFilter').value;
-  const haystack = `${order.id} ${order.invoice_no || ''} ${order.contact_name || ''} ${order.contact_email || ''} ${order.destination_country || ''} ${storeName(order)}`.toLowerCase();
-  return (!query || haystack.includes(query)) && (!filter || order.status === filter);
-}
-
-function renderOrders() {
-  const filtered = orders.filter(orderMatches);
-  document.querySelector('#ordersBody').innerHTML = filtered.length ? filtered.map(order => `
-    <tr data-order-id="${e(order.id)}">
-      <td>${e(date(order.created_at))}</td>
-      <td><span class="status store-${storeName(order).toLowerCase()}">${e(storeName(order))}</span></td>
-      <td><strong>${e(order.invoice_no || 'PI not assigned')}</strong><br><small class="request-id">${e(order.id.slice(0, 8))}</small></td>
-      <td><strong>${e(order.contact_name || '-')}</strong><br><small>${e(order.contact_email || '')}</small></td>
-      <td>${e(order.destination_country || '-')}</td>
-      <td><span class="status ${e(order.status)}">${e(statusLabels[order.status] || order.status)}</span></td>
-      <td class="money">${money(order.total_usd ?? order.subtotal_usd)}</td>
-    </tr>`).join('') : '<tr><td class="empty" colspan="7">No matching orders.</td></tr>';
-}
-
-function renderMembers() {
-  const query = document.querySelector('#memberSearch').value.trim().toLowerCase();
-  const filtered = members.filter(member => `${member.full_name || ''} ${member.company_name || ''} ${member.email || ''} ${member.country || ''} ${member.phone || ''}`.toLowerCase().includes(query));
-  document.querySelector('#membersBody').innerHTML = filtered.length ? filtered.map(member => `
-    <tr data-member-id="${e(member.id)}">
-      <td>${e(date(member.created_at))}</td>
-      <td><strong>${e(member.full_name || '-')}</strong></td>
-      <td>${e(member.company_name || '-')}</td>
-      <td>${e(member.email || '-')}</td>
-      <td>${e(member.phone || member.whatsapp || '-')}</td>
-      <td>${e(member.country || '-')}</td>
-      <td>${e([member.preferred_courier, member.courier_account_no].filter(Boolean).join(' / ') || '-')}</td>
-    </tr>`).join('') : '<tr><td class="empty" colspan="7">No matching members.</td></tr>';
-}
-
-function renderPurchases() {
-  const body = document.querySelector('#purchasesBody');
-  const search = document.querySelector('#purchaseSearch');
-  if (!body || !search) return;
-  const query = search.value.trim().toLowerCase();
-  const rows = Object.entries(purchaseSourceData)
-    .map(([publicModel, source]) => ({
-      publicModel,
-      source,
-      product: catalogProductForModel(publicModel)
-    }))
-    .filter(({ publicModel, source, product }) => !query || `${publicModel} ${source.sourceProductId || ''} ${product?.nameEn || source.productName || ''} ${source.store || ''}`.toLowerCase().includes(query))
-    .sort((a, b) => String(a.product?.nameEn || a.source.productName || a.publicModel).localeCompare(String(b.product?.nameEn || b.source.productName || b.publicModel)));
-  body.innerHTML = rows.length ? rows.map(({ publicModel, product, source }) => {
-    const priceRange = purchasePriceRange(product, source);
-    return `
-    <tr>
-      <td><strong>${e(publicModel)}</strong><br><small>${e(product?.nameEn || source.productName || 'Imported catalog product')}</small><br><small>Supplier item: ${e(source.sourceProductId || '-')}</small></td>
-      <td><strong>${e(priceRange)}</strong>${priceRange === 'Not captured' ? '<br><small>Original supplier price not captured</small>' : ''}</td>
-      <td>${e(source.store || 'Taobao supplier')}<br><small>${e(source.verification || '')}</small></td>
-      <td><a class="purchase-link" href="${e(source.url)}" target="_blank" rel="noopener noreferrer">Open Taobao ↗</a></td>
-    </tr>`;
-  }).join('') : '<tr><td class="empty" colspan="4">No matching Taobao products.</td></tr>';
-}
-
-function renderLogistics() {
-  const body = document.querySelector('#logisticsBody');
-  const search = document.querySelector('#logisticsSearch');
-  const note = document.querySelector('#logisticsNote');
-  if (!body || !search || !note) return;
-  if (!logisticsTableReady) {
-    note.classList.add('setup-required');
-    note.innerHTML = 'Setup required: run <code>supabase-product-logistics-setup.sql</code> in the Supabase SQL Editor. The admin page remains usable while this table is unavailable.';
-    body.innerHTML = '<tr><td class="empty" colspan="6">Product logistics table has not been installed yet.</td></tr>';
-    return;
-  }
-  note.classList.remove('setup-required');
-  note.textContent = 'Shipment estimates use full-carton data first, then individual package data for the remaining quantity. Chargeable weight is the greater of actual weight and volume weight.';
-  const query = search.value.trim().toLowerCase();
-  const filtered = productLogistics.filter(item => !query || `${item.model} ${item.product_name || ''} ${item.store_section || ''} ${item.notes || ''}`.toLowerCase().includes(query));
-  body.innerHTML = filtered.length ? filtered.map(item => {
-    const productSize = dimensionText(item, 'product');
-    const packageSize = dimensionText(item, 'package');
-    const cartonSize = dimensionText(item, 'carton');
-    const packageWeight = positiveNumber(item.package_weight_kg) || positiveNumber(item.unit_weight_kg);
-    const estimate = unitChargeableWeight(item);
-    return `<tr data-logistics-model="${e(item.model)}">
-      <td><strong>${e(item.model)}</strong><br><small>${e(item.product_name || 'Product name not entered')}</small></td>
-      <td><span class="status">${e(item.store_section || 'Other')}</span></td>
-      <td>${productSize ? `<strong>${e(productSize)}</strong>` : '<span class="missing-value">Not entered</span>'}${item.unit_weight_kg ? `<small>Net ${e(item.unit_weight_kg)} kg</small>` : ''}</td>
-      <td>${packageSize ? `<strong>${e(packageSize)}</strong>` : '<span class="missing-value">Size missing</span>'}<small>${packageWeight ? `${e(packageWeight)} kg gross` : '<span class="missing-value">Weight missing</span>'}</small></td>
-      <td>${cartonSize ? `<strong>${e(cartonSize)}</strong>` : '<span class="missing-value">Not entered</span>'}<small>${item.units_per_carton ? `${e(item.units_per_carton)} pcs · ` : ''}${item.carton_weight_kg ? `${e(item.carton_weight_kg)} kg` : ''}</small></td>
-      <td><div class="logistics-volume">${estimate ? `<strong>${e(estimate.chargeable.toFixed(2))} kg</strong><small>Actual ${e(estimate.actual.toFixed(2))} / volume ${e(estimate.volume.toFixed(2))}</small>` : '<span class="missing-value">Insufficient data</span>'}</div></td>
-    </tr>`;
-  }).join('') : '<tr><td class="empty" colspan="6">No matching product logistics records.</td></tr>';
-}
-
-function logisticsNumberInput(name, label, value, step = '0.01') {
-  return `<label>${e(label)}<input name="${e(name)}" type="number" min="0" step="${e(step)}" value="${e(value ?? '')}"></label>`;
-}
-
-function updateLogisticsPreview(form) {
-  const preview = document.querySelector('#logisticsPreview');
-  if (!preview || !form) return;
-  const values = Object.fromEntries(new FormData(form));
-  const estimate = unitChargeableWeight(values);
-  const packageCbm = volumeCbm(values, 'package');
-  preview.innerHTML = `
-    <div><span>Package volume</span><strong>${e(packageCbm.toFixed(4))} CBM</strong></div>
-    <div><span>Volume weight</span><strong>${e((packageCbm * 200).toFixed(2))} kg</strong></div>
-    <div><span>Chargeable / unit</span><strong>${estimate ? e(estimate.chargeable.toFixed(2)) : '—'} kg</strong></div>`;
-}
-
-function openLogisticsEditor(model = '') {
-  if (!logisticsTableReady) {
-    detail.innerHTML = '<div class="detail-head"><p class="eyebrow">Product logistics</p><h2>Database setup required</h2></div><section class="detail-section"><p>Run <code>tools/supabase-product-logistics-setup.sql</code> in the Supabase SQL Editor, then refresh this page.</p></section>';
-    drawer.classList.add('open');
-    drawer.setAttribute('aria-hidden', 'false');
-    return;
-  }
-  const record = productLogistics.find(item => item.model === model) || null;
-  const value = field => record?.[field] ?? '';
-  const storeOptions = ['Devices','Tools','Frames','Lenses','Other'].map(store => `<option value="${store}" ${(record?.store_section || 'Devices') === store ? 'selected' : ''}>${store}</option>`).join('');
-  detail.innerHTML = `
-    <div class="detail-head"><p class="eyebrow">Product logistics</p><h2>${e(record?.model || 'Add product')}</h2><p>Saved separately from the customer-facing catalog and used for freight estimates.</p></div>
-    <form id="logisticsForm" class="form-grid">
-      <label>Model<input class="${record ? 'model-locked' : ''}" name="model" required ${record ? 'readonly' : ''} value="${e(value('model'))}" placeholder="e.g. LY-21C"></label>
-      <label>Store / product family<select name="store_section">${storeOptions}</select></label>
-      <label class="wide">Product name<input name="product_name" value="${e(value('product_name'))}" placeholder="English product name"></label>
-      <section class="logistics-form-section wide"><h3>Product itself</h3>
-        ${logisticsNumberInput('unit_weight_kg', 'Net product weight (kg)', value('unit_weight_kg'), '0.001')}
-        <div class="dimension-grid">
-          ${logisticsNumberInput('product_length_cm', 'Length (cm)', value('product_length_cm'))}
-          ${logisticsNumberInput('product_width_cm', 'Width (cm)', value('product_width_cm'))}
-          ${logisticsNumberInput('product_height_cm', 'Height (cm)', value('product_height_cm'))}
-        </div>
-      </section>
-      <section class="logistics-form-section wide"><h3>Individual shipping package</h3>
-        ${logisticsNumberInput('package_weight_kg', 'Gross weight (kg)', value('package_weight_kg'), '0.001')}
-        <div class="dimension-grid">
-          ${logisticsNumberInput('package_length_cm', 'Length (cm)', value('package_length_cm'))}
-          ${logisticsNumberInput('package_width_cm', 'Width (cm)', value('package_width_cm'))}
-          ${logisticsNumberInput('package_height_cm', 'Height (cm)', value('package_height_cm'))}
-        </div>
-      </section>
-      <section class="logistics-form-section wide"><h3>Master carton</h3>
-        <div class="dimension-grid">
-          ${logisticsNumberInput('units_per_carton', 'Units / carton', value('units_per_carton'), '1')}
-          ${logisticsNumberInput('carton_weight_kg', 'Carton gross (kg)', value('carton_weight_kg'), '0.001')}
-          <span></span>
-          ${logisticsNumberInput('carton_length_cm', 'Length (cm)', value('carton_length_cm'))}
-          ${logisticsNumberInput('carton_width_cm', 'Width (cm)', value('carton_width_cm'))}
-          ${logisticsNumberInput('carton_height_cm', 'Height (cm)', value('carton_height_cm'))}
-        </div>
-      </section>
-      <label class="wide">Source / internal notes<textarea name="notes" rows="3" placeholder="Brochure page, test distance, packing caveats...">${e(value('notes'))}</textarea></label>
-      <div class="logistics-calculation wide" id="logisticsPreview"></div>
-    </form>
-    <div class="order-actions"><button class="primary-button" id="saveLogistics" type="button">Save logistics</button>${record ? '<button class="danger-button" id="deleteLogistics" type="button">Delete record</button>' : ''}</div>
-    <p class="save-status" id="logisticsSaveStatus"></p>`;
-  drawer.classList.add('open');
-  drawer.setAttribute('aria-hidden', 'false');
-  const form = document.querySelector('#logisticsForm');
-  form.addEventListener('input', () => updateLogisticsPreview(form));
-  updateLogisticsPreview(form);
-  document.querySelector('#saveLogistics').addEventListener('click', async () => {
-    const status = document.querySelector('#logisticsSaveStatus');
-    const button = document.querySelector('#saveLogistics');
-    const values = Object.fromEntries(new FormData(form));
-    values.model = String(values.model || '').trim().toUpperCase();
-    values.product_name = String(values.product_name || '').trim() || null;
-    values.notes = String(values.notes || '').trim() || null;
-    const numericFields = [
-      'unit_weight_kg','product_length_cm','product_width_cm','product_height_cm',
-      'package_weight_kg','package_length_cm','package_width_cm','package_height_cm',
-      'units_per_carton','carton_weight_kg','carton_length_cm','carton_width_cm','carton_height_cm'
-    ];
-    numericFields.forEach(field => {
-      const number = Number(values[field]);
-      values[field] = values[field] === '' ? null : number;
-    });
-    if (!values.model) {
-      status.textContent = 'Model is required.';
-      return;
-    }
-    if (numericFields.some(field => values[field] !== null && (!Number.isFinite(values[field]) || values[field] < 0)) ||
-        (values.units_per_carton !== null && !Number.isInteger(values.units_per_carton))) {
-      status.textContent = 'Weights and dimensions must be non-negative numbers; units per carton must be a whole number.';
-      return;
-    }
-    values.updated_by = session.user.id;
-    button.disabled = true;
-    status.textContent = 'Saving product logistics...';
-    const { data, error } = await client.from('product_logistics').upsert(values, { onConflict: 'model' }).select().single();
-    button.disabled = false;
-    if (error) {
-      status.textContent = error.message;
-      return;
-    }
-    productLogistics = [...productLogistics.filter(item => item.model !== data.model), data]
-      .sort((first, second) => `${first.store_section} ${first.model}`.localeCompare(`${second.store_section} ${second.model}`));
-    renderLogistics();
-    renderSummary();
-    status.textContent = 'Product logistics saved. Future order freight estimates will use this data.';
-  });
-  document.querySelector('#deleteLogistics')?.addEventListener('click', async () => {
-    const status = document.querySelector('#logisticsSaveStatus');
-    if (window.prompt(`Type DELETE to remove logistics for ${record.model}.`) !== 'DELETE') {
-      status.textContent = 'Deletion cancelled.';
-      return;
-    }
-    const { error } = await client.from('product_logistics').delete().eq('model', record.model);
-    if (error) {
-      status.textContent = error.message;
-      return;
-    }
-    productLogistics = productLogistics.filter(item => item.model !== record.model);
-    renderLogistics();
-    renderSummary();
-    closeDrawer();
-  });
-}
-
-document.querySelector('#orderSearch').addEventListener('input', renderOrders);
-document.querySelector('#statusFilter').addEventListener('change', renderOrders);
-document.querySelector('#memberSearch').addEventListener('input', renderMembers);
-document.querySelector('#logisticsSearch')?.addEventListener('input', renderLogistics);
-document.querySelector('#addLogistics')?.addEventListener('click', () => openLogisticsEditor());
-document.querySelector('#purchaseSearch')?.addEventListener('input', renderPurchases);
-document.querySelector('#refreshData').addEventListener('click', () => loadData());
-
-document.querySelector('.tabs').addEventListener('click', event => {
-  const button = event.target.closest('[data-tab]');
-  if (!button) return;
-  document.querySelectorAll('.tabs button').forEach(item => item.classList.toggle('active', item === button));
-  document.querySelector('#ordersPanel').hidden = button.dataset.tab !== 'orders';
-  document.querySelector('#membersPanel').hidden = button.dataset.tab !== 'members';
-  document.querySelector('#logisticsPanel').hidden = button.dataset.tab !== 'logistics';
-  document.querySelector('#purchasesPanel').hidden = button.dataset.tab !== 'purchases';
-});
-
-document.querySelector('#ordersBody').addEventListener('click', event => {
-  const row = event.target.closest('[data-order-id]');
-  if (row) openOrder(row.dataset.orderId);
-});
-
-document.querySelector('#membersBody').addEventListener('click', event => {
-  const row = event.target.closest('[data-member-id]');
-  if (row) openMember(row.dataset.memberId);
-});
-
-document.querySelector('#logisticsBody')?.addEventListener('click', event => {
-  const row = event.target.closest('[data-logistics-model]');
-  if (row) openLogisticsEditor(row.dataset.logisticsModel);
-});
-
-function openMember(id) {
-  const member = members.find(item => item.id === id);
-  if (!member) return;
-  const linkedOrderCount = orders.filter(order => order.user_id === member.id).length;
-  detail.innerHTML = `
-    <div class="detail-head"><p class="eyebrow">Member management</p><h2>${e(member.full_name || member.email || 'Member')}</h2><p>Joined ${e(date(member.created_at))}</p></div>
-    <section class="detail-section"><form id="memberForm" class="form-grid">
-      <input type="hidden" name="buyer_type" value="company">
-      <label>Manager / Contact name<input name="full_name" required value="${e(member.full_name || '')}"></label>
-      <label>Company name<input name="company_name" required value="${e(member.company_name || '')}"></label>
-      <label>Email<input name="email" type="email" required value="${e(member.email || '')}"><small>The customer receives an account-change notification.</small></label>
-      <label>Phone<input name="phone" value="${e(member.phone || '')}"></label>
-      <label>WhatsApp<input name="whatsapp" value="${e(member.whatsapp || '')}"></label>
-      <label>Country<input name="country" value="${e(member.country || '')}"></label>
-      <label class="wide">Address line 1<input name="address_line_1" value="${e(member.address_line_1 || '')}"></label>
-      <label class="wide">Address line 2<input name="address_line_2" value="${e(member.address_line_2 || '')}"></label>
-      <label>City<input name="city" value="${e(member.city || '')}"></label>
-      <label>State / Province<input name="state_province" value="${e(member.state_province || '')}"></label>
-      <label>Postal code<input name="postal_code" value="${e(member.postal_code || '')}"></label>
-      <label>Preferred courier<select name="preferred_courier"><option value="">Not specified</option>${['DHL','FedEx','UPS','EMS','SF Express','Other'].map(value => `<option ${member.preferred_courier === value ? 'selected' : ''}>${value}</option>`).join('')}</select></label>
-      <label>Courier account<input name="courier_account_no" value="${e(member.courier_account_no || '')}"></label>
-    </form><div class="order-actions"><button class="primary-button" id="saveMember">Save member & notify customer</button></div><p class="save-status" id="memberSaveStatus"></p></section>
-    <section class="detail-section danger-zone"><h3>Delete member</h3><p>Removes the customer's login and profile. ${linkedOrderCount ? `${linkedOrderCount} historical order${linkedOrderCount === 1 ? '' : 's'} will be retained for business records.` : 'This member has no historical orders.'}</p><button class="danger-button" id="deleteMember">Delete member account</button><p class="save-status" id="memberDeleteStatus"></p></section>`;
-  drawer.classList.add('open');
-  drawer.setAttribute('aria-hidden', 'false');
-  document.querySelector('#saveMember').addEventListener('click', async () => {
-    const status = document.querySelector('#memberSaveStatus');
-    const button = document.querySelector('#saveMember');
-    const values = Object.fromEntries(new FormData(document.querySelector('#memberForm')));
-    Object.keys(values).forEach(key => values[key] = String(values[key] || '').trim() || null);
-    values.buyer_type = 'company';
-    if (!values.company_name || !values.full_name || !values.email) {
-      status.textContent = 'Email, company name and Manager / Contact name are required.';
-      return;
-    }
-    button.disabled = true;
-    status.textContent = 'Saving account and sending notification...';
-    const { data, error } = await invokeMemberAdminFunction({
-      action: 'update_user',
-      user_id: member.id,
-      email: values.email,
-      profile: values
-    });
-    button.disabled = false;
-    if (error) {
-      status.textContent = await functionErrorMessage(error);
-      return;
-    }
-    const savedMember = data?.profile || { ...member, ...values };
-    members = members.map(item => item.id === member.id ? savedMember : item);
-    status.textContent = data?.email_sent
-      ? 'Member saved and the customer notification email was sent.'
-      : `Member saved. Notification email was not sent${data?.email_error ? `: ${data.email_error}` : '.'}`;
-    renderMembers();
-    renderSummary();
-  });
-  document.querySelector('#deleteMember').addEventListener('click', async () => {
-    const status = document.querySelector('#memberDeleteStatus');
-    const confirmation = window.prompt(`Type DELETE to remove ${member.email || member.full_name || 'this member'}.\nHistorical orders will be retained.`);
-    if (confirmation !== 'DELETE') {
-      status.textContent = 'Deletion cancelled.';
-      return;
-    }
-    const button = document.querySelector('#deleteMember');
-    button.disabled = true;
-    status.textContent = 'Deleting member account...';
-    const { data, error } = await invokeMemberAdminFunction({
-      action: 'delete_user',
-      user_id: member.id
-    });
-    if (error) {
-      button.disabled = false;
-      status.textContent = await functionErrorMessage(error);
-      return;
-    }
-    members = members.filter(item => item.id !== member.id);
-    orders = orders.map(order => order.user_id === member.id ? { ...order, user_id: null } : order);
-    renderMembers();
-    renderOrders();
-    renderSummary();
-    closeDrawer();
-    document.querySelector('#adminIdentity').textContent = data?.email_sent
-      ? 'Member deleted and the customer was notified.'
-      : 'Member deleted. Historical orders were retained.';
-  });
-}
-
-async function openOrder(id) {
-  activeOrder = orders.find(order => order.id === id);
-  if (!activeOrder) return;
-  detail.innerHTML = '<p>Loading order...</p>';
-  drawer.classList.add('open');
-  drawer.setAttribute('aria-hidden', 'false');
-  const [itemResult, couponResult] = await Promise.all([
-    client.from('order_items').select('*').eq('order_id', id).order('id'),
-    loadIssuedCoupons(id)
-  ]);
-  if (itemResult.error || couponResult.error) {
-    detail.innerHTML = `<p>${e(itemResult.error?.message || couponResult.error?.message)}</p>`;
-    return;
-  }
-  activeItems = itemResult.data || [];
-  activeIssuedCoupons = couponResult.data || [];
-  renderOrderDetail();
-}
-
-function sfFreightCalculatorHtml(order) {
-  if (!sfFreight) return '<section class="detail-section"><h3>SF International freight calculator</h3><p class="sf-message error">SF tariff data is unavailable. Refresh the page.</p></section>';
-  const estimate = shipmentEstimate();
-  const matched = sfFreight.findDestination(order.destination_country);
-  const destinationOptions = sfFreight.destinations
-    .slice()
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .map(item => `<option value="${e(item.code)}" ${matched?.code === item.code ? 'selected' : ''}>${e(item.name)} (${e(item.code)}) · Zone ${e(item.zone)}</option>`)
-    .join('');
-  let exchangeRate = 6.8;
-  try { exchangeRate = Number(localStorage.getItem('lzn_sf_rmb_per_usd')) || exchangeRate; } catch (_) {}
-  const today = new Date().toLocaleDateString('en-CA');
-  return `<section class="detail-section sf-freight-section">
-    <div class="sf-section-heading"><div><p class="eyebrow">China export public tariff</p><h3>SF International freight calculator</h3></div><div class="sf-source-links"><a href="${e(sfFreight.publicRateUrl)}" target="_blank" rel="noopener">2026 export tariff</a><a href="${e(sfFreight.fuelRateUrl)}" target="_blank" rel="noopener">Official fuel rate</a></div></div>
-    ${shipmentEstimateHtml(estimate)}
-    <form id="sfFreightForm" class="sf-freight-form">
-      <label class="wide">Destination country<select name="destination" required><option value="">Select destination</option>${destinationOptions}</select></label>
-      <label>SF service<select name="service" required></select></label>
-      <label>Planned shipment date<input name="ship_date" type="date" value="${e(today)}" required></label>
-      <label>Actual gross weight (kg)<input name="actual_kg" type="number" min="0" step="0.01" value="${estimate.actualKg ? e(estimate.actualKg.toFixed(2)) : ''}" placeholder="e.g. 30"><small>Prefilled from Product logistics; confirm after final packing.</small></label>
-      <label>Total volume (CBM)<input name="cbm" type="number" min="0" step="0.0001" value="${estimate.cbm ? e(estimate.cbm.toFixed(4)) : ''}" placeholder="e.g. 0.20"><small>Prefilled from package/carton dimensions; remains editable.</small></label>
-      <label>Fuel surcharge (%)<input name="fuel_rate" type="number" min="0" step="0.01" placeholder="Loading official rate"></label>
-      <label>Exchange rate (RMB per USD)<input name="rmb_per_usd" type="number" min="0.01" step="0.0001" value="${e(exchangeRate)}" required></label>
-      <label class="wide">Other SF surcharges (RMB)<input name="other_rmb" type="number" min="0" step="0.01" value="0"><small>Remote area, resource allocation, oversize, overweight or special handling charges, if applicable.</small></label>
-      <div class="sf-freight-actions wide"><button class="outline-button" type="button" id="sfRefreshFuel">Refresh fuel rate</button><button class="primary-button" type="submit">Calculate freight</button></div>
-    </form>
-    <p class="sf-message" id="sfFuelStatus"></p>
-    <div class="sf-result" id="sfFreightResult" hidden></div>
-    <p class="sf-disclaimer">Published shipper-pay rates from Mainland China. Duties, destination taxes and unlisted SF surcharges are not included.</p>
-  </section>`;
-}
-
-function syncSfServiceOptions() {
-  const form = document.querySelector('#sfFreightForm');
-  if (!form || !sfFreight) return;
-  const destination = sfFreight.findDestination(form.elements.destination.value);
-  const select = form.elements.service;
-  const previous = select.value;
-  const preferredOrder = ['EE', 'SE', 'GE+'];
-  const services = destination ? preferredOrder.filter(service => destination.services.includes(service)) : [];
-  select.innerHTML = services.length
-    ? services.map(service => `<option value="${e(service)}">${e(sfFreight.serviceLabels[service])}</option>`).join('')
-    : '<option value="">Select destination first</option>';
-  if (services.includes(previous)) select.value = previous;
-  else if (services.length) select.value = services[0];
-}
-
-async function refreshSfFuelRate(force = false) {
-  const form = document.querySelector('#sfFreightForm');
-  const status = document.querySelector('#sfFuelStatus');
-  if (!form || !status || !sfFreight) return;
-  const service = form.elements.service.value;
-  const shipDate = form.elements.ship_date.value;
-  if (!service || !shipDate) {
-    status.textContent = 'Select a destination, service and shipment date.';
-    return;
-  }
-  status.classList.remove('error');
-  status.textContent = 'Checking the applicable fuel surcharge...';
-  try {
-    const result = await sfFreight.loadFuelRate(shipDate, service, force);
-    form.elements.fuel_rate.value = Number(result.rate).toFixed(2);
-    form.elements.fuel_rate.dataset.rateSource = result.source;
-    const validity = result.end ? `${result.start} to ${result.end}` : `EIA reference ${result.eiaPeriod || result.start}`;
-    status.innerHTML = `<strong>${e(Number(result.rate).toFixed(2))}%</strong> · ${e(validity)} · ${e(result.source)}`;
-  } catch (error) {
-    form.elements.fuel_rate.dataset.rateSource = 'Manual rate';
-    status.classList.add('error');
-    status.innerHTML = `${e(error.message || String(error))} <a href="${e(sfFreight.fuelRateUrl)}" target="_blank" rel="noopener">Open SF official rate</a>`;
-  }
-}
-
-function calculateSfFreight(event) {
-  event.preventDefault();
-  const form = event.currentTarget;
-  const resultBox = document.querySelector('#sfFreightResult');
-  const fuelStatus = document.querySelector('#sfFuelStatus');
-  try {
-    const values = Object.fromEntries(new FormData(form));
-    const fuelRate = Number(values.fuel_rate);
-    const exchangeRate = Number(values.rmb_per_usd);
-    const otherRmb = Number(values.other_rmb || 0);
-    if (values.fuel_rate === '' || !(fuelRate >= 0)) throw new Error('Enter the applicable SF fuel surcharge percentage.');
-    if (!(exchangeRate > 0)) throw new Error('Enter the RMB per USD exchange rate.');
-    if (otherRmb < 0) throw new Error('Other surcharges cannot be negative.');
-    const weight = sfFreight.calculateChargeableWeight(values.actual_kg, values.cbm);
-    const base = sfFreight.calculateBaseFreight(values.destination, values.service, weight.chargeable);
-    const fuelRmb = Math.round(base.amount * fuelRate) / 100;
-    const totalRmb = Math.round((base.amount + fuelRmb + otherRmb) * 100) / 100;
-    const totalUsd = Math.round(totalRmb / exchangeRate * 100) / 100;
-    activeSfCalculation = { ...values, ...weight, ...base, fuelRate, fuelRmb, otherRmb, totalRmb, totalUsd, exchangeRate };
-    try { localStorage.setItem('lzn_sf_rmb_per_usd', String(exchangeRate)); } catch (_) {}
-    resultBox.hidden = false;
-    resultBox.innerHTML = `<div class="sf-result-title"><div><span>Calculated freight</span><strong>USD ${e(totalUsd.toFixed(2))}</strong></div><button class="primary-button" type="button" id="sfApplyFreight">Apply to order</button></div>
-      <div class="sf-breakdown">
-        <div><span>Destination / service</span><strong>${e(base.destination.name)} · ${e(sfFreight.serviceLabels[values.service])} · Zone ${e(base.zone)}</strong></div>
-        <div><span>Actual / volume weight</span><strong>${e(weight.actual.toFixed(2))} kg / ${e(weight.volume.toFixed(2))} kg</strong></div>
-        <div><span>Chargeable weight</span><strong>${e(weight.chargeable.toFixed(1))} kg</strong></div>
-        <div><span>Published base freight</span><strong>RMB ${e(base.amount.toFixed(2))}${base.rateType === 'per_kg' ? ` (${e(base.rate)} / kg)` : ''}</strong></div>
-        <div><span>Fuel surcharge</span><strong>RMB ${e(fuelRmb.toFixed(2))} (${e(fuelRate.toFixed(2))}%)</strong></div>
-        <div><span>Other surcharges</span><strong>RMB ${e(otherRmb.toFixed(2))}</strong></div>
-        <div class="sf-total-row"><span>Total</span><strong>RMB ${e(totalRmb.toFixed(2))} / USD ${e(totalUsd.toFixed(2))}</strong></div>
-      </div>`;
-    document.querySelector('#sfApplyFreight').addEventListener('click', applySfFreightToOrder);
-    fuelStatus.classList.remove('error');
-  } catch (error) {
-    activeSfCalculation = null;
-    resultBox.hidden = true;
-    fuelStatus.classList.add('error');
-    fuelStatus.textContent = error.message || String(error);
-  }
-}
-
-function applySfFreightToOrder() {
-  if (!activeSfCalculation) return;
-  const orderForm = document.querySelector('#orderForm');
-  const freightInput = orderForm?.elements.freight_usd;
-  if (!freightInput) return;
-  freightInput.value = activeSfCalculation.totalUsd.toFixed(2);
-  freightInput.dispatchEvent(new Event('input', { bubbles: true }));
-  const status = document.querySelector('#saveStatus');
-  if (status) status.textContent = `SF freight applied: USD ${activeSfCalculation.totalUsd.toFixed(2)}. Save changes to keep it on the order.`;
-}
-
-function initializeSfFreightCalculator() {
-  const form = document.querySelector('#sfFreightForm');
-  if (!form || !sfFreight) return;
-  activeSfCalculation = null;
-  syncSfServiceOptions();
-  form.addEventListener('submit', calculateSfFreight);
-  form.elements.destination.addEventListener('change', () => { syncSfServiceOptions(); refreshSfFuelRate(); });
-  form.elements.service.addEventListener('change', () => refreshSfFuelRate());
-  form.elements.ship_date.addEventListener('change', () => refreshSfFuelRate());
-  form.elements.fuel_rate.addEventListener('input', () => { form.elements.fuel_rate.dataset.rateSource = 'Manual rate'; });
-  document.querySelector('#sfRefreshFuel').addEventListener('click', () => refreshSfFuelRate());
-  refreshSfFuelRate();
-}
-
-function renderOrderDetail() {
-  const order = activeOrder;
-  const freight = Number(order.freight_usd || 0);
-  const discount = Number(order.discount_usd || 0);
-  const total = Number(order.total_usd ?? Number(order.subtotal_usd || 0) - discount + freight);
-  detail.innerHTML = `
-    <div class="detail-head"><p class="eyebrow">${e(storeName(order, true))}</p><h2>${e(order.invoice_no || 'Proforma Invoice not assigned')}</h2><p class="request-id">Order ${e(order.id)}</p></div>
-    <div class="workflow-banner"><span>Current stage</span><strong>${e(statusLabels[order.status] || order.status)}</strong><small>Next: ${e(nextStepLabels[order.status] || 'Review the order')}</small></div>
-    <section class="detail-section"><h3>Customer & shipping</h3><div class="customer-box"><strong>Recipient type:</strong> ${(order.buyer_type || 'company') === 'company' ? 'Company' : 'Individual'}<br>${(order.buyer_type || 'company') === 'company' && order.company_name ? `<strong>${e(order.company_name)}</strong><br>Attn: ` : ''}<strong>${e(order.contact_name || '-')}</strong>${order.contact_email ? `<br><a href="mailto:${e(order.contact_email)}">${e(order.contact_email)}</a>` : ''}<br>${e(order.contact_phone || '')}<br>${e(order.shipping_address || '')}<br>${e(order.postal_code || '')}<br><br><strong>Payment method:</strong> ${e(paymentLabel(order.payment_method))}${paymentCode(order.payment_method) === 'company_bank_transfer' ? '' : '<br><strong>Processing fee:</strong> Confirmed on Payoneer and may vary.<br><small>Not included in the PI total; do not add it again if Payoneer charges the payer.</small>'}<br><br><strong>Freight request:</strong> ${e(order.courier || '-')}<br><strong>Collect account:</strong> ${e(order.courier_account_no || '-')}</div></section>
-    <section class="detail-section"><h3>Items & selling prices</h3>${activeItems.some(itemPriceOnRequest) ? '<p class="price-request-alert"><strong>Price quotation required.</strong> Enter a selling price for the marked items before issuing the final Proforma Invoice.</p>' : ''}<form id="orderItemsForm"><div class="table-wrap"><table class="order-items editable-order-items"><thead><tr><th>Model / item</th><th>Qty</th><th>Unit price (USD)</th><th>Total</th></tr></thead><tbody>${activeItems.map(item => `<tr data-order-item-row data-item-id="${e(item.id)}"><td><strong>${e(item.model)}</strong><br><small>${e(item.product_name)}</small>${purchaseSourceHtml(item.model)}${logisticsInlineHtml(item)}</td><td><input aria-label="Quantity for ${e(item.model)}" data-item-quantity type="number" min="1" step="1" value="${e(item.quantity)}"></td><td><input aria-label="Unit price for ${e(item.model)}" data-item-price type="number" min="0" step="0.01" value="${Number(item.unit_price_usd || 0).toFixed(2)}"></td><td data-item-total>${money(item.line_total_usd)}</td></tr>`).join('')}</tbody></table></div><div class="order-actions"><button class="outline-button" type="button" id="saveOrderItems">Save item quantities & prices</button></div><p class="save-status" id="itemSaveStatus"></p></form></section>
-    ${order.payment_submitted_at ? `<section class="detail-section"><h3>Customer payment notice</h3><div class="customer-box payment-review"><strong>Verification required</strong><br>Submitted: ${e(date(order.payment_submitted_at))}<br>Remitter / Reference: ${e(order.payment_reference || '-')}<br>Customer note: ${e(order.payment_note || '-')}<p>Confirm receipt through ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'the company bank account' : 'Payoneer'} before changing the status to Paid.</p></div></section>` : ''}
-    ${activeIssuedCoupons.length ? `<section class="detail-section"><h3>Issued repeat-order coupons (${activeIssuedCoupons.length})</h3><div class="customer-box">${activeIssuedCoupons.map((coupon, index) => `<div><strong>${index + 1}. ${e(coupon.code)}</strong><br>Value: ${money(coupon.amount_usd)} · Status: ${e(coupon.status)}<br>Issued: ${e(date(coupon.issued_at))} · Expires: ${e(date(coupon.expires_at))}</div>`).join('<hr>')}</div></section>` : ''}
-    ${invoiceActivity(order)}
-    ${sfFreightCalculatorHtml(order)}
-    <section class="detail-section"><h3>Order & invoice</h3><form id="orderForm" class="form-grid">
-      <label>Company name<input name="company_name" value="${e(order.company_name || '')}"></label>
-      <label>Manager / Contact<input name="contact_name" required value="${e(order.contact_name || '')}"></label>
-      <label>Customer email<input name="contact_email" type="email" required value="${e(order.contact_email || '')}"></label>
-      <label>Customer phone<input name="contact_phone" value="${e(order.contact_phone || '')}"></label>
-      <label>Destination country<input name="destination_country" value="${e(order.destination_country || '')}"></label>
-      <label>Postal code<input name="postal_code" value="${e(order.postal_code || '')}"></label>
-      <label class="wide">Shipping address<textarea name="shipping_address" rows="3">${e(order.shipping_address || '')}</textarea></label>
-      <label>Payment method<select name="payment_method"><option value="company_bank_transfer" ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'selected' : ''}>Company bank transfer</option><option value="payoneer_card_paypal" ${paymentCode(order.payment_method) === 'payoneer_card_paypal' ? 'selected' : ''}>Card / PayPal — Payoneer</option></select></label>
-      <label>Courier / freight instruction<input name="courier" value="${e(order.courier || '')}"></label>
-      <label>Courier collect account<input name="courier_account_no" value="${e(order.courier_account_no || '')}"></label>
-      <label>PI number<input name="invoice_no" value="${e(order.invoice_no || '')}" placeholder="LZN-20260713-001"></label>
-      <label>Status<select name="status">${['quote_requested','quoted','payment_pending','payment_submitted','paid','processing','shipped','cancelled'].map(status => `<option value="${status}" ${order.status === status ? 'selected' : ''}>${e(statusLabels[status])}</option>`).join('')}</select></label>
-      <label>Subtotal (USD)<input name="subtotal_usd" type="number" step="0.01" value="${Number(order.subtotal_usd || 0).toFixed(2)}" readonly></label>
-      <label>Coupon codes<input name="coupon_code" value="${e(orderCouponCodes(order).join(', ') || 'Not used')}" readonly></label>
-      <label>Coupon discount (USD)<input name="discount_usd" type="number" step="0.01" value="${discount.toFixed(2)}" readonly></label>
-      <label>Freight (USD)<input name="freight_usd" type="number" min="0" step="0.01" value="${freight.toFixed(2)}"></label>
-      <label>Total (USD)<input name="total_usd" type="number" step="0.01" value="${total.toFixed(2)}" readonly></label>
-      <label>Tracking number<input name="tracking_no" value="${e(order.tracking_no || '')}" placeholder="Visible to customer after status is Shipped"><small>Shown to the customer only when status is Shipped.</small></label>
-      <label class="wide">Internal note<textarea name="admin_note" rows="3">${e(visibleAdminNote(order))}</textarea></label>
-    </form><div class="order-actions"><button class="outline-button" id="generatePi">Generate PI number</button><button class="primary-button" id="saveOrder">Save changes</button><button class="outline-button" id="printInvoice">Create & Email Proforma Invoice PDF</button><button class="primary-button" id="confirmPayment">Confirm payment</button><button class="outline-button" id="printCi">Create & Email Commercial Invoice PDF</button><button class="primary-button" id="markShipped">Mark as shipped</button>${order.status === 'shipped' ? `<button class="outline-button" id="confirmDelivery">Confirm delivery & Email customer</button>` : ''}${order.tracking_no ? `<button class="outline-button" id="trackShipment">Track shipment</button>` : ''}</div><p class="save-status" id="saveStatus"></p></section>`;
-  const form = document.querySelector('#orderForm');
-  form.elements.freight_usd.addEventListener('input', () => form.elements.total_usd.value = (Number(order.subtotal_usd || 0) - discount + Number(form.elements.freight_usd.value || 0)).toFixed(2));
-  document.querySelectorAll('[data-order-item-row]').forEach(row => {
-    const updateLineTotal = () => {
-      const quantity = Number(row.querySelector('[data-item-quantity]').value || 0);
-      const unitPrice = Number(row.querySelector('[data-item-price]').value || 0);
-      row.querySelector('[data-item-total]').textContent = money(quantity * unitPrice);
-    };
-    row.querySelector('[data-item-quantity]').addEventListener('input', updateLineTotal);
-    row.querySelector('[data-item-price]').addEventListener('input', updateLineTotal);
-  });
-  initializeSfFreightCalculator();
-  document.querySelector('#saveOrderItems').addEventListener('click', () => saveOrderItems(true));
-  document.querySelector('#generatePi').addEventListener('click', generatePiNumber);
-  document.querySelector('#saveOrder').addEventListener('click', () => saveOrder(true));
-  document.querySelector('#printInvoice').addEventListener('click', createProformaInvoice);
-  document.querySelector('#confirmPayment').addEventListener('click', () => setOrderStatus('paid'));
-  document.querySelector('#printCi').addEventListener('click', printCommercialInvoice);
-  document.querySelector('#markShipped').addEventListener('click', () => setOrderStatus('shipped', true));
-  document.querySelector('#confirmDelivery')?.addEventListener('click', confirmDelivery);
-  document.querySelectorAll('[data-invoice-path]').forEach(button => button.addEventListener('click', () => openStoredInvoice(button.dataset.invoicePath)));
-  document.querySelector('#trackShipment')?.addEventListener('click', trackShipment);
-}
-
-async function setOrderStatus(nextStatus, requireTracking = false) {
-  const form = document.querySelector('#orderForm');
-  const status = document.querySelector('#saveStatus');
-  if (nextStatus === 'processing' && !['paid', 'processing'].includes(activeOrder.status)) {
-    status.textContent = 'Confirm payment before moving the order to awaiting shipment.';
-    return;
-  }
-  if (requireTracking && !form.elements.tracking_no.value.trim()) {
-    status.textContent = 'Enter the tracking number before marking this order as shipped.';
-    form.elements.tracking_no.focus();
-    return;
-  }
-  form.elements.status.value = nextStatus;
-  const saved = await saveOrder();
-  if (!saved) return;
-  const eventType = { paid: 'payment_confirmed', processing: 'processing', shipped: 'shipped' }[nextStatus];
-  if (eventType) await sendOrderEmail(eventType);
-  if (nextStatus === 'paid') await refreshActiveOrder();
-}
-
-async function sendOrderEmail(eventType) {
-  const status = document.querySelector('#saveStatus');
-  status.textContent = 'Sending customer email...';
-  const { error } = await invokeAdminFunction({ order_id: activeOrder.id, event_type: eventType });
-  status.textContent = error ? `Status saved, but email was not sent: ${await functionErrorMessage(error)}` : 'Status saved and customer email sent.';
-  return !error;
-}
-
-async function invokeAdminFunction(body) {
-  return invokeSecureFunction('smooth-processor', body);
-}
-
-async function invokeMemberAdminFunction(body) {
-  return invokeSecureFunction('admin-user-management', body);
-}
-
-async function invokeSecureFunction(functionName, body) {
-  let { data: { session } } = await client.auth.getSession();
-  if (!session || (session.expires_at && session.expires_at * 1000 < Date.now() + 60000)) {
-    const refreshed = await client.auth.refreshSession();
-    session = refreshed.data.session;
-  }
-  if (!session?.access_token) return { data: null, error: new Error('Administrator session expired. Please sign in again.') };
-  return client.functions.invoke(functionName, {
-    body,
-    headers: { Authorization: `Bearer ${session.access_token}` },
-  });
-}
-
-async function functionErrorMessage(error) {
-  try {
-    if (error?.context?.clone) {
-      const payload = await error.context.clone().json();
-      return payload.error || payload.message || error.message;
-    }
-  } catch (_ignored) {
-    try {
-      const text = await error.context?.clone().text();
-      if (text) return text;
-    } catch (_alsoIgnored) {}
-  }
-  return error?.message || String(error);
-}
-
-async function confirmDelivery() {
-  const status = document.querySelector('#saveStatus');
-  if (activeOrder.status !== 'shipped') {
-    status.textContent = 'Mark the order as shipped before confirming delivery.';
-    return;
-  }
-  status.textContent = 'Sending delivery confirmation email...';
+let activeShip…15515 tokens truncated…extContent = 'Sending delivery confirmation email...';
   const { error } = await invokeAdminFunction({ order_id: activeOrder.id, event_type: 'delivered' });
   status.textContent = error ? `Delivery email was not sent: ${await functionErrorMessage(error)}` : 'Delivery confirmation email sent to the customer.';
   if (!error) await refreshActiveOrder();
@@ -1072,6 +382,7 @@ async function refreshActiveOrder() {
   ]);
   if (orderResult.error || couponResult.error) return;
   activeOrder = orderResult.data;
+  activeShipmentPackages = normalizedShipmentPackages(activeOrder.shipment_packages);
   activeIssuedCoupons = couponResult.data || [];
   orders = orders.map(order => order.id === activeOrder.id ? activeOrder : order);
   renderOrders();
@@ -1375,3 +686,4 @@ drawer.querySelectorAll('[data-close-drawer]').forEach(button => button.addEvent
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeDrawer(); });
 
 boot();
+
