@@ -619,26 +619,22 @@
     "/tools/assets/catalog/curated-20260729/original-cn/684620908475/001.webp"
   ],
   "LZN-602357189850": [
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/009.webp"
+    "/tools/assets/catalog/curated-20260801/english/602357189850/white.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/orange.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/red.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/green.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/purple.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/brown.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/pink.webp"
   ],
   "LZN-TL-1034": [
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/602357189850/009.webp"
+    "/tools/assets/catalog/curated-20260801/english/602357189850/white.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/orange.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/red.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/green.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/purple.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/brown.webp",
+    "/tools/assets/catalog/curated-20260801/english/602357189850/pink.webp"
   ],
   "LZN-777094994614": [
     "/tools/assets/catalog/curated-20260729/original-cn/777094994614/001.webp",
@@ -805,32 +801,28 @@
     "/tools/assets/catalog/curated-20260729/original-cn/676143210189/001.webp"
   ],
   "LZN-691677973956": [
-    "/tools/assets/catalog/curated-20260729/original-cn/691677973956/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/691677973956/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/691677973956/003.webp"
+    "/tools/assets/catalog/curated-20260801/english/691677973956/frosted-square-case.webp",
+    "/tools/assets/catalog/curated-20260801/english/691677973956/frosted-oval-case.webp"
   ],
   "LZN-TL-1043": [
-    "/tools/assets/catalog/curated-20260729/original-cn/691677973956/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/691677973956/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/691677973956/003.webp"
+    "/tools/assets/catalog/curated-20260801/english/691677973956/frosted-square-case.webp",
+    "/tools/assets/catalog/curated-20260801/english/691677973956/frosted-oval-case.webp"
   ],
   "LZN-642715432999": [
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/007.webp"
+    "/tools/assets/catalog/curated-20260801/english/642715432999/lacquered-black.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715432999/black.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715432999/beige.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715432999/solid-blue.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715432999/clear.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715432999/transparent-pink.webp"
   ],
   "LZN-TL-1044": [
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715432999/007.webp"
+    "/tools/assets/catalog/curated-20260801/english/642715432999/lacquered-black.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715432999/black.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715432999/beige.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715432999/solid-blue.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715432999/clear.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715432999/transparent-pink.webp"
   ],
   "LZN-763152459242": [
     "/tools/assets/catalog/curated-20260729/original-cn/763152459242/001.webp",
@@ -1580,67 +1572,67 @@
     "LZN-602357189850": [
       {
         label: "Option 01 - White",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/002.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/602357189850/white.webp"
       },
       {
         label: "Option 02 - Orange",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/003.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/602357189850/orange.webp"
       },
       {
         label: "Option 03 - Red",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/004.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/602357189850/red.webp"
       },
       {
         label: "Option 04 - Green",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/005.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/602357189850/green.webp"
       },
       {
         label: "Option 05 - Purple",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/006.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/602357189850/purple.webp"
       },
       {
         label: "Option 06 - Brown",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/007.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/602357189850/brown.webp"
       },
       {
         label: "Option 07 - Pink",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/008.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/602357189850/pink.webp"
       }
     ],
     "LZN-691677973956": [
       {
         label: "Option 01 - Frosted Square Case",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/691677973956/002.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/691677973956/frosted-square-case.webp"
       },
       {
         label: "Option 02 - Frosted Oval Case",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/691677973956/003.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/691677973956/frosted-oval-case.webp"
       }
     ],
     "LZN-642715432999": [
       {
         label: "Option 01 - Lacquered Black",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/002.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/642715432999/lacquered-black.webp"
       },
       {
         label: "Option 02 - Black",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/003.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/642715432999/black.webp"
       },
       {
         label: "Option 03 - Beige",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/004.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/642715432999/beige.webp"
       },
       {
         label: "Option 04 - Solid Blue",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/005.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/642715432999/solid-blue.webp"
       },
       {
         label: "Option 05 - Clear",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/006.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/642715432999/clear.webp"
       },
       {
         label: "Option 06 - Transparent Pink",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/007.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/642715432999/transparent-pink.webp"
       }
     ]
   };
