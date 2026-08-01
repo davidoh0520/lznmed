@@ -25,6 +25,18 @@ grant execute on function public.is_admin() to authenticated;
 
 alter table public.profiles add column if not exists email text;
 alter table public.profiles add column if not exists buyer_type text not null default 'company';
+alter table public.profiles add column if not exists phone text;
+alter table public.profiles add column if not exists whatsapp text;
+alter table public.profiles add column if not exists country text;
+alter table public.profiles add column if not exists state_province text;
+alter table public.profiles add column if not exists city text;
+alter table public.profiles add column if not exists address_line_1 text;
+alter table public.profiles add column if not exists address_line_2 text;
+alter table public.profiles add column if not exists postal_code text;
+alter table public.profiles add column if not exists tax_id text;
+alter table public.profiles add column if not exists preferred_courier text;
+alter table public.profiles add column if not exists courier_account_no text;
+alter table public.profiles add column if not exists cart_reminder_opt_in boolean not null default false;
 alter table public.orders add column if not exists invoice_no text;
 alter table public.orders add column if not exists buyer_type text;
 alter table public.orders add column if not exists company_name text;
@@ -45,6 +57,11 @@ alter table public.orders add column if not exists ci_created_at timestamptz;
 alter table public.orders add column if not exists ci_emailed_at timestamptz;
 alter table public.orders add column if not exists shipped_emailed_at timestamptz;
 alter table public.orders add column if not exists delivered_emailed_at timestamptz;
+alter table public.orders add column if not exists shipment_packages jsonb not null default '[]'::jsonb;
+
+alter table public.orders drop constraint if exists orders_shipment_packages_array_check;
+alter table public.orders add constraint orders_shipment_packages_array_check
+check (jsonb_typeof(shipment_packages) = 'array');
 
 -- Keep historical business records when an administrator removes a member login.
 -- The member's auth account, profile and cart are deleted; their past orders remain.
@@ -130,11 +147,50 @@ where p.id = u.id and (p.email is null or p.email = '');
 
 create or replace function public.handle_new_user()
 returns trigger language plpgsql security definer set search_path = public as $$
+declare
+  registration jsonb;
 begin
-  insert into public.profiles (id, full_name, email, company_name, buyer_type)
-  values (new.id, coalesce(new.raw_user_meta_data ->> 'full_name', ''), new.email,
-    nullif(new.raw_user_meta_data ->> 'company_name', ''), 'company')
-  on conflict (id) do update set email = excluded.email, buyer_type = 'company';
+  registration := coalesce(new.raw_user_meta_data -> 'registration_profile', '{}'::jsonb);
+  insert into public.profiles (
+    id, full_name, email, company_name, buyer_type, phone, whatsapp, country,
+    state_province, city, address_line_1, address_line_2, postal_code, tax_id,
+    preferred_courier, courier_account_no, cart_reminder_opt_in
+  ) values (
+    new.id,
+    coalesce(nullif(registration ->> 'full_name', ''), new.raw_user_meta_data ->> 'full_name', ''),
+    new.email,
+    coalesce(nullif(registration ->> 'company_name', ''), nullif(new.raw_user_meta_data ->> 'company_name', '')),
+    'company',
+    nullif(registration ->> 'phone', ''),
+    nullif(registration ->> 'whatsapp', ''),
+    nullif(registration ->> 'country', ''),
+    nullif(registration ->> 'state_province', ''),
+    nullif(registration ->> 'city', ''),
+    nullif(registration ->> 'address_line_1', ''),
+    nullif(registration ->> 'address_line_2', ''),
+    nullif(registration ->> 'postal_code', ''),
+    nullif(registration ->> 'tax_id', ''),
+    nullif(registration ->> 'preferred_courier', ''),
+    nullif(registration ->> 'courier_account_no', ''),
+    coalesce((registration ->> 'cart_reminder_opt_in')::boolean, false)
+  )
+  on conflict (id) do update set
+    email = excluded.email,
+    buyer_type = 'company',
+    company_name = coalesce(excluded.company_name, public.profiles.company_name),
+    full_name = coalesce(nullif(excluded.full_name, ''), public.profiles.full_name),
+    phone = coalesce(excluded.phone, public.profiles.phone),
+    whatsapp = coalesce(excluded.whatsapp, public.profiles.whatsapp),
+    country = coalesce(excluded.country, public.profiles.country),
+    state_province = coalesce(excluded.state_province, public.profiles.state_province),
+    city = coalesce(excluded.city, public.profiles.city),
+    address_line_1 = coalesce(excluded.address_line_1, public.profiles.address_line_1),
+    address_line_2 = coalesce(excluded.address_line_2, public.profiles.address_line_2),
+    postal_code = coalesce(excluded.postal_code, public.profiles.postal_code),
+    tax_id = coalesce(excluded.tax_id, public.profiles.tax_id),
+    preferred_courier = coalesce(excluded.preferred_courier, public.profiles.preferred_courier),
+    courier_account_no = coalesce(excluded.courier_account_no, public.profiles.courier_account_no),
+    cart_reminder_opt_in = excluded.cart_reminder_opt_in;
   insert into public.carts (user_id) values (new.id) on conflict (user_id) do nothing;
   return new;
 end;
@@ -241,3 +297,4 @@ grant execute on function public.admin_update_order_items(uuid, jsonb) to authen
 
 -- Existing installations should also run supabase-product-logistics-setup.sql
 -- to enable the Product logistics admin tab and automatic freight estimates.
+
