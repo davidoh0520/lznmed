@@ -29,7 +29,7 @@ async function loadAccountProfile() {
 function signedInAccountView(profile = accountProfile || {}) {
   const company = profile.company_name || accountSession.user.user_metadata?.company_name || 'Not added';
   const manager = profile.full_name || accountSession.user.user_metadata?.full_name || 'Not added';
-  accountBody.innerHTML = `<p class="kicker"><span></span> Company account</p>
+  accountBody.innerHTML = `<p class="kicker"><span></span> Member account</p>
     <h2>My Account</h2>
     <p>Signed in as <strong>${escapeHtml(accountSession.user.email)}</strong></p>
     <div class="account-summary">
@@ -37,12 +37,10 @@ function signedInAccountView(profile = accountProfile || {}) {
       <div><span>Manager / Contact</span><strong>${escapeHtml(manager)}</strong></div>
     </div>
     <div class="account-actions">
-      <button class="button primary" id="accountEdit">Edit account</button>
-      <a href="/tools/?account=profile" class="button account-secondary">Shipping profile</a>
+      <a href="/tools/?account=profile" class="button primary">Edit Account & Shipping</a>
       <a href="/tools/?account=orders" class="button account-secondary">My orders</a>
       <button class="button account-signout" id="accountSignOut">Sign out</button>
     </div>`;
-  document.querySelector('#accountEdit').onclick = editAccountView;
   document.querySelector('#accountSignOut').onclick = async () => { await accountClient.auth.signOut(); accountDialog.close(); };
 }
 
@@ -53,9 +51,27 @@ async function openAccount() {
     signedInAccountView(await loadAccountProfile());
     return;
   }
-  accountBody.innerHTML = `<p class="kicker"><span></span> One LZN account</p><h2>Sign in or register</h2><p>Use the same company account across Devices, Tools, Frames and Lens.</p><form id="hubAuthForm" class="account-form"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name <input name="company_name" autocomplete="organization"></label><label>Manager / contact name <input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><div class="account-actions"><button class="button primary" name="mode" value="signin">Sign in</button><button class="button account-secondary" name="mode" value="signup">Create account</button></div><button class="account-resend" id="accountResend" type="button" hidden>Resend confirmation email</button><p id="accountStatus" class="account-status" aria-live="polite"></p></form>`;
+  accountBody.innerHTML = `<p class="kicker"><span></span> One LZN account</p><h2>Sign in or register</h2><p>Every registered account is an LZN member. New members enter account and shipping information during registration.</p><form id="hubAuthForm" class="account-form two-col">
+    <label class="wide">Email<input name="email" type="email" required autocomplete="email"></label>
+    <label class="wide">Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label>
+    <label>Company name<input name="company_name" required autocomplete="organization"></label>
+    <label>Manager / contact name<input name="full_name" required autocomplete="name"></label>
+    <label>Country<input name="country" list="profileCountryOptions" required autocomplete="country-name"><datalist id="profileCountryOptions"></datalist><small data-country-status>Choose a country to load its calling code and regions.</small></label>
+    <label>Phone<input name="phone" type="tel" required autocomplete="tel"><small>The selected country's calling code is added automatically.</small></label>
+    <label>WhatsApp (optional)<input name="whatsapp" type="tel" autocomplete="tel"></label>
+    <label>State / Province<input name="state_province" list="profileStateOptions" required autocomplete="address-level1"><datalist id="profileStateOptions"></datalist></label>
+    <label>City<input name="city" list="profileCityOptions" required autocomplete="address-level2"><datalist id="profileCityOptions"></datalist></label>
+    <label class="wide">Detailed street address<input name="address_line_1" required autocomplete="address-line1" placeholder="Building number and street name"></label>
+    <label class="wide">Address line 2 (optional)<input name="address_line_2" autocomplete="address-line2" placeholder="Suite, unit, floor, etc."></label>
+    <label>Postal code<input name="postal_code" required autocomplete="postal-code"><small data-postal-status>Required for delivery.</small></label>
+    <label>Importer / Customs ID (optional)<input name="tax_id"></label>
+    <label>Preferred courier (optional)<select name="preferred_courier"><option value="">No collect account</option><option>DHL</option><option>FedEx</option><option>UPS</option><option>EMS</option><option>SF Express</option><option>Other</option></select></label>
+    <label class="wide">Courier collect account (optional)<input name="courier_account_no"></label>
+    <label class="wide reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. I can turn these reminders off at any time.</span></label>
+    <div class="account-actions wide"><button class="button primary" name="mode" value="signin">Sign in</button><button class="button account-secondary" name="mode" value="signup">Create account</button></div><button class="account-resend wide" id="accountResend" type="button" hidden>Resend confirmation email</button><p id="accountStatus" class="account-status wide" aria-live="polite"></p></form>`;
   document.querySelector('#hubAuthForm').onsubmit = handleAccount;
   document.querySelector('#accountResend').onclick = resendAccountConfirmation;
+  window.LZNAddressProfile?.enhance(document.querySelector('#hubAuthForm'));
   showAccountDialog();
 }
 
@@ -123,13 +139,32 @@ async function handleAccount(event) {
   event.preventDefault();
   const mode = event.submitter.value;
   const form = new FormData(event.currentTarget);
+  const values = Object.fromEntries(form);
   const status = document.querySelector('#accountStatus');
-  const email = String(form.get('email') || '').trim().toLowerCase();
-  if (mode === 'signup' && (!String(form.get('company_name')).trim() || !String(form.get('full_name')).trim())) { status.textContent = 'Company and contact names are required.'; return; }
+  const email = String(values.email || '').trim().toLowerCase();
+  const profile = {
+    company_name: String(values.company_name || '').trim(),
+    full_name: String(values.full_name || '').trim(),
+    phone: String(values.phone || '').trim(),
+    whatsapp: String(values.whatsapp || '').trim(),
+    country: String(values.country || '').trim(),
+    state_province: String(values.state_province || '').trim(),
+    city: String(values.city || '').trim(),
+    address_line_1: String(values.address_line_1 || '').trim(),
+    address_line_2: String(values.address_line_2 || '').trim(),
+    postal_code: String(values.postal_code || '').trim(),
+    tax_id: String(values.tax_id || '').trim(),
+    preferred_courier: String(values.preferred_courier || '').trim(),
+    courier_account_no: String(values.courier_account_no || '').trim(),
+    cart_reminder_opt_in: values.cart_reminder_opt_in === 'true',
+    buyer_type: 'company'
+  };
+  const required = ['company_name', 'full_name', 'phone', 'country', 'state_province', 'city', 'address_line_1', 'postal_code'];
+  if (mode === 'signup' && required.some(field => !profile[field])) { status.textContent = 'Complete all required account and shipping fields.'; return; }
   status.textContent = 'Please wait…';
   const result = mode === 'signup'
-    ? await accountClient.auth.signUp({email,password:form.get('password'),options:{emailRedirectTo:location.origin + '/?email-confirmed=1',data:{company_name:String(form.get('company_name')).trim(),full_name:String(form.get('full_name')).trim(),buyer_type:'company',cart_reminder_opt_in:form.get('cart_reminder_opt_in')==='true'}}})
-    : await accountClient.auth.signInWithPassword({email,password:form.get('password')});
+    ? await accountClient.auth.signUp({email,password:values.password,options:{emailRedirectTo:location.origin + '/?email-confirmed=1',data:{company_name:profile.company_name,full_name:profile.full_name,buyer_type:'company',cart_reminder_opt_in:profile.cart_reminder_opt_in,registration_profile:profile}}})
+    : await accountClient.auth.signInWithPassword({email,password:values.password});
   status.textContent = result.error ? result.error.message : (mode === 'signup'
     ? 'If this address is new or still unconfirmed, a confirmation email has been requested. Already registered? Sign in instead.'
     : 'Signed in.');
@@ -161,3 +196,4 @@ accountButton.addEventListener('click', openAccount);
 document.querySelector('.account-close').addEventListener('click', () => accountDialog.close());
 accountClient.auth.getSession().then(({data}) => { accountSession = data.session; updateAccountLabel(); });
 accountClient.auth.onAuthStateChange((_event, session) => { accountSession = session; accountProfile = null; updateAccountLabel(); });
+
