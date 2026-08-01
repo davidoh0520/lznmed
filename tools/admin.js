@@ -138,16 +138,58 @@ function unitChargeableWeight(record) {
   return { actual, volume, chargeable: Math.max(actual, volume) };
 }
 
-function shipmentEstimate(items = activeItems) {
+function normalizedShipmentPackages(value = activeOrder?.shipment_packages) {
+  const packages = Array.isArray(value) ? value : [];
+  return packages.map((shipmentPackage, index) => ({
+    id: String(shipmentPackage?.id || `carton-${index + 1}`),
+    name: String(shipmentPackage?.name || `Carton ${index + 1}`),
+    gross_weight_kg: positiveNumber(shipmentPackage?.gross_weight_kg),
+    cbm: positiveNumber(shipmentPackage?.cbm),
+    items: (Array.isArray(shipmentPackage?.items) ? shipmentPackage.items : [])
+      .map(item => ({
+        order_item_id: String(item?.order_item_id || ''),
+        quantity: Math.max(0, Math.floor(Number(item?.quantity) || 0))
+      }))
+      .filter(item => item.order_item_id && item.quantity)
+  }));
+}
+
+function assignedShipmentQuantities(packages = activeShipmentPackages) {
+  const assigned = new Map();
+  packages.forEach(shipmentPackage => shipmentPackage.items.forEach(item => {
+    assigned.set(item.order_item_id, (assigned.get(item.order_item_id) || 0) + item.quantity);
+  }));
+  return assigned;
+}
+
+function shipmentEstimate(items = activeItems, packages = activeShipmentPackages) {
   let actualKg = 0;
   let cbm = 0;
   const lines = [];
   const missing = [];
+  const assigned = assignedShipmentQuantities(packages);
+  packages.forEach((shipmentPackage, index) => {
+    if (!shipmentPackage.items.length) return;
+    const packageWeight = positiveNumber(shipmentPackage.gross_weight_kg);
+    const packageCbm = positiveNumber(shipmentPackage.cbm);
+    if (packageWeight) actualKg += packageWeight;
+    if (packageCbm) cbm += packageCbm;
+    if (!packageWeight || !packageCbm) missing.push(shipmentPackage.name || `Carton ${index + 1}`);
+    lines.push({
+      type: 'manual',
+      model: shipmentPackage.name || `Carton ${index + 1}`,
+      quantity: shipmentPackage.items.reduce((sum, item) => sum + item.quantity, 0),
+      actualKg: packageWeight || 0,
+      cbm: packageCbm || 0
+    });
+  });
   (items || []).forEach(item => {
-    const quantity = Math.max(0, Number(item.quantity) || 0);
+    const orderedQuantity = Math.max(0, Number(item.quantity) || 0);
+    const quantity = Math.max(0, orderedQuantity - (assigned.get(String(item.id)) || 0));
+    if (!quantity) return;
     const logistics = logisticsForModel(item.model);
-    if (!quantity || !logistics) {
-      if (quantity) missing.push(item.model);
+    if (!logistics) {
+      missing.push(item.model);
       return;
     }
     const unitsPerCarton = Math.max(0, Math.floor(Number(logistics.units_per_carton) || 0));
@@ -191,7 +233,7 @@ function logisticsInlineHtml(item) {
   return `<div class="logistics-inline"><strong>${e(weight ? `${weight} kg packed` : 'Packed weight missing')}</strong><span>${e(size || 'Package size missing')}${logistics.units_per_carton ? ` · ${e(logistics.units_per_carton)} pcs/carton` : ''}</span></div>`;
 }
 
-function shipmentEstimateHtml(estimate) {
+function legacyShipmentEstimateHtml(estimate) {
   if (!logisticsTableReady) return '<div class="shipment-estimate"><strong>Product logistics setup required.</strong><p>Run <code>supabase-product-logistics-setup.sql</code> before using automatic shipment estimates.</p></div>';
   if (!estimate.lines.length) return '<div class="shipment-estimate"><strong>No saved logistics data matches this order.</strong><p>Add the order models in Product logistics before calculating freight.</p></div>';
   const lineNotes = estimate.lines.map(line => `<li>${e(line.model)} × ${e(line.quantity)}${line.cartonCount ? ` · ${e(line.cartonCount)} full carton${line.cartonCount === 1 ? '' : 's'} + ${e(line.remainder)} unit${line.remainder === 1 ? '' : 's'}` : ''}</li>`).join('');
@@ -202,6 +244,22 @@ function shipmentEstimateHtml(estimate) {
       <div><span>Chargeable estimate</span><strong>${e(estimate.chargeableKg.toFixed(2))} kg</strong></div>
     </div>
     <ul>${lineNotes}${estimate.missing.length ? `<li class="logistics-missing">Incomplete or missing package data: ${e(estimate.missing.join(', '))}</li>` : ''}</ul>
+  </div>`;
+}
+
+function shipmentEstimateHtml(estimate) {
+  if (!logisticsTableReady && !estimate.lines.some(line => line.type === 'manual')) return '<div class="shipment-estimate"><strong>Product logistics setup required.</strong><p>Create a manual carton or run <code>supabase-product-logistics-setup.sql</code> before calculating freight.</p></div>';
+  if (!estimate.lines.length) return '<div class="shipment-estimate"><strong>No shipment data is available yet.</strong><p>Create a manual carton or add the models in Product logistics.</p></div>';
+  const lineNotes = estimate.lines.map(line => line.type === 'manual'
+    ? `<li><strong>${e(line.model)}</strong> (manual carton) · ${e(line.quantity)} pcs · ${e(line.actualKg.toFixed(2))} kg · ${e(line.cbm.toFixed(4))} CBM</li>`
+    : `<li>${e(line.model)} × ${e(line.quantity)}${line.cartonCount ? ` · ${e(line.cartonCount)} full carton${line.cartonCount === 1 ? '' : 's'} + ${e(line.remainder)} unit${line.remainder === 1 ? '' : 's'}` : ''}</li>`).join('');
+  return `<div class="shipment-estimate">
+    <div class="shipment-estimate-grid">
+      <div><span>Estimated actual</span><strong>${e(estimate.actualKg.toFixed(2))} kg</strong></div>
+      <div><span>Total volume</span><strong>${e(estimate.cbm.toFixed(4))} CBM</strong></div>
+      <div><span>Chargeable estimate</span><strong>${e(estimate.chargeableKg.toFixed(2))} kg</strong></div>
+    </div>
+    <ul>${lineNotes}${estimate.missing.length ? `<li class="logistics-missing">Enter manual GW and CBM or complete logistics data: ${e(estimate.missing.join(', '))}</li>` : ''}</ul>
   </div>`;
 }
 
@@ -311,6 +369,7 @@ let orders = [];
 let members = [];
 let activeOrder = null;
 let activeItems = [];
+let activeShipmentPackages = [];
 let activeIssuedCoupons = [];
 let activeSfCalculation = null;
 let productLogistics = [];
@@ -374,6 +433,7 @@ signOutButton.addEventListener('click', async () => {
   orders = [];
   members = [];
   productLogistics = [];
+  activeShipmentPackages = [];
   showOnly(authView);
 });
 
@@ -788,8 +848,226 @@ async function openOrder(id) {
     return;
   }
   activeItems = itemResult.data || [];
+  activeShipmentPackages = normalizedShipmentPackages(activeOrder.shipment_packages);
   activeIssuedCoupons = couponResult.data || [];
   renderOrderDetail();
+}
+
+function shipmentPackageId() {
+  return `carton-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function shipmentItemForId(itemId) {
+  return activeItems.find(item => String(item.id) === String(itemId)) || null;
+}
+
+function shipmentRemainingQuantity(itemId) {
+  const item = shipmentItemForId(itemId);
+  if (!item) return 0;
+  return Math.max(0, Number(item.quantity || 0) - (assignedShipmentQuantities().get(String(itemId)) || 0));
+}
+
+function shipmentPackingContentHtml() {
+  const assigned = assignedShipmentQuantities();
+  const packageOptions = activeShipmentPackages
+    .map(shipmentPackage => `<option value="${e(shipmentPackage.id)}">${e(shipmentPackage.name)}</option>`)
+    .join('');
+  const unpacked = activeItems.map(item => {
+    const remaining = Math.max(0, Number(item.quantity || 0) - (assigned.get(String(item.id)) || 0));
+    if (!remaining) return '';
+    const logistics = logisticsForModel(item.model);
+    const logisticsText = logistics
+      ? `${positiveNumber(logistics.package_weight_kg) || positiveNumber(logistics.unit_weight_kg) || '?'} kg · ${dimensionText(logistics, 'package') || 'size missing'}`
+      : 'No saved logistics data';
+    return `<article class="packing-item" draggable="true" data-packing-item="${e(item.id)}">
+      <div><strong>${e(item.model)}</strong><small>${e(item.product_name || '')}</small><span>${e(logisticsText)}</span></div>
+      <label>Move qty<input data-unpacked-qty type="number" min="1" max="${e(remaining)}" step="1" value="${e(remaining)}"></label>
+      ${activeShipmentPackages.length ? `<div class="packing-item-actions"><select data-target-carton aria-label="Target carton">${packageOptions}</select><button class="outline-button" type="button" data-add-to-carton>Add</button></div>` : '<small class="packing-hint">Create a carton, then drag or add this item.</small>'}
+    </article>`;
+  }).join('');
+  const cartons = activeShipmentPackages.map((shipmentPackage, index) => {
+    const items = shipmentPackage.items.map(entry => {
+      const item = shipmentItemForId(entry.order_item_id);
+      if (!item) return '';
+      const otherAssigned = (assigned.get(String(item.id)) || 0) - entry.quantity;
+      const maximum = Math.max(1, Number(item.quantity || 0) - otherAssigned);
+      return `<div class="carton-line" data-carton-line="${e(item.id)}">
+        <div><strong>${e(item.model)}</strong><small>${e(item.product_name || '')}</small></div>
+        <label>Qty<input data-carton-item-qty type="number" min="1" max="${e(maximum)}" step="1" value="${e(entry.quantity)}"></label>
+        <button type="button" data-remove-carton-item aria-label="Remove ${e(item.model)} from carton">×</button>
+      </div>`;
+    }).join('');
+    return `<article class="shipment-carton" data-carton-id="${e(shipmentPackage.id)}">
+      <div class="carton-heading">
+        <label>Carton name<input data-carton-name value="${e(shipmentPackage.name || `Carton ${index + 1}`)}"></label>
+        <button class="carton-delete" type="button" data-delete-carton>Delete</button>
+      </div>
+      <div class="carton-dropzone" data-carton-dropzone>
+        ${items || '<p>Drag order items here, or use the Add button.</p>'}
+      </div>
+      <div class="carton-measurements">
+        <label>Final GW (kg)<input data-carton-gw type="number" min="0.01" step="0.01" value="${shipmentPackage.gross_weight_kg || ''}" placeholder="e.g. 12.50"></label>
+        <label>Final CBM<input data-carton-cbm type="number" min="0.0001" step="0.0001" value="${shipmentPackage.cbm || ''}" placeholder="e.g. 0.0750"></label>
+      </div>
+      <small class="carton-rule">These final carton values replace the individual logistics values for every quantity inside this carton.</small>
+    </article>`;
+  }).join('');
+  return `<div class="packing-toolbar">
+      <div><p>Drag any product into a carton. Products with existing logistics data can also be combined.</p><small>Unpacked quantities continue to use Product logistics automatically.</small></div>
+      <button class="outline-button" type="button" id="addShipmentCarton">Add carton</button>
+    </div>
+    ${Object.prototype.hasOwnProperty.call(activeOrder || {}, 'shipment_packages') ? '' : '<p class="packing-setup-warning">Database setup required: run the updated <code>supabase-admin-setup.sql</code> before saving cartons.</p>'}
+    <div class="packing-workspace">
+      <div class="unpacked-items"><h4>Unpacked items</h4>${unpacked || '<p class="packing-empty">All ordered quantities are assigned to cartons.</p>'}</div>
+      <div class="shipment-cartons"><h4>Manual cartons</h4>${cartons || '<p class="packing-empty">No manual cartons yet.</p>'}</div>
+    </div>
+    <div class="packing-actions"><button class="primary-button" type="button" id="saveShipmentCartons">Save carton plan</button><p class="save-status" id="packingSaveStatus"></p></div>`;
+}
+
+function shipmentPackingSectionHtml() {
+  return `<section class="detail-section shipment-packing-section"><div class="packing-title"><div><p class="eyebrow">Order-specific packing</p><h3>Shipment cartons</h3></div></div><div id="shipmentPackingContent">${shipmentPackingContentHtml()}</div></section>`;
+}
+
+function addItemToShipmentCarton(itemId, cartonId, requestedQuantity) {
+  const shipmentPackage = activeShipmentPackages.find(item => item.id === cartonId);
+  const available = shipmentRemainingQuantity(itemId);
+  const quantity = Math.min(available, Math.max(1, Math.floor(Number(requestedQuantity) || 1)));
+  if (!shipmentPackage || !quantity) return;
+  const existing = shipmentPackage.items.find(item => item.order_item_id === String(itemId));
+  if (existing) existing.quantity += quantity;
+  else shipmentPackage.items.push({ order_item_id: String(itemId), quantity });
+  renderShipmentPackingEditor();
+}
+
+function refreshShipmentEstimateInputs() {
+  const estimate = shipmentEstimate();
+  const mount = document.querySelector('#shipmentEstimateMount');
+  if (mount) mount.innerHTML = shipmentEstimateHtml(estimate);
+  const form = document.querySelector('#sfFreightForm');
+  if (form) {
+    form.elements.actual_kg.value = estimate.actualKg ? estimate.actualKg.toFixed(2) : '';
+    form.elements.cbm.value = estimate.cbm ? estimate.cbm.toFixed(4) : '';
+  }
+}
+
+function renderShipmentPackingEditor() {
+  const content = document.querySelector('#shipmentPackingContent');
+  if (!content) return;
+  content.innerHTML = shipmentPackingContentHtml();
+  initializeShipmentPackingEditor();
+  refreshShipmentEstimateInputs();
+}
+
+function initializeShipmentPackingEditor() {
+  const content = document.querySelector('#shipmentPackingContent');
+  if (!content) return;
+  content.querySelector('#addShipmentCarton')?.addEventListener('click', () => {
+    activeShipmentPackages.push({
+      id: shipmentPackageId(),
+      name: `Carton ${activeShipmentPackages.length + 1}`,
+      gross_weight_kg: null,
+      cbm: null,
+      items: []
+    });
+    renderShipmentPackingEditor();
+  });
+  content.querySelectorAll('[data-packing-item]').forEach(card => {
+    card.addEventListener('dragstart', event => {
+      const quantity = card.querySelector('[data-unpacked-qty]')?.value || '1';
+      event.dataTransfer.effectAllowed = 'move';
+      event.dataTransfer.setData('text/plain', JSON.stringify({ itemId: card.dataset.packingItem, quantity }));
+    });
+    card.querySelector('[data-add-to-carton]')?.addEventListener('click', () => {
+      addItemToShipmentCarton(
+        card.dataset.packingItem,
+        card.querySelector('[data-target-carton]').value,
+        card.querySelector('[data-unpacked-qty]').value
+      );
+    });
+  });
+  content.querySelectorAll('[data-carton-id]').forEach(card => {
+    const shipmentPackage = activeShipmentPackages.find(item => item.id === card.dataset.cartonId);
+    if (!shipmentPackage) return;
+    const dropzone = card.querySelector('[data-carton-dropzone]');
+    dropzone.addEventListener('dragover', event => {
+      event.preventDefault();
+      dropzone.classList.add('drag-over');
+    });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+    dropzone.addEventListener('drop', event => {
+      event.preventDefault();
+      dropzone.classList.remove('drag-over');
+      try {
+        const payload = JSON.parse(event.dataTransfer.getData('text/plain'));
+        addItemToShipmentCarton(payload.itemId, shipmentPackage.id, payload.quantity);
+      } catch (_) {}
+    });
+    card.querySelector('[data-carton-name]').addEventListener('input', event => {
+      shipmentPackage.name = event.currentTarget.value;
+    });
+    card.querySelector('[data-carton-gw]').addEventListener('input', event => {
+      shipmentPackage.gross_weight_kg = positiveNumber(event.currentTarget.value);
+      refreshShipmentEstimateInputs();
+    });
+    card.querySelector('[data-carton-cbm]').addEventListener('input', event => {
+      shipmentPackage.cbm = positiveNumber(event.currentTarget.value);
+      refreshShipmentEstimateInputs();
+    });
+    card.querySelector('[data-delete-carton]').addEventListener('click', () => {
+      activeShipmentPackages = activeShipmentPackages.filter(item => item.id !== shipmentPackage.id);
+      renderShipmentPackingEditor();
+    });
+    card.querySelectorAll('[data-carton-line]').forEach(line => {
+      const entry = shipmentPackage.items.find(item => item.order_item_id === line.dataset.cartonLine);
+      line.querySelector('[data-remove-carton-item]').addEventListener('click', () => {
+        shipmentPackage.items = shipmentPackage.items.filter(item => item !== entry);
+        renderShipmentPackingEditor();
+      });
+      line.querySelector('[data-carton-item-qty]').addEventListener('change', event => {
+        const maximum = Number(event.currentTarget.max);
+        entry.quantity = Math.min(maximum, Math.max(1, Math.floor(Number(event.currentTarget.value) || 1)));
+        renderShipmentPackingEditor();
+      });
+    });
+  });
+  content.querySelector('#saveShipmentCartons')?.addEventListener('click', saveShipmentCartons);
+}
+
+async function saveShipmentCartons() {
+  const status = document.querySelector('#packingSaveStatus');
+  const packages = activeShipmentPackages.filter(shipmentPackage => shipmentPackage.items.length);
+  const assigned = assignedShipmentQuantities(packages);
+  const overAssigned = activeItems.find(item => (assigned.get(String(item.id)) || 0) > Number(item.quantity || 0));
+  if (overAssigned) {
+    status.textContent = `${overAssigned.model} has more packed units than the order quantity. Adjust the carton quantity first.`;
+    status.classList.add('error');
+    return false;
+  }
+  if (packages.some(shipmentPackage => !positiveNumber(shipmentPackage.gross_weight_kg) || !positiveNumber(shipmentPackage.cbm))) {
+    status.textContent = 'Enter both final GW and CBM for every carton that contains products.';
+    status.classList.add('error');
+    return false;
+  }
+  status.classList.remove('error');
+  status.textContent = 'Saving carton plan...';
+  const { data, error } = await client.from('orders')
+    .update({ shipment_packages: packages, updated_at: new Date().toISOString() })
+    .eq('id', activeOrder.id)
+    .select('*')
+    .single();
+  if (error) {
+    status.textContent = /shipment_packages/i.test(error.message || '')
+      ? 'Run the updated supabase-admin-setup.sql in Supabase, then try again.'
+      : error.message;
+    status.classList.add('error');
+    return false;
+  }
+  activeShipmentPackages = normalizedShipmentPackages(data.shipment_packages);
+  activeOrder = data;
+  orders = orders.map(order => order.id === data.id ? data : order);
+  renderShipmentPackingEditor();
+  document.querySelector('#packingSaveStatus').textContent = 'Carton plan saved. Freight inputs now use these carton totals.';
+  return true;
 }
 
 function sfFreightCalculatorHtml(order) {
@@ -806,7 +1084,7 @@ function sfFreightCalculatorHtml(order) {
   const today = new Date().toLocaleDateString('en-CA');
   return `<section class="detail-section sf-freight-section">
     <div class="sf-section-heading"><div><p class="eyebrow">China export public tariff</p><h3>SF International freight calculator</h3></div><div class="sf-source-links"><a href="${e(sfFreight.publicRateUrl)}" target="_blank" rel="noopener">2026 export tariff</a><a href="${e(sfFreight.fuelRateUrl)}" target="_blank" rel="noopener">Official fuel rate</a></div></div>
-    ${shipmentEstimateHtml(estimate)}
+    <div id="shipmentEstimateMount">${shipmentEstimateHtml(estimate)}</div>
     <form id="sfFreightForm" class="sf-freight-form">
       <label class="wide">Destination country<select name="destination" required><option value="">Select destination</option>${destinationOptions}</select></label>
       <label>SF service<select name="service" required></select></label>
@@ -943,6 +1221,7 @@ function renderOrderDetail() {
     ${order.payment_submitted_at ? `<section class="detail-section"><h3>Customer payment notice</h3><div class="customer-box payment-review"><strong>Verification required</strong><br>Submitted: ${e(date(order.payment_submitted_at))}<br>Remitter / Reference: ${e(order.payment_reference || '-')}<br>Customer note: ${e(order.payment_note || '-')}<p>Confirm receipt through ${paymentCode(order.payment_method) === 'company_bank_transfer' ? 'the company bank account' : 'Payoneer'} before changing the status to Paid.</p></div></section>` : ''}
     ${activeIssuedCoupons.length ? `<section class="detail-section"><h3>Issued repeat-order coupons (${activeIssuedCoupons.length})</h3><div class="customer-box">${activeIssuedCoupons.map((coupon, index) => `<div><strong>${index + 1}. ${e(coupon.code)}</strong><br>Value: ${money(coupon.amount_usd)} · Status: ${e(coupon.status)}<br>Issued: ${e(date(coupon.issued_at))} · Expires: ${e(date(coupon.expires_at))}</div>`).join('<hr>')}</div></section>` : ''}
     ${invoiceActivity(order)}
+    ${shipmentPackingSectionHtml()}
     ${sfFreightCalculatorHtml(order)}
     <section class="detail-section"><h3>Order & invoice</h3><form id="orderForm" class="form-grid">
       <label>Company name<input name="company_name" value="${e(order.company_name || '')}"></label>
@@ -976,6 +1255,7 @@ function renderOrderDetail() {
     row.querySelector('[data-item-quantity]').addEventListener('input', updateLineTotal);
     row.querySelector('[data-item-price]').addEventListener('input', updateLineTotal);
   });
+  initializeShipmentPackingEditor();
   initializeSfFreightCalculator();
   document.querySelector('#saveOrderItems').addEventListener('click', () => saveOrderItems(true));
   document.querySelector('#generatePi').addEventListener('click', generatePiNumber);
@@ -1072,6 +1352,7 @@ async function refreshActiveOrder() {
   ]);
   if (orderResult.error || couponResult.error) return;
   activeOrder = orderResult.data;
+  activeShipmentPackages = normalizedShipmentPackages(activeOrder.shipment_packages);
   activeIssuedCoupons = couponResult.data || [];
   orders = orders.map(order => order.id === activeOrder.id ? activeOrder : order);
   renderOrders();
@@ -1156,7 +1437,6 @@ async function saveOrder(notifyStatusChange = false) {
   }
   return true;
 }
-
 async function saveOrderItems(refreshDetail = false) {
   const form = document.querySelector('#orderItemsForm');
   if (!form) return true;
