@@ -239,16 +239,14 @@
     "/tools/assets/catalog/curated-20260801/english/612244347689/sky-blue.webp"
   ],
   "LZN-675965294746": [
-    "/tools/assets/catalog/curated-20260729/original-cn/675965294746/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/675965294746/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/675965294746/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/675965294746/004.webp"
+    "/tools/assets/catalog/curated-20260801/english/675965294746/light-pink-dark-pink.webp",
+    "/tools/assets/catalog/curated-20260801/english/675965294746/light-purple-black.webp",
+    "/tools/assets/catalog/curated-20260801/english/675965294746/light-purple-dark-purple.webp"
   ],
   "LZN-TL-1014": [
-    "/tools/assets/catalog/curated-20260729/original-cn/675965294746/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/675965294746/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/675965294746/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/675965294746/004.webp"
+    "/tools/assets/catalog/curated-20260801/english/675965294746/light-pink-dark-pink.webp",
+    "/tools/assets/catalog/curated-20260801/english/675965294746/light-purple-black.webp",
+    "/tools/assets/catalog/curated-20260801/english/675965294746/light-purple-dark-purple.webp"
   ],
   "LZN-674373644031": [
     "/tools/assets/catalog/curated-20260729/original-cn/674373644031/001.webp"
@@ -257,16 +255,14 @@
     "/tools/assets/catalog/curated-20260729/original-cn/674373644031/001.webp"
   ],
   "LZN-625178269004": [
-    "/tools/assets/catalog/curated-20260729/original-cn/625178269004/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/625178269004/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/625178269004/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/625178269004/004.webp"
+    "/tools/assets/catalog/curated-20260801/english/625178269004/temple-arms-standard.webp",
+    "/tools/assets/catalog/curated-20260801/english/625178269004/temple-arms-ear-hooks.webp",
+    "/tools/assets/catalog/curated-20260801/english/625178269004/temple-arms-nose-pads.webp"
   ],
   "LZN-TL-1016": [
-    "/tools/assets/catalog/curated-20260729/original-cn/625178269004/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/625178269004/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/625178269004/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/625178269004/004.webp"
+    "/tools/assets/catalog/curated-20260801/english/625178269004/temple-arms-standard.webp",
+    "/tools/assets/catalog/curated-20260801/english/625178269004/temple-arms-ear-hooks.webp",
+    "/tools/assets/catalog/curated-20260801/english/625178269004/temple-arms-nose-pads.webp"
   ],
   "LZN-739604309325": [
     "/tools/assets/catalog/curated-20260730/english/739604309325/black.webp",
@@ -287,28 +283,24 @@
     "/tools/assets/catalog/curated-20260729/original-cn/626769523006/001.webp"
   ],
   "LZN-607829059398": [
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/009.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/010.webp"
+    "/tools/assets/catalog/curated-20260801/english/607829059398/light-pink-red-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/magenta-white-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/yellow-red-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/blue-white-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/light-gray-red-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/light-gray-yellow-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/dark-gray-yellow-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/purple-white-stitch.webp"
   ],
   "LZN-TL-1019": [
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/009.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/607829059398/010.webp"
+    "/tools/assets/catalog/curated-20260801/english/607829059398/light-pink-red-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/magenta-white-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/yellow-red-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/blue-white-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/light-gray-red-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/light-gray-yellow-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/dark-gray-yellow-stitch.webp",
+    "/tools/assets/catalog/curated-20260801/english/607829059398/purple-white-stitch.webp"
   ],
   "LZN-693999897346": [
     "/tools/assets/catalog/curated-20260729/original-cn/693999897346/001.webp"
@@ -1077,38 +1069,66 @@
         image: "/tools/assets/catalog/curated-20260730/english/739604309325/brown.webp"
       }
     ],
+    "LZN-675965294746": [
+      {
+        label: "Option 01 - Light Pink / Dark Pink, 1 Pair",
+        image: "/tools/assets/catalog/curated-20260801/english/675965294746/light-pink-dark-pink.webp"
+      },
+      {
+        label: "Option 02 - Light Purple / Black, 1 Pair",
+        image: "/tools/assets/catalog/curated-20260801/english/675965294746/light-purple-black.webp"
+      },
+      {
+        label: "Option 03 - Light Purple / Dark Purple, 1 Pair",
+        image: "/tools/assets/catalog/curated-20260801/english/675965294746/light-purple-dark-purple.webp"
+      }
+    ],
+    "LZN-625178269004": [
+      {
+        label: "Option 01 - Gloss Black Temple Arms",
+        image: "/tools/assets/catalog/curated-20260801/english/625178269004/temple-arms-standard.webp"
+      },
+      {
+        label: "Option 02 - Temple Arms + 3 Pairs Ear Hooks",
+        image: "/tools/assets/catalog/curated-20260801/english/625178269004/temple-arms-ear-hooks.webp"
+      },
+      {
+        label: "Option 03 - Temple Arms + 3 Pairs Nose Pads",
+        image: "/tools/assets/catalog/curated-20260801/english/625178269004/temple-arms-nose-pads.webp"
+      }
+    ],
     "LZN-607829059398": [
       {
         label: "Option 01 - Light Pink / Red Stitch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/002.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/607829059398/light-pink-red-stitch.webp"
       },
       {
         label: "Option 02 - Magenta / White Stitch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/003.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/607829059398/magenta-white-stitch.webp"
       },
       {
         label: "Option 03 - Yellow / Red Stitch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/004.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/607829059398/yellow-red-stitch.webp"
       },
       {
         label: "Option 04 - Blue / White Stitch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/005.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/607829059398/blue-white-stitch.webp"
       },
       {
         label: "Option 05 - Light Gray / Red Stitch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/006.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/607829059398/light-gray-red-stitch.webp"
       },
       {
         label: "Option 06 - Light Gray / Yellow Stitch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/007.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/607829059398/light-gray-yellow-stitch.webp"
       },
       {
         label: "Option 07 - Dark Gray / Yellow Stitch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/008.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/607829059398/dark-gray-yellow-stitch.webp"
       },
       {
         label: "Option 08 - Purple / White Stitch",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/607829059398/009.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/607829059398/purple-white-stitch.webp"
       }
     ],
     "LZN-592494388948": [
