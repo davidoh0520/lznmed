@@ -1,8 +1,8 @@
 (()=>{
-  // Commerce access is intentionally fail-closed: prices and cart actions stay
-  // locked until the shared company profile has been verified.
+  // Every authenticated account is a member. Shipping details are collected
+  // during registration and remain editable from Account & Shipping.
   const commerceAccess={allowed:false,session:null,profile:null};
-  const commerceMessage='Product prices and purchasing are available only to signed-in company members.';
+  const commerceMessage='Product prices and purchasing are available to signed-in members.';
   const commerceClient=window.supabase?.createClient(
     'https://snyvexlqpxpqjswizszz.supabase.co',
     'sb_publishable_wEQsmWUREF_lKiYm27jF_g_MlAEiomd'
@@ -24,7 +24,7 @@
     notice=document.createElement('aside');
     notice.className='lzn-company-access-notice';
     notice.setAttribute('role','status');
-    notice.innerHTML='<div><strong>Company member access</strong><span></span></div><button type="button">Sign in / Create company account</button>';
+    notice.innerHTML='<div><strong>Member access</strong><span></span></div><button type="button">Sign in / Create account</button>';
     notice.querySelector('button').addEventListener('click',openCompanySignIn);
     const header=document.querySelector('body > header');
     (header?.parentNode||document.body).insertBefore(notice,header?.nextSibling||document.body.firstChild);
@@ -37,9 +37,9 @@
     const signedIn=Boolean(commerceAccess.session);
     notice.hidden=commerceAccess.allowed;
     notice.querySelector('span').textContent=signedIn
-      ? 'This account is not registered as a company member. Please complete or update the company profile in your account.'
+      ? 'Your account is active. Open Account & Shipping to review or update your saved details.'
       : commerceMessage;
-    notice.querySelector('button').textContent=signedIn?'Open company account':'Sign in / Create company account';
+    notice.querySelector('button').textContent=signedIn?'Edit Account & Shipping':'Sign in / Create account';
     document.querySelectorAll('#cartButton,[data-card-add],[data-add-cart],#addOrderLine,.lzn-commerce-add').forEach(control=>{
       control.setAttribute('aria-disabled',String(!commerceAccess.allowed));
       if(!commerceAccess.allowed)control.setAttribute('tabindex','-1');
@@ -52,11 +52,11 @@
     ['company_name','Company name','text',true,'organization'],
     ['full_name','Manager / Contact name','text',true,'name'],
     ['phone','Phone','tel',true,'tel'],
-    ['whatsapp','WhatsApp','tel',true,'tel'],
+    ['whatsapp','WhatsApp (optional)','tel',false,'tel'],
     ['country','Country','text',true,'country-name'],
     ['postal_code','Postal code','text',true,'postal-code'],
     ['address_line_1','Address line 1','text',true,'address-line1'],
-    ['address_line_2','Address line 2','text',true,'address-line2'],
+    ['address_line_2','Address line 2 (optional)','text',false,'address-line2'],
     ['city','City','text',true,'address-level2'],
     ['state_province','State / Province','text',true,'address-level1'],
     ['tax_id','Importer / Customs ID (optional)','text',false,'off'],
@@ -106,6 +106,27 @@
         }
       }
     }
+    if(input&&required&&type!=='checkbox')input.required=true;
+    if(input&&autocomplete&&type!=='checkbox'&&!input.autocomplete)input.autocomplete=autocomplete;
+    const addressLists={country:'profileCountryOptions',state_province:'profileStateOptions',city:'profileCityOptions'};
+    if(addressLists[name]&&!field.querySelector('datalist')){
+      input.setAttribute('list',addressLists[name]);
+      const list=document.createElement('datalist');
+      list.id=addressLists[name];
+      field.appendChild(list);
+      if(name==='country'){
+        const help=document.createElement('small');
+        help.dataset.countryStatus='1';
+        help.textContent='Choose a country to load its calling code and regions.';
+        field.appendChild(help);
+      }
+    }
+    if(name==='postal_code'&&!field.querySelector('[data-postal-status]')){
+      const help=document.createElement('small');
+      help.dataset.postalStatus='1';
+      help.textContent='Enter the postal code manually. It is required for delivery.';
+      field.appendChild(help);
+    }
     field.dataset.lznRegistrationField='1';
     if(['address_line_1','address_line_2','courier_account_no','cart_reminder_opt_in'].includes(name))field.classList.add('wide');
     return field;
@@ -130,11 +151,11 @@
     const signIn=form.querySelector('button[name="mode"][value="signin"]');
     const signUp=form.querySelector('button[name="mode"][value="signup"]');
     if(signIn)signIn.textContent=enabled?'Back to sign in':'Sign In';
-    if(signUp)signUp.textContent='Create company account';
+    if(signUp)signUp.textContent='Create account';
     const heading=form.closest('article,section,dialog,div')?.querySelector('h2');
     if(heading){
       if(!heading.dataset.lznOriginalText)heading.dataset.lznOriginalText=heading.textContent;
-      heading.textContent=enabled?'Create company account':heading.dataset.lznOriginalText;
+      heading.textContent=enabled?'Create account':heading.dataset.lznOriginalText;
     }
   };
   const registrationStatus=form=>{
@@ -152,10 +173,12 @@
     if(form.dataset.lznSignupMode!=='1'){setRegistrationMode(form,true);return}
     if(!form.reportValidity()||form.dataset.lznSubmitting==='1')return;
     const status=registrationStatus(form);
-    form.insertBefore(status,signUp);
+    const actionGroup=signUp.closest('.account-actions');
+    if(status.parentNode!==form)form.insertBefore(status,actionGroup||signUp);
     form.dataset.lznSubmitting='1';
     signUp.disabled=true;
     status.textContent='Creating your company account…';
+    status.textContent='Creating your account…';
     const values=Object.fromEntries(new FormData(form));
     const profile={
       company_name:String(values.company_name||'').trim(),
@@ -185,7 +208,7 @@
     });
     form.dataset.lznSubmitting='0';
     signUp.disabled=false;
-    status.textContent=result.error?result.error.message:'Check your email to confirm the account. Your company and shipping profile will be saved automatically after confirmation.';
+    status.textContent=result.error?result.error.message:'Check your email to confirm the account. Your account and shipping information will be saved automatically after confirmation.';
     if(!result.error){
       localStorage.setItem('lzn-awaiting-email-confirmation','1');
       localStorage.setItem('lznDevicesAwaitingEmailConfirmation','1');
@@ -198,13 +221,16 @@
     if(!signIn||!signUp)return;
     form.dataset.lznAuthEnhanced='1';
     const passwordField=form.elements?.namedItem('password')?.closest('label');
-    if(passwordField)passwordField.insertAdjacentElement('afterend',signIn);
-    registrationDefinitions.forEach(definition=>form.insertBefore(registrationField(form,definition),signUp));
+    if(passwordField&&signIn.parentNode===form)passwordField.insertAdjacentElement('afterend',signIn);
+    const actionGroup=signUp.closest('.account-actions');
+    const signUpAnchor=actionGroup||signUp;
+    registrationDefinitions.forEach(definition=>form.insertBefore(registrationField(form,definition),signUpAnchor));
     const status=registrationStatus(form);
-    form.insertBefore(status,signUp);
-    form.appendChild(signUp);
+    if(status.parentNode!==form)form.insertBefore(status,actionGroup||signUp);
+    if(signUp.parentNode===form)form.appendChild(signUp);
     setRegistrationMode(form,false);
     form.elements?.namedItem('preferred_courier')?.addEventListener('change',()=>updateRegistrationOtherCourier(form));
+    window.LZNAddressProfile?.enhance(form);
     form.addEventListener('submit',event=>submitCompanyRegistration(event,form,signUp),true);
     signUp.addEventListener('click',event=>{
       if(form.dataset.lznSignupMode==='1')return;
@@ -302,6 +328,8 @@
   };
   const enhanceAuthUi=()=>{
     document.querySelectorAll('#authForm,#hubAuthForm,#deviceAuthForm,form').forEach(form=>setupAuthForm(form));
+    const confirmedProfile=document.querySelector('#confirmedProfile');
+    if(confirmedProfile)confirmedProfile.textContent='Edit Account & Shipping';
     enhanceProfileCourierOther(document.querySelector('#profileForm'));
     prefillCourierCollect(document.querySelector('#checkoutForm'));
     renderCompanyProfile();
@@ -336,8 +364,9 @@
         const customCourier=String(session.user.user_metadata?.preferred_courier_other||'').trim();
         if(data.preferred_courier==='Other'&&customCourier)data.preferred_courier=customCourier;
         commerceAccess.profile=data;
-        commerceAccess.allowed=data.buyer_type==='company'&&Boolean(String(data.company_name||'').trim());
+        commerceAccess.allowed=true;
       }
+      if(!commerceAccess.profile)commerceAccess.allowed=true;
     }
     renderCommerceAccess();
     enhanceAuthUi();
@@ -472,3 +501,4 @@
   }
   requestAnimationFrame(()=>document.documentElement.classList.remove('lzn-shell-pending'));
 })();
+
