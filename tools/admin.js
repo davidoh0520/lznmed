@@ -178,7 +178,6 @@ function shipmentEstimate(items = activeItems, packages = activeShipmentPackages
     lines.push({
       type: 'manual',
       model: shipmentPackage.name || `Carton ${index + 1}`,
-
       quantity: shipmentPackage.items.reduce((sum, item) => sum + item.quantity, 0),
       actualKg: packageWeight || 0,
       cbm: packageCbm || 0
@@ -359,7 +358,6 @@ function invoiceActivity(order) {
   const files = [
     ['Proforma Invoice', order.pi_file_path, order.pi_filename],
     ['Commercial Invoice', order.ci_file_path, order.ci_filename],
-
   ].filter(([, path]) => path);
   return `<section class="detail-section"><h3>Attachments & activity</h3>
     <div class="invoice-files">${files.length ? files.map(([label, path, filename]) => `<button class="outline-button" type="button" data-invoice-path="${e(path)}">${e(label)} · ${e(filename || 'PDF')}</button>`).join('') : '<p>No invoice PDF stored yet.</p>'}</div>
@@ -540,7 +538,6 @@ function renderPurchases() {
   const rows = Object.entries(purchaseSourceData)
     .map(([publicModel, source]) => ({
       publicModel,
-
       source,
       product: catalogProductForModel(publicModel)
     }))
@@ -721,7 +718,6 @@ document.querySelector('#statusFilter').addEventListener('change', renderOrders)
 document.querySelector('#memberSearch').addEventListener('input', renderMembers);
 document.querySelector('#logisticsSearch')?.addEventListener('input', renderLogistics);
 document.querySelector('#addLogistics')?.addEventListener('click', () => openLogisticsEditor());
-
 document.querySelector('#purchaseSearch')?.addEventListener('input', renderPurchases);
 document.querySelector('#refreshData').addEventListener('click', () => loadData());
 
@@ -902,7 +898,6 @@ function shipmentPackingContentHtml() {
       </div>`;
     }).join('');
     return `<article class="shipment-carton" data-carton-id="${e(shipmentPackage.id)}">
-
       <div class="carton-heading">
         <label>Carton name<input data-carton-name value="${e(shipmentPackage.name || `Carton ${index + 1}`)}"></label>
         <button class="carton-delete" type="button" data-delete-carton>Delete</button>
@@ -1083,7 +1078,6 @@ function sfFreightCalculatorHtml(order) {
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name))
     .map(item => `<option value="${e(item.code)}" ${matched?.code === item.code ? 'selected' : ''}>${e(item.name)} (${e(item.code)}) · Zone ${e(item.zone)}</option>`)
-
     .join('');
   let exchangeRate = 6.8;
   try { exchangeRate = Number(localStorage.getItem('lzn_sf_rmb_per_usd')) || exchangeRate; } catch (_) {}
@@ -1264,7 +1258,6 @@ function renderOrderDetail() {
   initializeShipmentPackingEditor();
   initializeSfFreightCalculator();
   document.querySelector('#saveOrderItems').addEventListener('click', () => saveOrderItems(true));
-
   document.querySelector('#generatePi').addEventListener('click', generatePiNumber);
   document.querySelector('#saveOrder').addEventListener('click', () => saveOrder(true));
   document.querySelector('#printInvoice').addEventListener('click', createProformaInvoice);
@@ -1444,8 +1437,6 @@ async function saveOrder(notifyStatusChange = false) {
   }
   return true;
 }
-
-
 async function saveOrderItems(refreshDetail = false) {
   const form = document.querySelector('#orderItemsForm');
   if (!form) return true;
@@ -1626,7 +1617,6 @@ async function createProformaInvoice() {
   const form = document.querySelector('#orderForm');
   let status = document.querySelector('#saveStatus');
   if (!form.elements.invoice_no.value.trim()) generatePiNumber();
-
   if (['quote_requested', 'quoted'].includes(form.elements.status.value)) form.elements.status.value = 'payment_pending';
   const saved = await saveOrder();
   if (!saved) return;
@@ -1665,4 +1655,3 @@ drawer.querySelectorAll('[data-close-drawer]').forEach(button => button.addEvent
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeDrawer(); });
 
 boot();
-
