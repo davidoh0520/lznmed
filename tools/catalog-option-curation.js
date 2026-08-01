@@ -1576,6 +1576,72 @@
         label: "Option 10 - Gold / +2.00 D",
         image: "/tools/assets/catalog/curated-20260729/original-cn/617968191574/011.webp"
       }
+    ],
+    "LZN-602357189850": [
+      {
+        label: "Option 01 - White",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/002.webp"
+      },
+      {
+        label: "Option 02 - Orange",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/003.webp"
+      },
+      {
+        label: "Option 03 - Red",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/004.webp"
+      },
+      {
+        label: "Option 04 - Green",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/005.webp"
+      },
+      {
+        label: "Option 05 - Purple",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/006.webp"
+      },
+      {
+        label: "Option 06 - Brown",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/007.webp"
+      },
+      {
+        label: "Option 07 - Pink",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/602357189850/008.webp"
+      }
+    ],
+    "LZN-691677973956": [
+      {
+        label: "Option 01 - Frosted Square Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/691677973956/002.webp"
+      },
+      {
+        label: "Option 02 - Frosted Oval Case",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/691677973956/003.webp"
+      }
+    ],
+    "LZN-642715432999": [
+      {
+        label: "Option 01 - Lacquered Black",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/002.webp"
+      },
+      {
+        label: "Option 02 - Black",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/003.webp"
+      },
+      {
+        label: "Option 03 - Beige",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/004.webp"
+      },
+      {
+        label: "Option 04 - Solid Blue",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/005.webp"
+      },
+      {
+        label: "Option 05 - Clear",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/006.webp"
+      },
+      {
+        label: "Option 06 - Transparent Pink",
+        image: "/tools/assets/catalog/curated-20260729/original-cn/642715432999/007.webp"
+      }
     ]
   };
 
