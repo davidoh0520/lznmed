@@ -303,122 +303,110 @@
     "/tools/assets/catalog/curated-20260801/english/607829059398/purple-white-stitch.webp"
   ],
   "LZN-693999897346": [
-    "/tools/assets/catalog/curated-20260729/original-cn/693999897346/001.webp"
+    "/tools/assets/catalog/curated-20260801/english/693999897346/standard.webp"
   ],
   "LZN-TL-1020": [
-    "/tools/assets/catalog/curated-20260729/original-cn/693999897346/001.webp"
+    "/tools/assets/catalog/curated-20260801/english/693999897346/standard.webp"
   ],
   "LZN-592494388948": [
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/009.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/010.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/011.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/012.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/013.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/014.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/015.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/016.webp"
+    "/tools/assets/catalog/curated-20260801/english/592494388948/pink-journey-triangle.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/white-geometric-triangle.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/pink-white-square.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/blue-white-square.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/green-white-square.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/brown-white-square.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/black-white-square.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/pink-small-case.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/black-small-case.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/brown-small-case.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/white-eagle-print.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/red-mosaic-print.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/multicolor-mosaic-print.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/green-owl-print.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/blue-graphic-print.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/white-floral-triangle.webp"
   ],
   "LZN-TL-1021": [
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/009.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/010.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/011.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/012.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/013.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/014.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/015.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/592494388948/016.webp"
+    "/tools/assets/catalog/curated-20260801/english/592494388948/pink-journey-triangle.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/white-geometric-triangle.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/pink-white-square.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/blue-white-square.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/green-white-square.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/brown-white-square.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/black-white-square.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/pink-small-case.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/black-small-case.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/brown-small-case.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/white-eagle-print.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/red-mosaic-print.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/multicolor-mosaic-print.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/green-owl-print.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/blue-graphic-print.webp",
+    "/tools/assets/catalog/curated-20260801/english/592494388948/white-floral-triangle.webp"
   ],
   "LZN-605818164392": [
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/009.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/010.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/011.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/012.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/013.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/014.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/015.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/016.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/017.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/018.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/019.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/020.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/021.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/022.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/023.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/024.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/025.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/026.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/027.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/028.webp"
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-002.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-003.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-004.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-005.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-006.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-007.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-008.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-013.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-014.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-015.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-016.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-017.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-018.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-019.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-020.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-021.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-022.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-023.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-024.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-025.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-026.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-027.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-028.webp"
   ],
   "LZN-TL-1022": [
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/009.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/010.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/011.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/012.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/013.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/014.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/015.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/016.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/017.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/018.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/019.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/020.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/021.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/022.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/023.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/024.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/025.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/026.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/027.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/605818164392/028.webp"
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-002.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-003.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-004.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-005.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-006.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-007.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-008.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-013.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-014.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-015.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-016.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-017.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-018.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-019.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-020.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-021.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-022.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-023.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-024.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-025.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-026.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-027.webp",
+    "/tools/assets/catalog/curated-20260801/english/605818164392/source-028.webp"
   ],
   "LZN-642715540809": [
-    "/tools/assets/catalog/curated-20260729/original-cn/642715540809/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715540809/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715540809/003.webp"
+    "/tools/assets/catalog/curated-20260801/english/642715540809/clear.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715540809/pink.webp"
   ],
   "LZN-TL-1023": [
-    "/tools/assets/catalog/curated-20260729/original-cn/642715540809/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715540809/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/642715540809/003.webp"
+    "/tools/assets/catalog/curated-20260801/english/642715540809/clear.webp",
+    "/tools/assets/catalog/curated-20260801/english/642715540809/pink.webp"
   ],
   "LZN-965566416870": [
-    "/tools/assets/catalog/curated-20260729/original-cn/965566416870/001.webp"
+    "/tools/assets/catalog/curated-20260801/english/965566416870/standard.webp"
   ],
   "LZN-TL-1024": [
-    "/tools/assets/catalog/curated-20260729/original-cn/965566416870/001.webp"
+    "/tools/assets/catalog/curated-20260801/english/965566416870/standard.webp"
   ],
   "LZN-624275864051": [
     "/tools/assets/catalog/curated-20260729/original-cn/624275864051/001.webp",
@@ -1134,67 +1122,67 @@
     "LZN-592494388948": [
       {
         label: "Option 01 - White Geometric Triangle",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/002.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/white-geometric-triangle.webp"
       },
       {
         label: "Option 02 - Pink Journey Triangle",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/001.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/pink-journey-triangle.webp"
       },
       {
         label: "Option 03 - Blue / White Square",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/004.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/blue-white-square.webp"
       },
       {
         label: "Option 04 - Green / White Square",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/005.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/green-white-square.webp"
       },
       {
         label: "Option 05 - Black / White Square",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/007.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/black-white-square.webp"
       },
       {
         label: "Option 06 - Pink / White Square",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/003.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/pink-white-square.webp"
       },
       {
         label: "Option 07 - Brown Small Case",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/010.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/brown-small-case.webp"
       },
       {
         label: "Option 08 - White Eagle Print",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/011.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/white-eagle-print.webp"
       },
       {
         label: "Option 09 - Pink Small Case",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/008.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/pink-small-case.webp"
       },
       {
         label: "Option 10 - Black Small Case",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/009.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/black-small-case.webp"
       },
       {
         label: "Option 11 - Brown / White Square",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/006.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/brown-white-square.webp"
       },
       {
         label: "Option 12 - Red Mosaic Print",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/012.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/red-mosaic-print.webp"
       },
       {
         label: "Option 13 - Multicolor Mosaic Print",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/013.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/multicolor-mosaic-print.webp"
       },
       {
         label: "Option 14 - Green Owl Print",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/014.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/green-owl-print.webp"
       },
       {
         label: "Option 15 - Blue Graphic Print",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/015.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/blue-graphic-print.webp"
       },
       {
-        label: "Option 16 - White Botanical Print",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/592494388948/016.webp"
+        label: "Option 16 - White Floral Triangle",
+        image: "/tools/assets/catalog/curated-20260801/english/592494388948/white-floral-triangle.webp"
       }
     ],
     "LZN-598559007116": [
@@ -1316,90 +1304,29 @@
       }
     ],
     "LZN-605818164392": [
-      {
-        label: "Option 01 - A6 Round-Hole Alloy Sleeves - 2 Pairs",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/002.webp"
-      },
-      {
-        label: "Option 02 - A6 Round-Hole Alloy Sleeves - 1 Pair",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/003.webp"
-      },
-      {
-        label: "Option 03 - B3 Round-Hole Alloy Sleeves - 1 Pair",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/004.webp"
-      },
-      {
-        label: "Option 04 - A9 Round-Hole Titanium Sleeves - 1 Pair",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/005.webp"
-      },
-      {
-        label: "Option 05 - B2 Round-Hole Titanium Sleeves - 2 Pairs",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/006.webp"
-      },
-      {
-        label: "Option 06 - B5 Round-Hole Alloy Sleeves - 1 Pair",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/007.webp"
-      },
-      {
-        label: "Option 07 - B5 Round-Hole Alloy Sleeves - 2 Pairs",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/008.webp"
-      },
-      {
-        label: "Option 08 - B1 / B2 / A8 Alloy Set - 1 Pair Each",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/015.webp"
-      },
-      {
-        label: "Option 09 - B3 Round-Hole Alloy Sleeves - 2 Pairs",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/016.webp"
-      },
-      {
-        label: "Option 10 - A8 Round-Hole Alloy Sleeves - 2 Pairs",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/017.webp"
-      },
-      {
-        label: "Option 11 - A8 Round-Hole Alloy Sleeves - 1 Pair",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/018.webp"
-      },
-      {
-        label: "Option 12 - A9 Round-Hole Titanium Sleeves - 2 Pairs",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/019.webp"
-      },
-      {
-        label: "Option 13 - B4 Round-Hole Alloy Sleeves - 1 Pair",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/020.webp"
-      },
-      {
-        label: "Option 14 - B4 Round-Hole Alloy Sleeves - 2 Pairs",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/021.webp"
-      },
-      {
-        label: "Option 15 - B2 Round-Hole Titanium Sleeves - 1 Pair",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/022.webp"
-      },
-      {
-        label: "Option 16 - A8 / B1 / B2 Alloy Set - 1 Pair Each",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/023.webp"
-      },
-      {
-        label: "Option 17 - A6 / A7 / A8 Alloy Set - 1 Pair Each",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/024.webp"
-      },
-      {
-        label: "Option 18 - A6 / A7 Alloy Set - 1 Pair Each",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/025.webp"
-      },
-      {
-        label: "Option 19 - A6 / A8 Alloy Set - 1 Pair Each",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/026.webp"
-      },
-      {
-        label: "Option 20 - A6 / A9 Alloy Set - 1 Pair Each",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/027.webp"
-      },
-      {
-        label: "Option 21 - A6 / B1 Alloy Set - 1 Pair Each",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/605818164392/028.webp"
-      }
+      { label: "Option 01 - A6 Round-Hole Alloy Temple Arms - 2 Pairs", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-002.webp" },
+      { label: "Option 02 - A6 Round-Hole Alloy Temple Arms - 1 Pair", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-003.webp" },
+      { label: "Option 03 - B3 Round-Hole Alloy Temple Arms - 1 Pair", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-004.webp" },
+      { label: "Option 04 - A9 Round-Hole Titanium Temple Arms - 1 Pair", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-005.webp" },
+      { label: "Option 05 - B2 Round-Hole Titanium Temple Arms - 2 Pairs", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-006.webp" },
+      { label: "Option 06 - B5 Left / Right Alloy Temple Arms - 1 Pair", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-007.webp" },
+      { label: "Option 07 - B5 Left / Right Alloy Temple Arms - 2 Pairs", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-008.webp" },
+      { label: "Option 08 - A8 / A9 / B1 Set - 1 Pair Each", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-013.webp" },
+      { label: "Option 09 - B1 / B2 / A7 Set - 1 Pair Each", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-014.webp" },
+      { label: "Option 10 - B1 / B2 / A8 Set - 1 Pair Each", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-015.webp" },
+      { label: "Option 11 - B3 Round-Hole Alloy Temple Arms - 2 Pairs", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-016.webp" },
+      { label: "Option 12 - A8 Round-Hole Alloy Temple Arms - 2 Pairs", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-017.webp" },
+      { label: "Option 13 - A8 Round-Hole Alloy Temple Arms - 1 Pair", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-018.webp" },
+      { label: "Option 14 - A9 Round-Hole Titanium Temple Arms - 2 Pairs", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-019.webp" },
+      { label: "Option 15 - B4 Round-Hole Alloy Temple Arms - 1 Pair", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-020.webp" },
+      { label: "Option 16 - B4 Round-Hole Alloy Temple Arms - 2 Pairs", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-021.webp" },
+      { label: "Option 17 - B2 Round-Hole Titanium Temple Arms - 1 Pair", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-022.webp" },
+      { label: "Option 18 - A8 / B1 / B2 Set - 1 Pair Each", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-023.webp" },
+      { label: "Option 19 - A6 / A7 / A8 Set - 1 Pair Each", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-024.webp" },
+      { label: "Option 20 - A6 / A7 Set - 1 Pair Each", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-025.webp" },
+      { label: "Option 21 - A6 / A8 Set - 1 Pair Each", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-026.webp" },
+      { label: "Option 22 - A6 / A9 Set - 1 Pair Each", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-027.webp" },
+      { label: "Option 23 - A6 / B1 Set - 1 Pair Each", image: "/tools/assets/catalog/curated-20260801/english/605818164392/source-028.webp" }
     ],
     "LZN-717183914442": [
       {
@@ -1800,6 +1727,10 @@
         label: "Option 06 - Transparent Pink",
         image: "/tools/assets/catalog/curated-20260801/english/642715432999/transparent-pink.webp"
       }
+    ],
+    "LZN-642715540809": [
+      { label: "Option 01 - Clear - 72 x 7 mm", image: "/tools/assets/catalog/curated-20260801/english/642715540809/clear.webp" },
+      { label: "Option 02 - Pink - 72 x 7 mm", image: "/tools/assets/catalog/curated-20260801/english/642715540809/pink.webp" }
     ]
   };
 
@@ -1808,6 +1739,26 @@
       nameEn: "Pen-Style Eyeglass Case",
       chineseName: "Pen-Style Eyeglass Case",
       description: "Compact pen-style eyeglass cases for storing slim reading glasses or optical frames."
+    },
+    "LZN-693999897346": {
+      nameEn: "1.5 mm Double-Tooth Temple Arms",
+      chineseName: "1.5 mm Double-Tooth Temple Arms",
+      description: "Replacement double-tooth temple arms in black, gloss black, and clear finishes, with widths from 5.5 to 9.5 mm."
+    },
+    "LZN-605818164392": {
+      nameEn: "Round-Hole Replacement Temple Arms",
+      chineseName: "Round-Hole Replacement Temple Arms",
+      description: "Round-hole replacement temple arms in alloy and titanium configurations, organized by model code, size, and pair count."
+    },
+    "LZN-642715540809": {
+      nameEn: "TR Short Round-Hole Temple Sleeves",
+      chineseName: "TR Short Round-Hole Temple Sleeves",
+      description: "Short TR round-hole temple sleeves measuring 72 x 7 mm, available in clear and pink."
+    },
+    "LZN-965566416870": {
+      nameEn: "1.4 mm Round-Hole Temple Sleeves",
+      chineseName: "1.4 mm Round-Hole Temple Sleeves",
+      description: "Round-hole temple sleeves for 1.4 mm temple cores, offered in multiple end styles."
     }
   };
 
