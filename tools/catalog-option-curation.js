@@ -23,12 +23,12 @@
 
   var originalCnCurations = {
   "LZN-651195961829": [
-    "/tools/assets/catalog/curated-20260729/original-cn/651195961829/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/651195961829/002.webp"
+    "/tools/assets/catalog/curated-20260801/english/651195961829/gray-100-pack.webp",
+    "/tools/assets/catalog/curated-20260801/english/651195961829/white-10-pack.webp"
   ],
   "LZN-TL-1001": [
-    "/tools/assets/catalog/curated-20260729/original-cn/651195961829/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/651195961829/002.webp"
+    "/tools/assets/catalog/curated-20260801/english/651195961829/gray-100-pack.webp",
+    "/tools/assets/catalog/curated-20260801/english/651195961829/white-10-pack.webp"
   ],
   "LZN-1014864659815": [
     "/tools/assets/catalog/curated-20260729/original-cn/1014864659815/001.webp",
@@ -55,56 +55,54 @@
     "/tools/assets/catalog/curated-20260729/original-cn/1014864659815/010.webp"
   ],
   "LZN-622631947328": [
-    "/tools/assets/catalog/curated-20260729/original-cn/622631947328/001.webp"
+    "/tools/assets/catalog/curated-20260801/english/622631947328/cute-star-travel-case.webp"
   ],
   "LZN-TL-1003": [
-    "/tools/assets/catalog/curated-20260729/original-cn/622631947328/001.webp"
+    "/tools/assets/catalog/curated-20260801/english/622631947328/cute-star-travel-case.webp"
   ],
   "LZN-723662946871": [
-    "/tools/assets/catalog/curated-20260729/original-cn/723662946871/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723662946871/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723662946871/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723662946871/004.webp"
+    "/tools/assets/catalog/curated-20260801/english/723662946871/gray-square-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723662946871/pink-square-winged-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723662946871/pink-square-wand-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723662946871/gray-square-wand-star.webp"
   ],
   "LZN-TL-1004": [
-    "/tools/assets/catalog/curated-20260729/original-cn/723662946871/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723662946871/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723662946871/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723662946871/004.webp"
+    "/tools/assets/catalog/curated-20260801/english/723662946871/gray-square-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723662946871/pink-square-winged-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723662946871/pink-square-wand-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723662946871/gray-square-wand-star.webp"
   ],
   "LZN-723282936906": [
-    "/tools/assets/catalog/curated-20260729/original-cn/723282936906/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723282936906/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723282936906/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723282936906/004.webp"
+    "/tools/assets/catalog/curated-20260801/english/723282936906/pink-round-wand-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723282936906/white-pink-round-winged-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723282936906/pink-square-wand-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723282936906/gray-square-wand-star.webp"
   ],
   "LZN-TL-1005": [
-    "/tools/assets/catalog/curated-20260729/original-cn/723282936906/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723282936906/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723282936906/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/723282936906/004.webp"
+    "/tools/assets/catalog/curated-20260801/english/723282936906/pink-round-wand-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723282936906/white-pink-round-winged-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723282936906/pink-square-wand-star.webp",
+    "/tools/assets/catalog/curated-20260801/english/723282936906/gray-square-wand-star.webp"
   ],
   "LZN-678366350023": [
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/009.webp"
+    "/tools/assets/catalog/curated-20260801/english/678366350023/gray-tray.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/green-tray.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/yellow-tray.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/gray-tray-empty-bottle.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/green-tray-empty-bottle.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/yellow-tray-empty-bottle.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/white-tray.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/white-tray-empty-bottle.webp"
   ],
   "LZN-TL-1006": [
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/678366350023/009.webp"
+    "/tools/assets/catalog/curated-20260801/english/678366350023/gray-tray.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/green-tray.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/yellow-tray.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/gray-tray-empty-bottle.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/green-tray-empty-bottle.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/yellow-tray-empty-bottle.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/white-tray.webp",
+    "/tools/assets/catalog/curated-20260801/english/678366350023/white-tray-empty-bottle.webp"
   ],
   "LZN-662993495475": [
     "/tools/assets/catalog/curated-20260729/original-cn/662993495475/001.webp",
@@ -883,6 +881,92 @@
 };
 
   var toolOptionCurations = {
+    "LZN-651195961829": [
+      {
+        label: "Option 01 - Gray, 100-Pack",
+        image: "/tools/assets/catalog/curated-20260801/english/651195961829/gray-100-pack.webp"
+      },
+      {
+        label: "Option 02 - White, 10-Pack",
+        image: "/tools/assets/catalog/curated-20260801/english/651195961829/white-10-pack.webp"
+      }
+    ],
+    "LZN-622631947328": [
+      {
+        label: "Option 01 - Assorted Star Travel Case",
+        image: "/tools/assets/catalog/curated-20260801/english/622631947328/cute-star-travel-case.webp"
+      }
+    ],
+    "LZN-723662946871": [
+      {
+        label: "Option 01 - Gray Square Star",
+        image: "/tools/assets/catalog/curated-20260801/english/723662946871/gray-square-star.webp"
+      },
+      {
+        label: "Option 02 - Pink Square Winged Star",
+        image: "/tools/assets/catalog/curated-20260801/english/723662946871/pink-square-winged-star.webp"
+      },
+      {
+        label: "Option 03 - Pink Square Wand Star",
+        image: "/tools/assets/catalog/curated-20260801/english/723662946871/pink-square-wand-star.webp"
+      },
+      {
+        label: "Option 04 - Gray Square Wand Star",
+        image: "/tools/assets/catalog/curated-20260801/english/723662946871/gray-square-wand-star.webp"
+      }
+    ],
+    "LZN-723282936906": [
+      {
+        label: "Option 01 - Pink Round Wand Star",
+        image: "/tools/assets/catalog/curated-20260801/english/723282936906/pink-round-wand-star.webp"
+      },
+      {
+        label: "Option 02 - White / Pink Round Winged Star",
+        image: "/tools/assets/catalog/curated-20260801/english/723282936906/white-pink-round-winged-star.webp"
+      },
+      {
+        label: "Option 03 - Pink Square Wand Star",
+        image: "/tools/assets/catalog/curated-20260801/english/723282936906/pink-square-wand-star.webp"
+      },
+      {
+        label: "Option 04 - Gray Square Wand Star",
+        image: "/tools/assets/catalog/curated-20260801/english/723282936906/gray-square-wand-star.webp"
+      }
+    ],
+    "LZN-678366350023": [
+      {
+        label: "Option 01 - Gray Tray",
+        image: "/tools/assets/catalog/curated-20260801/english/678366350023/gray-tray.webp"
+      },
+      {
+        label: "Option 02 - Green Tray",
+        image: "/tools/assets/catalog/curated-20260801/english/678366350023/green-tray.webp"
+      },
+      {
+        label: "Option 03 - Yellow Tray",
+        image: "/tools/assets/catalog/curated-20260801/english/678366350023/yellow-tray.webp"
+      },
+      {
+        label: "Option 04 - Gray Tray + Empty 250 mL Bottle",
+        image: "/tools/assets/catalog/curated-20260801/english/678366350023/gray-tray-empty-bottle.webp"
+      },
+      {
+        label: "Option 05 - Green Tray + Empty 250 mL Bottle",
+        image: "/tools/assets/catalog/curated-20260801/english/678366350023/green-tray-empty-bottle.webp"
+      },
+      {
+        label: "Option 06 - Yellow Tray + Empty 250 mL Bottle",
+        image: "/tools/assets/catalog/curated-20260801/english/678366350023/yellow-tray-empty-bottle.webp"
+      },
+      {
+        label: "Option 07 - White Tray",
+        image: "/tools/assets/catalog/curated-20260801/english/678366350023/white-tray.webp"
+      },
+      {
+        label: "Option 08 - White Tray + Empty 250 mL Bottle",
+        image: "/tools/assets/catalog/curated-20260801/english/678366350023/white-tray-empty-bottle.webp"
+      }
+    ],
     "LZN-585323017499": [
       {
         label: "Option 01 - Black Fabric",
