@@ -527,11 +527,9 @@ async function checkoutView() {
     const method = paymentCode(form.elements.payment_method.value);
     const estimate = document.querySelector('#paymentFeeEstimate');
     form.querySelectorAll('.payment-choice').forEach(label => label.classList.toggle('selected', label.querySelector('input').checked));
-    if (method === 'company_bank_transfer') {
-      estimate.innerHTML = `<strong>${subtotal >= 1000 ? 'Recommended — Company bank transfer' : 'Company bank transfer'}</strong><span>No processing fee is charged by LZN MEDICAL.</span>`;
-      return;
-    }
-    estimate.innerHTML = '<strong>Processing fee confirmed by Payoneer</strong><span>Rates and available payment methods may change. The final fee and total are shown on the Payoneer payment page before payment. Any payer fee is not included in the PI total.</span>';
+    estimate.innerHTML = method === 'company_bank_transfer'
+      ? '<strong>Company bank transfer selected</strong><span>Payment instructions will be sent with the final PI after freight is confirmed.</span>'
+      : '<strong>Card / PayPal selected</strong><span>A secure payment request will be emailed after freight and the final PI are confirmed.</span>';
   }
   function updateCouponEstimate() {
     const codes = [...form.querySelectorAll('[name="coupon_codes"]:checked')].map(input => input.value);
