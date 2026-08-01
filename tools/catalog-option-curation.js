@@ -181,18 +181,16 @@
     "/tools/assets/catalog/curated-20260729/original-cn/658527917520/006.webp"
   ],
   "LZN-739604037804": [
-    "/tools/assets/catalog/curated-20260729/original-cn/739604037804/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604037804/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604037804/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604037804/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604037804/005.webp"
+    "/tools/assets/catalog/curated-20260801/english/739604037804/one-pair-set.webp",
+    "/tools/assets/catalog/curated-20260801/english/739604037804/three-pair-set.webp",
+    "/tools/assets/catalog/curated-20260801/english/739604037804/five-pair-set.webp",
+    "/tools/assets/catalog/curated-20260801/english/739604037804/seven-pair-set.webp"
   ],
   "LZN-TL-1009": [
-    "/tools/assets/catalog/curated-20260729/original-cn/739604037804/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604037804/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604037804/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604037804/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/739604037804/005.webp"
+    "/tools/assets/catalog/curated-20260801/english/739604037804/one-pair-set.webp",
+    "/tools/assets/catalog/curated-20260801/english/739604037804/three-pair-set.webp",
+    "/tools/assets/catalog/curated-20260801/english/739604037804/five-pair-set.webp",
+    "/tools/assets/catalog/curated-20260801/english/739604037804/seven-pair-set.webp"
   ],
   "LZN-634199062731": [
     "/tools/assets/catalog/curated-20260729/original-cn/634199062731/001.webp",
@@ -789,10 +787,10 @@
     "/tools/assets/catalog/curated-20260729/original-cn/607384329144/001.webp"
   ],
   "LZN-669731145847": [
-    "/tools/assets/catalog/curated-20260729/original-cn/669731145847/001.webp"
+    "/tools/assets/catalog/curated-20260801/english/669731145847/polishing-cloth.webp"
   ],
   "LZN-TL-1041": [
-    "/tools/assets/catalog/curated-20260729/original-cn/669731145847/001.webp"
+    "/tools/assets/catalog/curated-20260801/english/669731145847/polishing-cloth.webp"
   ],
   "LZN-676143210189": [
     "/tools/assets/catalog/curated-20260729/original-cn/676143210189/001.webp"
@@ -825,56 +823,36 @@
     "/tools/assets/catalog/curated-20260801/english/642715432999/transparent-pink.webp"
   ],
   "LZN-763152459242": [
-    "/tools/assets/catalog/curated-20260729/original-cn/763152459242/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/763152459242/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/763152459242/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/763152459242/004.webp"
+    "/tools/assets/catalog/curated-20260801/english/763152459242/white.webp",
+    "/tools/assets/catalog/curated-20260801/english/763152459242/pink.webp",
+    "/tools/assets/catalog/curated-20260801/english/763152459242/yellow.webp"
   ],
   "LZN-TL-1046": [
-    "/tools/assets/catalog/curated-20260729/original-cn/763152459242/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/763152459242/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/763152459242/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/763152459242/004.webp"
+    "/tools/assets/catalog/curated-20260801/english/763152459242/white.webp",
+    "/tools/assets/catalog/curated-20260801/english/763152459242/pink.webp",
+    "/tools/assets/catalog/curated-20260801/english/763152459242/yellow.webp"
   ],
   "LZN-694016088201": [
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/009.webp"
+    "/tools/assets/catalog/curated-20260801/english/694016088201/champagne-gold-glitter.webp",
+    "/tools/assets/catalog/curated-20260801/english/694016088201/silver-glitter.webp"
   ],
   "LZN-TL-1047": [
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/007.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/008.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/694016088201/009.webp"
+    "/tools/assets/catalog/curated-20260801/english/694016088201/champagne-gold-glitter.webp",
+    "/tools/assets/catalog/curated-20260801/english/694016088201/silver-glitter.webp"
   ],
   "LZN-594962368226": [
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/007.webp"
+    "/tools/assets/catalog/curated-20260801/english/594962368226/red.webp",
+    "/tools/assets/catalog/curated-20260801/english/594962368226/yellow.webp",
+    "/tools/assets/catalog/curated-20260801/english/594962368226/gray.webp",
+    "/tools/assets/catalog/curated-20260801/english/594962368226/blue.webp",
+    "/tools/assets/catalog/curated-20260801/english/594962368226/silver-gray.webp"
   ],
   "LZN-TL-1048": [
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/001.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/002.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/003.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/004.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/005.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/006.webp",
-    "/tools/assets/catalog/curated-20260729/original-cn/594962368226/007.webp"
+    "/tools/assets/catalog/curated-20260801/english/594962368226/red.webp",
+    "/tools/assets/catalog/curated-20260801/english/594962368226/yellow.webp",
+    "/tools/assets/catalog/curated-20260801/english/594962368226/gray.webp",
+    "/tools/assets/catalog/curated-20260801/english/594962368226/blue.webp",
+    "/tools/assets/catalog/curated-20260801/english/594962368226/silver-gray.webp"
   ],
   "LZN-617968191574": [
     "/tools/assets/catalog/curated-20260729/original-cn/617968191574/001.webp",
@@ -1447,12 +1425,12 @@
     ],
     "LZN-694016088201": [
       {
-        label: "Option 01 - Rose Gold / Pink Glitter",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/694016088201/001.webp"
+        label: "Option 01 - Champagne Gold Glitter",
+        image: "/tools/assets/catalog/curated-20260801/english/694016088201/champagne-gold-glitter.webp"
       },
       {
-        label: "Option 02 - Silver / Pink Glitter",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/694016088201/002.webp"
+        label: "Option 02 - Silver Glitter",
+        image: "/tools/assets/catalog/curated-20260801/english/694016088201/silver-glitter.webp"
       }
     ],
     "LZN-696035777060": [
@@ -1508,23 +1486,61 @@
     "LZN-594962368226": [
       {
         label: "Option 01 - Red Pen-Style Case",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/002.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/594962368226/red.webp"
       },
       {
         label: "Option 02 - Yellow Pen-Style Case",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/003.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/594962368226/yellow.webp"
       },
       {
         label: "Option 03 - Gray Pen-Style Case",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/004.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/594962368226/gray.webp"
       },
       {
         label: "Option 04 - Blue Pen-Style Case",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/005.webp"
+        image: "/tools/assets/catalog/curated-20260801/english/594962368226/blue.webp"
       },
       {
-        label: "Option 05 - Silver Pen-Style Case",
-        image: "/tools/assets/catalog/curated-20260729/original-cn/594962368226/006.webp"
+        label: "Option 05 - Silver Gray Pen-Style Case",
+        image: "/tools/assets/catalog/curated-20260801/english/594962368226/silver-gray.webp"
+      }
+    ],
+    "LZN-739604037804": [
+      {
+        label: "Option 01 - 1-Pair Set",
+        image: "/tools/assets/catalog/curated-20260801/english/739604037804/one-pair-set.webp"
+      },
+      {
+        label: "Option 02 - 3-Pair Set",
+        image: "/tools/assets/catalog/curated-20260801/english/739604037804/three-pair-set.webp"
+      },
+      {
+        label: "Option 03 - 5-Pair Set",
+        image: "/tools/assets/catalog/curated-20260801/english/739604037804/five-pair-set.webp"
+      },
+      {
+        label: "Option 04 - 7-Pair Set",
+        image: "/tools/assets/catalog/curated-20260801/english/739604037804/seven-pair-set.webp"
+      }
+    ],
+    "LZN-669731145847": [
+      {
+        label: "Option 01 - Screen and Lens Polishing Cloth",
+        image: "/tools/assets/catalog/curated-20260801/english/669731145847/polishing-cloth.webp"
+      }
+    ],
+    "LZN-763152459242": [
+      {
+        label: "Option 01 - White",
+        image: "/tools/assets/catalog/curated-20260801/english/763152459242/white.webp"
+      },
+      {
+        label: "Option 02 - Pink",
+        image: "/tools/assets/catalog/curated-20260801/english/763152459242/pink.webp"
+      },
+      {
+        label: "Option 03 - Yellow",
+        image: "/tools/assets/catalog/curated-20260801/english/763152459242/yellow.webp"
       }
     ],
     "LZN-617968191574": [
