@@ -2091,12 +2091,6 @@
             "image": "assets/catalog/TL-0032/english-catalog-option-02.webp"
           },
           {
-            "model": "LZN-TL-0032-03",
-            "label": "Small Speckled Black",
-            "priceUsd": 2.41,
-            "image": "assets/catalog/TL-0032/english-card.webp"
-          },
-          {
             "model": "LZN-TL-0032-04",
             "label": "Wall-Mounted Felt Eyewear Display Board - Option 04 - White Large Small",
             "priceUsd": 4.32,
@@ -2719,12 +2713,6 @@
             "model": "LZN-TL-0041-01",
             "label": "Soft Integrated Silicone Nose Pads - 5 Pieces with Installation Kit and Storage Case",
             "priceUsd": 3.44,
-            "image": "assets/catalog/TL-0041/english-option-01.webp"
-          },
-          {
-            "model": "LZN-TL-0041-02",
-            "label": "Soft Integrated Silicone Nose Pads - 3 Pieces with Installation Kit and Storage Case",
-            "priceUsd": 2.68,
             "image": "assets/catalog/TL-0041/english-option-01.webp"
           },
           {
