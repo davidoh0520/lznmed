@@ -167,5 +167,79 @@
     return bind({ ...options, form: container.querySelector('#lznUnifiedAuthForm') });
   }
 
-  window.LZNUnifiedAccount = Object.freeze({ render, bind, mount, setMode });
+  const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[character]));
+
+  function ensureDialog() {
+    let dialog = document.querySelector('#lznUnifiedAccountDialog');
+    if (dialog) return dialog;
+    dialog = document.createElement('dialog');
+    dialog.id = 'lznUnifiedAccountDialog';
+    dialog.className = 'lzn-unified-account-dialog';
+    dialog.innerHTML = '<button class="lzn-unified-account-close" type="button" aria-label="Close account">×</button><div class="lzn-unified-account-body"></div>';
+    dialog.querySelector('.lzn-unified-account-close').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+      if (event.target === dialog) dialog.close();
+    });
+    document.body.appendChild(dialog);
+    return dialog;
+  }
+
+  async function signedInMarkup(client, session) {
+    let profile = {};
+    if (client && session?.user?.id) {
+      const { data } = await client.from('profiles').select('*').eq('id', session.user.id).maybeSingle();
+      profile = data || {};
+    }
+    const metadata = session?.user?.user_metadata || {};
+    const company = profile.company_name || metadata.company_name || 'Not added';
+    const manager = profile.full_name || metadata.full_name || 'Not added';
+    return `<section class="lzn-unified-account-view">
+      <p class="lzn-unified-auth-eyebrow">MEMBER ACCOUNT</p>
+      <h2>My Account</h2>
+      <p class="lzn-unified-account-email">Signed in as <strong>${escapeHtml(session?.user?.email || '')}</strong></p>
+      <div class="lzn-unified-account-summary">
+        <div><span>Company</span><strong>${escapeHtml(company)}</strong></div>
+        <div><span>Manager / Contact</span><strong>${escapeHtml(manager)}</strong></div>
+      </div>
+      <div class="lzn-unified-account-actions">
+        <a href="/tools/?account=orders">My orders</a>
+        <a href="/tools/?account=profile">Edit account &amp; shipping</a>
+        <button type="button" data-lzn-unified-signout>Sign out</button>
+      </div>
+    </section>`;
+  }
+
+  async function open({ client, session, redirectTo, onSignedIn, onSignedOut } = {}) {
+    const dialog = ensureDialog();
+    const body = dialog.querySelector('.lzn-unified-account-body');
+    if (!dialog.open) dialog.showModal();
+    if (session) {
+      body.innerHTML = '<section class="lzn-unified-account-loading"><p class="lzn-unified-auth-eyebrow">MEMBER ACCOUNT</p><h2>My Account</h2><p>Loading account…</p></section>';
+      body.innerHTML = await signedInMarkup(client, session);
+      body.querySelector('[data-lzn-unified-signout]').addEventListener('click', async () => {
+        await client.auth.signOut();
+        dialog.close();
+        if (typeof onSignedOut === 'function') onSignedOut();
+      });
+      return dialog;
+    }
+    mount(body, {
+      client,
+      redirectTo: redirectTo || `${location.origin}${location.pathname}?email-confirmed=1`,
+      onSignedIn: signedInSession => {
+        if (typeof onSignedIn === 'function') onSignedIn(signedInSession);
+        open({ client, session: signedInSession, redirectTo, onSignedIn, onSignedOut });
+      }
+    });
+    return dialog;
+  }
+
+  function close() {
+    const dialog = document.querySelector('#lznUnifiedAccountDialog');
+    if (dialog?.open) dialog.close();
+  }
+
+  window.LZNUnifiedAccount = Object.freeze({ render, bind, mount, setMode, open, close });
 })();

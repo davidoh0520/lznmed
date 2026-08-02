@@ -137,32 +137,20 @@ function hide() {
 document.querySelectorAll('[data-panel-close]').forEach(button => button.addEventListener('click', hide));
 
 function authView() {
-  if (session) {
-    show(`<div class="panel-head"><p class="eyebrow">Customer Account</p><h2>My account</h2></div><p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="account-actions"><button class="button" id="ordersOpen">My orders</button><button class="button secondary-button" id="profileOpen">Edit account & shipping</button></div><button class="text-button" id="signOut">Sign out</button>`);
-    document.querySelector('#signOut').onclick = async () => {
-      await client.auth.signOut();
+  window.LZNUnifiedAccount.open({
+    client,
+    session,
+    redirectTo: `${location.origin}${location.pathname}?email-confirmed=1#cart`,
+    onSignedIn: signedInSession => { session = signedInSession || session; updateAccountButton(); },
+    onSignedOut: () => {
+      session = null;
+      updateAccountButton();
       window.LZNCloudCart?.clearLocal();
       restoredCartUserId = null;
       cart = [];
       save(false);
-      hide();
-    };
-    document.querySelector('#profileOpen').onclick = profileView;
-    document.querySelector('#ordersOpen').onclick = ordersView;
-  } else {
-    show(window.LZNUnifiedAccount.render());
-    window.LZNUnifiedAccount.bind({
-      form: document.querySelector('#lznUnifiedAuthForm'),
-      client,
-      redirectTo: `${location.origin}${location.pathname}?email-confirmed=1#cart`,
-      onSignedIn: signedInSession => {
-        session = signedInSession || session;
-        if (requestedAccountView === 'orders') ordersView();
-        else if (requestedAccountView) profileView();
-        else hide();
-      }
-    });
-  }
+    }
+  });
 }
 
 const statusLabels = {
@@ -708,10 +696,8 @@ if (explicitCartOpen) {
 const emailConfirmationReturn = new URLSearchParams(location.search).get('email-confirmed') === '1' || location.hash.includes('type=signup') || (location.hash.includes('access_token=') && localStorage.getItem('lzn-awaiting-email-confirmation') === '1');
 function emailConfirmedView() {
   localStorage.removeItem('lzn-awaiting-email-confirmation');
-  history.replaceState({}, '', `${location.pathname}#cart`);
-  show(`<div class="panel-head"><p class="eyebrow">Email Confirmed</p><h2>Your account is ready</h2></div><p>Your email address has been confirmed successfully. You are signed in as <strong>${e(session?.user?.email)}</strong>.</p><div class="cart-actions"><button class="button secondary-button" id="confirmedProfile">Edit Account & Shipping</button><button class="button" id="confirmedCart">Continue to cart</button></div>`);
-  document.querySelector('#confirmedProfile').onclick = profileView;
-  document.querySelector('#confirmedCart').onclick = cartView;
+  history.replaceState({}, '', location.pathname);
+  authView();
 }
 if (client) {
   client.auth.getSession().then(({ data }) => {
