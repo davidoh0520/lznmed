@@ -327,7 +327,6 @@
     applySavedCourier();
   };
   const enhanceAuthUi=()=>{
-    document.querySelectorAll('#authForm,#hubAuthForm,#deviceAuthForm,form').forEach(form=>setupAuthForm(form));
     const confirmedProfile=document.querySelector('#confirmedProfile');
     if(confirmedProfile)confirmedProfile.textContent='Edit Account & Shipping';
     enhanceProfileCourierOther(document.querySelector('#profileForm'));

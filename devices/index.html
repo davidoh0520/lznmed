@@ -19,7 +19,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="style.css?v=20260730-9" />
   <link rel="stylesheet" href="/tools/unified-theme.css?v=20260717-1">
-  <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260729-28">
+  <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260802-1">
   <link rel="stylesheet" href="/tools/marketplace-catalog.css?v=20260729-6">
 </head>
 <body>
@@ -204,6 +204,8 @@
   </dialog>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/tools/address-profile.js?v=20260729-2"></script>
+  <script src="/tools/unified-account.js?v=20260802-1"></script>
   <script>
     const accountClient = window.supabase.createClient('https://snyvexlqpxpqjswizszz.supabase.co', 'sb_publishable_wEQsmWUREF_lKiYm27jF_g_MlAEiomd');
     const accountDialog = document.getElementById('accountDialog');
@@ -223,41 +225,13 @@
         accountBody.innerHTML = `<p class="eyebrow">MEMBER ACCOUNT</p><h2>My Account</h2><p>Signed in as <strong>${accountEscape(accountSession.user.email)}</strong></p><div class="account-actions"><a class="btn primary" href="/tools/?account=profile">Edit Account & Shipping</a><button class="btn secondary" id="accountSignOut">Sign Out</button></div>`;
         document.getElementById('accountSignOut').onclick = async () => { await accountClient.auth.signOut(); accountDialog.close(); };
       } else {
-        accountBody.innerHTML = `<p class="eyebrow">MEMBER ACCOUNT</p><h2>Sign in or register</h2><form class="account-form" id="deviceAuthForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><div class="account-actions"><button class="btn primary" name="mode" value="signin">Sign In</button><button class="btn secondary" name="mode" value="signup">Create Account</button></div><button class="btn secondary" id="deviceAuthResend" type="button" hidden>Resend Confirmation Email</button><p class="account-status" id="deviceAuthStatus" aria-live="polite"></p></form>`;
-        document.getElementById('deviceAuthForm').onsubmit = handleDeviceAuth;
-        document.getElementById('deviceAuthResend').onclick = resendDeviceConfirmation;
+        window.LZNUnifiedAccount.mount(accountBody, {
+          client: accountClient,
+          redirectTo: `${location.origin}${location.pathname}?email-confirmed=1`,
+          onSignedIn: signedInSession => { accountSession = signedInSession || accountSession; showAccount(); }
+        });
       }
-      accountDialog.showModal();
-    }
-    async function handleDeviceAuth(event) {
-      event.preventDefault();
-      const mode = event.submitter.value;
-      const form = new FormData(event.currentTarget);
-      const status = document.getElementById('deviceAuthStatus');
-      if (mode === 'signup' && (!String(form.get('company_name') || '').trim() || !String(form.get('full_name') || '').trim())) { status.textContent = 'Company name and Manager / Contact name are required.'; return; }
-      status.textContent = 'Please wait...';
-      const result = mode === 'signup'
-        ? await accountClient.auth.signUp({email: form.get('email'), password: form.get('password'), options: {emailRedirectTo: location.origin + location.pathname + '?email-confirmed=1', data: {company_name: String(form.get('company_name')).trim(), full_name: String(form.get('full_name')).trim(), buyer_type: 'company', cart_reminder_opt_in: form.get('cart_reminder_opt_in') === 'true'}}})
-        : await accountClient.auth.signInWithPassword({email: form.get('email'), password: form.get('password')});
-      status.textContent = result.error ? result.error.message : (mode === 'signup' ? 'If this address is new or still unconfirmed, a confirmation email has been requested. Already registered? Sign in instead.' : 'Signed in.');
-      if (!result.error && mode === 'signup') {
-        localStorage.setItem('lznDevicesAwaitingEmailConfirmation', '1');
-        const resend = document.getElementById('deviceAuthResend');
-        resend.hidden = false;
-        resend.dataset.email = String(form.get('email') || '').trim().toLowerCase();
-      }
-      if (!result.error && mode === 'signin') setTimeout(showAccount, 250);
-    }
-    async function resendDeviceConfirmation() {
-      const button = document.getElementById('deviceAuthResend');
-      const status = document.getElementById('deviceAuthStatus');
-      const email = button?.dataset.email;
-      if (!email) return;
-      button.disabled = true;
-      status.textContent = 'Requesting another confirmation email...';
-      const { error } = await accountClient.auth.resend({ type: 'signup', email, options: { emailRedirectTo: location.origin + location.pathname + '?email-confirmed=1' } });
-      status.textContent = error ? error.message : 'Confirmation email requested. Please check spam or junk folders too.';
-      setTimeout(() => { button.disabled = false; }, 180000);
+      if (!accountDialog.open) accountDialog.showModal();
     }
     accountButton.addEventListener('click', showAccount);
     document.querySelector('.account-close').addEventListener('click', () => accountDialog.close());
@@ -421,8 +395,7 @@
   <script src="/tools/shared-cart.js?v=20260723-7"></script>
   <script src="/tools/marketplace-catalog.js?v=20260729-5"></script>
   <script src="moved-catalog.js?v=20260730-11"></script>
-  <script src="/tools/address-profile.js?v=20260729-2" defer></script>
-  <script src="/tools/portfolio-shell.js?v=20260801-1" defer></script>
+  <script src="/tools/portfolio-shell.js?v=20260802-2" defer></script>
   <script src="/tools/promotion-popup.js?v=20260727-5"></script>
 </body>
 </html>
