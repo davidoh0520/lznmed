@@ -870,6 +870,23 @@
     originalCnCurations["LZN-TL-" + model] = gallery;
   });
 
+  var final6EnglishGalleries = {
+    "777094994614": ["orange-1", "orange-2", "pink-1", "pink-2", "black-1", "black-2", "red-1", "red-2", "assorted-3"],
+    "717183914442": ["white-1-pair", "white-2-pairs", "white-4-pairs", "black-white-2-pairs-each", "brown-white-1-pair-each", "black-white-1-pair-each", "black-gray-2-pairs-each", "black-gray-1-pair-each", "black-brown-2-pairs-each", "black-brown-1-pair-each", "black-1-pair", "black-2-pairs", "black-4-pairs", "four-color-1-pair-each", "gray-white-2-pairs-each", "gray-1-pair", "gray-2-pairs", "gray-4-pairs", "brown-white-2-pairs-each"],
+    "602743600864": ["model-301-2-pieces", "model-301-2-2-pieces", "model-406-2-pieces", "model-429-2-pieces", "model-447-2-pieces", "model-412-2-pieces", "model-422-2-pieces", "model-426-2-pieces", "model-428-2-pieces", "model-431-2-pieces", "model-412-2-pairs"],
+    "635408516585": ["blue-elephant", "pink-cat-hi", "pink-bear-wow", "blue-koala-ok", "blue-dinosaur-oh", "green-crocodile-well", "green-duck-nice", "pink-bear", "purple-rabbit", "pink-bear-blue-dinosaur", "pink-bear-beige-alpaca", "pink-bear-blue-koala", "green-duck-green-crocodile"],
+    "676143210189": ["standard"],
+    "617968191574": ["red-1-00", "red-1-50", "red-2-00", "red-2-50", "red-3-00", "red-3-50", "red-4-00", "gold-1-00", "gold-1-50", "gold-2-00"]
+  };
+  ["777094994614", "717183914442", "602743600864", "635408516585", "676143210189", "617968191574"].forEach(function (id, index) {
+    var model = ["1035", "1037", "1038", "1039", "1042", "1049"][index];
+    var gallery = final6EnglishGalleries[id].map(function (name) {
+      return "/tools/assets/catalog/curated-20260802/english/" + id + "/" + name + ".webp";
+    });
+    originalCnCurations["LZN-" + id] = gallery;
+    originalCnCurations["LZN-TL-" + model] = gallery;
+  });
+
   var toolOptionCurations = {
     "LZN-651195961829": [
       {
@@ -1792,6 +1809,45 @@
     toolOptionCurations["LZN-TL-" + model] = batch10OptionOverrides[id];
   });
 
+  var final6OptionOverrides = {
+    "777094994614": batch10Options("777094994614", [
+      ["Orange - Style 1", "orange-1"], ["Orange - Style 2", "orange-2"], ["Pink - Style 1", "pink-1"], ["Pink - Style 2", "pink-2"],
+      ["Black - Style 1", "black-1"], ["Black - Style 2", "black-2"], ["Red - Style 1", "red-1"], ["Red - Style 2", "red-2"], ["Assorted Colors - 3 Pieces", "assorted-3"]
+    ]),
+    "717183914442": batch10Options("717183914442", [
+      ["White - 1 Pair", "white-1-pair"], ["White - 2 Pairs", "white-2-pairs"], ["White - 4 Pairs", "white-4-pairs"],
+      ["Black / White - 2 Pairs Each", "black-white-2-pairs-each"], ["Brown / White - 1 Pair Each", "brown-white-1-pair-each"],
+      ["Black / White - 1 Pair Each", "black-white-1-pair-each"], ["Black / Gray - 2 Pairs Each", "black-gray-2-pairs-each"], ["Black / Gray - 1 Pair Each", "black-gray-1-pair-each"],
+      ["Black / Brown - 2 Pairs Each", "black-brown-2-pairs-each"], ["Black / Brown - 1 Pair Each", "black-brown-1-pair-each"],
+      ["Black - 1 Pair", "black-1-pair"], ["Black - 2 Pairs", "black-2-pairs"], ["Black - 4 Pairs", "black-4-pairs"],
+      ["Black / Gray / Brown / White - 1 Pair Each", "four-color-1-pair-each"], ["Gray / White - 2 Pairs Each", "gray-white-2-pairs-each"],
+      ["Gray - 1 Pair", "gray-1-pair"], ["Gray - 2 Pairs", "gray-2-pairs"], ["Gray - 4 Pairs", "gray-4-pairs"], ["Brown / White - 2 Pairs Each", "brown-white-2-pairs-each"]
+    ]),
+    "602743600864": batch10Options("602743600864", [
+      ["Model 301 - 2 Pieces", "model-301-2-pieces"], ["Model 301-2 - 2 Pieces", "model-301-2-2-pieces"], ["Model 406 - 2 Pieces", "model-406-2-pieces"],
+      ["Model 429 - 2 Pieces", "model-429-2-pieces"], ["Model 447 - 2 Pieces", "model-447-2-pieces"], ["Model 412 - 2 Pieces", "model-412-2-pieces"],
+      ["Model 422 - 2 Pieces", "model-422-2-pieces"], ["Model 426 - 2 Pieces", "model-426-2-pieces"], ["Model 428 - 2 Pieces", "model-428-2-pieces"],
+      ["Model 431 - 2 Pieces", "model-431-2-pieces"], ["Model 412 - 2 Pairs", "model-412-2-pairs"]
+    ]),
+    "635408516585": batch10Options("635408516585", [
+      ["Blue Elephant", "blue-elephant"], ["Pink Cat - Hi", "pink-cat-hi"], ["Pink Bear - Wow", "pink-bear-wow"], ["Blue Koala - OK", "blue-koala-ok"],
+      ["Blue Dinosaur - Oh", "blue-dinosaur-oh"], ["Green Crocodile - Well", "green-crocodile-well"], ["Green Duck - Nice", "green-duck-nice"], ["Pink Bear", "pink-bear"],
+      ["Purple Rabbit", "purple-rabbit"], ["Pink Bear / Blue Dinosaur", "pink-bear-blue-dinosaur"], ["Pink Bear / Beige Alpaca", "pink-bear-beige-alpaca"],
+      ["Pink Bear / Blue Koala", "pink-bear-blue-koala"], ["Green Duck / Green Crocodile", "green-duck-green-crocodile"]
+    ]),
+    "676143210189": batch10Options("676143210189", [["Standard", "standard"]]),
+    "617968191574": batch10Options("617968191574", [
+      ["Red +1.00 D", "red-1-00"], ["Red +1.50 D", "red-1-50"], ["Red +2.00 D", "red-2-00"], ["Red +2.50 D", "red-2-50"],
+      ["Red +3.00 D", "red-3-00"], ["Red +3.50 D", "red-3-50"], ["Red +4.00 D", "red-4-00"],
+      ["Gold +1.00 D", "gold-1-00"], ["Gold +1.50 D", "gold-1-50"], ["Gold +2.00 D", "gold-2-00"]
+    ])
+  };
+  ["777094994614", "717183914442", "602743600864", "635408516585", "676143210189", "617968191574"].forEach(function (id, index) {
+    var model = ["1035", "1037", "1038", "1039", "1042", "1049"][index];
+    toolOptionCurations["LZN-" + id] = final6OptionOverrides[id];
+    toolOptionCurations["LZN-TL-" + model] = final6OptionOverrides[id];
+  });
+
   var toolProductCurations = {
     "LZN-594962368226": {
       nameEn: "Pen-Style Eyeglass Case",
@@ -1831,6 +1887,20 @@
     var model = ["1025", "1026", "1027", "1031", "1032"][index];
     toolProductCurations["LZN-" + id] = batch10ProductOverrides[id];
     toolProductCurations["LZN-TL-" + model] = batch10ProductOverrides[id];
+  });
+
+  var final6ProductOverrides = {
+    "777094994614": { nameEn: "Three-Hole Sports Eyeglass Strap", chineseName: "Three-Hole Sports Eyeglass Strap", description: "Three-hole sports straps for securing eyeglasses, available in multiple colors and attachment styles." },
+    "717183914442": { nameEn: "TTS-09 Silicone Temple Sleeve Set", chineseName: "TTS-09 Silicone Temple Sleeve Set", description: "Soft silicone temple sleeves for 6-12 mm eyeglass temples, offered in single-color and mixed-color pair sets." },
+    "602743600864": { nameEn: "Soft Saddle Nose Pad Set", chineseName: "Soft Saddle Nose Pad Set", description: "Soft transparent saddle nose pads in multiple bridge sizes and model shapes for eyeglass repair and fitting." },
+    "635408516585": { nameEn: "Cartoon Hard Eyeglass Case", chineseName: "Cartoon Hard Eyeglass Case", description: "Hard eyeglass cases with cartoon character designs, available as single cases and coordinated two-case sets." },
+    "676143210189": { nameEn: "RGP Lens Suction Remover", chineseName: "RGP Lens Suction Remover", description: "RGP lens suction remover supplied in an empty protective tube; no liquid is included." },
+    "617968191574": { nameEn: "Foldable Blue-Light Reading Glasses", chineseName: "Foldable Blue-Light Reading Glasses", description: "Compact foldable blue-light-filter reading glasses in red and gold finishes with multiple diopter strengths." }
+  };
+  ["777094994614", "717183914442", "602743600864", "635408516585", "676143210189", "617968191574"].forEach(function (id, index) {
+    var model = ["1035", "1037", "1038", "1039", "1042", "1049"][index];
+    toolProductCurations["LZN-" + id] = final6ProductOverrides[id];
+    toolProductCurations["LZN-TL-" + model] = final6ProductOverrides[id];
   });
 
   var missingOptionImageCurations = {
