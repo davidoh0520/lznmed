@@ -610,7 +610,7 @@
         button.type = 'button';
         button.className = 'lzn-commerce-option';
         button.innerHTML = `
-          <img alt="" loading="eager">
+          <img alt="" loading="lazy" decoding="async">
           <span class="lzn-commerce-option-name"></span>
           <span class="lzn-commerce-option-price"></span>
         `;
@@ -657,7 +657,7 @@
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'lzn-commerce-thumb';
-      button.innerHTML = '<img alt="" loading="eager">';
+      button.innerHTML = '<img alt="" loading="lazy" decoding="async">';
       button.querySelector('img').src = source;
       button.querySelector('img').alt = `${product.nameEn || product.model} image ${index + 1}`;
       button.addEventListener('click', () => {
