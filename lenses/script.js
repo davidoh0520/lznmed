@@ -340,35 +340,14 @@ function authView(returnToCart=false){
     document.getElementById('signOut').onclick=async()=>{await supabaseClient.auth.signOut();cartDialog.close();};
     return;
   }
-  showCommerce(`<p class="eyebrow">CUSTOMER ACCOUNT</p><h2>Sign in or register</h2><form class="commerce-form" id="authForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><div class="commerce-actions"><button class="btn" name="mode" value="signin">Sign In</button><button class="btn secondary" name="mode" value="signup">Create Company Account</button></div><button class="text-button auth-resend" id="authResend" type="button" hidden>Resend confirmation email</button><p class="form-status" id="authStatus" aria-live="polite"></p></form>`);
-  document.getElementById('authForm').onsubmit=async event=>{
-    event.preventDefault();
-    const mode=event.submitter.value,form=new FormData(event.currentTarget),status=document.getElementById('authStatus');
-    if(mode==='signup'&&(!String(form.get('company_name')||'').trim()||!String(form.get('full_name')||'').trim())){status.textContent='Company name and Manager / Contact name are required.';return;}
-    status.textContent='Please wait...';
-    localStorage.setItem('lznLensReturnToCart',returnToCart?'1':'0');
-    const result=mode==='signup'
-      ?await supabaseClient.auth.signUp({email:form.get('email'),password:form.get('password'),options:{emailRedirectTo:`${location.origin}${location.pathname}?email-confirmed=1#cart`,data:{company_name:String(form.get('company_name')).trim(),full_name:String(form.get('full_name')).trim(),buyer_type:'company',cart_reminder_opt_in:form.get('cart_reminder_opt_in')==='true'}}})
-      :await supabaseClient.auth.signInWithPassword({email:form.get('email'),password:form.get('password')});
-    status.textContent=result.error?result.error.message:(mode==='signup'?'If this address is new or still unconfirmed, a confirmation email has been requested. Already registered? Sign in instead.':'Signed in.');
-    if(!result.error&&mode==='signup'){
-      localStorage.setItem('lznLensAwaitingEmailConfirmation','1');
-      const resend=document.getElementById('authResend');
-      resend.hidden=false;
-      resend.dataset.email=String(form.get('email')||'').trim().toLowerCase();
-    }
-    if(!result.error&&mode==='signin')setTimeout(authView,300);
-  };
-  document.getElementById('authResend').onclick=resendLensConfirmation;
-}
-async function resendLensConfirmation(){
-  const button=document.getElementById('authResend'),status=document.getElementById('authStatus'),email=button?.dataset.email;
-  if(!email)return;
-  button.disabled=true;
-  status.textContent='Requesting another confirmation email...';
-  const {error}=await supabaseClient.auth.resend({type:'signup',email,options:{emailRedirectTo:`${location.origin}${location.pathname}?email-confirmed=1#cart`}});
-  status.textContent=error?error.message:'Confirmation email requested. Please check spam or junk folders too.';
-  setTimeout(()=>{button.disabled=false;},180000);
+  localStorage.setItem('lznLensReturnToCart',returnToCart?'1':'0');
+  showCommerce(window.LZNUnifiedAccount.render());
+  window.LZNUnifiedAccount.bind({
+    form:document.getElementById('lznUnifiedAuthForm'),
+    client:supabaseClient,
+    redirectTo:`${location.origin}${location.pathname}?email-confirmed=1#cart`,
+    onSignedIn:signedInSession=>{session=signedInSession||session;authView();}
+  });
 }
 async function profileView(){
   const {data}=await supabaseClient.from('profiles').select('*').eq('id',session.user.id).maybeSingle();const p=data||{};

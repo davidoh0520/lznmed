@@ -69,14 +69,19 @@ function hide() {
 document.querySelectorAll('[data-panel-close]').forEach(button => button.addEventListener('click', hide));
 
 function authView() {
-  show(`<div class="panel-head"><p class="eyebrow">Customer Account</p><h2>${session ? 'My account' : 'Sign in or register'}</h2></div>${session ? `<p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="account-actions"><button class="button" id="ordersOpen">My orders</button><button class="button secondary-button" id="profileOpen">Edit account & shipping</button></div><button class="text-button" id="signOut">Sign out</button>` : `<form class="commerce-form" id="authForm"><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" minlength="8" required autocomplete="current-password"></label><label>Company name (required for registration)<input name="company_name" autocomplete="organization"></label><label>Manager / Contact name (required for registration)<input name="full_name" autocomplete="name"></label><label class="reminder-consent"><input name="cart_reminder_opt_in" type="checkbox" value="true"><span>Email me reminders about items left in my cart. Reminders may be sent after 3, 7, 14, 21 and 29 days; the saved cart is deleted after 30 days.</span></label><button class="button" name="mode" value="signin">Sign in</button><button class="button secondary-button" name="mode" value="signup">Create account</button><button class="text-button auth-resend" id="authResend" type="button" hidden>Resend confirmation email</button><p class="form-status" id="authStatus" aria-live="polite"></p></form>`}`);
   if (session) {
+    show(`<div class="panel-head"><p class="eyebrow">Customer Account</p><h2>My account</h2></div><p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="account-actions"><button class="button" id="ordersOpen">My orders</button><button class="button secondary-button" id="profileOpen">Edit account & shipping</button></div><button class="text-button" id="signOut">Sign out</button>`);
     document.querySelector('#signOut').onclick = async () => { await client.auth.signOut(); hide(); };
     document.querySelector('#profileOpen').onclick = profileView;
     document.querySelector('#ordersOpen').onclick = ordersView;
   } else {
-    document.querySelector('#authForm').onsubmit = handleAuth;
-    document.querySelector('#authResend').onclick = resendSignupConfirmation;
+    show(window.LZNUnifiedAccount.render());
+    window.LZNUnifiedAccount.bind({
+      form: document.querySelector('#lznUnifiedAuthForm'),
+      client,
+      redirectTo: `${location.origin}${location.pathname}?email-confirmed=1#cart`,
+      onSignedIn: signedInSession => { session = signedInSession || session; hide(); }
+    });
   }
 }
 
@@ -158,42 +163,6 @@ function paymentNoticeView(order) {
     status.textContent = 'Payment notice submitted. We will update the order after confirming receipt in our bank account.';
     setTimeout(ordersView, 900);
   };
-}
-
-async function handleAuth(event) {
-  event.preventDefault();
-  const mode = event.submitter.value;
-  const form = new FormData(event.currentTarget);
-  const status = document.querySelector('#authStatus');
-  if (mode === 'signup' && (!String(form.get('company_name') || '').trim() || !String(form.get('full_name') || '').trim())) {
-    status.textContent = 'Company name and Manager / Contact name are required.';
-    return;
-  }
-  status.textContent = 'Please wait…';
-  localStorage.setItem('lzn-return-to-cart', '1');
-  const result = mode === 'signup'
-    ? await client.auth.signUp({ email: form.get('email'), password: form.get('password'), options: { emailRedirectTo: `${location.origin}${location.pathname}?email-confirmed=1#cart`, data: { company_name: String(form.get('company_name')).trim(), full_name: String(form.get('full_name')).trim(), buyer_type: 'company', cart_reminder_opt_in: form.get('cart_reminder_opt_in') === 'true' } } })
-    : await client.auth.signInWithPassword({ email: form.get('email'), password: form.get('password') });
-  status.textContent = result.error ? result.error.message : (mode === 'signup' ? 'If this address is new or still unconfirmed, a confirmation email has been requested. Already registered? Sign in instead.' : 'Signed in. Returning to your cart…');
-  if (!result.error && mode === 'signup') {
-    localStorage.setItem('lzn-awaiting-email-confirmation', '1');
-    const resend = document.querySelector('#authResend');
-    resend.hidden = false;
-    resend.dataset.email = String(form.get('email') || '').trim().toLowerCase();
-  }
-  if (!result.error && mode === 'signin') hide();
-}
-
-async function resendSignupConfirmation() {
-  const button = document.querySelector('#authResend');
-  const status = document.querySelector('#authStatus');
-  const email = button?.dataset.email;
-  if (!email) return;
-  button.disabled = true;
-  status.textContent = 'Requesting another confirmation email…';
-  const { error } = await client.auth.resend({ type: 'signup', email, options: { emailRedirectTo: `${location.origin}${location.pathname}?email-confirmed=1#cart` } });
-  status.textContent = error ? error.message : 'Confirmation email requested. Please check spam or junk folders too.';
-  setTimeout(() => { button.disabled = false; }, 180000);
 }
 
 async function profileView() {
