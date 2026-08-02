@@ -1848,6 +1848,28 @@
     toolOptionCurations["LZN-TL-" + model] = final6OptionOverrides[id];
   });
 
+  var remainingChineseOptionOverrides = {
+    "1014864659815": batch10Options("1014864659815", [
+      ["Black", "black"], ["Gunmetal", "gunmetal"], ["Gold", "gold"],
+      ["Silver", "silver"], ["Rose Gold", "rose-gold"]
+    ]),
+    "662993495475": batch10Options("662993495475", [
+      ["Single-Layer Basic White", "single-layer-basic-white"],
+      ["Two-Layer Classic Pink", "two-layer-classic-pink"],
+      ["Two-Layer Elegant White", "two-layer-elegant-white"],
+      ["Three-Layer Classic Pink", "three-layer-classic-pink"],
+      ["Three-Layer Elegant White", "three-layer-elegant-white"]
+    ])
+  };
+  ["1014864659815", "662993495475"].forEach(function (id, index) {
+    var model = ["1002", "1007"][index];
+    var options = remainingChineseOptionOverrides[id];
+    toolOptionCurations["LZN-" + id] = options;
+    toolOptionCurations["LZN-TL-" + model] = options;
+    originalCnCurations["LZN-" + id] = options.map(function (option) { return option.image; });
+    originalCnCurations["LZN-TL-" + model] = originalCnCurations["LZN-" + id];
+  });
+
   var toolProductCurations = {
     "LZN-594962368226": {
       nameEn: "Pen-Style Eyeglass Case",
@@ -1901,6 +1923,24 @@
     var model = ["1035", "1037", "1038", "1039", "1042", "1049"][index];
     toolProductCurations["LZN-" + id] = final6ProductOverrides[id];
     toolProductCurations["LZN-TL-" + model] = final6ProductOverrides[id];
+  });
+
+  var remainingChineseProductOverrides = {
+    "1014864659815": {
+      nameEn: "1 mm Single-Tooth Straight Temple Arms",
+      chineseName: "1 mm Single-Tooth Straight Temple Arms",
+      description: "Replacement 1 mm single-tooth straight temple arms in five metal finishes. Accessories are not included."
+    },
+    "662993495475": {
+      nameEn: "RGP Lens Care Storage Organizer",
+      chineseName: "RGP Lens Care Storage Organizer",
+      description: "Standalone countertop organizers for RGP lens care accessories, available in five shelf and color configurations. Accessories are not included."
+    }
+  };
+  ["1014864659815", "662993495475"].forEach(function (id, index) {
+    var model = ["1002", "1007"][index];
+    toolProductCurations["LZN-" + id] = remainingChineseProductOverrides[id];
+    toolProductCurations["LZN-TL-" + model] = remainingChineseProductOverrides[id];
   });
 
   var missingOptionImageCurations = {
@@ -2529,6 +2569,42 @@
     }
   ]
 };
+
+  function englishFrameOptions(id, entries) {
+    return entries.map(function (entry) {
+      return {
+        label: entry[0],
+        image: "/tools/assets/catalog/curated-20260802/english/" + id + "/" + entry[1] + ".webp"
+      };
+    });
+  }
+
+  var remainingChineseFrameOverrides = {
+    "674195459982": englishFrameOptions("674195459982", [
+      ["Black", "black"], ["Royal Blue", "royal-blue"], ["Clear Gray", "clear-gray"],
+      ["Clear White", "clear-white"], ["Clear Blue", "clear-blue"]
+    ]),
+    "612626259779": englishFrameOptions("612626259779", [
+      ["Clear Anti-Fog Safety Glasses", "clear-anti-fog"], ["Black Anti-Fog Safety Glasses", "black-anti-fog"],
+      ["Black Full-Cover Safety Glasses", "black-full-cover"], ["Blue Full-Cover Safety Glasses", "blue-full-cover"]
+    ]),
+    "603072046301": englishFrameOptions("603072046301", [
+      ["Clear", "clear"], ["Transparent Purple", "transparent-purple"],
+      ["Transparent Pink", "transparent-pink"], ["Transparent Brown", "transparent-brown"]
+    ]),
+    "616066567397": englishFrameOptions("616066567397", [
+      ["Black Frame / Dark Gray Lens", "black-dark-gray"], ["Black Frame / Gradient Gray Lens", "black-gradient-gray"],
+      ["Black Frame / Silver Mirror Lens", "black-silver-mirror"], ["Green Frame / Dark Gray Lens", "green-dark-gray"]
+    ]),
+    "735776235143": englishFrameOptions("735776235143", [
+      ["Glossy Black / Silver Mirror", "black-silver-mirror"], ["Glossy Black / Red-Yellow Mirror", "black-red-yellow-mirror"],
+      ["Glossy Black / Gray", "black-gray"], ["Glossy Black / Blue Mirror", "black-blue-mirror"],
+      ["Glossy Black / Yellow", "black-yellow"], ["Glossy Black / Green Mirror", "black-green-mirror"]
+    ])
+  };
+  Object.keys(remainingChineseFrameOverrides).forEach(function (id) {
+    frameCurations["LZN-" + id] = remainingChineseFrameOverrides[id];
+  });
 
   frameSeries.forEach(function (series) {
     (series.items || []).forEach(function (item) {

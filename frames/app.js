@@ -660,8 +660,11 @@ function openProduct(model, trigger=document.activeElement, { updateHistory=true
   </div>`;
   modal.classList.add('active'); modal.setAttribute('aria-hidden','false'); modal.setAttribute('aria-labelledby','productModalTitle'); document.body.style.overflow='hidden'; setPageInert(true);
   modal.querySelector('.modal-card').scrollTop = 0;
-  const preloadColors = () => p.colors.forEach(color => { const image = new Image(); image.decoding = 'async'; image.src = color.src; });
-  if ('requestIdleCallback' in window) requestIdleCallback(preloadColors, { timeout: 800 }); else setTimeout(preloadColors, 100);
+  const nextColor = p.colors[initialColorIndex + 1];
+  if (nextColor) {
+    const preloadNextColor = () => { const image = new Image(); image.decoding = 'async'; image.src = nextColor.src; };
+    if ('requestIdleCallback' in window) requestIdleCallback(preloadNextColor, { timeout: 2500 }); else setTimeout(preloadNextColor, 1200);
+  }
   renderDetailCartList(p.model);
   requestAnimationFrame(() => modal.querySelector('.close[data-close]')?.focus());
 }
