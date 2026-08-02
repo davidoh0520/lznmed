@@ -333,20 +333,13 @@ function cartView(){
   document.getElementById('checkoutButton')?.addEventListener('click',()=>session?checkoutView():authView(true));
 }
 function authView(returnToCart=false){
-  if(session){
-    showCommerce(`<p class="eyebrow">CUSTOMER ACCOUNT</p><h2>My Account</h2><p>Signed in as <strong>${e(session.user.email)}</strong></p><div class="commerce-actions stack"><button class="btn" id="ordersOpen">My Orders</button><button class="btn secondary" id="profileOpen">Edit Account & Shipping</button><button class="text-button" id="signOut">Sign Out</button></div>`);
-    document.getElementById('ordersOpen').onclick=ordersView;
-    document.getElementById('profileOpen').onclick=profileView;
-    document.getElementById('signOut').onclick=async()=>{await supabaseClient.auth.signOut();cartDialog.close();};
-    return;
-  }
   localStorage.setItem('lznLensReturnToCart',returnToCart?'1':'0');
-  showCommerce(window.LZNUnifiedAccount.render());
-  window.LZNUnifiedAccount.bind({
-    form:document.getElementById('lznUnifiedAuthForm'),
+  window.LZNUnifiedAccount.open({
     client:supabaseClient,
+    session,
     redirectTo:`${location.origin}${location.pathname}?email-confirmed=1#cart`,
-    onSignedIn:signedInSession=>{session=signedInSession||session;authView();}
+    onSignedIn:signedInSession=>{session=signedInSession||session;accountLabel();},
+    onSignedOut:()=>{session=null;accountLabel();}
   });
 }
 async function profileView(){
@@ -473,7 +466,7 @@ document.querySelectorAll('.filters button').forEach(btn=>btn.addEventListener('
 document.querySelector('#productModal .close').addEventListener('click',()=>modal.close());document.querySelector('#cartDialog .close').addEventListener('click',()=>cartDialog.close());document.getElementById('cartButton').addEventListener('click',cartView);accountButton.addEventListener('click',()=>authView());addOrderLine.addEventListener('click',addToCart);modal.addEventListener('click',x=>{if(x.target===modal)modal.close();});cartDialog.addEventListener('click',x=>{if(x.target===cartDialog)cartDialog.close();});
 saveCart();render();
 const emailConfirmationReturn=new URLSearchParams(location.search).get('email-confirmed')==='1'||location.hash.includes('type=signup')||(location.hash.includes('access_token=')&&localStorage.getItem('lznLensAwaitingEmailConfirmation')==='1');
-function emailConfirmedView(){localStorage.removeItem('lznLensAwaitingEmailConfirmation');history.replaceState({},'',`${location.pathname}#cart`);showCommerce(`<p class="eyebrow">EMAIL CONFIRMED</p><h2>Your company account is ready</h2><p>Your email address has been confirmed successfully. You are signed in as <strong>${e(session?.user?.email)}</strong>.</p><div class="commerce-actions"><button class="btn secondary" id="confirmedProfile">Complete Company Profile</button><button class="btn" id="confirmedCart">Continue to Cart</button></div>`);document.getElementById('confirmedProfile').onclick=profileView;document.getElementById('confirmedCart').onclick=cartView;}
+function emailConfirmedView(){localStorage.removeItem('lznLensAwaitingEmailConfirmation');history.replaceState({},'',location.pathname);authView();}
 if(supabaseClient){supabaseClient.auth.getSession().then(({data})=>{session=data.session;accountLabel();if(session&&emailConfirmationReturn){localStorage.removeItem('lznLensReturnToCart');setTimeout(emailConfirmedView,250);}});supabaseClient.auth.onAuthStateChange((event,newSession)=>{session=newSession;accountLabel();});}
 
 

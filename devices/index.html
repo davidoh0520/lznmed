@@ -19,7 +19,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="style.css?v=20260730-9" />
   <link rel="stylesheet" href="/tools/unified-theme.css?v=20260717-1">
-  <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260802-1">
+  <link rel="stylesheet" href="/tools/portfolio-shell.css?v=20260802-2">
   <link rel="stylesheet" href="/tools/marketplace-catalog.css?v=20260729-6">
 </head>
 <body>
@@ -198,18 +198,11 @@
     </section>
   </div>
 
-  <dialog id="accountDialog" class="account-dialog">
-    <button class="account-close" type="button" aria-label="Close">&times;</button>
-    <div id="accountBody"></div>
-  </dialog>
-
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/tools/address-profile.js?v=20260729-2"></script>
-  <script src="/tools/unified-account.js?v=20260802-1"></script>
+  <script src="/tools/unified-account.js?v=20260802-2"></script>
   <script>
     const accountClient = window.supabase.createClient('https://snyvexlqpxpqjswizszz.supabase.co', 'sb_publishable_wEQsmWUREF_lKiYm27jF_g_MlAEiomd');
-    const accountDialog = document.getElementById('accountDialog');
-    const accountBody = document.getElementById('accountBody');
     const accountButton = document.getElementById('accountButton');
     let accountSession = null;
     const accountEscape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -221,27 +214,20 @@
       accountButton.title = `Signed in as ${accountSession.user.email}`;
     }
     function showAccount() {
-      if (accountSession) {
-        accountBody.innerHTML = `<p class="eyebrow">MEMBER ACCOUNT</p><h2>My Account</h2><p>Signed in as <strong>${accountEscape(accountSession.user.email)}</strong></p><div class="account-actions"><a class="btn primary" href="/tools/?account=profile">Edit Account & Shipping</a><button class="btn secondary" id="accountSignOut">Sign Out</button></div>`;
-        document.getElementById('accountSignOut').onclick = async () => { await accountClient.auth.signOut(); accountDialog.close(); };
-      } else {
-        window.LZNUnifiedAccount.mount(accountBody, {
-          client: accountClient,
-          redirectTo: `${location.origin}${location.pathname}?email-confirmed=1`,
-          onSignedIn: signedInSession => { accountSession = signedInSession || accountSession; showAccount(); }
-        });
-      }
-      if (!accountDialog.open) accountDialog.showModal();
+      window.LZNUnifiedAccount.open({
+        client: accountClient,
+        session: accountSession,
+        redirectTo: `${location.origin}${location.pathname}?email-confirmed=1`,
+        onSignedIn: signedInSession => { accountSession = signedInSession || accountSession; updateAccountButton(); },
+        onSignedOut: () => { accountSession = null; updateAccountButton(); }
+      });
     }
     accountButton.addEventListener('click', showAccount);
-    document.querySelector('.account-close').addEventListener('click', () => accountDialog.close());
     const deviceEmailConfirmationReturn = new URLSearchParams(location.search).get('email-confirmed') === '1' || location.hash.includes('type=signup') || (location.hash.includes('access_token=') && localStorage.getItem('lznDevicesAwaitingEmailConfirmation') === '1');
     function showDeviceEmailConfirmed() {
       localStorage.removeItem('lznDevicesAwaitingEmailConfirmation');
       history.replaceState({}, '', location.pathname);
-      accountBody.innerHTML = `<p class="eyebrow">EMAIL CONFIRMED</p><h2>Your account is ready</h2><p>Your email address has been confirmed successfully. You are signed in as <strong>${accountEscape(accountSession?.user?.email)}</strong>.</p><button class="btn primary" id="confirmedDeviceClose">Continue</button>`;
-      document.getElementById('confirmedDeviceClose').onclick = () => accountDialog.close();
-      accountDialog.showModal();
+      showAccount();
     }
     accountClient.auth.getSession().then(({data}) => { accountSession = data.session; updateAccountButton(); if (accountSession && deviceEmailConfirmationReturn) setTimeout(showDeviceEmailConfirmed, 250); });
     accountClient.auth.onAuthStateChange((_event, session) => { accountSession = session; updateAccountButton(); });
