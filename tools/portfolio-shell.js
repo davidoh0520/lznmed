@@ -405,7 +405,7 @@
   const categoryMenus={
     www:[['Devices','#devices'],['Tools','#tools'],['Frames','#frames'],['Lens','#lens']],
     tools:catalogCategories.length?catalogCategories.filter(category=>!deviceCategoryIds.has(category.id)).map(category=>[category.en,`#/category/${category.id}`,category.items?.[0]?.image||'']):toolSeries,
-    devices:[...deviceToolSeries,['Unit Tables','#products','/devices/assets/ast1000_photo.webp'],['Lens Processing','#lens-processing','/devices/assets/lzn5_photo.webp'],['Vision Test','#vision-test','/devices/assets/cp6.webp'],['Digital Solutions','#digital-solutions','/devices/assets/cyclops_product.webp']],
+    devices:[...deviceToolSeries,['Unit Tables','#products','/devices/assets/ast1000_photo.webp'],['Lens Processing','#lens-processing','/devices/assets/lzn5_photo.webp'],['Vision Test','#vision-test','/devices/assets/cp1.webp'],['Digital Solutions','#digital-solutions','/devices/assets/cyclops_product.webp']],
     lens:[['All Lenses','all'],['Single Vision','single'],['Progressive','progressive'],['Semi-Finished','semi']],
     frames:[['All Frames','frame-series:all'],['Classic Browline','frame-series:86'],['Modern Browline','frame-series:87'],['Super Engineered Ultem','frame-series:ULTEM-TITANIUM'],['Lightweight Ultem','frame-series:LIGHT-ULTEM'],['Ultem-Ppsu Kids','frame-series:ULTEM-PPSU'],['Kids Myopia Control','frame-series:KIDS-CONTROL'],['Teen Ppsu Flex','frame-series:TEEN-PPSU']]
   };
