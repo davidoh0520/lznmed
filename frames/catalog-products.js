@@ -12,6 +12,7 @@
         "colors": [
           {
             "key": "lzn-fr-0001-01",
+            "code": "C01",
             "en": "Large - Matte Black",
             "ko": "Large - Matte Black",
             "src": "assets/catalog/FR-0001/english-frame-option-01.webp",
@@ -19,44 +20,40 @@
             "image": "assets/catalog/FR-0001/english-frame-option-01.webp"
           },
           {
-            "key": "lzn-fr-0001-02",
-            "en": "Large - Gloss Black",
-            "ko": "Large - Gloss Black",
+            "key": "lzn-fr-0001-03",
+            "code": "C03",
+            "en": "Large - Transparent Gray",
+            "ko": "Large - Transparent Gray",
             "src": "assets/catalog/FR-0001/english-frame-option-02.webp",
             "priceUsd": 2.56,
             "image": "assets/catalog/FR-0001/english-frame-option-02.webp"
           },
           {
-            "key": "lzn-fr-0001-03",
-            "en": "Large - Transparent Gray",
-            "ko": "Large - Transparent Gray",
+            "key": "lzn-fr-0001-04",
+            "code": "C04",
+            "en": "Medium - Gloss Black",
+            "ko": "Medium - Gloss Black",
             "src": "assets/catalog/FR-0001/english-frame-option-03.webp",
             "priceUsd": 2.56,
             "image": "assets/catalog/FR-0001/english-frame-option-03.webp"
           },
           {
-            "key": "lzn-fr-0001-04",
-            "en": "Medium - Gloss Black",
-            "ko": "Medium - Gloss Black",
+            "key": "lzn-fr-0001-05",
+            "code": "C05",
+            "en": "Medium - Transparent Gray",
+            "ko": "Medium - Transparent Gray",
             "src": "assets/catalog/FR-0001/english-frame-option-04.webp",
             "priceUsd": 2.56,
             "image": "assets/catalog/FR-0001/english-frame-option-04.webp"
           },
           {
-            "key": "lzn-fr-0001-05",
-            "en": "Medium - Transparent Gray",
-            "ko": "Medium - Transparent Gray",
+            "key": "lzn-fr-0001-06",
+            "code": "C06",
+            "en": "Medium - Gradient Gray",
+            "ko": "Medium - Gradient Gray",
             "src": "assets/catalog/FR-0001/english-frame-option-05.webp",
             "priceUsd": 2.56,
             "image": "assets/catalog/FR-0001/english-frame-option-05.webp"
-          },
-          {
-            "key": "lzn-fr-0001-06",
-            "en": "Medium - Gradient Gray",
-            "ko": "Medium - Gradient Gray",
-            "src": "assets/catalog/FR-0001/english-frame-option-01.webp",
-            "priceUsd": 2.56,
-            "image": "assets/catalog/FR-0001/english-frame-option-01.webp"
           }
         ],
         "productTitle": "Wide-Fit Blue-Light Filtering Optical Frame",
@@ -92,100 +89,103 @@
         "title": "assets/catalog/FR-0002/english-frame-option-01.webp",
         "colors": [
           {
-            "key": "lzn-fr-0002-01",
-            "en": "A - Black / Silver Mirror",
-            "ko": "A - Black / Silver Mirror",
+            "key": "lzn-fr-0002-02",
+            "code": "C02",
+            "en": "A - White / Silver Mirror",
+            "ko": "A - White / Silver Mirror",
             "src": "assets/catalog/FR-0002/english-frame-option-01.webp",
             "priceUsd": 10.71,
             "image": "assets/catalog/FR-0002/english-frame-option-01.webp"
           },
           {
-            "key": "lzn-fr-0002-02",
-            "en": "A - White / Silver Mirror",
-            "ko": "A - White / Silver Mirror",
+            "key": "lzn-fr-0002-03",
+            "code": "C03",
+            "en": "A - Black / Red Mirror",
+            "ko": "A - Black / Red Mirror",
             "src": "assets/catalog/FR-0002/english-frame-option-02.webp",
             "priceUsd": 10.71,
             "image": "assets/catalog/FR-0002/english-frame-option-02.webp"
           },
           {
-            "key": "lzn-fr-0002-03",
-            "en": "A - Black / Red Mirror",
-            "ko": "A - Black / Red Mirror",
+            "key": "lzn-fr-0002-04",
+            "code": "C04",
+            "en": "A - White / Red Mirror",
+            "ko": "A - White / Red Mirror",
             "src": "assets/catalog/FR-0002/english-frame-option-03.webp",
             "priceUsd": 10.71,
             "image": "assets/catalog/FR-0002/english-frame-option-03.webp"
           },
           {
-            "key": "lzn-fr-0002-04",
-            "en": "A - White / Red Mirror",
-            "ko": "A - White / Red Mirror",
+            "key": "lzn-fr-0002-05",
+            "code": "C05",
+            "en": "A - Black / Blue Mirror",
+            "ko": "A - Black / Blue Mirror",
             "src": "assets/catalog/FR-0002/english-frame-option-04.webp",
             "priceUsd": 10.71,
             "image": "assets/catalog/FR-0002/english-frame-option-04.webp"
           },
           {
-            "key": "lzn-fr-0002-05",
-            "en": "A - Black / Blue Mirror",
-            "ko": "A - Black / Blue Mirror",
+            "key": "lzn-fr-0002-06",
+            "code": "C06",
+            "en": "A - Black / Gray Lens",
+            "ko": "A - Black / Gray Lens",
             "src": "assets/catalog/FR-0002/english-frame-option-05.webp",
             "priceUsd": 10.71,
             "image": "assets/catalog/FR-0002/english-frame-option-05.webp"
           },
           {
-            "key": "lzn-fr-0002-06",
-            "en": "A - Black / Gray Lens",
-            "ko": "A - Black / Gray Lens",
+            "key": "lzn-fr-0002-07",
+            "code": "C07",
+            "en": "Polarized A - Black / Silver Mirror",
+            "ko": "Polarized A - Black / Silver Mirror",
             "src": "assets/catalog/FR-0002/english-frame-option-06.webp",
-            "priceUsd": 10.71,
+            "priceUsd": 14.53,
             "image": "assets/catalog/FR-0002/english-frame-option-06.webp"
           },
           {
-            "key": "lzn-fr-0002-07",
-            "en": "Polarized A - Black / Silver Mirror",
-            "ko": "Polarized A - Black / Silver Mirror",
+            "key": "lzn-fr-0002-08",
+            "code": "C08",
+            "en": "Polarized A - White / Rose Gold",
+            "ko": "Polarized A - White / Rose Gold",
             "src": "assets/catalog/FR-0002/english-frame-option-07.webp",
             "priceUsd": 14.53,
             "image": "assets/catalog/FR-0002/english-frame-option-07.webp"
           },
           {
-            "key": "lzn-fr-0002-08",
-            "en": "Polarized A - White / Rose Gold",
-            "ko": "Polarized A - White / Rose Gold",
+            "key": "lzn-fr-0002-09",
+            "code": "C09",
+            "en": "A - Black / Photochromic Clear-to-Gray",
+            "ko": "A - Black / Photochromic Clear-to-Gray",
             "src": "assets/catalog/FR-0002/english-frame-option-08.webp",
             "priceUsd": 14.53,
             "image": "assets/catalog/FR-0002/english-frame-option-08.webp"
           },
           {
-            "key": "lzn-fr-0002-09",
-            "en": "A - Black / Photochromic Clear-to-Gray",
-            "ko": "A - Black / Photochromic Clear-to-Gray",
+            "key": "lzn-fr-0002-10",
+            "code": "C10",
+            "en": "Over-Glasses - Black / Polarized Silver",
+            "ko": "Over-Glasses - Black / Polarized Silver",
             "src": "assets/catalog/FR-0002/english-frame-option-09.webp",
             "priceUsd": 14.53,
             "image": "assets/catalog/FR-0002/english-frame-option-09.webp"
           },
           {
-            "key": "lzn-fr-0002-10",
-            "en": "Over-Glasses - Black / Polarized Silver",
-            "ko": "Over-Glasses - Black / Polarized Silver",
+            "key": "lzn-fr-0002-11",
+            "code": "C11",
+            "en": "Over-Glasses - Black / Polarized Red",
+            "ko": "Over-Glasses - Black / Polarized Red",
             "src": "assets/catalog/FR-0002/english-frame-option-10.webp",
             "priceUsd": 14.53,
             "image": "assets/catalog/FR-0002/english-frame-option-10.webp"
           },
           {
-            "key": "lzn-fr-0002-11",
-            "en": "Over-Glasses - Black / Polarized Red",
-            "ko": "Over-Glasses - Black / Polarized Red",
-            "src": "assets/catalog/FR-0002/english-frame-option-11.webp",
-            "priceUsd": 14.53,
-            "image": "assets/catalog/FR-0002/english-frame-option-11.webp"
-          },
-          {
             "key": "lzn-fr-0002-12",
+            "code": "C12",
             "en": "B - White / Silver Mirror",
             "ko": "B - White / Silver Mirror",
-            "src": "assets/catalog/FR-0002/english-frame-option-01.webp",
+            "src": "assets/catalog/FR-0002/english-frame-option-11.webp",
             "priceUsd": 10.71,
-            "image": "assets/catalog/FR-0002/english-frame-option-01.webp"
+            "image": "assets/catalog/FR-0002/english-frame-option-11.webp"
           }
         ],
         "productTitle": "UV-Protective Outdoor Sports Sunglasses",
@@ -227,52 +227,49 @@
         "title": "assets/catalog/FR-0003/english-frame-option-01.webp",
         "colors": [
           {
-            "key": "lzn-fr-0003-01",
-            "en": "Aviator 3026A-C08 - Gray Black",
-            "ko": "Aviator 3026A-C08 - Gray Black",
+            "key": "lzn-fr-0003-02",
+            "code": "C02",
+            "en": "Square 1316A-C40 - Silver Gray",
+            "ko": "Square 1316A-C40 - Silver Gray",
             "src": "assets/catalog/FR-0003/english-frame-option-01.webp",
             "priceUsd": 0.76,
             "image": "assets/catalog/FR-0003/english-frame-option-01.webp"
           },
           {
-            "key": "lzn-fr-0003-02",
-            "en": "Square 1316A-C40 - Silver Gray",
-            "ko": "Square 1316A-C40 - Silver Gray",
+            "key": "lzn-fr-0003-03",
+            "code": "C03",
+            "en": "Square 1316A-C08 - Gray Black",
+            "ko": "Square 1316A-C08 - Gray Black",
             "src": "assets/catalog/FR-0003/english-frame-option-02.webp",
             "priceUsd": 0.76,
             "image": "assets/catalog/FR-0003/english-frame-option-02.webp"
           },
           {
-            "key": "lzn-fr-0003-03",
-            "en": "Square 1316A-C08 - Gray Black",
-            "ko": "Square 1316A-C08 - Gray Black",
+            "key": "lzn-fr-0003-04",
+            "code": "C04",
+            "en": "Polygon 8018A-GR - Gray Black",
+            "ko": "Polygon 8018A-GR - Gray Black",
             "src": "assets/catalog/FR-0003/english-frame-option-03.webp",
             "priceUsd": 0.76,
             "image": "assets/catalog/FR-0003/english-frame-option-03.webp"
           },
           {
-            "key": "lzn-fr-0003-04",
-            "en": "Polygon 8018A-GR - Gray Black",
-            "ko": "Polygon 8018A-GR - Gray Black",
+            "key": "lzn-fr-0003-05",
+            "code": "C05",
+            "en": "Polygon 8015A-SR - Silver Gray",
+            "ko": "Polygon 8015A-SR - Silver Gray",
             "src": "assets/catalog/FR-0003/english-frame-option-04.webp",
             "priceUsd": 0.76,
             "image": "assets/catalog/FR-0003/english-frame-option-04.webp"
           },
           {
-            "key": "lzn-fr-0003-05",
-            "en": "Polygon 8015A-SR - Silver Gray",
-            "ko": "Polygon 8015A-SR - Silver Gray",
+            "key": "lzn-fr-0003-06",
+            "code": "C06",
+            "en": "Square 8013A-C08 - Gray Black",
+            "ko": "Square 8013A-C08 - Gray Black",
             "src": "assets/catalog/FR-0003/english-frame-option-05.webp",
             "priceUsd": 0.76,
             "image": "assets/catalog/FR-0003/english-frame-option-05.webp"
-          },
-          {
-            "key": "lzn-fr-0003-06",
-            "en": "Square 8013A-C08 - Gray Black",
-            "ko": "Square 8013A-C08 - Gray Black",
-            "src": "assets/catalog/FR-0003/english-frame-option-01.webp",
-            "priceUsd": 0.76,
-            "image": "assets/catalog/FR-0003/english-frame-option-01.webp"
           }
         ],
         "productTitle": "Polarized Flip-Up Sunglasses Clip",

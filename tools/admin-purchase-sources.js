@@ -1680,38 +1680,33 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       null,
       null,
       null,
-      null,
       null
     ],
     "catalogPricesUsd": [
       2.98,
       2.98,
-      2.41,
       4.32,
       4.32
     ],
     "publicOptionModels": [
       "LZN-TL-0032-01",
       "LZN-TL-0032-02",
-      "LZN-TL-0032-03",
       "LZN-TL-0032-04",
       "LZN-TL-0032-05"
     ],
     "legacyOptionModels": [
       "LZN-976152256120-01",
       "LZN-976152256120-02",
-      "LZN-976152256120-03",
       "LZN-976152256120-04",
       "LZN-976152256120-05"
     ],
     "optionLabels": [
       "Wall-Mounted Felt Eyewear Display Board - Option 01 - Large White",
       "Wall-Mounted Felt Eyewear Display Board - Option 02 - Large Speckled Black",
-      "Small Speckled Black",
       "Wall-Mounted Felt Eyewear Display Board - Option 04 - White Large Small",
       "Speckled Black Large＋Small"
     ],
-    "verification": "Confirmed by five-item sampling on 28 Jul 2026"
+    "verification": "Image-backed options verified on 2 Aug 2026; the Small Speckled Black variant was removed because no matching option photo was available"
   },
   "LZN-TL-0033": {
     "publicModel": "LZN-TL-0033",
@@ -2194,30 +2189,25 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
     "store": "心悦轩眼镜配件",
     "optionPricesCny": [
       null,
-      null,
       null
     ],
     "catalogPricesUsd": [
       3.44,
-      2.68,
       1
     ],
     "publicOptionModels": [
       "LZN-TL-0041-01",
-      "LZN-TL-0041-02",
       "LZN-TL-0041-03"
     ],
     "legacyOptionModels": [
       "LZN-1046054732193-01",
-      "LZN-1046054732193-02",
       "LZN-1046054732193-03"
     ],
     "optionLabels": [
       "Soft Integrated Silicone Nose Pads - 5 Pieces with Installation Kit and Storage Case",
-      "Soft Integrated Silicone Nose Pads - 3 Pieces with Installation Kit and Storage Case",
       "Soft Integrated Silicone Nose Pad - 1 Piece, Bagged without Installation Kit"
     ],
-    "verification": "Captured from the original supplier export"
+    "verification": "Image-backed options verified on 2 Aug 2026; the three-piece kit was removed because no matching option photo was available"
   },
   "LZN-TL-0042": {
     "publicModel": "LZN-TL-0042",
@@ -3651,12 +3641,10 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       2.56,
       2.56,
       2.56,
-      2.56,
       2.56
     ],
     "publicOptionModels": [
       "LZN-FR-0001-C01",
-      "LZN-FR-0001-C02",
       "LZN-FR-0001-C03",
       "LZN-FR-0001-C04",
       "LZN-FR-0001-C05",
@@ -3664,7 +3652,6 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
     ],
     "legacyOptionModels": [
       "LZN-862311725634-C01",
-      "LZN-862311725634-C02",
       "LZN-862311725634-C03",
       "LZN-862311725634-C04",
       "LZN-862311725634-C05",
@@ -3672,13 +3659,12 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
     ],
     "optionLabels": [
       "Large - Matte Black",
-      "Large - Gloss Black",
       "Large - Transparent Gray",
       "Medium - Gloss Black",
       "Medium - Transparent Gray",
       "Medium - Gradient Gray"
     ],
-    "verification": "Confirmed by five-item sampling on 28 Jul 2026"
+    "verification": "Image-backed options verified on 2 Aug 2026; the Large Gloss Black variant was removed because no matching option photo was available"
   },
   "LZN-FR-0002": {
     "publicModel": "LZN-FR-0002",
@@ -3698,11 +3684,9 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       null,
       null,
       null,
-      null,
       null
     ],
     "catalogPricesUsd": [
-      10.71,
       10.71,
       10.71,
       10.71,
@@ -3716,7 +3700,6 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       10.71
     ],
     "publicOptionModels": [
-      "LZN-FR-0002-C01",
       "LZN-FR-0002-C02",
       "LZN-FR-0002-C03",
       "LZN-FR-0002-C04",
@@ -3730,7 +3713,6 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-FR-0002-C12"
     ],
     "legacyOptionModels": [
-      "LZN-932211252850-C01",
       "LZN-932211252850-C02",
       "LZN-932211252850-C03",
       "LZN-932211252850-C04",
@@ -3744,7 +3726,6 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-932211252850-C12"
     ],
     "optionLabels": [
-      "A - Black / Silver Mirror",
       "A - White / Silver Mirror",
       "A - Black / Red Mirror",
       "A - White / Red Mirror",
@@ -3757,7 +3738,7 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "Over-Glasses - Black / Polarized Red",
       "B - White / Silver Mirror"
     ],
-    "verification": "Confirmed by five-item sampling on 28 Jul 2026"
+    "verification": "Image-backed options verified on 2 Aug 2026; the A Black / Silver Mirror variant was removed because no matching option photo was available"
   },
   "LZN-FR-0003": {
     "publicModel": "LZN-FR-0003",
@@ -3771,7 +3752,6 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       null,
       null,
       null,
-      null,
       null
     ],
     "catalogPricesUsd": [
@@ -3779,11 +3759,9 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       0.76,
       0.76,
       0.76,
-      0.76,
       0.76
     ],
     "publicOptionModels": [
-      "LZN-FR-0003-C01",
       "LZN-FR-0003-C02",
       "LZN-FR-0003-C03",
       "LZN-FR-0003-C04",
@@ -3791,7 +3769,6 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-FR-0003-C06"
     ],
     "legacyOptionModels": [
-      "LZN-38215450306-C01",
       "LZN-38215450306-C02",
       "LZN-38215450306-C03",
       "LZN-38215450306-C04",
@@ -3799,13 +3776,12 @@ window.LZN_ADMIN_PURCHASE_SOURCES = {
       "LZN-38215450306-C06"
     ],
     "optionLabels": [
-      "Aviator 3026A-C08 - Gray Black",
       "Square 1316A-C40 - Silver Gray",
       "Square 1316A-C08 - Gray Black",
       "Polygon 8018A-GR - Gray Black",
       "Polygon 8015A-SR - Silver Gray",
       "Square 8013A-C08 - Gray Black"
     ],
-    "verification": "Confirmed by five-item sampling on 28 Jul 2026"
+    "verification": "Image-backed options verified on 2 Aug 2026; the Aviator 3026A-C08 variant was removed because no matching option photo was available"
   }
 };

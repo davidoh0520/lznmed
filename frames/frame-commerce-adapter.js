@@ -10,7 +10,7 @@ window.CATALOG_DATA = [{
       image: product.title,
       priceUsd,
       options: (product.colors || []).map((color, index) => {
-        const code = `C${String(index + 1).padStart(2, '0')}`;
+        const code = color.code || `C${String(index + 1).padStart(2, '0')}`;
         const colorPriceUsd = Number(color.priceUsd);
         return {
           model: `${product.model}-${code}`,

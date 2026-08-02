@@ -861,6 +861,23 @@
     "598559007116": ["white-deer-constellation", "pink-lily", "turquoise-cherry-blossom", "pink-polar-bear", "blue-floral-portrait", "pink-flamingo"],
     "610342838181": ["butterfly-gold", "five-bead-gold", "snake-chain-gold", "snake-chain-silver", "small-wave-gold", "lantern-gold", "star-gold", "handmade-star-gold", "small-two-bead-gold", "small-two-bead-silver", "multicolor-gem-gold", "multicolor-gem-silver", "d-charm-gold", "d-charm-silver", "large-two-bead-gold", "large-two-bead-silver", "round-ring-gold", "round-ring-silver", "double-ring-charm-gold", "double-ring-charm-silver", "five-star-silver", "pendant-ring-gold", "heart-charm-silver"]
   };
+
+  // Keep only variants with their own verified option photo. These products
+  // previously reused another option's image for a photo-less variant.
+  var imageBackedOptionModels = {
+    "LZN-TL-0032": new Set(["LZN-TL-0032-01", "LZN-TL-0032-02", "LZN-TL-0032-04", "LZN-TL-0032-05"]),
+    "LZN-TL-0041": new Set(["LZN-TL-0041-01", "LZN-TL-0041-03"])
+  };
+
+  (typeof CATALOG_DATA !== "undefined" ? CATALOG_DATA : []).forEach(function (category) {
+    (category.items || []).forEach(function (item) {
+      var allowedModels = imageBackedOptionModels[item.model];
+      if (!allowedModels) return;
+      item.options = (item.options || []).filter(function (option) {
+        return allowedModels.has(option.model);
+      });
+    });
+  });
   ["624275864051", "675276708992", "696035777060", "598559007116", "610342838181"].forEach(function (id, index) {
     var model = ["1025", "1026", "1027", "1031", "1032"][index];
     var gallery = batch10EnglishGalleries[id].map(function (name) {
@@ -2061,10 +2078,18 @@
     ? PRODUCT_SERIES
     : (window.PRODUCT_SERIES || []);
 
+  var excludedFrameModels = new Set([
+    "LZN-596588908212",
+    "LZN-611760273841",
+    "LZN-669933944096", "LZN-FR-1004",
+    "LZN-586908860585", "LZN-FR-1019",
+    "LZN-735776235143", "LZN-FR-1031"
+  ]);
+
   frameSeries.forEach(function (series) {
     series.items = (series.items || []).filter(function (item) {
-      return legacyModel(item) !== "LZN-596588908212" &&
-        legacyModel(item) !== "LZN-611760273841";
+      return !excludedFrameModels.has(legacyModel(item)) &&
+        !excludedFrameModels.has(String(item && item.model || ""));
     });
     cleanOptions(series.items, "colors");
   });
