@@ -854,6 +854,22 @@
   ]
 };
 
+  var batch10EnglishGalleries = {
+    "624275864051": ["matte-black", "gloss-black"],
+    "675276708992": ["blue", "orange"],
+    "696035777060": ["5mm-matte-black", "5mm-clear", "5mm-gloss-black", "6mm-matte-black", "6mm-clear", "6mm-gloss-black", "6-5mm-matte-black", "6-5mm-clear", "6-5mm-gloss-black", "7mm-matte-black", "7mm-clear", "7mm-gloss-black"],
+    "598559007116": ["white-deer-constellation", "pink-lily", "turquoise-cherry-blossom", "pink-polar-bear", "blue-floral-portrait", "pink-flamingo"],
+    "610342838181": ["butterfly-gold", "five-bead-gold", "snake-chain-gold", "snake-chain-silver", "small-wave-gold", "lantern-gold", "star-gold", "handmade-star-gold", "small-two-bead-gold", "small-two-bead-silver", "multicolor-gem-gold", "multicolor-gem-silver", "d-charm-gold", "d-charm-silver", "large-two-bead-gold", "large-two-bead-silver", "round-ring-gold", "round-ring-silver", "double-ring-charm-gold", "double-ring-charm-silver", "five-star-silver", "pendant-ring-gold", "heart-charm-silver"]
+  };
+  ["624275864051", "675276708992", "696035777060", "598559007116", "610342838181"].forEach(function (id, index) {
+    var model = ["1025", "1026", "1027", "1031", "1032"][index];
+    var gallery = batch10EnglishGalleries[id].map(function (name) {
+      return "/tools/assets/catalog/curated-20260802/english/" + id + "/" + name + ".webp";
+    });
+    originalCnCurations["LZN-" + id] = gallery;
+    originalCnCurations["LZN-TL-" + model] = gallery;
+  });
+
   var toolOptionCurations = {
     "LZN-651195961829": [
       {
@@ -1734,6 +1750,48 @@
     ]
   };
 
+  function batch10Options(id, entries) {
+    return entries.map(function (entry, index) {
+      return {
+        label: "Option " + String(index + 1).padStart(2, "0") + " - " + entry[0],
+        image: "/tools/assets/catalog/curated-20260802/english/" + id + "/" + entry[1] + ".webp"
+      };
+    });
+  }
+  var batch10OptionOverrides = {
+    "624275864051": batch10Options("624275864051", [
+      ["Matte Black - 140 x 8 mm", "matte-black"],
+      ["Gloss Black - 140 x 8 mm", "gloss-black"]
+    ]),
+    "675276708992": batch10Options("675276708992", [
+      ["Blue - 1 Piece", "blue"],
+      ["Orange - 1 Piece", "orange"]
+    ]),
+    "696035777060": batch10Options("696035777060", [
+      ["5 mm Matte Black - 1 Pair", "5mm-matte-black"], ["5 mm Clear - 1 Pair", "5mm-clear"], ["5 mm Glossy Black - 1 Pair", "5mm-gloss-black"],
+      ["6 mm Matte Black - 1 Pair", "6mm-matte-black"], ["6 mm Clear - 1 Pair", "6mm-clear"], ["6 mm Glossy Black - 1 Pair", "6mm-gloss-black"],
+      ["6.5 mm Matte Black - 1 Pair", "6-5mm-matte-black"], ["6.5 mm Clear - 1 Pair", "6-5mm-clear"], ["6.5 mm Glossy Black - 1 Pair", "6-5mm-gloss-black"],
+      ["7 mm Matte Black - 1 Pair", "7mm-matte-black"], ["7 mm Clear - 1 Pair", "7mm-clear"], ["7 mm Glossy Black - 1 Pair", "7mm-gloss-black"]
+    ]),
+    "598559007116": batch10Options("598559007116", [
+      ["White Deer Constellation Set", "white-deer-constellation"], ["Pink Lily Set", "pink-lily"], ["Turquoise Cherry Blossom Set", "turquoise-cherry-blossom"],
+      ["Pink Polar Bear Set", "pink-polar-bear"], ["Blue Floral Portrait Set", "blue-floral-portrait"], ["Pink Flamingo Set", "pink-flamingo"]
+    ]),
+    "610342838181": batch10Options("610342838181", [
+      ["Butterfly Chain - Gold", "butterfly-gold"], ["Five-Bead Chain - Gold", "five-bead-gold"], ["Snake Chain - Gold", "snake-chain-gold"], ["Snake Chain - Silver", "snake-chain-silver"],
+      ["Small Wave Chain - Gold", "small-wave-gold"], ["Lantern Chain - Gold", "lantern-gold"], ["Star Chain - Gold", "star-gold"], ["Handmade Star Chain - Gold", "handmade-star-gold"],
+      ["Small Two-Bead Chain - Gold", "small-two-bead-gold"], ["Small Two-Bead Chain - Silver", "small-two-bead-silver"], ["Multicolor Gem Chain - Gold", "multicolor-gem-gold"], ["Multicolor Gem Chain - Silver", "multicolor-gem-silver"],
+      ["D Charm Chain - Gold", "d-charm-gold"], ["D Charm Chain - Silver", "d-charm-silver"], ["Large Two-Bead Chain - Gold", "large-two-bead-gold"], ["Large Two-Bead Chain - Silver", "large-two-bead-silver"],
+      ["Round Ring Chain - Gold", "round-ring-gold"], ["Round Ring Chain - Silver", "round-ring-silver"], ["Double-Ring Charm Chain - Gold", "double-ring-charm-gold"], ["Double-Ring Charm Chain - Silver", "double-ring-charm-silver"],
+      ["Five-Star Chain - Silver", "five-star-silver"], ["Pendant Ring Chain - Gold", "pendant-ring-gold"], ["Heart Charm Chain - Silver", "heart-charm-silver"]
+    ])
+  };
+  ["624275864051", "675276708992", "696035777060", "598559007116", "610342838181"].forEach(function (id, index) {
+    var model = ["1025", "1026", "1027", "1031", "1032"][index];
+    toolOptionCurations["LZN-" + id] = batch10OptionOverrides[id];
+    toolOptionCurations["LZN-TL-" + model] = batch10OptionOverrides[id];
+  });
+
   var toolProductCurations = {
     "LZN-594962368226": {
       nameEn: "Pen-Style Eyeglass Case",
@@ -1761,6 +1819,19 @@
       description: "Round-hole temple sleeves for 1.4 mm temple cores, offered in multiple end styles."
     }
   };
+
+  var batch10ProductOverrides = {
+    "624275864051": { nameEn: "Universal Straight-Tooth Temple Arms", chineseName: "Universal Straight-Tooth Temple Arms", description: "Replacement 140 mm straight-tooth temple arms in matte and gloss black finishes." },
+    "675276708992": { nameEn: "Screw-Fastened Silicone Ear Hooks", chineseName: "Screw-Fastened Silicone Ear Hooks", description: "Adjustable silicone ear hooks with screw-fastened attachment points, available in blue and orange." },
+    "696035777060": { nameEn: "Universal Replacement Temple Arms", chineseName: "Universal Replacement Temple Arms", description: "1.2 mm single-tooth replacement temple arms in four widths and three finishes." },
+    "598559007116": { nameEn: "Eyeglass Pouch and Cleaning Cloth Set", chineseName: "Eyeglass Pouch and Cleaning Cloth Set", description: "Coordinated soft eyeglass pouch and cleaning cloth sets in six printed designs; no cleaning liquid included." },
+    "610342838181": { nameEn: "Decorative Eyeglass Chain", chineseName: "Decorative Eyeglass Chain", description: "Decorative eyeglass chains in gold and silver finishes with bead, star, ring, and charm designs." }
+  };
+  ["624275864051", "675276708992", "696035777060", "598559007116", "610342838181"].forEach(function (id, index) {
+    var model = ["1025", "1026", "1027", "1031", "1032"][index];
+    toolProductCurations["LZN-" + id] = batch10ProductOverrides[id];
+    toolProductCurations["LZN-TL-" + model] = batch10ProductOverrides[id];
+  });
 
   var missingOptionImageCurations = {
     "3T-1456": [
