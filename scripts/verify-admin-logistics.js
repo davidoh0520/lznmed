@@ -46,8 +46,22 @@ window.supabase={createClient:()=>({
   await estimatedFrame.locator('xpath=ancestor::tr').click();
   if (await page.locator('[name="package_weight_kg"]').inputValue() !== '0.18') throw new Error('Frame estimate was not prefilled.');
   if (!(await page.locator('[name="notes"]').inputValue()).startsWith('[ESTIMATED]')) throw new Error('Frame estimate was not labeled.');
+  await page.locator('[data-close-drawer]').first().click();
+
+  await page.locator('#addLogistics').click();
+  if (await page.locator('#logisticsStore').inputValue() !== '') throw new Error('New logistics editor should require a product family selection.');
+  await page.locator('#logisticsStore').selectOption('Devices');
+  if (await page.locator('#logisticsModel option').count() !== 106) throw new Error('Device model selector does not contain all 105 device models.');
+  await page.locator('#logisticsModel').selectOption('MC-S');
+  if (await page.locator('#logisticsProductName').inputValue() !== 'Motorized Examination Chair') throw new Error('Device product name did not fill automatically.');
+  if (await page.locator('[name="package_weight_kg"]').inputValue() !== '') throw new Error('Device without catalog weight was estimated in the add form.');
+  await page.locator('#logisticsStore').selectOption('Frames');
+  const firstFrame = await page.locator('#logisticsModel option').nth(1).getAttribute('value');
+  await page.locator('#logisticsModel').selectOption(firstFrame);
+  if (!(await page.locator('#logisticsProductName').inputValue())) throw new Error('Frame product name did not fill automatically.');
+  if (await page.locator('[name="package_weight_kg"]').inputValue() !== '0.18') throw new Error('Frame estimate did not follow the selected model.');
 
   if (errors.length) throw new Error(`Page errors: ${errors.join('; ')}`);
-  console.log(`Admin logistics verified: ${total} products; device weights stay manual; frame estimates prefill correctly.`);
+  console.log(`Admin logistics verified: ${total} products; family/model selection fills names; device weights stay manual; frame estimates prefill correctly.`);
   await browser.close();
 })().catch(error => { console.error(error); process.exit(1); });
