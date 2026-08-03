@@ -26,6 +26,10 @@ window.supabase={createClient:()=>({
   page.on('pageerror', error => errors.push(error.message));
   await page.route('**/cdn.jsdelivr.net/npm/@supabase/supabase-js@2', route => route.fulfill({ contentType: 'text/javascript', body: supabaseStub }));
   await page.route('**/cdn.jsdelivr.net/npm/jspdf**', route => route.fulfill({ contentType: 'text/javascript', body: 'window.jspdf={jsPDF:function(){}};' }));
+  await page.route('**/admin-logistics-catalog.js*', route => {
+    if (!route.request().url().includes('reload=')) return route.fulfill({ contentType: 'text/javascript', body: '/* Simulate a cached empty response. */' });
+    return route.continue();
+  });
   await page.goto('http://127.0.0.1:8765/tools/admin.html', { waitUntil: 'domcontentloaded' });
   await page.locator('[data-tab="logistics"]').click();
   await page.locator('#logisticsBody tr').first().waitFor();
