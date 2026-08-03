@@ -35,7 +35,7 @@ window.supabase={createClient:()=>({
   await page.locator('#logisticsBody tr').first().waitFor();
 
   const total = await page.locator('#logisticsBody tr[data-logistics-model]').count();
-  if (total !== 383) throw new Error(`Expected 383 catalog rows, found ${total}.`);
+  if (total !== 2009) throw new Error(`Expected 2009 root and option-level catalog rows, found ${total}.`);
 
   await page.locator('#logisticsSearch').fill('MC-S');
   await page.locator('#logisticsBody tr[data-logistics-model="MC-S"]').click();
@@ -55,7 +55,7 @@ window.supabase={createClient:()=>({
   await page.locator('#addLogistics').click();
   if (await page.locator('#logisticsStore').inputValue() !== '') throw new Error('New logistics editor should require a product family selection.');
   await page.locator('#logisticsStore').selectOption('Devices');
-  if (await page.locator('#logisticsModel option').count() !== 106) throw new Error('Device model selector does not contain all 105 device models.');
+  if (await page.locator('#logisticsModel option').count() !== 228) throw new Error('Device model selector does not contain all 227 root and option-level device models.');
   await page.locator('#logisticsModel').selectOption('MC-S');
   if (await page.locator('#logisticsProductName').inputValue() !== 'Motorized Examination Chair') throw new Error('Device product name did not fill automatically.');
   if (await page.locator('[name="package_weight_kg"]').inputValue() !== '') throw new Error('Device without catalog weight was estimated in the add form.');
