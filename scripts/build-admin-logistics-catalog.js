@@ -20,6 +20,35 @@ function deviceProducts() {
   );
 }
 
+function decodeHtml(value) {
+  return String(value || '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&#39;/gi, "'")
+    .replace(/&quot;/gi, '"')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function legacyDeviceProducts() {
+  const html = read('devices/index.html');
+  const products = [];
+  const cardPattern = /<(button|article)\b([^>]*)>([\s\S]*?)<\/\1>/gi;
+  for (const match of html.matchAll(cardPattern)) {
+    const attributes = match[2];
+    if (!/class=(?:"[^"]*\bproduct-card\b[^"]*"|'[^']*\bproduct-card\b[^']*')/i.test(attributes)) continue;
+    const body = match[3];
+    const heading = body.match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/i)?.[1];
+    const title = attributes.match(/data-title=(?:"([^"]*)"|'([^']*)')/i);
+    const model = decodeHtml(heading || title?.[1] || title?.[2]);
+    if (!model) continue;
+    const description = body.match(/<p\b[^>]*>([\s\S]*?)<\/p>/i)?.[1];
+    products.push({ model, nameEn: decodeHtml(description) || model, category: 'legacy-device' });
+  }
+  return products;
+}
+
 function toolProducts() {
   const context = browserContext();
   vm.runInContext(read('tools/products.js'), context);
@@ -125,6 +154,10 @@ const products = [
   // Devices are also present in the shared tools catalog. Keep this later so
   // the dedicated device classification wins when models overlap.
   ...deviceProducts().flatMap(product => compactProductModels(product, 'Devices')),
+  // Older device sections (including unit tables) are rendered directly in
+  // devices/index.html and may intentionally have no catalog price. They are
+  // still physical products and must be available for logistics entry.
+  ...legacyDeviceProducts().flatMap(product => compactProductModels(product, 'Devices')),
   ...frameProducts().flatMap(product => compactProductModels(product, 'Frames')),
   ...lensProducts().flatMap(product => compactProductModels(product, 'Lenses'))
 ].filter(product => product.model);
