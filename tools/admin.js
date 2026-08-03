@@ -9,6 +9,7 @@ const detail = document.querySelector('#orderDetail');
 const sfFreight = window.LZN_SF_FREIGHT;
 const purchaseSourceData = window.LZN_ADMIN_PURCHASE_SOURCES || {};
 const catalogProducts = (window.CATALOG_DATA || []).flatMap(category => category.items || []);
+const logisticsCatalog = window.LZN_ADMIN_LOGISTICS_CATALOG || [];
 const money = value => `USD ${Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const cny = value => `CNY ${Number(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const itemPriceOnRequest = item => /price on request/i.test(String(item?.product_name || '')) && Number(item?.unit_price_usd || 0) <= 0;
@@ -49,6 +50,76 @@ function purchaseSourceEntryForModel(model) {
 
 function catalogProductForModel(model) {
   return catalogProducts.find(product => product.model === model || (product.options || []).some(option => option.model === model)) || null;
+}
+
+const SMALL_ACCESSORY_PATTERN = /\b(?:nose pad|screw|chain|strap|retainer|cloth|cleaning cloth|suction remover|bottle|clip|temple tip|ear hook|repair kit|cord|holder|case|pouch)\b/i;
+
+function suggestedLogistics(product) {
+  if (!product) return null;
+  const base = {
+    model: product.model,
+    product_name: product.product_name,
+    store_section: product.store_section
+  };
+  const catalogDimensions = product.catalog_package_dimensions_cm || [];
+  if (positiveNumber(product.catalog_package_weight_kg)) {
+    return {
+      ...base,
+      package_weight_kg: product.catalog_package_weight_kg,
+      package_length_cm: catalogDimensions[0] || null,
+      package_width_cm: catalogDimensions[1] || null,
+      package_height_cm: catalogDimensions[2] || null,
+      units_per_carton: product.catalog_units_per_carton || null,
+      carton_weight_kg: product.catalog_carton_weight_kg || null,
+      carton_length_cm: product.catalog_carton_dimensions_cm?.[0] || null,
+      carton_width_cm: product.catalog_carton_dimensions_cm?.[1] || null,
+      carton_height_cm: product.catalog_carton_dimensions_cm?.[2] || null,
+      notes: '[CATALOG VALUE] Imported from the product catalog. Confirm when supplier packing changes.',
+      _suggestion: 'catalog'
+    };
+  }
+  if (product.store_section === 'Frames') {
+    return {
+      ...base,
+      unit_weight_kg: 0.035,
+      package_weight_kg: 0.18,
+      package_length_cm: 18,
+      package_width_cm: 8,
+      package_height_cm: 6,
+      notes: '[ESTIMATED] Typical single frame with protective retail packaging. Replace with measured values when available.',
+      _suggestion: 'estimated'
+    };
+  }
+  const accessoryText = `${product.category || ''} ${product.product_name || ''}`;
+  if (product.store_section === 'Tools' && SMALL_ACCESSORY_PATTERN.test(accessoryText)) {
+    const isCase = /\b(?:case|pouch|holder)\b/i.test(accessoryText);
+    return {
+      ...base,
+      unit_weight_kg: isCase ? 0.08 : 0.03,
+      package_weight_kg: isCase ? 0.18 : 0.08,
+      package_length_cm: isCase ? 18 : 15,
+      package_width_cm: isCase ? 9 : 10,
+      package_height_cm: isCase ? 7 : 3,
+      notes: '[ESTIMATED] Typical small accessory packing. Replace with measured values when available.',
+      _suggestion: 'estimated'
+    };
+  }
+  return null;
+}
+
+function allLogisticsRows() {
+  const savedByModel = new Map(productLogistics.map(item => [String(item.model).toUpperCase(), item]));
+  const catalogRows = logisticsCatalog.map(product => {
+    const saved = savedByModel.get(product.model);
+    if (saved) {
+      savedByModel.delete(product.model);
+      return { ...saved, _catalog: product, _state: /\[ESTIMATED\]/i.test(saved.notes || '') ? 'estimated' : 'saved' };
+    }
+    const suggestion = suggestedLogistics(product);
+    return { ...(suggestion || product), _catalog: product, _state: suggestion?._suggestion || 'manual' };
+  });
+  return [...catalogRows, ...[...savedByModel.values()].map(item => ({ ...item, _state: 'saved' }))]
+    .sort((first, second) => `${first.store_section} ${first.model}`.localeCompare(`${second.store_section} ${second.model}`));
 }
 
 function purchaseInfoForModel(model) {
@@ -490,7 +561,7 @@ function renderSummary() {
     <div class="summary-card"><span>Members</span><strong>${members.length}</strong></div>
     <div class="summary-card"><span>Total orders</span><strong>${orders.length}</strong></div>
     <div class="summary-card"><span>Open orders</span><strong>${open}</strong></div>
-    <div class="summary-card"><span>Logistics records</span><strong>${logisticsTableReady ? productLogistics.length : 'Setup'}</strong><small>${logisticsTableReady ? 'Available for freight estimates' : 'SQL table required'}</small></div>
+    <div class="summary-card"><span>Logistics coverage</span><strong>${logisticsTableReady ? `${productLogistics.length}/${logisticsCatalog.length}` : 'Setup'}</strong><small>${logisticsTableReady ? 'Saved / catalog products' : 'SQL table required'}</small></div>
     <div class="summary-card"><span>Paid order value</span><strong>${money(paid)}</strong><small>${awaitingPayment} awaiting payment</small></div>`;
 }
 
@@ -567,17 +638,22 @@ function renderLogistics() {
     return;
   }
   note.classList.remove('setup-required');
-  note.textContent = 'Shipment estimates use full-carton data first, then individual package data for the remaining quantity. Chargeable weight is the greater of actual weight and volume weight.';
+  const rows = allLogisticsRows();
+  const savedCount = rows.filter(item => ['saved', 'estimated'].includes(item._state) && productLogistics.some(saved => saved.model === item.model)).length;
+  const suggestedCount = rows.filter(item => item._state === 'estimated' && !productLogistics.some(saved => saved.model === item.model)).length;
+  const manualCount = rows.filter(item => item._state === 'manual').length;
+  note.innerHTML = `<strong>${e(savedCount)} saved</strong> · ${e(suggestedCount)} estimated defaults ready to review · <strong>${e(manualCount)} require manual input</strong>. Devices without catalog packing data are never estimated.`;
   const query = search.value.trim().toLowerCase();
-  const filtered = productLogistics.filter(item => !query || `${item.model} ${item.product_name || ''} ${item.store_section || ''} ${item.notes || ''}`.toLowerCase().includes(query));
+  const filtered = rows.filter(item => !query || `${item.model} ${item.product_name || ''} ${item.store_section || ''} ${item.notes || ''} ${item._state || ''}`.toLowerCase().includes(query));
   body.innerHTML = filtered.length ? filtered.map(item => {
     const productSize = dimensionText(item, 'product');
     const packageSize = dimensionText(item, 'package');
     const cartonSize = dimensionText(item, 'carton');
     const packageWeight = positiveNumber(item.package_weight_kg) || positiveNumber(item.unit_weight_kg);
     const estimate = unitChargeableWeight(item);
+    const stateLabel = item._state === 'manual' ? 'Manual input required' : item._state === 'estimated' ? 'Estimated weight' : item._state === 'catalog' ? 'Catalog packing value' : 'Saved record';
     return `<tr data-logistics-model="${e(item.model)}">
-      <td><strong>${e(item.model)}</strong><br><small>${e(item.product_name || 'Product name not entered')}</small></td>
+      <td><strong>${e(item.model)}</strong><br><small>${e(item.product_name || 'Product name not entered')}</small><span class="logistics-state state-${e(item._state)}">${e(stateLabel)}</span></td>
       <td><span class="status">${e(item.store_section || 'Other')}</span></td>
       <td>${productSize ? `<strong>${e(productSize)}</strong>` : '<span class="missing-value">Not entered</span>'}${item.unit_weight_kg ? `<small>Net ${e(item.unit_weight_kg)} kg</small>` : ''}</td>
       <td>${packageSize ? `<strong>${e(packageSize)}</strong>` : '<span class="missing-value">Size missing</span>'}<small>${packageWeight ? `${e(packageWeight)} kg gross` : '<span class="missing-value">Weight missing</span>'}</small></td>
@@ -611,12 +687,16 @@ function openLogisticsEditor(model = '') {
     return;
   }
   const record = productLogistics.find(item => item.model === model) || null;
-  const value = field => record?.[field] ?? '';
-  const storeOptions = ['Devices','Tools','Frames','Lenses','Other'].map(store => `<option value="${store}" ${(record?.store_section || 'Devices') === store ? 'selected' : ''}>${store}</option>`).join('');
+  const catalogProduct = logisticsCatalog.find(item => item.model === model) || null;
+  const suggestion = record ? null : suggestedLogistics(catalogProduct);
+  const draft = record || suggestion || catalogProduct || null;
+  const value = field => draft?.[field] ?? '';
+  const modelLocked = Boolean(record || catalogProduct);
+  const storeOptions = ['Devices','Tools','Frames','Lenses','Other'].map(store => `<option value="${store}" ${(draft?.store_section || 'Devices') === store ? 'selected' : ''}>${store}</option>`).join('');
   detail.innerHTML = `
-    <div class="detail-head"><p class="eyebrow">Product logistics</p><h2>${e(record?.model || 'Add product')}</h2><p>Saved separately from the customer-facing catalog and used for freight estimates.</p></div>
+    <div class="detail-head"><p class="eyebrow">Product logistics</p><h2>${e(draft?.model || 'Add product')}</h2><p>${suggestion?._suggestion === 'estimated' ? 'Estimated packing values are prefilled. Review and save them, then replace them after weighing the actual product.' : catalogProduct?.store_section === 'Devices' && !record ? 'This device has no catalog weight. Enter the measured or supplier-confirmed packing data manually.' : 'Saved separately from the customer-facing catalog and used for freight estimates.'}</p></div>
     <form id="logisticsForm" class="form-grid">
-      <label>Model<input class="${record ? 'model-locked' : ''}" name="model" required ${record ? 'readonly' : ''} value="${e(value('model'))}" placeholder="e.g. LY-21C"></label>
+      <label>Model<input class="${modelLocked ? 'model-locked' : ''}" name="model" required ${modelLocked ? 'readonly' : ''} value="${e(value('model'))}" placeholder="e.g. LY-21C"></label>
       <label>Store / product family<select name="store_section">${storeOptions}</select></label>
       <label class="wide">Product name<input name="product_name" value="${e(value('product_name'))}" placeholder="English product name"></label>
       <section class="logistics-form-section wide"><h3>Product itself</h3>
