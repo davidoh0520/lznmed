@@ -9,7 +9,7 @@ const detail = document.querySelector('#orderDetail');
 const sfFreight = window.LZN_SF_FREIGHT;
 const purchaseSourceData = window.LZN_ADMIN_PURCHASE_SOURCES || {};
 const catalogProducts = (window.CATALOG_DATA || []).flatMap(category => category.items || []);
-const logisticsCatalog = window.LZN_ADMIN_LOGISTICS_CATALOG || [];
+let logisticsCatalog = window.LZN_ADMIN_LOGISTICS_CATALOG || [];
 const money = value => `USD ${Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const cny = value => `CNY ${Number(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const itemPriceOnRequest = item => /price on request/i.test(String(item?.product_name || '')) && Number(item?.unit_price_usd || 0) <= 0;
@@ -120,6 +120,23 @@ function allLogisticsRows() {
   });
   return [...catalogRows, ...[...savedByModel.values()].map(item => ({ ...item, _state: 'saved' }))]
     .sort((first, second) => `${first.store_section} ${first.model}`.localeCompare(`${second.store_section} ${second.model}`));
+}
+
+async function ensureLogisticsCatalog() {
+  if (logisticsCatalog.length) return true;
+  try {
+    await new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = `admin-logistics-catalog.js?v=20260803-2&reload=${Date.now()}`;
+      script.onload = resolve;
+      script.onerror = () => reject(new Error('Unable to reload the product logistics catalog.'));
+      document.head.appendChild(script);
+    });
+    logisticsCatalog = window.LZN_ADMIN_LOGISTICS_CATALOG || [];
+  } catch (error) {
+    console.error(error);
+  }
+  return logisticsCatalog.length > 0;
 }
 
 function purchaseInfoForModel(model) {
@@ -480,6 +497,10 @@ async function routeSession() {
   }
   showOnly(dashboard);
   document.querySelector('#adminIdentity').textContent = `Signed in as ${session.user.email}`;
+  const catalogReady = await ensureLogisticsCatalog();
+  if (!catalogReady) {
+    document.querySelector('#adminIdentity').textContent = 'Product model list could not be loaded. Refresh the page before adding logistics records.';
+  }
   await loadData();
 }
 
