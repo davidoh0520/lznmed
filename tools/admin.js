@@ -130,7 +130,7 @@ async function ensureLogisticsCatalog() {
       // The production Admin is served at /admin/ while its assets live under
       // /tools/. Use an absolute asset path so the recovery request does not
       // incorrectly resolve to /admin/admin-logistics-catalog.js.
-      script.src = `/tools/admin-logistics-catalog.js?v=20260803-3&reload=${Date.now()}`;
+      script.src = `/tools/admin-logistics-catalog.js?v=20260803-4&reload=${Date.now()}`;
       script.onload = resolve;
       script.onerror = () => reject(new Error('Unable to reload the product logistics catalog.'));
       document.head.appendChild(script);
