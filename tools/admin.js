@@ -667,6 +667,16 @@ function logisticsNumberInput(name, label, value, step = '0.01') {
   return `<label>${e(label)}<input name="${e(name)}" type="number" min="0" step="${e(step)}" value="${e(value ?? '')}"></label>`;
 }
 
+function logisticsModelOptions(store, selectedModel = '') {
+  const products = logisticsCatalog.filter(product => product.store_section === store);
+  const selectedExists = products.some(product => product.model === selectedModel);
+  return [
+    '<option value="">Choose a model</option>',
+    ...(!selectedExists && selectedModel ? [`<option value="${e(selectedModel)}" selected>${e(selectedModel)}</option>`] : []),
+    ...products.map(product => `<option value="${e(product.model)}" ${product.model === selectedModel ? 'selected' : ''}>${e(product.model)} — ${e(product.product_name)}</option>`)
+  ].join('');
+}
+
 function updateLogisticsPreview(form) {
   const preview = document.querySelector('#logisticsPreview');
   if (!preview || !form) return;
@@ -691,14 +701,20 @@ function openLogisticsEditor(model = '') {
   const suggestion = record ? null : suggestedLogistics(catalogProduct);
   const draft = record || suggestion || catalogProduct || null;
   const value = field => draft?.[field] ?? '';
-  const modelLocked = Boolean(record || catalogProduct);
-  const storeOptions = ['Devices','Tools','Frames','Lenses','Other'].map(store => `<option value="${store}" ${(draft?.store_section || 'Devices') === store ? 'selected' : ''}>${store}</option>`).join('');
+  const selectedStore = draft?.store_section || '';
+  const isCustomRecord = Boolean(record && !catalogProduct);
+  const storeOptions = ['Devices','Tools','Frames','Lenses','Other'].map(store => `<option value="${store}" ${selectedStore === store ? 'selected' : ''}>${store}</option>`).join('');
+  const lockedCatalogFields = record && catalogProduct ? 'disabled' : '';
   detail.innerHTML = `
     <div class="detail-head"><p class="eyebrow">Product logistics</p><h2>${e(draft?.model || 'Add product')}</h2><p>${suggestion?._suggestion === 'estimated' ? 'Estimated packing values are prefilled. Review and save them, then replace them after weighing the actual product.' : catalogProduct?.store_section === 'Devices' && !record ? 'This device has no catalog weight. Enter the measured or supplier-confirmed packing data manually.' : 'Saved separately from the customer-facing catalog and used for freight estimates.'}</p></div>
     <form id="logisticsForm" class="form-grid">
-      <label>Model<input class="${modelLocked ? 'model-locked' : ''}" name="model" required ${modelLocked ? 'readonly' : ''} value="${e(value('model'))}" placeholder="e.g. LY-21C"></label>
-      <label>Store / product family<select name="store_section">${storeOptions}</select></label>
-      <label class="wide">Product name<input name="product_name" value="${e(value('product_name'))}" placeholder="English product name"></label>
+      ${isCustomRecord ? `
+        <label>Model<input class="model-locked" name="model" required readonly value="${e(value('model'))}"></label>
+        <label>Store / product family<select name="store_section"><option value="">Choose a product family</option>${storeOptions}</select></label>
+        <label class="wide">Product name<input name="product_name" value="${e(value('product_name'))}" placeholder="English product name"></label>` : `
+        <label>Store / product family<select id="logisticsStore" name="store_section" ${lockedCatalogFields}><option value="">Choose a product family</option>${storeOptions}</select>${lockedCatalogFields ? `<input type="hidden" name="store_section" value="${e(selectedStore)}">` : ''}</label>
+        <label>Model<select id="logisticsModel" name="model" ${lockedCatalogFields} required>${logisticsModelOptions(selectedStore, value('model'))}</select>${lockedCatalogFields ? `<input type="hidden" name="model" value="${e(value('model'))}">` : ''}</label>
+        <label class="wide">Product name<input id="logisticsProductName" name="product_name" readonly value="${e(value('product_name'))}" placeholder="Selected automatically from the model"></label>`}
       <section class="logistics-form-section wide"><h3>Product itself</h3>
         ${logisticsNumberInput('unit_weight_kg', 'Net product weight (kg)', value('unit_weight_kg'), '0.001')}
         <div class="dimension-grid">
@@ -733,6 +749,30 @@ function openLogisticsEditor(model = '') {
   drawer.classList.add('open');
   drawer.setAttribute('aria-hidden', 'false');
   const form = document.querySelector('#logisticsForm');
+  const storeSelect = document.querySelector('#logisticsStore');
+  const modelSelect = document.querySelector('#logisticsModel');
+  const productNameInput = document.querySelector('#logisticsProductName');
+  const draftFields = [
+    'unit_weight_kg','product_length_cm','product_width_cm','product_height_cm',
+    'package_weight_kg','package_length_cm','package_width_cm','package_height_cm',
+    'units_per_carton','carton_weight_kg','carton_length_cm','carton_width_cm','carton_height_cm','notes'
+  ];
+  const applyCatalogSelection = product => {
+    const selectedDraft = suggestedLogistics(product) || product || {};
+    if (productNameInput) productNameInput.value = product?.product_name || '';
+    draftFields.forEach(field => {
+      const input = form.elements.namedItem(field);
+      if (input) input.value = selectedDraft?.[field] ?? '';
+    });
+    updateLogisticsPreview(form);
+  };
+  storeSelect?.addEventListener('change', () => {
+    modelSelect.innerHTML = logisticsModelOptions(storeSelect.value);
+    applyCatalogSelection(null);
+  });
+  modelSelect?.addEventListener('change', () => {
+    applyCatalogSelection(logisticsCatalog.find(product => product.model === modelSelect.value) || null);
+  });
   form.addEventListener('input', () => updateLogisticsPreview(form));
   updateLogisticsPreview(form);
   document.querySelector('#saveLogistics').addEventListener('click', async () => {
