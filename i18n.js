@@ -190,6 +190,13 @@
     ['Trial Frames', '시험테', '试镜架', 'Gọng thử', 'Monturas de prueba', 'Пробные оправы', 'إطارات اختبار', 'Montures d’essai'],
     ['Trial Frame', '시험테', '试镜架', 'Gọng thử', 'Montura de prueba', 'Пробная оправа', 'إطار اختبار', 'Monture d’essai'],
     ['Lensmeters', '렌즈미터', '焦度计', 'Máy đo tròng kính', 'Frontofocómetros', 'Диоптриметры', 'أجهزة قياس العدسات', 'Frontofocomètres'],
+    ['Phoropter Arms', '포롭터 암', '综合验光仪支臂', 'Tay đỡ phoropter', 'Brazos para foróptero', 'Кронштейны фороптера', 'أذرع الفوروبتر', 'Bras de phoroptère'],
+    ['Dyeing Machines', '렌즈 염색기', '镜片染色机', 'Máy nhuộm tròng kính', 'Máquinas de tintado de lentes', 'Машины для окрашивания линз', 'آلات صبغ العدسات', 'Machines de teinture des verres'],
+    ['LED Vision Charts', 'LED 시력표', 'LED 视力表', 'Bảng thị lực LED', 'Optotipos LED', 'Светодиодные таблицы проверки зрения', 'لوحات فحص النظر LED', 'Échelles d’acuité visuelle LED'],
+    ['Unit & Refraction Tables', '검안 유닛 및 테이블', '综合验光台与升降台', 'Bàn khám & khúc xạ', 'Unidades y mesas de refracción', 'Рефракционные установки и столы', 'وحدات وطاولات فحص الانكسار', 'Unités et tables de réfraction'],
+    ['Clinical & Lens Processing', '임상 장비 및 렌즈 가공', '临床设备与镜片加工', 'Thiết bị lâm sàng & gia công tròng kính', 'Equipos clínicos y procesamiento de lentes', 'Клиническое оборудование и обработка линз', 'المعدات السريرية ومعالجة العدسات', 'Équipement clinique et traitement des verres'],
+    ['Vision Test Equipment', '시력 검사 장비', '视力检查设备', 'Thiết bị kiểm tra thị lực', 'Equipos de examen visual', 'Оборудование для проверки зрения', 'معدات فحص النظر', 'Équipement de test visuel'],
+    ['Digital Optical Solutions', '디지털 광학 솔루션', '数字光学解决方案', 'Giải pháp quang học kỹ thuật số', 'Soluciones ópticas digitales', 'Цифровые оптические решения', 'حلول بصرية رقمية', 'Solutions optiques numériques'],
     ['Manual Lensmeter', '수동 렌즈미터', '手动焦度计', 'Máy đo tròng kính thủ công', 'Frontofocómetro manual', 'Ручной диоптриметр', 'جهاز قياس عدسات يدوي', 'Frontofocomètre manuel'],
     ['Lens Processing Consumables', '렌즈 가공 소모품', '镜片加工耗材', 'Vật tư tiêu hao gia công tròng kính', 'Consumibles para procesamiento de lentes', 'Расходные материалы для обработки линз', 'مستهلكات معالجة العدسات', 'Consommables de traitement des verres'],
     ['Refraction & Examination Accessories', '굴절검사 및 검안 액세서리', '验光与检查配件', 'Phụ kiện khúc xạ & khám mắt', 'Accesorios de refracción y examen', 'Принадлежности для рефракции и обследования', 'ملحقات الانكسار والفحص', 'Accessoires de réfraction et d’examen'],
@@ -206,6 +213,28 @@
     ['Repair Parts', '수리 부품', '维修配件', 'Linh kiện sửa chữa', 'Piezas de reparación', 'Запасные части', 'قطع الإصلاح', 'Pièces de réparation'],
     ['Vision Training Kits', '시기능 훈련 세트', '视觉训练套装', 'Bộ luyện thị giác', 'Kits de entrenamiento visual', 'Наборы для тренировки зрения', 'أطقم تدريب الرؤية', 'Kits d’entraînement visuel'],
     ['Automatic Beveler', '자동 모따기 기계', '自动倒边机', 'Máy vát cạnh tự động', 'Biseladora automática', 'Автоматический фаскосниматель', 'آلة شطف أوتوماتيكية', 'Biseauteuse automatique'],
+    ['Best Choice', '추천 제품', '推荐产品', 'Lựa chọn nổi bật', 'Mejor elección', 'Лучший выбор', 'الخيار الأفضل', 'Meilleur choix'],
+    ['Configurable Manual Hand Edger', '주문 구성형 수동 옥습기', '可配置手动磨边机', 'Máy mài cạnh thủ công tùy cấu hình', 'Biseladora manual configurable', 'Настраиваемый ручной кромкообрабатывающий станок', 'آلة جلخ يدوية قابلة للتهيئة', 'Meuleuse manuelle configurable'],
+    ['High-speed Polishing Edger', '고속 연마 옥습기', '高速抛光磨边机', 'Máy mài cạnh đánh bóng tốc độ cao', 'Biseladora pulidora de alta velocidad', 'Высокоскоростной кромкообрабатывающий полировальный станок', 'آلة جلخ وتلميع عالية السرعة', 'Meuleuse-polisseuse haute vitesse'],
+    ['Manual Lens Edger', '수동 렌즈 옥습기', '手动镜片磨边机', 'Máy mài tròng kính thủ công', 'Biseladora manual de lentes', 'Ручной станок для обработки линз', 'آلة جلخ عدسات يدوية', 'Meuleuse manuelle de verres'],
+    ['Hand Edging & Polishing Machine', '수동 옥습·연마기', '手动磨边抛光机', 'Máy mài cạnh & đánh bóng thủ công', 'Biseladora y pulidora manual', 'Ручной станок для обработки кромки и полировки', 'آلة جلخ وتلميع يدوية', 'Meuleuse-polisseuse manuelle'],
+    ['Automatic Polisher', '자동 연마기', '自动抛光机', 'Máy đánh bóng tự động', 'Pulidora automática', 'Автоматический полировальный станок', 'آلة تلميع أوتوماتيكية', 'Polisseuse automatique'],
+    ['Manual Polisher', '수동 연마기', '手动抛光机', 'Máy đánh bóng thủ công', 'Pulidora manual', 'Ручной полировальный станок', 'آلة تلميع يدوية', 'Polisseuse manuelle'],
+    ['Select support structure, wheel width and wheel profile when ordering', '주문 시 지지 구조, 연마 휠 폭 및 휠 형상을 선택하세요', '下单时请选择支撑结构、砂轮宽度和轮型', 'Chọn kết cấu đỡ, chiều rộng và biên dạng đá mài khi đặt hàng', 'Seleccione la estructura de soporte, el ancho y el perfil de la muela al realizar el pedido', 'При заказе выберите опорную конструкцию, ширину и профиль шлифовального круга', 'اختر هيكل الدعم وعرض عجلة الجلخ وشكلها عند الطلب', 'Lors de la commande, choisissez la structure de support, la largeur et le profil de la meule'],
+    ['High-speed polishing at 3,600 rpm', '3,600 rpm 고속 연마', '3,600 rpm 高速抛光', 'Đánh bóng tốc độ cao 3.600 vòng/phút', 'Pulido de alta velocidad a 3600 rpm', 'Высокоскоростная полировка — 3600 об/мин', 'تلميع عالي السرعة عند 3,600 دورة/دقيقة', 'Polissage haute vitesse à 3 600 tr/min'],
+    ['Integrated work light', '작업등 내장', '内置工作灯', 'Tích hợp đèn làm việc', 'Luz de trabajo integrada', 'Встроенная рабочая подсветка', 'إضاءة عمل مدمجة', 'Éclairage de travail intégré'],
+    ['Manual lens edging', '수동 렌즈 옥습', '手动镜片磨边', 'Mài tròng kính thủ công', 'Biselado manual de lentes', 'Ручная обработка кромки линз', 'جلخ العدسات يدويًا', 'Meulage manuel des verres'],
+    ['Combined hand edging and polishing', '수동 옥습 및 연마 복합형', '手动磨边与抛光一体机', 'Kết hợp mài cạnh và đánh bóng thủ công', 'Biselado y pulido manual combinados', 'Ручная обработка кромки и полировка', 'جلخ وتلميع يدويان مدمجان', 'Meulage et polissage manuels combinés'],
+    ['Automatic polishing', '자동 연마', '自动抛光', 'Đánh bóng tự động', 'Pulido automático', 'Автоматическая полировка', 'تلميع أوتوماتيكي', 'Polissage automatique'],
+    ['Bench polishing', '탁상형 연마', '台式抛光', 'Đánh bóng để bàn', 'Pulido de sobremesa', 'Настольная полировка', 'تلميع على الطاولة', 'Polissage sur établi'],
+    ['Compact hand edging and polishing equipment for finishing lenses.', '렌즈 마감용 소형 수동 옥습·연마 장비입니다.', '用于镜片精加工的小型手动磨边抛光设备。', 'Thiết bị mài cạnh và đánh bóng thủ công nhỏ gọn để hoàn thiện tròng kính.', 'Equipo compacto de biselado y pulido manual para el acabado de lentes.', 'Компактное ручное оборудование для обработки кромки и финишной полировки линз.', 'معدات يدوية مدمجة لجلخ حواف العدسات وتلميعها النهائي.', 'Équipement manuel compact de meulage et de polissage pour la finition des verres.'],
+    ['Counter-mounted and wall-mounted support arms for professional phoropter installations.', '전문 포롭터 설치용 테이블·벽면 장착 지지 암입니다.', '用于专业综合验光仪安装的台面式和壁挂式支撑臂。', 'Tay đỡ gắn bàn và gắn tường cho hệ thống phoropter chuyên nghiệp.', 'Brazos de soporte para instalación en mostrador o pared de forópteros profesionales.', 'Настольные и настенные кронштейны для профессиональной установки фороптера.', 'أذرع دعم مثبتة على الطاولة أو الحائط لتركيب الفوروبتر الاحترافي.', 'Bras de support sur comptoir ou mur pour l’installation professionnelle d’un phoroptère.'],
+    ['Multi-pot bench-top dyeing machines for professional optical workshops.', '전문 광학 작업장용 다중 용기 탁상형 렌즈 염색기입니다.', '用于专业光学工作室的多槽台式镜片染色机。', 'Máy nhuộm tròng kính nhiều nồi để bàn cho xưởng quang học chuyên nghiệp.', 'Máquinas de sobremesa con múltiples recipientes para tintar lentes en talleres ópticos profesionales.', 'Настольные многованновые машины для окрашивания линз в профессиональных оптических мастерских.', 'آلات صبغ عدسات مكتبية متعددة الأحواض لورش البصريات الاحترافية.', 'Machines de teinture des verres à plusieurs cuves pour ateliers d’optique professionnels.'],
+    ['Illuminated charts and remote-controlled LCD vision testers for professional examination rooms.', '전문 검사실용 조명식 시력표와 원격 제어 LCD 시력 검사기입니다.', '用于专业检查室的照明视力表和遥控 LCD 视力检测仪。', 'Bảng thị lực có đèn và máy kiểm tra thị lực LCD điều khiển từ xa cho phòng khám chuyên nghiệp.', 'Optotipos iluminados y equipos LCD de examen visual con control remoto para salas profesionales.', 'Световые таблицы и ЖК-системы проверки зрения с дистанционным управлением для профессиональных кабинетов.', 'لوحات مضاءة وأجهزة فحص نظر LCD بالتحكم عن بُعد لغرف الفحص الاحترافية.', 'Échelles lumineuses et systèmes LCD télécommandés pour les salles d’examen professionnelles.'],
+    ['Ophthalmic unit tables, refraction workstations and edger system tables.', '안과 유닛 테이블, 검안 워크스테이션 및 옥습기 시스템 테이블입니다.', '眼科综合台、验光工作站及磨边系统工作台。', 'Bàn thiết bị nhãn khoa, trạm khúc xạ và bàn hệ thống mài tròng kính.', 'Mesas de unidad oftálmica, estaciones de refracción y mesas para sistemas de biselado.', 'Офтальмологические установки, рефракционные рабочие места и столы для систем обработки линз.', 'طاولات وحدات طب العيون ومحطات فحص الانكسار وطاولات أنظمة جلخ العدسات.', 'Tables d’unités ophtalmiques, postes de réfraction et tables pour systèmes de meulage.'],
+    ['Lens processing, lens measurement and clinical diagnostic equipment.', '렌즈 가공·측정 및 임상 진단 장비입니다.', '镜片加工、测量及临床诊断设备。', 'Thiết bị gia công, đo tròng kính và chẩn đoán lâm sàng.', 'Equipos de procesamiento y medición de lentes y de diagnóstico clínico.', 'Оборудование для обработки и измерения линз, а также клинической диагностики.', 'معدات معالجة العدسات وقياسها والتشخيص السريري.', 'Équipement de traitement et de mesure des verres et de diagnostic clinique.'],
+    ['Chart projectors, LCD vision charts and digital refraction systems.', '차트 프로젝터, LCD 시력표 및 디지털 굴절검사 시스템입니다.', '视标投影仪、LCD 视力表及数字验光系统。', 'Máy chiếu bảng thị lực, bảng thị lực LCD và hệ thống khúc xạ kỹ thuật số.', 'Proyectores de optotipos, pantallas LCD de agudeza visual y sistemas digitales de refracción.', 'Проекторы знаков, ЖК-таблицы проверки зрения и цифровые рефракционные системы.', 'أجهزة عرض لوحات النظر وشاشات فحص النظر LCD وأنظمة الانكسار الرقمية.', 'Projecteurs d’optotypes, écrans LCD d’acuité visuelle et systèmes numériques de réfraction.'],
+    ['Consulting, centering and lens demonstration systems for optical stores.', '안경원용 상담, 중심 측정 및 렌즈 시연 시스템입니다.', '用于眼镜店的咨询、定中心及镜片演示系统。', 'Hệ thống tư vấn, định tâm và trình diễn tròng kính cho cửa hàng quang học.', 'Sistemas de asesoramiento, centrado y demostración de lentes para ópticas.', 'Системы консультирования, центрирования и демонстрации линз для оптических салонов.', 'أنظمة استشارة وتمركز وعرض العدسات لمتاجر البصريات.', 'Systèmes de conseil, de centrage et de démonstration des verres pour magasins d’optique.'],
     ['Patternless Edger', '무패턴 옥습기', '免模板磨边机', 'Máy mài không dưỡng', 'Biseladora sin patrón', 'Бесшаблонный станок', 'آلة جلخ بدون قالب', 'Meuleuse sans gabarit'],
     ['Auto Lens Edger', '자동 렌즈 옥습기', '自动镜片磨边机', 'Máy mài tròng kính tự động', 'Biseladora automática de lentes', 'Автоматический станок для обработки линз', 'آلة جلخ عدسات أوتوماتيكية', 'Meuleuse automatique de verres'],
     ['Lens Groover', '렌즈 홈 가공기', '镜片开槽机', 'Máy soi rãnh tròng kính', 'Ranuradora de lentes', 'Станок для проточки линз', 'آلة تخديد العدسات', 'Rainureuse de verres'],
@@ -325,48 +354,61 @@
         intended: ' 모델은 전문 안과 검사, 렌즈 가공 및 광학 작업장에서 사용하도록 설계되었습니다.',
         workshop: ' 모델은 전문 광학 작업장용입니다.',
         retail: ': 전문 안경점의 판매, 수리, 관리 및 고객용으로 적합합니다.',
+        package: '포장', grossAbbr: '총중량', models: count => `${count}개 모델`,
         packageSize: '포장 크기', grossWeight: '총중량', packingQuantity: '포장 수량', cartonSize: '박스 크기', cartonWeight: '박스 총중량', confirmed: '확인 필요'
       },
       zh: {
         intended: ' 型号适用于专业眼科检查、镜片加工及光学工作室。',
         workshop: ' 型号适用于专业光学工作室。',
         retail: '适用于专业眼镜零售、维修、护理或顾客使用。',
+        package: '包装', grossAbbr: '毛重', models: count => `${count} 个型号`,
         packageSize: '包装尺寸', grossWeight: '毛重', packingQuantity: '装箱数量', cartonSize: '外箱尺寸', cartonWeight: '外箱毛重', confirmed: '待确认'
       },
       vi: {
         intended: ' được thiết kế cho khám mắt chuyên nghiệp, gia công tròng kính và sử dụng tại xưởng quang học.',
         workshop: ' dành cho xưởng quang học chuyên nghiệp.',
         retail: ' phù hợp cho bán lẻ, sửa chữa, chăm sóc quang học chuyên nghiệp hoặc sử dụng bởi khách hàng.',
+        package: 'Đóng gói', grossAbbr: 'Trọng lượng cả bì', models: count => `${count} mẫu`,
         packageSize: 'Kích thước đóng gói', grossWeight: 'Trọng lượng cả bì', packingQuantity: 'Số lượng đóng thùng', cartonSize: 'Kích thước thùng', cartonWeight: 'Trọng lượng thùng', confirmed: 'Sẽ xác nhận'
       },
       es: {
         intended: ' está diseñado para el examen óptico profesional, el procesamiento de lentes y el uso en talleres ópticos.',
         workshop: ' está diseñado para talleres ópticos profesionales.',
         retail: ' es adecuado para la venta, reparación y cuidado profesional de productos ópticos o para uso del cliente.',
+        package: 'Embalaje', grossAbbr: 'Peso bruto', models: count => `${count} ${count === 1 ? 'modelo' : 'modelos'}`,
         packageSize: 'Tamaño del embalaje', grossWeight: 'Peso bruto', packingQuantity: 'Cantidad por caja', cartonSize: 'Tamaño de la caja', cartonWeight: 'Peso bruto de la caja', confirmed: 'Pendiente de confirmación'
       },
       ru: {
         intended: ' предназначена для профессионального офтальмологического обследования, обработки линз и работы в оптической мастерской.',
         workshop: ' предназначена для профессиональной оптической мастерской.',
         retail: ' предназначен для профессиональной продажи, ремонта и ухода за оптикой, а также для использования клиентами.',
+        package: 'Упаковка', grossAbbr: 'Вес брутто', models: count => {
+          const mod10 = count % 10;
+          const mod100 = count % 100;
+          const noun = mod10 === 1 && mod100 !== 11 ? 'модель' : mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14) ? 'модели' : 'моделей';
+          return `${count} ${noun}`;
+        },
         packageSize: 'Размер упаковки', grossWeight: 'Вес брутто', packingQuantity: 'Количество в коробке', cartonSize: 'Размер коробки', cartonWeight: 'Вес коробки брутто', confirmed: 'Уточняется'
       },
       ar: {
         intended: ' مصمم للفحص البصري الاحترافي ومعالجة العدسات والاستخدام في ورش البصريات.',
         workshop: ' مخصص للاستخدام في ورش البصريات الاحترافية.',
         retail: ' مناسب للبيع بالتجزئة والإصلاح والعناية البصرية الاحترافية أو لاستخدام العملاء.',
+        package: 'العبوة', grossAbbr: 'الوزن الإجمالي', models: count => `${count} موديل`,
         packageSize: 'حجم العبوة', grossWeight: 'الوزن الإجمالي', packingQuantity: 'كمية التعبئة', cartonSize: 'حجم الكرتون', cartonWeight: 'الوزن الإجمالي للكرتون', confirmed: 'يُحدد لاحقًا'
       },
       fr: {
         intended: ' est conçu pour les examens optiques professionnels, le traitement des verres et l’utilisation en atelier d’optique.',
         workshop: ' est conçu pour les ateliers d’optique professionnels.',
         retail: ' convient à la vente, la réparation et l’entretien optiques professionnels ainsi qu’à l’usage du client.',
+        package: 'Emballage', grossAbbr: 'Poids brut', models: count => `${count} ${count === 1 ? 'modèle' : 'modèles'}`,
         packageSize: 'Dimensions de l’emballage', grossWeight: 'Poids brut', packingQuantity: 'Quantité par carton', cartonSize: 'Dimensions du carton', cartonWeight: 'Poids brut du carton', confirmed: 'À confirmer'
       }
     }[code];
     if (!pack) return value;
 
     let translated = value;
+    translated = translated.replace(/^(\d+)\s+models?$/i, (_, count) => pack.models(Number(count)));
     translated = translated.replace(/^(.+?) model ([A-Z0-9][A-Z0-9-]*) is intended for professional optical examination, lens processing or workshop use\./i,
       (_, name, model) => `${translateGlossary(name, code)} ${model}${pack.intended}`);
     translated = translated.replace(/^(.+?) model ([A-Z0-9][A-Z0-9-]*) for professional optical workshop use\./i,
@@ -374,6 +416,8 @@
     translated = translated.replace(/^(.+?) for professional optical retail, repair, care, or customer use\./i,
       (_, name) => `${translateGlossary(name, code)}${pack.retail}`);
     translated = translated
+      .replace(/\bPackage\s+(?=[\dØ])/gi, `${pack.package}: `)
+      .replace(/\bG\.W\.\s*/gi, `${pack.grossAbbr}: `)
       .replace(/Package size:/gi, `${pack.packageSize}:`)
       .replace(/Gross weight:/gi, `${pack.grossWeight}:`)
       .replace(/Packing quantity:/gi, `${pack.packingQuantity}:`)
@@ -396,6 +440,7 @@
   function translateCore(value, code = currentLanguage) {
     const normalized = normalizeUsd(value);
     if (code === 'en') return normalized;
+    if (/^(?=.*\d)[A-Z0-9]+(?:[-/][A-Z0-9]+)*(?:\s+SERIES)?$/i.test(normalized.trim())) return normalized;
     const exact = exactMaps[code].get(normalizeKey(normalized));
     if (exact) return exact;
     return translateGlossary(translateTemplate(normalized, code), code);
