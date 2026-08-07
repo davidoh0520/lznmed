@@ -179,6 +179,25 @@
     ['Pattern & Lens Cutting', '패턴 및 렌즈 절단', '模板与镜片切割', 'Cắt dưỡng & tròng kính', 'Corte de patrones y lentes', 'Резка шаблонов и линз', 'قص القوالب والعدسات', 'Découpe de gabarits et de verres'],
     ['Hand Edgers & Polishers', '수동 옥습기 및 연마기', '手动磨边与抛光设备', 'Máy mài cạnh & đánh bóng thủ công', 'Biseladoras y pulidoras manuales', 'Ручные кромкообрабатывающие и полировальные станки', 'آلات الجلخ والتلميع اليدوية', 'Meuleuses et polisseuses manuelles'],
     ['Drilling & Notching', '드릴링 및 노칭', '钻孔与开槽', 'Khoan & xẻ rãnh', 'Taladrado y muescado', 'Сверление и прорезание пазов', 'الحفر والتخريم', 'Perçage et encochage'],
+    ['Pattern Drilling Machine', '패턴 드릴링기', '模板钻孔机', 'Máy khoan dưỡng kính', 'Taladradora de plantillas', 'Станок для сверления шаблонов', 'آلة حفر القوالب', 'Machine de perçage de gabarits'],
+    ['Suitable for small lens patterns', '소형 렌즈 패턴에 적합', '适用于小型镜片模板', 'Phù hợp với dưỡng kính nhỏ', 'Apta para plantillas de lentes pequeñas', 'Подходит для небольших шаблонов линз', 'مناسبة لقوالب العدسات الصغيرة', 'Convient aux petits gabarits de lentilles'],
+    ['Lower LED illumination', '하부 LED 조명', '下置 LED 照明', 'Đèn LED chiếu từ dưới', 'Iluminación LED inferior', 'Нижняя LED-подсветка', 'إضاءة LED سفلية', 'Éclairage LED inférieur'],
+    ['DC motor', 'DC 모터', 'DC 电机', 'Động cơ DC', 'Motor DC', 'DC-двигатель', 'محرك DC', 'Moteur DC'],
+    ['Left and right pattern holders can be locked', '좌우 패턴 홀더 잠금 가능', '左右模板夹具可锁定', 'Có thể khóa giá giữ dưỡng kính bên trái và bên phải', 'Los soportes de plantilla izquierdo y derecho se pueden bloquear', 'Левый и правый держатели шаблонов можно зафиксировать', 'يمكن قفل حاملي القالب الأيسر والأيمن', 'Les porte-gabarits gauche et droit peuvent être verrouillés'],
+    ['Non-illuminated model', '비조명 모델', '无照明型号', 'Mẫu không có đèn chiếu sáng', 'Modelo sin iluminación', 'Модель без подсветки', 'طراز بدون إضاءة', 'Modèle sans éclairage'],
+    ['Drilling & Notching Machine', '드릴링·노칭기', '钻孔开槽机', 'Máy khoan và xẻ rãnh', 'Máquina de perforación y muescado', 'Сверлильно-пазовальный станок', 'آلة الحفر والتخريم', "Machine de perçage et d'encochage"],
+    ['Aluminum support column', '알루미늄 지지 기둥', '铝制支撑柱', 'Trụ đỡ bằng nhôm', 'Columna de soporte de aluminio', 'Алюминиевая опорная стойка', 'عمود دعم من الألومنيوم', 'Colonne de support en aluminium'],
+    ['Plastic support column', '플라스틱 지지 기둥', '塑料支撑柱', 'Trụ đỡ bằng nhựa', 'Columna de soporte de plástico', 'Пластиковая опорная стойка', 'عمود دعم بلاستيكي', 'Colonne de support en plastique'],
+    ['Pattern Maker', '패턴 제작기', '模板制作机', 'Máy tạo dưỡng kính', 'Máquina para fabricar plantillas', 'Станок для изготовления шаблонов', 'آلة صنع القوالب', 'Machine de fabrication de gabarits'],
+    ['Copper components', '구리 부품', '铜制部件', 'Linh kiện bằng đồng', 'Componentes de cobre', 'Медные компоненты', 'مكونات نحاسية', 'Composants en cuivre'],
+    ['Stainless-steel components', '스테인리스강 부품', '不锈钢部件', 'Linh kiện bằng thép không gỉ', 'Componentes de acero inoxidable', 'Компоненты из нержавеющей стали', 'مكونات من الفولاذ المقاوم للصدأ', 'Composants en acier inoxydable'],
+    ['Pattern makers and lens cutting equipment for repeatable processing.', '반복 가공용 패턴 제작기 및 렌즈 절단 장비입니다.', '用于重复加工的模板制作机和镜片切割设备。', 'Máy tạo dưỡng kính và thiết bị cắt tròng kính dùng cho gia công lặp lại.', 'Máquinas para fabricar plantillas y equipos de corte de lentes para procesos repetitivos.', 'Оборудование для изготовления шаблонов и резки линз при серийной обработке.', 'آلات صنع القوالب ومعدات قطع العدسات للمعالجة المتكررة.', 'Machines de fabrication de gabarits et équipements de découpe de lentilles pour les travaux répétitifs.'],
+    ['Edger System Table', '옥습기 시스템 테이블', '磨边机系统工作台', 'Bàn hệ thống máy mài cạnh', 'Mesa para sistema de biselado', 'Стол для системы обработки кромки линз', 'طاولة نظام جلخ العدسات', 'Table pour système de meulage'],
+    ['iiOMA Software', 'iiOMA 소프트웨어', 'iiOMA 软件', 'Phần mềm iiOMA', 'Software iiOMA', 'Программное обеспечение iiOMA', 'برنامج iiOMA', 'Logiciel iiOMA'],
+    ['INT-200 Tracer + iiOMA', 'INT-200 트레이서 + iiOMA', 'INT-200 追踪仪 + iiOMA', 'Máy dò INT-200 + iiOMA', 'Trazador INT-200 + iiOMA', 'Трассер INT-200 + iiOMA', 'جهاز تتبع INT-200 + iiOMA', 'Traceur INT-200 + iiOMA'],
+    ['2-Pot Lens Dyeing Machine', '2구 렌즈 염색기', '双槽镜片染色机', 'Máy nhuộm tròng kính 2 nồi', 'Máquina de teñido de lentes de 2 recipientes', 'Двухсекционная машина для окрашивания линз', 'آلة صباغة عدسات بحوضين', 'Machine de teinture de lentilles à 2 cuves'],
+    ['4-Pot Lens Dyeing Machine', '4구 렌즈 염색기', '四槽镜片染色机', 'Máy nhuộm tròng kính 4 nồi', 'Máquina de teñido de lentes de 4 recipientes', 'Четырёхсекционная машина для окрашивания линз', 'آلة صباغة عدسات بأربعة أحواض', 'Machine de teinture de lentilles à 4 cuves'],
+    ['6-Pot Lens Dyeing Machine', '6구 렌즈 염색기', '六槽镜片染色机', 'Máy nhuộm tròng kính 6 nồi', 'Máquina de teñido de lentes de 6 recipientes', 'Шестисекционная машина для окрашивания линз', 'آلة صباغة عدسات بستة أحواض', 'Machine de teinture de lentilles à 6 cuves'],
     ['Centering Equipment', '렌즈 중심 측정 장비', '镜片定中心设备', 'Thiết bị định tâm', 'Equipos de centrado', 'Центровочное оборудование', 'معدات التمركز', 'Équipement de centrage'],
     ['Pattern Drillers', '패턴 드릴', '模板打孔机', 'Máy khoan dưỡng', 'Taladros para patrones', 'Станки для сверления шаблонов', 'مثاقب القوالب', 'Perceuses de gabarits'],
     ['Frame Heaters', '안경테 히터', '镜架加热器', 'Máy gia nhiệt gọng', 'Calentadores de monturas', 'Нагреватели оправ', 'سخانات الإطارات', 'Chauffe-montures'],
@@ -291,6 +310,12 @@
   ];
 
   const exactMaps = Object.fromEntries(LANGUAGE_ORDER.map(code => [code, new Map()]));
+  const catalogTranslations = window.LZN_CATALOG_TRANSLATIONS || {};
+  LANGUAGE_ORDER.forEach(code => {
+    Object.entries(catalogTranslations[code] || {}).forEach(([source, translated]) => {
+      if (translated && translated !== source) exactMaps[code].set(normalizeKey(source), translated);
+    });
+  });
   rows.forEach(row => {
     const key = normalizeKey(row[0]);
     LANGUAGE_ORDER.forEach((code, index) => exactMaps[code].set(key, row[index] || row[0]));
